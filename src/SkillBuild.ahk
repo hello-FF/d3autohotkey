@@ -21,11 +21,14 @@ Class OptionalSkill
 ; 技能建造
 Class OptionalSkillBuilder
 {
-	skill :=           ; 当前技能
-	rune :=            ; 当前符文 
-	alternatives := [] ; 备选技能
-	key :=             ; 热键
-	setting :=         ; 配置
+	__New()
+	{
+		This.skill :=           ; 当前技能
+		This.rune :=            ; 当前符文 
+		This.alternatives := [] ; 备选技能
+		This.key :=             ; 热键
+		This.setting :=         ; 配置
+	}
 
 	; 添加备选技能
 	addAlternative(alternative)
@@ -40,7 +43,9 @@ Class OptionalSkillBuilder
 			throw "current skill is null"
 		if(!key) 
 			throw "key is null"
-		Return New OptionalSkill(This.current, This.alternatives, This.key)
+		v_skill = New OptionalSkill(This.current, This.alternatives, This.key)
+		This.__New() ;重置数据
+		Return v_skill
 	}
 }
 
