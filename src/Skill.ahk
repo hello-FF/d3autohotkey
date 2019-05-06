@@ -167,3 +167,69 @@ Class PassiveSkill extends Skill
 		Base.__New(name, icon, desc, "passive")
 	}
 }
+
+; 技能搭配
+Class SkillCase
+{
+	/**
+	* @param skill        技能
+	* @param rune		  符文
+	*/
+	__New(skill, rune)
+	{
+		This.skill := skill
+		This.rune := rune
+	}
+}
+
+; 技能活动
+Class SkillAction
+{
+	V_Listeners := []      ; 监听
+	V_OptionalCases := []   ; 备选技能
+
+	/**
+	* @param case 技能方案
+	* @param key  快捷键
+	*/
+	_New(case, key)
+	{
+		This.V_SkillCase := case
+		This.V_Key := key
+	}
+
+	/**
+	* 重新绑定快捷键
+	* @key 快捷键
+	*/
+	BindKey(key)
+	{
+		This.V_Key := key
+	}
+
+	/**
+	* 添加备选技能
+	* @param case 技能
+	*/
+	AddOptionalCase(case)
+	{
+		This.V_OptionalCases.Push(case)
+	}
+
+	/**
+	* 添加技能监听
+	* @param listener
+	*/
+	AddListener(listener)
+	{
+		This.V_Listeners.Push(listener)
+	}
+
+	/**
+	* 动作, 点击技能
+	*/
+	Call()
+	{
+		This.V_Key.Click()
+	}
+}
