@@ -2,5 +2,4 @@
 #Include, Setting.ahk
 #Include, Keys.ahk
 
-setting := New Setting
-D3Keys := LoadKeysFromSetting(setting)
+setting := New Settings

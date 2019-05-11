@@ -8,12 +8,12 @@ SKILL_POSITION_3 = "3"
 SKILL_POSITION_4 = "4"
 
 SKILL_POSITION_KEY_MAP := {}
-SKILL_POSITION_KEY_MAP[SKILL_POSITION_L] := KEY_SKILL_LEFT
-SKILL_POSITION_KEY_MAP[SKILL_POSITION_R] := KEY_SKILL_RIGHT
-SKILL_POSITION_KEY_MAP[SKILL_POSITION_1] := KEY_SKILL_FIRST
-SKILL_POSITION_KEY_MAP[SKILL_POSITION_2] := KEY_SKILL_SECOND
-SKILL_POSITION_KEY_MAP[SKILL_POSITION_3] := KEY_SKILL_THIRD
-SKILL_POSITION_KEY_MAP[SKILL_POSITION_4] := KEY_SKILL_FOURTH
+SKILL_POSITION_KEY_MAP[SKILL_POSITION_L] := D3HotKeys.SKILL_LEFT
+SKILL_POSITION_KEY_MAP[SKILL_POSITION_R] := D3HotKeys.SKILL_RIGHT
+SKILL_POSITION_KEY_MAP[SKILL_POSITION_1] := D3HotKeys.SKILL_FIRST
+SKILL_POSITION_KEY_MAP[SKILL_POSITION_2] := D3HotKeys.SKILL_SECOND
+SKILL_POSITION_KEY_MAP[SKILL_POSITION_3] := D3HotKeys.SKILL_THIRD
+SKILL_POSITION_KEY_MAP[SKILL_POSITION_4] := D3HotKeys.SKILL_FOURTH
 
 ; 符文
 Class SkillRune
@@ -243,11 +243,35 @@ Class SkillAction
 	}
 
 	/**
-	* 动作, 点击技能
+	* 动作, 点击技能, 同Click
 	*/
 	Call()
 	{
-		Send, {% This._Key}
+		This._key.Click()
+	}
+	
+	/**
+	* 点击技能
+	*/
+	Click()
+	{
+		This._key.Click()
+	}
+	
+	/**
+	* 按下技能
+	*/
+	Down()
+	{
+		This._key.Down()
+	}
+	
+	/**
+	* 弹起技能
+	*/
+	Up()
+	{
+		This._key.Up()
 	}
 	
 	/**
@@ -276,14 +300,72 @@ Class SkillAction
 Class SkillBar
 {
 	_SkillActions := {}
-
-	; 添加技能
-	AddSkill(position, skill, rune)
+	
+	/**
+	* 添加左键技能
+	* @param skill 技能
+	* @param rune  符文
+	*/
+	AddSKillLeft(skill, rune)
 	{
-		Return This.AddSkillCase(position, New SkillCase(skill, rune))
+		Return This.AddSkill(SKILL_POSITION_L, New SkillCase(skill, rune))
+	}
+	
+	/**
+	* 添加右键技能
+	* @param skill 技能
+	* @param rune  符文
+	*/
+	AddSKillRight(skill, rune)
+	{
+		Return This.AddSkill(SKILL_POSITION_R, New SkillCase(skill, rune))
+	}
+	
+	/**
+	* 添加动作条1技能
+	* @param skill 技能
+	* @param rune  符文
+	*/
+	AddSkill1()
+	{
+		Return This.AddSkill(SKILL_POSITION_1, New SkillCase(skill, rune))
+	}
+	
+	/**
+	* 添加动作条12技能
+	* @param skill 技能
+	* @param rune  符文
+	*/
+	AddSkill2()
+	{
+		Return This.AddSkill(SKILL_POSITION_2, New SkillCase(skill, rune))
+	}
+		
+	/**
+	* 添加动作条12技能
+	* @param skill 技能
+	* @param rune  符文
+	*/
+	AddSkill3()
+	{
+		Return This.AddSkill(SKILL_POSITION_3, New SkillCase(skill, rune))
 	}
 
-	; 添加技能
+	/**
+	* 添加动作条12技能
+	* @param skill 技能
+	* @param rune  符文
+	*/
+	AddSkill4()
+	{
+		Return This.AddSkill(SKILL_POSITION_4, New SkillCase(skill, rune))
+	}
+	
+	/**
+	* 添加技能
+	* @param position 技能位置
+	* @param case     技能方案
+	*/
 	AddSkillCase(position, case)
 	{
 		V_Action := New SkillAction(case)
@@ -292,7 +374,11 @@ Class SkillBar
 		Return V_Action
 	}
 
-	; 交换技能
+	/**
+	* 交换技能
+	* @param postion1 技能1位置
+	* @param postion2 技能2位置
+	*/
 	Swap(postion1, position2)
 	{
 		V_Temp := This._SkillActions[postion1]
