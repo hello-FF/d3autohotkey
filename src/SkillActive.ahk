@@ -1,3650 +1,3650 @@
-#Include, Skill.ahk
+ï»¿#Include, Skill.ahk
 
 ; ===========================
-; Ò°ÂùÈË Start
+; é‡Žè›®äºº Start
 ; ===========================
 ; ---------------------------
-; ¼¼ÄÜ: ÃÍ»÷ Start
+; æŠ€èƒ½: çŒ›å‡» Start
 ; ---------------------------
-; ·ûÎÄ: ËªÒ§ 
-RUNE_BARBARIAN_BASH_C := New SkillRune("ËªÒ§", "±ùº®", "c", "Ã¿´Î»÷ÖÐ»á±ù¶³µÐÈË1.5Ãë¡£µÐÈËÃ¿5ÃëÖ»ÄÜ±»ÃÍ»÷±ù¶³Ò»´Î¡£")
-; ·ûÎÄ: ±©×á 
-RUNE_BARBARIAN_BASH_A := New SkillRune("±©×á", "µç»÷", "a", "Ê¹µÐÈËÊÜµ½±©»÷µÄ¼¸ÂÊÌá¸ß10%£¬³ÖÐø3Ãë¡£ÃÍ»÷µÄÉËº¦ÀàÐÍ×ª»»ÎªÉÁµçÉËº¦¡£")
-; ·ûÎÄ: Í´Å¹ 
-RUNE_BARBARIAN_BASH_B := New SkillRune("Í´Å¹", "ÎïÀí", "b", "Ê¹ÓÃÃÍ»÷ºóµÄ5ÃëÄÚ£¬Ê¹ÄãÔì³ÉµÄÉËº¦Ìá¸ß4%¡£¸ÃÐ§¹û×î¶à¿Éµþ¼Ó3²ã¡£")
-; ·ûÎÄ: ±©Å­ 
-RUNE_BARBARIAN_BASH_D := New SkillRune("±©Å­", "»ðÑæ", "d", "Ê¹Éú³ÉµÄÅ­ÆøÌá¸ßÖÁ9µã¡£ÃÍ»÷µÄÉËº¦ÀàÐÍ×ª»»Îª»ðÑæÉËº¦¡£")
-; ·ûÎÄ: ·ÛËé 
-RUNE_BARBARIAN_BASH_E := New SkillRune("·ÛËé", "»ðÑæ", "e", "Ã¿´Î»÷ÖÐ¶¼»áÒý·¢Ò»µÀ³å»÷²¨£¬¶ÔÖ÷ÒªµÐÈËºó·½26ÂëÖ±ÏßÉÏµÄµÐÈËÔì³É100%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ¼¼ÄÜ: ÃÍ»÷
-SKILL_ACTIVE_BARBARIAN_BASH := New ActiveSkill("ÃÍ»÷", "ÎïÀí", "Ö÷Òª"
+; ç¬¦æ–‡: éœœå’¬ 
+RUNE_BARBARIAN_BASH_C := New SkillRune("éœœå’¬", "å†°å¯’", "c", "æ¯æ¬¡å‡»ä¸­ä¼šå†°å†»æ•Œäºº1.5ç§’ã€‚æ•Œäººæ¯5ç§’åªèƒ½è¢«çŒ›å‡»å†°å†»ä¸€æ¬¡ã€‚")
+; ç¬¦æ–‡: æš´æ 
+RUNE_BARBARIAN_BASH_A := New SkillRune("æš´æ", "ç”µå‡»", "a", "ä½¿æ•Œäººå—åˆ°æš´å‡»çš„å‡ çŽ‡æé«˜10%ï¼ŒæŒç»­3ç§’ã€‚çŒ›å‡»çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºé—ªç”µä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ç—›æ®´ 
+RUNE_BARBARIAN_BASH_B := New SkillRune("ç—›æ®´", "ç‰©ç†", "b", "ä½¿ç”¨çŒ›å‡»åŽçš„5ç§’å†…ï¼Œä½¿ä½ é€ æˆçš„ä¼¤å®³æé«˜4%ã€‚è¯¥æ•ˆæžœæœ€å¤šå¯å åŠ 3å±‚ã€‚")
+; ç¬¦æ–‡: æš´æ€’ 
+RUNE_BARBARIAN_BASH_D := New SkillRune("æš´æ€’", "ç«ç„°", "d", "ä½¿ç”Ÿæˆçš„æ€’æ°”æé«˜è‡³9ç‚¹ã€‚çŒ›å‡»çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºç«ç„°ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ç²‰ç¢Ž 
+RUNE_BARBARIAN_BASH_E := New SkillRune("ç²‰ç¢Ž", "ç«ç„°", "e", "æ¯æ¬¡å‡»ä¸­éƒ½ä¼šå¼•å‘ä¸€é“å†²å‡»æ³¢ï¼Œå¯¹ä¸»è¦æ•ŒäººåŽæ–¹26ç ç›´çº¿ä¸Šçš„æ•Œäººé€ æˆ100%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: çŒ›å‡»
+SKILL_ACTIVE_BARBARIAN_BASH := New ActiveSkill("çŒ›å‡»", "ç‰©ç†", "ä¸»è¦"
 	, "images\skills\barbarian\active\barbarian_bash_normal.png"
-	, "Éú³É£º6µãÅ­Æø\r\nÃÍÁÒ´ò»÷Ò»ÃûµÐÈË£¬¶ÔÆäÔì³É320%µÄÎäÆ÷ÉËº¦¡£"
+	, "ç”Ÿæˆï¼š6ç‚¹æ€’æ°”\r\nçŒ›çƒˆæ‰“å‡»ä¸€åæ•Œäººï¼Œå¯¹å…¶é€ æˆ320%çš„æ­¦å™¨ä¼¤å®³ã€‚"
 	, [RUNE_BARBARIAN_BASH_C, RUNE_BARBARIAN_BASH_A, RUNE_BARBARIAN_BASH_B, RUNE_BARBARIAN_BASH_D, RUNE_BARBARIAN_BASH_E])
 ; ---------------------------
-; ¼¼ÄÜ: ÃÍ»÷ End
+; æŠ€èƒ½: çŒ›å‡» End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÏÈ×æÖ®´¸ Start
+; æŠ€èƒ½: å…ˆç¥–ä¹‹é”¤ Start
 ; ---------------------------
-; ·ûÎÄ: ¹öÀ× 
-RUNE_BARBARIAN_HAMMER_OF_THE_ANCIENTS_B := New SkillRune("¹öÀ×", "ÎïÀí", "b", "ÖÆÔìÒ»¹É³å»÷²¨£¬¶ÔÎ»ÓÚÄãÇ°·½22ÂëÄÚµÄËùÓÐµÐÈËÔì³É505%µÄÎäÆ÷ÉËº¦¡£")
-; ·ûÎÄ: ÐîÁ¦ÖØ»÷ 
-RUNE_BARBARIAN_HAMMER_OF_THE_ANCIENTS_A := New SkillRune("ÐîÁ¦ÖØ»÷", "»ðÑæ", "a", "ÃÍ»÷Ôì³É640%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ¶ñÄ§ÌúÕè 
-RUNE_BARBARIAN_HAMMER_OF_THE_ANCIENTS_C := New SkillRune("¶ñÄ§ÌúÕè", "±ùº®", "c", "Ã¿´Î»÷ÖÐ¶¼ÄÜÔÚÃüÖÐµØµã²úÉúÕð²¨£¬¶ÔµÐÈËÔì³Éº®ÀäÐ§¹û£¬Ê¹ÆäÒÆ¶¯ËÙ¶È½µµÍ80%£¬³ÖÐø2Ãë¡£ÏÈ×æÖ®´¸µÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ·ûÎÄ: À×öªÕð»÷ 
-RUNE_BARBARIAN_HAMMER_OF_THE_ANCIENTS_E := New SkillRune("À×öªÕð»÷", "µç»÷", "e", "Ã¿µ±ÄãÓÃÏÈ×æÖ®´¸ÏûÃðÒ»ÃûµÐÈËÊ±£¬¸½½ü10ÂëÄÚµÄËùÓÐÆäËüµÐÈË¶¼»áÏÝÈë»èÃÔ£¬³ÖÐø2Ãë¡£ÏÈ×æÖ®´¸µÄÉËº¦ÀàÐÍ×ª»»ÎªÉÁµçÉËº¦¡£")
-; ·ûÎÄ: ÌìÉú¿ñÕ½ 
-RUNE_BARBARIAN_HAMMER_OF_THE_ANCIENTS_D := New SkillRune("ÌìÉú¿ñÕ½", "ÎïÀí", "d", "±©»÷»áÖÎÁÆÄãÉúÃüÖµÉÏÏÞ3%µÄÉúÃü¡£")
-; ¼¼ÄÜ: ÏÈ×æÖ®´¸
-SKILL_ACTIVE_BARBARIAN_HAMMER_OF_THE_ANCIENTS := New ActiveSkill("ÏÈ×æÖ®´¸", "ÎïÀí", "´ÎÒª"
+; ç¬¦æ–‡: æ»šé›· 
+RUNE_BARBARIAN_HAMMER_OF_THE_ANCIENTS_B := New SkillRune("æ»šé›·", "ç‰©ç†", "b", "åˆ¶é€ ä¸€è‚¡å†²å‡»æ³¢ï¼Œå¯¹ä½äºŽä½ å‰æ–¹22ç å†…çš„æ‰€æœ‰æ•Œäººé€ æˆ505%çš„æ­¦å™¨ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: è“„åŠ›é‡å‡» 
+RUNE_BARBARIAN_HAMMER_OF_THE_ANCIENTS_A := New SkillRune("è“„åŠ›é‡å‡»", "ç«ç„°", "a", "çŒ›å‡»é€ æˆ640%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: æ¶é­”é“ç § 
+RUNE_BARBARIAN_HAMMER_OF_THE_ANCIENTS_C := New SkillRune("æ¶é­”é“ç §", "å†°å¯’", "c", "æ¯æ¬¡å‡»ä¸­éƒ½èƒ½åœ¨å‘½ä¸­åœ°ç‚¹äº§ç”Ÿéœ‡æ³¢ï¼Œå¯¹æ•Œäººé€ æˆå¯’å†·æ•ˆæžœï¼Œä½¿å…¶ç§»åŠ¨é€Ÿåº¦é™ä½Ž80%ï¼ŒæŒç»­2ç§’ã€‚å…ˆç¥–ä¹‹é”¤çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: é›·éœ†éœ‡å‡» 
+RUNE_BARBARIAN_HAMMER_OF_THE_ANCIENTS_E := New SkillRune("é›·éœ†éœ‡å‡»", "ç”µå‡»", "e", "æ¯å½“ä½ ç”¨å…ˆç¥–ä¹‹é”¤æ¶ˆç­ä¸€åæ•Œäººæ—¶ï¼Œé™„è¿‘10ç å†…çš„æ‰€æœ‰å…¶å®ƒæ•Œäººéƒ½ä¼šé™·å…¥æ˜è¿·ï¼ŒæŒç»­2ç§’ã€‚å…ˆç¥–ä¹‹é”¤çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºé—ªç”µä¼¤å®³ã€‚")
+; ç¬¦æ–‡: å¤©ç”Ÿç‹‚æˆ˜ 
+RUNE_BARBARIAN_HAMMER_OF_THE_ANCIENTS_D := New SkillRune("å¤©ç”Ÿç‹‚æˆ˜", "ç‰©ç†", "d", "æš´å‡»ä¼šæ²»ç–—ä½ ç”Ÿå‘½å€¼ä¸Šé™3%çš„ç”Ÿå‘½ã€‚")
+; æŠ€èƒ½: å…ˆç¥–ä¹‹é”¤
+SKILL_ACTIVE_BARBARIAN_HAMMER_OF_THE_ANCIENTS := New ActiveSkill("å…ˆç¥–ä¹‹é”¤", "ç‰©ç†", "æ¬¡è¦"
 	, "images\skills\barbarian\active\barbarian_hammeroftheancients_normal.png"
-	, "ÏûºÄ£º20µãÅ­Æø\r\nÕÙ»½¾Þ´¸£¬¾¶Ö±ÔÒÏòÎ»ÓÚÄãÇ°·½µÄµÐÈË£¬Ôì³É535%µÄÎäÆ÷ÉËº¦¡£Í¬Ê±Ã¿5µãÅ­Æø¿ÉÊ¹ÏÈ×æÖ®´¸µÄ±©»÷¼¸ÂÊ¶îÍâÌá¸ß1%¡£"
+	, "æ¶ˆè€—ï¼š20ç‚¹æ€’æ°”\r\nå¬å”¤å·¨é”¤ï¼Œå¾„ç›´ç ¸å‘ä½äºŽä½ å‰æ–¹çš„æ•Œäººï¼Œé€ æˆ535%çš„æ­¦å™¨ä¼¤å®³ã€‚åŒæ—¶æ¯5ç‚¹æ€’æ°”å¯ä½¿å…ˆç¥–ä¹‹é”¤çš„æš´å‡»å‡ çŽ‡é¢å¤–æé«˜1%ã€‚"
 	, [RUNE_BARBARIAN_HAMMER_OF_THE_ANCIENTS_B, RUNE_BARBARIAN_HAMMER_OF_THE_ANCIENTS_A, RUNE_BARBARIAN_HAMMER_OF_THE_ANCIENTS_C, RUNE_BARBARIAN_HAMMER_OF_THE_ANCIENTS_E, RUNE_BARBARIAN_HAMMER_OF_THE_ANCIENTS_D])
 ; ---------------------------
-; ¼¼ÄÜ: ÏÈ×æÖ®´¸ End
+; æŠ€èƒ½: å…ˆç¥–ä¹‹é”¤ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Ë³ÅüÕ¶ Start
+; æŠ€èƒ½: é¡ºåŠˆæ–© Start
 ; ---------------------------
-; ·ûÎÄ: ÁÑ»÷µ¶·¨ 
-RUNE_BARBARIAN_CLEAVE_E := New SkillRune("ÁÑ»÷µ¶·¨", "»ðÑæ", "e", "±»Ë³ÅüÕ¶ÏûÃðµÄµÐÈË»á±¬Õ¨£¬¶ÔÖÜÎ§8ÂëÄÚµÄËùÓÐÆäËûµÐÈËÔì³É160%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: Ðý·çÊÕ¸î 
-RUNE_BARBARIAN_CLEAVE_D := New SkillRune("Ðý·çÊÕ¸î", "»ðÑæ", "d", "Ã¿»÷ÖÐÒ»ÃûµÐÈËÉú³É¶îÍâ1µãÅ­Æø¡£Ë³ÅüÕ¶µÄÉËº¦ÀàÐÍ×ª»»Îª»ðÑæÉËº¦¡£")
-; ·ûÎÄ: Ë³ÅüÇ¿Ï® 
-RUNE_BARBARIAN_CLEAVE_C := New SkillRune("Ë³ÅüÇ¿Ï®", "ÎïÀí", "c", "±©»÷»á½«µÐÈË»÷·É£¬ÂäµØÊ±¶ÔÆäÔì³É80%µÄÎäÆ÷ÉËº¦¡£")
-; ·ûÎÄ: ÎÞ±ßºáÉ¨ 
-RUNE_BARBARIAN_CLEAVE_A := New SkillRune("ÎÞ±ßºáÉ¨", "µç»÷", "a", "»Ó»÷ÎäÆ÷¹¥»÷Éí±ßËùÓÐµÐÈË£¬²¢½«Ôì³ÉµÄÉËº¦Ìá¸ßÖÁ235%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£")
-; ·ûÎÄ: ±ùÑ©·ç±© 
-RUNE_BARBARIAN_CLEAVE_B := New SkillRune("±ùÑ©·ç±©", "±ùº®", "b", "¶Ô±»ÅüÕ¶µ½µÄµÐÈËÔì³Éº®ÀäÐ§¹û£¬Ê¹ÆäÊÜµ½µÄËùÓÐÀàÐÍÉËº¦Ìá¸ß10%£¬³ÖÐø3Ãë¡£Ë³ÅüÕ¶µÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ¼¼ÄÜ: Ë³ÅüÕ¶
-SKILL_ACTIVE_BARBARIAN_CLEAVE := New ActiveSkill("Ë³ÅüÕ¶", "ÎïÀí", "Ö÷Òª"
+; ç¬¦æ–‡: è£‚å‡»åˆ€æ³• 
+RUNE_BARBARIAN_CLEAVE_E := New SkillRune("è£‚å‡»åˆ€æ³•", "ç«ç„°", "e", "è¢«é¡ºåŠˆæ–©æ¶ˆç­çš„æ•Œäººä¼šçˆ†ç‚¸ï¼Œå¯¹å‘¨å›´8ç å†…çš„æ‰€æœ‰å…¶ä»–æ•Œäººé€ æˆ160%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: æ—‹é£Žæ”¶å‰² 
+RUNE_BARBARIAN_CLEAVE_D := New SkillRune("æ—‹é£Žæ”¶å‰²", "ç«ç„°", "d", "æ¯å‡»ä¸­ä¸€åæ•Œäººç”Ÿæˆé¢å¤–1ç‚¹æ€’æ°”ã€‚é¡ºåŠˆæ–©çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºç«ç„°ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: é¡ºåŠˆå¼ºè¢­ 
+RUNE_BARBARIAN_CLEAVE_C := New SkillRune("é¡ºåŠˆå¼ºè¢­", "ç‰©ç†", "c", "æš´å‡»ä¼šå°†æ•Œäººå‡»é£žï¼Œè½åœ°æ—¶å¯¹å…¶é€ æˆ80%çš„æ­¦å™¨ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æ— è¾¹æ¨ªæ‰« 
+RUNE_BARBARIAN_CLEAVE_A := New SkillRune("æ— è¾¹æ¨ªæ‰«", "ç”µå‡»", "a", "æŒ¥å‡»æ­¦å™¨æ”»å‡»èº«è¾¹æ‰€æœ‰æ•Œäººï¼Œå¹¶å°†é€ æˆçš„ä¼¤å®³æé«˜è‡³235%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å†°é›ªé£Žæš´ 
+RUNE_BARBARIAN_CLEAVE_B := New SkillRune("å†°é›ªé£Žæš´", "å†°å¯’", "b", "å¯¹è¢«åŠˆæ–©åˆ°çš„æ•Œäººé€ æˆå¯’å†·æ•ˆæžœï¼Œä½¿å…¶å—åˆ°çš„æ‰€æœ‰ç±»åž‹ä¼¤å®³æé«˜10%ï¼ŒæŒç»­3ç§’ã€‚é¡ºåŠˆæ–©çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; æŠ€èƒ½: é¡ºåŠˆæ–©
+SKILL_ACTIVE_BARBARIAN_CLEAVE := New ActiveSkill("é¡ºåŠˆæ–©", "ç‰©ç†", "ä¸»è¦"
 	, "images\skills\barbarian\active\barbarian_cleave_normal.png"
-	, "Éú³É£º6µãÅ­Æø\r\nÒ°ÂùÈË»Ó¶¯ÎäÆ÷ÂÕ³öÒ»¸ö´ó»¡£¬¶ÔËùÓÐ±»»Ó»÷µ½µÄÆäËüµÐÈËÔì³É200%µÄÎäÆ÷ÉËº¦¡£"
+	, "ç”Ÿæˆï¼š6ç‚¹æ€’æ°”\r\né‡Žè›®äººæŒ¥åŠ¨æ­¦å™¨æŠ¡å‡ºä¸€ä¸ªå¤§å¼§ï¼Œå¯¹æ‰€æœ‰è¢«æŒ¥å‡»åˆ°çš„å…¶å®ƒæ•Œäººé€ æˆ200%çš„æ­¦å™¨ä¼¤å®³ã€‚"
 	, [RUNE_BARBARIAN_CLEAVE_E, RUNE_BARBARIAN_CLEAVE_D, RUNE_BARBARIAN_CLEAVE_C, RUNE_BARBARIAN_CLEAVE_A, RUNE_BARBARIAN_CLEAVE_B])
 ; ---------------------------
-; ¼¼ÄÜ: Ë³ÅüÕ¶ End
+; æŠ€èƒ½: é¡ºåŠˆæ–© End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ´óµØ¼ùÌ¤ Start
+; æŠ€èƒ½: å¤§åœ°è·µè¸ Start
 ; ---------------------------
-; ·ûÎÄ: À×Òô¹á¶ú 
-RUNE_BARBARIAN_GROUND_STOMP_E := New SkillRune("À×Òô¹á¶ú", "±ùº®", "e", "´óµØ¼ùÌ¤µÄÀäÈ´Ê±¼äËõ¶ÌÖÁ8Ãë¡£·¶Î§ÄÚµÄµÐÈËÔÚ´Ó»èÃÔÖÐ»Ö¸´ºó£¬ÆäÒÆ¶¯ËÙ¶È½µµÍ80%£¬³ÖÐø8Ãë¡£")
-; ·ûÎÄ: ×ãÅ¤Ç¬À¤ 
-RUNE_BARBARIAN_GROUND_STOMP_B := New SkillRune("×ãÅ¤Ç¬À¤", "ÎïÀí", "b", "Ê¹Ð§¹û·¶Î§À©´óÖÁ24Âë¡£ÔÚ¹¥»÷»÷ÖÐÇ°£¬µÐÈË»á±»ÂÔÎ¢À­½ü¡£")
-; ·ûÎÄ: ²üÀõ¼ùÌ¤ 
-RUNE_BARBARIAN_GROUND_STOMP_A := New SkillRune("²üÀõ¼ùÌ¤", "»ðÑæ", "a", "ÇøÓòÄÚµÄµÐÈËÍ¬Ê±»áÊÜµ½575%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ×ã¹àÇ§½ï 
-RUNE_BARBARIAN_GROUND_STOMP_D := New SkillRune("×ã¹àÇ§½ï", "ÎïÀí", "d", "Ê¹Éú³ÉµÄÅ­ÆøÌá¸ßÖÁ30µã¡£")
-; ·ûÎÄ: ÕðµØÃÍÏ® 
-RUNE_BARBARIAN_GROUND_STOMP_C := New SkillRune("ÕðµØÃÍÏ®", "ÎïÀí", "c", "±»»÷ÖÐµÄµÐÈËÓÐÒ»¶¨¼¸ÂÊµôÂäÒ»¿ÅÉúÃüÇò¡£")
-; ¼¼ÄÜ: ´óµØ¼ùÌ¤
-SKILL_ACTIVE_BARBARIAN_GROUND_STOMP := New ActiveSkill("´óµØ¼ùÌ¤", "ÎïÀí", "·ÀÓù"
+; ç¬¦æ–‡: é›·éŸ³è´¯è€³ 
+RUNE_BARBARIAN_GROUND_STOMP_E := New SkillRune("é›·éŸ³è´¯è€³", "å†°å¯’", "e", "å¤§åœ°è·µè¸çš„å†·å´æ—¶é—´ç¼©çŸ­è‡³8ç§’ã€‚èŒƒå›´å†…çš„æ•Œäººåœ¨ä»Žæ˜è¿·ä¸­æ¢å¤åŽï¼Œå…¶ç§»åŠ¨é€Ÿåº¦é™ä½Ž80%ï¼ŒæŒç»­8ç§’ã€‚")
+; ç¬¦æ–‡: è¶³æ‰­ä¹¾å¤ 
+RUNE_BARBARIAN_GROUND_STOMP_B := New SkillRune("è¶³æ‰­ä¹¾å¤", "ç‰©ç†", "b", "ä½¿æ•ˆæžœèŒƒå›´æ‰©å¤§è‡³24ç ã€‚åœ¨æ”»å‡»å‡»ä¸­å‰ï¼Œæ•Œäººä¼šè¢«ç•¥å¾®æ‹‰è¿‘ã€‚")
+; ç¬¦æ–‡: é¢¤æ —è·µè¸ 
+RUNE_BARBARIAN_GROUND_STOMP_A := New SkillRune("é¢¤æ —è·µè¸", "ç«ç„°", "a", "åŒºåŸŸå†…çš„æ•ŒäººåŒæ—¶ä¼šå—åˆ°575%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: è¶³çŒåƒæ–¤ 
+RUNE_BARBARIAN_GROUND_STOMP_D := New SkillRune("è¶³çŒåƒæ–¤", "ç‰©ç†", "d", "ä½¿ç”Ÿæˆçš„æ€’æ°”æé«˜è‡³30ç‚¹ã€‚")
+; ç¬¦æ–‡: éœ‡åœ°çŒ›è¢­ 
+RUNE_BARBARIAN_GROUND_STOMP_C := New SkillRune("éœ‡åœ°çŒ›è¢­", "ç‰©ç†", "c", "è¢«å‡»ä¸­çš„æ•Œäººæœ‰ä¸€å®šå‡ çŽ‡æŽ‰è½ä¸€é¢—ç”Ÿå‘½çƒã€‚")
+; æŠ€èƒ½: å¤§åœ°è·µè¸
+SKILL_ACTIVE_BARBARIAN_GROUND_STOMP := New ActiveSkill("å¤§åœ°è·µè¸", "ç‰©ç†", "é˜²å¾¡"
 	, "images\skills\barbarian\active\barbarian_groundstomp_normal.png"
-	, "Éú³É£º15µãÅ­ÆøÀäÈ´Ê±¼ä£º12Ãë\r\n¼ùÌ¤´óµØ£¬Ê¹Î»ÓÚ14ÂëÄÚµÄËùÓÐµÐÈË»èÃÔ4Ãë¡£"
+	, "ç”Ÿæˆï¼š15ç‚¹æ€’æ°”å†·å´æ—¶é—´ï¼š12ç§’\r\nè·µè¸å¤§åœ°ï¼Œä½¿ä½äºŽ14ç å†…çš„æ‰€æœ‰æ•Œäººæ˜è¿·4ç§’ã€‚"
 	, [RUNE_BARBARIAN_GROUND_STOMP_E, RUNE_BARBARIAN_GROUND_STOMP_B, RUNE_BARBARIAN_GROUND_STOMP_A, RUNE_BARBARIAN_GROUND_STOMP_D, RUNE_BARBARIAN_GROUND_STOMP_C])
 ; ---------------------------
-; ¼¼ÄÜ: ´óµØ¼ùÌ¤ End
+; æŠ€èƒ½: å¤§åœ°è·µè¸ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Í´¸î Start
+; æŠ€èƒ½: ç—›å‰² Start
 ; ---------------------------
-; ·ûÎÄ: ÇÐ¸î 
-RUNE_BARBARIAN_REND_B := New SkillRune("ÇÐ¸î", "»ðÑæ", "b", "ÑÓ³¤Í´¸îµÄ¹¥»÷¾àÀë£¬¿É»÷ÖÐÎ»ÓÚ18ÂëÄÚµÄËùÓÐµÐÈË¡£Í´¸îµÄÉËº¦ÀàÐÍ×ª»»Îª»ðÑæÉËº¦¡£")
-; ·ûÎÄ: ¼Àµ¶ 
-RUNE_BARBARIAN_REND_D := New SkillRune("¼Àµ¶", "ÎïÀí", "d", "Ã¿¸öÊÜÓ°ÏìµÄµÐÈË¿ÉÊ¹ÄãÃ¿Ãë»Ö¸´ÉúÃüÖµÉÏÏÞµÄ0.5%¡£")
-; ·ûÎÄ: ËºÁÑ 
-RUNE_BARBARIAN_REND_A := New SkillRune("ËºÁÑ", "µç»÷", "a", "ÉËº¦Ìá¸ßÖÁÔÚ5ÃëÄÚÔì³É1350%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£")
-; ·ûÎÄ: Ëª´Ì 
-RUNE_BARBARIAN_REND_C := New SkillRune("Ëª´Ì", "±ùº®", "c", "¶ÔÊÜÓ°ÏìµÄµÐÈËÔì³Éº®ÀäÐ§¹û£¬²¢ÇÒÊ¹ÆäÊÜµ½µÄËùÓÐÀàÐÍÉËº¦Ìá¸ß10%¡£Í´¸îµÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ·ûÎÄ: ¸ÐÈ¾ 
-RUNE_BARBARIAN_REND_E := New SkillRune("¸ÐÈ¾", "ÎïÀí", "e", "ÔÚÁ÷Ñª¹ý³ÌÖÐ±»ÏûÃðµÄµÐÈË£¬»áÊ¹10ÂëÄÚµÄËùÓÐµÐÈËÒ»ÆðÁ÷Ñª£¬ÔÚ5ÃëÄÚÔì³É1100%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£")
-; ¼¼ÄÜ: Í´¸î
-SKILL_ACTIVE_BARBARIAN_REND := New ActiveSkill("Í´¸î", "ÎïÀí", "´ÎÒª"
+; ç¬¦æ–‡: åˆ‡å‰² 
+RUNE_BARBARIAN_REND_B := New SkillRune("åˆ‡å‰²", "ç«ç„°", "b", "å»¶é•¿ç—›å‰²çš„æ”»å‡»è·ç¦»ï¼Œå¯å‡»ä¸­ä½äºŽ18ç å†…çš„æ‰€æœ‰æ•Œäººã€‚ç—›å‰²çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºç«ç„°ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ç¥­åˆ€ 
+RUNE_BARBARIAN_REND_D := New SkillRune("ç¥­åˆ€", "ç‰©ç†", "d", "æ¯ä¸ªå—å½±å“çš„æ•Œäººå¯ä½¿ä½ æ¯ç§’æ¢å¤ç”Ÿå‘½å€¼ä¸Šé™çš„0.5%ã€‚")
+; ç¬¦æ–‡: æ’•è£‚ 
+RUNE_BARBARIAN_REND_A := New SkillRune("æ’•è£‚", "ç”µå‡»", "a", "ä¼¤å®³æé«˜è‡³åœ¨5ç§’å†…é€ æˆ1350%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: éœœåˆº 
+RUNE_BARBARIAN_REND_C := New SkillRune("éœœåˆº", "å†°å¯’", "c", "å¯¹å—å½±å“çš„æ•Œäººé€ æˆå¯’å†·æ•ˆæžœï¼Œå¹¶ä¸”ä½¿å…¶å—åˆ°çš„æ‰€æœ‰ç±»åž‹ä¼¤å®³æé«˜10%ã€‚ç—›å‰²çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æ„ŸæŸ“ 
+RUNE_BARBARIAN_REND_E := New SkillRune("æ„ŸæŸ“", "ç‰©ç†", "e", "åœ¨æµè¡€è¿‡ç¨‹ä¸­è¢«æ¶ˆç­çš„æ•Œäººï¼Œä¼šä½¿10ç å†…çš„æ‰€æœ‰æ•Œäººä¸€èµ·æµè¡€ï¼Œåœ¨5ç§’å†…é€ æˆ1100%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: ç—›å‰²
+SKILL_ACTIVE_BARBARIAN_REND := New ActiveSkill("ç—›å‰²", "ç‰©ç†", "æ¬¡è¦"
 	, "images\skills\barbarian\active\barbarian_rend_normal.png"
-	, "ÏûºÄ£º20µãÅ­Æø\r\nÒ»¼ÇÂÓÉ¨Ö®»÷£¬Ê¹12ÂëÄÚµÄËùÓÐµÐÈËÁ÷Ñª£¬ÔÚ5ÃëÄÚÔì³É1100%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£"
+	, "æ¶ˆè€—ï¼š20ç‚¹æ€’æ°”\r\nä¸€è®°æŽ æ‰«ä¹‹å‡»ï¼Œä½¿12ç å†…çš„æ‰€æœ‰æ•Œäººæµè¡€ï¼Œåœ¨5ç§’å†…é€ æˆ1100%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_BARBARIAN_REND_B, RUNE_BARBARIAN_REND_D, RUNE_BARBARIAN_REND_A, RUNE_BARBARIAN_REND_C, RUNE_BARBARIAN_REND_E])
 ; ---------------------------
-; ¼¼ÄÜ: Í´¸î End
+; æŠ€èƒ½: ç—›å‰² End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÌøÕ¶ Start
+; æŠ€èƒ½: è·³æ–© Start
 ; ---------------------------
-; ·ûÎÄ: Ì©É½Ñ¹¶¥ 
-RUNE_BARBARIAN_LEAP_D := New SkillRune("Ì©É½Ñ¹¶¥", "ÎïÀí", "d", "ÔÚÂäµØºóµÄ4ÃëÄÚ»ñµÃ150%µÄ¶îÍâ»¤¼×Öµ¡£")
-; ·ûÎÄ: ³åÌìÅÚ 
-RUNE_BARBARIAN_LEAP_C := New SkillRune("³åÌìÅÚ", "ÎïÀí", "c", "»á¾ÛÍò·òÄªµ±Ö®Á¦Ô¾Ïò¿ÕÖÐ£¬Ê¹ÆðÌøµãÖÜÎ§10ÂëÄÚµÄµÐÈËÊÜµ½180%µÄÎäÆ÷ÉËº¦£¬Í¬Ê±±»¼õËÙ60%£¬³ÖÐø3Ãë¡£")
-; ·ûÎÄ: ¸ÖÌú×²»÷ 
-RUNE_BARBARIAN_LEAP_B := New SkillRune("¸ÖÌú×²»÷", "ÎïÀí", "b", "Ê¹ÌøÕ¶Ôì³ÉµÄÉËº¦Ìá¸ßÖÁ450%£¬²¢´ÓÄã×ÅµØµÄÎ»ÖÃ½«µÐÈË×²·É¡£")
-; ·ûÎÄ: ÑÇÈðÌØµÄºô»½ 
-RUNE_BARBARIAN_LEAP_A := New SkillRune("ÑÇÈðÌØµÄºô»½", "ÎïÀí", "a", "³å»÷²¨´ÓµØÏÂÉä³ö£¬Ê¹Ð§¹û·¶Î§À©´óÖÁ16Âë£¬²¢½«ÊÜÓ°ÏìµÄµÐÈËÀ­µ½ÄãÉí±ß¡£")
-; ·ûÎÄ: ËÀ´ÓÌì½µ 
-RUNE_BARBARIAN_LEAP_E := New SkillRune("ËÀ´ÓÌì½µ", "ÎïÀí", "e", "ÊÆ´óÁ¦³ÁµÄÂäµØ³å»÷£¬Ê¹µÐÈËÓÐ100%µÄ¼¸ÂÊÏÝÈë»èÃÔ£¬³ÖÐø3Ãë¡£")
-; ¼¼ÄÜ: ÌøÕ¶
-SKILL_ACTIVE_BARBARIAN_LEAP := New ActiveSkill("ÌøÕ¶", "ÎïÀí", "·ÀÓù"
+; ç¬¦æ–‡: æ³°å±±åŽ‹é¡¶ 
+RUNE_BARBARIAN_LEAP_D := New SkillRune("æ³°å±±åŽ‹é¡¶", "ç‰©ç†", "d", "åœ¨è½åœ°åŽçš„4ç§’å†…èŽ·å¾—150%çš„é¢å¤–æŠ¤ç”²å€¼ã€‚")
+; ç¬¦æ–‡: å†²å¤©ç‚® 
+RUNE_BARBARIAN_LEAP_C := New SkillRune("å†²å¤©ç‚®", "ç‰©ç†", "c", "ä¼šèšä¸‡å¤«èŽ«å½“ä¹‹åŠ›è·ƒå‘ç©ºä¸­ï¼Œä½¿èµ·è·³ç‚¹å‘¨å›´10ç å†…çš„æ•Œäººå—åˆ°180%çš„æ­¦å™¨ä¼¤å®³ï¼ŒåŒæ—¶è¢«å‡é€Ÿ60%ï¼ŒæŒç»­3ç§’ã€‚")
+; ç¬¦æ–‡: é’¢é“æ’žå‡» 
+RUNE_BARBARIAN_LEAP_B := New SkillRune("é’¢é“æ’žå‡»", "ç‰©ç†", "b", "ä½¿è·³æ–©é€ æˆçš„ä¼¤å®³æé«˜è‡³450%ï¼Œå¹¶ä»Žä½ ç€åœ°çš„ä½ç½®å°†æ•Œäººæ’žé£žã€‚")
+; ç¬¦æ–‡: äºšç‘žç‰¹çš„å‘¼å”¤ 
+RUNE_BARBARIAN_LEAP_A := New SkillRune("äºšç‘žç‰¹çš„å‘¼å”¤", "ç‰©ç†", "a", "å†²å‡»æ³¢ä»Žåœ°ä¸‹å°„å‡ºï¼Œä½¿æ•ˆæžœèŒƒå›´æ‰©å¤§è‡³16ç ï¼Œå¹¶å°†å—å½±å“çš„æ•Œäººæ‹‰åˆ°ä½ èº«è¾¹ã€‚")
+; ç¬¦æ–‡: æ­»ä»Žå¤©é™ 
+RUNE_BARBARIAN_LEAP_E := New SkillRune("æ­»ä»Žå¤©é™", "ç‰©ç†", "e", "åŠ¿å¤§åŠ›æ²‰çš„è½åœ°å†²å‡»ï¼Œä½¿æ•Œäººæœ‰100%çš„å‡ çŽ‡é™·å…¥æ˜è¿·ï¼ŒæŒç»­3ç§’ã€‚")
+; æŠ€èƒ½: è·³æ–©
+SKILL_ACTIVE_BARBARIAN_LEAP := New ActiveSkill("è·³æ–©", "ç‰©ç†", "é˜²å¾¡"
 	, "images\skills\barbarian\active\barbarian_leapattack_normal.png"
-	, "Éú³É£º15µãÅ­ÆøÀäÈ´Ê±¼ä£º10Ãë\r\nÒ°ÂùÈËÌÚ¿Õ¶øÆð£¬×ÅµØÊ±¶Ô10ÂëÄÚµÄËùÓÐµÐÈËÔì³É180%µÄÎäÆ÷ÉËº¦£¬²¢Ê¹ÆäÒÆ¶¯ËÙ¶È½µµÍ60%£¬³ÖÐø3Ãë¡£"
+	, "ç”Ÿæˆï¼š15ç‚¹æ€’æ°”å†·å´æ—¶é—´ï¼š10ç§’\r\né‡Žè›®äººè…¾ç©ºè€Œèµ·ï¼Œç€åœ°æ—¶å¯¹10ç å†…çš„æ‰€æœ‰æ•Œäººé€ æˆ180%çš„æ­¦å™¨ä¼¤å®³ï¼Œå¹¶ä½¿å…¶ç§»åŠ¨é€Ÿåº¦é™ä½Ž60%ï¼ŒæŒç»­3ç§’ã€‚"
 	, [RUNE_BARBARIAN_LEAP_D, RUNE_BARBARIAN_LEAP_C, RUNE_BARBARIAN_LEAP_B, RUNE_BARBARIAN_LEAP_A, RUNE_BARBARIAN_LEAP_E])
 ; ---------------------------
-; ¼¼ÄÜ: ÌøÕ¶ End
+; æŠ€èƒ½: è·³æ–© End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Ñ¹ÖÆ Start
+; æŠ€èƒ½: åŽ‹åˆ¶ Start
 ; ---------------------------
-; ·ûÎÄ: ¸ÖÌú·ç±© 
-RUNE_BARBARIAN_OVERPOWER_B := New SkillRune("¸ÖÌú·ç±©", "ÎïÀí", "b", "³¯¸½½üµÐÈËÖÀ³ö×î¶à3°ÑÕ½¸«£¬Ã¿°ÑÔì³É380%µÄÎäÆ÷ÉËº¦¡£")
-; ·ûÎÄ: É±Â¾¿ñ»¶ 
-RUNE_BARBARIAN_OVERPOWER_A := New SkillRune("É±Â¾¿ñ»¶", "µç»÷", "a", "ÄãµÄ±©»÷¼¸ÂÊÌá¸ß8%£¬³ÖÐø5Ãë¡£Ñ¹ÖÆµÄÉËº¦ÀàÐÍ×ª»»ÎªÉÁµçÉËº¦¡£")
-; ·ûÎÄ: ÏÈ»úÕ¼¾¡ 
-RUNE_BARBARIAN_OVERPOWER_E := New SkillRune("ÏÈ»úÕ¼¾¡", "±ùº®", "e", "¼¤»îÑ¹ÖÆºó£¬¿É·´µ¯35%µÄ½üÕ½ÉËº¦£¬³ÖÐø5Ãë¡£")
-; ·ûÎÄ: ¾¢Á¦¿ñÔö 
-RUNE_BARBARIAN_OVERPOWER_D := New SkillRune("¾¢Á¦¿ñÔö", "ÎïÀí", "d", "Ñ¹ÖÆÃ¿»÷ÖÐÒ»ÃûµÐÈË¼´»á²úÉú5µãÅ­Æø¡£")
-; ·ûÎÄ: ×ÝÇéÉ±Â¾ 
-RUNE_BARBARIAN_OVERPOWER_C := New SkillRune("×ÝÇéÉ±Â¾", "»ðÑæ", "c", "Ê¹ÉËº¦Ìá¸ßÖÁ760%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ¼¼ÄÜ: Ñ¹ÖÆ
-SKILL_ACTIVE_BARBARIAN_OVERPOWER := New ActiveSkill("Ñ¹ÖÆ", "ÎïÀí", "Á¦Á¿"
+; ç¬¦æ–‡: é’¢é“é£Žæš´ 
+RUNE_BARBARIAN_OVERPOWER_B := New SkillRune("é’¢é“é£Žæš´", "ç‰©ç†", "b", "æœé™„è¿‘æ•ŒäººæŽ·å‡ºæœ€å¤š3æŠŠæˆ˜æ–§ï¼Œæ¯æŠŠé€ æˆ380%çš„æ­¦å™¨ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æ€æˆ®ç‹‚æ¬¢ 
+RUNE_BARBARIAN_OVERPOWER_A := New SkillRune("æ€æˆ®ç‹‚æ¬¢", "ç”µå‡»", "a", "ä½ çš„æš´å‡»å‡ çŽ‡æé«˜8%ï¼ŒæŒç»­5ç§’ã€‚åŽ‹åˆ¶çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºé—ªç”µä¼¤å®³ã€‚")
+; ç¬¦æ–‡: å…ˆæœºå å°½ 
+RUNE_BARBARIAN_OVERPOWER_E := New SkillRune("å…ˆæœºå å°½", "å†°å¯’", "e", "æ¿€æ´»åŽ‹åˆ¶åŽï¼Œå¯åå¼¹35%çš„è¿‘æˆ˜ä¼¤å®³ï¼ŒæŒç»­5ç§’ã€‚")
+; ç¬¦æ–‡: åŠ²åŠ›ç‹‚å¢ž 
+RUNE_BARBARIAN_OVERPOWER_D := New SkillRune("åŠ²åŠ›ç‹‚å¢ž", "ç‰©ç†", "d", "åŽ‹åˆ¶æ¯å‡»ä¸­ä¸€åæ•Œäººå³ä¼šäº§ç”Ÿ5ç‚¹æ€’æ°”ã€‚")
+; ç¬¦æ–‡: çºµæƒ…æ€æˆ® 
+RUNE_BARBARIAN_OVERPOWER_C := New SkillRune("çºµæƒ…æ€æˆ®", "ç«ç„°", "c", "ä½¿ä¼¤å®³æé«˜è‡³760%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: åŽ‹åˆ¶
+SKILL_ACTIVE_BARBARIAN_OVERPOWER := New ActiveSkill("åŽ‹åˆ¶", "ç‰©ç†", "åŠ›é‡"
 	, "images\skills\barbarian\active\barbarian_overpower_normal.png"
-	, "ÀäÈ´Ê±¼ä£º12Ãë\r\n¶Ô9ÂëÄÚµÄËùÓÐµÐÈËÔì³É380%µÄÎäÆ÷ÉËº¦¡£"
+	, "å†·å´æ—¶é—´ï¼š12ç§’\r\nå¯¹9ç å†…çš„æ‰€æœ‰æ•Œäººé€ æˆ380%çš„æ­¦å™¨ä¼¤å®³ã€‚"
 	, [RUNE_BARBARIAN_OVERPOWER_B, RUNE_BARBARIAN_OVERPOWER_A, RUNE_BARBARIAN_OVERPOWER_E, RUNE_BARBARIAN_OVERPOWER_D, RUNE_BARBARIAN_OVERPOWER_C])
 ; ---------------------------
-; ¼¼ÄÜ: Ñ¹ÖÆ End
+; æŠ€èƒ½: åŽ‹åˆ¶ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ¿ñÂÒ Start
+; æŠ€èƒ½: ç‹‚ä¹± Start
 ; ---------------------------
-; ·ûÎÄ: ÐäÀï²Øµ¶ 
-RUNE_BARBARIAN_FRENZY_B := New SkillRune("ÐäÀï²Øµ¶", "±ùº®", "b", "Ã¿´Î¹¥»÷¶¼ÓÐ25%µÄ¼¸ÂÊÏò¸½½üµÄÒ»ÃûµÐÈËÖÀ³öÒ»°Ñ´©´ÌÀû¸«£¬¶ÔÂ·ÏßÉÏµÄËùÓÐµÐÈËÔì³É300%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£¿ñÂÒµÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ·ûÎÄ: Å­Æø³åÌì 
-RUNE_BARBARIAN_FRENZY_E := New SkillRune("Å­Æø³åÌì", "±ùº®", "e", "Ê¹Éú³ÉµÄÅ­ÆøÌá¸ßÖÁ6µã¡£¿ñÂÒµÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ·ûÎÄ: ÎÞÇéÏÈ·æ 
-RUNE_BARBARIAN_FRENZY_C := New SkillRune("ÎÞÇéÏÈ·æ", "ÎïÀí", "c", "Ã¿²ã¿ñÂÒÐ§¹û½«Ê¹ÒÆ¶¯ËÙ¶ÈÌá¸ß5%¡£")
-; ·ûÎÄ: Åùö¨ÖØ»÷ 
-RUNE_BARBARIAN_FRENZY_D := New SkillRune("Åùö¨ÖØ»÷", "µç»÷", "d", "Ã¿´Î»÷ÖÐ¶¼ÓÐ30%µÄ¼¸ÂÊÕÙ»½ÉÁµç¼ý´ÓÌì¶ø½µ£¬Ê¹µÐÈË»èÃÔ1.5Ãë¡£")
-; ·ûÎÄ: ¿ñÐÔÄÑ¶ô 
-RUNE_BARBARIAN_FRENZY_A := New SkillRune("¿ñÐÔÄÑ¶ô", "»ðÑæ", "a", "Ã¿²ã¿ñÂÒÐ§¹û»¹»áÊ¹ÄãÔì³ÉµÄÉËº¦Ìá¸ß2.5%¡£¿ñÂÒµÄÉËº¦ÀàÐÍ×ª»»Îª»ðÑæÉËº¦¡£")
-; ¼¼ÄÜ: ¿ñÂÒ
-SKILL_ACTIVE_BARBARIAN_FRENZY := New ActiveSkill("¿ñÂÒ", "ÎïÀí", "Ö÷Òª"
+; ç¬¦æ–‡: è¢–é‡Œè—åˆ€ 
+RUNE_BARBARIAN_FRENZY_B := New SkillRune("è¢–é‡Œè—åˆ€", "å†°å¯’", "b", "æ¯æ¬¡æ”»å‡»éƒ½æœ‰25%çš„å‡ çŽ‡å‘é™„è¿‘çš„ä¸€åæ•ŒäººæŽ·å‡ºä¸€æŠŠç©¿åˆºåˆ©æ–§ï¼Œå¯¹è·¯çº¿ä¸Šçš„æ‰€æœ‰æ•Œäººé€ æˆ300%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚ç‹‚ä¹±çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æ€’æ°”å†²å¤© 
+RUNE_BARBARIAN_FRENZY_E := New SkillRune("æ€’æ°”å†²å¤©", "å†°å¯’", "e", "ä½¿ç”Ÿæˆçš„æ€’æ°”æé«˜è‡³6ç‚¹ã€‚ç‹‚ä¹±çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æ— æƒ…å…ˆé”‹ 
+RUNE_BARBARIAN_FRENZY_C := New SkillRune("æ— æƒ…å…ˆé”‹", "ç‰©ç†", "c", "æ¯å±‚ç‹‚ä¹±æ•ˆæžœå°†ä½¿ç§»åŠ¨é€Ÿåº¦æé«˜5%ã€‚")
+; ç¬¦æ–‡: éœ¹é›³é‡å‡» 
+RUNE_BARBARIAN_FRENZY_D := New SkillRune("éœ¹é›³é‡å‡»", "ç”µå‡»", "d", "æ¯æ¬¡å‡»ä¸­éƒ½æœ‰30%çš„å‡ çŽ‡å¬å”¤é—ªç”µç®­ä»Žå¤©è€Œé™ï¼Œä½¿æ•Œäººæ˜è¿·1.5ç§’ã€‚")
+; ç¬¦æ–‡: ç‹‚æ€§éš¾é 
+RUNE_BARBARIAN_FRENZY_A := New SkillRune("ç‹‚æ€§éš¾é", "ç«ç„°", "a", "æ¯å±‚ç‹‚ä¹±æ•ˆæžœè¿˜ä¼šä½¿ä½ é€ æˆçš„ä¼¤å®³æé«˜2.5%ã€‚ç‹‚ä¹±çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºç«ç„°ä¼¤å®³ã€‚")
+; æŠ€èƒ½: ç‹‚ä¹±
+SKILL_ACTIVE_BARBARIAN_FRENZY := New ActiveSkill("ç‹‚ä¹±", "ç‰©ç†", "ä¸»è¦"
 	, "images\skills\barbarian\active\barbarian_frenzy_normal.png"
-	, "Éú³É£º4µãÅ­Æø\r\n·ÜÁ¦»Ó»÷Ôì³É220%µÄÎäÆ÷ÉËº¦¡£Ã¿´Î»Ó»÷¿ÉÊ¹¿ñÂÒµÄ¹¥»÷ËÙ¶ÈÌá¸ß15%£¬³ÖÐø4Ãë¡£´ËÐ§¹û×î¶à¿Éµþ¼Ó5´Î¡£"
+	, "ç”Ÿæˆï¼š4ç‚¹æ€’æ°”\r\nå¥‹åŠ›æŒ¥å‡»é€ æˆ220%çš„æ­¦å™¨ä¼¤å®³ã€‚æ¯æ¬¡æŒ¥å‡»å¯ä½¿ç‹‚ä¹±çš„æ”»å‡»é€Ÿåº¦æé«˜15%ï¼ŒæŒç»­4ç§’ã€‚æ­¤æ•ˆæžœæœ€å¤šå¯å åŠ 5æ¬¡ã€‚"
 	, [RUNE_BARBARIAN_FRENZY_B, RUNE_BARBARIAN_FRENZY_E, RUNE_BARBARIAN_FRENZY_C, RUNE_BARBARIAN_FRENZY_D, RUNE_BARBARIAN_FRENZY_A])
 ; ---------------------------
-; ¼¼ÄÜ: ¿ñÂÒ End
+; æŠ€èƒ½: ç‹‚ä¹± End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÁÑµØÕ¶ Start
+; æŠ€èƒ½: è£‚åœ°æ–© Start
 ; ---------------------------
-; ·ûÎÄ: ÌìÐýµØ×ª 
-RUNE_BARBARIAN_SEISMIC_SLAM_C := New SkillRune("ÌìÐýµØ×ª", "µç»÷", "c", "ÏûºÄµÄÅ­Æø½µµÍÖÁ22µã¡£ÁÑµØÕ¶µÄÉËº¦ÀàÐÍ×ª»»ÎªÉÁµçÉËº¦¡£")
-; ·ûÎÄ: ·ÛËé´óµØ 
-RUNE_BARBARIAN_SEISMIC_SLAM_A := New SkillRune("·ÛËé´óµØ", "»ðÑæ", "a", "Ê¹ÉËº¦Ìá¸ßÖÁ735%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©£¬²¢½«ËùÓÐµÐÈË»÷·É¡£")
-; ·ûÎÄ: ´óµØºäÃù 
-RUNE_BARBARIAN_SEISMIC_SLAM_B := New SkillRune("´óµØºäÃù", "ÎïÀí", "b", "´ò³öµÚÒ»»÷ºó£¬ÇãÐºÊ£âÅµÄËùÓÐÅ­»ðÊ¹µØÃæÕð²ü£¬ÇãÐºµÄÃ¿µãÅ­Æø¿É¶ÔÇøÓòÄÚµÄµÐÈËÔì³É15%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©£¬³ÖÐø2Ãë¡£")
-; ·ûÎÄ: ´óµØÖ®Á¦ 
-RUNE_BARBARIAN_SEISMIC_SLAM_D := New SkillRune("´óµØÖ®Á¦", "ÎïÀí", "d", "Ã¿»÷ÖÐÒ»ÃûµÐÈË¼´¿É»Ö¸´ÉúÃüÖµÉÏÏÞµÄ1%¡£")
-; ·ûÎÄ: º®ËªÕð²¨ 
-RUNE_BARBARIAN_SEISMIC_SLAM_E := New SkillRune("º®ËªÕð²¨", "±ùº®", "e", "·¢³öÒ»µÀ±ùËª³å»÷²¨£¬Ôì³É755%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©£¬²¢ÇÒÔì³Éº®ÀäÐ§¹û£¬Ê¹µÐÈËÒÆ¶¯ËÙ¶È½µµÍ60%£¬³ÖÐø1Ãë¡£")
-; ¼¼ÄÜ: ÁÑµØÕ¶
-SKILL_ACTIVE_BARBARIAN_SEISMIC_SLAM := New ActiveSkill("ÁÑµØÕ¶", "ÎïÀí", "´ÎÒª"
+; ç¬¦æ–‡: å¤©æ—‹åœ°è½¬ 
+RUNE_BARBARIAN_SEISMIC_SLAM_C := New SkillRune("å¤©æ—‹åœ°è½¬", "ç”µå‡»", "c", "æ¶ˆè€—çš„æ€’æ°”é™ä½Žè‡³22ç‚¹ã€‚è£‚åœ°æ–©çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºé—ªç”µä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ç²‰ç¢Žå¤§åœ° 
+RUNE_BARBARIAN_SEISMIC_SLAM_A := New SkillRune("ç²‰ç¢Žå¤§åœ°", "ç«ç„°", "a", "ä½¿ä¼¤å®³æé«˜è‡³735%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ï¼Œå¹¶å°†æ‰€æœ‰æ•Œäººå‡»é£žã€‚")
+; ç¬¦æ–‡: å¤§åœ°è½°é¸£ 
+RUNE_BARBARIAN_SEISMIC_SLAM_B := New SkillRune("å¤§åœ°è½°é¸£", "ç‰©ç†", "b", "æ‰“å‡ºç¬¬ä¸€å‡»åŽï¼Œå€¾æ³»å‰©é¦€çš„æ‰€æœ‰æ€’ç«ä½¿åœ°é¢éœ‡é¢¤ï¼Œå€¾æ³»çš„æ¯ç‚¹æ€’æ°”å¯å¯¹åŒºåŸŸå†…çš„æ•Œäººé€ æˆ15%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ï¼ŒæŒç»­2ç§’ã€‚")
+; ç¬¦æ–‡: å¤§åœ°ä¹‹åŠ› 
+RUNE_BARBARIAN_SEISMIC_SLAM_D := New SkillRune("å¤§åœ°ä¹‹åŠ›", "ç‰©ç†", "d", "æ¯å‡»ä¸­ä¸€åæ•Œäººå³å¯æ¢å¤ç”Ÿå‘½å€¼ä¸Šé™çš„1%ã€‚")
+; ç¬¦æ–‡: å¯’éœœéœ‡æ³¢ 
+RUNE_BARBARIAN_SEISMIC_SLAM_E := New SkillRune("å¯’éœœéœ‡æ³¢", "å†°å¯’", "e", "å‘å‡ºä¸€é“å†°éœœå†²å‡»æ³¢ï¼Œé€ æˆ755%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ï¼Œå¹¶ä¸”é€ æˆå¯’å†·æ•ˆæžœï¼Œä½¿æ•Œäººç§»åŠ¨é€Ÿåº¦é™ä½Ž60%ï¼ŒæŒç»­1ç§’ã€‚")
+; æŠ€èƒ½: è£‚åœ°æ–©
+SKILL_ACTIVE_BARBARIAN_SEISMIC_SLAM := New ActiveSkill("è£‚åœ°æ–©", "ç‰©ç†", "æ¬¡è¦"
 	, "images\skills\barbarian\active\barbarian_seismicslam_normal.png"
-	, "ÏûºÄ£º30µãÅ­Æø\r\nÕð»÷µØÃæ£¬Ôì³É¼«¾ß»ÙÃðÐÔµÄ³å»÷²¨£¬¶ÔÎ»ÓÚÇ°·½×î¶à50ÂëÄÚµÄµÐÈËÔì³É620%µÄÎäÆ÷ÉËº¦¡£"
+	, "æ¶ˆè€—ï¼š30ç‚¹æ€’æ°”\r\néœ‡å‡»åœ°é¢ï¼Œé€ æˆæžå…·æ¯ç­æ€§çš„å†²å‡»æ³¢ï¼Œå¯¹ä½äºŽå‰æ–¹æœ€å¤š50ç å†…çš„æ•Œäººé€ æˆ620%çš„æ­¦å™¨ä¼¤å®³ã€‚"
 	, [RUNE_BARBARIAN_SEISMIC_SLAM_C, RUNE_BARBARIAN_SEISMIC_SLAM_A, RUNE_BARBARIAN_SEISMIC_SLAM_B, RUNE_BARBARIAN_SEISMIC_SLAM_D, RUNE_BARBARIAN_SEISMIC_SLAM_E])
 ; ---------------------------
-; ¼¼ÄÜ: ÁÑµØÕ¶ End
+; æŠ€èƒ½: è£‚åœ°æ–© End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ¸´³ð Start
+; æŠ€èƒ½: å¤ä»‡ Start
 ; ---------------------------
-; ·ûÎÄ: ÑªÂÉ 
-RUNE_BARBARIAN_REVENGE_D := New SkillRune("ÑªÂÉ", "ÎïÀí", "d", "Ã¿»÷ÖÐÒ»ÃûµÐÈË¼´¿É»Ö¸´ÉúÃüÖµÉÏÏÞµÄ6%¡£")
-; ·ûÎÄ: Í´Ô× 
-RUNE_BARBARIAN_REVENGE_E := New SkillRune("Í´Ô×", "±ùº®", "e", "Ê¹ÓÃ¸´³ðºó£¬ÄãµÄ±©»÷¼¸ÂÊÌá¸ß8%£¬³ÖÐø6Ãë¡£¸´³ðµÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ·ûÎÄ: ³Í½ä 
-RUNE_BARBARIAN_REVENGE_A := New SkillRune("³Í½ä", "»ðÑæ", "a", "Ê¹ÉËº¦Ìá¸ßÖÁ700%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: Ô÷ºÞ 
-RUNE_BARBARIAN_REVENGE_C := New SkillRune("Ô÷ºÞ", "µç»÷", "c", "Ê¹ÓÃ¸´³ðÊ±¿É½«µÐÈË»÷ÍË24Âë¡£¸´³ðµÄÉËº¦ÀàÐÍ×ª»»ÎªÉÁµçÉËº¦¡£")
-; ·ûÎÄ: ÌôÐÆ 
-RUNE_BARBARIAN_REVENGE_B := New SkillRune("ÌôÐÆ", "ÎïÀí", "b", "Ê¹¸´³ðµÄµþ¼Ó´ÎÊýÉÏÏÞÌá¸ßÖÁ3´Î¡£")
-; ¼¼ÄÜ: ¸´³ð
-SKILL_ACTIVE_BARBARIAN_REVENGE := New ActiveSkill("¸´³ð", "ÎïÀí", "Á¦Á¿"
+; ç¬¦æ–‡: è¡€å¾‹ 
+RUNE_BARBARIAN_REVENGE_D := New SkillRune("è¡€å¾‹", "ç‰©ç†", "d", "æ¯å‡»ä¸­ä¸€åæ•Œäººå³å¯æ¢å¤ç”Ÿå‘½å€¼ä¸Šé™çš„6%ã€‚")
+; ç¬¦æ–‡: ç—›å®° 
+RUNE_BARBARIAN_REVENGE_E := New SkillRune("ç—›å®°", "å†°å¯’", "e", "ä½¿ç”¨å¤ä»‡åŽï¼Œä½ çš„æš´å‡»å‡ çŽ‡æé«˜8%ï¼ŒæŒç»­6ç§’ã€‚å¤ä»‡çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æƒ©æˆ’ 
+RUNE_BARBARIAN_REVENGE_A := New SkillRune("æƒ©æˆ’", "ç«ç„°", "a", "ä½¿ä¼¤å®³æé«˜è‡³700%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: æ†Žæ¨ 
+RUNE_BARBARIAN_REVENGE_C := New SkillRune("æ†Žæ¨", "ç”µå‡»", "c", "ä½¿ç”¨å¤ä»‡æ—¶å¯å°†æ•Œäººå‡»é€€24ç ã€‚å¤ä»‡çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºé—ªç”µä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æŒ‘è¡… 
+RUNE_BARBARIAN_REVENGE_B := New SkillRune("æŒ‘è¡…", "ç‰©ç†", "b", "ä½¿å¤ä»‡çš„å åŠ æ¬¡æ•°ä¸Šé™æé«˜è‡³3æ¬¡ã€‚")
+; æŠ€èƒ½: å¤ä»‡
+SKILL_ACTIVE_BARBARIAN_REVENGE := New ActiveSkill("å¤ä»‡", "ç‰©ç†", "åŠ›é‡"
 	, "images\skills\barbarian\active\barbarian_revenge_normal.png"
-	, "ÏûºÄ£º1´Î¸´³ð\r\n¶Ô¸½½üËùÓÐµÐÈËÔì³É300%µÄÎäÆ÷ÉËº¦¡£Ã¿»÷ÖÐÒ»ÃûµÐÈË¿ÉÊ¹Äã»Ö¸´ÉúÃüÖµÉÏÏÞµÄ4%¡£"
+	, "æ¶ˆè€—ï¼š1æ¬¡å¤ä»‡\r\nå¯¹é™„è¿‘æ‰€æœ‰æ•Œäººé€ æˆ300%çš„æ­¦å™¨ä¼¤å®³ã€‚æ¯å‡»ä¸­ä¸€åæ•Œäººå¯ä½¿ä½ æ¢å¤ç”Ÿå‘½å€¼ä¸Šé™çš„4%ã€‚"
 	, [RUNE_BARBARIAN_REVENGE_D, RUNE_BARBARIAN_REVENGE_E, RUNE_BARBARIAN_REVENGE_A, RUNE_BARBARIAN_REVENGE_C, RUNE_BARBARIAN_REVENGE_B])
 ; ---------------------------
-; ¼¼ÄÜ: ¸´³ð End
+; æŠ€èƒ½: å¤ä»‡ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÍþÏÅÄÅº° Start
+; æŠ€èƒ½: å¨å“å‘å–Š Start
 ; ---------------------------
-; ·ûÎÄ: ÆÆµ¨Å­ºð 
-RUNE_BARBARIAN_THREATENING_SHOUT_B := New SkillRune("ÆÆµ¨Å­ºð", "ÎïÀí", "b", "ÊÜÓ°ÏìµÐÈËµÄÒÆ¶¯ËÙ¶ÈÒ²½µµÍ60%¡£")
-; ·ûÎÄ: ¾ª»êâÅÒô 
-RUNE_BARBARIAN_THREATENING_SHOUT_D := New SkillRune("¾ª»êâÅÒô", "ÎïÀí", "d", "µÐÈËÏà·´ÊÜµ½µÄÉËº¦Ìá¸ß25%£¬³ÖÐø6Ãë¡£")
-; ·ûÎÄ: ¿Ö²ÀÊÕ¸î 
-RUNE_BARBARIAN_THREATENING_SHOUT_C := New SkillRune("¿Ö²ÀÊÕ¸î", "ÎïÀí", "c", "°ÑµÐÈËÏÅµÃµ¨Õ½ÐÄ¾ª£¬ÓÐÒ»¶¨¼¸ÂÊµôÂäÉúÃüÇò¡£")
-; ·ûÎÄ: ´ìÖ¾ÅØÏø 
-RUNE_BARBARIAN_THREATENING_SHOUT_A := New SkillRune("´ìÖ¾ÅØÏø", "ÎïÀí", "a", "ÊÜÓ°ÏìµÄµÐÈËÍ¬Ê±»á±»³°·í£¬ÔÚ4ÃëÄÚ¹¥»÷Äã¡£")
-; ·ûÎÄ: ÍþÏÅÅ­ºð 
-RUNE_BARBARIAN_THREATENING_SHOUT_E := New SkillRune("ÍþÏÅÅ­ºð", "ÎïÀí", "e", "µÐÈË±»ÑÏÖØ´ìÖ¾¡£Ã¿Ò»ÃûµÐÈËÓÐ100%µÄ¼¸ÂÊÌÓÅÜ£¬³ÖÐø3Ãë¡£")
-; ¼¼ÄÜ: ÍþÏÅÄÅº°
-SKILL_ACTIVE_BARBARIAN_THREATENING_SHOUT := New ActiveSkill("ÍþÏÅÄÅº°", "ÎïÀí", "Õ½Êõ"
+; ç¬¦æ–‡: ç ´èƒ†æ€’å¼ 
+RUNE_BARBARIAN_THREATENING_SHOUT_B := New SkillRune("ç ´èƒ†æ€’å¼", "ç‰©ç†", "b", "å—å½±å“æ•Œäººçš„ç§»åŠ¨é€Ÿåº¦ä¹Ÿé™ä½Ž60%ã€‚")
+; ç¬¦æ–‡: æƒŠé­‚é¦€éŸ³ 
+RUNE_BARBARIAN_THREATENING_SHOUT_D := New SkillRune("æƒŠé­‚é¦€éŸ³", "ç‰©ç†", "d", "æ•Œäººç›¸åå—åˆ°çš„ä¼¤å®³æé«˜25%ï¼ŒæŒç»­6ç§’ã€‚")
+; ç¬¦æ–‡: ææ€–æ”¶å‰² 
+RUNE_BARBARIAN_THREATENING_SHOUT_C := New SkillRune("ææ€–æ”¶å‰²", "ç‰©ç†", "c", "æŠŠæ•Œäººå“å¾—èƒ†æˆ˜å¿ƒæƒŠï¼Œæœ‰ä¸€å®šå‡ çŽ‡æŽ‰è½ç”Ÿå‘½çƒã€‚")
+; ç¬¦æ–‡: æŒ«å¿—å’†å“® 
+RUNE_BARBARIAN_THREATENING_SHOUT_A := New SkillRune("æŒ«å¿—å’†å“®", "ç‰©ç†", "a", "å—å½±å“çš„æ•ŒäººåŒæ—¶ä¼šè¢«å˜²è®½ï¼Œåœ¨4ç§’å†…æ”»å‡»ä½ ã€‚")
+; ç¬¦æ–‡: å¨å“æ€’å¼ 
+RUNE_BARBARIAN_THREATENING_SHOUT_E := New SkillRune("å¨å“æ€’å¼", "ç‰©ç†", "e", "æ•Œäººè¢«ä¸¥é‡æŒ«å¿—ã€‚æ¯ä¸€åæ•Œäººæœ‰100%çš„å‡ çŽ‡é€ƒè·‘ï¼ŒæŒç»­3ç§’ã€‚")
+; æŠ€èƒ½: å¨å“å‘å–Š
+SKILL_ACTIVE_BARBARIAN_THREATENING_SHOUT := New ActiveSkill("å¨å“å‘å–Š", "ç‰©ç†", "æˆ˜æœ¯"
 	, "images\skills\barbarian\active\barbarian_threateningshout_normal.png"
-	, "Éú³É£º15µãÅ­ÆøÀäÈ´Ê±¼ä£º10Ãë\r\n¼«¾¡Ð×²ÐµØ´ó½Ð£¬Ê¹Î»ÓÚ25ÂëÄÚËùÓÐµÐÈËÔì³ÉµÄÉËº¦½µµÍ20%£¬³ÖÐø15Ãë¡£"
+	, "ç”Ÿæˆï¼š15ç‚¹æ€’æ°”å†·å´æ—¶é—´ï¼š10ç§’\r\næžå°½å‡¶æ®‹åœ°å¤§å«ï¼Œä½¿ä½äºŽ25ç å†…æ‰€æœ‰æ•Œäººé€ æˆçš„ä¼¤å®³é™ä½Ž20%ï¼ŒæŒç»­15ç§’ã€‚"
 	, [RUNE_BARBARIAN_THREATENING_SHOUT_B, RUNE_BARBARIAN_THREATENING_SHOUT_D, RUNE_BARBARIAN_THREATENING_SHOUT_C, RUNE_BARBARIAN_THREATENING_SHOUT_A, RUNE_BARBARIAN_THREATENING_SHOUT_E])
 ; ---------------------------
-; ¼¼ÄÜ: ÍþÏÅÄÅº° End
+; æŠ€èƒ½: å¨å“å‘å–Š End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ¼²±¼ Start
+; æŠ€èƒ½: ç–¾å¥” Start
 ; ---------------------------
-; ·ûÎÄ: ÌÚÅ²·É²½ 
-RUNE_BARBARIAN_SPRINT_B := New SkillRune("ÌÚÅ²·É²½", "ÎïÀí", "b", "ÔÚ¼²±¼Ê±µÄ¶ãÉÁ¼¸ÂÊÌá¸ß12%¡£")
-; ·ûÎÄ: ÐÐÈç¼²·ç 
-RUNE_BARBARIAN_SPRINT_C := New SkillRune("ÐÐÈç¼²·ç", "ÎïÀí", "c", "ÔÚÄãµÄÐÐ½øÂ·ÏßÉÏ¹ÎÆðÐý·ç£¬Ã¿¹ÉÔì³É60%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©£¬³ÖÐø3Ãë¡£")
-; ·ûÎÄ: ±¼ÅÜ½¡½« 
-RUNE_BARBARIAN_SPRINT_A := New SkillRune("±¼ÅÜ½¡½«", "ÎïÀí", "a", "Ê¹ÒÆ¶¯ËÙ¶È¼Ó³ÉÌá¸ßÖÁ40%£¬³ÖÐø4Ãë¡£")
-; ·ûÎÄ: ºá³åÖ±×² 
-RUNE_BARBARIAN_SPRINT_E := New SkillRune("ºá³åÖ±×²", "ÎïÀí", "e", "´ÓµÐÈËÖÐÔÒ¿ªÒ»ÌõÑªÂ·£¬½«Æä»÷ÍË²¢Ôì³É25%µÄÎäÆ÷ÉËº¦¡£")
-; ·ûÎÄ: ¼±ÐÐ¾ü 
-RUNE_BARBARIAN_SPRINT_D := New SkillRune("¼±ÐÐ¾ü", "ÎïÀí", "d", "Ê¹50ÂëÄÚµÄÍ¬°éµÄÒÆ¶¯ËÙ¶ÈÌá¸ß20%£¬³ÖÐø3Ãë¡£")
-; ¼¼ÄÜ: ¼²±¼
-SKILL_ACTIVE_BARBARIAN_SPRINT := New ActiveSkill("¼²±¼", "ÎïÀí", "·ÀÓù"
+; ç¬¦æ–‡: è…¾æŒªé£žæ­¥ 
+RUNE_BARBARIAN_SPRINT_B := New SkillRune("è…¾æŒªé£žæ­¥", "ç‰©ç†", "b", "åœ¨ç–¾å¥”æ—¶çš„èº²é—ªå‡ çŽ‡æé«˜12%ã€‚")
+; ç¬¦æ–‡: è¡Œå¦‚ç–¾é£Ž 
+RUNE_BARBARIAN_SPRINT_C := New SkillRune("è¡Œå¦‚ç–¾é£Ž", "ç‰©ç†", "c", "åœ¨ä½ çš„è¡Œè¿›è·¯çº¿ä¸Šåˆ®èµ·æ—‹é£Žï¼Œæ¯è‚¡é€ æˆ60%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ï¼ŒæŒç»­3ç§’ã€‚")
+; ç¬¦æ–‡: å¥”è·‘å¥å°† 
+RUNE_BARBARIAN_SPRINT_A := New SkillRune("å¥”è·‘å¥å°†", "ç‰©ç†", "a", "ä½¿ç§»åŠ¨é€Ÿåº¦åŠ æˆæé«˜è‡³40%ï¼ŒæŒç»­4ç§’ã€‚")
+; ç¬¦æ–‡: æ¨ªå†²ç›´æ’ž 
+RUNE_BARBARIAN_SPRINT_E := New SkillRune("æ¨ªå†²ç›´æ’ž", "ç‰©ç†", "e", "ä»Žæ•Œäººä¸­ç ¸å¼€ä¸€æ¡è¡€è·¯ï¼Œå°†å…¶å‡»é€€å¹¶é€ æˆ25%çš„æ­¦å™¨ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æ€¥è¡Œå†› 
+RUNE_BARBARIAN_SPRINT_D := New SkillRune("æ€¥è¡Œå†›", "ç‰©ç†", "d", "ä½¿50ç å†…çš„åŒä¼´çš„ç§»åŠ¨é€Ÿåº¦æé«˜20%ï¼ŒæŒç»­3ç§’ã€‚")
+; æŠ€èƒ½: ç–¾å¥”
+SKILL_ACTIVE_BARBARIAN_SPRINT := New ActiveSkill("ç–¾å¥”", "ç‰©ç†", "é˜²å¾¡"
 	, "images\skills\barbarian\active\barbarian_sprint_normal.png"
-	, "ÏûºÄ£º20µãÅ­Æø\r\nÊ¹ÒÆ¶¯ËÙ¶ÈÌá¸ß30%£¬³ÖÐø3Ãë¡£"
+	, "æ¶ˆè€—ï¼š20ç‚¹æ€’æ°”\r\nä½¿ç§»åŠ¨é€Ÿåº¦æé«˜30%ï¼ŒæŒç»­3ç§’ã€‚"
 	, [RUNE_BARBARIAN_SPRINT_B, RUNE_BARBARIAN_SPRINT_C, RUNE_BARBARIAN_SPRINT_A, RUNE_BARBARIAN_SPRINT_E, RUNE_BARBARIAN_SPRINT_D])
 ; ---------------------------
-; ¼¼ÄÜ: ¼²±¼ End
+; æŠ€èƒ½: ç–¾å¥” End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÎäÆ÷·ÉÖÀ Start
+; æŠ€èƒ½: æ­¦å™¨é£žæŽ· Start
 ; ---------------------------
-; ·ûÎÄ: ÂùÁ¦Í¶ÖÀ 
-RUNE_BARBARIAN_WEAPON_THROW_A := New SkillRune("ÂùÁ¦Í¶ÖÀ", "µç»÷", "a", "Ê¹Í¶ÖÀÎäÆ÷Ôì³ÉµÄÉËº¦Ìá¸ßÖÁ400%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£")
-; ·ûÎÄ: ·Éµ¶µ¯Éä 
-RUNE_BARBARIAN_WEAPON_THROW_B := New SkillRune("·Éµ¶µ¯Éä", "»ðÑæ", "b", "ÎäÆ÷»áÔÚÏà»¥¾àÀë20ÂëÄÚµÄ3¸öµÐÈË¼äµ¯Ìø¡£ÎäÆ÷·ÉÖÀµÄÉËº¦ÀàÐÍ×ª»»Îª»ðÑæÉËº¦¡£")
-; ·ûÎÄ: ·É´¸ 
-RUNE_BARBARIAN_WEAPON_THROW_C := New SkillRune("·É´¸", "ÎïÀí", "c", "³¯µÐÈËÖÀ³öÒ»°ÑÕ½´¸£¬ÓÐ40%µÄ¼¸ÂÊÊ¹µÐÈË»èÃÔ1Ãë¡£")
-; ·ûÎÄ: ÕðÉå 
-RUNE_BARBARIAN_WEAPON_THROW_E := New SkillRune("ÕðÉå", "ÎïÀí", "e", "Ãé×¼µÐÈËµÄÍ·²¿¹¥»÷£¬ÓÐ15%µÄ¼¸ÂÊÊ¹µÐÈËÏÝÈë»ìÂÒ¶ø×ÔÏà²ÐÉ±£¬³ÖÐø3Ãë¡£")
-; ·ûÎÄ: Å­ÖÀ·É¸« 
-RUNE_BARBARIAN_WEAPON_THROW_D := New SkillRune("Å­ÖÀ·É¸«", "»ðÑæ", "d", "Ê¹Éú³ÉµÄÅ­ÆøÌá¸ßÖÁ9µã¡£ÎäÆ÷·ÉÖÀµÄÉËº¦ÀàÐÍ×ª»»Îª»ðÑæÉËº¦¡£")
-; ¼¼ÄÜ: ÎäÆ÷·ÉÖÀ
-SKILL_ACTIVE_BARBARIAN_WEAPON_THROW := New ActiveSkill("ÎäÆ÷·ÉÖÀ", "ÎïÀí", "Ö÷Òª"
+; ç¬¦æ–‡: è›®åŠ›æŠ•æŽ· 
+RUNE_BARBARIAN_WEAPON_THROW_A := New SkillRune("è›®åŠ›æŠ•æŽ·", "ç”µå‡»", "a", "ä½¿æŠ•æŽ·æ­¦å™¨é€ æˆçš„ä¼¤å®³æé«˜è‡³400%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: é£žåˆ€å¼¹å°„ 
+RUNE_BARBARIAN_WEAPON_THROW_B := New SkillRune("é£žåˆ€å¼¹å°„", "ç«ç„°", "b", "æ­¦å™¨ä¼šåœ¨ç›¸äº’è·ç¦»20ç å†…çš„3ä¸ªæ•Œäººé—´å¼¹è·³ã€‚æ­¦å™¨é£žæŽ·çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºç«ç„°ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: é£žé”¤ 
+RUNE_BARBARIAN_WEAPON_THROW_C := New SkillRune("é£žé”¤", "ç‰©ç†", "c", "æœæ•ŒäººæŽ·å‡ºä¸€æŠŠæˆ˜é”¤ï¼Œæœ‰40%çš„å‡ çŽ‡ä½¿æ•Œäººæ˜è¿·1ç§’ã€‚")
+; ç¬¦æ–‡: éœ‡æ…‘ 
+RUNE_BARBARIAN_WEAPON_THROW_E := New SkillRune("éœ‡æ…‘", "ç‰©ç†", "e", "çž„å‡†æ•Œäººçš„å¤´éƒ¨æ”»å‡»ï¼Œæœ‰15%çš„å‡ çŽ‡ä½¿æ•Œäººé™·å…¥æ··ä¹±è€Œè‡ªç›¸æ®‹æ€ï¼ŒæŒç»­3ç§’ã€‚")
+; ç¬¦æ–‡: æ€’æŽ·é£žæ–§ 
+RUNE_BARBARIAN_WEAPON_THROW_D := New SkillRune("æ€’æŽ·é£žæ–§", "ç«ç„°", "d", "ä½¿ç”Ÿæˆçš„æ€’æ°”æé«˜è‡³9ç‚¹ã€‚æ­¦å™¨é£žæŽ·çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºç«ç„°ä¼¤å®³ã€‚")
+; æŠ€èƒ½: æ­¦å™¨é£žæŽ·
+SKILL_ACTIVE_BARBARIAN_WEAPON_THROW := New ActiveSkill("æ­¦å™¨é£žæŽ·", "ç‰©ç†", "ä¸»è¦"
 	, "images\skills\barbarian\active\barbarian_weaponthrow_normal.png"
-	, "Éú³É£º6µãÅ­Æø\r\nÏòÒ»ÃûµÐÈËÖÀ³öÎäÆ÷£¬Ôì³É275%µÄÎäÆ÷ÉËº¦¡£"
+	, "ç”Ÿæˆï¼š6ç‚¹æ€’æ°”\r\nå‘ä¸€åæ•ŒäººæŽ·å‡ºæ­¦å™¨ï¼Œé€ æˆ275%çš„æ­¦å™¨ä¼¤å®³ã€‚"
 	, [RUNE_BARBARIAN_WEAPON_THROW_A, RUNE_BARBARIAN_WEAPON_THROW_B, RUNE_BARBARIAN_WEAPON_THROW_C, RUNE_BARBARIAN_WEAPON_THROW_E, RUNE_BARBARIAN_WEAPON_THROW_D])
 ; ---------------------------
-; ¼¼ÄÜ: ÎäÆ÷·ÉÖÀ End
+; æŠ€èƒ½: æ­¦å™¨é£žæŽ· End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: µØÕð Start
+; æŠ€èƒ½: åœ°éœ‡ Start
 ; ---------------------------
-; ·ûÎÄ: ÇæÌìÉñ²½ 
-RUNE_BARBARIAN_EARTHQUAKE_B := New SkillRune("ÇæÌìÉñ²½", "»ðÑæ", "b", "20²¨âÅÕðÔÚÄãÉíºóÎ²Ëæ¶øÖÁ£¬Ã¿²¨âÅÕðÔì³É300%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ¶³ÍÁ 
-RUNE_BARBARIAN_EARTHQUAKE_C := New SkillRune("¶³ÍÁ", "±ùº®", "c", "ÐÎ³ÉÒ»¿é±ùÃæ£¬Ê¹µØÕð±ù¶³µÐÈË£¬²¢¶ÔÆäÔì³É±ùËªÉËº¦¡£")
-; ·ûÎÄ: Ê¥É½Ö®ÕÙ 
-RUNE_BARBARIAN_EARTHQUAKE_D := New SkillRune("Ê¥É½Ö®ÕÙ", "µç»÷", "d", "ÒÆ³ýÅ­ÆøÏûºÄ£¬²¢Ê¹ÀäÈ´Ê±¼äËõ¶ÌÖÁ30Ãë¡£µØÕðµÄÉËº¦ÀàÐÍ×ª»»ÎªÉÁµçÉËº¦¡£")
-; ·ûÎÄ: ÈÛ»ðÖ®Å­ 
-RUNE_BARBARIAN_EARTHQUAKE_A := New SkillRune("ÈÛ»ðÖ®Å­", "»ðÑæ", "a", "Ê¹µØÕðµÄÉËº¦Ìá¸ßÖÁ6000%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ÌìËúµØÏÝ 
-RUNE_BARBARIAN_EARTHQUAKE_E := New SkillRune("ÌìËúµØÏÝ", "ÎïÀí", "e", "°Ñ24ÂëÄÚµÄËùÓÐµÐÈËÀ­ÏòÄã¡£µØÕðµÄÉËº¦ÀàÐÍ×ª»»ÎªÎïÀíÉËº¦¡£")
-; ¼¼ÄÜ: µØÕð
-SKILL_ACTIVE_BARBARIAN_EARTHQUAKE := New ActiveSkill("µØÕð", "»ðÑæ", "Å­»ð"
+; ç¬¦æ–‡: æ“Žå¤©ç¥žæ­¥ 
+RUNE_BARBARIAN_EARTHQUAKE_B := New SkillRune("æ“Žå¤©ç¥žæ­¥", "ç«ç„°", "b", "20æ³¢é¦€éœ‡åœ¨ä½ èº«åŽå°¾éšè€Œè‡³ï¼Œæ¯æ³¢é¦€éœ‡é€ æˆ300%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å†»åœŸ 
+RUNE_BARBARIAN_EARTHQUAKE_C := New SkillRune("å†»åœŸ", "å†°å¯’", "c", "å½¢æˆä¸€å—å†°é¢ï¼Œä½¿åœ°éœ‡å†°å†»æ•Œäººï¼Œå¹¶å¯¹å…¶é€ æˆå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: åœ£å±±ä¹‹å¬ 
+RUNE_BARBARIAN_EARTHQUAKE_D := New SkillRune("åœ£å±±ä¹‹å¬", "ç”µå‡»", "d", "ç§»é™¤æ€’æ°”æ¶ˆè€—ï¼Œå¹¶ä½¿å†·å´æ—¶é—´ç¼©çŸ­è‡³30ç§’ã€‚åœ°éœ‡çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºé—ªç”µä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ç†”ç«ä¹‹æ€’ 
+RUNE_BARBARIAN_EARTHQUAKE_A := New SkillRune("ç†”ç«ä¹‹æ€’", "ç«ç„°", "a", "ä½¿åœ°éœ‡çš„ä¼¤å®³æé«˜è‡³6000%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å¤©å¡Œåœ°é™· 
+RUNE_BARBARIAN_EARTHQUAKE_E := New SkillRune("å¤©å¡Œåœ°é™·", "ç‰©ç†", "e", "æŠŠ24ç å†…çš„æ‰€æœ‰æ•Œäººæ‹‰å‘ä½ ã€‚åœ°éœ‡çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºç‰©ç†ä¼¤å®³ã€‚")
+; æŠ€èƒ½: åœ°éœ‡
+SKILL_ACTIVE_BARBARIAN_EARTHQUAKE := New ActiveSkill("åœ°éœ‡", "ç«ç„°", "æ€’ç«"
 	, "images\skills\barbarian\active\barbarian_earthquake_normal.png"
-	, "ÏûºÄ£º25µãÅ­ÆøÀäÈ´Ê±¼ä£º60Ãë\r\nÃÍÁÒÕð²ü´óµØ£¬ÔÚ8ÃëÄÚ¶ÔÎ»ÓÚ18ÂëÄÚµÄËùÓÐµÐÈËÔì³É4800%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£"
+	, "æ¶ˆè€—ï¼š25ç‚¹æ€’æ°”å†·å´æ—¶é—´ï¼š60ç§’\r\nçŒ›çƒˆéœ‡é¢¤å¤§åœ°ï¼Œåœ¨8ç§’å†…å¯¹ä½äºŽ18ç å†…çš„æ‰€æœ‰æ•Œäººé€ æˆ4800%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_BARBARIAN_EARTHQUAKE_B, RUNE_BARBARIAN_EARTHQUAKE_C, RUNE_BARBARIAN_EARTHQUAKE_D, RUNE_BARBARIAN_EARTHQUAKE_A, RUNE_BARBARIAN_EARTHQUAKE_E])
 ; ---------------------------
-; ¼¼ÄÜ: µØÕð End
+; æŠ€èƒ½: åœ°éœ‡ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Ðý·çÕ¶ Start
+; æŠ€èƒ½: æ—‹é£Žæ–© Start
 ; ---------------------------
-; ·ûÎÄ: ·ç¾í²ÐÔÆ 
-RUNE_BARBARIAN_WHIRLWIND_B := New SkillRune("·ç¾í²ÐÔÆ", "ÎïÀí", "b", "Éú³É¾çÁÒµÄÁú¾í·ç£¬¶ÔÂ·ÏßÉÏµÄµÐÈËÔì³É180%µÄÎäÆ÷ÉËº¦¡£")
-; ·ûÎÄ: ì«·ç 
-RUNE_BARBARIAN_WHIRLWIND_C := New SkillRune("ì«·ç", "±ùº®", "c", "Ê¹ÓÃÐý·çÕ¶Ê±£¬×îÔ¶¿É½«35ÂëÄÚµÄµÐÈËÀ­ÏòÄã¡£Ðý·çÕ¶µÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ·ûÎÄ: ãåÑªÐý·ç 
-RUNE_BARBARIAN_WHIRLWIND_E := New SkillRune("ãåÑªÐý·ç", "ÎïÀí", "e", "±©»÷Ê¹Äã»Ö¸´ÉúÃüÖµÉÏÏÞµÄ1%¡£")
-; ·ûÎÄ: Ñ¸²½Ï÷·ç 
-RUNE_BARBARIAN_WHIRLWIND_D := New SkillRune("Ñ¸²½Ï÷·ç", "µç»÷", "d", "Ã¿»÷ÖÐÒ»ÃûµÐÈË¿É»ñµÃ1µãÅ­Æø¡£Ðý·çÕ¶µÄÉËº¦ÀàÐÍ×ª»»ÎªÉÁµçÉËº¦¡£")
-; ·ûÎÄ: ÈÛÑÒÌÏÌì 
-RUNE_BARBARIAN_WHIRLWIND_A := New SkillRune("ÈÛÑÒÌÏÌì", "»ðÑæ", "a", "½«Ðý·çÕ¶±ä³ÉÈÛÑÒºéÁ÷£¬Ôì³É400%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ¼¼ÄÜ: Ðý·çÕ¶
-SKILL_ACTIVE_BARBARIAN_WHIRLWIND := New ActiveSkill("Ðý·çÕ¶", "ÎïÀí", "´ÎÒª"
+; ç¬¦æ–‡: é£Žå·æ®‹äº‘ 
+RUNE_BARBARIAN_WHIRLWIND_B := New SkillRune("é£Žå·æ®‹äº‘", "ç‰©ç†", "b", "ç”Ÿæˆå‰§çƒˆçš„é¾™å·é£Žï¼Œå¯¹è·¯çº¿ä¸Šçš„æ•Œäººé€ æˆ180%çš„æ­¦å™¨ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: é£“é£Ž 
+RUNE_BARBARIAN_WHIRLWIND_C := New SkillRune("é£“é£Ž", "å†°å¯’", "c", "ä½¿ç”¨æ—‹é£Žæ–©æ—¶ï¼Œæœ€è¿œå¯å°†35ç å†…çš„æ•Œäººæ‹‰å‘ä½ ã€‚æ—‹é£Žæ–©çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æ²è¡€æ—‹é£Ž 
+RUNE_BARBARIAN_WHIRLWIND_E := New SkillRune("æ²è¡€æ—‹é£Ž", "ç‰©ç†", "e", "æš´å‡»ä½¿ä½ æ¢å¤ç”Ÿå‘½å€¼ä¸Šé™çš„1%ã€‚")
+; ç¬¦æ–‡: è¿…æ­¥å‰Šé£Ž 
+RUNE_BARBARIAN_WHIRLWIND_D := New SkillRune("è¿…æ­¥å‰Šé£Ž", "ç”µå‡»", "d", "æ¯å‡»ä¸­ä¸€åæ•Œäººå¯èŽ·å¾—1ç‚¹æ€’æ°”ã€‚æ—‹é£Žæ–©çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºé—ªç”µä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ç†”å²©æ»”å¤© 
+RUNE_BARBARIAN_WHIRLWIND_A := New SkillRune("ç†”å²©æ»”å¤©", "ç«ç„°", "a", "å°†æ—‹é£Žæ–©å˜æˆç†”å²©æ´ªæµï¼Œé€ æˆ400%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: æ—‹é£Žæ–©
+SKILL_ACTIVE_BARBARIAN_WHIRLWIND := New ActiveSkill("æ—‹é£Žæ–©", "ç‰©ç†", "æ¬¡è¦"
 	, "images\skills\barbarian\active\barbarian_whirlwind_normal.png"
-	, "ÏûºÄ£º10µãÅ­Æø\r\n¶ÔÇ°½øÂ·ÏßÉÏµÄËùÓÐÄ¿±ê·¢Æð¶à´Î¹¥»÷£¬Ôì³É340%µÄÎäÆ÷ÉËº¦¡£"
+	, "æ¶ˆè€—ï¼š10ç‚¹æ€’æ°”\r\nå¯¹å‰è¿›è·¯çº¿ä¸Šçš„æ‰€æœ‰ç›®æ ‡å‘èµ·å¤šæ¬¡æ”»å‡»ï¼Œé€ æˆ340%çš„æ­¦å™¨ä¼¤å®³ã€‚"
 	, [RUNE_BARBARIAN_WHIRLWIND_B, RUNE_BARBARIAN_WHIRLWIND_C, RUNE_BARBARIAN_WHIRLWIND_E, RUNE_BARBARIAN_WHIRLWIND_D, RUNE_BARBARIAN_WHIRLWIND_A])
 ; ---------------------------
-; ¼¼ÄÜ: Ðý·çÕ¶ End
+; æŠ€èƒ½: æ—‹é£Žæ–© End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ¿ñ±©³å×² Start
+; æŠ€èƒ½: ç‹‚æš´å†²æ’ž Start
 ; ---------------------------
-; ·ûÎÄ: ÈËÈâÕ½³µ 
-RUNE_BARBARIAN_FURIOUS_CHARGE_A := New SkillRune("ÈËÈâÕ½³µ", "»ðÑæ", "a", "Ôì³ÉµÄÉËº¦Ìá¸ßÖÁ1050%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ÎÞÇéÍ»Ï® 
-RUNE_BARBARIAN_FURIOUS_CHARGE_E := New SkillRune("ÎÞÇéÍ»Ï®", "ÎïÀí", "e", "Ã¿»÷ÖÐÒ»ÃûµÐÈË£¬ÐîÄÜÊ±¼ä¼´»áËõ¶Ì2Ãë¡£¸ÃÐ§¹û×î¶à¿ÉÊ¹ÐîÄÜÊ±¼äËõ¶Ì10Ãë¡£")
-; ·ûÎÄ: ³Ö¾ÃÕ½Á¦ 
-RUNE_BARBARIAN_FURIOUS_CHARGE_D := New SkillRune("³Ö¾ÃÕ½Á¦", "ÎïÀí", "d", "³å·æÊ±Ã¿»÷ÖÐÒ»¸öµÐÈË¶¼»á²úÉú¶îÍâ10µãÅ­Æø¡£")
-; ·ûÎÄ: º®±ù³å×² 
-RUNE_BARBARIAN_FURIOUS_CHARGE_C := New SkillRune("º®±ù³å×²", "±ùº®", "c", "ËùÓÐ±»»÷ÖÐµÄµÐÈË¶¼»á±»±ù¶³£¬³ÖÐø2.5Ãë¡£¿ñ±©³å×²µÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ·ûÎÄ: ÊÆ²»¿Éµ² 
-RUNE_BARBARIAN_FURIOUS_CHARGE_B := New SkillRune("ÊÆ²»¿Éµ²", "µç»÷", "b", "×î¶àÀÛ»ý3²ã¿ñ±©³å×²¡£¿ñ±©³å×²µÄÉËº¦ÀàÐÍ×ª»»ÎªÉÁµçÉËº¦¡£")
-; ¼¼ÄÜ: ¿ñ±©³å×²
-SKILL_ACTIVE_BARBARIAN_FURIOUS_CHARGE := New ActiveSkill("¿ñ±©³å×²", "ÎïÀí", "Á¦Á¿"
+; ç¬¦æ–‡: äººè‚‰æˆ˜è½¦ 
+RUNE_BARBARIAN_FURIOUS_CHARGE_A := New SkillRune("äººè‚‰æˆ˜è½¦", "ç«ç„°", "a", "é€ æˆçš„ä¼¤å®³æé«˜è‡³1050%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: æ— æƒ…çªè¢­ 
+RUNE_BARBARIAN_FURIOUS_CHARGE_E := New SkillRune("æ— æƒ…çªè¢­", "ç‰©ç†", "e", "æ¯å‡»ä¸­ä¸€åæ•Œäººï¼Œè“„èƒ½æ—¶é—´å³ä¼šç¼©çŸ­2ç§’ã€‚è¯¥æ•ˆæžœæœ€å¤šå¯ä½¿è“„èƒ½æ—¶é—´ç¼©çŸ­10ç§’ã€‚")
+; ç¬¦æ–‡: æŒä¹…æˆ˜åŠ› 
+RUNE_BARBARIAN_FURIOUS_CHARGE_D := New SkillRune("æŒä¹…æˆ˜åŠ›", "ç‰©ç†", "d", "å†²é”‹æ—¶æ¯å‡»ä¸­ä¸€ä¸ªæ•Œäººéƒ½ä¼šäº§ç”Ÿé¢å¤–10ç‚¹æ€’æ°”ã€‚")
+; ç¬¦æ–‡: å¯’å†°å†²æ’ž 
+RUNE_BARBARIAN_FURIOUS_CHARGE_C := New SkillRune("å¯’å†°å†²æ’ž", "å†°å¯’", "c", "æ‰€æœ‰è¢«å‡»ä¸­çš„æ•Œäººéƒ½ä¼šè¢«å†°å†»ï¼ŒæŒç»­2.5ç§’ã€‚ç‹‚æš´å†²æ’žçš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: åŠ¿ä¸å¯æŒ¡ 
+RUNE_BARBARIAN_FURIOUS_CHARGE_B := New SkillRune("åŠ¿ä¸å¯æŒ¡", "ç”µå‡»", "b", "æœ€å¤šç´¯ç§¯3å±‚ç‹‚æš´å†²æ’žã€‚ç‹‚æš´å†²æ’žçš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºé—ªç”µä¼¤å®³ã€‚")
+; æŠ€èƒ½: ç‹‚æš´å†²æ’ž
+SKILL_ACTIVE_BARBARIAN_FURIOUS_CHARGE := New ActiveSkill("ç‹‚æš´å†²æ’ž", "ç‰©ç†", "åŠ›é‡"
 	, "images\skills\barbarian\active\barbarian_furiouscharge_normal.png"
-	, "ÏûºÄ£º1²ãÉú³É£º15µãÅ­Æø\r\nÏòÇ°ÃÍ³å£¬»÷ÍËÑØÍ¾µÄµÐÈË£¬²¢¶ÔÆäÔì³É600%µÄÎäÆ÷ÉËº¦¡£"
+	, "æ¶ˆè€—ï¼š1å±‚ç”Ÿæˆï¼š15ç‚¹æ€’æ°”\r\nå‘å‰çŒ›å†²ï¼Œå‡»é€€æ²¿é€”çš„æ•Œäººï¼Œå¹¶å¯¹å…¶é€ æˆ600%çš„æ­¦å™¨ä¼¤å®³ã€‚"
 	, [RUNE_BARBARIAN_FURIOUS_CHARGE_A, RUNE_BARBARIAN_FURIOUS_CHARGE_E, RUNE_BARBARIAN_FURIOUS_CHARGE_D, RUNE_BARBARIAN_FURIOUS_CHARGE_C, RUNE_BARBARIAN_FURIOUS_CHARGE_B])
 ; ---------------------------
-; ¼¼ÄÜ: ¿ñ±©³å×² End
+; æŠ€èƒ½: ç‹‚æš´å†²æ’ž End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÎÞÊÓ¿àÍ´ Start
+; æŠ€èƒ½: æ— è§†è‹¦ç—› Start
 ; ---------------------------
-; ·ûÎÄ: Íþ·ç°ËÃæ 
-RUNE_BARBARIAN_IGNORE_PAIN_D := New SkillRune("Íþ·ç°ËÃæ", "ÎïÀí", "d", "ÔÚÎÞÊÓ¿àÍ´¼¤»î×´Ì¬ÏÂ£¬ÒÆ¶¯ËÙ¶ÈÌá¸ß40%£¬Í¬Ê±»÷ÍËÄã±¼ÅÜÊ±½Ó´¥µ½µÄµÐÈË¡£")
-; ·ûÎÄ: Í­Í·Ìú±Û 
-RUNE_BARBARIAN_IGNORE_PAIN_B := New SkillRune("Í­Í·Ìú±Û", "ÎïÀí", "b", "³ÖÐøÊ±¼äÑÓ³¤ÖÁ7Ãë¡£")
-; ·ûÎÄ: °ÙÕÛ²»ÄÓ 
-RUNE_BARBARIAN_IGNORE_PAIN_E := New SkillRune("°ÙÕÛ²»ÄÓ", "ÎïÀí", "e", "µ±ÎÞÊÓ¿àÍ´¼¤»îÊ±£¬»ñµÃÏûºÄÅ­Æø»Ö¸´5364µãÉúÃüÖµÐ§¹û¡£")
-; ·ûÎÄ: Í¬³ðµÐâé 
-RUNE_BARBARIAN_IGNORE_PAIN_C := New SkillRune("Í¬³ðµÐâé", "ÎïÀí", "c", "50ÂëÄÚµÄÍ¬°éÒ²»á»ñµÃ25%ÉËº¦¼õÃâ£¬²¢ÇÒ¶Ô¿ØÖÆÀàÏÞÖÆÐ§¹ûÃâÒß£¬³ÖÐø5Ãë¡£")
-; ·ûÎÄ: ÃêÊÓÈõµã 
-RUNE_BARBARIAN_IGNORE_PAIN_A := New SkillRune("ÃêÊÓÈõµã", "ÎïÀí", "a", "ÔÚÊ¹ÓÃÎÞÊÓ¿àÍ´Ê±£¬Á¢¼´»Ö¸´ÉúÃüÖµÉÏÏÞµÄ35%¡£")
-; ¼¼ÄÜ: ÎÞÊÓ¿àÍ´
-SKILL_ACTIVE_BARBARIAN_IGNORE_PAIN := New ActiveSkill("ÎÞÊÓ¿àÍ´", "ÎïÀí", "·ÀÓù"
+; ç¬¦æ–‡: å¨é£Žå…«é¢ 
+RUNE_BARBARIAN_IGNORE_PAIN_D := New SkillRune("å¨é£Žå…«é¢", "ç‰©ç†", "d", "åœ¨æ— è§†è‹¦ç—›æ¿€æ´»çŠ¶æ€ä¸‹ï¼Œç§»åŠ¨é€Ÿåº¦æé«˜40%ï¼ŒåŒæ—¶å‡»é€€ä½ å¥”è·‘æ—¶æŽ¥è§¦åˆ°çš„æ•Œäººã€‚")
+; ç¬¦æ–‡: é“œå¤´é“è‡‚ 
+RUNE_BARBARIAN_IGNORE_PAIN_B := New SkillRune("é“œå¤´é“è‡‚", "ç‰©ç†", "b", "æŒç»­æ—¶é—´å»¶é•¿è‡³7ç§’ã€‚")
+; ç¬¦æ–‡: ç™¾æŠ˜ä¸æŒ  
+RUNE_BARBARIAN_IGNORE_PAIN_E := New SkillRune("ç™¾æŠ˜ä¸æŒ ", "ç‰©ç†", "e", "å½“æ— è§†è‹¦ç—›æ¿€æ´»æ—¶ï¼ŒèŽ·å¾—æ¶ˆè€—æ€’æ°”æ¢å¤5364ç‚¹ç”Ÿå‘½å€¼æ•ˆæžœã€‚")
+; ç¬¦æ–‡: åŒä»‡æ•Œå¿¾ 
+RUNE_BARBARIAN_IGNORE_PAIN_C := New SkillRune("åŒä»‡æ•Œå¿¾", "ç‰©ç†", "c", "50ç å†…çš„åŒä¼´ä¹Ÿä¼šèŽ·å¾—25%ä¼¤å®³å‡å…ï¼Œå¹¶ä¸”å¯¹æŽ§åˆ¶ç±»é™åˆ¶æ•ˆæžœå…ç–«ï¼ŒæŒç»­5ç§’ã€‚")
+; ç¬¦æ–‡: è—è§†å¼±ç‚¹ 
+RUNE_BARBARIAN_IGNORE_PAIN_A := New SkillRune("è—è§†å¼±ç‚¹", "ç‰©ç†", "a", "åœ¨ä½¿ç”¨æ— è§†è‹¦ç—›æ—¶ï¼Œç«‹å³æ¢å¤ç”Ÿå‘½å€¼ä¸Šé™çš„35%ã€‚")
+; æŠ€èƒ½: æ— è§†è‹¦ç—›
+SKILL_ACTIVE_BARBARIAN_IGNORE_PAIN := New ActiveSkill("æ— è§†è‹¦ç—›", "ç‰©ç†", "é˜²å¾¡"
 	, "images\skills\barbarian\active\barbarian_ignorepain_normal.png"
-	, "ÀäÈ´Ê±¼ä£º30Ãë\r\nÊÜµ½µÄËùÓÐÉËº¦½µµÍ50%£¬²¢ÇÒÃâÒßËùÓÐ¿ØÖÆÀàÏÞÖÆÐ§¹û£¬³ÖÐø5Ãë¡£"
+	, "å†·å´æ—¶é—´ï¼š30ç§’\r\nå—åˆ°çš„æ‰€æœ‰ä¼¤å®³é™ä½Ž50%ï¼Œå¹¶ä¸”å…ç–«æ‰€æœ‰æŽ§åˆ¶ç±»é™åˆ¶æ•ˆæžœï¼ŒæŒç»­5ç§’ã€‚"
 	, [RUNE_BARBARIAN_IGNORE_PAIN_D, RUNE_BARBARIAN_IGNORE_PAIN_B, RUNE_BARBARIAN_IGNORE_PAIN_E, RUNE_BARBARIAN_IGNORE_PAIN_C, RUNE_BARBARIAN_IGNORE_PAIN_A])
 ; ---------------------------
-; ¼¼ÄÜ: ÎÞÊÓ¿àÍ´ End
+; æŠ€èƒ½: æ— è§†è‹¦ç—› End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Õ½¶·Å­»ð Start
+; æŠ€èƒ½: æˆ˜æ–—æ€’ç« Start
 ; ---------------------------
-; ·ûÎÄ: ÃÍ»¢ÏÂÉ½ 
-RUNE_BARBARIAN_BATTLE_RAGE_A := New SkillRune("ÃÍ»¢ÏÂÉ½", "ÎïÀí", "a", "ÉËº¦¼Ó³ÉÌá¸ßÖÁ15%¡£")
-; ·ûÎÄ: Ð×²Ð 
-RUNE_BARBARIAN_BATTLE_RAGE_B := New SkillRune("Ð×²Ð", "ÎïÀí", "b", "Ê¹ÒÆ¶¯ËÙ¶ÈÌá¸ß15%¡£")
-; ·ûÎÄ: »¯µÐÎªÓÑ 
-RUNE_BARBARIAN_BATTLE_RAGE_C := New SkillRune("»¯µÐÎªÓÑ", "ÎïÀí", "c", "±©»÷ÖÎÁÆÄãºÍÄãµÄ³èÎï×î¶à21457µãÉúÃü¡£")
-; ·ûÎÄ: Å­»ðÖÐÉÕ 
-RUNE_BARBARIAN_BATTLE_RAGE_D := New SkillRune("Å­»ðÖÐÉÕ", "ÎïÀí", "d", "ÔÚÕ½¶·Å­»ðµÄÐ§¹ûÓ°ÏìÏÂ£¬ÔÚÄã¸½½ü10ÂëÄÚµÄÃ¿¸öµÐÈË¶¼¿ÉÊ¹ÄãµÄ±©»÷¼¸ÂÊÌá¸ß1%¡£")
-; ·ûÎÄ: Ñª½¦Ê®·½ 
-RUNE_BARBARIAN_BATTLE_RAGE_E := New SkillRune("Ñª½¦Ê®·½", "ÎïÀí", "e", "Ã¿1Ãë¶Ô20Âë·¶Î§ÄÚµÄµÐÈËÔì³ÉÏàµ±ÓÚ½üÆÚ±©»÷ÉËº¦20%µÄÉËº¦¡£")
-; ¼¼ÄÜ: Õ½¶·Å­»ð
-SKILL_ACTIVE_BARBARIAN_BATTLE_RAGE := New ActiveSkill("Õ½¶·Å­»ð", "ÎïÀí", "Õ½Êõ"
+; ç¬¦æ–‡: çŒ›è™Žä¸‹å±± 
+RUNE_BARBARIAN_BATTLE_RAGE_A := New SkillRune("çŒ›è™Žä¸‹å±±", "ç‰©ç†", "a", "ä¼¤å®³åŠ æˆæé«˜è‡³15%ã€‚")
+; ç¬¦æ–‡: å‡¶æ®‹ 
+RUNE_BARBARIAN_BATTLE_RAGE_B := New SkillRune("å‡¶æ®‹", "ç‰©ç†", "b", "ä½¿ç§»åŠ¨é€Ÿåº¦æé«˜15%ã€‚")
+; ç¬¦æ–‡: åŒ–æ•Œä¸ºå‹ 
+RUNE_BARBARIAN_BATTLE_RAGE_C := New SkillRune("åŒ–æ•Œä¸ºå‹", "ç‰©ç†", "c", "æš´å‡»æ²»ç–—ä½ å’Œä½ çš„å® ç‰©æœ€å¤š21457ç‚¹ç”Ÿå‘½ã€‚")
+; ç¬¦æ–‡: æ€’ç«ä¸­çƒ§ 
+RUNE_BARBARIAN_BATTLE_RAGE_D := New SkillRune("æ€’ç«ä¸­çƒ§", "ç‰©ç†", "d", "åœ¨æˆ˜æ–—æ€’ç«çš„æ•ˆæžœå½±å“ä¸‹ï¼Œåœ¨ä½ é™„è¿‘10ç å†…çš„æ¯ä¸ªæ•Œäººéƒ½å¯ä½¿ä½ çš„æš´å‡»å‡ çŽ‡æé«˜1%ã€‚")
+; ç¬¦æ–‡: è¡€æº…åæ–¹ 
+RUNE_BARBARIAN_BATTLE_RAGE_E := New SkillRune("è¡€æº…åæ–¹", "ç‰©ç†", "e", "æ¯1ç§’å¯¹20ç èŒƒå›´å†…çš„æ•Œäººé€ æˆç›¸å½“äºŽè¿‘æœŸæš´å‡»ä¼¤å®³20%çš„ä¼¤å®³ã€‚")
+; æŠ€èƒ½: æˆ˜æ–—æ€’ç«
+SKILL_ACTIVE_BARBARIAN_BATTLE_RAGE := New ActiveSkill("æˆ˜æ–—æ€’ç«", "ç‰©ç†", "æˆ˜æœ¯"
 	, "images\skills\barbarian\active\barbarian_battlerage_normal.png"
-	, "ÏûºÄ£º20µãÅ­Æø\r\n½øÈë±©Å­×´Ì¬£¬Ê¹ÄãµÄÉËº¦Ìá¸ß10%£¬±©»÷¼¸ÂÊÌá¸ß3%£¬³ÖÐø120Ãë¡£"
+	, "æ¶ˆè€—ï¼š20ç‚¹æ€’æ°”\r\nè¿›å…¥æš´æ€’çŠ¶æ€ï¼Œä½¿ä½ çš„ä¼¤å®³æé«˜10%ï¼Œæš´å‡»å‡ çŽ‡æé«˜3%ï¼ŒæŒç»­120ç§’ã€‚"
 	, [RUNE_BARBARIAN_BATTLE_RAGE_A, RUNE_BARBARIAN_BATTLE_RAGE_B, RUNE_BARBARIAN_BATTLE_RAGE_C, RUNE_BARBARIAN_BATTLE_RAGE_D, RUNE_BARBARIAN_BATTLE_RAGE_E])
 ; ---------------------------
-; ¼¼ÄÜ: Õ½¶·Å­»ð End
+; æŠ€èƒ½: æˆ˜æ–—æ€’ç« End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÏÈ×æÕÙ»½ Start
+; æŠ€èƒ½: å…ˆç¥–å¬å”¤ Start
 ; ---------------------------
-; ·ûÎÄ: Òé»ááÈÆð 
-RUNE_BARBARIAN_CALL_OF_THE_ANCIENTS_B := New SkillRune("Òé»ááÈÆð", "»ðÑæ", "b", "ÏÈ×æÃ¿´Î¹¥»÷¶¼»áÔì³É540%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ²¿×åÊ¹Ãü 
-RUNE_BARBARIAN_CALL_OF_THE_ANCIENTS_D := New SkillRune("²¿×åÊ¹Ãü", "±ùº®", "d", "±»ÏÈ×æ»÷ÖÐµÄµÐÈË»áÊÜµ½º®ÀäÐ§¹ûµÄÓ°Ïì£¬³ÖÐø2Ãë£¬²¢Ê¹ÆäÊÜµ½±©»÷µÄ¼¸ÂÊÌá¸ß10%¡£ÏÈ×æµÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ·ûÎÄ: ÏÈ×æÖ®´Í 
-RUNE_BARBARIAN_CALL_OF_THE_ANCIENTS_A := New SkillRune("ÏÈ×æÖ®´Í", "ÎïÀí", "a", "ÄãÃ¿ÏûºÄÒ»µãÅ­Æø¼´¿ÉÊ¹ÄãºÍÄãµÄÏÈ×æ»Ö¸´966µãÉúÃüÖµ¡£")
-; ·ûÎÄ: ÏÈ×æÖ®Å­ 
-RUNE_BARBARIAN_CALL_OF_THE_ANCIENTS_C := New SkillRune("ÏÈ×æÖ®Å­", "ÎïÀí", "c", "Ã¿µ±ÏÈ×æ¶ÔµÐÈËÔì³ÉÉËº¦Ê±¼´¿É»ñµÃ4µãÅ­Æø¡£")
-; ·ûÎÄ: Â¾Á¦Í¬ÐÄ 
-RUNE_BARBARIAN_CALL_OF_THE_ANCIENTS_E := New SkillRune("Â¾Á¦Í¬ÐÄ", "µç»÷", "e", "ÄãÊÜµ½µÄ50%µÄÉËº¦»áÓÉÏÈ×æÃÇ¾ùÌ¯¡£ÏÈ×æµÄÉËº¦ÀàÐÍ×ª»»ÎªÉÁµçÉËº¦¡£")
-; ¼¼ÄÜ: ÏÈ×æÕÙ»½
-SKILL_ACTIVE_BARBARIAN_CALL_OF_THE_ANCIENTS := New ActiveSkill("ÏÈ×æÕÙ»½", "ÎïÀí", "Å­»ð"
+; ç¬¦æ–‡: è®®ä¼šå´›èµ· 
+RUNE_BARBARIAN_CALL_OF_THE_ANCIENTS_B := New SkillRune("è®®ä¼šå´›èµ·", "ç«ç„°", "b", "å…ˆç¥–æ¯æ¬¡æ”»å‡»éƒ½ä¼šé€ æˆ540%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: éƒ¨æ—ä½¿å‘½ 
+RUNE_BARBARIAN_CALL_OF_THE_ANCIENTS_D := New SkillRune("éƒ¨æ—ä½¿å‘½", "å†°å¯’", "d", "è¢«å…ˆç¥–å‡»ä¸­çš„æ•Œäººä¼šå—åˆ°å¯’å†·æ•ˆæžœçš„å½±å“ï¼ŒæŒç»­2ç§’ï¼Œå¹¶ä½¿å…¶å—åˆ°æš´å‡»çš„å‡ çŽ‡æé«˜10%ã€‚å…ˆç¥–çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: å…ˆç¥–ä¹‹èµ 
+RUNE_BARBARIAN_CALL_OF_THE_ANCIENTS_A := New SkillRune("å…ˆç¥–ä¹‹èµ", "ç‰©ç†", "a", "ä½ æ¯æ¶ˆè€—ä¸€ç‚¹æ€’æ°”å³å¯ä½¿ä½ å’Œä½ çš„å…ˆç¥–æ¢å¤966ç‚¹ç”Ÿå‘½å€¼ã€‚")
+; ç¬¦æ–‡: å…ˆç¥–ä¹‹æ€’ 
+RUNE_BARBARIAN_CALL_OF_THE_ANCIENTS_C := New SkillRune("å…ˆç¥–ä¹‹æ€’", "ç‰©ç†", "c", "æ¯å½“å…ˆç¥–å¯¹æ•Œäººé€ æˆä¼¤å®³æ—¶å³å¯èŽ·å¾—4ç‚¹æ€’æ°”ã€‚")
+; ç¬¦æ–‡: æˆ®åŠ›åŒå¿ƒ 
+RUNE_BARBARIAN_CALL_OF_THE_ANCIENTS_E := New SkillRune("æˆ®åŠ›åŒå¿ƒ", "ç”µå‡»", "e", "ä½ å—åˆ°çš„50%çš„ä¼¤å®³ä¼šç”±å…ˆç¥–ä»¬å‡æ‘Šã€‚å…ˆç¥–çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºé—ªç”µä¼¤å®³ã€‚")
+; æŠ€èƒ½: å…ˆç¥–å¬å”¤
+SKILL_ACTIVE_BARBARIAN_CALL_OF_THE_ANCIENTS := New ActiveSkill("å…ˆç¥–å¬å”¤", "ç‰©ç†", "æ€’ç«"
 	, "images\skills\barbarian\active\barbarian_calloftheancients_normal.png"
-	, "ÀäÈ´Ê±¼ä£º120Ãë\r\nÕÙ»½Ò°ÂùÈËÏÈ×æËþÁ¦¿Ë¡¢¿ÆÀï¿ËºÍÂíµÀ¿ËÓëÄã²¢¼ç×÷Õ½£¬³ÖÐø20Ãë¡£ÏÈ×æÃ¿´Î¹¥»÷Ôì³É270%µÄÎäÆ÷ÉËº¦£¬Í¬Ê±»¹ÄÜÊ¹ÓÃ¶îÍâ¼¼ÄÜ¡£"
+	, "å†·å´æ—¶é—´ï¼š120ç§’\r\nå¬å”¤é‡Žè›®äººå…ˆç¥–å¡”åŠ›å…‹ã€ç§‘é‡Œå…‹å’Œé©¬é“å…‹ä¸Žä½ å¹¶è‚©ä½œæˆ˜ï¼ŒæŒç»­20ç§’ã€‚å…ˆç¥–æ¯æ¬¡æ”»å‡»é€ æˆ270%çš„æ­¦å™¨ä¼¤å®³ï¼ŒåŒæ—¶è¿˜èƒ½ä½¿ç”¨é¢å¤–æŠ€èƒ½ã€‚"
 	, [RUNE_BARBARIAN_CALL_OF_THE_ANCIENTS_B, RUNE_BARBARIAN_CALL_OF_THE_ANCIENTS_D, RUNE_BARBARIAN_CALL_OF_THE_ANCIENTS_A, RUNE_BARBARIAN_CALL_OF_THE_ANCIENTS_C, RUNE_BARBARIAN_CALL_OF_THE_ANCIENTS_E])
 ; ---------------------------
-; ¼¼ÄÜ: ÏÈ×æÕÙ»½ End
+; æŠ€èƒ½: å…ˆç¥–å¬å”¤ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÉÏ¹ÅÖ®Ã¬ Start
+; æŠ€èƒ½: ä¸Šå¤ä¹‹çŸ› Start
 ; ---------------------------
-; ·ûÎÄ: ÖØÃ¬ÍËµÐ 
-RUNE_BARBARIAN_ANCIENT_SPEAR_D := New SkillRune("ÖØÃ¬ÍËµÐ", "ÎïÀí", "d", "±»ÃüÖÐµÄµÐÈË½«±»»÷ÍË5Âë¡£")
-; ·ûÎÄ: ·É²æÃÍÖÀ 
-RUNE_BARBARIAN_ANCIENT_SPEAR_A := New SkillRune("·É²æÃÍÖÀ", "ÎïÀí", "a", "¸ø³¤Ã¬¼ÓÉÏËøÁ´£¬½«µÐÈËÈ«²¿À­»ØÄãÉí±ß£¬²¢Ê¹Æä¼õËÙ60%£¬³ÖÐø1Ãë¡£")
-; ·ûÎÄ: ÇúÈÐµ¶ 
-RUNE_BARBARIAN_ANCIENT_SPEAR_C := New SkillRune("ÇúÈÐµ¶", "»ðÑæ", "c", "Ê¹ÉËº¦Ìá¸ßÖÁ640%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: Í¶ÖÀ¾ÞÊ¯ 
-RUNE_BARBARIAN_ANCIENT_SPEAR_B := New SkillRune("Í¶ÖÀ¾ÞÊ¯", "ÎïÀí", "b", "ÏûºÄËùÓÐÊ£âÅÅ­Æø¹¥»÷µÐÈË£¬¶Ô»÷ÖÐÎ»ÖÃ¸½½ü9Âë·¶Î§ÄÚµÄËùÓÐµÐÈËÔì³ÉÉËº¦£¬Ã¿ÏûºÄÒ»µãÅ­ÆøÔòÔì³É20%µÄÎäÆ÷ÉËº¦¡£")
-; ·ûÎÄ: Å­ÖÀ 
-RUNE_BARBARIAN_ANCIENT_SPEAR_E := New SkillRune("Å­ÖÀ", "ÎïÀí", "e", "¸ø³¤Ã¬¼ÓÉÏËøÁ´£¬½«µÐÈËÈ«²¿ÈÓµ½ÄãÉíºó£¬²¢Ê¹Æä¼õËÙ60%£¬³ÖÐø1Ãë¡£")
-; ¼¼ÄÜ: ÉÏ¹ÅÖ®Ã¬
-SKILL_ACTIVE_BARBARIAN_ANCIENT_SPEAR := New ActiveSkill("ÉÏ¹ÅÖ®Ã¬", "ÎïÀí", "´ÎÒª"
+; ç¬¦æ–‡: é‡çŸ›é€€æ•Œ 
+RUNE_BARBARIAN_ANCIENT_SPEAR_D := New SkillRune("é‡çŸ›é€€æ•Œ", "ç‰©ç†", "d", "è¢«å‘½ä¸­çš„æ•Œäººå°†è¢«å‡»é€€5ç ã€‚")
+; ç¬¦æ–‡: é£žå‰çŒ›æŽ· 
+RUNE_BARBARIAN_ANCIENT_SPEAR_A := New SkillRune("é£žå‰çŒ›æŽ·", "ç‰©ç†", "a", "ç»™é•¿çŸ›åŠ ä¸Šé”é“¾ï¼Œå°†æ•Œäººå…¨éƒ¨æ‹‰å›žä½ èº«è¾¹ï¼Œå¹¶ä½¿å…¶å‡é€Ÿ60%ï¼ŒæŒç»­1ç§’ã€‚")
+; ç¬¦æ–‡: æ›²åˆƒåˆ€ 
+RUNE_BARBARIAN_ANCIENT_SPEAR_C := New SkillRune("æ›²åˆƒåˆ€", "ç«ç„°", "c", "ä½¿ä¼¤å®³æé«˜è‡³640%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: æŠ•æŽ·å·¨çŸ³ 
+RUNE_BARBARIAN_ANCIENT_SPEAR_B := New SkillRune("æŠ•æŽ·å·¨çŸ³", "ç‰©ç†", "b", "æ¶ˆè€—æ‰€æœ‰å‰©é¦€æ€’æ°”æ”»å‡»æ•Œäººï¼Œå¯¹å‡»ä¸­ä½ç½®é™„è¿‘9ç èŒƒå›´å†…çš„æ‰€æœ‰æ•Œäººé€ æˆä¼¤å®³ï¼Œæ¯æ¶ˆè€—ä¸€ç‚¹æ€’æ°”åˆ™é€ æˆ20%çš„æ­¦å™¨ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æ€’æŽ· 
+RUNE_BARBARIAN_ANCIENT_SPEAR_E := New SkillRune("æ€’æŽ·", "ç‰©ç†", "e", "ç»™é•¿çŸ›åŠ ä¸Šé”é“¾ï¼Œå°†æ•Œäººå…¨éƒ¨æ‰”åˆ°ä½ èº«åŽï¼Œå¹¶ä½¿å…¶å‡é€Ÿ60%ï¼ŒæŒç»­1ç§’ã€‚")
+; æŠ€èƒ½: ä¸Šå¤ä¹‹çŸ›
+SKILL_ACTIVE_BARBARIAN_ANCIENT_SPEAR := New ActiveSkill("ä¸Šå¤ä¹‹çŸ›", "ç‰©ç†", "æ¬¡è¦"
 	, "images\skills\barbarian\active\barbarian_ancientspear_normal.png"
-	, "ÏûºÄ£º25µãÅ­Æø\r\nÖÀ³öÒ»°Ñ³¤Ã¬´©Í¸µÐÈË£¬²¢Ôì³É500%µÄÎäÆ÷ÉËº¦¡£"
+	, "æ¶ˆè€—ï¼š25ç‚¹æ€’æ°”\r\næŽ·å‡ºä¸€æŠŠé•¿çŸ›ç©¿é€æ•Œäººï¼Œå¹¶é€ æˆ500%çš„æ­¦å™¨ä¼¤å®³ã€‚"
 	, [RUNE_BARBARIAN_ANCIENT_SPEAR_D, RUNE_BARBARIAN_ANCIENT_SPEAR_A, RUNE_BARBARIAN_ANCIENT_SPEAR_C, RUNE_BARBARIAN_ANCIENT_SPEAR_B, RUNE_BARBARIAN_ANCIENT_SPEAR_E])
 ; ---------------------------
-; ¼¼ÄÜ: ÉÏ¹ÅÖ®Ã¬ End
+; æŠ€èƒ½: ä¸Šå¤ä¹‹çŸ› End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Õ½ºð Start
+; æŠ€èƒ½: æˆ˜å¼ Start
 ; ---------------------------
-; ·ûÎÄ: Å­ÆøÓùÌå 
-RUNE_BARBARIAN_WAR_CRY_A := New SkillRune("Å­ÆøÓùÌå", "ÎïÀí", "a", "ÔÚÇ°5ÃëÄÚ£¬»¤¼×¶îÍâÌá¸ß60%¡£")
-; ·ûÎÄ: ³å·æÕ½ºð 
-RUNE_BARBARIAN_WAR_CRY_D := New SkillRune("³å·æÕ½ºð", "ÎïÀí", "d", "Ê¹Éú³ÉµÄÅ­ÆøÌá¸ßÖÁ50µã¡£")
-; ·ûÎÄ: Õñ·Ü 
-RUNE_BARBARIAN_WAR_CRY_E := New SkillRune("Õñ·Ü", "ÎïÀí", "e", "ÔÚÕ½ºðµÄÓ°ÏìÏÂ£¬ÉúÃüÖµÉÏÏÞÌá¸ß10%£¬Ã¿Ãë»Ö¸´µÄÉúÃüÖµÌá¸ß13411µã¡£")
-; ·ûÎÄ: ÀÏ±øÖ®½ë 
-RUNE_BARBARIAN_WAR_CRY_B := New SkillRune("ÀÏ±øÖ®½ë", "ÎïÀí", "b", "ÔÚÕ½ºðµÄÓ°ÏìÏÂ£¬¶ãÉÁ¼¸ÂÊÌá¸ß30%¡£")
-; ·ûÎÄ: ÉâÃâ 
-RUNE_BARBARIAN_WAR_CRY_C := New SkillRune("ÉâÃâ", "ÎïÀí", "c", "ÔÚÕ½ºðµÄÓ°ÏìÏÂ£¬¶ÔÈ«ÔªËØ¿¹ÐÔÌá¸ß20%¡£")
-; ¼¼ÄÜ: Õ½ºð
-SKILL_ACTIVE_BARBARIAN_WAR_CRY := New ActiveSkill("Õ½ºð", "ÎïÀí", "Õ½Êõ"
+; ç¬¦æ–‡: æ€’æ°”å¾¡ä½“ 
+RUNE_BARBARIAN_WAR_CRY_A := New SkillRune("æ€’æ°”å¾¡ä½“", "ç‰©ç†", "a", "åœ¨å‰5ç§’å†…ï¼ŒæŠ¤ç”²é¢å¤–æé«˜60%ã€‚")
+; ç¬¦æ–‡: å†²é”‹æˆ˜å¼ 
+RUNE_BARBARIAN_WAR_CRY_D := New SkillRune("å†²é”‹æˆ˜å¼", "ç‰©ç†", "d", "ä½¿ç”Ÿæˆçš„æ€’æ°”æé«˜è‡³50ç‚¹ã€‚")
+; ç¬¦æ–‡: æŒ¯å¥‹ 
+RUNE_BARBARIAN_WAR_CRY_E := New SkillRune("æŒ¯å¥‹", "ç‰©ç†", "e", "åœ¨æˆ˜å¼çš„å½±å“ä¸‹ï¼Œç”Ÿå‘½å€¼ä¸Šé™æé«˜10%ï¼Œæ¯ç§’æ¢å¤çš„ç”Ÿå‘½å€¼æé«˜13411ç‚¹ã€‚")
+; ç¬¦æ–‡: è€å…µä¹‹è¯« 
+RUNE_BARBARIAN_WAR_CRY_B := New SkillRune("è€å…µä¹‹è¯«", "ç‰©ç†", "b", "åœ¨æˆ˜å¼çš„å½±å“ä¸‹ï¼Œèº²é—ªå‡ çŽ‡æé«˜30%ã€‚")
+; ç¬¦æ–‡: èµ¦å… 
+RUNE_BARBARIAN_WAR_CRY_C := New SkillRune("èµ¦å…", "ç‰©ç†", "c", "åœ¨æˆ˜å¼çš„å½±å“ä¸‹ï¼Œå¯¹å…¨å…ƒç´ æŠ—æ€§æé«˜20%ã€‚")
+; æŠ€èƒ½: æˆ˜å¼
+SKILL_ACTIVE_BARBARIAN_WAR_CRY := New ActiveSkill("æˆ˜å¼", "ç‰©ç†", "æˆ˜æœ¯"
 	, "images\skills\barbarian\active\barbarian_warcry_normal.png"
-	, "Éú³É£º20µãÅ­ÆøÀäÈ´Ê±¼ä£º20Ãë\r\n·¢³öÒ»ÉùÕñ·ÜÊ¿ÆøµÄÕ½ºð£¬Ê¹ÄãºÍÎ»ÓÚ100ÂëÄÚËùÓÐÍ¬°éµÄ»¤¼×ÖµÌá¸ß20%£¬³ÖÐø120Ãë¡£"
+	, "ç”Ÿæˆï¼š20ç‚¹æ€’æ°”å†·å´æ—¶é—´ï¼š20ç§’\r\nå‘å‡ºä¸€å£°æŒ¯å¥‹å£«æ°”çš„æˆ˜å¼ï¼Œä½¿ä½ å’Œä½äºŽ100ç å†…æ‰€æœ‰åŒä¼´çš„æŠ¤ç”²å€¼æé«˜20%ï¼ŒæŒç»­120ç§’ã€‚"
 	, [RUNE_BARBARIAN_WAR_CRY_A, RUNE_BARBARIAN_WAR_CRY_D, RUNE_BARBARIAN_WAR_CRY_E, RUNE_BARBARIAN_WAR_CRY_B, RUNE_BARBARIAN_WAR_CRY_C])
 ; ---------------------------
-; ¼¼ÄÜ: Õ½ºð End
+; æŠ€èƒ½: æˆ˜å¼ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ¿ñ±©ÕßÖ®Å­ Start
+; æŠ€èƒ½: ç‹‚æš´è€…ä¹‹æ€’ Start
 ; ---------------------------
-; ·ûÎÄ: ÑÇÈðÌØµÄ±¯Ãù 
-RUNE_BARBARIAN_WRATH_OF_THE_BERSERKER_B := New SkillRune("ÑÇÈðÌØµÄ±¯Ãù", "»ðÑæ", "b", "¼¤»î¿ñ±©ÕßÖ®Å­Ê±¿É¶Ô15ÂëÄÚµÄËùÓÐµÐÈËÔì³É3400%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ñ²¿ñ 
-RUNE_BARBARIAN_WRATH_OF_THE_BERSERKER_A := New SkillRune("ñ²¿ñ", "ÎïÀí", "a", "¼¤»îÊ±Ê¹ÄãµÄÉËº¦Ìá¸ß50%¡£")
-; ·ûÎÄ: ÍÀÂ¾ 
-RUNE_BARBARIAN_WRATH_OF_THE_BERSERKER_E := New SkillRune("ÍÀÂ¾", "ÎïÀí", "e", "¿ñ±©Ö®Å­¼¤»îÊ±£¬±©»÷ÓÐÒ»¶¨¼¸ÂÊÒý·¢ÏÊÑª±¬Õ¨£¬¶Ô15ÂëÄÚµÄµÐÈËÔì³É300%µÄÎäÆ÷ÉËº¦¡£")
-; ·ûÎÄ: ÌìÉñ²½ 
-RUNE_BARBARIAN_WRATH_OF_THE_BERSERKER_C := New SkillRune("ÌìÉñ²½", "ÎïÀí", "c", "Ê¹ÊÜµ½µÄËùÓÐÉËº¦½µµÍ50%¡£")
-; ·ûÎÄ: ÂÒÕ½Ö÷Ô× 
-RUNE_BARBARIAN_WRATH_OF_THE_BERSERKER_D := New SkillRune("ÂÒÕ½Ö÷Ô×", "ÎïÀí", "d", "¼¤»îÊ±£¬»ñµÃÏûºÄÅ­Æø»Ö¸´5364µãÉúÃüÖµÐ§¹û¡£")
-; ¼¼ÄÜ: ¿ñ±©ÕßÖ®Å­
-SKILL_ACTIVE_BARBARIAN_WRATH_OF_THE_BERSERKER := New ActiveSkill("¿ñ±©ÕßÖ®Å­", "ÎïÀí", "Å­»ð"
+; ç¬¦æ–‡: äºšç‘žç‰¹çš„æ‚²é¸£ 
+RUNE_BARBARIAN_WRATH_OF_THE_BERSERKER_B := New SkillRune("äºšç‘žç‰¹çš„æ‚²é¸£", "ç«ç„°", "b", "æ¿€æ´»ç‹‚æš´è€…ä¹‹æ€’æ—¶å¯å¯¹15ç å†…çš„æ‰€æœ‰æ•Œäººé€ æˆ3400%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: ç™«ç‹‚ 
+RUNE_BARBARIAN_WRATH_OF_THE_BERSERKER_A := New SkillRune("ç™«ç‹‚", "ç‰©ç†", "a", "æ¿€æ´»æ—¶ä½¿ä½ çš„ä¼¤å®³æé«˜50%ã€‚")
+; ç¬¦æ–‡: å± æˆ® 
+RUNE_BARBARIAN_WRATH_OF_THE_BERSERKER_E := New SkillRune("å± æˆ®", "ç‰©ç†", "e", "ç‹‚æš´ä¹‹æ€’æ¿€æ´»æ—¶ï¼Œæš´å‡»æœ‰ä¸€å®šå‡ çŽ‡å¼•å‘é²œè¡€çˆ†ç‚¸ï¼Œå¯¹15ç å†…çš„æ•Œäººé€ æˆ300%çš„æ­¦å™¨ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: å¤©ç¥žæ­¥ 
+RUNE_BARBARIAN_WRATH_OF_THE_BERSERKER_C := New SkillRune("å¤©ç¥žæ­¥", "ç‰©ç†", "c", "ä½¿å—åˆ°çš„æ‰€æœ‰ä¼¤å®³é™ä½Ž50%ã€‚")
+; ç¬¦æ–‡: ä¹±æˆ˜ä¸»å®° 
+RUNE_BARBARIAN_WRATH_OF_THE_BERSERKER_D := New SkillRune("ä¹±æˆ˜ä¸»å®°", "ç‰©ç†", "d", "æ¿€æ´»æ—¶ï¼ŒèŽ·å¾—æ¶ˆè€—æ€’æ°”æ¢å¤5364ç‚¹ç”Ÿå‘½å€¼æ•ˆæžœã€‚")
+; æŠ€èƒ½: ç‹‚æš´è€…ä¹‹æ€’
+SKILL_ACTIVE_BARBARIAN_WRATH_OF_THE_BERSERKER := New ActiveSkill("ç‹‚æš´è€…ä¹‹æ€’", "ç‰©ç†", "æ€’ç«"
 	, "images\skills\barbarian\active\barbarian_wrathoftheberserker_normal.png"
-	, "ÀäÈ´Ê±¼ä£º120Ãë\r\n½øÈë¿ñÅ­×´Ì¬£¬Ê¹Èô¸ÉÊôÐÔµÃµ½ÌáÉý£¬³ÖÐø20Ãë¡£"
+	, "å†·å´æ—¶é—´ï¼š120ç§’\r\nè¿›å…¥ç‹‚æ€’çŠ¶æ€ï¼Œä½¿è‹¥å¹²å±žæ€§å¾—åˆ°æå‡ï¼ŒæŒç»­20ç§’ã€‚"
 	, [RUNE_BARBARIAN_WRATH_OF_THE_BERSERKER_B, RUNE_BARBARIAN_WRATH_OF_THE_BERSERKER_A, RUNE_BARBARIAN_WRATH_OF_THE_BERSERKER_E, RUNE_BARBARIAN_WRATH_OF_THE_BERSERKER_C, RUNE_BARBARIAN_WRATH_OF_THE_BERSERKER_D])
 ; ---------------------------
-; ¼¼ÄÜ: ¿ñ±©ÕßÖ®Å­ End
+; æŠ€èƒ½: ç‹‚æš´è€…ä¹‹æ€’ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: É½±ÀµØÁÑ Start
+; æŠ€èƒ½: å±±å´©åœ°è£‚ Start
 ; ---------------------------
-; ·ûÎÄ: »ðÉ½±¬·¢ 
-RUNE_BARBARIAN_AVALANCHE_C := New SkillRune("»ðÉ½±¬·¢", "»ðÑæ", "c", "´ó¿éÈÛÑÒËæ»ú¹¥»÷¸½½üµÄµÐÈË£¬ÔÚ5ÃëÄÚÔì³É6600%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: »ðÉ½ÄàÁ÷ 
-RUNE_BARBARIAN_AVALANCHE_D := New SkillRune("»ðÉ½ÄàÁ÷", "ÎïÀí", "d", "Ã¿ÏûºÄ15µãÅ­Æø£¬ÀäÈ´Ê±¼ä¼´»áËõ¶Ì1Ãë¡£")
-; ·ûÎÄ: Ñ©¸´É½áÛ 
-RUNE_BARBARIAN_AVALANCHE_B := New SkillRune("Ñ©¸´É½áÛ", "±ùº®", "b", "Á½²àÍ¬Ê±Ëú·½£¬½«µÐÈË¼·µ½Ò»Æð£¬Ôì³É2800%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©£¬²¢Ê¹Æä¼õËÙ60%£¬³ÖÐø3Ãë¡£")
-; ·ûÎÄ: µØ¶¯É½Ò¡ 
-RUNE_BARBARIAN_AVALANCHE_E := New SkillRune("µØ¶¯É½Ò¡", "ÎïÀí", "e", "×î¶à¿ÉÀÛ»ý3²ãÉ½±ÀµØÁÑ¡£")
-; ·ûÎÄ: ±ù´¨±À½â 
-RUNE_BARBARIAN_AVALANCHE_A := New SkillRune("±ù´¨±À½â", "±ùº®", "a", "¾Þ´óµÄ±ù¿é»÷ÖÐµÐÈË£¬Ôì³É2400%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©£¬²¢½«Æä±ù¶³¡£")
-; ¼¼ÄÜ: É½±ÀµØÁÑ
-SKILL_ACTIVE_BARBARIAN_AVALANCHE := New ActiveSkill("É½±ÀµØÁÑ", "ÎïÀí", "Á¦Á¿"
+; ç¬¦æ–‡: ç«å±±çˆ†å‘ 
+RUNE_BARBARIAN_AVALANCHE_C := New SkillRune("ç«å±±çˆ†å‘", "ç«ç„°", "c", "å¤§å—ç†”å²©éšæœºæ”»å‡»é™„è¿‘çš„æ•Œäººï¼Œåœ¨5ç§’å†…é€ æˆ6600%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: ç«å±±æ³¥æµ 
+RUNE_BARBARIAN_AVALANCHE_D := New SkillRune("ç«å±±æ³¥æµ", "ç‰©ç†", "d", "æ¯æ¶ˆè€—15ç‚¹æ€’æ°”ï¼Œå†·å´æ—¶é—´å³ä¼šç¼©çŸ­1ç§’ã€‚")
+; ç¬¦æ–‡: é›ªå¤å±±å·… 
+RUNE_BARBARIAN_AVALANCHE_B := New SkillRune("é›ªå¤å±±å·…", "å†°å¯’", "b", "ä¸¤ä¾§åŒæ—¶å¡Œæ–¹ï¼Œå°†æ•ŒäººæŒ¤åˆ°ä¸€èµ·ï¼Œé€ æˆ2800%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ï¼Œå¹¶ä½¿å…¶å‡é€Ÿ60%ï¼ŒæŒç»­3ç§’ã€‚")
+; ç¬¦æ–‡: åœ°åŠ¨å±±æ‘‡ 
+RUNE_BARBARIAN_AVALANCHE_E := New SkillRune("åœ°åŠ¨å±±æ‘‡", "ç‰©ç†", "e", "æœ€å¤šå¯ç´¯ç§¯3å±‚å±±å´©åœ°è£‚ã€‚")
+; ç¬¦æ–‡: å†°å·å´©è§£ 
+RUNE_BARBARIAN_AVALANCHE_A := New SkillRune("å†°å·å´©è§£", "å†°å¯’", "a", "å·¨å¤§çš„å†°å—å‡»ä¸­æ•Œäººï¼Œé€ æˆ2400%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ï¼Œå¹¶å°†å…¶å†°å†»ã€‚")
+; æŠ€èƒ½: å±±å´©åœ°è£‚
+SKILL_ACTIVE_BARBARIAN_AVALANCHE := New ActiveSkill("å±±å´©åœ°è£‚", "ç‰©ç†", "åŠ›é‡"
 	, "images\skills\barbarian\active\barbarian_avalanche_normal.png"
-	, "ÀäÈ´Ê±¼ä£º30Ãë\r\nÔÚÖ¸¶¨ÇøÓò½µÏÂÆÌÌì¸ÇµØµÄ·ÉÑÒËéÊ¯£¬¶Ô½Ó´¥µ½µÄËùÓÐµÐÈËÔì³É2400%µÄÎäÆ÷ÉËº¦¡£"
+	, "å†·å´æ—¶é—´ï¼š30ç§’\r\nåœ¨æŒ‡å®šåŒºåŸŸé™ä¸‹é“ºå¤©ç›–åœ°çš„é£žå²©ç¢ŽçŸ³ï¼Œå¯¹æŽ¥è§¦åˆ°çš„æ‰€æœ‰æ•Œäººé€ æˆ2400%çš„æ­¦å™¨ä¼¤å®³ã€‚"
 	, [RUNE_BARBARIAN_AVALANCHE_C, RUNE_BARBARIAN_AVALANCHE_D, RUNE_BARBARIAN_AVALANCHE_B, RUNE_BARBARIAN_AVALANCHE_E, RUNE_BARBARIAN_AVALANCHE_A])
 ; ---------------------------
-; ¼¼ÄÜ: É½±ÀµØÁÑ End
+; æŠ€èƒ½: å±±å´©åœ°è£‚ End
 ; ---------------------------
 
 ; ===========================
-; Ò°ÂùÈË End
+; é‡Žè›®äºº End
 ; ===========================
 
 
 
 ; ===========================
-; Â}½ÌÜŠ Start
+; è–æ•™è» Start
 ; ===========================
 ; ---------------------------
-; ¼¼ÄÜ: ÖÆ²Ã Start
+; æŠ€èƒ½: åˆ¶è£ Start
 ; ---------------------------
-; ·ûÎÄ: Å­ºð 
-RUNE_CRUSADER_PUNISH_D := New SkillRune("Å­ºð", "»ðÑæ", "d", "ÔÚÓùÒâ¼á¶¨ÆÚ¼ä¸ñµ²Ê±£¬Äã»á±¬·¢Å­»ð£¬¶Ô15ÂëÄÚµÄµÐÈËÔì³É75%ÎäÆ÷ÉËº¦ÖµµÄ»ðÑæÉËº¦¡£")
-; ·ûÎÄ: ËÙ¹¥ 
-RUNE_CRUSADER_PUNISH_B := New SkillRune("ËÙ¹¥", "ÎïÀí", "b", "ÔÚÓùÒâ¼á¶¨ÆÚ¼ä¸ñµ²Ê±£¬ÄãµÄ¹¥»÷ËÙ¶ÈÌá¸ß15%£¬³ÖÐø3Ãë¡£")
-; ·ûÎÄ: »Ø¸´ 
-RUNE_CRUSADER_PUNISH_C := New SkillRune("»Ø¸´", "ÎïÀí", "c", "ÔÚÓùÒâ¼á¶¨ÆÚ¼ä¸ñµ²Ê±£¬ÄãµÄÉúÃüÖµ»Ö¸´ÂÊÌá¸ß12874µã£¬³ÖÐø2Ãë¡£")
-; ·ûÎÄ: ±¨¸´ 
-RUNE_CRUSADER_PUNISH_A := New SkillRune("±¨¸´", "ÉñÊ¥", "a", "ÔÚÓùÒâ¼á¶¨ÆÚ¼ä¸ñµ²Ê±£¬Äã»á¶Ô¹¥»÷ÕßÔì³É140%ÎäÆ÷ÉËº¦ÖµµÄÉñÊ¥ÉËº¦¡£")
-; ·ûÎÄ: Å­»÷ 
-RUNE_CRUSADER_PUNISH_E := New SkillRune("Å­»÷", "µç»÷", "e", "ÔÚÓùÒâ¼á¶¨ÆÚ¼ä¸ñµ²Ê±£¬ÄãÏÂ´Î¹¥»÷µÄ±¬»÷»úÂÊ»áÌá¸ß15%¡£")
-; ¼¼ÄÜ: ÖÆ²Ã
-SKILL_ACTIVE_CRUSADER_PUNISH := New ActiveSkill("ÖÆ²Ã", "ÎïÀí", "Ö÷Òª¼¼ÄÜ"
+; ç¬¦æ–‡: æ€’å¼ 
+RUNE_CRUSADER_PUNISH_D := New SkillRune("æ€’å¼", "ç«ç„°", "d", "åœ¨å¾¡æ„åšå®šæœŸé—´æ ¼æŒ¡æ—¶ï¼Œä½ ä¼šçˆ†å‘æ€’ç«ï¼Œå¯¹15ç å†…çš„æ•Œäººé€ æˆ75%æ­¦å™¨ä¼¤å®³å€¼çš„ç«ç„°ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: é€Ÿæ”» 
+RUNE_CRUSADER_PUNISH_B := New SkillRune("é€Ÿæ”»", "ç‰©ç†", "b", "åœ¨å¾¡æ„åšå®šæœŸé—´æ ¼æŒ¡æ—¶ï¼Œä½ çš„æ”»å‡»é€Ÿåº¦æé«˜15%ï¼ŒæŒç»­3ç§’ã€‚")
+; ç¬¦æ–‡: å›žå¤ 
+RUNE_CRUSADER_PUNISH_C := New SkillRune("å›žå¤", "ç‰©ç†", "c", "åœ¨å¾¡æ„åšå®šæœŸé—´æ ¼æŒ¡æ—¶ï¼Œä½ çš„ç”Ÿå‘½å€¼æ¢å¤çŽ‡æé«˜12874ç‚¹ï¼ŒæŒç»­2ç§’ã€‚")
+; ç¬¦æ–‡: æŠ¥å¤ 
+RUNE_CRUSADER_PUNISH_A := New SkillRune("æŠ¥å¤", "ç¥žåœ£", "a", "åœ¨å¾¡æ„åšå®šæœŸé—´æ ¼æŒ¡æ—¶ï¼Œä½ ä¼šå¯¹æ”»å‡»è€…é€ æˆ140%æ­¦å™¨ä¼¤å®³å€¼çš„ç¥žåœ£ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æ€’å‡» 
+RUNE_CRUSADER_PUNISH_E := New SkillRune("æ€’å‡»", "ç”µå‡»", "e", "åœ¨å¾¡æ„åšå®šæœŸé—´æ ¼æŒ¡æ—¶ï¼Œä½ ä¸‹æ¬¡æ”»å‡»çš„çˆ†å‡»æœºçŽ‡ä¼šæé«˜15%ã€‚")
+; æŠ€èƒ½: åˆ¶è£
+SKILL_ACTIVE_CRUSADER_PUNISH := New ActiveSkill("åˆ¶è£", "ç‰©ç†", "ä¸»è¦æŠ€èƒ½"
 	, "images\skills\crusader\active\crusader_punish_normal.png"
-	, "Ã¿´Î¹¥»÷²úÉú£º5µãÊ¥Å­\r\nÃÍ»÷µÐÈË£¬Ôì³É335%ÎäÆ÷ÉËº¦£¬Í¬Ê±»ñµÃÓùÒâ¼á¶¨£¬Ê¹¸ñµ²»úÂÊÌá¸ß15%£¬³ÖÐø5Ãë¡£"
+	, "æ¯æ¬¡æ”»å‡»äº§ç”Ÿï¼š5ç‚¹åœ£æ€’\r\nçŒ›å‡»æ•Œäººï¼Œé€ æˆ335%æ­¦å™¨ä¼¤å®³ï¼ŒåŒæ—¶èŽ·å¾—å¾¡æ„åšå®šï¼Œä½¿æ ¼æŒ¡æœºçŽ‡æé«˜15%ï¼ŒæŒç»­5ç§’ã€‚"
 	, [RUNE_CRUSADER_PUNISH_D, RUNE_CRUSADER_PUNISH_B, RUNE_CRUSADER_PUNISH_C, RUNE_CRUSADER_PUNISH_A, RUNE_CRUSADER_PUNISH_E])
 ; ---------------------------
-; ¼¼ÄÜ: ÖÆ²Ã End
+; æŠ€èƒ½: åˆ¶è£ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ¶ÜÅÆÃÍ»÷ Start
+; æŠ€èƒ½: ç›¾ç‰ŒçŒ›å‡» Start
 ; ---------------------------
-; ·ûÎÄ: Ëé¶ÜÉ¢Éä 
-RUNE_CRUSADER_SHIELD_BASH_B := New SkillRune("Ëé¶ÜÉ¢Éä", "ÉñÊ¥", "b", "¶ÜÅÆÁÑ³ÉËéÆ¬ÏòÍâÉ¢Éä£¬¶Ô¸ü¶àµÐÈËÔì³É740%ÔÙ¼ÓÉÏÏàµ±ÓÚ¶ÜÅÆ¸ñµ²»úÂÊ335%µÄÎäÆ÷ÉËº¦¡£")
-; ·ûÎÄ: ÖðÒ»»÷ÆÆ 
-RUNE_CRUSADER_SHIELD_BASH_E := New SkillRune("ÖðÒ»»÷ÆÆ", "µç»÷", "e", "Ê¹Ä¿±ê»èÃÔ1.5Ãë£¬Í¬Ê±»÷ÍËÆäËûµÐÈË¡£")
-; ·ûÎÄ: Ê®×Ö·É¶Ü 
-RUNE_CRUSADER_SHIELD_BASH_C := New SkillRune("Ê®×Ö·É¶Ü", "ÎïÀí", "c", "³¯Ê®×Ö·½Î»·¢³ö¶îÍâµÄ·É¶Ü£¬¶Ô»÷ÖÐµÄµÐÈËÔì³É155%ÔÙ¼ÓÉÏÏàµ±ÓÚ¶ÜÅÆ¸ñµ²»úÂÊ100%µÄÎäÆ÷ÉËº¦¡£")
-; ·ûÎÄ: ±¬ÁÑ¶Ü»÷ 
-RUNE_CRUSADER_SHIELD_BASH_A := New SkillRune("±¬ÁÑ¶Ü»÷", "»ðÑæ", "a", "Ìá¸ß¶ÜÅÆÃÍ»÷µÄÉËº¦£¬Ïàµ±ÓÚ660%µÄÎäÆ÷ÉËº¦Öµ¡£")
-; ·ûÎÄ: ÖØ¶Üº³»÷ 
-RUNE_CRUSADER_SHIELD_BASH_D := New SkillRune("ÖØ¶Üº³»÷", "ÎïÀí", "d", "¶ÜÅÆÃÍ»÷ÏÖÔÚ¿ÉÔì³É1320%ÔÙ¼ÓÉÏÏàµ±ÓÚ¶ÜÅÆ¸ñµ²»úÂÊ500%µÄÎäÆ÷ÉËº¦¡£¹¥»÷·¶Î§ËõÐ¡Îª8Âë¡£")
-; ¼¼ÄÜ: ¶ÜÅÆÃÍ»÷
-SKILL_ACTIVE_CRUSADER_SHIELD_BASH := New ActiveSkill("¶ÜÅÆÃÍ»÷", "ÉñÊ¥", "´ÎÒª¼¼ÄÜ"
+; ç¬¦æ–‡: ç¢Žç›¾æ•£å°„ 
+RUNE_CRUSADER_SHIELD_BASH_B := New SkillRune("ç¢Žç›¾æ•£å°„", "ç¥žåœ£", "b", "ç›¾ç‰Œè£‚æˆç¢Žç‰‡å‘å¤–æ•£å°„ï¼Œå¯¹æ›´å¤šæ•Œäººé€ æˆ740%å†åŠ ä¸Šç›¸å½“äºŽç›¾ç‰Œæ ¼æŒ¡æœºçŽ‡335%çš„æ­¦å™¨ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: é€ä¸€å‡»ç ´ 
+RUNE_CRUSADER_SHIELD_BASH_E := New SkillRune("é€ä¸€å‡»ç ´", "ç”µå‡»", "e", "ä½¿ç›®æ ‡æ˜è¿·1.5ç§’ï¼ŒåŒæ—¶å‡»é€€å…¶ä»–æ•Œäººã€‚")
+; ç¬¦æ–‡: åå­—é£žç›¾ 
+RUNE_CRUSADER_SHIELD_BASH_C := New SkillRune("åå­—é£žç›¾", "ç‰©ç†", "c", "æœåå­—æ–¹ä½å‘å‡ºé¢å¤–çš„é£žç›¾ï¼Œå¯¹å‡»ä¸­çš„æ•Œäººé€ æˆ155%å†åŠ ä¸Šç›¸å½“äºŽç›¾ç‰Œæ ¼æŒ¡æœºçŽ‡100%çš„æ­¦å™¨ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: çˆ†è£‚ç›¾å‡» 
+RUNE_CRUSADER_SHIELD_BASH_A := New SkillRune("çˆ†è£‚ç›¾å‡»", "ç«ç„°", "a", "æé«˜ç›¾ç‰ŒçŒ›å‡»çš„ä¼¤å®³ï¼Œç›¸å½“äºŽ660%çš„æ­¦å™¨ä¼¤å®³å€¼ã€‚")
+; ç¬¦æ–‡: é‡ç›¾æ’¼å‡» 
+RUNE_CRUSADER_SHIELD_BASH_D := New SkillRune("é‡ç›¾æ’¼å‡»", "ç‰©ç†", "d", "ç›¾ç‰ŒçŒ›å‡»çŽ°åœ¨å¯é€ æˆ1320%å†åŠ ä¸Šç›¸å½“äºŽç›¾ç‰Œæ ¼æŒ¡æœºçŽ‡500%çš„æ­¦å™¨ä¼¤å®³ã€‚æ”»å‡»èŒƒå›´ç¼©å°ä¸º8ç ã€‚")
+; æŠ€èƒ½: ç›¾ç‰ŒçŒ›å‡»
+SKILL_ACTIVE_CRUSADER_SHIELD_BASH := New ActiveSkill("ç›¾ç‰ŒçŒ›å‡»", "ç¥žåœ£", "æ¬¡è¦æŠ€èƒ½"
 	, "images\skills\crusader\active\crusader_shieldbash_normal.png"
-	, "ÏûºÄ£º30µãÊ¥Å­\r\n³åÏòµÐÈË£¬ÓÃ¶ÜÅÆÃÍ»÷Ä¿±êºÍÖÜÎ§ËùÓÐµÐÈË£¬Ôì³É700%ÔÙ¼ÓÉÏÏàµ±ÓÚ¶ÜÅÆ¸ñµ²»úÂÊ300%ÎäÆ÷ÉËº¦ÖµµÄÉñÊ¥ÉËº¦¡£"
+	, "æ¶ˆè€—ï¼š30ç‚¹åœ£æ€’\r\nå†²å‘æ•Œäººï¼Œç”¨ç›¾ç‰ŒçŒ›å‡»ç›®æ ‡å’Œå‘¨å›´æ‰€æœ‰æ•Œäººï¼Œé€ æˆ700%å†åŠ ä¸Šç›¸å½“äºŽç›¾ç‰Œæ ¼æŒ¡æœºçŽ‡300%æ­¦å™¨ä¼¤å®³å€¼çš„ç¥žåœ£ä¼¤å®³ã€‚"
 	, [RUNE_CRUSADER_SHIELD_BASH_B, RUNE_CRUSADER_SHIELD_BASH_E, RUNE_CRUSADER_SHIELD_BASH_C, RUNE_CRUSADER_SHIELD_BASH_A, RUNE_CRUSADER_SHIELD_BASH_D])
 ; ---------------------------
-; ¼¼ÄÜ: ¶ÜÅÆÃÍ»÷ End
+; æŠ€èƒ½: ç›¾ç‰ŒçŒ›å‡» End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÁÒ¿ÕÕ¶ Start
+; æŠ€èƒ½: çƒˆç©ºæ–© Start
 ; ---------------------------
-; ·ûÎÄ: ÉÁµçÕ¶ 
-RUNE_CRUSADER_SLASH_B := New SkillRune("ÉÁµçÕ¶", "µç»÷", "b", "ÒÔ´¿´âÉÁµç½øÐÐ¿³»÷£¬ÓÐ25%»úÂÊÊ¹µÐÈË»èÃÔ2Ãë¡£")
-; ·ûÎÄ: ºáÅüÕ¶ 
-RUNE_CRUSADER_SLASH_D := New SkillRune("ºáÅüÕ¶", "»ðÑæ", "d", "À©´ó¹¥»÷·¶Î§£¬Ìá¸ß¿É»÷ÖÐµÄµÐÈËÊýÁ¿¡£")
-; ·ûÎÄ: ±¬¿ÕÕ¶ 
-RUNE_CRUSADER_SLASH_C := New SkillRune("±¬¿ÕÕ¶", "»ðÑæ", "c", "ÁÒ¿ÕÕ¶µÄ±¬»÷»úÂÊÌá¸ß20%¡£")
-; ·ûÎÄ: ¿ñÈÈ 
-RUNE_CRUSADER_SLASH_A := New SkillRune("¿ñÈÈ", "ÉñÊ¥", "a", "Ã¿»÷ÖÐÒ»¸öµÐÈË£¬¿ÉÊ¹ÄãµÄ¹¥»÷ËÙ¶ÈÌá¸ß1%£¬³ÖÐø3Ãë¡£´ËÐ§¹û×î¶à¿É¶Ñµþ10´Î¡£")
-; ·ûÎÄ: ¹¥ÊØ¼æ±¸ 
-RUNE_CRUSADER_SLASH_E := New SkillRune("¹¥ÊØ¼æ±¸", "»ðÑæ", "e", "Ã¿»÷ÖÐÒ»¸öµÐÈË£¬¿ÉÊ¹ÄãÌá¸ß5%»¤¼×Öµ£¬×î¶à¿É¶Ñµþ5´Î¡£")
-; ¼¼ÄÜ: ÁÒ¿ÕÕ¶
-SKILL_ACTIVE_CRUSADER_SLASH := New ActiveSkill("ÁÒ¿ÕÕ¶", "»ðÑæ", "Ö÷Òª¼¼ÄÜ"
+; ç¬¦æ–‡: é—ªç”µæ–© 
+RUNE_CRUSADER_SLASH_B := New SkillRune("é—ªç”µæ–©", "ç”µå‡»", "b", "ä»¥çº¯ç²¹é—ªç”µè¿›è¡Œç å‡»ï¼Œæœ‰25%æœºçŽ‡ä½¿æ•Œäººæ˜è¿·2ç§’ã€‚")
+; ç¬¦æ–‡: æ¨ªåŠˆæ–© 
+RUNE_CRUSADER_SLASH_D := New SkillRune("æ¨ªåŠˆæ–©", "ç«ç„°", "d", "æ‰©å¤§æ”»å‡»èŒƒå›´ï¼Œæé«˜å¯å‡»ä¸­çš„æ•Œäººæ•°é‡ã€‚")
+; ç¬¦æ–‡: çˆ†ç©ºæ–© 
+RUNE_CRUSADER_SLASH_C := New SkillRune("çˆ†ç©ºæ–©", "ç«ç„°", "c", "çƒˆç©ºæ–©çš„çˆ†å‡»æœºçŽ‡æé«˜20%ã€‚")
+; ç¬¦æ–‡: ç‹‚çƒ­ 
+RUNE_CRUSADER_SLASH_A := New SkillRune("ç‹‚çƒ­", "ç¥žåœ£", "a", "æ¯å‡»ä¸­ä¸€ä¸ªæ•Œäººï¼Œå¯ä½¿ä½ çš„æ”»å‡»é€Ÿåº¦æé«˜1%ï¼ŒæŒç»­3ç§’ã€‚æ­¤æ•ˆæžœæœ€å¤šå¯å †å 10æ¬¡ã€‚")
+; ç¬¦æ–‡: æ”»å®ˆå…¼å¤‡ 
+RUNE_CRUSADER_SLASH_E := New SkillRune("æ”»å®ˆå…¼å¤‡", "ç«ç„°", "e", "æ¯å‡»ä¸­ä¸€ä¸ªæ•Œäººï¼Œå¯ä½¿ä½ æé«˜5%æŠ¤ç”²å€¼ï¼Œæœ€å¤šå¯å †å 5æ¬¡ã€‚")
+; æŠ€èƒ½: çƒˆç©ºæ–©
+SKILL_ACTIVE_CRUSADER_SLASH := New ActiveSkill("çƒˆç©ºæ–©", "ç«ç„°", "ä¸»è¦æŠ€èƒ½"
 	, "images\skills\crusader\active\crusader_slash_normal.png"
-	, "Ã¿´Î¹¥»÷²úÉú£º5µãÊ¥Å­\r\nÊ¹ÃæÇ°µÄ¿ÕÆøÈ¼ÉÕÆðÀ´£¬Ôì³É230%ÎäÆ÷ÉËº¦ÖµµÄ»ðÑæÉËº¦¡£"
+	, "æ¯æ¬¡æ”»å‡»äº§ç”Ÿï¼š5ç‚¹åœ£æ€’\r\nä½¿é¢å‰çš„ç©ºæ°”ç‡ƒçƒ§èµ·æ¥ï¼Œé€ æˆ230%æ­¦å™¨ä¼¤å®³å€¼çš„ç«ç„°ä¼¤å®³ã€‚"
 	, [RUNE_CRUSADER_SLASH_B, RUNE_CRUSADER_SLASH_D, RUNE_CRUSADER_SLASH_C, RUNE_CRUSADER_SLASH_A, RUNE_CRUSADER_SLASH_E])
 ; ---------------------------
-; ¼¼ÄÜ: ÁÒ¿ÕÕ¶ End
+; æŠ€èƒ½: çƒˆç©ºæ–© End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Ê¥¶ÜìÅ¹â Start
+; æŠ€èƒ½: åœ£ç›¾ç‚«å…‰ Start
 ; ---------------------------
-; ·ûÎÄ: Ê¥Ö®²Ã¾ö 
-RUNE_CRUSADER_SHIELD_GLARE_A := New SkillRune("Ê¥Ö®²Ã¾ö", "ÉñÊ¥", "a", "Ê¹Ä¿Ã¤µÄµÐÈËËùÊÜµÄÉËº¦Ìá¸ß20%£¬³ÖÐø4Ãë¡£")
-; ·ûÎÄ: ¶¯Ò¡ÐÄÖ¾ 
-RUNE_CRUSADER_SHIELD_GLARE_B := New SkillRune("¶¯Ò¡ÐÄÖ¾", "ÉñÊ¥", "b", "ìÅ¹â·¶Î§ÄÚµÄµÐÈËÓÐ50%»úÂÊÊÜµ½÷È»óÐ§¹ûµÄÓ°Ïì£¬ÎªÄã¶øÕ½8Ãë¡£")
-; ·ûÎÄ: ¿ñÈÈìÅ¹â 
-RUNE_CRUSADER_SHIELD_GLARE_D := New SkillRune("¿ñÈÈìÅ¹â", "ÉñÊ¥", "d", "Ã¿Ê¹Ò»ÃûµÐÈËÄ¿Ã¤£¬¾ÍÄÜ»ñµÃ9µãÊ¥Å­¡£")
-; ·ûÎÄ: Ê¥¶Ü±¬Ñ× 
-RUNE_CRUSADER_SHIELD_GLARE_C := New SkillRune("Ê¥¶Ü±¬Ñ×", "ÎïÀí", "c", "ÉúÃüÖµµÍÓÚ25%µÄµÐÈËÔÚÊÜµ½Ä¿Ã¤Ð§¹ûÓ°ÏìÊ±£¬ÓÐ50%»úÂÊ±¬Õ¨£¬¶Ô8ÂëÄÚµÄµÐÈËÔì³É60%ÎäÆ÷ÉËº¦¡£")
-; ·ûÎÄ: ÖÆµÐìÅ¹â 
-RUNE_CRUSADER_SHIELD_GLARE_E := New SkillRune("ÖÆµÐìÅ¹â", "ÉñÊ¥", "e", "Ê¹ìÅ¹â»÷ÖÐµÄµÐÈË½µµÍ80%ÒÆ¶¯ËÙ¶È£¬³ÖÐø6Ãë¡£")
-; ¼¼ÄÜ: Ê¥¶ÜìÅ¹â
-SKILL_ACTIVE_CRUSADER_SHIELD_GLARE := New ActiveSkill("Ê¥¶ÜìÅ¹â", "ÉñÊ¥", "·ÀÓù"
+; ç¬¦æ–‡: åœ£ä¹‹è£å†³ 
+RUNE_CRUSADER_SHIELD_GLARE_A := New SkillRune("åœ£ä¹‹è£å†³", "ç¥žåœ£", "a", "ä½¿ç›®ç›²çš„æ•Œäººæ‰€å—çš„ä¼¤å®³æé«˜20%ï¼ŒæŒç»­4ç§’ã€‚")
+; ç¬¦æ–‡: åŠ¨æ‘‡å¿ƒå¿— 
+RUNE_CRUSADER_SHIELD_GLARE_B := New SkillRune("åŠ¨æ‘‡å¿ƒå¿—", "ç¥žåœ£", "b", "ç‚«å…‰èŒƒå›´å†…çš„æ•Œäººæœ‰50%æœºçŽ‡å—åˆ°é­…æƒ‘æ•ˆæžœçš„å½±å“ï¼Œä¸ºä½ è€Œæˆ˜8ç§’ã€‚")
+; ç¬¦æ–‡: ç‹‚çƒ­ç‚«å…‰ 
+RUNE_CRUSADER_SHIELD_GLARE_D := New SkillRune("ç‹‚çƒ­ç‚«å…‰", "ç¥žåœ£", "d", "æ¯ä½¿ä¸€åæ•Œäººç›®ç›²ï¼Œå°±èƒ½èŽ·å¾—9ç‚¹åœ£æ€’ã€‚")
+; ç¬¦æ–‡: åœ£ç›¾çˆ†ç‚Ž 
+RUNE_CRUSADER_SHIELD_GLARE_C := New SkillRune("åœ£ç›¾çˆ†ç‚Ž", "ç‰©ç†", "c", "ç”Ÿå‘½å€¼ä½ŽäºŽ25%çš„æ•Œäººåœ¨å—åˆ°ç›®ç›²æ•ˆæžœå½±å“æ—¶ï¼Œæœ‰50%æœºçŽ‡çˆ†ç‚¸ï¼Œå¯¹8ç å†…çš„æ•Œäººé€ æˆ60%æ­¦å™¨ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: åˆ¶æ•Œç‚«å…‰ 
+RUNE_CRUSADER_SHIELD_GLARE_E := New SkillRune("åˆ¶æ•Œç‚«å…‰", "ç¥žåœ£", "e", "ä½¿ç‚«å…‰å‡»ä¸­çš„æ•Œäººé™ä½Ž80%ç§»åŠ¨é€Ÿåº¦ï¼ŒæŒç»­6ç§’ã€‚")
+; æŠ€èƒ½: åœ£ç›¾ç‚«å…‰
+SKILL_ACTIVE_CRUSADER_SHIELD_GLARE := New ActiveSkill("åœ£ç›¾ç‚«å…‰", "ç¥žåœ£", "é˜²å¾¡"
 	, "images\skills\crusader\active\crusader_glare_normal.png"
-	, "ÀäÈ´Ê±¼ä£º12Ãë\r\n´Ó¶ÜÅÆ·¢³öÒ»µÀÇ¿¹â£¬Ê¹ÄãÇ°·½×îÔ¶30ÂëÄÚµÄËùÓÐµÐÈËÄ¿Ã¤£¬³ÖÐø4Ãë¡£"
+	, "å†·å´æ—¶é—´ï¼š12ç§’\r\nä»Žç›¾ç‰Œå‘å‡ºä¸€é“å¼ºå…‰ï¼Œä½¿ä½ å‰æ–¹æœ€è¿œ30ç å†…çš„æ‰€æœ‰æ•Œäººç›®ç›²ï¼ŒæŒç»­4ç§’ã€‚"
 	, [RUNE_CRUSADER_SHIELD_GLARE_A, RUNE_CRUSADER_SHIELD_GLARE_B, RUNE_CRUSADER_SHIELD_GLARE_D, RUNE_CRUSADER_SHIELD_GLARE_C, RUNE_CRUSADER_SHIELD_GLARE_E])
 ; ---------------------------
-; ¼¼ÄÜ: Ê¥¶ÜìÅ¹â End
+; æŠ€èƒ½: åœ£ç›¾ç‚«å…‰ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Ê¥¹âÉ¨»÷ Start
+; æŠ€èƒ½: åœ£å…‰æ‰«å‡» Start
 ; ---------------------------
-; ·ûÎÄ: ÁÒ»ðÉ¨»÷ 
-RUNE_CRUSADER_SWEEP_ATTACK_B := New SkillRune("ÁÒ»ðÉ¨»÷", "»ðÑæ", "b", "±»»÷ÖÐµÄµÐÈË»á×Å»ð£¬ÔÚ2ÃëÄÚÊÜµ½120%ÎäÆ÷ÉËº¦¡£")
-; ·ûÎÄ: °í×ã¹¥»÷ 
-RUNE_CRUSADER_SWEEP_ATTACK_D := New SkillRune("°í×ã¹¥»÷", "µç»÷", "d", "±»É¨ÖÐµÄµÐÈËÓÐ50%»úÂÊ±»°íµ¹£¬²¢»èÃÔ2Ãë¡£")
-; ·ûÎÄ: ÉñÊ¥Õð»÷ 
-RUNE_CRUSADER_SWEEP_ATTACK_C := New SkillRune("ÉñÊ¥Õð»÷", "ÎïÀí", "c", "Ã¿»÷ÖÐÒ»¸öµÐÈË£¬»áÊ¹Äã»Ö¸´5364µãÉúÃüÖµ¡£")
-; ·ûÎÄ: ¾ÛµÐÉ¨»÷ 
-RUNE_CRUSADER_SWEEP_ATTACK_A := New SkillRune("¾ÛµÐÉ¨»÷", "ÉñÊ¥", "a", "ºáÉ¨¹¥»÷·¶Î§ÄÚµÄËùÓÐµÐÈË¶¼»á±»À­ÏòÄã¡£Ê¥¹âÉ¨»÷µÄÉËº¦ÀàÐÍ×ªÎªÉñÊ¥ÉËº¦¡£")
-; ·ûÎÄ: ¼¤ÀøÉ¨»÷ 
-RUNE_CRUSADER_SWEEP_ATTACK_E := New SkillRune("¼¤ÀøÉ¨»÷", "ÉñÊ¥", "e", "Ê¥¹âÉ¨»÷¿ÉÊ¹ÄãµÄ»¤¼×ÖµÌá¸ß20%£¬³ÖÐø3Ãë¡£")
-; ¼¼ÄÜ: Ê¥¹âÉ¨»÷
-SKILL_ACTIVE_CRUSADER_SWEEP_ATTACK := New ActiveSkill("Ê¥¹âÉ¨»÷", "ÎïÀí", "´ÎÒª¼¼ÄÜ"
+; ç¬¦æ–‡: çƒˆç«æ‰«å‡» 
+RUNE_CRUSADER_SWEEP_ATTACK_B := New SkillRune("çƒˆç«æ‰«å‡»", "ç«ç„°", "b", "è¢«å‡»ä¸­çš„æ•Œäººä¼šç€ç«ï¼Œåœ¨2ç§’å†…å—åˆ°120%æ­¦å™¨ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ç»Šè¶³æ”»å‡» 
+RUNE_CRUSADER_SWEEP_ATTACK_D := New SkillRune("ç»Šè¶³æ”»å‡»", "ç”µå‡»", "d", "è¢«æ‰«ä¸­çš„æ•Œäººæœ‰50%æœºçŽ‡è¢«ç»Šå€’ï¼Œå¹¶æ˜è¿·2ç§’ã€‚")
+; ç¬¦æ–‡: ç¥žåœ£éœ‡å‡» 
+RUNE_CRUSADER_SWEEP_ATTACK_C := New SkillRune("ç¥žåœ£éœ‡å‡»", "ç‰©ç†", "c", "æ¯å‡»ä¸­ä¸€ä¸ªæ•Œäººï¼Œä¼šä½¿ä½ æ¢å¤5364ç‚¹ç”Ÿå‘½å€¼ã€‚")
+; ç¬¦æ–‡: èšæ•Œæ‰«å‡» 
+RUNE_CRUSADER_SWEEP_ATTACK_A := New SkillRune("èšæ•Œæ‰«å‡»", "ç¥žåœ£", "a", "æ¨ªæ‰«æ”»å‡»èŒƒå›´å†…çš„æ‰€æœ‰æ•Œäººéƒ½ä¼šè¢«æ‹‰å‘ä½ ã€‚åœ£å…‰æ‰«å‡»çš„ä¼¤å®³ç±»åž‹è½¬ä¸ºç¥žåœ£ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æ¿€åŠ±æ‰«å‡» 
+RUNE_CRUSADER_SWEEP_ATTACK_E := New SkillRune("æ¿€åŠ±æ‰«å‡»", "ç¥žåœ£", "e", "åœ£å…‰æ‰«å‡»å¯ä½¿ä½ çš„æŠ¤ç”²å€¼æé«˜20%ï¼ŒæŒç»­3ç§’ã€‚")
+; æŠ€èƒ½: åœ£å…‰æ‰«å‡»
+SKILL_ACTIVE_CRUSADER_SWEEP_ATTACK := New ActiveSkill("åœ£å…‰æ‰«å‡»", "ç‰©ç†", "æ¬¡è¦æŠ€èƒ½"
 	, "images\skills\crusader\active\crusader_flail_normal.png"
-	, "ÏûºÄ£º20µãÊ¥Å­\r\n»ÓÎèÉñÃØµÄÁ¬¼Ï£¬¹¥»÷ÄãÇ°·½×îÔ¶18ÂëÄÚµÄµÐÈË£¬Ôì³É480%ÎäÆ÷ÉËº¦¡£"
+	, "æ¶ˆè€—ï¼š20ç‚¹åœ£æ€’\r\næŒ¥èˆžç¥žç§˜çš„è¿žæž·ï¼Œæ”»å‡»ä½ å‰æ–¹æœ€è¿œ18ç å†…çš„æ•Œäººï¼Œé€ æˆ480%æ­¦å™¨ä¼¤å®³ã€‚"
 	, [RUNE_CRUSADER_SWEEP_ATTACK_B, RUNE_CRUSADER_SWEEP_ATTACK_D, RUNE_CRUSADER_SWEEP_ATTACK_C, RUNE_CRUSADER_SWEEP_ATTACK_A, RUNE_CRUSADER_SWEEP_ATTACK_E])
 ; ---------------------------
-; ¼¼ÄÜ: Ê¥¹âÉ¨»÷ End
+; æŠ€èƒ½: åœ£å…‰æ‰«å‡» End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ¸ÖÌúÖ®¼× Start
+; æŠ€èƒ½: é’¢é“ä¹‹ç”² Start
 ; ---------------------------
-; ·ûÎÄ: ·´ÉËÖ®¼× 
-RUNE_CRUSADER_IRON_SKIN_D := New SkillRune("·´ÉËÖ®¼×", "ÎïÀí", "d", "ÔÚÐ§¹û³ÖÐøÆÚ¼äÄÚ£¬ÄãµÄ¾£¼¬ÉËº¦Ìá¸ß300%¡£")
-; ·ûÎÄ: ¾«¸ÖÖ®¼× 
-RUNE_CRUSADER_IRON_SKIN_B := New SkillRune("¾«¸ÖÖ®¼×", "ÎïÀí", "b", "³ÖÐøÊ±¼äÑÓ³¤ÖÁ7Ãë¡£")
-; ·ûÎÄ: ±¬ÁÑÖ®¼× 
-RUNE_CRUSADER_IRON_SKIN_C := New SkillRune("±¬ÁÑÖ®¼×", "ÎïÀí", "c", "¸ÖÌúÖ®¼×Ð§¹û½áÊøÊ±£¬Íâ²ãµÄÌú¼×»á±¬Õ¨£¬¶Ô12ÂëÄÚµÄµÐÈËÔì³É1400%ÎäÆ÷ÉËº¦¡£")
-; ·ûÎÄ: µçÄÜÖ®¼× 
-RUNE_CRUSADER_IRON_SKIN_A := New SkillRune("µçÄÜÖ®¼×", "µç»÷", "a", "ÄãµÄÆ¤·ô»¯Îª´øµçµÄ¸ÖÌú£¬ÓÐ20%µÄ»úÂÊÊ¹10ÂëÄÚµÄµÐÈË»èÃÔ2Ãë¡£")
-; ·ûÎÄ: ¼²ÐÐÖ®¼× 
-RUNE_CRUSADER_IRON_SKIN_E := New SkillRune("¼²ÐÐÖ®¼×", "µç»÷", "e", "Èç¹ûÄãÔÚ¸ÖÌúÖ®¼×Ð§¹û³ÖÐøÆÚ¼äÄÚÊÜµ½ÉËº¦£¬ÄãµÄÒÆ¶¯ËÙ¶È»áÌá¸ß60%£¬³ÖÐø5Ãë£¬²¢ÇÒÒÆ¶¯Ê±¿É´©¹ýµÐÈË¡£")
-; ¼¼ÄÜ: ¸ÖÌúÖ®¼×
-SKILL_ACTIVE_CRUSADER_IRON_SKIN := New ActiveSkill("¸ÖÌúÖ®¼×", "ÎïÀí", "·ÀÓù"
+; ç¬¦æ–‡: åä¼¤ä¹‹ç”² 
+RUNE_CRUSADER_IRON_SKIN_D := New SkillRune("åä¼¤ä¹‹ç”²", "ç‰©ç†", "d", "åœ¨æ•ˆæžœæŒç»­æœŸé—´å†…ï¼Œä½ çš„è†æ£˜ä¼¤å®³æé«˜300%ã€‚")
+; ç¬¦æ–‡: ç²¾é’¢ä¹‹ç”² 
+RUNE_CRUSADER_IRON_SKIN_B := New SkillRune("ç²¾é’¢ä¹‹ç”²", "ç‰©ç†", "b", "æŒç»­æ—¶é—´å»¶é•¿è‡³7ç§’ã€‚")
+; ç¬¦æ–‡: çˆ†è£‚ä¹‹ç”² 
+RUNE_CRUSADER_IRON_SKIN_C := New SkillRune("çˆ†è£‚ä¹‹ç”²", "ç‰©ç†", "c", "é’¢é“ä¹‹ç”²æ•ˆæžœç»“æŸæ—¶ï¼Œå¤–å±‚çš„é“ç”²ä¼šçˆ†ç‚¸ï¼Œå¯¹12ç å†…çš„æ•Œäººé€ æˆ1400%æ­¦å™¨ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ç”µèƒ½ä¹‹ç”² 
+RUNE_CRUSADER_IRON_SKIN_A := New SkillRune("ç”µèƒ½ä¹‹ç”²", "ç”µå‡»", "a", "ä½ çš„çš®è‚¤åŒ–ä¸ºå¸¦ç”µçš„é’¢é“ï¼Œæœ‰20%çš„æœºçŽ‡ä½¿10ç å†…çš„æ•Œäººæ˜è¿·2ç§’ã€‚")
+; ç¬¦æ–‡: ç–¾è¡Œä¹‹ç”² 
+RUNE_CRUSADER_IRON_SKIN_E := New SkillRune("ç–¾è¡Œä¹‹ç”²", "ç”µå‡»", "e", "å¦‚æžœä½ åœ¨é’¢é“ä¹‹ç”²æ•ˆæžœæŒç»­æœŸé—´å†…å—åˆ°ä¼¤å®³ï¼Œä½ çš„ç§»åŠ¨é€Ÿåº¦ä¼šæé«˜60%ï¼ŒæŒç»­5ç§’ï¼Œå¹¶ä¸”ç§»åŠ¨æ—¶å¯ç©¿è¿‡æ•Œäººã€‚")
+; æŠ€èƒ½: é’¢é“ä¹‹ç”²
+SKILL_ACTIVE_CRUSADER_IRON_SKIN := New ActiveSkill("é’¢é“ä¹‹ç”²", "ç‰©ç†", "é˜²å¾¡"
 	, "images\skills\crusader\active\crusader_shieldwall_normal.png"
-	, "ÀäÈ´Ê±¼ä£º30Ãë\r\nÄãµÄÆ¤·ô»¯Îª¸ÖÌú£¬¿ÉÎüÊÕ50%µÄËùÓÐÉËº¦£¬³ÖÐø4Ãë¡£"
+	, "å†·å´æ—¶é—´ï¼š30ç§’\r\nä½ çš„çš®è‚¤åŒ–ä¸ºé’¢é“ï¼Œå¯å¸æ”¶50%çš„æ‰€æœ‰ä¼¤å®³ï¼ŒæŒç»­4ç§’ã€‚"
 	, [RUNE_CRUSADER_IRON_SKIN_D, RUNE_CRUSADER_IRON_SKIN_B, RUNE_CRUSADER_IRON_SKIN_C, RUNE_CRUSADER_IRON_SKIN_A, RUNE_CRUSADER_IRON_SKIN_E])
 ; ---------------------------
-; ¼¼ÄÜ: ¸ÖÌúÖ®¼× End
+; æŠ€èƒ½: é’¢é“ä¹‹ç”² End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÌôÐÆ Start
+; æŠ€èƒ½: æŒ‘è¡… Start
 ; ---------------------------
-; ·ûÎÄ: ¾»×ï 
-RUNE_CRUSADER_PROVOKE_A := New SkillRune("¾»×ï", "ÎïÀí", "a", "Ã¿³°·íÒ»¸öµÐÈË£¬¿ÉÊ¹ÄãµÄ»÷ÖÐÉúÃü»Ö¸´Ð§¹û¶îÍâÌá¸ß1073µã£¬³ÖÐø5Ãë¡£")
-; ·ûÎÄ: À£ÌÓ 
-RUNE_CRUSADER_PROVOKE_B := New SkillRune("À£ÌÓ", "ÎïÀí", "b", "Ê¹ÓÃÌôÐÆÊ±²»ÔÙ³°·íµÐÈË£¬¶øÊÇÊ¹µÐÈËÒò¿Ö¾å¶øÌÓÅÜ8Ãë¡£")
-; ·ûÎÄ: Î·ÇÓ 
-RUNE_CRUSADER_PROVOKE_C := New SkillRune("Î·ÇÓ", "ÎïÀí", "c", "Ê¹±»³°·íµÄµÐÈË¹¥»÷ËÙ¶È½µµÍ50%£¬ÒÆ¶¯ËÙ¶È½µµÍ80%£¬³ÖÐø4Ãë¡£")
-; ·ûÎÄ: Ðîµç¹¥»÷ 
-RUNE_CRUSADER_PROVOKE_D := New SkillRune("Ðîµç¹¥»÷", "µç»÷", "d", "ÔÚÊ©Õ¹ÌôÐÆºóµÄ4ÃëÄÚ£¬ÄãÔì³ÉµÄÈÎºÎÉËº¦¶¼»á¸½¼Ó50%ÎäÆ÷ÉËº¦ÖµµÄµç»÷ÉËº¦¡£")
-; ·ûÎÄ: ÓÂÃÍ¸ñµ² 
-RUNE_CRUSADER_PROVOKE_E := New SkillRune("ÓÂÃÍ¸ñµ²", "ÎïÀí", "e", "ÔÚÊ©Õ¹ÌôÐÆºóµÄ4ÃëÄÚ£¬ÄãµÄ¸ñµ²»úÂÊÌá¸ß50%¡£")
-; ¼¼ÄÜ: ÌôÐÆ
-SKILL_ACTIVE_CRUSADER_PROVOKE := New ActiveSkill("ÌôÐÆ", "ÎïÀí", "¸¨Öú"
+; ç¬¦æ–‡: å‡€ç½ª 
+RUNE_CRUSADER_PROVOKE_A := New SkillRune("å‡€ç½ª", "ç‰©ç†", "a", "æ¯å˜²è®½ä¸€ä¸ªæ•Œäººï¼Œå¯ä½¿ä½ çš„å‡»ä¸­ç”Ÿå‘½æ¢å¤æ•ˆæžœé¢å¤–æé«˜1073ç‚¹ï¼ŒæŒç»­5ç§’ã€‚")
+; ç¬¦æ–‡: æºƒé€ƒ 
+RUNE_CRUSADER_PROVOKE_B := New SkillRune("æºƒé€ƒ", "ç‰©ç†", "b", "ä½¿ç”¨æŒ‘è¡…æ—¶ä¸å†å˜²è®½æ•Œäººï¼Œè€Œæ˜¯ä½¿æ•Œäººå› ææƒ§è€Œé€ƒè·‘8ç§’ã€‚")
+; ç¬¦æ–‡: ç•æ€¯ 
+RUNE_CRUSADER_PROVOKE_C := New SkillRune("ç•æ€¯", "ç‰©ç†", "c", "ä½¿è¢«å˜²è®½çš„æ•Œäººæ”»å‡»é€Ÿåº¦é™ä½Ž50%ï¼Œç§»åŠ¨é€Ÿåº¦é™ä½Ž80%ï¼ŒæŒç»­4ç§’ã€‚")
+; ç¬¦æ–‡: è“„ç”µæ”»å‡» 
+RUNE_CRUSADER_PROVOKE_D := New SkillRune("è“„ç”µæ”»å‡»", "ç”µå‡»", "d", "åœ¨æ–½å±•æŒ‘è¡…åŽçš„4ç§’å†…ï¼Œä½ é€ æˆçš„ä»»ä½•ä¼¤å®³éƒ½ä¼šé™„åŠ 50%æ­¦å™¨ä¼¤å®³å€¼çš„ç”µå‡»ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: å‹‡çŒ›æ ¼æŒ¡ 
+RUNE_CRUSADER_PROVOKE_E := New SkillRune("å‹‡çŒ›æ ¼æŒ¡", "ç‰©ç†", "e", "åœ¨æ–½å±•æŒ‘è¡…åŽçš„4ç§’å†…ï¼Œä½ çš„æ ¼æŒ¡æœºçŽ‡æé«˜50%ã€‚")
+; æŠ€èƒ½: æŒ‘è¡…
+SKILL_ACTIVE_CRUSADER_PROVOKE := New ActiveSkill("æŒ‘è¡…", "ç‰©ç†", "è¾…åŠ©"
 	, "images\skills\crusader\active\crusader_provoke_normal.png"
-	, "ÀäÈ´Ê±¼ä£º20Ãë²úÉú£º30µãÊ¥Å­\r\n³°·íÖÜÎ§ËùÓÐµÐÈË£¬Ã¿³°·íÒ»ÃûµÐÈË¿ÉÁ¢¼´¶îÍâ²úÉú5µãÊ¥Å­¡£ÊÜµ½³°·íµÄµÐÈË»á¼¯ÖÐ¶ÔÄã¹¥»÷£¬³ÖÐø4Ãë¡£"
+	, "å†·å´æ—¶é—´ï¼š20ç§’äº§ç”Ÿï¼š30ç‚¹åœ£æ€’\r\nå˜²è®½å‘¨å›´æ‰€æœ‰æ•Œäººï¼Œæ¯å˜²è®½ä¸€åæ•Œäººå¯ç«‹å³é¢å¤–äº§ç”Ÿ5ç‚¹åœ£æ€’ã€‚å—åˆ°å˜²è®½çš„æ•Œäººä¼šé›†ä¸­å¯¹ä½ æ”»å‡»ï¼ŒæŒç»­4ç§’ã€‚"
 	, [RUNE_CRUSADER_PROVOKE_A, RUNE_CRUSADER_PROVOKE_B, RUNE_CRUSADER_PROVOKE_C, RUNE_CRUSADER_PROVOKE_D, RUNE_CRUSADER_PROVOKE_E])
 ; ---------------------------
-; ¼¼ÄÜ: ÌôÐÆ End
+; æŠ€èƒ½: æŒ‘è¡… End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: å€»÷ Start
+; æŠ€èƒ½: éŠå‡» Start
 ; ---------------------------
-; ·ûÎÄ: ±¬ÁÑÖ®å€ 
-RUNE_CRUSADER_SMITE_C := New SkillRune("±¬ÁÑÖ®å€", "ÉñÊ¥", "c", "Ê¥¹âÖ®å€²úÉú±¬Õ¨£¬¶Ô3ÂëÄÚµÄµÐÈËÔì³É60%ÎäÆ÷ÉËº¦ÖµµÄÉñÊ¥ÉËº¦¡£")
-; ·ûÎÄ: ¼ÏËø²øÉí 
-RUNE_CRUSADER_SMITE_B := New SkillRune("¼ÏËø²øÉí", "ÉñÊ¥", "b", "±»Ëøå€»÷ÖÐµÄµÐÈËÓÐ20%»úÂÊ±»¶¨ÉíÔÚÔ­µØ1Ãë¡£")
-; ·ûÎÄ: ±¼ÌÚÖ®å€ 
-RUNE_CRUSADER_SMITE_E := New SkillRune("±¼ÌÚÖ®å€", "ÉñÊ¥", "e", "½«¶îÍâ»÷ÖÐµÐÈËµÄÊýÁ¿Ìá¸ßÎª5¸ö¡£")
-; ·ûÎÄ: ÎüÊÕÉúÃü 
-RUNE_CRUSADER_SMITE_D := New SkillRune("ÎüÊÕÉúÃü", "ÉñÊ¥", "d", "Ã¿»÷ÖÐÒ»¸öµÐÈË£¬¿ÉÊ¹ÄãµÄÉúÃüÖµ»Ö¸´ÂÊÌá¸ß6437µã£¬³ÖÐø2Ãë¡£´ËÐ§¹û×î¶à¿É¶Ñµþ4´Î¡£")
-; ·ûÎÄ: ÃüÔËÁ¬½á 
-RUNE_CRUSADER_SMITE_A := New SkillRune("ÃüÔËÁ¬½á", "µç»÷", "a", "Ëøå€»áÊø¸¿»÷ÖÐµÄµÐÈË£¬½«ÕâÐ©Ä¿±êµÄÃüÔËÁ¬½áÔÚÒ»Æð¡£Ö»ÒªËûÃÇÖ®¼äµÄ¾àÀë³¬¹ý15Âë£¬¾Í»á»èÃÔ2Ãë¡£")
-; ¼¼ÄÜ: å€»÷
-SKILL_ACTIVE_CRUSADER_SMITE := New ActiveSkill("å€»÷", "ÉñÊ¥", "Ö÷Òª¼¼ÄÜ"
+; ç¬¦æ–‡: çˆ†è£‚ä¹‹éŠ 
+RUNE_CRUSADER_SMITE_C := New SkillRune("çˆ†è£‚ä¹‹éŠ", "ç¥žåœ£", "c", "åœ£å…‰ä¹‹éŠäº§ç”Ÿçˆ†ç‚¸ï¼Œå¯¹3ç å†…çš„æ•Œäººé€ æˆ60%æ­¦å™¨ä¼¤å®³å€¼çš„ç¥žåœ£ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æž·é”ç¼ èº« 
+RUNE_CRUSADER_SMITE_B := New SkillRune("æž·é”ç¼ èº«", "ç¥žåœ£", "b", "è¢«é”éŠå‡»ä¸­çš„æ•Œäººæœ‰20%æœºçŽ‡è¢«å®šèº«åœ¨åŽŸåœ°1ç§’ã€‚")
+; ç¬¦æ–‡: å¥”è…¾ä¹‹éŠ 
+RUNE_CRUSADER_SMITE_E := New SkillRune("å¥”è…¾ä¹‹éŠ", "ç¥žåœ£", "e", "å°†é¢å¤–å‡»ä¸­æ•Œäººçš„æ•°é‡æé«˜ä¸º5ä¸ªã€‚")
+; ç¬¦æ–‡: å¸æ”¶ç”Ÿå‘½ 
+RUNE_CRUSADER_SMITE_D := New SkillRune("å¸æ”¶ç”Ÿå‘½", "ç¥žåœ£", "d", "æ¯å‡»ä¸­ä¸€ä¸ªæ•Œäººï¼Œå¯ä½¿ä½ çš„ç”Ÿå‘½å€¼æ¢å¤çŽ‡æé«˜6437ç‚¹ï¼ŒæŒç»­2ç§’ã€‚æ­¤æ•ˆæžœæœ€å¤šå¯å †å 4æ¬¡ã€‚")
+; ç¬¦æ–‡: å‘½è¿è¿žç»“ 
+RUNE_CRUSADER_SMITE_A := New SkillRune("å‘½è¿è¿žç»“", "ç”µå‡»", "a", "é”éŠä¼šæŸç¼šå‡»ä¸­çš„æ•Œäººï¼Œå°†è¿™äº›ç›®æ ‡çš„å‘½è¿è¿žç»“åœ¨ä¸€èµ·ã€‚åªè¦ä»–ä»¬ä¹‹é—´çš„è·ç¦»è¶…è¿‡15ç ï¼Œå°±ä¼šæ˜è¿·2ç§’ã€‚")
+; æŠ€èƒ½: éŠå‡»
+SKILL_ACTIVE_CRUSADER_SMITE := New ActiveSkill("éŠå‡»", "ç¥žåœ£", "ä¸»è¦æŠ€èƒ½"
 	, "images\skills\crusader\active\crusader_incite_normal.png"
-	, "Ã¿´Î¹¥»÷²úÉú£º5µãÊ¥Å­\r\nÒÔÊ¥¹âÖ®å€ÃÍ»÷×îÔ¶30ÂëÍâµÄµÐÈË£¬Ôì³É175%ÎäÆ÷ÉËº¦ÖµµÄÉñÊ¥ÉËº¦¡£ÔÚ»÷ÖÐÄ¿±êºó£¬Ëøå€»á·ÛËé²¢Ï®Ïò20ÂëÄÚ×î¶à3¸ö¶îÍâµÐÈË£¬Ôì³É150%ÎäÆ÷ÉËº¦ÖµµÄÉñÊ¥ÉËº¦¡£"
+	, "æ¯æ¬¡æ”»å‡»äº§ç”Ÿï¼š5ç‚¹åœ£æ€’\r\nä»¥åœ£å…‰ä¹‹éŠçŒ›å‡»æœ€è¿œ30ç å¤–çš„æ•Œäººï¼Œé€ æˆ175%æ­¦å™¨ä¼¤å®³å€¼çš„ç¥žåœ£ä¼¤å®³ã€‚åœ¨å‡»ä¸­ç›®æ ‡åŽï¼Œé”éŠä¼šç²‰ç¢Žå¹¶è¢­å‘20ç å†…æœ€å¤š3ä¸ªé¢å¤–æ•Œäººï¼Œé€ æˆ150%æ­¦å™¨ä¼¤å®³å€¼çš„ç¥žåœ£ä¼¤å®³ã€‚"
 	, [RUNE_CRUSADER_SMITE_C, RUNE_CRUSADER_SMITE_B, RUNE_CRUSADER_SMITE_E, RUNE_CRUSADER_SMITE_D, RUNE_CRUSADER_SMITE_A])
 ; ---------------------------
-; ¼¼ÄÜ: å€»÷ End
+; æŠ€èƒ½: éŠå‡» End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ×£¸£Ö®´¸ Start
+; æŠ€èƒ½: ç¥ç¦ä¹‹é”¤ Start
 ; ---------------------------
-; ·ûÎÄ: Å­»ðÖ®´¸ 
-RUNE_CRUSADER_BLESSED_HAMMER_A := New SkillRune("Å­»ðÖ®´¸", "»ðÑæ", "a", "×£¸£Ö®´¸È¼ÆðÐÜÐÜÁÒ»ð£¬ÓÐ25%»úÂÊÊ¹¾­¹ýµÄµØ·½È¼ÉÕÆðÀ´¡£µÐÈË´©Ô½È¼ÉÕµÄµØÃæÊ±£¬Ã¿Ãë»áÊÜµ½330%ÎäÆ÷ÉËº¦ÖµµÄ»ðÑæÉËº¦¡£")
-; ·ûÎÄ: À×öªÖ®´¸ 
-RUNE_CRUSADER_BLESSED_HAMMER_B := New SkillRune("À×öªÖ®´¸", "µç»÷", "b", "×£¸£Ö®´¸³äÂúµçÄÜ£¬ÔÚÅÌÐýÊ±Å¼¶û»á·¢³öµçÁ÷ÔÚÄãºÍ´¸×ÓÖ®¼äÁ÷´Ü£¬¶Ô»÷ÖÐµÄµÐÈËÔì³É60%ÎäÆ÷ÉËº¦ÖµµÄµç»÷ÉËº¦¡£")
-; ·ûÎÄ: ÎÞ¾¡Ö®´¸ 
-RUNE_CRUSADER_BLESSED_HAMMER_C := New SkillRune("ÎÞ¾¡Ö®´¸", "ÉñÊ¥", "c", "×£¸£Ö®´¸µÄÉËº¦Ìá¸ßÎª640%ÎäÆ÷ÉËº¦ÖµµÄÉñÊ¥ÉËº¦£¬ÇÒÓÐÐ§·¶Î§ÑÓ³¤20Âë¡£")
-; ·ûÎÄ: ÂùÁ¦Ö®´¸ 
-RUNE_CRUSADER_BLESSED_HAMMER_D := New SkillRune("ÂùÁ¦Ö®´¸", "ÎïÀí", "d", "ÕÙ»½µÄ´¸×Ó»á¶Ô´©¹ýµÄµÐÈËÔì³É»ºËÙÐ§¹û£¬²¢ÔÚ»÷ÖÐµÐÈËÊ±ÓÐ35%»úÂÊ±¬Õ¨£¬Ôì³É460%ÎäÆ÷ÉËº¦ÖµµÄÎïÀíÉËº¦£¬²¢Ê¹6ÂëÄÚµÄµÐÈË»èÃÔ1Ãë¡£")
-; ·ûÎÄ: »·ÓùÖ®´¸ 
-RUNE_CRUSADER_BLESSED_HAMMER_E := New SkillRune("»·ÓùÖ®´¸", "ÉñÊ¥", "e", "×£¸£Ö®´¸»áÒÔÄãÎªÖÐÐÄÈÆÐÐ¡£")
-; ¼¼ÄÜ: ×£¸£Ö®´¸
-SKILL_ACTIVE_CRUSADER_BLESSED_HAMMER := New ActiveSkill("×£¸£Ö®´¸", "ÉñÊ¥", "´ÎÒª¼¼ÄÜ"
+; ç¬¦æ–‡: æ€’ç«ä¹‹é”¤ 
+RUNE_CRUSADER_BLESSED_HAMMER_A := New SkillRune("æ€’ç«ä¹‹é”¤", "ç«ç„°", "a", "ç¥ç¦ä¹‹é”¤ç‡ƒèµ·ç†Šç†Šçƒˆç«ï¼Œæœ‰25%æœºçŽ‡ä½¿ç»è¿‡çš„åœ°æ–¹ç‡ƒçƒ§èµ·æ¥ã€‚æ•Œäººç©¿è¶Šç‡ƒçƒ§çš„åœ°é¢æ—¶ï¼Œæ¯ç§’ä¼šå—åˆ°330%æ­¦å™¨ä¼¤å®³å€¼çš„ç«ç„°ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: é›·éœ†ä¹‹é”¤ 
+RUNE_CRUSADER_BLESSED_HAMMER_B := New SkillRune("é›·éœ†ä¹‹é”¤", "ç”µå‡»", "b", "ç¥ç¦ä¹‹é”¤å……æ»¡ç”µèƒ½ï¼Œåœ¨ç›˜æ—‹æ—¶å¶å°”ä¼šå‘å‡ºç”µæµåœ¨ä½ å’Œé”¤å­ä¹‹é—´æµçªœï¼Œå¯¹å‡»ä¸­çš„æ•Œäººé€ æˆ60%æ­¦å™¨ä¼¤å®³å€¼çš„ç”µå‡»ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æ— å°½ä¹‹é”¤ 
+RUNE_CRUSADER_BLESSED_HAMMER_C := New SkillRune("æ— å°½ä¹‹é”¤", "ç¥žåœ£", "c", "ç¥ç¦ä¹‹é”¤çš„ä¼¤å®³æé«˜ä¸º640%æ­¦å™¨ä¼¤å®³å€¼çš„ç¥žåœ£ä¼¤å®³ï¼Œä¸”æœ‰æ•ˆèŒƒå›´å»¶é•¿20ç ã€‚")
+; ç¬¦æ–‡: è›®åŠ›ä¹‹é”¤ 
+RUNE_CRUSADER_BLESSED_HAMMER_D := New SkillRune("è›®åŠ›ä¹‹é”¤", "ç‰©ç†", "d", "å¬å”¤çš„é”¤å­ä¼šå¯¹ç©¿è¿‡çš„æ•Œäººé€ æˆç¼“é€Ÿæ•ˆæžœï¼Œå¹¶åœ¨å‡»ä¸­æ•Œäººæ—¶æœ‰35%æœºçŽ‡çˆ†ç‚¸ï¼Œé€ æˆ460%æ­¦å™¨ä¼¤å®³å€¼çš„ç‰©ç†ä¼¤å®³ï¼Œå¹¶ä½¿6ç å†…çš„æ•Œäººæ˜è¿·1ç§’ã€‚")
+; ç¬¦æ–‡: çŽ¯å¾¡ä¹‹é”¤ 
+RUNE_CRUSADER_BLESSED_HAMMER_E := New SkillRune("çŽ¯å¾¡ä¹‹é”¤", "ç¥žåœ£", "e", "ç¥ç¦ä¹‹é”¤ä¼šä»¥ä½ ä¸ºä¸­å¿ƒç»•è¡Œã€‚")
+; æŠ€èƒ½: ç¥ç¦ä¹‹é”¤
+SKILL_ACTIVE_CRUSADER_BLESSED_HAMMER := New ActiveSkill("ç¥ç¦ä¹‹é”¤", "ç¥žåœ£", "æ¬¡è¦æŠ€èƒ½"
 	, "images\skills\crusader\active\crusader_blessedhammer_normal.png"
-	, "ÏûºÄ£º10µãÊ¥Å­\r\nÕÙ»½Ò»°Ñ×£¸£Ö®´¸ÔÚÄãÉí±ßÅÌÐý£¬¶Ô»÷ÖÐµÄËùÓÐµÐÈËÔì³É320%ÎäÆ÷ÉËº¦ÖµµÄÉñÊ¥ÉËº¦¡£"
+	, "æ¶ˆè€—ï¼š10ç‚¹åœ£æ€’\r\nå¬å”¤ä¸€æŠŠç¥ç¦ä¹‹é”¤åœ¨ä½ èº«è¾¹ç›˜æ—‹ï¼Œå¯¹å‡»ä¸­çš„æ‰€æœ‰æ•Œäººé€ æˆ320%æ­¦å™¨ä¼¤å®³å€¼çš„ç¥žåœ£ä¼¤å®³ã€‚"
 	, [RUNE_CRUSADER_BLESSED_HAMMER_A, RUNE_CRUSADER_BLESSED_HAMMER_B, RUNE_CRUSADER_BLESSED_HAMMER_C, RUNE_CRUSADER_BLESSED_HAMMER_D, RUNE_CRUSADER_BLESSED_HAMMER_E])
 ; ---------------------------
-; ¼¼ÄÜ: ×£¸£Ö®´¸ End
+; æŠ€èƒ½: ç¥ç¦ä¹‹é”¤ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Õ½Âí±¼ÌÚ Start
+; æŠ€èƒ½: æˆ˜é©¬å¥”è…¾ Start
 ; ---------------------------
-; ·ûÎÄ: ¼â´ÌÂíîø 
-RUNE_CRUSADER_STEED_CHARGE_A := New SkillRune("¼â´ÌÂíîø", "ÎïÀí", "a", "ÔâÕ½ÂíÌ¤»÷¶ø¹ýµÄµÐÈËÃ¿Ãë»áÊÜµ½ÉËº¦£¬Ïàµ±ÓÚ¾£¼¬ÉËº¦µÄ500%¡£")
-; ·ûÎÄ: »ð÷ÊÕ½Âí 
-RUNE_CRUSADER_STEED_CHARGE_D := New SkillRune("»ð÷ÊÕ½Âí", "»ðÑæ", "d", "Õ½ÂíÈ«ÉíÈ¼ÆðÕýÒåÖ®Ñæ£¬ÉÕ×ÆÐÐ½øÂ·¾¶ÉÏµÄËùÓÐµÐÈË¡£ÔÚÐÐ½øÂ·¾¶ÉÏµÄµÐÈËÃ¿Ãë»áÊÜµ½550%ÎäÆ÷ÉËº¦ÖµµÄ»ðÑæÉËº¦¡£")
-; ·ûÎÄ: Éñ²ÉÞÈÞÈ 
-RUNE_CRUSADER_STEED_CHARGE_C := New SkillRune("Éñ²ÉÞÈÞÈ", "ÎïÀí", "c", "Æï³ËÕ½ÂíÊ±Ê¹Äã»Ö¸´ÉúÃüÖµÉÏÏÞµÄ15%¡£")
-; ·ûÎÄ: Âí²»Í£Ìã 
-RUNE_CRUSADER_STEED_CHARGE_B := New SkillRune("Âí²»Í£Ìã", "ÎïÀí", "b", "³ÖÐøÊ±¼äÑÓ³¤ÖÁ3Ãë¡£")
-; ·ûÎÄ: ¸¿µÐÍÏÒý 
-RUNE_CRUSADER_STEED_CHARGE_E := New SkillRune("¸¿µÐÍÏÒý", "ÉñÊ¥", "e", "å€×¡ÄãÖÜÎ§5¸öµÐÈËÍÏÐÐ£¬Ã¿Ãë¶Ô±»ÍÏÐÐµÄµÐÈËÔì³É185%ÎäÆ÷ÉËº¦ÖµµÄÉñÊ¥ÉËº¦¡£")
-; ¼¼ÄÜ: Õ½Âí±¼ÌÚ
-SKILL_ACTIVE_CRUSADER_STEED_CHARGE := New ActiveSkill("Õ½Âí±¼ÌÚ", "ÎïÀí", "¸¨Öú"
+; ç¬¦æ–‡: å°–åˆºé©¬é“  
+RUNE_CRUSADER_STEED_CHARGE_A := New SkillRune("å°–åˆºé©¬é“ ", "ç‰©ç†", "a", "é­æˆ˜é©¬è¸å‡»è€Œè¿‡çš„æ•Œäººæ¯ç§’ä¼šå—åˆ°ä¼¤å®³ï¼Œç›¸å½“äºŽè†æ£˜ä¼¤å®³çš„500%ã€‚")
+; ç¬¦æ–‡: ç«é­‡æˆ˜é©¬ 
+RUNE_CRUSADER_STEED_CHARGE_D := New SkillRune("ç«é­‡æˆ˜é©¬", "ç«ç„°", "d", "æˆ˜é©¬å…¨èº«ç‡ƒèµ·æ­£ä¹‰ä¹‹ç„°ï¼Œçƒ§ç¼è¡Œè¿›è·¯å¾„ä¸Šçš„æ‰€æœ‰æ•Œäººã€‚åœ¨è¡Œè¿›è·¯å¾„ä¸Šçš„æ•Œäººæ¯ç§’ä¼šå—åˆ°550%æ­¦å™¨ä¼¤å®³å€¼çš„ç«ç„°ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ç¥žé‡‡å¥•å¥• 
+RUNE_CRUSADER_STEED_CHARGE_C := New SkillRune("ç¥žé‡‡å¥•å¥•", "ç‰©ç†", "c", "éª‘ä¹˜æˆ˜é©¬æ—¶ä½¿ä½ æ¢å¤ç”Ÿå‘½å€¼ä¸Šé™çš„15%ã€‚")
+; ç¬¦æ–‡: é©¬ä¸åœè¹„ 
+RUNE_CRUSADER_STEED_CHARGE_B := New SkillRune("é©¬ä¸åœè¹„", "ç‰©ç†", "b", "æŒç»­æ—¶é—´å»¶é•¿è‡³3ç§’ã€‚")
+; ç¬¦æ–‡: ç¼šæ•Œæ‹–å¼• 
+RUNE_CRUSADER_STEED_CHARGE_E := New SkillRune("ç¼šæ•Œæ‹–å¼•", "ç¥žåœ£", "e", "éŠä½ä½ å‘¨å›´5ä¸ªæ•Œäººæ‹–è¡Œï¼Œæ¯ç§’å¯¹è¢«æ‹–è¡Œçš„æ•Œäººé€ æˆ185%æ­¦å™¨ä¼¤å®³å€¼çš„ç¥žåœ£ä¼¤å®³ã€‚")
+; æŠ€èƒ½: æˆ˜é©¬å¥”è…¾
+SKILL_ACTIVE_CRUSADER_STEED_CHARGE := New ActiveSkill("æˆ˜é©¬å¥”è…¾", "ç‰©ç†", "è¾…åŠ©"
 	, "images\skills\crusader\active\crusader_steedcharge_normal.png"
-	, "ÀäÈ´Ê±¼ä£º16Ãë\r\nÆïÉÏÒ»Æ¥ÉñÊ¥Õ½Âí£¬Ê¹Äã´©Ô½µÐÕóÈçÈëÎÞÈËÖ®¾³£¬³ÖÐø2Ãë¡£"
+	, "å†·å´æ—¶é—´ï¼š16ç§’\r\néª‘ä¸Šä¸€åŒ¹ç¥žåœ£æˆ˜é©¬ï¼Œä½¿ä½ ç©¿è¶Šæ•Œé˜µå¦‚å…¥æ— äººä¹‹å¢ƒï¼ŒæŒç»­2ç§’ã€‚"
 	, [RUNE_CRUSADER_STEED_CHARGE_A, RUNE_CRUSADER_STEED_CHARGE_D, RUNE_CRUSADER_STEED_CHARGE_C, RUNE_CRUSADER_STEED_CHARGE_B, RUNE_CRUSADER_STEED_CHARGE_E])
 ; ---------------------------
-; ¼¼ÄÜ: Õ½Âí±¼ÌÚ End
+; æŠ€èƒ½: æˆ˜é©¬å¥”è…¾ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÎÞÎ·ÂÉÁî Start
+; æŠ€èƒ½: æ— ç•å¾‹ä»¤ Start
 ; ---------------------------
-; ·ûÎÄ: ²»Çü²»ÄÓ 
-RUNE_CRUSADER_LAWS_OF_VALOR_A := New SkillRune("²»Çü²»ÄÓ", "ÎïÀí", "a", "Ö÷¶¯£ºÇ¿»¯ÂÉÁîÍ¬Ê±»áÊ¹ÄãµÄ»÷ÖÐÉúÃü»Ö¸´Ð§¹ûÌá¸ß21457µã¡£")
-; ·ûÎÄ: ÍþÏÅºÅÁî 
-RUNE_CRUSADER_LAWS_OF_VALOR_B := New SkillRune("ÍþÏÅºÅÁî", "ÎïÀí", "b", "Ö÷¶¯£ºÇ¿»¯ÂÉÁîÊ±£¬ÓÐ100%»úÂÊÊ¹ÄãÖÜÎ§10ÂëÄÚµÄµÐÈË»èÃÔ5Ãë¡£")
-; ·ûÎÄ: ÖÂÃü±¬»÷ 
-RUNE_CRUSADER_LAWS_OF_VALOR_C := New SkillRune("ÖÂÃü±¬»÷", "ÎïÀí", "c", "Ö÷¶¯£ºÇ¿»¯ÂÉÁîÍ¬Ê±»áÊ¹ÄãµÄ±¬»÷ÉËº¦Ìá¸ß50%¡£")
-; ·ûÎÄ: ÊÆ²»¿Éµ² 
-RUNE_CRUSADER_LAWS_OF_VALOR_D := New SkillRune("ÊÆ²»¿Éµ²", "ÎïÀí", "d", "Ö÷¶¯£ºÇ¿»¯ÂÉÁîÊ±£¬Ê¹ËùÓÐ¼¼ÄÜÏûºÄµÄÊ¥Å­½µµÍ50%£¬³ÖÐø5Ãë¡£")
-; ·ûÎÄ: Ê¥¶÷Ó¦ÔÊ 
-RUNE_CRUSADER_LAWS_OF_VALOR_E := New SkillRune("Ê¥¶÷Ó¦ÔÊ", "ÎïÀí", "e", "Ö÷¶¯£ºÔÚÂÉÁîÇ¿»¯ÆÚ¼ä£¬Ã¿É±ËÀÒ»¸öµÐÈË»áÊ¹³ÖÐøÊ±¼äÑÓ³¤1Ãë£¬×î¶à¿ÉÑÓ³¤10Ãë¡£")
-; ¼¼ÄÜ: ÎÞÎ·ÂÉÁî
-SKILL_ACTIVE_CRUSADER_LAWS_OF_VALOR := New ActiveSkill("ÎÞÎ·ÂÉÁî", "ÎïÀí", "ÂÉÁî"
+; ç¬¦æ–‡: ä¸å±ˆä¸æŒ  
+RUNE_CRUSADER_LAWS_OF_VALOR_A := New SkillRune("ä¸å±ˆä¸æŒ ", "ç‰©ç†", "a", "ä¸»åŠ¨ï¼šå¼ºåŒ–å¾‹ä»¤åŒæ—¶ä¼šä½¿ä½ çš„å‡»ä¸­ç”Ÿå‘½æ¢å¤æ•ˆæžœæé«˜21457ç‚¹ã€‚")
+; ç¬¦æ–‡: å¨å“å·ä»¤ 
+RUNE_CRUSADER_LAWS_OF_VALOR_B := New SkillRune("å¨å“å·ä»¤", "ç‰©ç†", "b", "ä¸»åŠ¨ï¼šå¼ºåŒ–å¾‹ä»¤æ—¶ï¼Œæœ‰100%æœºçŽ‡ä½¿ä½ å‘¨å›´10ç å†…çš„æ•Œäººæ˜è¿·5ç§’ã€‚")
+; ç¬¦æ–‡: è‡´å‘½çˆ†å‡» 
+RUNE_CRUSADER_LAWS_OF_VALOR_C := New SkillRune("è‡´å‘½çˆ†å‡»", "ç‰©ç†", "c", "ä¸»åŠ¨ï¼šå¼ºåŒ–å¾‹ä»¤åŒæ—¶ä¼šä½¿ä½ çš„çˆ†å‡»ä¼¤å®³æé«˜50%ã€‚")
+; ç¬¦æ–‡: åŠ¿ä¸å¯æŒ¡ 
+RUNE_CRUSADER_LAWS_OF_VALOR_D := New SkillRune("åŠ¿ä¸å¯æŒ¡", "ç‰©ç†", "d", "ä¸»åŠ¨ï¼šå¼ºåŒ–å¾‹ä»¤æ—¶ï¼Œä½¿æ‰€æœ‰æŠ€èƒ½æ¶ˆè€—çš„åœ£æ€’é™ä½Ž50%ï¼ŒæŒç»­5ç§’ã€‚")
+; ç¬¦æ–‡: åœ£æ©åº”å… 
+RUNE_CRUSADER_LAWS_OF_VALOR_E := New SkillRune("åœ£æ©åº”å…", "ç‰©ç†", "e", "ä¸»åŠ¨ï¼šåœ¨å¾‹ä»¤å¼ºåŒ–æœŸé—´ï¼Œæ¯æ€æ­»ä¸€ä¸ªæ•Œäººä¼šä½¿æŒç»­æ—¶é—´å»¶é•¿1ç§’ï¼Œæœ€å¤šå¯å»¶é•¿10ç§’ã€‚")
+; æŠ€èƒ½: æ— ç•å¾‹ä»¤
+SKILL_ACTIVE_CRUSADER_LAWS_OF_VALOR := New ActiveSkill("æ— ç•å¾‹ä»¤", "ç‰©ç†", "å¾‹ä»¤"
 	, "images\skills\crusader\active\crusader_lawsofvalor_normal.png"
-	, "ÀäÈ´Ê±¼ä£º30Ãë\r\nÖ÷¶¯£ºÇ¿»¯ÂÉÁî£¬Ê¹ÄãºÍÃËÓÑ¹¥»÷ËÙ¶ÈÌá¸ß15%£¬³ÖÐø5Ãë¡£"
+	, "å†·å´æ—¶é—´ï¼š30ç§’\r\nä¸»åŠ¨ï¼šå¼ºåŒ–å¾‹ä»¤ï¼Œä½¿ä½ å’Œç›Ÿå‹æ”»å‡»é€Ÿåº¦æé«˜15%ï¼ŒæŒç»­5ç§’ã€‚"
 	, [RUNE_CRUSADER_LAWS_OF_VALOR_A, RUNE_CRUSADER_LAWS_OF_VALOR_B, RUNE_CRUSADER_LAWS_OF_VALOR_C, RUNE_CRUSADER_LAWS_OF_VALOR_D, RUNE_CRUSADER_LAWS_OF_VALOR_E])
 ; ---------------------------
-; ¼¼ÄÜ: ÎÞÎ·ÂÉÁî End
+; æŠ€èƒ½: æ— ç•å¾‹ä»¤ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÕýÒåÖ®´¸ Start
+; æŠ€èƒ½: æ­£ä¹‰ä¹‹é”¤ Start
 ; ---------------------------
-; ·ûÎÄ: ±¬ÁÑÖ®´¸ 
-RUNE_CRUSADER_JUSTICE_D := New SkillRune("±¬ÁÑÖ®´¸", "µç»÷", "d", "ÕýÒåÖ®´¸³äÂúµçÄÜ£¬ÔÚ»÷ÖÐÊ±»á²úÉú±¬Õ¨£¬¶Ô10ÂëÄÚµÄËùÓÐµÐÈËÔì³É60%ÎäÆ÷ÉËº¦ÖµµÄµç»÷ÉËº¦£¬Í¬Ê±ÓÐ20%»úÂÊÊ¹·¶Î§ÄÚµÄµÐÈË»èÃÔ1Ãë¡£")
-; ·ûÎÄ: ·ÖÁÑÖ®´¸ 
-RUNE_CRUSADER_JUSTICE_B := New SkillRune("·ÖÁÑÖ®´¸", "ÉñÊ¥", "b", "ÕýÒåÖ®´¸»÷ÖÐµÐÈËÊ±£¬ÓÐ100%»úÂÊ·ÖÁÑ³É2°ÑÐ¡ÐÍµÄ´¸×Ó·ÉÉä¶ø³ö£¬Ôì³É245%ÎäÆ÷ÉËº¦ÖµµÄÉñÊ¥ÉËº¦¡£")
-; ·ûÎÄ: ×·»÷Ö®´¸ 
-RUNE_CRUSADER_JUSTICE_C := New SkillRune("×·»÷Ö®´¸", "ÎïÀí", "c", "ÕýÒåÖ®´¸»á×Ô¶¯×·»÷ÖÜÎ§µÄµÐÈË£¬Ôì³É335%ÎäÆ÷ÉËº¦¡£")
-; ·ûÎÄ: ÕýÒåÖ®½£ 
-RUNE_CRUSADER_JUSTICE_A := New SkillRune("ÕýÒåÖ®½£", "ÎïÀí", "a", "¶ÔµÐÈËÍ¶ÖÀÕýÒåÖ®½££¬»÷ÖÐµÐÈËÊ±»áÊ¹ÄãµÄÒÆ¶¯ËÙ¶ÈÌá¸ß5%£¬³ÖÐø3Ãë¡£´ËÐ§¹û×î¶à¿É¶Ñµþ3´Î¡£")
-; ·ûÎÄ: ÉñÊ¥Ö®»÷ 
-RUNE_CRUSADER_JUSTICE_E := New SkillRune("ÉñÊ¥Ö®»÷", "ÉñÊ¥", "e", "Éä³öÉñÊ¥ÄÜÁ¿£¬»÷ÖÐµÐÈËÊ±¿ÉÊ¹ÄãºÍÃËÓÑ»Ö¸´2146-3219µãÉúÃüÖµ¡£")
-; ¼¼ÄÜ: ÕýÒåÖ®´¸
-SKILL_ACTIVE_CRUSADER_JUSTICE := New ActiveSkill("ÕýÒåÖ®´¸", "ÉñÊ¥", "Ö÷Òª¼¼ÄÜ"
+; ç¬¦æ–‡: çˆ†è£‚ä¹‹é”¤ 
+RUNE_CRUSADER_JUSTICE_D := New SkillRune("çˆ†è£‚ä¹‹é”¤", "ç”µå‡»", "d", "æ­£ä¹‰ä¹‹é”¤å……æ»¡ç”µèƒ½ï¼Œåœ¨å‡»ä¸­æ—¶ä¼šäº§ç”Ÿçˆ†ç‚¸ï¼Œå¯¹10ç å†…çš„æ‰€æœ‰æ•Œäººé€ æˆ60%æ­¦å™¨ä¼¤å®³å€¼çš„ç”µå‡»ä¼¤å®³ï¼ŒåŒæ—¶æœ‰20%æœºçŽ‡ä½¿èŒƒå›´å†…çš„æ•Œäººæ˜è¿·1ç§’ã€‚")
+; ç¬¦æ–‡: åˆ†è£‚ä¹‹é”¤ 
+RUNE_CRUSADER_JUSTICE_B := New SkillRune("åˆ†è£‚ä¹‹é”¤", "ç¥žåœ£", "b", "æ­£ä¹‰ä¹‹é”¤å‡»ä¸­æ•Œäººæ—¶ï¼Œæœ‰100%æœºçŽ‡åˆ†è£‚æˆ2æŠŠå°åž‹çš„é”¤å­é£žå°„è€Œå‡ºï¼Œé€ æˆ245%æ­¦å™¨ä¼¤å®³å€¼çš„ç¥žåœ£ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: è¿½å‡»ä¹‹é”¤ 
+RUNE_CRUSADER_JUSTICE_C := New SkillRune("è¿½å‡»ä¹‹é”¤", "ç‰©ç†", "c", "æ­£ä¹‰ä¹‹é”¤ä¼šè‡ªåŠ¨è¿½å‡»å‘¨å›´çš„æ•Œäººï¼Œé€ æˆ335%æ­¦å™¨ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æ­£ä¹‰ä¹‹å‰‘ 
+RUNE_CRUSADER_JUSTICE_A := New SkillRune("æ­£ä¹‰ä¹‹å‰‘", "ç‰©ç†", "a", "å¯¹æ•ŒäººæŠ•æŽ·æ­£ä¹‰ä¹‹å‰‘ï¼Œå‡»ä¸­æ•Œäººæ—¶ä¼šä½¿ä½ çš„ç§»åŠ¨é€Ÿåº¦æé«˜5%ï¼ŒæŒç»­3ç§’ã€‚æ­¤æ•ˆæžœæœ€å¤šå¯å †å 3æ¬¡ã€‚")
+; ç¬¦æ–‡: ç¥žåœ£ä¹‹å‡» 
+RUNE_CRUSADER_JUSTICE_E := New SkillRune("ç¥žåœ£ä¹‹å‡»", "ç¥žåœ£", "e", "å°„å‡ºç¥žåœ£èƒ½é‡ï¼Œå‡»ä¸­æ•Œäººæ—¶å¯ä½¿ä½ å’Œç›Ÿå‹æ¢å¤2146-3219ç‚¹ç”Ÿå‘½å€¼ã€‚")
+; æŠ€èƒ½: æ­£ä¹‰ä¹‹é”¤
+SKILL_ACTIVE_CRUSADER_JUSTICE := New ActiveSkill("æ­£ä¹‰ä¹‹é”¤", "ç¥žåœ£", "ä¸»è¦æŠ€èƒ½"
 	, "images\skills\crusader\active\crusader_justice_normal.png"
-	, "Ã¿´Î¹¥»÷²úÉú£º5µãÊ¥Å­\r\n¶ÔµÐÈËÍ¶ÖÀÕýÒåÖ®´¸£¬Ôì³É245%ÎäÆ÷ÉËº¦¡£"
+	, "æ¯æ¬¡æ”»å‡»äº§ç”Ÿï¼š5ç‚¹åœ£æ€’\r\nå¯¹æ•ŒäººæŠ•æŽ·æ­£ä¹‰ä¹‹é”¤ï¼Œé€ æˆ245%æ­¦å™¨ä¼¤å®³ã€‚"
 	, [RUNE_CRUSADER_JUSTICE_D, RUNE_CRUSADER_JUSTICE_B, RUNE_CRUSADER_JUSTICE_C, RUNE_CRUSADER_JUSTICE_A, RUNE_CRUSADER_JUSTICE_E])
 ; ---------------------------
-; ¼¼ÄÜ: ÕýÒåÖ®´¸ End
+; æŠ€èƒ½: æ­£ä¹‰ä¹‹é”¤ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Ê¥¹â½á½ç Start
+; æŠ€èƒ½: åœ£å…‰ç»“ç•Œ Start
 ; ---------------------------
-; ·ûÎÄ: ãå¹â½á½ç 
-RUNE_CRUSADER_CONSECRATION_C := New SkillRune("ãå¹â½á½ç", "ÉñÊ¥", "c", "Ê¹Ê¥»¯ÇøÓòµÄ°ë¾¶ÑÓÉìÖÁ24Âë£¬²¢½«ÄãºÍÃËÓÑÃ¿Ãë»Ö¸´µÄÉúÃüÖµÌá¸ßÖÁ48278µã¡£")
-; ·ûÎÄ: ¶¤´²½á½ç 
-RUNE_CRUSADER_CONSECRATION_B := New SkillRune("¶¤´²½á½ç", "ÎïÀí", "b", "Ê¥»¯ÇøÓò»¯ÎªÒ»Æ¬¶¤´²£¬¶Ô×ß½øÕâ¿éÇøÓòµÄµÐÈËÃ¿ÃëÔì³ÉÉËº¦£¬Ïàµ±ÓÚ¾£¼¬ÉËº¦µÄ100%¡£")
-; ·ûÎÄ: Ê¥Óù½á½ç 
-RUNE_CRUSADER_CONSECRATION_A := New SkillRune("Ê¥Óù½á½ç", "ÉñÊ¥", "a", "ÒÔÉñÊ¥Ö®¶ÜÁýÕÖÊ¥»¯ÇøÓò£¬Ê¹µÐÈËÎÞ·¨´©Ô½¡£Ê¥»¯ÇøÓòµÄ³ÖÐøÊ±¼äËõ¶ÌÎª5Ãë¡£")
-; ·ûÎÄ: Ê¥Ñ×½á½ç 
-RUNE_CRUSADER_CONSECRATION_D := New SkillRune("Ê¥Ñ×½á½ç", "»ðÑæ", "d", "Ê¥»¯ÇøÓòÄÚµÄµÐÈËÃ¿Ãë»áÊÜµ½155%ÎäÆ÷ÉËº¦ÖµµÄ»ðÑæÉËº¦¡£")
-; ·ûÎÄ: Ê¥Íþ½á½ç 
-RUNE_CRUSADER_CONSECRATION_E := New SkillRune("Ê¥Íþ½á½ç", "ÉñÊ¥", "e", "Ê¥»¯ÇøÓòÄÚµÄµÐÈËÓÐ100%»úÂÊ»áÊÜµ½¿Ö¾åÐ§¹ûµÄÓ°Ïì£¬³ÖÐø3Ãë¡£")
-; ¼¼ÄÜ: Ê¥¹â½á½ç
-SKILL_ACTIVE_CRUSADER_CONSECRATION := New ActiveSkill("Ê¥¹â½á½ç", "ÉñÊ¥", "·ÀÓù"
+; ç¬¦æ–‡: æ²å…‰ç»“ç•Œ 
+RUNE_CRUSADER_CONSECRATION_C := New SkillRune("æ²å…‰ç»“ç•Œ", "ç¥žåœ£", "c", "ä½¿åœ£åŒ–åŒºåŸŸçš„åŠå¾„å»¶ä¼¸è‡³24ç ï¼Œå¹¶å°†ä½ å’Œç›Ÿå‹æ¯ç§’æ¢å¤çš„ç”Ÿå‘½å€¼æé«˜è‡³48278ç‚¹ã€‚")
+; ç¬¦æ–‡: é’‰åºŠç»“ç•Œ 
+RUNE_CRUSADER_CONSECRATION_B := New SkillRune("é’‰åºŠç»“ç•Œ", "ç‰©ç†", "b", "åœ£åŒ–åŒºåŸŸåŒ–ä¸ºä¸€ç‰‡é’‰åºŠï¼Œå¯¹èµ°è¿›è¿™å—åŒºåŸŸçš„æ•Œäººæ¯ç§’é€ æˆä¼¤å®³ï¼Œç›¸å½“äºŽè†æ£˜ä¼¤å®³çš„100%ã€‚")
+; ç¬¦æ–‡: åœ£å¾¡ç»“ç•Œ 
+RUNE_CRUSADER_CONSECRATION_A := New SkillRune("åœ£å¾¡ç»“ç•Œ", "ç¥žåœ£", "a", "ä»¥ç¥žåœ£ä¹‹ç›¾ç¬¼ç½©åœ£åŒ–åŒºåŸŸï¼Œä½¿æ•Œäººæ— æ³•ç©¿è¶Šã€‚åœ£åŒ–åŒºåŸŸçš„æŒç»­æ—¶é—´ç¼©çŸ­ä¸º5ç§’ã€‚")
+; ç¬¦æ–‡: åœ£ç‚Žç»“ç•Œ 
+RUNE_CRUSADER_CONSECRATION_D := New SkillRune("åœ£ç‚Žç»“ç•Œ", "ç«ç„°", "d", "åœ£åŒ–åŒºåŸŸå†…çš„æ•Œäººæ¯ç§’ä¼šå—åˆ°155%æ­¦å™¨ä¼¤å®³å€¼çš„ç«ç„°ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: åœ£å¨ç»“ç•Œ 
+RUNE_CRUSADER_CONSECRATION_E := New SkillRune("åœ£å¨ç»“ç•Œ", "ç¥žåœ£", "e", "åœ£åŒ–åŒºåŸŸå†…çš„æ•Œäººæœ‰100%æœºçŽ‡ä¼šå—åˆ°ææƒ§æ•ˆæžœçš„å½±å“ï¼ŒæŒç»­3ç§’ã€‚")
+; æŠ€èƒ½: åœ£å…‰ç»“ç•Œ
+SKILL_ACTIVE_CRUSADER_CONSECRATION := New ActiveSkill("åœ£å…‰ç»“ç•Œ", "ç¥žåœ£", "é˜²å¾¡"
 	, "images\skills\crusader\active\crusader_consecration_normal.png"
-	, "ÀäÈ´Ê±¼ä£º30Ãë\r\nÊ¥»¯ÖÜÎ§20ÂëµÄÇøÓò£¬³ÖÐø10Ãë¡£µ±ÄãºÍÃËÓÑÎ»ÓÚÊ¥»¯ÇøÓòÄÚÊ±£¬Ã¿Ãë¿É»Ö¸´32185µãÉúÃüÖµ¡£"
+	, "å†·å´æ—¶é—´ï¼š30ç§’\r\nåœ£åŒ–å‘¨å›´20ç çš„åŒºåŸŸï¼ŒæŒç»­10ç§’ã€‚å½“ä½ å’Œç›Ÿå‹ä½äºŽåœ£åŒ–åŒºåŸŸå†…æ—¶ï¼Œæ¯ç§’å¯æ¢å¤32185ç‚¹ç”Ÿå‘½å€¼ã€‚"
 	, [RUNE_CRUSADER_CONSECRATION_C, RUNE_CRUSADER_CONSECRATION_B, RUNE_CRUSADER_CONSECRATION_A, RUNE_CRUSADER_CONSECRATION_D, RUNE_CRUSADER_CONSECRATION_E])
 ; ---------------------------
-; ¼¼ÄÜ: Ê¥¹â½á½ç End
+; æŠ€èƒ½: åœ£å…‰ç»“ç•Œ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÕýÒåÂÉÁî Start
+; æŠ€èƒ½: æ­£ä¹‰å¾‹ä»¤ Start
 ; ---------------------------
-; ·ûÎÄ: ÎþÉü·îÏ× 
-RUNE_CRUSADER_LAWS_OF_JUSTICE_A := New SkillRune("ÎþÉü·îÏ×", "ÎïÀí", "a", "Ö÷¶¯£ºÇ¿»¯ÂÉÁîÍ¬Ê±»áÔÚ½ÓÏÂÀ´µÄ5ÃëÄÚ½«ÃËÓÑËùÊÜÉËº¦µÄ20%×ªÒÆÖÁÄãÉíÉÏ¡£")
-; ·ûÎÄ: ¸ÕÇ¿²»Çü 
-RUNE_CRUSADER_LAWS_OF_JUSTICE_B := New SkillRune("¸ÕÇ¿²»Çü", "ÎïÀí", "b", "Ö÷¶¯£ºÇ¿»¯ÂÉÁîÍ¬Ê±»áÊ¹ÄãºÍÃËÓÑÌá¸ß7000µã»¤¼×Öµ£¬³ÖÐø5Ãë¡£")
-; ·ûÎÄ: ÐÅÄîÖ®¶Ü 
-RUNE_CRUSADER_LAWS_OF_JUSTICE_C := New SkillRune("ÐÅÄîÖ®¶Ü", "ÎïÀí", "c", "Ö÷¶¯£ºÇ¿»¯ÂÉÁîÍ¬Ê±»áÒÔÐÅÄîÖ®¶Ü±£»¤ÄãºÍÃËÓÑ£¬³ÖÐø5Ãë¡£ÐÅÄîÖ®¶Ü×î¶à¿ÉÎüÊÕ26821µãÉËº¦¡£")
-; ·ûÎÄ: Á¦Á¿Ë¥½ß 
-RUNE_CRUSADER_LAWS_OF_JUSTICE_D := New SkillRune("Á¦Á¿Ë¥½ß", "ÎïÀí", "d", "Ö÷¶¯£ºÔÚÂÉÁîÇ¿»¯ÆÚ¼ä£¬µÐÈË¹¥»÷Äã»òÄãµÄÃËÓÑÊ±£¬Ôì³ÉµÄÉËº¦½µµÍ15%£¬³ÖÐø5Ãë£¬ÀÛ¼Æ×î¶à¿É½µµÍ60%µÄÉËº¦¡£")
-; ·ûÎÄ: ÓÂÕßÎÞ¾å 
-RUNE_CRUSADER_LAWS_OF_JUSTICE_E := New SkillRune("ÓÂÕßÎÞ¾å", "ÎïÀí", "e", "Ö÷¶¯£ºÇ¿»¯ÂÉÁî£¬Ê¹ÄãºÍÃËÓÑ¶Ô¿Ø³¡Ð§¹ûÃâÒß£¬³ÖÐø5Ãë¡£")
-; ¼¼ÄÜ: ÕýÒåÂÉÁî
-SKILL_ACTIVE_CRUSADER_LAWS_OF_JUSTICE := New ActiveSkill("ÕýÒåÂÉÁî", "ÎïÀí", "ÂÉÁî"
+; ç¬¦æ–‡: ç‰ºç‰²å¥‰çŒ® 
+RUNE_CRUSADER_LAWS_OF_JUSTICE_A := New SkillRune("ç‰ºç‰²å¥‰çŒ®", "ç‰©ç†", "a", "ä¸»åŠ¨ï¼šå¼ºåŒ–å¾‹ä»¤åŒæ—¶ä¼šåœ¨æŽ¥ä¸‹æ¥çš„5ç§’å†…å°†ç›Ÿå‹æ‰€å—ä¼¤å®³çš„20%è½¬ç§»è‡³ä½ èº«ä¸Šã€‚")
+; ç¬¦æ–‡: åˆšå¼ºä¸å±ˆ 
+RUNE_CRUSADER_LAWS_OF_JUSTICE_B := New SkillRune("åˆšå¼ºä¸å±ˆ", "ç‰©ç†", "b", "ä¸»åŠ¨ï¼šå¼ºåŒ–å¾‹ä»¤åŒæ—¶ä¼šä½¿ä½ å’Œç›Ÿå‹æé«˜7000ç‚¹æŠ¤ç”²å€¼ï¼ŒæŒç»­5ç§’ã€‚")
+; ç¬¦æ–‡: ä¿¡å¿µä¹‹ç›¾ 
+RUNE_CRUSADER_LAWS_OF_JUSTICE_C := New SkillRune("ä¿¡å¿µä¹‹ç›¾", "ç‰©ç†", "c", "ä¸»åŠ¨ï¼šå¼ºåŒ–å¾‹ä»¤åŒæ—¶ä¼šä»¥ä¿¡å¿µä¹‹ç›¾ä¿æŠ¤ä½ å’Œç›Ÿå‹ï¼ŒæŒç»­5ç§’ã€‚ä¿¡å¿µä¹‹ç›¾æœ€å¤šå¯å¸æ”¶26821ç‚¹ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: åŠ›é‡è¡°ç«­ 
+RUNE_CRUSADER_LAWS_OF_JUSTICE_D := New SkillRune("åŠ›é‡è¡°ç«­", "ç‰©ç†", "d", "ä¸»åŠ¨ï¼šåœ¨å¾‹ä»¤å¼ºåŒ–æœŸé—´ï¼Œæ•Œäººæ”»å‡»ä½ æˆ–ä½ çš„ç›Ÿå‹æ—¶ï¼Œé€ æˆçš„ä¼¤å®³é™ä½Ž15%ï¼ŒæŒç»­5ç§’ï¼Œç´¯è®¡æœ€å¤šå¯é™ä½Ž60%çš„ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: å‹‡è€…æ— æƒ§ 
+RUNE_CRUSADER_LAWS_OF_JUSTICE_E := New SkillRune("å‹‡è€…æ— æƒ§", "ç‰©ç†", "e", "ä¸»åŠ¨ï¼šå¼ºåŒ–å¾‹ä»¤ï¼Œä½¿ä½ å’Œç›Ÿå‹å¯¹æŽ§åœºæ•ˆæžœå…ç–«ï¼ŒæŒç»­5ç§’ã€‚")
+; æŠ€èƒ½: æ­£ä¹‰å¾‹ä»¤
+SKILL_ACTIVE_CRUSADER_LAWS_OF_JUSTICE := New ActiveSkill("æ­£ä¹‰å¾‹ä»¤", "ç‰©ç†", "å¾‹ä»¤"
 	, "images\skills\crusader\active\crusader_lawsofjustice_normal.png"
-	, "ÀäÈ´Ê±¼ä£º30Ãë\r\nÖ÷¶¯£ºÇ¿»¯ÂÉÁî£¬Ê¹ÄãºÍÃËÓÑµÄËùÓÐÔªËØ¿¹ÐÔÌá¸ß490µã£¬³ÖÐø5Ãë¡£"
+	, "å†·å´æ—¶é—´ï¼š30ç§’\r\nä¸»åŠ¨ï¼šå¼ºåŒ–å¾‹ä»¤ï¼Œä½¿ä½ å’Œç›Ÿå‹çš„æ‰€æœ‰å…ƒç´ æŠ—æ€§æé«˜490ç‚¹ï¼ŒæŒç»­5ç§’ã€‚"
 	, [RUNE_CRUSADER_LAWS_OF_JUSTICE_A, RUNE_CRUSADER_LAWS_OF_JUSTICE_B, RUNE_CRUSADER_LAWS_OF_JUSTICE_C, RUNE_CRUSADER_LAWS_OF_JUSTICE_D, RUNE_CRUSADER_LAWS_OF_JUSTICE_E])
 ; ---------------------------
-; ¼¼ÄÜ: ÕýÒåÂÉÁî End
+; æŠ€èƒ½: æ­£ä¹‰å¾‹ä»¤ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Ìì·£Ö®½£ Start
+; æŠ€èƒ½: å¤©ç½šä¹‹å‰‘ Start
 ; ---------------------------
-; ·ûÎÄ: ³ãÑ×Ö®»÷ 
-RUNE_CRUSADER_FALLING_SWORD_A := New SkillRune("³ãÑ×Ö®»÷", "»ðÑæ", "a", "Ê¹Äã½µÂäµÄµØµã²úÉú³¬¸ßÈÈ¶È£¬³ÖÐø6Ãë£¬Ã¿Ãë¶Ô´©Ô½¸ÃÇøÓòµÄµÐÈËÔì³É310%ÎäÆ÷ÉËº¦ÖµµÄ»ðÑæÉËº¦¡£")
-; ·ûÎÄ: ÌìÀ×ºä¶¥ 
-RUNE_CRUSADER_FALLING_SWORD_B := New SkillRune("ÌìÀ×ºä¶¥", "µç»÷", "b", "ÔÚÄãÂäµØÊ±²úÉúÒ»Æ¬À×ÔÆÁýÕÖ¸ÃÇøÓò£¬³ÖÐø5Ãë£¬Òý·¢ÉÁµçËæ»ú¹¥»÷µ×ÏÂµÄµÐÈË£¬Ôì³É605%ÎäÆ÷ÉËº¦ÖµµÄµç»÷ÉËº¦£¬Í¬Ê±Ê¹µÐÈË»èÃÔ2Ãë¡£")
-; ·ûÎÄ: Ê¥¾ü½µÁÙ 
-RUNE_CRUSADER_FALLING_SWORD_C := New SkillRune("Ê¥¾ü½µÁÙ", "ÎïÀí", "c", "ÄãÒÔÍþÃÍµÄÁ¦µÀ×ÅµØ£¬ÕÙ»½³ö3¸öÊ¥½ÌÍ½»¯ÉíÓëÄãÒ»Æð×÷Õ½£¬³ÖÐø5Ãë¡£Ã¿¸ö»¯Éí¹¥»÷Ê±»áÔì³ÉÏàµ±ÓÚÄã280%ÎäÆ÷ÉËº¦ÖµµÄÎïÀíÉËº¦¡£")
-; ·ûÎÄ: Ñ¸»÷Ö®½£ 
-RUNE_CRUSADER_FALLING_SWORD_D := New SkillRune("Ñ¸»÷Ö®½£", "µç»÷", "d", "Ìì·£Ö®½£Ã¿»÷ÖÐÒ»¸öµÐÈË£¬ÀäÈ´Ê±¼ä»áËõ¶Ì1Ãë¡£ÀäÈ´Ê±¼äÎÞ·¨Ëõ¶ÌÖÁµÍÓÚ10Ãë¡£")
-; ·ûÎÄ: ½£ÈÐ·ç±© 
-RUNE_CRUSADER_FALLING_SWORD_E := New SkillRune("½£ÈÐ·ç±©", "ÉñÊ¥", "e", "ÔÚÃüÖÐµØµãÕÙ»½³öÒ»²¨»ØÐýµÄ½£Õó£¬Ôì³É230%ÎäÆ÷ÉËº¦ÖµµÄÉñÊ¥ÉËº¦£¬²¢½«ÕâÐ©µÐÈËÕðÏòÖÜÎ§£¬Ê¹ÆäÌ±»¾5Ãë¡£")
-; ¼¼ÄÜ: Ìì·£Ö®½£
-SKILL_ACTIVE_CRUSADER_FALLING_SWORD := New ActiveSkill("Ìì·£Ö®½£", "ÎïÀí", "×ï·£"
+; ç¬¦æ–‡: ç‚½ç‚Žä¹‹å‡» 
+RUNE_CRUSADER_FALLING_SWORD_A := New SkillRune("ç‚½ç‚Žä¹‹å‡»", "ç«ç„°", "a", "ä½¿ä½ é™è½çš„åœ°ç‚¹äº§ç”Ÿè¶…é«˜çƒ­åº¦ï¼ŒæŒç»­6ç§’ï¼Œæ¯ç§’å¯¹ç©¿è¶Šè¯¥åŒºåŸŸçš„æ•Œäººé€ æˆ310%æ­¦å™¨ä¼¤å®³å€¼çš„ç«ç„°ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: å¤©é›·è½°é¡¶ 
+RUNE_CRUSADER_FALLING_SWORD_B := New SkillRune("å¤©é›·è½°é¡¶", "ç”µå‡»", "b", "åœ¨ä½ è½åœ°æ—¶äº§ç”Ÿä¸€ç‰‡é›·äº‘ç¬¼ç½©è¯¥åŒºåŸŸï¼ŒæŒç»­5ç§’ï¼Œå¼•å‘é—ªç”µéšæœºæ”»å‡»åº•ä¸‹çš„æ•Œäººï¼Œé€ æˆ605%æ­¦å™¨ä¼¤å®³å€¼çš„ç”µå‡»ä¼¤å®³ï¼ŒåŒæ—¶ä½¿æ•Œäººæ˜è¿·2ç§’ã€‚")
+; ç¬¦æ–‡: åœ£å†›é™ä¸´ 
+RUNE_CRUSADER_FALLING_SWORD_C := New SkillRune("åœ£å†›é™ä¸´", "ç‰©ç†", "c", "ä½ ä»¥å¨çŒ›çš„åŠ›é“ç€åœ°ï¼Œå¬å”¤å‡º3ä¸ªåœ£æ•™å¾’åŒ–èº«ä¸Žä½ ä¸€èµ·ä½œæˆ˜ï¼ŒæŒç»­5ç§’ã€‚æ¯ä¸ªåŒ–èº«æ”»å‡»æ—¶ä¼šé€ æˆç›¸å½“äºŽä½ 280%æ­¦å™¨ä¼¤å®³å€¼çš„ç‰©ç†ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: è¿…å‡»ä¹‹å‰‘ 
+RUNE_CRUSADER_FALLING_SWORD_D := New SkillRune("è¿…å‡»ä¹‹å‰‘", "ç”µå‡»", "d", "å¤©ç½šä¹‹å‰‘æ¯å‡»ä¸­ä¸€ä¸ªæ•Œäººï¼Œå†·å´æ—¶é—´ä¼šç¼©çŸ­1ç§’ã€‚å†·å´æ—¶é—´æ— æ³•ç¼©çŸ­è‡³ä½ŽäºŽ10ç§’ã€‚")
+; ç¬¦æ–‡: å‰‘åˆƒé£Žæš´ 
+RUNE_CRUSADER_FALLING_SWORD_E := New SkillRune("å‰‘åˆƒé£Žæš´", "ç¥žåœ£", "e", "åœ¨å‘½ä¸­åœ°ç‚¹å¬å”¤å‡ºä¸€æ³¢å›žæ—‹çš„å‰‘é˜µï¼Œé€ æˆ230%æ­¦å™¨ä¼¤å®³å€¼çš„ç¥žåœ£ä¼¤å®³ï¼Œå¹¶å°†è¿™äº›æ•Œäººéœ‡å‘å‘¨å›´ï¼Œä½¿å…¶ç˜«ç—ª5ç§’ã€‚")
+; æŠ€èƒ½: å¤©ç½šä¹‹å‰‘
+SKILL_ACTIVE_CRUSADER_FALLING_SWORD := New ActiveSkill("å¤©ç½šä¹‹å‰‘", "ç‰©ç†", "ç½ªç½š"
 	, "images\skills\crusader\active\crusader_dragoon_normal.png"
-	, "ÏûºÄ£º25µãÊ¥Å­ÀäÈ´Ê±¼ä£º30Ãë\r\n×ÝÉíÔ¾ÈëÔÆÏö£¬ÒÔÀ×öªÖ®ÊÆ´ÓÌì¶ø½µÃÍ»÷µÐÈË£¬¶Ô14ÂëÄÚµÄËùÓÐµÐÈËÔì³É1700%ÎäÆ÷ÉËº¦¡£"
+	, "æ¶ˆè€—ï¼š25ç‚¹åœ£æ€’å†·å´æ—¶é—´ï¼š30ç§’\r\nçºµèº«è·ƒå…¥äº‘éœ„ï¼Œä»¥é›·éœ†ä¹‹åŠ¿ä»Žå¤©è€Œé™çŒ›å‡»æ•Œäººï¼Œå¯¹14ç å†…çš„æ‰€æœ‰æ•Œäººé€ æˆ1700%æ­¦å™¨ä¼¤å®³ã€‚"
 	, [RUNE_CRUSADER_FALLING_SWORD_A, RUNE_CRUSADER_FALLING_SWORD_B, RUNE_CRUSADER_FALLING_SWORD_C, RUNE_CRUSADER_FALLING_SWORD_D, RUNE_CRUSADER_FALLING_SWORD_E])
 ; ---------------------------
-; ¼¼ÄÜ: Ìì·£Ö®½£ End
+; æŠ€èƒ½: å¤©ç½šä¹‹å‰‘ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ×£¸£Ö®¶Ü Start
+; æŠ€èƒ½: ç¥ç¦ä¹‹ç›¾ Start
 ; ---------------------------
-; ·ûÎÄ: ÔÎ»÷Ö®¶Ü 
-RUNE_CRUSADER_BLESSED_SHIELD_A := New SkillRune("ÔÎ»÷Ö®¶Ü", "µç»÷", "a", "¶ÜÅÆ³äÂúµçÄÜ£¬ÓÐ25%»úÂÊÊ¹µÚÒ»¸ö±»»÷ÖÐµÄµÐÈË»èÃÔ2Ãë¡£Ö®ºóÃ¿»÷ÖÐÒ»¸öµÐÈË£¬»èÃÔ»úÂÊ»á½µµÍ5%¡£")
-; ·ûÎÄ: ±¬ÑæÖ®¶Ü 
-RUNE_CRUSADER_BLESSED_SHIELD_B := New SkillRune("±¬ÑæÖ®¶Ü", "»ðÑæ", "b", "¶ÜÅÆ±Å·¢ÁÒÑæ£¬ÔÚ»÷ÖÐÊ±ÓÐ33%»úÂÊÒý·¢±¬Õ¨£¬¶Ô10ÂëÄÚµÄËùÓÐµÐÈËÔì³É310%ÎäÆ÷ÉËº¦ÖµµÄ»ðÑæÉËº¦¡£")
-; ·ûÎÄ: Ê¥¶÷Ö®¶Ü 
-RUNE_CRUSADER_BLESSED_SHIELD_C := New SkillRune("Ê¥¶÷Ö®¶Ü", "ÎïÀí", "c", "¶ÜÅÆ»÷ÖÐµÐÈËÊ±£¬Ê¹ÄãµÄ»¤¼×ÖµÌá¸ß5%£¬ÉúÃüÖµ»Ö¸´ÂÊÌá¸ß5%£¬³ÖÐø4Ãë¡£")
-; ·ûÎÄ: É¢ÉäÖ®¶Ü 
-RUNE_CRUSADER_BLESSED_SHIELD_D := New SkillRune("É¢ÉäÖ®¶Ü", "ÉñÊ¥", "d", "¶ÜÅÆÃüÖÐµÐÈËÊ±£¬»á·ÖÁÑÎª3Ãæ½ÏÐ¡µÄ¶ÜÅÆ£¬ÔÚÖÜÎ§µÐÈËÖ®¼äµ¯Éä£¬¶Ô»÷ÖÐµÄËùÓÐµÐÈËÔì³É170%ÎäÆ÷ÉËº¦ÖµµÄÉñÊ¥ÉËº¦¡£")
-; ·ûÎÄ: ´©µÐÖ®¶Ü 
-RUNE_CRUSADER_BLESSED_SHIELD_E := New SkillRune("´©µÐÖ®¶Ü", "ÉñÊ¥", "e", "¶ÜÅÆ²»ÔÙµ¯Éä£¬µ«ÊÇ»á´©Í¸ËùÓÐµÐÈË£¬Í¬Ê±ÓÐ50%»úÂÊ»÷ÍËÕâÐ©µÐÈË¡£")
-; ¼¼ÄÜ: ×£¸£Ö®¶Ü
-SKILL_ACTIVE_CRUSADER_BLESSED_SHIELD := New ActiveSkill("×£¸£Ö®¶Ü", "ÉñÊ¥", "´ÎÒª¼¼ÄÜ"
+; ç¬¦æ–‡: æ™•å‡»ä¹‹ç›¾ 
+RUNE_CRUSADER_BLESSED_SHIELD_A := New SkillRune("æ™•å‡»ä¹‹ç›¾", "ç”µå‡»", "a", "ç›¾ç‰Œå……æ»¡ç”µèƒ½ï¼Œæœ‰25%æœºçŽ‡ä½¿ç¬¬ä¸€ä¸ªè¢«å‡»ä¸­çš„æ•Œäººæ˜è¿·2ç§’ã€‚ä¹‹åŽæ¯å‡»ä¸­ä¸€ä¸ªæ•Œäººï¼Œæ˜è¿·æœºçŽ‡ä¼šé™ä½Ž5%ã€‚")
+; ç¬¦æ–‡: çˆ†ç„°ä¹‹ç›¾ 
+RUNE_CRUSADER_BLESSED_SHIELD_B := New SkillRune("çˆ†ç„°ä¹‹ç›¾", "ç«ç„°", "b", "ç›¾ç‰Œè¿¸å‘çƒˆç„°ï¼Œåœ¨å‡»ä¸­æ—¶æœ‰33%æœºçŽ‡å¼•å‘çˆ†ç‚¸ï¼Œå¯¹10ç å†…çš„æ‰€æœ‰æ•Œäººé€ æˆ310%æ­¦å™¨ä¼¤å®³å€¼çš„ç«ç„°ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: åœ£æ©ä¹‹ç›¾ 
+RUNE_CRUSADER_BLESSED_SHIELD_C := New SkillRune("åœ£æ©ä¹‹ç›¾", "ç‰©ç†", "c", "ç›¾ç‰Œå‡»ä¸­æ•Œäººæ—¶ï¼Œä½¿ä½ çš„æŠ¤ç”²å€¼æé«˜5%ï¼Œç”Ÿå‘½å€¼æ¢å¤çŽ‡æé«˜5%ï¼ŒæŒç»­4ç§’ã€‚")
+; ç¬¦æ–‡: æ•£å°„ä¹‹ç›¾ 
+RUNE_CRUSADER_BLESSED_SHIELD_D := New SkillRune("æ•£å°„ä¹‹ç›¾", "ç¥žåœ£", "d", "ç›¾ç‰Œå‘½ä¸­æ•Œäººæ—¶ï¼Œä¼šåˆ†è£‚ä¸º3é¢è¾ƒå°çš„ç›¾ç‰Œï¼Œåœ¨å‘¨å›´æ•Œäººä¹‹é—´å¼¹å°„ï¼Œå¯¹å‡»ä¸­çš„æ‰€æœ‰æ•Œäººé€ æˆ170%æ­¦å™¨ä¼¤å®³å€¼çš„ç¥žåœ£ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ç©¿æ•Œä¹‹ç›¾ 
+RUNE_CRUSADER_BLESSED_SHIELD_E := New SkillRune("ç©¿æ•Œä¹‹ç›¾", "ç¥žåœ£", "e", "ç›¾ç‰Œä¸å†å¼¹å°„ï¼Œä½†æ˜¯ä¼šç©¿é€æ‰€æœ‰æ•Œäººï¼ŒåŒæ—¶æœ‰50%æœºçŽ‡å‡»é€€è¿™äº›æ•Œäººã€‚")
+; æŠ€èƒ½: ç¥ç¦ä¹‹ç›¾
+SKILL_ACTIVE_CRUSADER_BLESSED_SHIELD := New ActiveSkill("ç¥ç¦ä¹‹ç›¾", "ç¥žåœ£", "æ¬¡è¦æŠ€èƒ½"
 	, "images\skills\crusader\active\crusader_shieldthrow_normal.png"
-	, "ÏûºÄ£º20µãÊ¥Å­\r\nÖÀ³öÄãµÄ¶ÜÅÆ£¬Ôì³É430%ÔÙ¼ÓÉÏÏàµ±ÓÚ¶ÜÅÆ¸ñµ²»úÂÊ250%ÎäÆ÷ÉËº¦ÖµµÄÉñÊ¥ÉËº¦¡£¶ÜÅÆ»áÔÚÖÜÎ§3¸öµÐÈËÖ®¼ä»ØÐýµ¯Éä¡£"
+	, "æ¶ˆè€—ï¼š20ç‚¹åœ£æ€’\r\næŽ·å‡ºä½ çš„ç›¾ç‰Œï¼Œé€ æˆ430%å†åŠ ä¸Šç›¸å½“äºŽç›¾ç‰Œæ ¼æŒ¡æœºçŽ‡250%æ­¦å™¨ä¼¤å®³å€¼çš„ç¥žåœ£ä¼¤å®³ã€‚ç›¾ç‰Œä¼šåœ¨å‘¨å›´3ä¸ªæ•Œäººä¹‹é—´å›žæ—‹å¼¹å°„ã€‚"
 	, [RUNE_CRUSADER_BLESSED_SHIELD_A, RUNE_CRUSADER_BLESSED_SHIELD_B, RUNE_CRUSADER_BLESSED_SHIELD_C, RUNE_CRUSADER_BLESSED_SHIELD_D, RUNE_CRUSADER_BLESSED_SHIELD_E])
 ; ---------------------------
-; ¼¼ÄÜ: ×£¸£Ö®¶Ü End
+; æŠ€èƒ½: ç¥ç¦ä¹‹ç›¾ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÌìÇ´ Start
+; æŠ€èƒ½: å¤©è°´ Start
 ; ---------------------------
-; ·ûÎÄ: Õæ¿ÕÎüÒý 
-RUNE_CRUSADER_CONDEMN_B := New SkillRune("Õæ¿ÕÎüÒý", "ÉñÊ¥", "b", "ÔÚÄý¾ÛÄÜÁ¿Òý·¢±¬Õ¨µÄ¹ý³ÌÖÐ£¬»á½«µÐÈËÎüÈë±¬Õ¨·¶Î§£¬¾àÀë±¬Õ¨Ê±¼äÔ½½Ó½ü£¬ÎüÈëµÄµÐÈË¾ÍÔ½¶à¡£")
-; ·ûÎÄ: Ë²±¬ 
-RUNE_CRUSADER_CONDEMN_E := New SkillRune("Ë²±¬", "ÉñÊ¥", "e", "Á¢¼´ÊÍ·ÅÄÜÁ¿Òý·¢±¬Õ¨¡£")
-; ·ûÎÄ: ÎÞ¾¡±¨¸´ 
-RUNE_CRUSADER_CONDEMN_C := New SkillRune("ÎÞ¾¡±¨¸´", "ÉñÊ¥", "c", "±¬Õ¨Ê±Ã¿»÷ÖÐÒ»¸öµÐÈË£¬¿ÉÊ¹ÀäÈ´Ê±¼äËõ¶Ì1Ãë¡£")
-; ·ûÎÄ: ±¬ºäÕ¨ÁÑ 
-RUNE_CRUSADER_CONDEMN_D := New SkillRune("±¬ºäÕ¨ÁÑ", "ÎïÀí", "d", "ÉËº¦·¶Î§À©´óÖÁ20Âë¡£")
-; ·ûÎÄ: ÒÔÑÛ»¹ÑÛ 
-RUNE_CRUSADER_CONDEMN_A := New SkillRune("ÒÔÑÛ»¹ÑÛ", "»ðÑæ", "a", "½«Äý¾ÛÄÜÁ¿ÆÚ¼äËùÊÜÉËº¦µÄ50%×ªÎª±¬Õ¨Ê±µÄÉËº¦Öµ¡£")
-; ¼¼ÄÜ: ÌìÇ´
-SKILL_ACTIVE_CRUSADER_CONDEMN := New ActiveSkill("ÌìÇ´", "ÉñÊ¥", "¸¨Öú"
+; ç¬¦æ–‡: çœŸç©ºå¸å¼• 
+RUNE_CRUSADER_CONDEMN_B := New SkillRune("çœŸç©ºå¸å¼•", "ç¥žåœ£", "b", "åœ¨å‡èšèƒ½é‡å¼•å‘çˆ†ç‚¸çš„è¿‡ç¨‹ä¸­ï¼Œä¼šå°†æ•Œäººå¸å…¥çˆ†ç‚¸èŒƒå›´ï¼Œè·ç¦»çˆ†ç‚¸æ—¶é—´è¶ŠæŽ¥è¿‘ï¼Œå¸å…¥çš„æ•Œäººå°±è¶Šå¤šã€‚")
+; ç¬¦æ–‡: çž¬çˆ† 
+RUNE_CRUSADER_CONDEMN_E := New SkillRune("çž¬çˆ†", "ç¥žåœ£", "e", "ç«‹å³é‡Šæ”¾èƒ½é‡å¼•å‘çˆ†ç‚¸ã€‚")
+; ç¬¦æ–‡: æ— å°½æŠ¥å¤ 
+RUNE_CRUSADER_CONDEMN_C := New SkillRune("æ— å°½æŠ¥å¤", "ç¥žåœ£", "c", "çˆ†ç‚¸æ—¶æ¯å‡»ä¸­ä¸€ä¸ªæ•Œäººï¼Œå¯ä½¿å†·å´æ—¶é—´ç¼©çŸ­1ç§’ã€‚")
+; ç¬¦æ–‡: çˆ†è½°ç‚¸è£‚ 
+RUNE_CRUSADER_CONDEMN_D := New SkillRune("çˆ†è½°ç‚¸è£‚", "ç‰©ç†", "d", "ä¼¤å®³èŒƒå›´æ‰©å¤§è‡³20ç ã€‚")
+; ç¬¦æ–‡: ä»¥çœ¼è¿˜çœ¼ 
+RUNE_CRUSADER_CONDEMN_A := New SkillRune("ä»¥çœ¼è¿˜çœ¼", "ç«ç„°", "a", "å°†å‡èšèƒ½é‡æœŸé—´æ‰€å—ä¼¤å®³çš„50%è½¬ä¸ºçˆ†ç‚¸æ—¶çš„ä¼¤å®³å€¼ã€‚")
+; æŠ€èƒ½: å¤©è°´
+SKILL_ACTIVE_CRUSADER_CONDEMN := New ActiveSkill("å¤©è°´", "ç¥žåœ£", "è¾…åŠ©"
 	, "images\skills\crusader\active\crusader_deflection_normal.png"
-	, "ÀäÈ´Ê±¼ä£º15Ãë\r\nÄý¾ÛÄÜÁ¿£¬ÔÚ3ÃëºóÊÍ·ÅÄÜÁ¿Òý·¢´ó±¬Õ¨£¬¶Ô15ÂëÄÚµÄËùÓÐµÐÈËÔì³É1160%ÎäÆ÷ÉËº¦ÖµµÄÉñÊ¥ÉËº¦¡£"
+	, "å†·å´æ—¶é—´ï¼š15ç§’\r\nå‡èšèƒ½é‡ï¼Œåœ¨3ç§’åŽé‡Šæ”¾èƒ½é‡å¼•å‘å¤§çˆ†ç‚¸ï¼Œå¯¹15ç å†…çš„æ‰€æœ‰æ•Œäººé€ æˆ1160%æ­¦å™¨ä¼¤å®³å€¼çš„ç¥žåœ£ä¼¤å®³ã€‚"
 	, [RUNE_CRUSADER_CONDEMN_B, RUNE_CRUSADER_CONDEMN_E, RUNE_CRUSADER_CONDEMN_C, RUNE_CRUSADER_CONDEMN_D, RUNE_CRUSADER_CONDEMN_A])
 ; ---------------------------
-; ¼¼ÄÜ: ÌìÇ´ End
+; æŠ€èƒ½: å¤©è°´ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÉóÅÐ Start
+; æŠ€èƒ½: å®¡åˆ¤ Start
 ; ---------------------------
-; ·ûÎÄ: âã×ï 
-RUNE_CRUSADER_JUDGMENT_A := New SkillRune("âã×ï", "ÎïÀí", "a", "ÄãÃ¿¶ÔÒ»¸öµÐÈËÊ©ÐÐÉóÅÐ£¬¿ÉÊ¹ÄãÃ¿Ãë»Ö¸´2682µãÉúÃüÖµ£¬³ÖÐø3Ãë¡£")
-; ·ûÎÄ: ¼¯ÌåÉóÅÐ 
-RUNE_CRUSADER_JUDGMENT_B := New SkillRune("¼¯ÌåÉóÅÐ", "ÎïÀí", "b", "ËùÓÐ±»ÉóÅÐµÄµÐÈË»á±»À­ÏòÉóÅÐÇøÓòµÄÖÐÐÄ¡£")
-; ·ûÎÄ: ÉóÉ÷ÅÐ¾ö 
-RUNE_CRUSADER_JUDGMENT_C := New SkillRune("ÉóÉ÷ÅÐ¾ö", "ÎïÀí", "c", "¶¨Éí³ÖÐøÊ±¼äÑÓ³¤ÖÁ10Ãë¡£")
-; ·ûÎÄ: ×ïÎÞ¿ÉÉâ 
-RUNE_CRUSADER_JUDGMENT_D := New SkillRune("×ïÎÞ¿ÉÉâ", "ÎïÀí", "d", "¶Ô±»ÉóÅÐµÄµÐÈËÔì³ÉÉËº¦Ê±£¬Ôì³É±¬»÷µÄ»úÂÊÌá¸ß8%¡£")
-; ·ûÎÄ: Ï÷Èõ 
-RUNE_CRUSADER_JUDGMENT_E := New SkillRune("Ï÷Èõ", "ÎïÀí", "e", "Ê¹ÉóÅÐÇøÓòÄÚµÄµÐÈËËùÔì³ÉµÄÉËº¦½µµÍ40%£¬³ÖÐø6Ãë¡£")
-; ¼¼ÄÜ: ÉóÅÐ
-SKILL_ACTIVE_CRUSADER_JUDGMENT := New ActiveSkill("ÉóÅÐ", "ÎïÀí", "·ÀÓù"
+; ç¬¦æ–‡: å¿ç½ª 
+RUNE_CRUSADER_JUDGMENT_A := New SkillRune("å¿ç½ª", "ç‰©ç†", "a", "ä½ æ¯å¯¹ä¸€ä¸ªæ•Œäººæ–½è¡Œå®¡åˆ¤ï¼Œå¯ä½¿ä½ æ¯ç§’æ¢å¤2682ç‚¹ç”Ÿå‘½å€¼ï¼ŒæŒç»­3ç§’ã€‚")
+; ç¬¦æ–‡: é›†ä½“å®¡åˆ¤ 
+RUNE_CRUSADER_JUDGMENT_B := New SkillRune("é›†ä½“å®¡åˆ¤", "ç‰©ç†", "b", "æ‰€æœ‰è¢«å®¡åˆ¤çš„æ•Œäººä¼šè¢«æ‹‰å‘å®¡åˆ¤åŒºåŸŸçš„ä¸­å¿ƒã€‚")
+; ç¬¦æ–‡: å®¡æ…Žåˆ¤å†³ 
+RUNE_CRUSADER_JUDGMENT_C := New SkillRune("å®¡æ…Žåˆ¤å†³", "ç‰©ç†", "c", "å®šèº«æŒç»­æ—¶é—´å»¶é•¿è‡³10ç§’ã€‚")
+; ç¬¦æ–‡: ç½ªæ— å¯èµ¦ 
+RUNE_CRUSADER_JUDGMENT_D := New SkillRune("ç½ªæ— å¯èµ¦", "ç‰©ç†", "d", "å¯¹è¢«å®¡åˆ¤çš„æ•Œäººé€ æˆä¼¤å®³æ—¶ï¼Œé€ æˆçˆ†å‡»çš„æœºçŽ‡æé«˜8%ã€‚")
+; ç¬¦æ–‡: å‰Šå¼± 
+RUNE_CRUSADER_JUDGMENT_E := New SkillRune("å‰Šå¼±", "ç‰©ç†", "e", "ä½¿å®¡åˆ¤åŒºåŸŸå†…çš„æ•Œäººæ‰€é€ æˆçš„ä¼¤å®³é™ä½Ž40%ï¼ŒæŒç»­6ç§’ã€‚")
+; æŠ€èƒ½: å®¡åˆ¤
+SKILL_ACTIVE_CRUSADER_JUDGMENT := New ActiveSkill("å®¡åˆ¤", "ç‰©ç†", "é˜²å¾¡"
 	, "images\skills\crusader\active\crusader_judge_normal.png"
-	, "ÀäÈ´Ê±¼ä£º20Ãë\r\n¶ÔÄ¿±êµØµã20ÂëÄÚµÄËùÓÐµÐÈËÊ©ÐÐÉóÅÐ£¬½«Æä¶¨Éí6Ãë¡£"
+	, "å†·å´æ—¶é—´ï¼š20ç§’\r\nå¯¹ç›®æ ‡åœ°ç‚¹20ç å†…çš„æ‰€æœ‰æ•Œäººæ–½è¡Œå®¡åˆ¤ï¼Œå°†å…¶å®šèº«6ç§’ã€‚"
 	, [RUNE_CRUSADER_JUDGMENT_A, RUNE_CRUSADER_JUDGMENT_B, RUNE_CRUSADER_JUDGMENT_C, RUNE_CRUSADER_JUDGMENT_D, RUNE_CRUSADER_JUDGMENT_E])
 ; ---------------------------
-; ¼¼ÄÜ: ÉóÅÐ End
+; æŠ€èƒ½: å®¡åˆ¤ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Ï£ÍûÂÉÁî Start
+; æŠ€èƒ½: å¸Œæœ›å¾‹ä»¤ Start
 ; ---------------------------
-; ·ûÎÄ: ÌìÊ¹Ö®Òí 
-RUNE_CRUSADER_LAWS_OF_HOPE_A := New SkillRune("ÌìÊ¹Ö®Òí", "ÎïÀí", "a", "Ö÷¶¯£ºÇ¿»¯ÂÉÁî£¬Ê¹ÄãºÍÃËÓÑµÄÒÆ¶¯ËÙ¶ÈÌá¸ß50%£¬ÊÜ´ËÐ§¹ûÓ°ÏìµÄËùÓÐÈËÔÚÒÆ¶¯Ê±¿É´©¹ýµÐÈË¡£")
-; ·ûÎÄ: ²»ÃðÏ£Íû 
-RUNE_CRUSADER_LAWS_OF_HOPE_B := New SkillRune("²»ÃðÏ£Íû", "ÎïÀí", "b", "Ö÷¶¯£ºÇ¿»¯ÂÉÁîÍ¬Ê±»áÊ¹ÄãºÍÃËÓÑµÄÉúÃüÖµÉÏÏÞÌá¸ß10%¡£")
-; ·ûÎÄ: Ï£ÍûÖ®»½ 
-RUNE_CRUSADER_LAWS_OF_HOPE_C := New SkillRune("Ï£ÍûÖ®»½", "ÎïÀí", "c", "Ö÷¶¯£ºÇ¿»¯ÂÉÁîÍ¬Ê±Ê¹ÊÜµ½µÄËùÓÐÎïÀíÉËº¦½µµÍ25%¡£")
-; ·ûÎÄ: ÐÅÕßÃÉ¶÷ 
-RUNE_CRUSADER_LAWS_OF_HOPE_D := New SkillRune("ÐÅÕßÃÉ¶÷", "ÎïÀí", "d", "Ö÷¶¯£ºÇ¿»¯ÂÉÁîÊ±£¬ÄãÃ¿ÏûºÄÒ»µãÊ¥Å­¿ÉÊ¹ÄãºÍÃËÓÑ»Ö¸´1073µãÉúÃüÖµ¡£")
-; ·ûÎÄ: ò¯ÐÅÖ®ÔÊ 
-RUNE_CRUSADER_LAWS_OF_HOPE_E := New SkillRune("ò¯ÐÅÖ®ÔÊ", "ÎïÀí", "e", "Ö÷¶¯£ºÇ¿»¯ÂÉÁî£¬Ê¹ÊÜµ½µÄËùÓÐ·ÇÎïÀíÉËº¦½µµÍ25%¡£")
-; ¼¼ÄÜ: Ï£ÍûÂÉÁî
-SKILL_ACTIVE_CRUSADER_LAWS_OF_HOPE := New ActiveSkill("Ï£ÍûÂÉÁî", "ÎïÀí", "ÂÉÁî"
+; ç¬¦æ–‡: å¤©ä½¿ä¹‹ç¿¼ 
+RUNE_CRUSADER_LAWS_OF_HOPE_A := New SkillRune("å¤©ä½¿ä¹‹ç¿¼", "ç‰©ç†", "a", "ä¸»åŠ¨ï¼šå¼ºåŒ–å¾‹ä»¤ï¼Œä½¿ä½ å’Œç›Ÿå‹çš„ç§»åŠ¨é€Ÿåº¦æé«˜50%ï¼Œå—æ­¤æ•ˆæžœå½±å“çš„æ‰€æœ‰äººåœ¨ç§»åŠ¨æ—¶å¯ç©¿è¿‡æ•Œäººã€‚")
+; ç¬¦æ–‡: ä¸ç­å¸Œæœ› 
+RUNE_CRUSADER_LAWS_OF_HOPE_B := New SkillRune("ä¸ç­å¸Œæœ›", "ç‰©ç†", "b", "ä¸»åŠ¨ï¼šå¼ºåŒ–å¾‹ä»¤åŒæ—¶ä¼šä½¿ä½ å’Œç›Ÿå‹çš„ç”Ÿå‘½å€¼ä¸Šé™æé«˜10%ã€‚")
+; ç¬¦æ–‡: å¸Œæœ›ä¹‹å”¤ 
+RUNE_CRUSADER_LAWS_OF_HOPE_C := New SkillRune("å¸Œæœ›ä¹‹å”¤", "ç‰©ç†", "c", "ä¸»åŠ¨ï¼šå¼ºåŒ–å¾‹ä»¤åŒæ—¶ä½¿å—åˆ°çš„æ‰€æœ‰ç‰©ç†ä¼¤å®³é™ä½Ž25%ã€‚")
+; ç¬¦æ–‡: ä¿¡è€…è’™æ© 
+RUNE_CRUSADER_LAWS_OF_HOPE_D := New SkillRune("ä¿¡è€…è’™æ©", "ç‰©ç†", "d", "ä¸»åŠ¨ï¼šå¼ºåŒ–å¾‹ä»¤æ—¶ï¼Œä½ æ¯æ¶ˆè€—ä¸€ç‚¹åœ£æ€’å¯ä½¿ä½ å’Œç›Ÿå‹æ¢å¤1073ç‚¹ç”Ÿå‘½å€¼ã€‚")
+; ç¬¦æ–‡: è™”ä¿¡ä¹‹å… 
+RUNE_CRUSADER_LAWS_OF_HOPE_E := New SkillRune("è™”ä¿¡ä¹‹å…", "ç‰©ç†", "e", "ä¸»åŠ¨ï¼šå¼ºåŒ–å¾‹ä»¤ï¼Œä½¿å—åˆ°çš„æ‰€æœ‰éžç‰©ç†ä¼¤å®³é™ä½Ž25%ã€‚")
+; æŠ€èƒ½: å¸Œæœ›å¾‹ä»¤
+SKILL_ACTIVE_CRUSADER_LAWS_OF_HOPE := New ActiveSkill("å¸Œæœ›å¾‹ä»¤", "ç‰©ç†", "å¾‹ä»¤"
 	, "images\skills\crusader\active\crusader_lawsofhope_normal.png"
-	, "ÀäÈ´Ê±¼ä£º30Ãë\r\nÖ÷¶¯£ºÇ¿»¯ÂÉÁî£¬ÒÔ»¤¶Ü±£»¤ÄãºÍÃËÓÑ£¬³ÖÐø5Ãë£¬×î¶à¿ÉÎüÊÕ124128µãÉËº¦¡£"
+	, "å†·å´æ—¶é—´ï¼š30ç§’\r\nä¸»åŠ¨ï¼šå¼ºåŒ–å¾‹ä»¤ï¼Œä»¥æŠ¤ç›¾ä¿æŠ¤ä½ å’Œç›Ÿå‹ï¼ŒæŒç»­5ç§’ï¼Œæœ€å¤šå¯å¸æ”¶124128ç‚¹ä¼¤å®³ã€‚"
 	, [RUNE_CRUSADER_LAWS_OF_HOPE_A, RUNE_CRUSADER_LAWS_OF_HOPE_B, RUNE_CRUSADER_LAWS_OF_HOPE_C, RUNE_CRUSADER_LAWS_OF_HOPE_D, RUNE_CRUSADER_LAWS_OF_HOPE_E])
 ; ---------------------------
-; ¼¼ÄÜ: Ï£ÍûÂÉÁî End
+; æŠ€èƒ½: å¸Œæœ›å¾‹ä»¤ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: °¢¿¨À­ÌØÓÂÊ¿ Start
+; æŠ€èƒ½: é˜¿å¡æ‹‰ç‰¹å‹‡å£« Start
 ; ---------------------------
-; ·ûÎÄ: Ê¥Ñ×±¬·¢ 
-RUNE_CRUSADER_AKARATS_CHAMPION_A := New SkillRune("Ê¥Ñ×±¬·¢", "»ðÑæ", "a", "µ±ÄãÔì³ÉÉËº¦Ê±£¬ÔËÓÃ°¢¿¨À­ÌØÖ®Á¦×ÆÉÕµÐÈË£¬ÔÚ3ÃëÄÚÔì³É460%ÎäÆ÷ÉËº¦ÖµµÄ»ðÑæÉËº¦¡£")
-; ·ûÎÄ: ÍþÕð°Ë·½ 
-RUNE_CRUSADER_AKARATS_CHAMPION_B := New SkillRune("ÍþÕð°Ë·½", "ÎïÀí", "b", "°¢¿¨À­ÌØÓÂÊ¿µÄÊ¥Å­»Ö¸´ÂÊ¼Ó³ÉÌá¸ß10µã¡£")
-; ·ûÎÄ: ·ÜÕ½²»Ï¢ 
-RUNE_CRUSADER_AKARATS_CHAMPION_C := New SkillRune("·ÜÕ½²»Ï¢", "µç»÷", "c", "Ê¹ÓÃ°¢¿¨À­ÌØÓÂÊ¿»áÊ¹ÄãÆäËû¼¼ÄÜÊ£âÅµÄÀäÈ´Ê±¼äËõ¶Ì12Ãë¡£")
-; ·ûÎÄ: ÏÈÖª»¯Éí 
-RUNE_CRUSADER_AKARATS_CHAMPION_D := New SkillRune("ÏÈÖª»¯Éí", "ÉñÊ¥", "d", "ÔÚ°¢¿¨À­ÌØÓÂÊ¿µÄÐ§¹û³ÖÐøÆÚ¼äÄÚ£¬¿É»ñµÃ¶îÍâ150%µÄ»¤¼×Öµ¡£ÔÚ°¢¿¨À­ÌØÓÂÊ¿µÄÐ§¹û³ÖÐøÆÚ¼äÄÚ£¬Ê×´ÎÊÜµ½ÖÂÃüµÄÉËº¦Ê±£¬»áÊ¹ÄãµÄÉúÃüÖµ»Ö¸´ÖÁÈ«Âú¡£")
-; ·ûÎÄ: Ñ¸½ÝÃÍ¹¥ 
-RUNE_CRUSADER_AKARATS_CHAMPION_E := New SkillRune("Ñ¸½ÝÃÍ¹¥", "ÉñÊ¥", "e", "ÔÚ°¢¿¨À­ÌØÓÂÊ¿µÄÐ§¹û³ÖÐøÊ±¼äÄÚ£¬¹¥»÷ËÙ¶ÈÌá¸ß15%¡£")
-; ¼¼ÄÜ: °¢¿¨À­ÌØÓÂÊ¿
-SKILL_ACTIVE_CRUSADER_AKARATS_CHAMPION := New ActiveSkill("°¢¿¨À­ÌØÓÂÊ¿", "»ðÑæ", "×ï·£"
+; ç¬¦æ–‡: åœ£ç‚Žçˆ†å‘ 
+RUNE_CRUSADER_AKARATS_CHAMPION_A := New SkillRune("åœ£ç‚Žçˆ†å‘", "ç«ç„°", "a", "å½“ä½ é€ æˆä¼¤å®³æ—¶ï¼Œè¿ç”¨é˜¿å¡æ‹‰ç‰¹ä¹‹åŠ›ç¼çƒ§æ•Œäººï¼Œåœ¨3ç§’å†…é€ æˆ460%æ­¦å™¨ä¼¤å®³å€¼çš„ç«ç„°ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: å¨éœ‡å…«æ–¹ 
+RUNE_CRUSADER_AKARATS_CHAMPION_B := New SkillRune("å¨éœ‡å…«æ–¹", "ç‰©ç†", "b", "é˜¿å¡æ‹‰ç‰¹å‹‡å£«çš„åœ£æ€’æ¢å¤çŽ‡åŠ æˆæé«˜10ç‚¹ã€‚")
+; ç¬¦æ–‡: å¥‹æˆ˜ä¸æ¯ 
+RUNE_CRUSADER_AKARATS_CHAMPION_C := New SkillRune("å¥‹æˆ˜ä¸æ¯", "ç”µå‡»", "c", "ä½¿ç”¨é˜¿å¡æ‹‰ç‰¹å‹‡å£«ä¼šä½¿ä½ å…¶ä»–æŠ€èƒ½å‰©é¦€çš„å†·å´æ—¶é—´ç¼©çŸ­12ç§’ã€‚")
+; ç¬¦æ–‡: å…ˆçŸ¥åŒ–èº« 
+RUNE_CRUSADER_AKARATS_CHAMPION_D := New SkillRune("å…ˆçŸ¥åŒ–èº«", "ç¥žåœ£", "d", "åœ¨é˜¿å¡æ‹‰ç‰¹å‹‡å£«çš„æ•ˆæžœæŒç»­æœŸé—´å†…ï¼Œå¯èŽ·å¾—é¢å¤–150%çš„æŠ¤ç”²å€¼ã€‚åœ¨é˜¿å¡æ‹‰ç‰¹å‹‡å£«çš„æ•ˆæžœæŒç»­æœŸé—´å†…ï¼Œé¦–æ¬¡å—åˆ°è‡´å‘½çš„ä¼¤å®³æ—¶ï¼Œä¼šä½¿ä½ çš„ç”Ÿå‘½å€¼æ¢å¤è‡³å…¨æ»¡ã€‚")
+; ç¬¦æ–‡: è¿…æ·çŒ›æ”» 
+RUNE_CRUSADER_AKARATS_CHAMPION_E := New SkillRune("è¿…æ·çŒ›æ”»", "ç¥žåœ£", "e", "åœ¨é˜¿å¡æ‹‰ç‰¹å‹‡å£«çš„æ•ˆæžœæŒç»­æ—¶é—´å†…ï¼Œæ”»å‡»é€Ÿåº¦æé«˜15%ã€‚")
+; æŠ€èƒ½: é˜¿å¡æ‹‰ç‰¹å‹‡å£«
+SKILL_ACTIVE_CRUSADER_AKARATS_CHAMPION := New ActiveSkill("é˜¿å¡æ‹‰ç‰¹å‹‡å£«", "ç«ç„°", "ç½ªç½š"
 	, "images\skills\crusader\active\crusader_akkarat_normal.png"
-	, "ÀäÈ´Ê±¼ä£º90Ãë\r\n±¬·¢Èö¿¨À¼Ä·Ö®Á¦£¬Ê¹ÄãÔì³ÉµÄÉËº¦Ìá¸ß35%£¬Ê¥Å­»Ö¸´ÂÊÌá¸ß5µã£¬³ÖÐø20Ãë¡£"
+	, "å†·å´æ—¶é—´ï¼š90ç§’\r\nçˆ†å‘æ’’å¡å…°å§†ä¹‹åŠ›ï¼Œä½¿ä½ é€ æˆçš„ä¼¤å®³æé«˜35%ï¼Œåœ£æ€’æ¢å¤çŽ‡æé«˜5ç‚¹ï¼ŒæŒç»­20ç§’ã€‚"
 	, [RUNE_CRUSADER_AKARATS_CHAMPION_A, RUNE_CRUSADER_AKARATS_CHAMPION_B, RUNE_CRUSADER_AKARATS_CHAMPION_C, RUNE_CRUSADER_AKARATS_CHAMPION_D, RUNE_CRUSADER_AKARATS_CHAMPION_E])
 ; ---------------------------
-; ¼¼ÄÜ: °¢¿¨À­ÌØÓÂÊ¿ End
+; æŠ€èƒ½: é˜¿å¡æ‹‰ç‰¹å‹‡å£« End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÌìÌÃÖ®È­ Start
+; æŠ€èƒ½: å¤©å ‚ä¹‹æ‹³ Start
 ; ---------------------------
-; ·ûÎÄ: Ê¥¹âÀ×»÷ 
-RUNE_CRUSADER_FIST_OF_THE_HEAVENS_D := New SkillRune("Ê¥¹âÀ×»÷", "ÉñÊ¥", "d", "±ÅÉä³öÉñÊ¥µç¹â£¬µç»÷ÐÐ½øÂ·¾¶18ÂëÄÚµÄµÐÈË£¬Ôì³É40%ÎäÆ÷ÉËº¦ÖµµÄÉñÊ¥ÉËº¦¡£")
-; ·ûÎÄ: ÌìÀ×·ç±© 
-RUNE_CRUSADER_FIST_OF_THE_HEAVENS_A := New SkillRune("ÌìÀ×·ç±©", "»ðÑæ", "a", "ÕÙ»½ÁÒÑæ·ç±©ÁýÕÖ°ë¾¶8ÂëµÄÇøÓò£¬³ÖÐø5Ãë£¬Ã¿Ãë¶Ô¸ÃÇøÓòµÄµÐÈËÔì³É100%ÎäÆ÷ÉËº¦ÖµµÄ»ðÑæÉËº¦¡£")
-; ·ûÎÄ: À×öªÁÑÏ¶ 
-RUNE_CRUSADER_FIST_OF_THE_HEAVENS_C := New SkillRune("À×öªÁÑÏ¶", "µç»÷", "c", "ÐÎ³ÉÒ»µÀµçÄÜÁÑÏ¶£¬ÔÚ5ÃëÄÚ¶ÔÖÜÎ§µÐÈËÔì³É410%ÎäÆ÷ÉËº¦ÖµµÄµç»÷ÉËº¦¡£Èç¹û¸½½üÓÐÆäËûÁÑÏ¶£¬»áÔÚÁÑÏ¶¼ä²úÉúÇ¿´óµÄµçÁ÷£¬Ã¿µÀµçÁ÷¿É¶îÍâÔì³É135%ÎäÆ÷ÉËº¦ÖµµÄµç»÷ÉËº¦¡£")
-; ·ûÎÄ: À×Ãùºä»÷ 
-RUNE_CRUSADER_FIST_OF_THE_HEAVENS_B := New SkillRune("À×Ãùºä»÷", "µç»÷", "b", "ÉÁµçÒý·¢±¬Õ¨Ê±»á²úÉú³å»÷²¨£¬Ê¹±»»÷ÖÐµÄËùÓÐµÐÈË´Ó±¬Õ¨ÖÐÐÄ±»»÷·É£¬Í¬Ê±Ê¹ÆäÒÆ¶¯ËÙ¶È½µµÍ80%£¬³ÖÐø4Ãë¡£")
-; ·ûÎÄ: ºäÀ×Ö®È­ 
-RUNE_CRUSADER_FIST_OF_THE_HEAVENS_E := New SkillRune("ºäÀ×Ö®È­", "ÉñÊ¥", "e", "Éä³ö»á´©Í¸µÐÈËµÄÉñÊ¥Ö®È­£¬Ôì³É270%ÎäÆ÷ÉËº¦ÖµµÄÉñÊ¥ÉËº¦£¬²¢ÔÚ»÷ÖÐÖ¸¶¨Î»ÖÃÊ±±¬Õ¨£¬¶Ô8ÂëÄÚµÄµÐÈËÔì³É435%ÎäÆ÷ÉËº¦ÖµµÄÉñÊ¥ÉËº¦¡£±¬Õ¨Ê±»á²úÉú6µÀµçÁ÷ÏòÍâÁ÷´Ü£¬¶Ô´©Ô½µÄµÐÈËÔì³É185%ÎäÆ÷ÉËº¦ÖµµÄÉñÊ¥ÉËº¦¡£")
-; ¼¼ÄÜ: ÌìÌÃÖ®È­
-SKILL_ACTIVE_CRUSADER_FIST_OF_THE_HEAVENS := New ActiveSkill("ÌìÌÃÖ®È­", "µç»÷", "´ÎÒª¼¼ÄÜ"
+; ç¬¦æ–‡: åœ£å…‰é›·å‡» 
+RUNE_CRUSADER_FIST_OF_THE_HEAVENS_D := New SkillRune("åœ£å…‰é›·å‡»", "ç¥žåœ£", "d", "è¿¸å°„å‡ºç¥žåœ£ç”µå…‰ï¼Œç”µå‡»è¡Œè¿›è·¯å¾„18ç å†…çš„æ•Œäººï¼Œé€ æˆ40%æ­¦å™¨ä¼¤å®³å€¼çš„ç¥žåœ£ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: å¤©é›·é£Žæš´ 
+RUNE_CRUSADER_FIST_OF_THE_HEAVENS_A := New SkillRune("å¤©é›·é£Žæš´", "ç«ç„°", "a", "å¬å”¤çƒˆç„°é£Žæš´ç¬¼ç½©åŠå¾„8ç çš„åŒºåŸŸï¼ŒæŒç»­5ç§’ï¼Œæ¯ç§’å¯¹è¯¥åŒºåŸŸçš„æ•Œäººé€ æˆ100%æ­¦å™¨ä¼¤å®³å€¼çš„ç«ç„°ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: é›·éœ†è£‚éš™ 
+RUNE_CRUSADER_FIST_OF_THE_HEAVENS_C := New SkillRune("é›·éœ†è£‚éš™", "ç”µå‡»", "c", "å½¢æˆä¸€é“ç”µèƒ½è£‚éš™ï¼Œåœ¨5ç§’å†…å¯¹å‘¨å›´æ•Œäººé€ æˆ410%æ­¦å™¨ä¼¤å®³å€¼çš„ç”µå‡»ä¼¤å®³ã€‚å¦‚æžœé™„è¿‘æœ‰å…¶ä»–è£‚éš™ï¼Œä¼šåœ¨è£‚éš™é—´äº§ç”Ÿå¼ºå¤§çš„ç”µæµï¼Œæ¯é“ç”µæµå¯é¢å¤–é€ æˆ135%æ­¦å™¨ä¼¤å®³å€¼çš„ç”µå‡»ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: é›·é¸£è½°å‡» 
+RUNE_CRUSADER_FIST_OF_THE_HEAVENS_B := New SkillRune("é›·é¸£è½°å‡»", "ç”µå‡»", "b", "é—ªç”µå¼•å‘çˆ†ç‚¸æ—¶ä¼šäº§ç”Ÿå†²å‡»æ³¢ï¼Œä½¿è¢«å‡»ä¸­çš„æ‰€æœ‰æ•Œäººä»Žçˆ†ç‚¸ä¸­å¿ƒè¢«å‡»é£žï¼ŒåŒæ—¶ä½¿å…¶ç§»åŠ¨é€Ÿåº¦é™ä½Ž80%ï¼ŒæŒç»­4ç§’ã€‚")
+; ç¬¦æ–‡: è½°é›·ä¹‹æ‹³ 
+RUNE_CRUSADER_FIST_OF_THE_HEAVENS_E := New SkillRune("è½°é›·ä¹‹æ‹³", "ç¥žåœ£", "e", "å°„å‡ºä¼šç©¿é€æ•Œäººçš„ç¥žåœ£ä¹‹æ‹³ï¼Œé€ æˆ270%æ­¦å™¨ä¼¤å®³å€¼çš„ç¥žåœ£ä¼¤å®³ï¼Œå¹¶åœ¨å‡»ä¸­æŒ‡å®šä½ç½®æ—¶çˆ†ç‚¸ï¼Œå¯¹8ç å†…çš„æ•Œäººé€ æˆ435%æ­¦å™¨ä¼¤å®³å€¼çš„ç¥žåœ£ä¼¤å®³ã€‚çˆ†ç‚¸æ—¶ä¼šäº§ç”Ÿ6é“ç”µæµå‘å¤–æµçªœï¼Œå¯¹ç©¿è¶Šçš„æ•Œäººé€ æˆ185%æ­¦å™¨ä¼¤å®³å€¼çš„ç¥žåœ£ä¼¤å®³ã€‚")
+; æŠ€èƒ½: å¤©å ‚ä¹‹æ‹³
+SKILL_ACTIVE_CRUSADER_FIST_OF_THE_HEAVENS := New ActiveSkill("å¤©å ‚ä¹‹æ‹³", "ç”µå‡»", "æ¬¡è¦æŠ€èƒ½"
 	, "images\skills\crusader\active\crusader_fistofheaven_normal.png"
-	, "ÏûºÄ£º30µãÊ¥Å­\r\nÕÙ»½Ò»µÀÉÁµçºä»÷µØÃæÒý·¢±¬Õ¨£¬¶Ô8ÂëÄÚµÄµÐÈËÔì³É545%ÎäÆ÷ÉËº¦ÖµµÄµç»÷ÉËº¦¡£±¬Õ¨Ê±²úÉú6µÀµçÁ÷ÏòËÄÖÜ±ÅÉä£¬²¢Ôì³É255%ÎäÆ÷ÉËº¦ÖµµÄµç»÷ÉËº¦¡£"
+	, "æ¶ˆè€—ï¼š30ç‚¹åœ£æ€’\r\nå¬å”¤ä¸€é“é—ªç”µè½°å‡»åœ°é¢å¼•å‘çˆ†ç‚¸ï¼Œå¯¹8ç å†…çš„æ•Œäººé€ æˆ545%æ­¦å™¨ä¼¤å®³å€¼çš„ç”µå‡»ä¼¤å®³ã€‚çˆ†ç‚¸æ—¶äº§ç”Ÿ6é“ç”µæµå‘å››å‘¨è¿¸å°„ï¼Œå¹¶é€ æˆ255%æ­¦å™¨ä¼¤å®³å€¼çš„ç”µå‡»ä¼¤å®³ã€‚"
 	, [RUNE_CRUSADER_FIST_OF_THE_HEAVENS_D, RUNE_CRUSADER_FIST_OF_THE_HEAVENS_A, RUNE_CRUSADER_FIST_OF_THE_HEAVENS_C, RUNE_CRUSADER_FIST_OF_THE_HEAVENS_B, RUNE_CRUSADER_FIST_OF_THE_HEAVENS_E])
 ; ---------------------------
-; ¼¼ÄÜ: ÌìÌÃÖ®È­ End
+; æŠ€èƒ½: å¤©å ‚ä¹‹æ‹³ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Ê¥¾üÖ®Õó Start
+; æŠ€èƒ½: åœ£å†›ä¹‹é˜µ Start
 ; ---------------------------
-; ·ûÎÄ: Ê¥¾ü¹­ÊÖ 
-RUNE_CRUSADER_PHALANX_A := New SkillRune("Ê¥¾ü¹­ÊÖ", "ÎïÀí", "a", "ÕÙ»½µÄ»¯Éí²»ÔÙÏòÇ°ÐÐ½ø£¬¶øÊÇ³Ö¹­¹¥»÷µÐÈË£¬Ôì³É185%ÎäÆ÷ÉËº¦¡£³Ö¹­»¯Éí»á¸úËæ×ÅÄã£¬³ÖÐø5Ãë¡£Ã¿15ÃëÖ»ÄÜÕÙ»½Ò»´Î³Ö¹­»¯Éí¡£")
-; ·ûÎÄ: ¶Ü¼×³å·æ 
-RUNE_CRUSADER_PHALANX_B := New SkillRune("¶Ü¼×³å·æ", "ÎïÀí", "b", "ÕÙ»½µÄ»¯Éí»á³¯Ä¿±êµØµã³å·æÍ»»÷£¬ÔÚ¸ÃµØµãÒÔ¶ÜÅÆÃÍ»÷µÐÈË£¬¶îÍâÔì³É180%ÎäÆ÷ÉËº¦¡£")
-; ·ûÎÄ: Õ½ÂíÀ£µÐ 
-RUNE_CRUSADER_PHALANX_C := New SkillRune("Õ½ÂíÀ£µÐ", "ÎïÀí", "c", "ÕÙ»½Õ½Âí¹¥»÷µÐÈË£¬Ôì³É490%ÎäÆ÷ÉËº¦£¬²¢ÓÐ30%»úÂÊÊ¹µÐÈË»èÃÔ2Ãë¡£")
-; ·ûÎÄ: Ê¥¾ü¶Ü±ø 
-RUNE_CRUSADER_PHALANX_D := New SkillRune("Ê¥¾ü¶Ü±ø", "ÎïÀí", "d", "ÕÙ»½³öÀ´µÄ»¯Éí²»ÔÙÏòÇ°³å£¬¶øÊÇ»á¼áÊØÔÚ±»ÕÙ»½³öÀ´µÄµØµã£¬×èµ²ËùÓÐµÐÈË´©Ô½¡£Ã¿15ÃëÖ»ÄÜÕÙ»½Ò»´Î»¯Éí¡£")
-; ·ûÎÄ: Ê¥¾üÎÀÊ¿ 
-RUNE_CRUSADER_PHALANX_E := New SkillRune("Ê¥¾üÎÀÊ¿", "ÎïÀí", "e", "ÄãÕÙ»½³ö2¸öÊ¥½ÌÍ½»¯Éí£¬ÕâÐ©»¯Éí²»»á³å³öÈ¥£¬¶øÊÇÔÚÄãÉí±ß±£»¤Äã£¬³ÖÐø10Ãë¡£Ã¿¸ö»¯ÉíÔÚ¹¥»÷Ê±¿ÉÔì³ÉÄã560%ÎäÆ÷ÉËº¦ÖµµÄÎïÀíÉËº¦¡£Ã¿30ÃëÖ»ÄÜÕÙ»½Ò»´Î»¯Éí¡£")
-; ¼¼ÄÜ: Ê¥¾üÖ®Õó
-SKILL_ACTIVE_CRUSADER_PHALANX := New ActiveSkill("Ê¥¾üÖ®Õó", "ÎïÀí", "¸¨Öú"
+; ç¬¦æ–‡: åœ£å†›å¼“æ‰‹ 
+RUNE_CRUSADER_PHALANX_A := New SkillRune("åœ£å†›å¼“æ‰‹", "ç‰©ç†", "a", "å¬å”¤çš„åŒ–èº«ä¸å†å‘å‰è¡Œè¿›ï¼Œè€Œæ˜¯æŒå¼“æ”»å‡»æ•Œäººï¼Œé€ æˆ185%æ­¦å™¨ä¼¤å®³ã€‚æŒå¼“åŒ–èº«ä¼šè·Ÿéšç€ä½ ï¼ŒæŒç»­5ç§’ã€‚æ¯15ç§’åªèƒ½å¬å”¤ä¸€æ¬¡æŒå¼“åŒ–èº«ã€‚")
+; ç¬¦æ–‡: ç›¾ç”²å†²é”‹ 
+RUNE_CRUSADER_PHALANX_B := New SkillRune("ç›¾ç”²å†²é”‹", "ç‰©ç†", "b", "å¬å”¤çš„åŒ–èº«ä¼šæœç›®æ ‡åœ°ç‚¹å†²é”‹çªå‡»ï¼Œåœ¨è¯¥åœ°ç‚¹ä»¥ç›¾ç‰ŒçŒ›å‡»æ•Œäººï¼Œé¢å¤–é€ æˆ180%æ­¦å™¨ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æˆ˜é©¬æºƒæ•Œ 
+RUNE_CRUSADER_PHALANX_C := New SkillRune("æˆ˜é©¬æºƒæ•Œ", "ç‰©ç†", "c", "å¬å”¤æˆ˜é©¬æ”»å‡»æ•Œäººï¼Œé€ æˆ490%æ­¦å™¨ä¼¤å®³ï¼Œå¹¶æœ‰30%æœºçŽ‡ä½¿æ•Œäººæ˜è¿·2ç§’ã€‚")
+; ç¬¦æ–‡: åœ£å†›ç›¾å…µ 
+RUNE_CRUSADER_PHALANX_D := New SkillRune("åœ£å†›ç›¾å…µ", "ç‰©ç†", "d", "å¬å”¤å‡ºæ¥çš„åŒ–èº«ä¸å†å‘å‰å†²ï¼Œè€Œæ˜¯ä¼šåšå®ˆåœ¨è¢«å¬å”¤å‡ºæ¥çš„åœ°ç‚¹ï¼Œé˜»æŒ¡æ‰€æœ‰æ•Œäººç©¿è¶Šã€‚æ¯15ç§’åªèƒ½å¬å”¤ä¸€æ¬¡åŒ–èº«ã€‚")
+; ç¬¦æ–‡: åœ£å†›å«å£« 
+RUNE_CRUSADER_PHALANX_E := New SkillRune("åœ£å†›å«å£«", "ç‰©ç†", "e", "ä½ å¬å”¤å‡º2ä¸ªåœ£æ•™å¾’åŒ–èº«ï¼Œè¿™äº›åŒ–èº«ä¸ä¼šå†²å‡ºåŽ»ï¼Œè€Œæ˜¯åœ¨ä½ èº«è¾¹ä¿æŠ¤ä½ ï¼ŒæŒç»­10ç§’ã€‚æ¯ä¸ªåŒ–èº«åœ¨æ”»å‡»æ—¶å¯é€ æˆä½ 560%æ­¦å™¨ä¼¤å®³å€¼çš„ç‰©ç†ä¼¤å®³ã€‚æ¯30ç§’åªèƒ½å¬å”¤ä¸€æ¬¡åŒ–èº«ã€‚")
+; æŠ€èƒ½: åœ£å†›ä¹‹é˜µ
+SKILL_ACTIVE_CRUSADER_PHALANX := New ActiveSkill("åœ£å†›ä¹‹é˜µ", "ç‰©ç†", "è¾…åŠ©"
 	, "images\skills\crusader\active\crusader_phalanx_normal.png"
-	, "ÏûºÄ£º30µãÊ¥Å­\r\nÕÙ»½Ç¿´óµÄ»¯Éí£¬³¯Ä¿±êµØµã³å·æÍ»»÷¡£ÔÚÐÐ½øÂ·¾¶ÉÏ±»»÷ÖÐµÄµÐÈË»áÊÜµ½490%ÎäÆ÷ÉËº¦¡£"
+	, "æ¶ˆè€—ï¼š30ç‚¹åœ£æ€’\r\nå¬å”¤å¼ºå¤§çš„åŒ–èº«ï¼Œæœç›®æ ‡åœ°ç‚¹å†²é”‹çªå‡»ã€‚åœ¨è¡Œè¿›è·¯å¾„ä¸Šè¢«å‡»ä¸­çš„æ•Œäººä¼šå—åˆ°490%æ­¦å™¨ä¼¤å®³ã€‚"
 	, [RUNE_CRUSADER_PHALANX_A, RUNE_CRUSADER_PHALANX_B, RUNE_CRUSADER_PHALANX_C, RUNE_CRUSADER_PHALANX_D, RUNE_CRUSADER_PHALANX_E])
 ; ---------------------------
-; ¼¼ÄÜ: Ê¥¾üÖ®Õó End
+; æŠ€èƒ½: åœ£å†›ä¹‹é˜µ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÌìÌÃÖ®Å­ Start
+; æŠ€èƒ½: å¤©å ‚ä¹‹æ€’ Start
 ; ---------------------------
-; ·ûÎÄ: Ê¥µvÖ®µØ 
-RUNE_CRUSADER_HEAVENS_FURY_B := New SkillRune("Ê¥µvÖ®µØ", "ÉñÊ¥", "b", "ÉñÊ¥Ö®¹âËù¾­Ö®µØ»á»ñµÃ×£¸£¶øÈ¼ÉÕÆðÀ´£¬ÔÚ5ÃëÄÚ¶Ô½øÈë¸ÃÇøÓòµÄµÐÈËÔì³É1550%ÎäÆ÷ÉËº¦¡£")
-; ·ûÎÄ: ÌìÍþÏÔºÕ 
-RUNE_CRUSADER_HEAVENS_FURY_A := New SkillRune("ÌìÍþÏÔºÕ", "ÉñÊ¥", "a", "ÉñÊ¥Ö®¹âµÄÁýÕÖ·¶Î§À©´óÎª12Âë£¬ÔÚ6ÃëÄÚ¶ÔËùÓÐ±»ÆäÁýÕÖµÄµÐÈËÔì³É2766%ÎäÆ÷ÉËº¦ÖµµÄÉñÊ¥ÉËº¦¡£")
-; ·ûÎÄ: Å­¹âÁÇÔ­ 
-RUNE_CRUSADER_HEAVENS_FURY_C := New SkillRune("Å­¹âÁÇÔ­", "ÉñÊ¥", "c", "ÉñÊ¥Ö®¹â·ÖÁÑ³É3µÀÐ¡ÐÍ¹âÊø£¬Ã¿Ò»µÀ¿ÉÔÚ6ÃëÄÚÔì³É1980%ÎäÆ÷ÉËº¦ÖµµÄÉñÊ¥ÉËº¦¡£")
-; ·ûÎÄ: ½ûÐÐÊ¥Óò 
-RUNE_CRUSADER_HEAVENS_FURY_D := New SkillRune("½ûÐÐÊ¥Óò", "µç»÷", "d", "Ìì·£Ö®¹âËù¾­Ö®µØ»áÉ¢·¢³öÇ¿´óµÄÄÜÁ¿£¬Ê¹µÐÈËÔÚ6ÃëÄÚÎÞ·¨´©Ô½Õâ¿éÇøÓò¡£")
-; ·ûÎÄ: Ìì»ðÖ®¹â 
-RUNE_CRUSADER_HEAVENS_FURY_E := New SkillRune("Ìì»ðÖ®¹â", "ÉñÊ¥", "e", "ÕÙ»½ÉñÊ¥µÄÌì·£Ö®¹â£¬Í¸¹ýÄãµÄÉíÇûÄý¾Û·¢³öÒ»µÀÃÜ¼¯µÄÄÜÁ¿¹âÊø£¬¶ÔËùÓÐ±»»÷ÖÐµÄµÐÈËÔì³É960%ÎäÆ÷ÉËº¦ÖµµÄÉñÊ¥ÉËº¦¡£ÒÆ³ýÀäÈ´Ê±¼ä£¬¸ÄÎªÏûºÄ40µãÊ¥Å­¡£")
-; ¼¼ÄÜ: ÌìÌÃÖ®Å­
-SKILL_ACTIVE_CRUSADER_HEAVENS_FURY := New ActiveSkill("ÌìÌÃÖ®Å­", "ÉñÊ¥", "×ï·£"
+; ç¬¦æ–‡: åœ£ç¥ä¹‹åœ° 
+RUNE_CRUSADER_HEAVENS_FURY_B := New SkillRune("åœ£ç¥ä¹‹åœ°", "ç¥žåœ£", "b", "ç¥žåœ£ä¹‹å…‰æ‰€ç»ä¹‹åœ°ä¼šèŽ·å¾—ç¥ç¦è€Œç‡ƒçƒ§èµ·æ¥ï¼Œåœ¨5ç§’å†…å¯¹è¿›å…¥è¯¥åŒºåŸŸçš„æ•Œäººé€ æˆ1550%æ­¦å™¨ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: å¤©å¨æ˜¾èµ« 
+RUNE_CRUSADER_HEAVENS_FURY_A := New SkillRune("å¤©å¨æ˜¾èµ«", "ç¥žåœ£", "a", "ç¥žåœ£ä¹‹å…‰çš„ç¬¼ç½©èŒƒå›´æ‰©å¤§ä¸º12ç ï¼Œåœ¨6ç§’å†…å¯¹æ‰€æœ‰è¢«å…¶ç¬¼ç½©çš„æ•Œäººé€ æˆ2766%æ­¦å™¨ä¼¤å®³å€¼çš„ç¥žåœ£ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æ€’å…‰ç‡ŽåŽŸ 
+RUNE_CRUSADER_HEAVENS_FURY_C := New SkillRune("æ€’å…‰ç‡ŽåŽŸ", "ç¥žåœ£", "c", "ç¥žåœ£ä¹‹å…‰åˆ†è£‚æˆ3é“å°åž‹å…‰æŸï¼Œæ¯ä¸€é“å¯åœ¨6ç§’å†…é€ æˆ1980%æ­¦å™¨ä¼¤å®³å€¼çš„ç¥žåœ£ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ç¦è¡Œåœ£åŸŸ 
+RUNE_CRUSADER_HEAVENS_FURY_D := New SkillRune("ç¦è¡Œåœ£åŸŸ", "ç”µå‡»", "d", "å¤©ç½šä¹‹å…‰æ‰€ç»ä¹‹åœ°ä¼šæ•£å‘å‡ºå¼ºå¤§çš„èƒ½é‡ï¼Œä½¿æ•Œäººåœ¨6ç§’å†…æ— æ³•ç©¿è¶Šè¿™å—åŒºåŸŸã€‚")
+; ç¬¦æ–‡: å¤©ç«ä¹‹å…‰ 
+RUNE_CRUSADER_HEAVENS_FURY_E := New SkillRune("å¤©ç«ä¹‹å…‰", "ç¥žåœ£", "e", "å¬å”¤ç¥žåœ£çš„å¤©ç½šä¹‹å…‰ï¼Œé€è¿‡ä½ çš„èº«èº¯å‡èšå‘å‡ºä¸€é“å¯†é›†çš„èƒ½é‡å…‰æŸï¼Œå¯¹æ‰€æœ‰è¢«å‡»ä¸­çš„æ•Œäººé€ æˆ960%æ­¦å™¨ä¼¤å®³å€¼çš„ç¥žåœ£ä¼¤å®³ã€‚ç§»é™¤å†·å´æ—¶é—´ï¼Œæ”¹ä¸ºæ¶ˆè€—40ç‚¹åœ£æ€’ã€‚")
+; æŠ€èƒ½: å¤©å ‚ä¹‹æ€’
+SKILL_ACTIVE_CRUSADER_HEAVENS_FURY := New ActiveSkill("å¤©å ‚ä¹‹æ€’", "ç¥žåœ£", "ç½ªç½š"
 	, "images\skills\crusader\active\crusader_godray_normal.png"
-	, "ÀäÈ´Ê±¼ä£º20Ãë\r\nÕÙ»½Ò»µÀÉñÊ¥µÄÌì·£Ö®¹â£¬ÔÚ6ÃëÄÚ¶ÔËùÓÐ±»ÆäÁýÕÖµÄµÐÈËÔì³É1710%ÎäÆ÷ÉËº¦ÖµµÄÉñÊ¥ÉËº¦¡£"
+	, "å†·å´æ—¶é—´ï¼š20ç§’\r\nå¬å”¤ä¸€é“ç¥žåœ£çš„å¤©ç½šä¹‹å…‰ï¼Œåœ¨6ç§’å†…å¯¹æ‰€æœ‰è¢«å…¶ç¬¼ç½©çš„æ•Œäººé€ æˆ1710%æ­¦å™¨ä¼¤å®³å€¼çš„ç¥žåœ£ä¼¤å®³ã€‚"
 	, [RUNE_CRUSADER_HEAVENS_FURY_B, RUNE_CRUSADER_HEAVENS_FURY_A, RUNE_CRUSADER_HEAVENS_FURY_C, RUNE_CRUSADER_HEAVENS_FURY_D, RUNE_CRUSADER_HEAVENS_FURY_E])
 ; ---------------------------
-; ¼¼ÄÜ: ÌìÌÃÖ®Å­ End
+; æŠ€èƒ½: å¤©å ‚ä¹‹æ€’ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: »ð³hºäÕ¨ Start
+; æŠ€èƒ½: ç«ç ²è½°ç‚¸ Start
 ; ---------------------------
-; ·ûÎÄ: ¶¤´ÌÍ° 
-RUNE_CRUSADER_BOMBARDMENT_A := New SkillRune("¶¤´ÌÍ°", "ÎïÀí", "a", "²»ÔÙÍ¶ÖÀÈ¼ÉÕÀùÊ¯£¬¶øÊÇ¸ÄÎªÍ¶ÖÀ¶¤´ÌÍ°¡£¶¤´ÌÍ°¶îÍâÌá¸ßµÄÉËº¦Ïàµ±ÓÚ¾£¼¬ÉËº¦µÄ200%¡£")
-; ·ûÎÄ: ¸Ï¾¡É±¾ø 
-RUNE_CRUSADER_BOMBARDMENT_B := New SkillRune("¸Ï¾¡É±¾ø", "»ðÑæ", "b", "Ã¿´ÎºäÕ¨¶¼ÓÐ100%µÄ±¬»÷»úÂÊ¡£")
-; ·ûÎÄ: ²¼À×ºäÕ¨ 
-RUNE_CRUSADER_BOMBARDMENT_C := New SkillRune("²¼À×ºäÕ¨", "»ðÑæ", "c", "Ã¿´ÎºäÕ¨¶¼»áÔÚÃüÖÐµØµãÉ¢²¼2¸öµØÀ×£¬ÕâÐ©µØÀ×»áÔÚµÐÈË¿¿½üÊ±±¬Õ¨£¬¶Ô10ÂëÄÚµÄËùÓÐµÐÈËÔì³É160%ÎäÆ÷ÉËº¦ÖµµÄ»ðÑæÉËº¦¡£")
-; ·ûÎÄ: ÍþÁ¦ºäÕ¨ 
-RUNE_CRUSADER_BOMBARDMENT_D := New SkillRune("ÍþÁ¦ºäÕ¨", "ÎïÀí", "d", "³¯Ä¿±êµØµãÍ¶ÖÀÒ»¿Å¸ü´óµÄ±¬Õ¨ÀùÊ¯£¬¶Ô18ÂëÄÚµÄËùÓÐµÐÈËÔì³É3320%ÎäÆ÷ÉËº¦¡£")
-; ·ûÎÄ: Ä¿±êËø¶¨ 
-RUNE_CRUSADER_BOMBARDMENT_E := New SkillRune("Ä¿±êËø¶¨", "ÉñÊ¥", "e", "²»ÔÙËæ»ú¹¥»÷ÖÜÎ§µÄÄ¿±ê£¬¶ø»á³ÖÐøºäÕ¨ÄãÒ»¿ªÊ¼Ö¸¶¨µÄÄ¿±ê¡£")
-; ¼¼ÄÜ: »ð³hºäÕ¨
-SKILL_ACTIVE_CRUSADER_BOMBARDMENT := New ActiveSkill("»ð³hºäÕ¨", "ÎïÀí", "×ï·£"
+; ç¬¦æ–‡: é’‰åˆºæ¡¶ 
+RUNE_CRUSADER_BOMBARDMENT_A := New SkillRune("é’‰åˆºæ¡¶", "ç‰©ç†", "a", "ä¸å†æŠ•æŽ·ç‡ƒçƒ§ç ¾çŸ³ï¼Œè€Œæ˜¯æ”¹ä¸ºæŠ•æŽ·é’‰åˆºæ¡¶ã€‚é’‰åˆºæ¡¶é¢å¤–æé«˜çš„ä¼¤å®³ç›¸å½“äºŽè†æ£˜ä¼¤å®³çš„200%ã€‚")
+; ç¬¦æ–‡: èµ¶å°½æ€ç» 
+RUNE_CRUSADER_BOMBARDMENT_B := New SkillRune("èµ¶å°½æ€ç»", "ç«ç„°", "b", "æ¯æ¬¡è½°ç‚¸éƒ½æœ‰100%çš„çˆ†å‡»æœºçŽ‡ã€‚")
+; ç¬¦æ–‡: å¸ƒé›·è½°ç‚¸ 
+RUNE_CRUSADER_BOMBARDMENT_C := New SkillRune("å¸ƒé›·è½°ç‚¸", "ç«ç„°", "c", "æ¯æ¬¡è½°ç‚¸éƒ½ä¼šåœ¨å‘½ä¸­åœ°ç‚¹æ•£å¸ƒ2ä¸ªåœ°é›·ï¼Œè¿™äº›åœ°é›·ä¼šåœ¨æ•Œäººé è¿‘æ—¶çˆ†ç‚¸ï¼Œå¯¹10ç å†…çš„æ‰€æœ‰æ•Œäººé€ æˆ160%æ­¦å™¨ä¼¤å®³å€¼çš„ç«ç„°ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: å¨åŠ›è½°ç‚¸ 
+RUNE_CRUSADER_BOMBARDMENT_D := New SkillRune("å¨åŠ›è½°ç‚¸", "ç‰©ç†", "d", "æœç›®æ ‡åœ°ç‚¹æŠ•æŽ·ä¸€é¢—æ›´å¤§çš„çˆ†ç‚¸ç ¾çŸ³ï¼Œå¯¹18ç å†…çš„æ‰€æœ‰æ•Œäººé€ æˆ3320%æ­¦å™¨ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ç›®æ ‡é”å®š 
+RUNE_CRUSADER_BOMBARDMENT_E := New SkillRune("ç›®æ ‡é”å®š", "ç¥žåœ£", "e", "ä¸å†éšæœºæ”»å‡»å‘¨å›´çš„ç›®æ ‡ï¼Œè€Œä¼šæŒç»­è½°ç‚¸ä½ ä¸€å¼€å§‹æŒ‡å®šçš„ç›®æ ‡ã€‚")
+; æŠ€èƒ½: ç«ç ²è½°ç‚¸
+SKILL_ACTIVE_CRUSADER_BOMBARDMENT := New ActiveSkill("ç«ç ²è½°ç‚¸", "ç‰©ç†", "ç½ªç½š"
 	, "images\skills\crusader\active\crusader_trebuchet_normal.png"
-	, "ÀäÈ´Ê±¼ä£º60Ãë\r\nºô½ÐÖ§Ô®´ÓÔ¶·½·¢¶¯¹¥»÷£¬ÒÔ5¸öÈ¼ÉÕµÄ¾ÞÊ¯ÔÒÏòÄãÖ¸¶¨µÄ·¶Î§£¬¶ÔÃüÖÐÇøÓò12ÂëÄÚµÄµÐÈËÔì³É×Ü¹²2850%µÄÎäÆ÷ÉËº¦¡£"
+	, "å†·å´æ—¶é—´ï¼š60ç§’\r\nå‘¼å«æ”¯æ´ä»Žè¿œæ–¹å‘åŠ¨æ”»å‡»ï¼Œä»¥5ä¸ªç‡ƒçƒ§çš„å·¨çŸ³ç ¸å‘ä½ æŒ‡å®šçš„èŒƒå›´ï¼Œå¯¹å‘½ä¸­åŒºåŸŸ12ç å†…çš„æ•Œäººé€ æˆæ€»å…±2850%çš„æ­¦å™¨ä¼¤å®³ã€‚"
 	, [RUNE_CRUSADER_BOMBARDMENT_A, RUNE_CRUSADER_BOMBARDMENT_B, RUNE_CRUSADER_BOMBARDMENT_C, RUNE_CRUSADER_BOMBARDMENT_D, RUNE_CRUSADER_BOMBARDMENT_E])
 ; ---------------------------
-; ¼¼ÄÜ: »ð³hºäÕ¨ End
+; æŠ€èƒ½: ç«ç ²è½°ç‚¸ End
 ; ---------------------------
 
 ; ===========================
-; Â}½ÌÜŠ End
+; è–æ•™è» End
 ; ===========================
 
 
 
 ; ===========================
-; ÁÔÄ§ÈË Start
+; çŒŽé­”äºº Start
 ; ===========================
 ; ---------------------------
-; ¼¼ÄÜ: ×·×Ù¼ý Start
+; æŠ€èƒ½: è¿½è¸ªç®­ Start
 ; ---------------------------
-; ·ûÎÄ: ´©´Ì¼ý 
-RUNE_DEMON_HUNTER_HUNGERING_ARROW_D := New SkillRune("´©´Ì¼ý", "ÎïÀí", "d", "Ê¹¼ýµÄ´©Í¸¼¸ÂÊÌá¸ßÖÁ50%¡£")
-; ·ûÎÄ: ¾â³Ý¼ý 
-RUNE_DEMON_HUNTER_HUNGERING_ARROW_A := New SkillRune("¾â³Ý¼ý", "»ðÑæ", "a", "Ê¹Éú³ÉµÄÔ÷ºÞÖµÌá¸ßÖÁ7µã¡£×·×Ù¼ýµÄÉËº¦ÀàÐÍ×ª»»Îª»ðÑæÉËº¦¡£")
-; ·ûÎÄ: ·ÖÁÑ¼ý 
-RUNE_DEMON_HUNTER_HUNGERING_ARROW_B := New SkillRune("·ÖÁÑ¼ý", "µç»÷", "b", "Èç¹û¼ýÊ¸³É¹¦´©Í¸µÚÒ»¸öµÐÈË£¬ÄÇÃ´½«»á·ÖÁÑ³É3Ö§¼ý¡£×·×Ù¼ýµÄÉËº¦ÀàÐÍ×ª»»ÎªÉÁµçÉËº¦¡£")
-; ·ûÎÄ: ÍÌÊÉ¼ý 
-RUNE_DEMON_HUNTER_HUNGERING_ARROW_C := New SkillRune("ÍÌÊÉ¼ý", "±ùº®", "c", "Ã¿´ÎÁ¬Ðø´©Í¸¶¼»áÊ¹¼ýÊ¸Ôì³ÉµÄÉËº¦Ìá¸ß70%¡£×·×Ù¼ýµÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ·ûÎÄ: Ëé¹Ç¼ý 
-RUNE_DEMON_HUNTER_HUNGERING_ARROW_E := New SkillRune("Ëé¹Ç¼ý", "ÎïÀí", "e", "±©»÷»áÊ¹µÐÈËÇû¹Ç±¬ÁÑ£¬¶Ô10ÂëÄÚµÄµÐÈËÔì³É60%µÄÎäÆ÷ÉËº¦¡£")
-; ¼¼ÄÜ: ×·×Ù¼ý
-SKILL_ACTIVE_DEMON_HUNTER_HUNGERING_ARROW := New ActiveSkill("×·×Ù¼ý", "ÎïÀí", "Ö÷Òª"
+; ç¬¦æ–‡: ç©¿åˆºç®­ 
+RUNE_DEMON_HUNTER_HUNGERING_ARROW_D := New SkillRune("ç©¿åˆºç®­", "ç‰©ç†", "d", "ä½¿ç®­çš„ç©¿é€å‡ çŽ‡æé«˜è‡³50%ã€‚")
+; ç¬¦æ–‡: é”¯é½¿ç®­ 
+RUNE_DEMON_HUNTER_HUNGERING_ARROW_A := New SkillRune("é”¯é½¿ç®­", "ç«ç„°", "a", "ä½¿ç”Ÿæˆçš„æ†Žæ¨å€¼æé«˜è‡³7ç‚¹ã€‚è¿½è¸ªç®­çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºç«ç„°ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: åˆ†è£‚ç®­ 
+RUNE_DEMON_HUNTER_HUNGERING_ARROW_B := New SkillRune("åˆ†è£‚ç®­", "ç”µå‡»", "b", "å¦‚æžœç®­çŸ¢æˆåŠŸç©¿é€ç¬¬ä¸€ä¸ªæ•Œäººï¼Œé‚£ä¹ˆå°†ä¼šåˆ†è£‚æˆ3æ”¯ç®­ã€‚è¿½è¸ªç®­çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºé—ªç”µä¼¤å®³ã€‚")
+; ç¬¦æ–‡: åžå™¬ç®­ 
+RUNE_DEMON_HUNTER_HUNGERING_ARROW_C := New SkillRune("åžå™¬ç®­", "å†°å¯’", "c", "æ¯æ¬¡è¿žç»­ç©¿é€éƒ½ä¼šä½¿ç®­çŸ¢é€ æˆçš„ä¼¤å®³æé«˜70%ã€‚è¿½è¸ªç®­çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ç¢Žéª¨ç®­ 
+RUNE_DEMON_HUNTER_HUNGERING_ARROW_E := New SkillRune("ç¢Žéª¨ç®­", "ç‰©ç†", "e", "æš´å‡»ä¼šä½¿æ•Œäººèº¯éª¨çˆ†è£‚ï¼Œå¯¹10ç å†…çš„æ•Œäººé€ æˆ60%çš„æ­¦å™¨ä¼¤å®³ã€‚")
+; æŠ€èƒ½: è¿½è¸ªç®­
+SKILL_ACTIVE_DEMON_HUNTER_HUNGERING_ARROW := New ActiveSkill("è¿½è¸ªç®­", "ç‰©ç†", "ä¸»è¦"
 	, "images\skills\demon-hunter\active\demonhunter_hungeringarrow_normal.png"
-	, "Éú³É£º4µãÔ÷ºÞÖµ\r\nÉä³öÒ»Ö§¾­ÓÉÄ§·¨¹à×¢µÄ¼ýÊ¸£¬ËÑÑ°µÐÈË²¢¶ÔÆäÔì³É155%µÄÎäÆ÷ÉËº¦£¬²¢ÓÐ35%µÄ¼¸ÂÊ´©Í¸Ä¿±ê¡£"
+	, "ç”Ÿæˆï¼š4ç‚¹æ†Žæ¨å€¼\r\nå°„å‡ºä¸€æ”¯ç»ç”±é­”æ³•çŒæ³¨çš„ç®­çŸ¢ï¼Œæœå¯»æ•Œäººå¹¶å¯¹å…¶é€ æˆ155%çš„æ­¦å™¨ä¼¤å®³ï¼Œå¹¶æœ‰35%çš„å‡ çŽ‡ç©¿é€ç›®æ ‡ã€‚"
 	, [RUNE_DEMON_HUNTER_HUNGERING_ARROW_D, RUNE_DEMON_HUNTER_HUNGERING_ARROW_A, RUNE_DEMON_HUNTER_HUNGERING_ARROW_B, RUNE_DEMON_HUNTER_HUNGERING_ARROW_C, RUNE_DEMON_HUNTER_HUNGERING_ARROW_E])
 ; ---------------------------
-; ¼¼ÄÜ: ×·×Ù¼ý End
+; æŠ€èƒ½: è¿½è¸ªç®­ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: °µÓ°·Éµ¶ Start
+; æŠ€èƒ½: æš—å½±é£žåˆ€ Start
 ; ---------------------------
-; ·ûÎÄ: Â­»÷µ¶·¨ 
-RUNE_DEMON_HUNTER_IMPALE_B := New SkillRune("Â­»÷µ¶·¨", "ÎïÀí", "b", "»÷ÖÐ»á»÷ÍËÄ¿±ê£¬²¢ÓÐ100%µÄ¼¸ÂÊÊ¹Æä»èÃÔ1.5Ãë¡£")
-; ·ûÎÄ: »¯Ñ§×ÆÉÕ 
-RUNE_DEMON_HUNTER_IMPALE_C := New SkillRune("»¯Ñ§×ÆÉÕ", "»ðÑæ", "c", "ÄãµÄÄ¿±êÍ¬Ê±»áÒòÈ¼ÉÕ¶øÔÚ2ÃëÄÚÊÜµ½500%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: Ç¿Á¦´©Í¸ 
-RUNE_DEMON_HUNTER_IMPALE_A := New SkillRune("Ç¿Á¦´©Í¸", "±ùº®", "a", "·Éµ¶´©Í¸Ò»ÌõÖ±ÏßÉÏµÄËùÓÐµÐÈË£¬Ôì³É±ùËªÉËº¦¡£")
-; ·ûÎÄ: ·Éµ¶µ¯Éä 
-RUNE_DEMON_HUNTER_IMPALE_D := New SkillRune("·Éµ¶µ¯Éä", "µç»÷", "d", "·Éµ¶»áµ¯Ïò¸½½ü¶îÍâ2¸öÏà¾à20ÂëÄÚµÄµÐÈË¡£°µÓ°·Éµ¶µÄÉËº¦ÀàÐÍ×ª±äÎªÉÁµçÉËº¦¡£")
-; ·ûÎÄ: ÉË¿Ú¶ñ»¯ 
-RUNE_DEMON_HUNTER_IMPALE_E := New SkillRune("ÉË¿Ú¶ñ»¯", "ÎïÀí", "e", "±©»÷Ôì³É¶îÍâ330%µÄÉËº¦¡£")
-; ¼¼ÄÜ: °µÓ°·Éµ¶
-SKILL_ACTIVE_DEMON_HUNTER_IMPALE := New ActiveSkill("°µÓ°·Éµ¶", "ÎïÀí", "´ÎÒª"
+; ç¬¦æ–‡: é¢…å‡»åˆ€æ³• 
+RUNE_DEMON_HUNTER_IMPALE_B := New SkillRune("é¢…å‡»åˆ€æ³•", "ç‰©ç†", "b", "å‡»ä¸­ä¼šå‡»é€€ç›®æ ‡ï¼Œå¹¶æœ‰100%çš„å‡ çŽ‡ä½¿å…¶æ˜è¿·1.5ç§’ã€‚")
+; ç¬¦æ–‡: åŒ–å­¦ç¼çƒ§ 
+RUNE_DEMON_HUNTER_IMPALE_C := New SkillRune("åŒ–å­¦ç¼çƒ§", "ç«ç„°", "c", "ä½ çš„ç›®æ ‡åŒæ—¶ä¼šå› ç‡ƒçƒ§è€Œåœ¨2ç§’å†…å—åˆ°500%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å¼ºåŠ›ç©¿é€ 
+RUNE_DEMON_HUNTER_IMPALE_A := New SkillRune("å¼ºåŠ›ç©¿é€", "å†°å¯’", "a", "é£žåˆ€ç©¿é€ä¸€æ¡ç›´çº¿ä¸Šçš„æ‰€æœ‰æ•Œäººï¼Œé€ æˆå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: é£žåˆ€å¼¹å°„ 
+RUNE_DEMON_HUNTER_IMPALE_D := New SkillRune("é£žåˆ€å¼¹å°„", "ç”µå‡»", "d", "é£žåˆ€ä¼šå¼¹å‘é™„è¿‘é¢å¤–2ä¸ªç›¸è·20ç å†…çš„æ•Œäººã€‚æš—å½±é£žåˆ€çš„ä¼¤å®³ç±»åž‹è½¬å˜ä¸ºé—ªç”µä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ä¼¤å£æ¶åŒ– 
+RUNE_DEMON_HUNTER_IMPALE_E := New SkillRune("ä¼¤å£æ¶åŒ–", "ç‰©ç†", "e", "æš´å‡»é€ æˆé¢å¤–330%çš„ä¼¤å®³ã€‚")
+; æŠ€èƒ½: æš—å½±é£žåˆ€
+SKILL_ACTIVE_DEMON_HUNTER_IMPALE := New ActiveSkill("æš—å½±é£žåˆ€", "ç‰©ç†", "æ¬¡è¦"
 	, "images\skills\demon-hunter\active\demonhunter_ballista_normal.png"
-	, "ÏûºÄ£º20µãÔ÷ºÞÖµ\r\nÖÀ³öÒ»°Ñ·Éµ¶´Ì´©µÐÈË£¬Ôì³É750%µÄÎäÆ÷ÉËº¦¡£"
+	, "æ¶ˆè€—ï¼š20ç‚¹æ†Žæ¨å€¼\r\næŽ·å‡ºä¸€æŠŠé£žåˆ€åˆºç©¿æ•Œäººï¼Œé€ æˆ750%çš„æ­¦å™¨ä¼¤å®³ã€‚"
 	, [RUNE_DEMON_HUNTER_IMPALE_B, RUNE_DEMON_HUNTER_IMPALE_C, RUNE_DEMON_HUNTER_IMPALE_A, RUNE_DEMON_HUNTER_IMPALE_D, RUNE_DEMON_HUNTER_IMPALE_E])
 ; ---------------------------
-; ¼¼ÄÜ: °µÓ°·Éµ¶ End
+; æŠ€èƒ½: æš—å½±é£žåˆ€ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ²øÈÆÉä»÷ Start
+; æŠ€èƒ½: ç¼ ç»•å°„å‡» Start
 ; ---------------------------
-; ·ûÎÄ: »·ËøÇô½û 
-RUNE_DEMON_HUNTER_ENTANGLING_SHOT_B := New SkillRune("»·ËøÇô½û", "ÎïÀí", "b", "Ã¿·¢Éä»÷×î¶à¿É²ø×¡4¸öµÐÈË£¬²¢Ê¹Æä¼õËÙ¡£")
-; ·ûÎÄ: µç»÷ÏîÈ¦ 
-RUNE_DEMON_HUNTER_ENTANGLING_SHOT_C := New SkillRune("µç»÷ÏîÈ¦", "µç»÷", "c", "±»²øÈÆµÄµÐÈË»áÔÚ2ÃëÄÚÊÜµ½80%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£")
-; ·ûÎÄ: ´ç²½ÄÑÐÐ 
-RUNE_DEMON_HUNTER_ENTANGLING_SHOT_A := New SkillRune("´ç²½ÄÑÐÐ", "±ùº®", "a", "Ê¹¼õËÙµÄ³ÖÐøÊ±¼äÑÓ³¤ÖÁ4Ãë¡£²øÈÆÉä»÷µÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ·ûÎÄ: ÉìÕÅÕýÒå 
-RUNE_DEMON_HUNTER_ENTANGLING_SHOT_D := New SkillRune("ÉìÕÅÕýÒå", "»ðÑæ", "d", "Ê¹Éú³ÉµÄÔ÷ºÞÖµÌá¸ßÖÁ7µã¡£²øÈÆÉä»÷µÄÉËº¦ÀàÐÍ×ª»»Îª»ðÑæÉËº¦¡£")
-; ·ûÎÄ: ÉÍ½ðÁÔÈË 
-RUNE_DEMON_HUNTER_ENTANGLING_SHOT_E := New SkillRune("ÉÍ½ðÁÔÈË", "ÎïÀí", "e", "Ê¹¼õËÙÐ§¹ûÌá¸ßÖÁ80%¡£")
-; ¼¼ÄÜ: ²øÈÆÉä»÷
-SKILL_ACTIVE_DEMON_HUNTER_ENTANGLING_SHOT := New ActiveSkill("²øÈÆÉä»÷", "ÎïÀí", "Ö÷Òª"
+; ç¬¦æ–‡: çŽ¯é”å›šç¦ 
+RUNE_DEMON_HUNTER_ENTANGLING_SHOT_B := New SkillRune("çŽ¯é”å›šç¦", "ç‰©ç†", "b", "æ¯å‘å°„å‡»æœ€å¤šå¯ç¼ ä½4ä¸ªæ•Œäººï¼Œå¹¶ä½¿å…¶å‡é€Ÿã€‚")
+; ç¬¦æ–‡: ç”µå‡»é¡¹åœˆ 
+RUNE_DEMON_HUNTER_ENTANGLING_SHOT_C := New SkillRune("ç”µå‡»é¡¹åœˆ", "ç”µå‡»", "c", "è¢«ç¼ ç»•çš„æ•Œäººä¼šåœ¨2ç§’å†…å—åˆ°80%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å¯¸æ­¥éš¾è¡Œ 
+RUNE_DEMON_HUNTER_ENTANGLING_SHOT_A := New SkillRune("å¯¸æ­¥éš¾è¡Œ", "å†°å¯’", "a", "ä½¿å‡é€Ÿçš„æŒç»­æ—¶é—´å»¶é•¿è‡³4ç§’ã€‚ç¼ ç»•å°„å‡»çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ä¼¸å¼ æ­£ä¹‰ 
+RUNE_DEMON_HUNTER_ENTANGLING_SHOT_D := New SkillRune("ä¼¸å¼ æ­£ä¹‰", "ç«ç„°", "d", "ä½¿ç”Ÿæˆçš„æ†Žæ¨å€¼æé«˜è‡³7ç‚¹ã€‚ç¼ ç»•å°„å‡»çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºç«ç„°ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: èµé‡‘çŒŽäºº 
+RUNE_DEMON_HUNTER_ENTANGLING_SHOT_E := New SkillRune("èµé‡‘çŒŽäºº", "ç‰©ç†", "e", "ä½¿å‡é€Ÿæ•ˆæžœæé«˜è‡³80%ã€‚")
+; æŠ€èƒ½: ç¼ ç»•å°„å‡»
+SKILL_ACTIVE_DEMON_HUNTER_ENTANGLING_SHOT := New ActiveSkill("ç¼ ç»•å°„å‡»", "ç‰©ç†", "ä¸»è¦"
 	, "images\skills\demon-hunter\active\demonhunter_entangle_normal.png"
-	, "Éú³É£º4µãÔ÷ºÞÖµ\r\nÔÚ¼ýÉÏ¹à×¢°µÓ°ÄÜÁ¿£¬¶Ôµ±Ç°µÐÈËÔì³É200%µÄÎäÆ÷ÉËº¦£¬²¢²ø×¡×î¶à2ÃûµÐÈË£¬Ê¹ÆäÒÆ¶¯ËÙ¶È½µµÍ60%£¬³ÖÐø2Ãë¡£"
+	, "ç”Ÿæˆï¼š4ç‚¹æ†Žæ¨å€¼\r\nåœ¨ç®­ä¸ŠçŒæ³¨æš—å½±èƒ½é‡ï¼Œå¯¹å½“å‰æ•Œäººé€ æˆ200%çš„æ­¦å™¨ä¼¤å®³ï¼Œå¹¶ç¼ ä½æœ€å¤š2åæ•Œäººï¼Œä½¿å…¶ç§»åŠ¨é€Ÿåº¦é™ä½Ž60%ï¼ŒæŒç»­2ç§’ã€‚"
 	, [RUNE_DEMON_HUNTER_ENTANGLING_SHOT_B, RUNE_DEMON_HUNTER_ENTANGLING_SHOT_C, RUNE_DEMON_HUNTER_ENTANGLING_SHOT_A, RUNE_DEMON_HUNTER_ENTANGLING_SHOT_D, RUNE_DEMON_HUNTER_ENTANGLING_SHOT_E])
 ; ---------------------------
-; ¼¼ÄÜ: ²øÈÆÉä»÷ End
+; æŠ€èƒ½: ç¼ ç»•å°„å‡» End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÌúÝðÞ¼ Start
+; æŠ€èƒ½: é“è’ºè—œ Start
 ; ---------------------------
-; ·ûÎÄ: ¹³´Ì 
-RUNE_DEMON_HUNTER_CALTROPS_B := New SkillRune("¹³´Ì", "ÎïÀí", "b", "Ê¹¼õËÙÐ§¹ûÌá¸ßÖÁ80%¡£")
-; ·ûÎÄ: Í´¿àÖ®µØ 
-RUNE_DEMON_HUNTER_CALTROPS_C := New SkillRune("Í´¿àÖ®µØ", "ÎïÀí", "c", "µ±ÏÝÚå´¥·¢ºó£¬ÇøÓòÄÚµÄËùÓÐµÐÈË»á±»¶¨Éí2Ãë¡£")
-; ·ûÎÄ: ¾â³Ý¼â´Ì 
-RUNE_DEMON_HUNTER_CALTROPS_A := New SkillRune("¾â³Ý¼â´Ì", "ÎïÀí", "a", "Î»ÓÚÐ§¹û·¶Î§ÄÚµÄµÐÈË»¹»áÔÚ6ÃëÄÚÊÜµ½270%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£")
-; ·ûÎÄ: ¼âÏ÷¶¤´Ì 
-RUNE_DEMON_HUNTER_CALTROPS_D := New SkillRune("¼âÏ÷¶¤´Ì", "ÎïÀí", "d", "Ê¹ÌúÝðÞ¼µÄÏûºÄ½µµÍÖÁ3µã½äÂÉÖµ¡£")
-; ·ûÎÄ: ²¼¶üÓÕµÐ 
-RUNE_DEMON_HUNTER_CALTROPS_E := New SkillRune("²¼¶üÓÕµÐ", "ÎïÀí", "e", "Õ¾ÔÚÐ§¹û·¶Î§ÄÚÊ±»ñµÃÔöÇ¿Ð§¹û£¬±©»÷¼¸ÂÊ¶îÍâÌá¸ß10%¡£")
-; ¼¼ÄÜ: ÌúÝðÞ¼
-SKILL_ACTIVE_DEMON_HUNTER_CALTROPS := New ActiveSkill("ÌúÝðÞ¼", "ÎïÀí", "·ÀÓù"
+; ç¬¦æ–‡: é’©åˆº 
+RUNE_DEMON_HUNTER_CALTROPS_B := New SkillRune("é’©åˆº", "ç‰©ç†", "b", "ä½¿å‡é€Ÿæ•ˆæžœæé«˜è‡³80%ã€‚")
+; ç¬¦æ–‡: ç—›è‹¦ä¹‹åœ° 
+RUNE_DEMON_HUNTER_CALTROPS_C := New SkillRune("ç—›è‹¦ä¹‹åœ°", "ç‰©ç†", "c", "å½“é™·é˜±è§¦å‘åŽï¼ŒåŒºåŸŸå†…çš„æ‰€æœ‰æ•Œäººä¼šè¢«å®šèº«2ç§’ã€‚")
+; ç¬¦æ–‡: é”¯é½¿å°–åˆº 
+RUNE_DEMON_HUNTER_CALTROPS_A := New SkillRune("é”¯é½¿å°–åˆº", "ç‰©ç†", "a", "ä½äºŽæ•ˆæžœèŒƒå›´å†…çš„æ•Œäººè¿˜ä¼šåœ¨6ç§’å†…å—åˆ°270%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å°–å‰Šé’‰åˆº 
+RUNE_DEMON_HUNTER_CALTROPS_D := New SkillRune("å°–å‰Šé’‰åˆº", "ç‰©ç†", "d", "ä½¿é“è’ºè—œçš„æ¶ˆè€—é™ä½Žè‡³3ç‚¹æˆ’å¾‹å€¼ã€‚")
+; ç¬¦æ–‡: å¸ƒé¥µè¯±æ•Œ 
+RUNE_DEMON_HUNTER_CALTROPS_E := New SkillRune("å¸ƒé¥µè¯±æ•Œ", "ç‰©ç†", "e", "ç«™åœ¨æ•ˆæžœèŒƒå›´å†…æ—¶èŽ·å¾—å¢žå¼ºæ•ˆæžœï¼Œæš´å‡»å‡ çŽ‡é¢å¤–æé«˜10%ã€‚")
+; æŠ€èƒ½: é“è’ºè—œ
+SKILL_ACTIVE_DEMON_HUNTER_CALTROPS := New ActiveSkill("é“è’ºè—œ", "ç‰©ç†", "é˜²å¾¡"
 	, "images\skills\demon-hunter\active\demonhunter_caltrops_normal.png"
-	, "ÏûºÄ£º6µã½äÂÉÖµ\r\nÔÚµØÉÏÉ¢²¼ÌúÝðÞ¼£¬µ±ÓÐµÐÈË¾­¹ýÊ±´¥·¢¡£ÏÝÚåÒ»µ©´¥·¢ºó£¬¿ÉÊ¹Î»ÓÚ12ÂëÄÚµÄËùÓÐµÐÈË¼õËÙ60%¡£¸ÃÏÝÚå´¥·¢ºó¿ÉÉúÐ§6Ãë¡£"
+	, "æ¶ˆè€—ï¼š6ç‚¹æˆ’å¾‹å€¼\r\nåœ¨åœ°ä¸Šæ•£å¸ƒé“è’ºè—œï¼Œå½“æœ‰æ•Œäººç»è¿‡æ—¶è§¦å‘ã€‚é™·é˜±ä¸€æ—¦è§¦å‘åŽï¼Œå¯ä½¿ä½äºŽ12ç å†…çš„æ‰€æœ‰æ•Œäººå‡é€Ÿ60%ã€‚è¯¥é™·é˜±è§¦å‘åŽå¯ç”Ÿæ•ˆ6ç§’ã€‚"
 	, [RUNE_DEMON_HUNTER_CALTROPS_B, RUNE_DEMON_HUNTER_CALTROPS_C, RUNE_DEMON_HUNTER_CALTROPS_A, RUNE_DEMON_HUNTER_CALTROPS_D, RUNE_DEMON_HUNTER_CALTROPS_E])
 ; ---------------------------
-; ¼¼ÄÜ: ÌúÝðÞ¼ End
+; æŠ€èƒ½: é“è’ºè—œ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ¼±ËÙÉä»÷ Start
+; æŠ€èƒ½: æ€¥é€Ÿå°„å‡» Start
 ; ---------------------------
-; ·ûÎÄ: µòÁã»ðÊ¸ 
-RUNE_DEMON_HUNTER_RAPID_FIRE_D := New SkillRune("µòÁã»ðÊ¸", "»ðÑæ", "d", "Ê¹³õÊ¼Ô÷ºÞÖµÏûºÄ½µµÍÖÁ10µã£¬²¢µãÈ¼ÄãµÄ¼ýÊ¸£¬Ê¹ÆäÔì³É»ðÑæÉËº¦¡£")
-; ·ûÎÄ: ±ùËªÉä»÷ 
-RUNE_DEMON_HUNTER_RAPID_FIRE_E := New SkillRune("±ùËªÉä»÷", "±ùº®", "e", "±»¼±ËÙÉä»÷ÃüÖÐµÄµÐÈË»áÏÝÈëº®Àä£¬¼õËÙ80%£¬³ÖÐø2Ãë¡£¼±ËÙÉä»÷µÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ·ûÎÄ: »ðÁ¦Ö§Ô® 
-RUNE_DEMON_HUNTER_RAPID_FIRE_C := New SkillRune("»ðÁ¦Ö§Ô®", "ÎïÀí", "c", "Òýµ¼¼±ËÙÉä»÷Ê±Ã¿Ãë»á·¢Éä2Ã¶×·×Ùµ¼µ¯£¬Ã¿Ã¶¶Ô¸½½üµÄµÐÈËÔì³É145%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£")
-; ·ûÎÄ: ¶¯ÄÜ¼ÓËÙ 
-RUNE_DEMON_HUNTER_RAPID_FIRE_B := New SkillRune("¶¯ÄÜ¼ÓËÙ", "µç»÷", "b", "Éä³öÉÁµç¼ýÊ¸£¬ÓÐ50%µÄ¼¸ÂÊ´©Í¸µÐÈË¡£")
-; ·ûÎÄ: ÊÖÀ×ºäÕ¨ 
-RUNE_DEMON_HUNTER_RAPID_FIRE_A := New SkillRune("ÊÖÀ×ºäÕ¨", "»ðÑæ", "a", "¿ìËÙ·¢Éä±¬Õ¨ÊÖÀ×£¬¶Ô8Âë·¶Î§ÄÚµÄËùÓÐµÐÈËÔì³É545%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ¼¼ÄÜ: ¼±ËÙÉä»÷
-SKILL_ACTIVE_DEMON_HUNTER_RAPID_FIRE := New ActiveSkill("¼±ËÙÉä»÷", "ÎïÀí", "´ÎÒª"
+; ç¬¦æ–‡: å‡‹é›¶ç«çŸ¢ 
+RUNE_DEMON_HUNTER_RAPID_FIRE_D := New SkillRune("å‡‹é›¶ç«çŸ¢", "ç«ç„°", "d", "ä½¿åˆå§‹æ†Žæ¨å€¼æ¶ˆè€—é™ä½Žè‡³10ç‚¹ï¼Œå¹¶ç‚¹ç‡ƒä½ çš„ç®­çŸ¢ï¼Œä½¿å…¶é€ æˆç«ç„°ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: å†°éœœå°„å‡» 
+RUNE_DEMON_HUNTER_RAPID_FIRE_E := New SkillRune("å†°éœœå°„å‡»", "å†°å¯’", "e", "è¢«æ€¥é€Ÿå°„å‡»å‘½ä¸­çš„æ•Œäººä¼šé™·å…¥å¯’å†·ï¼Œå‡é€Ÿ80%ï¼ŒæŒç»­2ç§’ã€‚æ€¥é€Ÿå°„å‡»çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ç«åŠ›æ”¯æ´ 
+RUNE_DEMON_HUNTER_RAPID_FIRE_C := New SkillRune("ç«åŠ›æ”¯æ´", "ç‰©ç†", "c", "å¼•å¯¼æ€¥é€Ÿå°„å‡»æ—¶æ¯ç§’ä¼šå‘å°„2æžšè¿½è¸ªå¯¼å¼¹ï¼Œæ¯æžšå¯¹é™„è¿‘çš„æ•Œäººé€ æˆ145%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: åŠ¨èƒ½åŠ é€Ÿ 
+RUNE_DEMON_HUNTER_RAPID_FIRE_B := New SkillRune("åŠ¨èƒ½åŠ é€Ÿ", "ç”µå‡»", "b", "å°„å‡ºé—ªç”µç®­çŸ¢ï¼Œæœ‰50%çš„å‡ çŽ‡ç©¿é€æ•Œäººã€‚")
+; ç¬¦æ–‡: æ‰‹é›·è½°ç‚¸ 
+RUNE_DEMON_HUNTER_RAPID_FIRE_A := New SkillRune("æ‰‹é›·è½°ç‚¸", "ç«ç„°", "a", "å¿«é€Ÿå‘å°„çˆ†ç‚¸æ‰‹é›·ï¼Œå¯¹8ç èŒƒå›´å†…çš„æ‰€æœ‰æ•Œäººé€ æˆ545%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: æ€¥é€Ÿå°„å‡»
+SKILL_ACTIVE_DEMON_HUNTER_RAPID_FIRE := New ActiveSkill("æ€¥é€Ÿå°„å‡»", "ç‰©ç†", "æ¬¡è¦"
 	, "images\skills\demon-hunter\active\demonhunter_rapidfire_normal.png"
-	, "ÏûºÄ£º³õÊ¼ÏûºÄ20µãÔ÷ºÞÖµ£¬Òýµ¼Ê±ÔÙÏûºÄ¶îÍâ6µãÔ÷ºÞÖµ¡£\r\n¼²ËÙÉä»÷£¬Ôì³É685%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£"
+	, "æ¶ˆè€—ï¼šåˆå§‹æ¶ˆè€—20ç‚¹æ†Žæ¨å€¼ï¼Œå¼•å¯¼æ—¶å†æ¶ˆè€—é¢å¤–6ç‚¹æ†Žæ¨å€¼ã€‚\r\nç–¾é€Ÿå°„å‡»ï¼Œé€ æˆ685%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_DEMON_HUNTER_RAPID_FIRE_D, RUNE_DEMON_HUNTER_RAPID_FIRE_E, RUNE_DEMON_HUNTER_RAPID_FIRE_C, RUNE_DEMON_HUNTER_RAPID_FIRE_B, RUNE_DEMON_HUNTER_RAPID_FIRE_A])
 ; ---------------------------
-; ¼¼ÄÜ: ¼±ËÙÉä»÷ End
+; æŠ€èƒ½: æ€¥é€Ÿå°„å‡» End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÑÌÎíµ¯ Start
+; æŠ€èƒ½: çƒŸé›¾å¼¹ Start
 ; ---------------------------
-; ·ûÎÄ: Æ®ºö²»¶¨ 
-RUNE_DEMON_HUNTER_SMOKE_SCREEN_E := New SkillRune("Æ®ºö²»¶¨", "ÎïÀí", "e", "ÒþÐÎÊ±ÒÆ¶¯ËÙ¶ÈÌá¸ß100%¡£")
-; ·ûÎÄ: ÃÔÎíÃÖÂþ 
-RUNE_DEMON_HUNTER_SMOKE_SCREEN_B := New SkillRune("ÃÔÎíÃÖÂþ", "ÎïÀí", "b", "Ð§¹û³ÖÐøÊ±¼äÑÓ³¤ÖÁ1.5Ãë¡£")
-; ·ûÎÄ: ÖÎÁÆÖ®Îí 
-RUNE_DEMON_HUNTER_SMOKE_SCREEN_C := New SkillRune("ÖÎÁÆÖ®Îí", "ÎïÀí", "c", "ÒþÐÎÊ±»Ö¸´15%µÄÉúÃüÖµ¡£")
-; ·ûÎÄ: ¶ÀÃÅÑÌÄ» 
-RUNE_DEMON_HUNTER_SMOKE_SCREEN_D := New SkillRune("¶ÀÃÅÑÌÄ»", "ÎïÀí", "d", "Ê¹ÏûºÄ½µµÍÖÁ8µã½äÂÉÖµ¡£")
-; ·ûÎÄ: ÏûÊ§·ÛÄ© 
-RUNE_DEMON_HUNTER_SMOKE_SCREEN_A := New SkillRune("ÏûÊ§·ÛÄ©", "ÎïÀí", "a", "ÒÆ³ý½äÂÉÖµÏûºÄ£¬µ«ÀäÈ´Ê±¼äÑÓ³¤ÖÁ6Ãë¡£")
-; ¼¼ÄÜ: ÑÌÎíµ¯
-SKILL_ACTIVE_DEMON_HUNTER_SMOKE_SCREEN := New ActiveSkill("ÑÌÎíµ¯", "ÎïÀí", "·ÀÓù"
+; ç¬¦æ–‡: é£˜å¿½ä¸å®š 
+RUNE_DEMON_HUNTER_SMOKE_SCREEN_E := New SkillRune("é£˜å¿½ä¸å®š", "ç‰©ç†", "e", "éšå½¢æ—¶ç§»åŠ¨é€Ÿåº¦æé«˜100%ã€‚")
+; ç¬¦æ–‡: è¿·é›¾å¼¥æ¼« 
+RUNE_DEMON_HUNTER_SMOKE_SCREEN_B := New SkillRune("è¿·é›¾å¼¥æ¼«", "ç‰©ç†", "b", "æ•ˆæžœæŒç»­æ—¶é—´å»¶é•¿è‡³1.5ç§’ã€‚")
+; ç¬¦æ–‡: æ²»ç–—ä¹‹é›¾ 
+RUNE_DEMON_HUNTER_SMOKE_SCREEN_C := New SkillRune("æ²»ç–—ä¹‹é›¾", "ç‰©ç†", "c", "éšå½¢æ—¶æ¢å¤15%çš„ç”Ÿå‘½å€¼ã€‚")
+; ç¬¦æ–‡: ç‹¬é—¨çƒŸå¹• 
+RUNE_DEMON_HUNTER_SMOKE_SCREEN_D := New SkillRune("ç‹¬é—¨çƒŸå¹•", "ç‰©ç†", "d", "ä½¿æ¶ˆè€—é™ä½Žè‡³8ç‚¹æˆ’å¾‹å€¼ã€‚")
+; ç¬¦æ–‡: æ¶ˆå¤±ç²‰æœ« 
+RUNE_DEMON_HUNTER_SMOKE_SCREEN_A := New SkillRune("æ¶ˆå¤±ç²‰æœ«", "ç‰©ç†", "a", "ç§»é™¤æˆ’å¾‹å€¼æ¶ˆè€—ï¼Œä½†å†·å´æ—¶é—´å»¶é•¿è‡³6ç§’ã€‚")
+; æŠ€èƒ½: çƒŸé›¾å¼¹
+SKILL_ACTIVE_DEMON_HUNTER_SMOKE_SCREEN := New ActiveSkill("çƒŸé›¾å¼¹", "ç‰©ç†", "é˜²å¾¡"
 	, "images\skills\demon-hunter\active\demonhunter_smokescreen_normal.png"
-	, "ÏûºÄ£º14µã½äÂÉÖµÀäÈ´Ê±¼ä£º1.5Ãë\r\nÏûÊ§ÔÚÒ»µÀÑÌÄ»ºó£¬ÔÝÊ±ÒþÉí1Ãë¡£"
+	, "æ¶ˆè€—ï¼š14ç‚¹æˆ’å¾‹å€¼å†·å´æ—¶é—´ï¼š1.5ç§’\r\næ¶ˆå¤±åœ¨ä¸€é“çƒŸå¹•åŽï¼Œæš‚æ—¶éšèº«1ç§’ã€‚"
 	, [RUNE_DEMON_HUNTER_SMOKE_SCREEN_E, RUNE_DEMON_HUNTER_SMOKE_SCREEN_B, RUNE_DEMON_HUNTER_SMOKE_SCREEN_C, RUNE_DEMON_HUNTER_SMOKE_SCREEN_D, RUNE_DEMON_HUNTER_SMOKE_SCREEN_A])
 ; ---------------------------
-; ¼¼ÄÜ: ÑÌÎíµ¯ End
+; æŠ€èƒ½: çƒŸé›¾å¼¹ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Ó°ÂÖ·­ Start
+; æŠ€èƒ½: å½±è½®ç¿» Start
 ; ---------------------------
-; ·ûÎÄ: ·­¹öÉä»÷ 
-RUNE_DEMON_HUNTER_VAULT_C := New SkillRune("·­¹öÉä»÷", "ÎïÀí", "c", "ÔÚÊ¹ÓÃÓ°ÂÖ·­µÄÍ¬Ê±³¯¸½½üµÄµÐÈËÉä³ö4Ö§¼ýÊ¸£¬Ôì³É75%µÄÎäÆ÷ÉËº¦¡£ÕâÐ©¼ýÊ¸±Ø¶¨Ôì³É±©»÷¡£")
-; ·ûÎÄ: Åùö¨·­¹ö 
-RUNE_DEMON_HUNTER_VAULT_E := New SkillRune("Åùö¨·­¹ö", "ÎïÀí", "e", "ÄãÔÚÊ¹ÓÃÓ°ÂÖ·­Ê±Í¾¾¶µÄµÐÈË¶¼»á±»»÷ÍË£¬²¢»èÃÔ1.5Ãë¡£")
-; ·ûÎÄ: ·­¹ö¸ßÊÖ 
-RUNE_DEMON_HUNTER_VAULT_D := New SkillRune("·­¹ö¸ßÊÖ", "ÎïÀí", "d", "Ê¹ÓÃÓ°ÂÖ·­ºó£¬ÔÚ6ÃëÄÚÄãÏÂÒ»´ÎÓ°ÂÖ·­ÏûºÄµÄ½äÂÉÖµ½µµÍ50%¡£")
-; ·ûÎÄ: ·­¹öÌØ¼¼ 
-RUNE_DEMON_HUNTER_VAULT_B := New SkillRune("·­¹öÌØ¼¼", "ÎïÀí", "b", "ÒÆ³ý½äÂÉÖµÏûºÄ£¬µ«Ôö¼Ó6ÃëµÄÀäÈ´Ê±¼ä¡£")
-; ·ûÎÄ: »ðÑæÖ®ºÛ 
-RUNE_DEMON_HUNTER_VAULT_A := New SkillRune("»ðÑæÖ®ºÛ", "»ðÑæ", "a", "ÔÚÉíºóÁôÏÂÒ»µÀÁÒÑæ£¬ÔÚ3ÃëÄÚÔì³É300%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ¼¼ÄÜ: Ó°ÂÖ·­
-SKILL_ACTIVE_DEMON_HUNTER_VAULT := New ActiveSkill("Ó°ÂÖ·­", "ÎïÀí", "ÁÔÉ±"
+; ç¬¦æ–‡: ç¿»æ»šå°„å‡» 
+RUNE_DEMON_HUNTER_VAULT_C := New SkillRune("ç¿»æ»šå°„å‡»", "ç‰©ç†", "c", "åœ¨ä½¿ç”¨å½±è½®ç¿»çš„åŒæ—¶æœé™„è¿‘çš„æ•Œäººå°„å‡º4æ”¯ç®­çŸ¢ï¼Œé€ æˆ75%çš„æ­¦å™¨ä¼¤å®³ã€‚è¿™äº›ç®­çŸ¢å¿…å®šé€ æˆæš´å‡»ã€‚")
+; ç¬¦æ–‡: éœ¹é›³ç¿»æ»š 
+RUNE_DEMON_HUNTER_VAULT_E := New SkillRune("éœ¹é›³ç¿»æ»š", "ç‰©ç†", "e", "ä½ åœ¨ä½¿ç”¨å½±è½®ç¿»æ—¶é€”å¾„çš„æ•Œäººéƒ½ä¼šè¢«å‡»é€€ï¼Œå¹¶æ˜è¿·1.5ç§’ã€‚")
+; ç¬¦æ–‡: ç¿»æ»šé«˜æ‰‹ 
+RUNE_DEMON_HUNTER_VAULT_D := New SkillRune("ç¿»æ»šé«˜æ‰‹", "ç‰©ç†", "d", "ä½¿ç”¨å½±è½®ç¿»åŽï¼Œåœ¨6ç§’å†…ä½ ä¸‹ä¸€æ¬¡å½±è½®ç¿»æ¶ˆè€—çš„æˆ’å¾‹å€¼é™ä½Ž50%ã€‚")
+; ç¬¦æ–‡: ç¿»æ»šç‰¹æŠ€ 
+RUNE_DEMON_HUNTER_VAULT_B := New SkillRune("ç¿»æ»šç‰¹æŠ€", "ç‰©ç†", "b", "ç§»é™¤æˆ’å¾‹å€¼æ¶ˆè€—ï¼Œä½†å¢žåŠ 6ç§’çš„å†·å´æ—¶é—´ã€‚")
+; ç¬¦æ–‡: ç«ç„°ä¹‹ç—• 
+RUNE_DEMON_HUNTER_VAULT_A := New SkillRune("ç«ç„°ä¹‹ç—•", "ç«ç„°", "a", "åœ¨èº«åŽç•™ä¸‹ä¸€é“çƒˆç„°ï¼Œåœ¨3ç§’å†…é€ æˆ300%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: å½±è½®ç¿»
+SKILL_ACTIVE_DEMON_HUNTER_VAULT := New ActiveSkill("å½±è½®ç¿»", "ç‰©ç†", "çŒŽæ€"
 	, "images\skills\demon-hunter\active\demonhunter_vault_normal.png"
-	, "ÏûºÄ£º8µã½äÂÉÖµ\r\nÁé»îµØ·­¹ö35Âë¡£"
+	, "æ¶ˆè€—ï¼š8ç‚¹æˆ’å¾‹å€¼\r\nçµæ´»åœ°ç¿»æ»š35ç ã€‚"
 	, [RUNE_DEMON_HUNTER_VAULT_C, RUNE_DEMON_HUNTER_VAULT_E, RUNE_DEMON_HUNTER_VAULT_D, RUNE_DEMON_HUNTER_VAULT_B, RUNE_DEMON_HUNTER_VAULT_A])
 ; ---------------------------
-; ¼¼ÄÜ: Ó°ÂÖ·­ End
+; æŠ€èƒ½: å½±è½®ç¿» End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Á÷ÐÇË÷ Start
+; æŠ€èƒ½: æµæ˜Ÿç´¢ Start
 ; ---------------------------
-; ·ûÎÄ: ÁÒÐÔÕ¨Ò© 
-RUNE_DEMON_HUNTER_BOLAS_A := New SkillRune("ÁÒÐÔÕ¨Ò©", "»ðÑæ", "a", "Ê¹±¬Õ¨·¶Î§À©´óÖÁ20Âë¡£")
-; ·ûÎÄ: Åùö¨µ¯ 
-RUNE_DEMON_HUNTER_BOLAS_C := New SkillRune("Åùö¨µ¯", "µç»÷", "c", "Ê¹Éú³ÉµÄÔ÷ºÞÖµÌá¸ßÖÁ7µã¡£")
-; ·ûÎÄ: ±ù¶³´ò»÷ 
-RUNE_DEMON_HUNTER_BOLAS_B := New SkillRune("±ù¶³´ò»÷", "±ùº®", "b", "Éä³ö3·¢Á÷ÐÇË÷£¬Ã¿·¢Ôì³É160%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£ÕâÐ©Á÷ÐÇË÷²»»á±¬Õ¨£¬Ò²²»»á¶Ô¸½½üµÄµÐÈËÔì³É·¶Î§ÉËº¦¡£»÷ÖÐÊ±ÓÐ50%µÄ¼¸ÂÊ±ù¶³µÐÈË£¬³ÖÐø1Ãë¡£")
-; ·ûÎÄ: ÎÞÇé¿à¹û 
-RUNE_DEMON_HUNTER_BOLAS_D := New SkillRune("ÎÞÇé¿à¹û", "µç»÷", "d", "µ±Á÷ÐÇË÷±¬Õ¨Ê±£¬ÄãÓÐ15%µÄ¼¸ÂÊ»ñµÃ2µã½äÂÉÖµ¡£Á÷ÐÇË÷µÄÉËº¦ÀàÐÍ×ª»»ÎªÉÁµçÉËº¦¡£")
-; ·ûÎÄ: Ä©ÈÕÆÈ½ü 
-RUNE_DEMON_HUNTER_BOLAS_E := New SkillRune("Ä©ÈÕÆÈ½ü", "»ðÑæ", "e", "Ç¿»¯Á÷ÐÇË÷£¬¶ÔµÐÈËÔì³É216%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©£¬²¢¶Ô14Âë·¶Î§ÄÚµÄËùÓÐµÐÈËÔì³É148%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©£¬µ«±¬Õ¨Ê±¼äÑÓ³¤ÖÁ2Ãë¡£")
-; ¼¼ÄÜ: Á÷ÐÇË÷
-SKILL_ACTIVE_DEMON_HUNTER_BOLAS := New ActiveSkill("Á÷ÐÇË÷", "»ðÑæ", "Ö÷Òª"
+; ç¬¦æ–‡: çƒˆæ€§ç‚¸è¯ 
+RUNE_DEMON_HUNTER_BOLAS_A := New SkillRune("çƒˆæ€§ç‚¸è¯", "ç«ç„°", "a", "ä½¿çˆ†ç‚¸èŒƒå›´æ‰©å¤§è‡³20ç ã€‚")
+; ç¬¦æ–‡: éœ¹é›³å¼¹ 
+RUNE_DEMON_HUNTER_BOLAS_C := New SkillRune("éœ¹é›³å¼¹", "ç”µå‡»", "c", "ä½¿ç”Ÿæˆçš„æ†Žæ¨å€¼æé«˜è‡³7ç‚¹ã€‚")
+; ç¬¦æ–‡: å†°å†»æ‰“å‡» 
+RUNE_DEMON_HUNTER_BOLAS_B := New SkillRune("å†°å†»æ‰“å‡»", "å†°å¯’", "b", "å°„å‡º3å‘æµæ˜Ÿç´¢ï¼Œæ¯å‘é€ æˆ160%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚è¿™äº›æµæ˜Ÿç´¢ä¸ä¼šçˆ†ç‚¸ï¼Œä¹Ÿä¸ä¼šå¯¹é™„è¿‘çš„æ•Œäººé€ æˆèŒƒå›´ä¼¤å®³ã€‚å‡»ä¸­æ—¶æœ‰50%çš„å‡ çŽ‡å†°å†»æ•Œäººï¼ŒæŒç»­1ç§’ã€‚")
+; ç¬¦æ–‡: æ— æƒ…è‹¦æžœ 
+RUNE_DEMON_HUNTER_BOLAS_D := New SkillRune("æ— æƒ…è‹¦æžœ", "ç”µå‡»", "d", "å½“æµæ˜Ÿç´¢çˆ†ç‚¸æ—¶ï¼Œä½ æœ‰15%çš„å‡ çŽ‡èŽ·å¾—2ç‚¹æˆ’å¾‹å€¼ã€‚æµæ˜Ÿç´¢çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºé—ªç”µä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æœ«æ—¥è¿«è¿‘ 
+RUNE_DEMON_HUNTER_BOLAS_E := New SkillRune("æœ«æ—¥è¿«è¿‘", "ç«ç„°", "e", "å¼ºåŒ–æµæ˜Ÿç´¢ï¼Œå¯¹æ•Œäººé€ æˆ216%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ï¼Œå¹¶å¯¹14ç èŒƒå›´å†…çš„æ‰€æœ‰æ•Œäººé€ æˆ148%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ï¼Œä½†çˆ†ç‚¸æ—¶é—´å»¶é•¿è‡³2ç§’ã€‚")
+; æŠ€èƒ½: æµæ˜Ÿç´¢
+SKILL_ACTIVE_DEMON_HUNTER_BOLAS := New ActiveSkill("æµæ˜Ÿç´¢", "ç«ç„°", "ä¸»è¦"
 	, "images\skills\demon-hunter\active\demonhunter_bolashot_normal.png"
-	, "Éú³É£º4µãÔ÷ºÞÖµ\r\nÉä³öÒ»·¢»á±¬Õ¨µÄÁ÷ÐÇË÷²ø×¡µÐÈË£¬ÔÚ1Ãëºó±¬Õ¨²¢Ôì³É160%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©£¬²¢¶îÍâ¶Ô14ÂëÄÚµÄËùÓÐÆäËûµÐÈËÔì³É110%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£"
+	, "ç”Ÿæˆï¼š4ç‚¹æ†Žæ¨å€¼\r\nå°„å‡ºä¸€å‘ä¼šçˆ†ç‚¸çš„æµæ˜Ÿç´¢ç¼ ä½æ•Œäººï¼Œåœ¨1ç§’åŽçˆ†ç‚¸å¹¶é€ æˆ160%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ï¼Œå¹¶é¢å¤–å¯¹14ç å†…çš„æ‰€æœ‰å…¶ä»–æ•Œäººé€ æˆ110%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_DEMON_HUNTER_BOLAS_A, RUNE_DEMON_HUNTER_BOLAS_C, RUNE_DEMON_HUNTER_BOLAS_B, RUNE_DEMON_HUNTER_BOLAS_D, RUNE_DEMON_HUNTER_BOLAS_E])
 ; ---------------------------
-; ¼¼ÄÜ: Á÷ÐÇË÷ End
+; æŠ€èƒ½: æµæ˜Ÿç´¢ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ·ÉÂÖÈÐ Start
+; æŠ€èƒ½: é£žè½®åˆƒ Start
 ; ---------------------------
-; ·ûÎÄ: Ë«·ÉÂÖ 
-RUNE_DEMON_HUNTER_CHAKRAM_A := New SkillRune("Ë«·ÉÂÖ", "»ðÑæ", "a", "¶îÍâÉú³ÉÒ»°Ñ·ÉÂÖÈÐ²¢×·ËæÇ°Ò»Ö»µÄ·ÉÐÐ¹ì¼£¡£Ã¿°Ñ·ÉÂÖÈÐÔì³É220%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ÓÎÉßÈÐ 
-RUNE_DEMON_HUNTER_CHAKRAM_C := New SkillRune("ÓÎÉßÈÐ", "±ùº®", "c", "·ÉÂÖÈÐ»ºÂý»®³öÒ»µÀ»¡Ïß£¬¶ÔÂ·ÏßÉÏµÄµÐÈËÔì³É500%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£")
-; ·ûÎÄ: Ìêµ¶ÂÖ 
-RUNE_DEMON_HUNTER_CHAKRAM_D := New SkillRune("Ìêµ¶ÂÖ", "ÎïÀí", "d", "·ÉÂÖÈÐ´ÓÄ¿±êÎ»ÖÃÐý×ª¶ø³ö£¬¶ÔÂ·ÏßÉÏµÄµÐÈËÔì³É380%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£")
-; ·ûÎÄ: »ØÐýïÚ 
-RUNE_DEMON_HUNTER_CHAKRAM_B := New SkillRune("»ØÐýïÚ", "µç»÷", "b", "·ÉÂÖÈÐÈÆÈ¦·ÉÐÐ£¬¶ÔÂ·ÏßÉÏµÄµÐÈËÔì³É400%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£")
-; ·ûÎÄ: ÐäÀï½£ 
-RUNE_DEMON_HUNTER_CHAKRAM_E := New SkillRune("ÐäÀï½£", "ÎïÀí", "e", "Ê¹Äã±»Ðý×ªµÄ·ÉÂÖÈÐ°üÎ§£¬¶Ô¸½½üµÄµÐÈËÃ¿ÃëÔì³É200%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©£¬³ÖÐø10·ÖÖÓ¡£")
-; ¼¼ÄÜ: ·ÉÂÖÈÐ
-SKILL_ACTIVE_DEMON_HUNTER_CHAKRAM := New ActiveSkill("·ÉÂÖÈÐ", "ÎïÀí", "´ÎÒª"
+; ç¬¦æ–‡: åŒé£žè½® 
+RUNE_DEMON_HUNTER_CHAKRAM_A := New SkillRune("åŒé£žè½®", "ç«ç„°", "a", "é¢å¤–ç”Ÿæˆä¸€æŠŠé£žè½®åˆƒå¹¶è¿½éšå‰ä¸€åªçš„é£žè¡Œè½¨è¿¹ã€‚æ¯æŠŠé£žè½®åˆƒé€ æˆ220%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: æ¸¸è›‡åˆƒ 
+RUNE_DEMON_HUNTER_CHAKRAM_C := New SkillRune("æ¸¸è›‡åˆƒ", "å†°å¯’", "c", "é£žè½®åˆƒç¼“æ…¢åˆ’å‡ºä¸€é“å¼§çº¿ï¼Œå¯¹è·¯çº¿ä¸Šçš„æ•Œäººé€ æˆ500%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å‰ƒåˆ€è½® 
+RUNE_DEMON_HUNTER_CHAKRAM_D := New SkillRune("å‰ƒåˆ€è½®", "ç‰©ç†", "d", "é£žè½®åˆƒä»Žç›®æ ‡ä½ç½®æ—‹è½¬è€Œå‡ºï¼Œå¯¹è·¯çº¿ä¸Šçš„æ•Œäººé€ æˆ380%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å›žæ—‹é•– 
+RUNE_DEMON_HUNTER_CHAKRAM_B := New SkillRune("å›žæ—‹é•–", "ç”µå‡»", "b", "é£žè½®åˆƒç»•åœˆé£žè¡Œï¼Œå¯¹è·¯çº¿ä¸Šçš„æ•Œäººé€ æˆ400%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: è¢–é‡Œå‰‘ 
+RUNE_DEMON_HUNTER_CHAKRAM_E := New SkillRune("è¢–é‡Œå‰‘", "ç‰©ç†", "e", "ä½¿ä½ è¢«æ—‹è½¬çš„é£žè½®åˆƒåŒ…å›´ï¼Œå¯¹é™„è¿‘çš„æ•Œäººæ¯ç§’é€ æˆ200%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ï¼ŒæŒç»­10åˆ†é’Ÿã€‚")
+; æŠ€èƒ½: é£žè½®åˆƒ
+SKILL_ACTIVE_DEMON_HUNTER_CHAKRAM := New ActiveSkill("é£žè½®åˆƒ", "ç‰©ç†", "æ¬¡è¦"
 	, "images\skills\demon-hunter\active\demonhunter_chakram_normal.png"
-	, "ÏûºÄ£º10µãÔ÷ºÞÖµ\r\nÖÀ³öÒ»°Ñ·ÉÂÖÈÐ£¬ÇÐ¿³ÆäÐÐ½øÂ·ÏßÉÏÓöµ½µÄËùÓÐµÐÈË£¬¶ÔÆäÔì³É380%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£"
+	, "æ¶ˆè€—ï¼š10ç‚¹æ†Žæ¨å€¼\r\næŽ·å‡ºä¸€æŠŠé£žè½®åˆƒï¼Œåˆ‡ç å…¶è¡Œè¿›è·¯çº¿ä¸Šé‡åˆ°çš„æ‰€æœ‰æ•Œäººï¼Œå¯¹å…¶é€ æˆ380%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_DEMON_HUNTER_CHAKRAM_A, RUNE_DEMON_HUNTER_CHAKRAM_C, RUNE_DEMON_HUNTER_CHAKRAM_D, RUNE_DEMON_HUNTER_CHAKRAM_B, RUNE_DEMON_HUNTER_CHAKRAM_E])
 ; ---------------------------
-; ¼¼ÄÜ: ·ÉÂÖÈÐ End
+; æŠ€èƒ½: é£žè½®åˆƒ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÐîÊÆ´ý·¢ Start
+; æŠ€èƒ½: è“„åŠ¿å¾…å‘ Start
 ; ---------------------------
-; ·ûÎÄ: ¾«Á¦³äÅæ 
-RUNE_DEMON_HUNTER_PREPARATION_B := New SkillRune("¾«Á¦³äÅæ", "ÎïÀí", "b", "±»¶¯£ºÊ¹½äÂÉÖµÉÏÏÞÓÀ¾ÃÐÔµØÌá¸ß20µã¡£")
-; ·ûÎÄ: ³Í·£ 
-RUNE_DEMON_HUNTER_PREPARATION_A := New SkillRune("³Í·£", "ÎïÀí", "a", "»Ö¸´75µãÔ÷ºÞÖµ¡£ÐîÊÆ´ý·¢ÓÐ20ÃëµÄÀäÈ´Ê±¼ä¡£")
-; ·ûÎÄ: Õ½ÉË´¦Àí 
-RUNE_DEMON_HUNTER_PREPARATION_D := New SkillRune("Õ½ÉË´¦Àí", "ÎïÀí", "d", "Ê¹ÓÃÐîÊÆ´ý·¢Ê±£¬¿É»ñµÃ40%µÄÉúÃüÖµ¡£")
-; ·ûÎÄ: ¼¯ÖÐÐÄÖÇ 
-RUNE_DEMON_HUNTER_PREPARATION_C := New SkillRune("¼¯ÖÐÐÄÖÇ", "ÎïÀí", "c", "²»ÔÙÁ¢¼´»ØÂú½äÂÉÖµ£¬Äã½«ÔÚ15ÃëÄÚ»ñµÃ45µã½äÂÉÖµ¡£")
-; ·ûÎÄ: ÓÐ±¸ÎÞ»¼ 
-RUNE_DEMON_HUNTER_PREPARATION_E := New SkillRune("ÓÐ±¸ÎÞ»¼", "ÎïÀí", "e", "ÓÐ30%µÄ¼¸ÂÊ²»»á´¥·¢ÐîÊÆ´ý·¢µÄÀäÈ´Ê±¼ä¡£")
-; ¼¼ÄÜ: ÐîÊÆ´ý·¢
-SKILL_ACTIVE_DEMON_HUNTER_PREPARATION := New ActiveSkill("ÐîÊÆ´ý·¢", "ÎïÀí", "ÁÔÉ±"
+; ç¬¦æ–‡: ç²¾åŠ›å……æ²› 
+RUNE_DEMON_HUNTER_PREPARATION_B := New SkillRune("ç²¾åŠ›å……æ²›", "ç‰©ç†", "b", "è¢«åŠ¨ï¼šä½¿æˆ’å¾‹å€¼ä¸Šé™æ°¸ä¹…æ€§åœ°æé«˜20ç‚¹ã€‚")
+; ç¬¦æ–‡: æƒ©ç½š 
+RUNE_DEMON_HUNTER_PREPARATION_A := New SkillRune("æƒ©ç½š", "ç‰©ç†", "a", "æ¢å¤75ç‚¹æ†Žæ¨å€¼ã€‚è“„åŠ¿å¾…å‘æœ‰20ç§’çš„å†·å´æ—¶é—´ã€‚")
+; ç¬¦æ–‡: æˆ˜ä¼¤å¤„ç† 
+RUNE_DEMON_HUNTER_PREPARATION_D := New SkillRune("æˆ˜ä¼¤å¤„ç†", "ç‰©ç†", "d", "ä½¿ç”¨è“„åŠ¿å¾…å‘æ—¶ï¼Œå¯èŽ·å¾—40%çš„ç”Ÿå‘½å€¼ã€‚")
+; ç¬¦æ–‡: é›†ä¸­å¿ƒæ™º 
+RUNE_DEMON_HUNTER_PREPARATION_C := New SkillRune("é›†ä¸­å¿ƒæ™º", "ç‰©ç†", "c", "ä¸å†ç«‹å³å›žæ»¡æˆ’å¾‹å€¼ï¼Œä½ å°†åœ¨15ç§’å†…èŽ·å¾—45ç‚¹æˆ’å¾‹å€¼ã€‚")
+; ç¬¦æ–‡: æœ‰å¤‡æ— æ‚£ 
+RUNE_DEMON_HUNTER_PREPARATION_E := New SkillRune("æœ‰å¤‡æ— æ‚£", "ç‰©ç†", "e", "æœ‰30%çš„å‡ çŽ‡ä¸ä¼šè§¦å‘è“„åŠ¿å¾…å‘çš„å†·å´æ—¶é—´ã€‚")
+; æŠ€èƒ½: è“„åŠ¿å¾…å‘
+SKILL_ACTIVE_DEMON_HUNTER_PREPARATION := New ActiveSkill("è“„åŠ¿å¾…å‘", "ç‰©ç†", "çŒŽæ€"
 	, "images\skills\demon-hunter\active\demonhunter_preparation_normal.png"
-	, "ÀäÈ´Ê±¼ä£º45Ãë\r\nÁ¢¼´»Ö¸´30µã½äÂÉÖµ¡£"
+	, "å†·å´æ—¶é—´ï¼š45ç§’\r\nç«‹å³æ¢å¤30ç‚¹æˆ’å¾‹å€¼ã€‚"
 	, [RUNE_DEMON_HUNTER_PREPARATION_B, RUNE_DEMON_HUNTER_PREPARATION_A, RUNE_DEMON_HUNTER_PREPARATION_D, RUNE_DEMON_HUNTER_PREPARATION_C, RUNE_DEMON_HUNTER_PREPARATION_E])
 ; ---------------------------
-; ¼¼ÄÜ: ÐîÊÆ´ý·¢ End
+; æŠ€èƒ½: è“„åŠ¿å¾…å‘ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: µ¶ÉÈ Start
+; æŠ€èƒ½: åˆ€æ‰‡ Start
 ; ---------------------------
-; ·ûÎÄ: µ¯ÎÞÐé·¢ 
-RUNE_DEMON_HUNTER_FAN_OF_KNIVES_D := New SkillRune("µ¯ÎÞÐé·¢", "µç»÷", "d", "Ê¹ÀäÈ´Ê±¼äÑÓ³¤ÖÁ15Ãë£¬ÉËº¦Ìá¸ßÖÁ1600%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£")
-; ·ûÎÄ: µ¶ÈÐ»¤¼× 
-RUNE_DEMON_HUNTER_FAN_OF_KNIVES_E := New SkillRune("µ¶ÈÐ»¤¼×", "±ùº®", "e", "»ñµÃ¶îÍâ40%µÄ»¤¼×Öµ£¬³ÖÐø6Ãë¡£µ¶ÉÈµÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ·ûÎÄ: ·Éµ¶´óÊ¦ 
-RUNE_DEMON_HUNTER_FAN_OF_KNIVES_A := New SkillRune("·Éµ¶´óÊ¦", "»ðÑæ", "a", "ÒÆ³ýÀäÈ´Ê±¼ä£¬µ«ÐèÒªÏûºÄ30µãÔ÷ºÞÖµ¡£µ¶ÉÈµÄÉËº¦ÀàÐÍ×ª»»Îª»ðÑæÉËº¦¡£")
-; ·ûÎÄ: Ø°Ê×·ÉÎè 
-RUNE_DEMON_HUNTER_FAN_OF_KNIVES_C := New SkillRune("Ø°Ê×·ÉÎè", "»ðÑæ", "c", "»÷ÖÐµÐÈË»áÊ¹Æä»èÃÔ3Ãë¡£µ¶ÉÈµÄÉËº¦ÀàÐÍ×ª»»Îª»ðÑæÉËº¦¡£")
-; ·ûÎÄ: ´Ì¿ÍÖ®ÈÐ 
-RUNE_DEMON_HUNTER_FAN_OF_KNIVES_B := New SkillRune("´Ì¿ÍÖ®ÈÐ", "ÎïÀí", "b", "Í¶ÖÀ³¤¾àÀë·Éµ¶£¬¶Ô5¸ö¶îÍâÄ¿±êÔì³É620%µÄÎäÆ÷ÉËº¦¡£")
-; ¼¼ÄÜ: µ¶ÉÈ
-SKILL_ACTIVE_DEMON_HUNTER_FAN_OF_KNIVES := New ActiveSkill("µ¶ÉÈ", "ÎïÀí", "Æ÷Ðµ"
+; ç¬¦æ–‡: å¼¹æ— è™šå‘ 
+RUNE_DEMON_HUNTER_FAN_OF_KNIVES_D := New SkillRune("å¼¹æ— è™šå‘", "ç”µå‡»", "d", "ä½¿å†·å´æ—¶é—´å»¶é•¿è‡³15ç§’ï¼Œä¼¤å®³æé«˜è‡³1600%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: åˆ€åˆƒæŠ¤ç”² 
+RUNE_DEMON_HUNTER_FAN_OF_KNIVES_E := New SkillRune("åˆ€åˆƒæŠ¤ç”²", "å†°å¯’", "e", "èŽ·å¾—é¢å¤–40%çš„æŠ¤ç”²å€¼ï¼ŒæŒç»­6ç§’ã€‚åˆ€æ‰‡çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: é£žåˆ€å¤§å¸ˆ 
+RUNE_DEMON_HUNTER_FAN_OF_KNIVES_A := New SkillRune("é£žåˆ€å¤§å¸ˆ", "ç«ç„°", "a", "ç§»é™¤å†·å´æ—¶é—´ï¼Œä½†éœ€è¦æ¶ˆè€—30ç‚¹æ†Žæ¨å€¼ã€‚åˆ€æ‰‡çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºç«ç„°ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: åŒ•é¦–é£žèˆž 
+RUNE_DEMON_HUNTER_FAN_OF_KNIVES_C := New SkillRune("åŒ•é¦–é£žèˆž", "ç«ç„°", "c", "å‡»ä¸­æ•Œäººä¼šä½¿å…¶æ˜è¿·3ç§’ã€‚åˆ€æ‰‡çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºç«ç„°ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: åˆºå®¢ä¹‹åˆƒ 
+RUNE_DEMON_HUNTER_FAN_OF_KNIVES_B := New SkillRune("åˆºå®¢ä¹‹åˆƒ", "ç‰©ç†", "b", "æŠ•æŽ·é•¿è·ç¦»é£žåˆ€ï¼Œå¯¹5ä¸ªé¢å¤–ç›®æ ‡é€ æˆ620%çš„æ­¦å™¨ä¼¤å®³ã€‚")
+; æŠ€èƒ½: åˆ€æ‰‡
+SKILL_ACTIVE_DEMON_HUNTER_FAN_OF_KNIVES := New ActiveSkill("åˆ€æ‰‡", "ç‰©ç†", "å™¨æ¢°"
 	, "images\skills\demon-hunter\active\demonhunter_fanofknives_normal.png"
-	, "ÀäÈ´Ê±¼ä£º10Ãë\r\nÔÚÉíÌåËÄÖÜÅ××ª·Éµ¶£¬¶ÔÎ»ÓÚ20ÂëÄÚµÄËùÓÐµÐÈËÔì³É620%µÄÎäÆ÷ÉËº¦¡£ÄãµÄ·Éµ¶Í¬Ê±»áÊ¹µÐÈËµÄÒÆ¶¯ËÙ¶È½µµÍ60%£¬³ÖÐø1Ãë¡£"
+	, "å†·å´æ—¶é—´ï¼š10ç§’\r\nåœ¨èº«ä½“å››å‘¨æŠ›è½¬é£žåˆ€ï¼Œå¯¹ä½äºŽ20ç å†…çš„æ‰€æœ‰æ•Œäººé€ æˆ620%çš„æ­¦å™¨ä¼¤å®³ã€‚ä½ çš„é£žåˆ€åŒæ—¶ä¼šä½¿æ•Œäººçš„ç§»åŠ¨é€Ÿåº¦é™ä½Ž60%ï¼ŒæŒç»­1ç§’ã€‚"
 	, [RUNE_DEMON_HUNTER_FAN_OF_KNIVES_D, RUNE_DEMON_HUNTER_FAN_OF_KNIVES_E, RUNE_DEMON_HUNTER_FAN_OF_KNIVES_A, RUNE_DEMON_HUNTER_FAN_OF_KNIVES_C, RUNE_DEMON_HUNTER_FAN_OF_KNIVES_B])
 ; ---------------------------
-; ¼¼ÄÜ: µ¶ÉÈ End
+; æŠ€èƒ½: åˆ€æ‰‡ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÉÁ±ÜÉä»÷ Start
+; æŠ€èƒ½: é—ªé¿å°„å‡» Start
 ; ---------------------------
-; ·ûÎÄ: Ó²»¯»¤¼× 
-RUNE_DEMON_HUNTER_EVASIVE_FIRE_A := New SkillRune("Ó²»¯»¤¼×", "ÎïÀí", "a", "²»ÔÙÊ©Õ¹ºó¿Õ·­£¬¶øÊÇÊ¹ÄãµÄ»¤¼×ÖµÌá¸ß25%£¬³ÖÐø3Ãë¡£")
-; ·ûÎÄ: ÁÙ±ðÔùÀñ 
-RUNE_DEMON_HUNTER_EVASIVE_FIRE_C := New SkillRune("ÁÙ±ðÔùÀñ", "ÎïÀí", "c", "Ã¿µ±Ê©·Åºó¿Õ·­Ê±£¬»áÔÚÔ­µØÁôÏÂÒ»Ã¶Õ¨µ¯£¬Õ¨µ¯»áÔÚ0.6Ãëºó±¬Õ¨£¬ÔÚ°ë¾¶12ÂëµÄ·¶Î§ÄÚÔì³É150%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£")
-; ·ûÎÄ: ÑÚ»¤Éä»÷ 
-RUNE_DEMON_HUNTER_EVASIVE_FIRE_B := New SkillRune("ÑÚ»¤Éä»÷", "»ðÑæ", "b", "Ê¹¼ýÊ¸Ôì³ÉµÄÉËº¦Ìá¸ßÖÁ200%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ÄýÉñÉä»÷ 
-RUNE_DEMON_HUNTER_EVASIVE_FIRE_E := New SkillRune("ÄýÉñÉä»÷", "±ùº®", "e", "²»ÔÙÊ©Õ¹ºó¿Õ·­£¬¶øÊÇÊ¹Éú³ÉµÄÔ÷ºÞÖµÌá¸ßÖÁ7µã¡£ÉÁ±ÜÉä»÷µÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ·ûÎÄ: µçÓ¿Éä»÷ 
-RUNE_DEMON_HUNTER_EVASIVE_FIRE_D := New SkillRune("µçÓ¿Éä»÷", "µç»÷", "d", "Ê¹ºó¿Õ·­µÄ¾àÀëÑÓ³¤ÖÁ15Âë¡£ÉÁ±ÜÉä»÷µÄÉËº¦ÀàÐÍ×ª»»ÎªÉÁµçÉËº¦¡£")
-; ¼¼ÄÜ: ÉÁ±ÜÉä»÷
-SKILL_ACTIVE_DEMON_HUNTER_EVASIVE_FIRE := New ActiveSkill("ÉÁ±ÜÉä»÷", "ÎïÀí", "Ö÷Òª"
+; ç¬¦æ–‡: ç¡¬åŒ–æŠ¤ç”² 
+RUNE_DEMON_HUNTER_EVASIVE_FIRE_A := New SkillRune("ç¡¬åŒ–æŠ¤ç”²", "ç‰©ç†", "a", "ä¸å†æ–½å±•åŽç©ºç¿»ï¼Œè€Œæ˜¯ä½¿ä½ çš„æŠ¤ç”²å€¼æé«˜25%ï¼ŒæŒç»­3ç§’ã€‚")
+; ç¬¦æ–‡: ä¸´åˆ«èµ ç¤¼ 
+RUNE_DEMON_HUNTER_EVASIVE_FIRE_C := New SkillRune("ä¸´åˆ«èµ ç¤¼", "ç‰©ç†", "c", "æ¯å½“æ–½æ”¾åŽç©ºç¿»æ—¶ï¼Œä¼šåœ¨åŽŸåœ°ç•™ä¸‹ä¸€æžšç‚¸å¼¹ï¼Œç‚¸å¼¹ä¼šåœ¨0.6ç§’åŽçˆ†ç‚¸ï¼Œåœ¨åŠå¾„12ç çš„èŒƒå›´å†…é€ æˆ150%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: æŽ©æŠ¤å°„å‡» 
+RUNE_DEMON_HUNTER_EVASIVE_FIRE_B := New SkillRune("æŽ©æŠ¤å°„å‡»", "ç«ç„°", "b", "ä½¿ç®­çŸ¢é€ æˆçš„ä¼¤å®³æé«˜è‡³200%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å‡ç¥žå°„å‡» 
+RUNE_DEMON_HUNTER_EVASIVE_FIRE_E := New SkillRune("å‡ç¥žå°„å‡»", "å†°å¯’", "e", "ä¸å†æ–½å±•åŽç©ºç¿»ï¼Œè€Œæ˜¯ä½¿ç”Ÿæˆçš„æ†Žæ¨å€¼æé«˜è‡³7ç‚¹ã€‚é—ªé¿å°„å‡»çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ç”µæ¶Œå°„å‡» 
+RUNE_DEMON_HUNTER_EVASIVE_FIRE_D := New SkillRune("ç”µæ¶Œå°„å‡»", "ç”µå‡»", "d", "ä½¿åŽç©ºç¿»çš„è·ç¦»å»¶é•¿è‡³15ç ã€‚é—ªé¿å°„å‡»çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºé—ªç”µä¼¤å®³ã€‚")
+; æŠ€èƒ½: é—ªé¿å°„å‡»
+SKILL_ACTIVE_DEMON_HUNTER_EVASIVE_FIRE := New ActiveSkill("é—ªé¿å°„å‡»", "ç‰©ç†", "ä¸»è¦"
 	, "images\skills\demon-hunter\active\demonhunter_evasivefire_normal.png"
-	, "Éú³É£º4µãÔ÷ºÞÖµ\r\nÉä³öÒ»´Ø¼ýÊ¸£¬¶ÔÖ÷ÒªµÐÈËÔì³É200%µÄÎäÆ÷ÉËº¦£¬²¢¶ÔÁ½Ãû¶îÍâµÐÈËÔì³É100%µÄÎäÆ÷ÉËº¦¡£"
+	, "ç”Ÿæˆï¼š4ç‚¹æ†Žæ¨å€¼\r\nå°„å‡ºä¸€ç°‡ç®­çŸ¢ï¼Œå¯¹ä¸»è¦æ•Œäººé€ æˆ200%çš„æ­¦å™¨ä¼¤å®³ï¼Œå¹¶å¯¹ä¸¤åé¢å¤–æ•Œäººé€ æˆ100%çš„æ­¦å™¨ä¼¤å®³ã€‚"
 	, [RUNE_DEMON_HUNTER_EVASIVE_FIRE_A, RUNE_DEMON_HUNTER_EVASIVE_FIRE_C, RUNE_DEMON_HUNTER_EVASIVE_FIRE_B, RUNE_DEMON_HUNTER_EVASIVE_FIRE_E, RUNE_DEMON_HUNTER_EVASIVE_FIRE_D])
 ; ---------------------------
-; ¼¼ÄÜ: ÉÁ±ÜÉä»÷ End
+; æŠ€èƒ½: é—ªé¿å°„å‡» End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÊÖÀ× Start
+; æŠ€èƒ½: æ‰‹é›· Start
 ; ---------------------------
-; ·ûÎÄ: Õ¨µ¯×¨²Å 
-RUNE_DEMON_HUNTER_GRENADE_D := New SkillRune("Õ¨µ¯×¨²Å", "»ðÑæ", "d", "Ê¹Éú³ÉµÄÔ÷ºÞÌá¸ßÖÁ7µã¡£")
-; ·ûÎÄ: ¼¯ÊøÊÖÀ× 
-RUNE_DEMON_HUNTER_GRENADE_B := New SkillRune("¼¯ÊøÊÖÀ×", "»ðÑæ", "b", "Í¶ÖÀ¼¯ÊøÊÖÀ×£¬ÔÚ9Âë°ë¾¶·¶Î§ÄÚÔì³É200%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ¶àÖØÊÖÀ× 
-RUNE_DEMON_HUNTER_GRENADE_C := New SkillRune("¶àÖØÊÖÀ×", "»ðÑæ", "c", "Í¶ÖÀ3Ã¶ÊÖÀ×£¬Ã¿Ã¶±¬Õ¨Ôì³É160%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: Õðµ´ÊÖÀ× 
-RUNE_DEMON_HUNTER_GRENADE_E := New SkillRune("Õðµ´ÊÖÀ×", "µç»÷", "e", "Í¶ÖÀÒ»Ã¶ÉÁµçÊÖÀ×£¬ÓÐ20%µÄ¼¸ÂÊÊ¹µÐÈË»èÃÔ1.5Ãë¡£")
-; ·ûÎÄ: º®±ùÊÖÀ× 
-RUNE_DEMON_HUNTER_GRENADE_A := New SkillRune("º®±ùÊÖÀ×", "±ùº®", "a", "Í¶ÖÀÒ»Ã¶ÊÖÀ×£¬±¬Õ¨Ôì³É160%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©£¬²¢ÁôÏÂÒ»¸öÔÆÍÅ£¬ÔÚ3ÃëÄÚ¶ÔÕ¾ÔÚÆäÖÐµÄµÐÈËÔì³É¶îÍâ120%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©£¬²¢Ê¹ÆäÏÝÈëº®Àä¡£")
-; ¼¼ÄÜ: ÊÖÀ×
-SKILL_ACTIVE_DEMON_HUNTER_GRENADE := New ActiveSkill("ÊÖÀ×", "»ðÑæ", "Ö÷Òª"
+; ç¬¦æ–‡: ç‚¸å¼¹ä¸“æ‰ 
+RUNE_DEMON_HUNTER_GRENADE_D := New SkillRune("ç‚¸å¼¹ä¸“æ‰", "ç«ç„°", "d", "ä½¿ç”Ÿæˆçš„æ†Žæ¨æé«˜è‡³7ç‚¹ã€‚")
+; ç¬¦æ–‡: é›†æŸæ‰‹é›· 
+RUNE_DEMON_HUNTER_GRENADE_B := New SkillRune("é›†æŸæ‰‹é›·", "ç«ç„°", "b", "æŠ•æŽ·é›†æŸæ‰‹é›·ï¼Œåœ¨9ç åŠå¾„èŒƒå›´å†…é€ æˆ200%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å¤šé‡æ‰‹é›· 
+RUNE_DEMON_HUNTER_GRENADE_C := New SkillRune("å¤šé‡æ‰‹é›·", "ç«ç„°", "c", "æŠ•æŽ·3æžšæ‰‹é›·ï¼Œæ¯æžšçˆ†ç‚¸é€ æˆ160%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: éœ‡è¡æ‰‹é›· 
+RUNE_DEMON_HUNTER_GRENADE_E := New SkillRune("éœ‡è¡æ‰‹é›·", "ç”µå‡»", "e", "æŠ•æŽ·ä¸€æžšé—ªç”µæ‰‹é›·ï¼Œæœ‰20%çš„å‡ çŽ‡ä½¿æ•Œäººæ˜è¿·1.5ç§’ã€‚")
+; ç¬¦æ–‡: å¯’å†°æ‰‹é›· 
+RUNE_DEMON_HUNTER_GRENADE_A := New SkillRune("å¯’å†°æ‰‹é›·", "å†°å¯’", "a", "æŠ•æŽ·ä¸€æžšæ‰‹é›·ï¼Œçˆ†ç‚¸é€ æˆ160%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ï¼Œå¹¶ç•™ä¸‹ä¸€ä¸ªäº‘å›¢ï¼Œåœ¨3ç§’å†…å¯¹ç«™åœ¨å…¶ä¸­çš„æ•Œäººé€ æˆé¢å¤–120%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ï¼Œå¹¶ä½¿å…¶é™·å…¥å¯’å†·ã€‚")
+; æŠ€èƒ½: æ‰‹é›·
+SKILL_ACTIVE_DEMON_HUNTER_GRENADE := New ActiveSkill("æ‰‹é›·", "ç«ç„°", "ä¸»è¦"
 	, "images\skills\demon-hunter\active\demonhunter_grenades_normal.png"
-	, "Éú³É£º4µãÔ÷ºÞÖµ\r\nÍ¶ÖÀÒ»Ã¶¿Éµ¯Ìø²¢±¬ÆÆµÄÊÖÀ×£¬±¬Õ¨Ôì³É160%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£"
+	, "ç”Ÿæˆï¼š4ç‚¹æ†Žæ¨å€¼\r\næŠ•æŽ·ä¸€æžšå¯å¼¹è·³å¹¶çˆ†ç ´çš„æ‰‹é›·ï¼Œçˆ†ç‚¸é€ æˆ160%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_DEMON_HUNTER_GRENADE_D, RUNE_DEMON_HUNTER_GRENADE_B, RUNE_DEMON_HUNTER_GRENADE_C, RUNE_DEMON_HUNTER_GRENADE_E, RUNE_DEMON_HUNTER_GRENADE_A])
 ; ---------------------------
-; ¼¼ÄÜ: ÊÖÀ× End
+; æŠ€èƒ½: æ‰‹é›· End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: °µÓ°Ö®Á¦ Start
+; æŠ€èƒ½: æš—å½±ä¹‹åŠ› Start
 ; ---------------------------
-; ·ûÎÄ: Ò¹Ä§»¯Éí 
-RUNE_DEMON_HUNTER_SHADOW_POWER_A := New SkillRune("Ò¹Ä§»¯Éí", "ÎïÀí", "a", "Ê¹30ÂëÄÚµÐÈËµÄÒÆ¶¯ËÙ¶È½µµÍ80%£¬³ÖÐø5Ãë¡£")
-; ·ûÎÄ: ÑªÔÂÖ®Á¦ 
-RUNE_DEMON_HUNTER_SHADOW_POWER_E := New SkillRune("ÑªÔÂÖ®Á¦", "ÎïÀí", "e", "»ñµÃµÄ»÷ÖÐ»Ø¸´ÉúÃüµÄ×ÜÁ¿¼Ó±¶¡£")
-; ·ûÎÄ: °µÓ°Ö®Èª 
-RUNE_DEMON_HUNTER_SHADOW_POWER_D := New SkillRune("°µÓ°Ö®Èª", "ÎïÀí", "d", "Ê¹ËùÏûºÄµÄ½äÂÉÖµ½µµÍÖÁ8µã¡£")
-; ·ûÎÄ: ¶ÝÈë°µÓ° 
-RUNE_DEMON_HUNTER_SHADOW_POWER_C := New SkillRune("¶ÝÈë°µÓ°", "ÎïÀí", "c", "µ±°µÓ°Ö®Á¦¼¤»îÊ±£¬Ê¹ÄãÊÜµ½µÄÉËº¦½µµÍ35%¡£")
-; ·ûÎÄ: °µÓ°»¬ÐÐ 
-RUNE_DEMON_HUNTER_SHADOW_POWER_B := New SkillRune("°µÓ°»¬ÐÐ", "ÎïÀí", "b", "µ±°µÓ°Ö®Á¦¼¤»îÊ±£¬ÒÆ¶¯ËÙ¶ÈÌá¸ß30%¡£")
-; ¼¼ÄÜ: °µÓ°Ö®Á¦
-SKILL_ACTIVE_DEMON_HUNTER_SHADOW_POWER := New ActiveSkill("°µÓ°Ö®Á¦", "ÎïÀí", "·ÀÓù"
+; ç¬¦æ–‡: å¤œé­”åŒ–èº« 
+RUNE_DEMON_HUNTER_SHADOW_POWER_A := New SkillRune("å¤œé­”åŒ–èº«", "ç‰©ç†", "a", "ä½¿30ç å†…æ•Œäººçš„ç§»åŠ¨é€Ÿåº¦é™ä½Ž80%ï¼ŒæŒç»­5ç§’ã€‚")
+; ç¬¦æ–‡: è¡€æœˆä¹‹åŠ› 
+RUNE_DEMON_HUNTER_SHADOW_POWER_E := New SkillRune("è¡€æœˆä¹‹åŠ›", "ç‰©ç†", "e", "èŽ·å¾—çš„å‡»ä¸­å›žå¤ç”Ÿå‘½çš„æ€»é‡åŠ å€ã€‚")
+; ç¬¦æ–‡: æš—å½±ä¹‹æ³‰ 
+RUNE_DEMON_HUNTER_SHADOW_POWER_D := New SkillRune("æš—å½±ä¹‹æ³‰", "ç‰©ç†", "d", "ä½¿æ‰€æ¶ˆè€—çš„æˆ’å¾‹å€¼é™ä½Žè‡³8ç‚¹ã€‚")
+; ç¬¦æ–‡: éå…¥æš—å½± 
+RUNE_DEMON_HUNTER_SHADOW_POWER_C := New SkillRune("éå…¥æš—å½±", "ç‰©ç†", "c", "å½“æš—å½±ä¹‹åŠ›æ¿€æ´»æ—¶ï¼Œä½¿ä½ å—åˆ°çš„ä¼¤å®³é™ä½Ž35%ã€‚")
+; ç¬¦æ–‡: æš—å½±æ»‘è¡Œ 
+RUNE_DEMON_HUNTER_SHADOW_POWER_B := New SkillRune("æš—å½±æ»‘è¡Œ", "ç‰©ç†", "b", "å½“æš—å½±ä¹‹åŠ›æ¿€æ´»æ—¶ï¼Œç§»åŠ¨é€Ÿåº¦æé«˜30%ã€‚")
+; æŠ€èƒ½: æš—å½±ä¹‹åŠ›
+SKILL_ACTIVE_DEMON_HUNTER_SHADOW_POWER := New ActiveSkill("æš—å½±ä¹‹åŠ›", "ç‰©ç†", "é˜²å¾¡"
 	, "images\skills\demon-hunter\active\demonhunter_shadowpower_normal.png"
-	, "ÏûºÄ£º14µã½äÂÉÖµ\r\n¼³È¡°µÓ°Ö®Á¦£¬»ñµÃ26821µã»÷ÖÐ»Ø¸´ÉúÃü£¬³ÖÐø5Ãë¡£"
+	, "æ¶ˆè€—ï¼š14ç‚¹æˆ’å¾‹å€¼\r\næ±²å–æš—å½±ä¹‹åŠ›ï¼ŒèŽ·å¾—26821ç‚¹å‡»ä¸­å›žå¤ç”Ÿå‘½ï¼ŒæŒç»­5ç§’ã€‚"
 	, [RUNE_DEMON_HUNTER_SHADOW_POWER_A, RUNE_DEMON_HUNTER_SHADOW_POWER_E, RUNE_DEMON_HUNTER_SHADOW_POWER_D, RUNE_DEMON_HUNTER_SHADOW_POWER_C, RUNE_DEMON_HUNTER_SHADOW_POWER_B])
 ; ---------------------------
-; ¼¼ÄÜ: °µÓ°Ö®Á¦ End
+; æŠ€èƒ½: æš—å½±ä¹‹åŠ› End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ¼â´ÌÏÝÚå Start
+; æŠ€èƒ½: å°–åˆºé™·é˜± Start
 ; ---------------------------
-; ·ûÎÄ: Á¬»·±¬Õ¨ 
-RUNE_DEMON_HUNTER_SPIKE_TRAP_B := New SkillRune("Á¬»·±¬Õ¨", "±ùº®", "b", "Ìá¸ßÖÁ2020%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£Òý±¬Ê±£¬±¬Õ¨½«Ê¹ËùÓÐ±»»÷ÖÐµÄÄ¿±ê¼õËÙ3Ãë¡£")
-; ·ûÎÄ: ÊÖ¶¯´¥·¢ 
-RUNE_DEMON_HUNTER_SPIKE_TRAP_C := New SkillRune("ÊÖ¶¯´¥·¢", "»ðÑæ", "c", "Ìá¸ßÖÁ1900%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£Ô÷ºÞÖµÉú³É¼¼ÏÖÔÚ½«Òý±¬ÏÝÚå¡£")
-; ·ûÎÄ: ´©¹Ç¼¹´Ì 
-RUNE_DEMON_HUNTER_SPIKE_TRAP_A := New SkillRune("´©¹Ç¼¹´Ì", "ÎïÀí", "a", "ÉËº¦Ìá¸ßÖÁ1930%µÄÎäÆ÷ÉËº¦¡£·ÅÖÃÊ±£¬Î»ÓÚ·¶Î§ÄÚµÄµÐÈË½«Á¢¼´¶¨Éí3Ãë¡£")
-; ·ûÎÄ: ÒýÀ×Õë 
-RUNE_DEMON_HUNTER_SPIKE_TRAP_E := New SkillRune("ÒýÀ×Õë", "µç»÷", "e", "´¥·¢ºóÊÍ·ÅÁ¬ËøÉÁµç£¬µç»÷10Âë·¶Î§ÄÚ×î¶à3ÃûµÐÈË¡£´¥·¢µÄÏÝÚå»¹»áÏò25Âë·¶Î§ÄÚËùÓÐÒÑ·ÅÖÃµÄÏÝÚå±ÅÉäÉÁµç¡£ËùÓÐ±»ÃüÖÐµÄµÐÈË½«³ÐÊÜ3´Îµç»÷£¬ÊÜµ½6700%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£")
-; ·ûÎÄ: ÏÝÚå´óÊ¦ 
-RUNE_DEMON_HUNTER_SPIKE_TRAP_D := New SkillRune("ÏÝÚå´óÊ¦", "»ðÑæ", "d", "Í¬Ê±·ÅÖÃ2¸öÏÝÚå¡£")
-; ¼¼ÄÜ: ¼â´ÌÏÝÚå
-SKILL_ACTIVE_DEMON_HUNTER_SPIKE_TRAP := New ActiveSkill("¼â´ÌÏÝÚå", "»ðÑæ", "Æ÷Ðµ"
+; ç¬¦æ–‡: è¿žçŽ¯çˆ†ç‚¸ 
+RUNE_DEMON_HUNTER_SPIKE_TRAP_B := New SkillRune("è¿žçŽ¯çˆ†ç‚¸", "å†°å¯’", "b", "æé«˜è‡³2020%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚å¼•çˆ†æ—¶ï¼Œçˆ†ç‚¸å°†ä½¿æ‰€æœ‰è¢«å‡»ä¸­çš„ç›®æ ‡å‡é€Ÿ3ç§’ã€‚")
+; ç¬¦æ–‡: æ‰‹åŠ¨è§¦å‘ 
+RUNE_DEMON_HUNTER_SPIKE_TRAP_C := New SkillRune("æ‰‹åŠ¨è§¦å‘", "ç«ç„°", "c", "æé«˜è‡³1900%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚æ†Žæ¨å€¼ç”ŸæˆæŠ€çŽ°åœ¨å°†å¼•çˆ†é™·é˜±ã€‚")
+; ç¬¦æ–‡: ç©¿éª¨è„Šåˆº 
+RUNE_DEMON_HUNTER_SPIKE_TRAP_A := New SkillRune("ç©¿éª¨è„Šåˆº", "ç‰©ç†", "a", "ä¼¤å®³æé«˜è‡³1930%çš„æ­¦å™¨ä¼¤å®³ã€‚æ”¾ç½®æ—¶ï¼Œä½äºŽèŒƒå›´å†…çš„æ•Œäººå°†ç«‹å³å®šèº«3ç§’ã€‚")
+; ç¬¦æ–‡: å¼•é›·é’ˆ 
+RUNE_DEMON_HUNTER_SPIKE_TRAP_E := New SkillRune("å¼•é›·é’ˆ", "ç”µå‡»", "e", "è§¦å‘åŽé‡Šæ”¾è¿žé”é—ªç”µï¼Œç”µå‡»10ç èŒƒå›´å†…æœ€å¤š3åæ•Œäººã€‚è§¦å‘çš„é™·é˜±è¿˜ä¼šå‘25ç èŒƒå›´å†…æ‰€æœ‰å·²æ”¾ç½®çš„é™·é˜±è¿¸å°„é—ªç”µã€‚æ‰€æœ‰è¢«å‘½ä¸­çš„æ•Œäººå°†æ‰¿å—3æ¬¡ç”µå‡»ï¼Œå—åˆ°6700%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: é™·é˜±å¤§å¸ˆ 
+RUNE_DEMON_HUNTER_SPIKE_TRAP_D := New SkillRune("é™·é˜±å¤§å¸ˆ", "ç«ç„°", "d", "åŒæ—¶æ”¾ç½®2ä¸ªé™·é˜±ã€‚")
+; æŠ€èƒ½: å°–åˆºé™·é˜±
+SKILL_ACTIVE_DEMON_HUNTER_SPIKE_TRAP := New ActiveSkill("å°–åˆºé™·é˜±", "ç«ç„°", "å™¨æ¢°"
 	, "images\skills\demon-hunter\active\demonhunter_spiketrap_normal.png"
-	, "ÏûºÄ£º15µãÔ÷ºÞÖµ\r\n²¼ÏÂÒ»¸öÏÝÚå£¬¸ÃÏÝÚåÔÚÊ¹ÓÃÁíÒ»ÖÖÔ÷ºÞÖµÏûºÄ¼¼½«ÆäÒý±¬Ö®Ç°£¬»áÒ»Ö±´¦ÓÚÕÝ·ü×´Ì¬¡£Òý±¬ºó£¬¸ÃÏÝÚåÒÔ¼°ÆäËüËùÓÐÏÝÚå½«²úÉúÁ¬Ëø·´Ó¦Ê½±¬Õ¨£¬¶ÔÎ»ÓÚÃ¿¸öÏÝÚåÖÜÎ§8ÂëÄÚµÄËùÓÐµÐÈËÔì³É1160%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£"
+	, "æ¶ˆè€—ï¼š15ç‚¹æ†Žæ¨å€¼\r\nå¸ƒä¸‹ä¸€ä¸ªé™·é˜±ï¼Œè¯¥é™·é˜±åœ¨ä½¿ç”¨å¦ä¸€ç§æ†Žæ¨å€¼æ¶ˆè€—æŠ€å°†å…¶å¼•çˆ†ä¹‹å‰ï¼Œä¼šä¸€ç›´å¤„äºŽè›°ä¼çŠ¶æ€ã€‚å¼•çˆ†åŽï¼Œè¯¥é™·é˜±ä»¥åŠå…¶å®ƒæ‰€æœ‰é™·é˜±å°†äº§ç”Ÿè¿žé”ååº”å¼çˆ†ç‚¸ï¼Œå¯¹ä½äºŽæ¯ä¸ªé™·é˜±å‘¨å›´8ç å†…çš„æ‰€æœ‰æ•Œäººé€ æˆ1160%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_DEMON_HUNTER_SPIKE_TRAP_B, RUNE_DEMON_HUNTER_SPIKE_TRAP_C, RUNE_DEMON_HUNTER_SPIKE_TRAP_A, RUNE_DEMON_HUNTER_SPIKE_TRAP_E, RUNE_DEMON_HUNTER_SPIKE_TRAP_D])
 ; ---------------------------
-; ¼¼ÄÜ: ¼â´ÌÏÝÚå End
+; æŠ€èƒ½: å°–åˆºé™·é˜± End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Õ½³è Start
+; æŠ€èƒ½: æˆ˜å®  Start
 ; ---------------------------
-; ·ûÎÄ: Ö©ÖëÕ½³è 
-RUNE_DEMON_HUNTER_COMPANION_A := New SkillRune("Ö©ÖëÕ½³è", "ÎïÀí", "a", "Ö÷¶¯£ºÄãµÄÖ©Öë³¯Î»ÓÚÄãÃÇ25Âë·¶Î§ÄÚµÄËùÓÐµÐÈËÍ¶Íø£¬Ê¹Æä¼õËÙ80%£¬³ÖÐø5Ãë¡£±»¶¯£ºÕÙ»½Ò»Ö»Ö©ÖëÕ½³è¹¥»÷ËüÃæÇ°µÄµÐÈË£¬Ôì³É140%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£Ö©ÖëµÄ¹¥»÷Ê¹µÐÈË¼õËÙ60%£¬³ÖÐø3Ãë¡£")
-; ·ûÎÄ: òùòðÕ½³è 
-RUNE_DEMON_HUNTER_COMPANION_D := New SkillRune("òùòðÕ½³è", "ÎïÀí", "d", "Ö÷¶¯£ºÁ¢¿Ì»ñµÃ50µãÔ÷ºÞÖµ¡£±»¶¯£ºÕÙ»½òùòðÕ½³è£¬Ôì³ÉÏàµ±ÓÚÄã60%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£òùòðÕ½³èÊ¹ÄãÃ¿Ãë»ñµÃ1µãÔ÷ºÞÖµ¡£")
-; ·ûÎÄ: Ò°ÖíÕ½³è 
-RUNE_DEMON_HUNTER_COMPANION_B := New SkillRune("Ò°ÖíÕ½³è", "ÎïÀí", "b", "Ö÷¶¯£ºÄãµÄÒ°Öí³¯Äã³å·æ£¬È»ºó³°·í20ÂëÄÚµÄËùÓÐµÐÈË£¬³ÖÐø5Ãë¡£±»¶¯£ºÕÙ»½Ò»Ö»Ò°ÖíÕ½³è¹¥»÷µÐÈË£¬Ôì³É50%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£Ò°ÖíÕ½³èÊ¹ÄãºÍÄã¶ÓÎé³ÉÔ±µÄÉúÃü»Ø¸´Ìá¸ß10728µã£¬ËùÓÐÔªËØ¿¹ÐÔÌá¸ß20%¡£")
-; ·ûÎÄ: Ñ©õõÕ½³è 
-RUNE_DEMON_HUNTER_COMPANION_E := New SkillRune("Ñ©õõÕ½³è", "ÎïÀí", "e", "Ö÷¶¯£ºÁ¢¼´Ê°È¡60ÂëÄÚËùÓÐµÄÉúÃüÇòºÍ½ð±Ò¡£±»¶¯£ºÕÙ»½Ò»¶ÔÑ©õõÕ½³è¹¥»÷µÐÈË£¬Ã¿Ö»Ôì³ÉÏàµ±ÓÚÄã50%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£Ñ©õõ»áÎªÄãÊÕ¼¯½ð±Ò£¬Ê¹¹ÖÎïµôÂäµÄ½ð±ÒÔö¼Ó10%£¬²¢Ê¹ÄãµÄÒÆ¶¯ËÙ¶ÈÌá¸ß10%¡£")
-; ·ûÎÄ: ¶ñÀÇÕ½³è 
-RUNE_DEMON_HUNTER_COMPANION_C := New SkillRune("¶ñÀÇÕ½³è", "ÎïÀí", "c", "Ö÷¶¯£ºÄãµÄ¶ñÀÇ·¢³öº¿½Ð£¬Ê¹ÄãºÍ60ÂëÄÚÍ¬°éµÄÉËº¦Ìá¸ß15%£¬³ÖÐø10Ãë¡£±»¶¯£ºÕÙ»½¶ñÀÇÕ½³è¹¥»÷Ç°·½µÄµÐÈË£¬Ôì³ÉÏàµ±ÓÚÄã150%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£")
-; ¼¼ÄÜ: Õ½³è
-SKILL_ACTIVE_DEMON_HUNTER_COMPANION := New ActiveSkill("Õ½³è", "ÎïÀí", "ÁÔÉ±"
+; ç¬¦æ–‡: èœ˜è››æˆ˜å®  
+RUNE_DEMON_HUNTER_COMPANION_A := New SkillRune("èœ˜è››æˆ˜å® ", "ç‰©ç†", "a", "ä¸»åŠ¨ï¼šä½ çš„èœ˜è››æœä½äºŽä½ ä»¬25ç èŒƒå›´å†…çš„æ‰€æœ‰æ•ŒäººæŠ•ç½‘ï¼Œä½¿å…¶å‡é€Ÿ80%ï¼ŒæŒç»­5ç§’ã€‚è¢«åŠ¨ï¼šå¬å”¤ä¸€åªèœ˜è››æˆ˜å® æ”»å‡»å®ƒé¢å‰çš„æ•Œäººï¼Œé€ æˆ140%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚èœ˜è››çš„æ”»å‡»ä½¿æ•Œäººå‡é€Ÿ60%ï¼ŒæŒç»­3ç§’ã€‚")
+; ç¬¦æ–‡: è™è æˆ˜å®  
+RUNE_DEMON_HUNTER_COMPANION_D := New SkillRune("è™è æˆ˜å® ", "ç‰©ç†", "d", "ä¸»åŠ¨ï¼šç«‹åˆ»èŽ·å¾—50ç‚¹æ†Žæ¨å€¼ã€‚è¢«åŠ¨ï¼šå¬å”¤è™è æˆ˜å® ï¼Œé€ æˆç›¸å½“äºŽä½ 60%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚è™è æˆ˜å® ä½¿ä½ æ¯ç§’èŽ·å¾—1ç‚¹æ†Žæ¨å€¼ã€‚")
+; ç¬¦æ–‡: é‡ŽçŒªæˆ˜å®  
+RUNE_DEMON_HUNTER_COMPANION_B := New SkillRune("é‡ŽçŒªæˆ˜å® ", "ç‰©ç†", "b", "ä¸»åŠ¨ï¼šä½ çš„é‡ŽçŒªæœä½ å†²é”‹ï¼Œç„¶åŽå˜²è®½20ç å†…çš„æ‰€æœ‰æ•Œäººï¼ŒæŒç»­5ç§’ã€‚è¢«åŠ¨ï¼šå¬å”¤ä¸€åªé‡ŽçŒªæˆ˜å® æ”»å‡»æ•Œäººï¼Œé€ æˆ50%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚é‡ŽçŒªæˆ˜å® ä½¿ä½ å’Œä½ é˜Ÿä¼æˆå‘˜çš„ç”Ÿå‘½å›žå¤æé«˜10728ç‚¹ï¼Œæ‰€æœ‰å…ƒç´ æŠ—æ€§æé«˜20%ã€‚")
+; ç¬¦æ–‡: é›ªè²‚æˆ˜å®  
+RUNE_DEMON_HUNTER_COMPANION_E := New SkillRune("é›ªè²‚æˆ˜å® ", "ç‰©ç†", "e", "ä¸»åŠ¨ï¼šç«‹å³æ‹¾å–60ç å†…æ‰€æœ‰çš„ç”Ÿå‘½çƒå’Œé‡‘å¸ã€‚è¢«åŠ¨ï¼šå¬å”¤ä¸€å¯¹é›ªè²‚æˆ˜å® æ”»å‡»æ•Œäººï¼Œæ¯åªé€ æˆç›¸å½“äºŽä½ 50%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚é›ªè²‚ä¼šä¸ºä½ æ”¶é›†é‡‘å¸ï¼Œä½¿æ€ªç‰©æŽ‰è½çš„é‡‘å¸å¢žåŠ 10%ï¼Œå¹¶ä½¿ä½ çš„ç§»åŠ¨é€Ÿåº¦æé«˜10%ã€‚")
+; ç¬¦æ–‡: æ¶ç‹¼æˆ˜å®  
+RUNE_DEMON_HUNTER_COMPANION_C := New SkillRune("æ¶ç‹¼æˆ˜å® ", "ç‰©ç†", "c", "ä¸»åŠ¨ï¼šä½ çš„æ¶ç‹¼å‘å‡ºåšŽå«ï¼Œä½¿ä½ å’Œ60ç å†…åŒä¼´çš„ä¼¤å®³æé«˜15%ï¼ŒæŒç»­10ç§’ã€‚è¢«åŠ¨ï¼šå¬å”¤æ¶ç‹¼æˆ˜å® æ”»å‡»å‰æ–¹çš„æ•Œäººï¼Œé€ æˆç›¸å½“äºŽä½ 150%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: æˆ˜å® 
+SKILL_ACTIVE_DEMON_HUNTER_COMPANION := New ActiveSkill("æˆ˜å® ", "ç‰©ç†", "çŒŽæ€"
 	, "images\skills\demon-hunter\active\demonhunter_companion_normal.png"
-	, "ÀäÈ´Ê±¼ä£º30Ãë\r\nÖ÷¶¯£ºÐ°Ñ»ÏÂÒ»´Î¹¥»÷µÄÉËº¦Ìá¸ß500%¡£"
+	, "å†·å´æ—¶é—´ï¼š30ç§’\r\nä¸»åŠ¨ï¼šé‚ªé¸¦ä¸‹ä¸€æ¬¡æ”»å‡»çš„ä¼¤å®³æé«˜500%ã€‚"
 	, [RUNE_DEMON_HUNTER_COMPANION_A, RUNE_DEMON_HUNTER_COMPANION_D, RUNE_DEMON_HUNTER_COMPANION_B, RUNE_DEMON_HUNTER_COMPANION_E, RUNE_DEMON_HUNTER_COMPANION_C])
 ; ---------------------------
-; ¼¼ÄÜ: Õ½³è End
+; æŠ€èƒ½: æˆ˜å®  End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: É¨Éä Start
+; æŠ€èƒ½: æ‰«å°„ Start
 ; ---------------------------
-; ·ûÎÄ: ±ùº®×ã¼£ 
-RUNE_DEMON_HUNTER_STRAFE_B := New SkillRune("±ùº®×ã¼£", "±ùº®", "b", "µ±ÄãÒÆ¶¯Ê±£¬Éíºó½«ÁôÏÂÒ»µÀº®±ùºÛ¼££¬ÔÚ3ÃëÄÚÔì³É300%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©£¬²¢Ê¹µÐÈËÏÝÈëº®Àä£¬³ÖÐø3¡£")
-; ·ûÎÄ: °µÓ°ÓÎÒÆ 
-RUNE_DEMON_HUNTER_STRAFE_D := New SkillRune("°µÓ°ÓÎÒÆ", "µç»÷", "d", "É¨ÉäÊ±µÄÒÆ¶¯ËÙ¶ÈÌá¸ßÖÁÏàµ±ÓÚÆÕÍ¨±¼ÅÜËÙ¶ÈµÄ100%¡£É¨ÉäµÄÉËº¦ÀàÐÍ×ª»»ÎªÉÁµçÉËº¦¡£")
-; ·ûÎÄ: ¼â´Ì¸ÖÈÐ 
-RUNE_DEMON_HUNTER_STRAFE_E := New SkillRune("¼â´Ì¸ÖÈÐ", "ÎïÀí", "e", "Í¶ÖÀ·Éµ¶¶ø·Ç¼ýÊ¸£¬³É¹¦±©»÷ºóÔì³É¶îÍâ140%µÄÎäÆ÷ÉËº¦¡£")
-; ·ûÎÄ: ·Éµ¯·ç±© 
-RUNE_DEMON_HUNTER_STRAFE_C := New SkillRune("·Éµ¯·ç±©", "»ðÑæ", "c", "³ý³£¹æÉä»÷Íâ£¬»¹»áÉä³ö×·×Ùµ¼µ¯£¬Ôì³É130%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: »ÙÃð 
-RUNE_DEMON_HUNTER_STRAFE_A := New SkillRune("»ÙÃð", "»ðÑæ", "a", "ÖÀ³öµ¯ÉäÊÖÀ×£¬±¬ÆÆ²¢¶ÔÎ»ÓÚ9ÂëÄÚµÄµÐÈËÔì³É460%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ¼¼ÄÜ: É¨Éä
-SKILL_ACTIVE_DEMON_HUNTER_STRAFE := New ActiveSkill("É¨Éä", "ÎïÀí", "ÉäÊõ"
+; ç¬¦æ–‡: å†°å¯’è¶³è¿¹ 
+RUNE_DEMON_HUNTER_STRAFE_B := New SkillRune("å†°å¯’è¶³è¿¹", "å†°å¯’", "b", "å½“ä½ ç§»åŠ¨æ—¶ï¼Œèº«åŽå°†ç•™ä¸‹ä¸€é“å¯’å†°ç—•è¿¹ï¼Œåœ¨3ç§’å†…é€ æˆ300%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ï¼Œå¹¶ä½¿æ•Œäººé™·å…¥å¯’å†·ï¼ŒæŒç»­3ã€‚")
+; ç¬¦æ–‡: æš—å½±æ¸¸ç§» 
+RUNE_DEMON_HUNTER_STRAFE_D := New SkillRune("æš—å½±æ¸¸ç§»", "ç”µå‡»", "d", "æ‰«å°„æ—¶çš„ç§»åŠ¨é€Ÿåº¦æé«˜è‡³ç›¸å½“äºŽæ™®é€šå¥”è·‘é€Ÿåº¦çš„100%ã€‚æ‰«å°„çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºé—ªç”µä¼¤å®³ã€‚")
+; ç¬¦æ–‡: å°–åˆºé’¢åˆƒ 
+RUNE_DEMON_HUNTER_STRAFE_E := New SkillRune("å°–åˆºé’¢åˆƒ", "ç‰©ç†", "e", "æŠ•æŽ·é£žåˆ€è€Œéžç®­çŸ¢ï¼ŒæˆåŠŸæš´å‡»åŽé€ æˆé¢å¤–140%çš„æ­¦å™¨ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: é£žå¼¹é£Žæš´ 
+RUNE_DEMON_HUNTER_STRAFE_C := New SkillRune("é£žå¼¹é£Žæš´", "ç«ç„°", "c", "é™¤å¸¸è§„å°„å‡»å¤–ï¼Œè¿˜ä¼šå°„å‡ºè¿½è¸ªå¯¼å¼¹ï¼Œé€ æˆ130%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: æ¯ç­ 
+RUNE_DEMON_HUNTER_STRAFE_A := New SkillRune("æ¯ç­", "ç«ç„°", "a", "æŽ·å‡ºå¼¹å°„æ‰‹é›·ï¼Œçˆ†ç ´å¹¶å¯¹ä½äºŽ9ç å†…çš„æ•Œäººé€ æˆ460%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: æ‰«å°„
+SKILL_ACTIVE_DEMON_HUNTER_STRAFE := New ActiveSkill("æ‰«å°„", "ç‰©ç†", "å°„æœ¯"
 	, "images\skills\demon-hunter\active\demonhunter_strafe_normal.png"
-	, "ÏûºÄ£º12µãÔ÷ºÞÖµ\r\nÒÔÏàµ±ÓÚÕý³£ÒÆ¶¯ËÙ¶È75%µÄËÙ¶ÈÒÆ¶¯£¬Í¬Ê±Ëæ»ú³¯¸½½üµÐÈË¿ª»ð£¬Ôì³É675%µÄÎäÆ÷ÉËº¦¡£"
+	, "æ¶ˆè€—ï¼š12ç‚¹æ†Žæ¨å€¼\r\nä»¥ç›¸å½“äºŽæ­£å¸¸ç§»åŠ¨é€Ÿåº¦75%çš„é€Ÿåº¦ç§»åŠ¨ï¼ŒåŒæ—¶éšæœºæœé™„è¿‘æ•Œäººå¼€ç«ï¼Œé€ æˆ675%çš„æ­¦å™¨ä¼¤å®³ã€‚"
 	, [RUNE_DEMON_HUNTER_STRAFE_B, RUNE_DEMON_HUNTER_STRAFE_D, RUNE_DEMON_HUNTER_STRAFE_E, RUNE_DEMON_HUNTER_STRAFE_C, RUNE_DEMON_HUNTER_STRAFE_A])
 ; ---------------------------
-; ¼¼ÄÜ: É¨Éä End
+; æŠ€èƒ½: æ‰«å°„ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÔªËØ¼ý Start
+; æŠ€èƒ½: å…ƒç´ ç®­ Start
 ; ---------------------------
-; ·ûÎÄ: ÉÁµçÇò 
-RUNE_DEMON_HUNTER_ELEMENTAL_ARROW_B := New SkillRune("ÉÁµçÇò", "µç»÷", "b", "Éä³öÒ»¿ÅÉÁµçÇò£¬µç»÷ÆäÐÐ½øÂ·ÏßÉÏµÄµÐÈË£¬Ôì³É300%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£")
-; ·ûÎÄ: ±ùËª¼ý 
-RUNE_DEMON_HUNTER_ELEMENTAL_ARROW_A := New SkillRune("±ùËª¼ý", "±ùº®", "a", "Éä³öÒ»Ö§±ùËª¼ýÊ¸£¬»÷ÖÐµÐÈËÔì³É330%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©£¬È»ºó·ÖÁÑÎª×î¶à10Ö§¶îÍâµÄ±ùËª¼ýÊ¸¡£±»ÃüÖÐµÄµÐÈËÊÜµ½º®ÀäÐ§¹ûÓ°Ïì£¬ÒÆ¶¯ËÙ¶È½µµÍ60%£¬³ÖÐø1Ãë¡£")
-; ·ûÎÄ: »ð¼À¼ý 
-RUNE_DEMON_HUNTER_ELEMENTAL_ARROW_C := New SkillRune("»ð¼À¼ý", "»ðÑæ", "c", "Éä³öÒ»Ö§ÁÒÑæ¼ýÊ¸£¬»÷ÖÐµÐÈËºóÔì³É300%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©²¢±¬Õ¨£¬Ê¹µØÃæ±ä³É»ðº££¬ÔÚ2ÃëÄÚ¶Ô10ÂëÄÚµÄµÐÈËÔì³É315%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ÉÁµç¼ý 
-RUNE_DEMON_HUNTER_ELEMENTAL_ARROW_E := New SkillRune("ÉÁµç¼ý", "µç»÷", "e", "Éä³öÒ»Ö§´øµç¼ýÊ¸£¬Ôì³É300%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©£¬±©»÷Ê±¿ÉÊ¹µÐÈË»èÃÔ1Ãë¡£")
-; ·ûÎÄ: ´¥Ðë¼ý 
-RUNE_DEMON_HUNTER_ELEMENTAL_ARROW_D := New SkillRune("´¥Ðë¼ý", "ÎïÀí", "d", "Éä³öÒ»¸ù°µÓ°´¥Ðë£¬¶ÔÆäÂ·ÏßÉÏµÄµÐÈËÔì³É300%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©£¬Ã¿»÷ÖÐÒ»ÃûµÐÈË¿ÉÊ¹Äã»Ö¸´ÉúÃüÖµÉÏÏÞµÄ0.4%¡£")
-; ¼¼ÄÜ: ÔªËØ¼ý
-SKILL_ACTIVE_DEMON_HUNTER_ELEMENTAL_ARROW := New ActiveSkill("ÔªËØ¼ý", "»ðÑæ", "´ÎÒª"
+; ç¬¦æ–‡: é—ªç”µçƒ 
+RUNE_DEMON_HUNTER_ELEMENTAL_ARROW_B := New SkillRune("é—ªç”µçƒ", "ç”µå‡»", "b", "å°„å‡ºä¸€é¢—é—ªç”µçƒï¼Œç”µå‡»å…¶è¡Œè¿›è·¯çº¿ä¸Šçš„æ•Œäººï¼Œé€ æˆ300%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å†°éœœç®­ 
+RUNE_DEMON_HUNTER_ELEMENTAL_ARROW_A := New SkillRune("å†°éœœç®­", "å†°å¯’", "a", "å°„å‡ºä¸€æ”¯å†°éœœç®­çŸ¢ï¼Œå‡»ä¸­æ•Œäººé€ æˆ330%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ï¼Œç„¶åŽåˆ†è£‚ä¸ºæœ€å¤š10æ”¯é¢å¤–çš„å†°éœœç®­çŸ¢ã€‚è¢«å‘½ä¸­çš„æ•Œäººå—åˆ°å¯’å†·æ•ˆæžœå½±å“ï¼Œç§»åŠ¨é€Ÿåº¦é™ä½Ž60%ï¼ŒæŒç»­1ç§’ã€‚")
+; ç¬¦æ–‡: ç«ç¥­ç®­ 
+RUNE_DEMON_HUNTER_ELEMENTAL_ARROW_C := New SkillRune("ç«ç¥­ç®­", "ç«ç„°", "c", "å°„å‡ºä¸€æ”¯çƒˆç„°ç®­çŸ¢ï¼Œå‡»ä¸­æ•ŒäººåŽé€ æˆ300%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰å¹¶çˆ†ç‚¸ï¼Œä½¿åœ°é¢å˜æˆç«æµ·ï¼Œåœ¨2ç§’å†…å¯¹10ç å†…çš„æ•Œäººé€ æˆ315%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: é—ªç”µç®­ 
+RUNE_DEMON_HUNTER_ELEMENTAL_ARROW_E := New SkillRune("é—ªç”µç®­", "ç”µå‡»", "e", "å°„å‡ºä¸€æ”¯å¸¦ç”µç®­çŸ¢ï¼Œé€ æˆ300%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ï¼Œæš´å‡»æ—¶å¯ä½¿æ•Œäººæ˜è¿·1ç§’ã€‚")
+; ç¬¦æ–‡: è§¦é¡»ç®­ 
+RUNE_DEMON_HUNTER_ELEMENTAL_ARROW_D := New SkillRune("è§¦é¡»ç®­", "ç‰©ç†", "d", "å°„å‡ºä¸€æ ¹æš—å½±è§¦é¡»ï¼Œå¯¹å…¶è·¯çº¿ä¸Šçš„æ•Œäººé€ æˆ300%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ï¼Œæ¯å‡»ä¸­ä¸€åæ•Œäººå¯ä½¿ä½ æ¢å¤ç”Ÿå‘½å€¼ä¸Šé™çš„0.4%ã€‚")
+; æŠ€èƒ½: å…ƒç´ ç®­
+SKILL_ACTIVE_DEMON_HUNTER_ELEMENTAL_ARROW := New ActiveSkill("å…ƒç´ ç®­", "ç«ç„°", "æ¬¡è¦"
 	, "images\skills\demon-hunter\active\demonhunter_elementalarrow_normal.png"
-	, "ÏûºÄ£º10µãÔ÷ºÞÖµ\r\nÉä³öÁÒÑæ¼ýÊ¸£¬¶Ô±»Æä»÷´©µÄËùÓÐÄ¿±êÔì³É300%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£"
+	, "æ¶ˆè€—ï¼š10ç‚¹æ†Žæ¨å€¼\r\nå°„å‡ºçƒˆç„°ç®­çŸ¢ï¼Œå¯¹è¢«å…¶å‡»ç©¿çš„æ‰€æœ‰ç›®æ ‡é€ æˆ300%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_DEMON_HUNTER_ELEMENTAL_ARROW_B, RUNE_DEMON_HUNTER_ELEMENTAL_ARROW_A, RUNE_DEMON_HUNTER_ELEMENTAL_ARROW_C, RUNE_DEMON_HUNTER_ELEMENTAL_ARROW_E, RUNE_DEMON_HUNTER_ELEMENTAL_ARROW_D])
 ; ---------------------------
-; ¼¼ÄÜ: ÔªËØ¼ý End
+; æŠ€èƒ½: å…ƒç´ ç®­ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ËÀÍöÓ¡¼Ç Start
+; æŠ€èƒ½: æ­»äº¡å°è®° Start
 ; ---------------------------
-; ·ûÎÄ: ¿Ö¾å´«È¾ 
-RUNE_DEMON_HUNTER_MARKED_FOR_DEATH_B := New SkillRune("¿Ö¾å´«È¾", "ÎïÀí", "b", "µ±µÐÈË±»ÏûÃðºó£¬Ó¡¼Ç½«À©É¢µ½30ÂëÄÚ×î½üµÄ3¸öµÐÈËÉíÉÏ¡£¸ÃÐ§¹û¿ÉÖØ¸´Ñ­»·¡£")
-; ·ûÎÄ: ËÀÍöÖ®¹È 
-RUNE_DEMON_HUNTER_MARKED_FOR_DEATH_C := New SkillRune("ËÀÍöÖ®¹È", "ÎïÀí", "c", "ÔÚµØÉÏ±ê¼ÇÒ»¿é15ÂëµÄÇøÓò£¬³ÖÐø15Ãë¡£ÔÚ¸ÃÇøÓòÄÚµÄµÐÈËÊÜµ½¶îÍâ15%µÄÉËº¦¡£")
-; ·ûÎÄ: Àä¿áËÀÉñ 
-RUNE_DEMON_HUNTER_MARKED_FOR_DEATH_A := New SkillRune("Àä¿áËÀÉñ", "ÎïÀí", "a", "20ÂëÄÚµÄËùÓÐµÐÈË½«¾ùÌ¯¶îÍâµÄÉËº¦£¬ÊýÖµÏàµ±ÓÚ±»±ê¼ÇµÐÈËËùÊÜ×ÜÉËº¦µÄ15%¡£")
-; ·ûÎÄ: ËÀµÐÖ®ºÞ 
-RUNE_DEMON_HUNTER_MARKED_FOR_DEATH_D := New SkillRune("ËÀµÐÖ®ºÞ", "ÎïÀí", "d", "Äã¶Ô±»±ê¼ÇµÄµÐÈË·¢Æð¹¥»÷Ê±¿ÉÉú³É4µãÔ÷ºÞÖµ¡£")
-; ·ûÎÄ: ÔÃ¶úÉ¥ÖÓ 
-RUNE_DEMON_HUNTER_MARKED_FOR_DEATH_E := New SkillRune("ÔÃ¶úÉ¥ÖÓ", "ÎïÀí", "e", "¶Ô±»±ê¼ÇµÐÈËÔì³ÉÉËº¦Ê±£¬¹¥»÷Õß½«»Ö¸´Æä×î´óÉúÃüÖµ3%µÄÉúÃü¡£")
-; ¼¼ÄÜ: ËÀÍöÓ¡¼Ç
-SKILL_ACTIVE_DEMON_HUNTER_MARKED_FOR_DEATH := New ActiveSkill("ËÀÍöÓ¡¼Ç", "ÎïÀí", "ÁÔÉ±"
+; ç¬¦æ–‡: ææƒ§ä¼ æŸ“ 
+RUNE_DEMON_HUNTER_MARKED_FOR_DEATH_B := New SkillRune("ææƒ§ä¼ æŸ“", "ç‰©ç†", "b", "å½“æ•Œäººè¢«æ¶ˆç­åŽï¼Œå°è®°å°†æ‰©æ•£åˆ°30ç å†…æœ€è¿‘çš„3ä¸ªæ•Œäººèº«ä¸Šã€‚è¯¥æ•ˆæžœå¯é‡å¤å¾ªçŽ¯ã€‚")
+; ç¬¦æ–‡: æ­»äº¡ä¹‹è°· 
+RUNE_DEMON_HUNTER_MARKED_FOR_DEATH_C := New SkillRune("æ­»äº¡ä¹‹è°·", "ç‰©ç†", "c", "åœ¨åœ°ä¸Šæ ‡è®°ä¸€å—15ç çš„åŒºåŸŸï¼ŒæŒç»­15ç§’ã€‚åœ¨è¯¥åŒºåŸŸå†…çš„æ•Œäººå—åˆ°é¢å¤–15%çš„ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: å†·é…·æ­»ç¥ž 
+RUNE_DEMON_HUNTER_MARKED_FOR_DEATH_A := New SkillRune("å†·é…·æ­»ç¥ž", "ç‰©ç†", "a", "20ç å†…çš„æ‰€æœ‰æ•Œäººå°†å‡æ‘Šé¢å¤–çš„ä¼¤å®³ï¼Œæ•°å€¼ç›¸å½“äºŽè¢«æ ‡è®°æ•Œäººæ‰€å—æ€»ä¼¤å®³çš„15%ã€‚")
+; ç¬¦æ–‡: æ­»æ•Œä¹‹æ¨ 
+RUNE_DEMON_HUNTER_MARKED_FOR_DEATH_D := New SkillRune("æ­»æ•Œä¹‹æ¨", "ç‰©ç†", "d", "ä½ å¯¹è¢«æ ‡è®°çš„æ•Œäººå‘èµ·æ”»å‡»æ—¶å¯ç”Ÿæˆ4ç‚¹æ†Žæ¨å€¼ã€‚")
+; ç¬¦æ–‡: æ‚¦è€³ä¸§é’Ÿ 
+RUNE_DEMON_HUNTER_MARKED_FOR_DEATH_E := New SkillRune("æ‚¦è€³ä¸§é’Ÿ", "ç‰©ç†", "e", "å¯¹è¢«æ ‡è®°æ•Œäººé€ æˆä¼¤å®³æ—¶ï¼Œæ”»å‡»è€…å°†æ¢å¤å…¶æœ€å¤§ç”Ÿå‘½å€¼3%çš„ç”Ÿå‘½ã€‚")
+; æŠ€èƒ½: æ­»äº¡å°è®°
+SKILL_ACTIVE_DEMON_HUNTER_MARKED_FOR_DEATH := New ActiveSkill("æ­»äº¡å°è®°", "ç‰©ç†", "çŒŽæ€"
 	, "images\skills\demon-hunter\active\demonhunter_markedfordeath_normal.png"
-	, "ÏûºÄ£º3µã½äÂÉÖµ\r\n±ê¼ÇÒ»¸öÄ¿±ê¡£±»±ê¼ÇµÄÄ¿±êÔÚ½ÓÏÂÀ´µÄ30ÃëÄÚÊÜµ½¶îÍâ15%µÄÉËº¦¡£"
+	, "æ¶ˆè€—ï¼š3ç‚¹æˆ’å¾‹å€¼\r\næ ‡è®°ä¸€ä¸ªç›®æ ‡ã€‚è¢«æ ‡è®°çš„ç›®æ ‡åœ¨æŽ¥ä¸‹æ¥çš„30ç§’å†…å—åˆ°é¢å¤–15%çš„ä¼¤å®³ã€‚"
 	, [RUNE_DEMON_HUNTER_MARKED_FOR_DEATH_B, RUNE_DEMON_HUNTER_MARKED_FOR_DEATH_C, RUNE_DEMON_HUNTER_MARKED_FOR_DEATH_A, RUNE_DEMON_HUNTER_MARKED_FOR_DEATH_D, RUNE_DEMON_HUNTER_MARKED_FOR_DEATH_E])
 ; ---------------------------
-; ¼¼ÄÜ: ËÀÍöÓ¡¼Ç End
+; æŠ€èƒ½: æ­»äº¡å°è®° End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ¶àÖØÉä»÷ Start
+; æŠ€èƒ½: å¤šé‡å°„å‡» Start
 ; ---------------------------
-; ·ûÎÄ: ×ÔÓÉÉä»÷ 
-RUNE_DEMON_HUNTER_MULTISHOT_D := New SkillRune("×ÔÓÉÉä»÷", "µç»÷", "d", "Ô÷ºÞÖµÏûºÄ½µµÍÖÁ18µã¡£¶àÖØÉä»÷µÄÉËº¦ÀàÐÍ×ª»»ÎªÉÁµçÉËº¦¡£")
-; ·ûÎÄ: ¿ñ·ç¶³½á 
-RUNE_DEMON_HUNTER_MULTISHOT_B := New SkillRune("¿ñ·ç¶³½á", "±ùº®", "b", "±»ÃüÖÐµÄµÐÈËÏÝÈëº®Àä×´Ì¬£¬ÊÜµ½±©»÷ÉËº¦µÄ¼¸ÂÊÌá¸ß8%£¬³ÖÐø3Ãë¡£")
-; ·ûÎÄ: »ðÁ¦Ñ¹ÖÆ 
-RUNE_DEMON_HUNTER_MULTISHOT_E := New SkillRune("»ðÁ¦Ñ¹ÖÆ", "ÎïÀí", "e", "»÷ÍË×î³õ»÷ÖÐµÄ4¸öµÐÈË¡£")
-; ·ûÎÄ: È«ÏßÆëÉä 
-RUNE_DEMON_HUNTER_MULTISHOT_A := New SkillRune("È«ÏßÆëÉä", "ÎïÀí", "a", "Ê¹¶àÖØÉä»÷Ôì³ÉµÄÉËº¦Ìá¸ßÖÁ500%µÄÎäÆ÷ÉËº¦¡£")
-; ·ûÎÄ: ¶àÖØ»ðÁ¦ 
-RUNE_DEMON_HUNTER_MULTISHOT_C := New SkillRune("¶àÖØ»ðÁ¦", "»ðÑæ", "c", "Ã¿´Î¿ª»ðÊ±»¹»áÏò¸½½üµÄµÐÈËÉä³ö3Ã¶µ¼µ¯£¬Ã¿Ã¶Ôì³É300%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ¼¼ÄÜ: ¶àÖØÉä»÷
-SKILL_ACTIVE_DEMON_HUNTER_MULTISHOT := New ActiveSkill("¶àÖØÉä»÷", "ÎïÀí", "ÉäÊõ"
+; ç¬¦æ–‡: è‡ªç”±å°„å‡» 
+RUNE_DEMON_HUNTER_MULTISHOT_D := New SkillRune("è‡ªç”±å°„å‡»", "ç”µå‡»", "d", "æ†Žæ¨å€¼æ¶ˆè€—é™ä½Žè‡³18ç‚¹ã€‚å¤šé‡å°„å‡»çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºé—ªç”µä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ç‹‚é£Žå†»ç»“ 
+RUNE_DEMON_HUNTER_MULTISHOT_B := New SkillRune("ç‹‚é£Žå†»ç»“", "å†°å¯’", "b", "è¢«å‘½ä¸­çš„æ•Œäººé™·å…¥å¯’å†·çŠ¶æ€ï¼Œå—åˆ°æš´å‡»ä¼¤å®³çš„å‡ çŽ‡æé«˜8%ï¼ŒæŒç»­3ç§’ã€‚")
+; ç¬¦æ–‡: ç«åŠ›åŽ‹åˆ¶ 
+RUNE_DEMON_HUNTER_MULTISHOT_E := New SkillRune("ç«åŠ›åŽ‹åˆ¶", "ç‰©ç†", "e", "å‡»é€€æœ€åˆå‡»ä¸­çš„4ä¸ªæ•Œäººã€‚")
+; ç¬¦æ–‡: å…¨çº¿é½å°„ 
+RUNE_DEMON_HUNTER_MULTISHOT_A := New SkillRune("å…¨çº¿é½å°„", "ç‰©ç†", "a", "ä½¿å¤šé‡å°„å‡»é€ æˆçš„ä¼¤å®³æé«˜è‡³500%çš„æ­¦å™¨ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: å¤šé‡ç«åŠ› 
+RUNE_DEMON_HUNTER_MULTISHOT_C := New SkillRune("å¤šé‡ç«åŠ›", "ç«ç„°", "c", "æ¯æ¬¡å¼€ç«æ—¶è¿˜ä¼šå‘é™„è¿‘çš„æ•Œäººå°„å‡º3æžšå¯¼å¼¹ï¼Œæ¯æžšé€ æˆ300%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: å¤šé‡å°„å‡»
+SKILL_ACTIVE_DEMON_HUNTER_MULTISHOT := New ActiveSkill("å¤šé‡å°„å‡»", "ç‰©ç†", "å°„æœ¯"
 	, "images\skills\demon-hunter\active\demonhunter_multishot_normal.png"
-	, "ÏûºÄ£º25µãÔ÷ºÞÖµ\r\nÂÒ¼ýÆë·¢£¬¶ÔÇøÓòÄÚµÄËùÓÐµÐÈËÔì³É360%µÄÎäÆ÷ÉËº¦¡£"
+	, "æ¶ˆè€—ï¼š25ç‚¹æ†Žæ¨å€¼\r\nä¹±ç®­é½å‘ï¼Œå¯¹åŒºåŸŸå†…çš„æ‰€æœ‰æ•Œäººé€ æˆ360%çš„æ­¦å™¨ä¼¤å®³ã€‚"
 	, [RUNE_DEMON_HUNTER_MULTISHOT_D, RUNE_DEMON_HUNTER_MULTISHOT_B, RUNE_DEMON_HUNTER_MULTISHOT_E, RUNE_DEMON_HUNTER_MULTISHOT_A, RUNE_DEMON_HUNTER_MULTISHOT_C])
 ; ---------------------------
-; ¼¼ÄÜ: ¶àÖØÉä»÷ End
+; æŠ€èƒ½: å¤šé‡å°„å‡» End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ¼ýËþ Start
+; æŠ€èƒ½: ç®­å¡” Start
 ; ---------------------------
-; ·ûÎÄ: »ðÑæËþ 
-RUNE_DEMON_HUNTER_SENTRY_C := New SkillRune("»ðÑæËþ", "»ðÑæ", "c", "¼ýËþ»¹»áÏò¸½½üµÄËæ»úµÐÈË·¢Éä×·×Ùµ¼µ¯£¬Ôì³É120%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ´©´Ì¼ý 
-RUNE_DEMON_HUNTER_SENTRY_B := New SkillRune("´©´Ì¼ý", "µç»÷", "b", "¼ýËþÏÖÔÚ»áÉä³ö´©Í¸ÐÔ¼ýÊ¸¡£")
-; ·ûÎÄ: ÕÛÄ¥Á´ 
-RUNE_DEMON_HUNTER_SENTRY_A := New SkillRune("ÕÛÄ¥Á´", "ÎïÀí", "a", "ÔÚÄãºÍ¼ýËþ¡¢¼ýËþºÍ¼ýËþÖ®¼äÁ¬½ÓÒ»¸ùËøÁ´£¬¶Ô½Ó´¥ËøÁ´µÄÃ¿¸öµÐÈËÃ¿ÃëÔì³É300%µÄÎäÆ÷ÉËº¦¡£")
-; ·ûÎÄ: º®±ùËþ 
-RUNE_DEMON_HUNTER_SENTRY_D := New SkillRune("º®±ùËþ", "±ùº®", "d", "¼ýËþ»á¶Ô¸½½ü16ÂëÄÚµÄµÐÈËÔì³Éº®ÀäÐ§¹û£¬Ê¹ÆäÒÆ¶¯ËÙ¶È½µµÍ60%¡£")
-; ·ûÎÄ: ÊØ»¤Ëþ 
-RUNE_DEMON_HUNTER_SENTRY_E := New SkillRune("ÊØ»¤Ëþ", "ÎïÀí", "e", "¼ýËþ»¹»áÐÎ³ÉÒ»µÀ»¤¶Ü£¬Ê¹Í¬°éÊÜµ½µÄÉËº¦½µµÍ25%¡£")
-; ¼¼ÄÜ: ¼ýËþ
-SKILL_ACTIVE_DEMON_HUNTER_SENTRY := New ActiveSkill("¼ýËþ", "ÎïÀí", "Æ÷Ðµ"
+; ç¬¦æ–‡: ç«ç„°å¡” 
+RUNE_DEMON_HUNTER_SENTRY_C := New SkillRune("ç«ç„°å¡”", "ç«ç„°", "c", "ç®­å¡”è¿˜ä¼šå‘é™„è¿‘çš„éšæœºæ•Œäººå‘å°„è¿½è¸ªå¯¼å¼¹ï¼Œé€ æˆ120%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: ç©¿åˆºç®­ 
+RUNE_DEMON_HUNTER_SENTRY_B := New SkillRune("ç©¿åˆºç®­", "ç”µå‡»", "b", "ç®­å¡”çŽ°åœ¨ä¼šå°„å‡ºç©¿é€æ€§ç®­çŸ¢ã€‚")
+; ç¬¦æ–‡: æŠ˜ç£¨é“¾ 
+RUNE_DEMON_HUNTER_SENTRY_A := New SkillRune("æŠ˜ç£¨é“¾", "ç‰©ç†", "a", "åœ¨ä½ å’Œç®­å¡”ã€ç®­å¡”å’Œç®­å¡”ä¹‹é—´è¿žæŽ¥ä¸€æ ¹é”é“¾ï¼Œå¯¹æŽ¥è§¦é”é“¾çš„æ¯ä¸ªæ•Œäººæ¯ç§’é€ æˆ300%çš„æ­¦å™¨ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: å¯’å†°å¡” 
+RUNE_DEMON_HUNTER_SENTRY_D := New SkillRune("å¯’å†°å¡”", "å†°å¯’", "d", "ç®­å¡”ä¼šå¯¹é™„è¿‘16ç å†…çš„æ•Œäººé€ æˆå¯’å†·æ•ˆæžœï¼Œä½¿å…¶ç§»åŠ¨é€Ÿåº¦é™ä½Ž60%ã€‚")
+; ç¬¦æ–‡: å®ˆæŠ¤å¡” 
+RUNE_DEMON_HUNTER_SENTRY_E := New SkillRune("å®ˆæŠ¤å¡”", "ç‰©ç†", "e", "ç®­å¡”è¿˜ä¼šå½¢æˆä¸€é“æŠ¤ç›¾ï¼Œä½¿åŒä¼´å—åˆ°çš„ä¼¤å®³é™ä½Ž25%ã€‚")
+; æŠ€èƒ½: ç®­å¡”
+SKILL_ACTIVE_DEMON_HUNTER_SENTRY := New ActiveSkill("ç®­å¡”", "ç‰©ç†", "å™¨æ¢°"
 	, "images\skills\demon-hunter\active\demonhunter_sentry_normal.png"
-	, "ÏûºÄ£º20µãÔ÷ºÞÖµ\r\nÕÙ»½Ò»×ù¼ýËþ£¬³¯¸½½üµÐÈË¿ª»ð£¬Ôì³É280%µÄÎäÆ÷ÉËº¦£¬³ÖÐø30Ãë¡£"
+	, "æ¶ˆè€—ï¼š20ç‚¹æ†Žæ¨å€¼\r\nå¬å”¤ä¸€åº§ç®­å¡”ï¼Œæœé™„è¿‘æ•Œäººå¼€ç«ï¼Œé€ æˆ280%çš„æ­¦å™¨ä¼¤å®³ï¼ŒæŒç»­30ç§’ã€‚"
 	, [RUNE_DEMON_HUNTER_SENTRY_C, RUNE_DEMON_HUNTER_SENTRY_B, RUNE_DEMON_HUNTER_SENTRY_A, RUNE_DEMON_HUNTER_SENTRY_D, RUNE_DEMON_HUNTER_SENTRY_E])
 ; ---------------------------
-; ¼¼ÄÜ: ¼ýËþ End
+; æŠ€èƒ½: ç®­å¡” End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ¼¯Êø¼ý Start
+; æŠ€èƒ½: é›†æŸç®­ Start
 ; ---------------------------
-; ·ûÎÄ: Ñ£¹â¼ý 
-RUNE_DEMON_HUNTER_CLUSTER_ARROW_E := New SkillRune("Ñ£¹â¼ý", "µç»÷", "e", "±»ÊÖÀ×»÷ÖÐµÄµÐÈËÓÐ100%µÄ¼¸ÂÊ»èÃÔ1.5Ãë¡£¼¯Êø¼ýµÄÉËº¦ÀàÐÍ×ª»»ÎªÉÁµçÉËº¦¡£")
-; ·ûÎÄ: Á÷ÐÇ¼ý 
-RUNE_DEMON_HUNTER_CLUSTER_ARROW_B := New SkillRune("Á÷ÐÇ¼ý", "ÎïÀí", "b", "²»ÔÙÊÍ·ÅÊÖÀ×£¬¶øÊÇÏò¸½½üµÄµÐÈËÉä³ö×î¶à2Ã¶µ¼µ¯£¬Ã¿Ã¶Ôì³É600%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£")
-; ·ûÎÄ: äöÎÐµ¯ 
-RUNE_DEMON_HUNTER_CLUSTER_ARROW_D := New SkillRune("äöÎÐµ¯", "±ùº®", "d", "²»ÔÙÊÍ·ÅÊÖÀ×£¬¶øÊÇÏò¸½½üµÄµÐÈËÉä³ö×î¶à3Ã¶µ¼µ¯£¬Ã¿Ã¶Ôì³É450%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£ÄãÃ¿»÷ÖÐÒ»ÃûµÐÈË¿É»ñµÃ2%µÄÉúÃüÖµ¡£")
-; ·ûÎÄ: ¼¯Êøµ¯ 
-RUNE_DEMON_HUNTER_CLUSTER_ARROW_C := New SkillRune("¼¯Êøµ¯", "»ðÑæ", "c", "Ïò¿ÕÖÐÉä³ö¼¯Êø¼ý£¬ÑØÖ±ÏßµôÂäÊÖÀ×£¬Ã¿Ò»Ã¶±¬Õ¨Ôì³É650%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ÖØ×°¼ý 
-RUNE_DEMON_HUNTER_CLUSTER_ARROW_A := New SkillRune("ÖØ×°¼ý", "»ðÑæ", "a", "Ê¹±¬Õ¨¶Ô×÷ÓÃÎ»ÖÃÔì³ÉµÄÉËº¦Ìá¸ßÖÁ850%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ¼¼ÄÜ: ¼¯Êø¼ý
-SKILL_ACTIVE_DEMON_HUNTER_CLUSTER_ARROW := New ActiveSkill("¼¯Êø¼ý", "»ðÑæ", "ÉäÊõ"
+; ç¬¦æ–‡: çœ©å…‰ç®­ 
+RUNE_DEMON_HUNTER_CLUSTER_ARROW_E := New SkillRune("çœ©å…‰ç®­", "ç”µå‡»", "e", "è¢«æ‰‹é›·å‡»ä¸­çš„æ•Œäººæœ‰100%çš„å‡ çŽ‡æ˜è¿·1.5ç§’ã€‚é›†æŸç®­çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºé—ªç”µä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æµæ˜Ÿç®­ 
+RUNE_DEMON_HUNTER_CLUSTER_ARROW_B := New SkillRune("æµæ˜Ÿç®­", "ç‰©ç†", "b", "ä¸å†é‡Šæ”¾æ‰‹é›·ï¼Œè€Œæ˜¯å‘é™„è¿‘çš„æ•Œäººå°„å‡ºæœ€å¤š2æžšå¯¼å¼¹ï¼Œæ¯æžšé€ æˆ600%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: æ¼©æ¶¡å¼¹ 
+RUNE_DEMON_HUNTER_CLUSTER_ARROW_D := New SkillRune("æ¼©æ¶¡å¼¹", "å†°å¯’", "d", "ä¸å†é‡Šæ”¾æ‰‹é›·ï¼Œè€Œæ˜¯å‘é™„è¿‘çš„æ•Œäººå°„å‡ºæœ€å¤š3æžšå¯¼å¼¹ï¼Œæ¯æžšé€ æˆ450%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚ä½ æ¯å‡»ä¸­ä¸€åæ•Œäººå¯èŽ·å¾—2%çš„ç”Ÿå‘½å€¼ã€‚")
+; ç¬¦æ–‡: é›†æŸå¼¹ 
+RUNE_DEMON_HUNTER_CLUSTER_ARROW_C := New SkillRune("é›†æŸå¼¹", "ç«ç„°", "c", "å‘ç©ºä¸­å°„å‡ºé›†æŸç®­ï¼Œæ²¿ç›´çº¿æŽ‰è½æ‰‹é›·ï¼Œæ¯ä¸€æžšçˆ†ç‚¸é€ æˆ650%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: é‡è£…ç®­ 
+RUNE_DEMON_HUNTER_CLUSTER_ARROW_A := New SkillRune("é‡è£…ç®­", "ç«ç„°", "a", "ä½¿çˆ†ç‚¸å¯¹ä½œç”¨ä½ç½®é€ æˆçš„ä¼¤å®³æé«˜è‡³850%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: é›†æŸç®­
+SKILL_ACTIVE_DEMON_HUNTER_CLUSTER_ARROW := New ActiveSkill("é›†æŸç®­", "ç«ç„°", "å°„æœ¯"
 	, "images\skills\demon-hunter\active\demonhunter_clusterarrow_normal.png"
-	, "ÏûºÄ£º40µãÔ÷ºÞÖµ\r\nÉä³ö¼¯Êø¼ý£¬±¬Õ¨Ôì³É650%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©£¬²¢ËéÁÑ³É4·¢ÊÖÀ×£¬Ã¿·¢±¬Õ¨Ôì³É250%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£"
+	, "æ¶ˆè€—ï¼š40ç‚¹æ†Žæ¨å€¼\r\nå°„å‡ºé›†æŸç®­ï¼Œçˆ†ç‚¸é€ æˆ650%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ï¼Œå¹¶ç¢Žè£‚æˆ4å‘æ‰‹é›·ï¼Œæ¯å‘çˆ†ç‚¸é€ æˆ250%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_DEMON_HUNTER_CLUSTER_ARROW_E, RUNE_DEMON_HUNTER_CLUSTER_ARROW_B, RUNE_DEMON_HUNTER_CLUSTER_ARROW_D, RUNE_DEMON_HUNTER_CLUSTER_ARROW_C, RUNE_DEMON_HUNTER_CLUSTER_ARROW_A])
 ; ---------------------------
-; ¼¼ÄÜ: ¼¯Êø¼ý End
+; æŠ€èƒ½: é›†æŸç®­ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ¸´³ðÖ®Óê Start
+; æŠ€èƒ½: å¤ä»‡ä¹‹é›¨ Start
 ; ---------------------------
-; ·ûÎÄ: ÇãÌì¼ýÓê 
-RUNE_DEMON_HUNTER_RAIN_OF_VENGEANCE_B := New SkillRune("ÇãÌì¼ýÓê", "ÎïÀí", "b", "Éä³ö´óÁ¿×Ô¶¯ÖÆµ¼µÄ¼ýÊ¸£¬ÈçÓêµã°ãÔÒÔÚµÐÈËÉíÉÏ£¬ÔÚ8ÃëÄÚ¶ÔÆäÔì³É3500%µÄÎäÆ÷ÉËº¦¡£")
-; ·ûÎÄ: ¼ýÓðÕÚÌì 
-RUNE_DEMON_HUNTER_RAIN_OF_VENGEANCE_A := New SkillRune("¼ýÓðÕÚÌì", "µç»÷", "a", "ÏòÒ»¸ö´óÃæ»ýÇøÓòÉ¢Éä´óÁ¿¼ýÊ¸¡£¼ýÊ¸´ÓÌì¶ø½µ£¬¶ÔÇøÓòÄÚµÄËùÓÐµÐÈËÔÚ5ÃëÄÚÔì³É2800%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£")
-; ·ûÎÄ: Ó°ÊÞ±¼Ï® 
-RUNE_DEMON_HUNTER_RAIN_OF_VENGEANCE_E := New SkillRune("Ó°ÊÞ±¼Ï®", "»ðÑæ", "e", "ÕÙ»½Ò»²¨10Ö»°µÓ°ÊÞ£¬ËºÁÑµØÃæ²¢»÷ÍËµÐÈË£¬ÔÚ3ÃëÄÚÔì³É×Ü¼Æ4600%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: Ìì·£Ó°ÊÞ 
-RUNE_DEMON_HUNTER_RAIN_OF_VENGEANCE_C := New SkillRune("Ìì·£Ó°ÊÞ", "»ðÑæ", "c", "ÕÙ»½Ò»Ö»°µÓ°ÊÞ£¬´Ó¿ÕÖÐÍ¶ÖÀÊÖÀ×£¬ÔÚ2ÃëÄÚÔì³É5800%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ¿ÕÖÐ´ò»÷ 
-RUNE_DEMON_HUNTER_RAIN_OF_VENGEANCE_D := New SkillRune("¿ÕÖÐ´ò»÷", "±ùº®", "d", "ÕÙ»½Ò»¶Ó8Ö»°µÓ°ÊÞ´ÓÌì¶ø½µ£¬Âäµ½Ö¸¶¨Î»ÖÃ£¬ÔÚ5ÃëÄÚ×Ü¹²Ôì³É3800%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©£¬²¢±ù¶³±»»÷ÖÐµÄµÐÈË£¬³ÖÐø2Ãë¡£")
-; ¼¼ÄÜ: ¸´³ðÖ®Óê
-SKILL_ACTIVE_DEMON_HUNTER_RAIN_OF_VENGEANCE := New ActiveSkill("¸´³ðÖ®Óê", "ÎïÀí", "ÉäÊõ"
+; ç¬¦æ–‡: å€¾å¤©ç®­é›¨ 
+RUNE_DEMON_HUNTER_RAIN_OF_VENGEANCE_B := New SkillRune("å€¾å¤©ç®­é›¨", "ç‰©ç†", "b", "å°„å‡ºå¤§é‡è‡ªåŠ¨åˆ¶å¯¼çš„ç®­çŸ¢ï¼Œå¦‚é›¨ç‚¹èˆ¬ç ¸åœ¨æ•Œäººèº«ä¸Šï¼Œåœ¨8ç§’å†…å¯¹å…¶é€ æˆ3500%çš„æ­¦å™¨ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ç®­ç¾½é®å¤© 
+RUNE_DEMON_HUNTER_RAIN_OF_VENGEANCE_A := New SkillRune("ç®­ç¾½é®å¤©", "ç”µå‡»", "a", "å‘ä¸€ä¸ªå¤§é¢ç§¯åŒºåŸŸæ•£å°„å¤§é‡ç®­çŸ¢ã€‚ç®­çŸ¢ä»Žå¤©è€Œé™ï¼Œå¯¹åŒºåŸŸå†…çš„æ‰€æœ‰æ•Œäººåœ¨5ç§’å†…é€ æˆ2800%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å½±å…½å¥”è¢­ 
+RUNE_DEMON_HUNTER_RAIN_OF_VENGEANCE_E := New SkillRune("å½±å…½å¥”è¢­", "ç«ç„°", "e", "å¬å”¤ä¸€æ³¢10åªæš—å½±å…½ï¼Œæ’•è£‚åœ°é¢å¹¶å‡»é€€æ•Œäººï¼Œåœ¨3ç§’å†…é€ æˆæ€»è®¡4600%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å¤©ç½šå½±å…½ 
+RUNE_DEMON_HUNTER_RAIN_OF_VENGEANCE_C := New SkillRune("å¤©ç½šå½±å…½", "ç«ç„°", "c", "å¬å”¤ä¸€åªæš—å½±å…½ï¼Œä»Žç©ºä¸­æŠ•æŽ·æ‰‹é›·ï¼Œåœ¨2ç§’å†…é€ æˆ5800%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: ç©ºä¸­æ‰“å‡» 
+RUNE_DEMON_HUNTER_RAIN_OF_VENGEANCE_D := New SkillRune("ç©ºä¸­æ‰“å‡»", "å†°å¯’", "d", "å¬å”¤ä¸€é˜Ÿ8åªæš—å½±å…½ä»Žå¤©è€Œé™ï¼Œè½åˆ°æŒ‡å®šä½ç½®ï¼Œåœ¨5ç§’å†…æ€»å…±é€ æˆ3800%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ï¼Œå¹¶å†°å†»è¢«å‡»ä¸­çš„æ•Œäººï¼ŒæŒç»­2ç§’ã€‚")
+; æŠ€èƒ½: å¤ä»‡ä¹‹é›¨
+SKILL_ACTIVE_DEMON_HUNTER_RAIN_OF_VENGEANCE := New ActiveSkill("å¤ä»‡ä¹‹é›¨", "ç‰©ç†", "å°„æœ¯"
 	, "images\skills\demon-hunter\active\demonhunter_rainofarrows_normal.png"
-	, "ÀäÈ´Ê±¼ä£º30Ãë\r\nÏòÒ»¸ö´óÃæ»ýÇøÓòÉ¢Éä´óÁ¿¼ýÊ¸¡£¼ýÊ¸´ÓÌì¶ø½µ£¬ÔÚ5ÃëÄÚ¶ÔÇøÓòÄÚµÄËùÓÐµÐÈËÔì³É1500%µÄÎäÆ÷ÉËº¦¡£"
+	, "å†·å´æ—¶é—´ï¼š30ç§’\r\nå‘ä¸€ä¸ªå¤§é¢ç§¯åŒºåŸŸæ•£å°„å¤§é‡ç®­çŸ¢ã€‚ç®­çŸ¢ä»Žå¤©è€Œé™ï¼Œåœ¨5ç§’å†…å¯¹åŒºåŸŸå†…çš„æ‰€æœ‰æ•Œäººé€ æˆ1500%çš„æ­¦å™¨ä¼¤å®³ã€‚"
 	, [RUNE_DEMON_HUNTER_RAIN_OF_VENGEANCE_B, RUNE_DEMON_HUNTER_RAIN_OF_VENGEANCE_A, RUNE_DEMON_HUNTER_RAIN_OF_VENGEANCE_E, RUNE_DEMON_HUNTER_RAIN_OF_VENGEANCE_C, RUNE_DEMON_HUNTER_RAIN_OF_VENGEANCE_D])
 ; ---------------------------
-; ¼¼ÄÜ: ¸´³ðÖ®Óê End
+; æŠ€èƒ½: å¤ä»‡ä¹‹é›¨ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ¸´³ð Start
+; æŠ€èƒ½: å¤ä»‡ Start
 ; ---------------------------
-; ·ûÎÄ: ÈËÐÎ±øÆ÷ 
-RUNE_DEMON_HUNTER_VENGEANCE_C := New SkillRune("ÈËÐÎ±øÆ÷", "»ðÑæ", "c", "²»ÔÙ·¢Éä×·×Ùµ¼µ¯£¬¶øÊÇÃ¿´Î¹¥»÷Ê±³¯½üÕ½·¶Î§ÍâµÄËæ»úµÐÈË·¢Éä2Ã¶ÊÖÀ×£¬Ã¿Ã¶ÊÖÀ×Ôì³É150%µÄÎäÆ÷ÉËº¦£¨»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ºÚ°µÖ®ÐÄ 
-RUNE_DEMON_HUNTER_VENGEANCE_B := New SkillRune("ºÚ°µÖ®ÐÄ", "µç»÷", "b", "ÄãÒ»ÐÄÖ»Ïë×Å¸´³ð£¬ÊÜµ½µÄËùÓÐÉËº¦½µµÍ50%¡£")
-; ·ûÎÄ: ÅÅÅÚºä»÷ 
-RUNE_DEMON_HUNTER_VENGEANCE_D := New SkillRune("ÅÅÅÚºä»÷", "ÎïÀí", "d", "²»ÔÙ·¢Éä×·×Ùµ¼µ¯£¬¶øÊÇ½«åóÇ¹Éä»÷Éý¼¶ÎªÉäËÙ½ÏÂýµÄ»ðÅÚ£¬Ôì³É225%µÄÎäÆ÷ÉËº¦£¬²¢ÇÒÃ¿»÷ÖÐÒ»¸öµÐÈË¿ÉÊ¹Äã»ñµÃÉúÃüÖµÉÏÏÞµÄ3.0%¡£")
-; ·ûÎÄ: ºÞÒâ±Å·¢ 
-RUNE_DEMON_HUNTER_VENGEANCE_E := New SkillRune("ºÞÒâ±Å·¢", "ÎïÀí", "e", "Ã¿Ãë»ñµÃ10µãÔ÷ºÞÖµ¡£")
-; ·ûÎÄ: ÁÔÄ§´ó¾ü 
-RUNE_DEMON_HUNTER_VENGEANCE_A := New SkillRune("ÁÔÄ§´ó¾ü", "±ùº®", "a", "²»ÔÙ·¢Éä×·×Ùµ¼µ¯£¬¶øÊÇ´Ó°µÓ°ÖÐÕÙ»½Í¬°éÀ´¹¥»÷µÐÈË£¬Ôì³É120%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©£¬²¢±ù¶³µÐÈË3Ãë¡£")
-; ¼¼ÄÜ: ¸´³ð
-SKILL_ACTIVE_DEMON_HUNTER_VENGEANCE := New ActiveSkill("¸´³ð", "ÎïÀí", "Æ÷Ðµ"
+; ç¬¦æ–‡: äººå½¢å…µå™¨ 
+RUNE_DEMON_HUNTER_VENGEANCE_C := New SkillRune("äººå½¢å…µå™¨", "ç«ç„°", "c", "ä¸å†å‘å°„è¿½è¸ªå¯¼å¼¹ï¼Œè€Œæ˜¯æ¯æ¬¡æ”»å‡»æ—¶æœè¿‘æˆ˜èŒƒå›´å¤–çš„éšæœºæ•Œäººå‘å°„2æžšæ‰‹é›·ï¼Œæ¯æžšæ‰‹é›·é€ æˆ150%çš„æ­¦å™¨ä¼¤å®³ï¼ˆç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: é»‘æš—ä¹‹å¿ƒ 
+RUNE_DEMON_HUNTER_VENGEANCE_B := New SkillRune("é»‘æš—ä¹‹å¿ƒ", "ç”µå‡»", "b", "ä½ ä¸€å¿ƒåªæƒ³ç€å¤ä»‡ï¼Œå—åˆ°çš„æ‰€æœ‰ä¼¤å®³é™ä½Ž50%ã€‚")
+; ç¬¦æ–‡: æŽ’ç‚®è½°å‡» 
+RUNE_DEMON_HUNTER_VENGEANCE_D := New SkillRune("æŽ’ç‚®è½°å‡»", "ç‰©ç†", "d", "ä¸å†å‘å°„è¿½è¸ªå¯¼å¼¹ï¼Œè€Œæ˜¯å°†å¼©æžªå°„å‡»å‡çº§ä¸ºå°„é€Ÿè¾ƒæ…¢çš„ç«ç‚®ï¼Œé€ æˆ225%çš„æ­¦å™¨ä¼¤å®³ï¼Œå¹¶ä¸”æ¯å‡»ä¸­ä¸€ä¸ªæ•Œäººå¯ä½¿ä½ èŽ·å¾—ç”Ÿå‘½å€¼ä¸Šé™çš„3.0%ã€‚")
+; ç¬¦æ–‡: æ¨æ„è¿¸å‘ 
+RUNE_DEMON_HUNTER_VENGEANCE_E := New SkillRune("æ¨æ„è¿¸å‘", "ç‰©ç†", "e", "æ¯ç§’èŽ·å¾—10ç‚¹æ†Žæ¨å€¼ã€‚")
+; ç¬¦æ–‡: çŒŽé­”å¤§å†› 
+RUNE_DEMON_HUNTER_VENGEANCE_A := New SkillRune("çŒŽé­”å¤§å†›", "å†°å¯’", "a", "ä¸å†å‘å°„è¿½è¸ªå¯¼å¼¹ï¼Œè€Œæ˜¯ä»Žæš—å½±ä¸­å¬å”¤åŒä¼´æ¥æ”»å‡»æ•Œäººï¼Œé€ æˆ120%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ï¼Œå¹¶å†°å†»æ•Œäºº3ç§’ã€‚")
+; æŠ€èƒ½: å¤ä»‡
+SKILL_ACTIVE_DEMON_HUNTER_VENGEANCE := New ActiveSkill("å¤ä»‡", "ç‰©ç†", "å™¨æ¢°"
 	, "images\skills\demon-hunter\active\demonhunter_vengeanceismine_normal.png"
-	, "ÀäÈ´Ê±¼ä£º90Ãë\r\n±ä³É¸´³ðµÄÊµÌå»¯Éí£¬³ÖÐø20Ãë¡£"
+	, "å†·å´æ—¶é—´ï¼š90ç§’\r\nå˜æˆå¤ä»‡çš„å®žä½“åŒ–èº«ï¼ŒæŒç»­20ç§’ã€‚"
 	, [RUNE_DEMON_HUNTER_VENGEANCE_C, RUNE_DEMON_HUNTER_VENGEANCE_B, RUNE_DEMON_HUNTER_VENGEANCE_D, RUNE_DEMON_HUNTER_VENGEANCE_E, RUNE_DEMON_HUNTER_VENGEANCE_A])
 ; ---------------------------
-; ¼¼ÄÜ: ¸´³ð End
+; æŠ€èƒ½: å¤ä»‡ End
 ; ---------------------------
 
 ; ===========================
-; ÁÔÄ§ÈË End
+; çŒŽé­”äºº End
 ; ===========================
 
 
 
 ; ===========================
-; ÎäÉ® Start
+; æ­¦åƒ§ Start
 ; ===========================
 ; ---------------------------
-; ¼¼ÄÜ: À×¹âÈ­ Start
+; æŠ€èƒ½: é›·å…‰æ‹³ Start
 ; ---------------------------
-; ·ûÎÄ: À×öªÕð»÷ 
-RUNE_MONK_FISTS_OF_THUNDER_A := New SkillRune("À×öªÕð»÷", "µç»÷", "a", "Ã¿Ò»»÷¶¼»áÊÍ·ÅÒ»´ÎµçÄÜ³å»÷²¨£¬»÷ÖÐÎ»ÓÚÖ÷ÒªµÐÈË6Âë·¶Î§ÄÚµÄËùÓÐµÐÈË£¬Ôì³É120%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©£¬µÚÈý»÷¿É½«Æä»÷ÍË¡£")
-; ·ûÎÄ: ÁÝ·ç³å»÷ 
-RUNE_MONK_FISTS_OF_THUNDER_E := New SkillRune("ÁÝ·ç³å»÷", "±ùº®", "e", "µÚÈý»÷±ù¶³µÐÈË2Ãë¡£À×¹âÈ­µÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ·ûÎÄ: ¹âÁ÷µçÓ¿ 
-RUNE_MONK_FISTS_OF_THUNDER_C := New SkillRune("¹âÁ÷µçÓ¿", "µç»÷", "c", "¶ÔÀ×¹âÈ­»÷ÖÐµÄµÐÈËÔì³É¹âÁ÷µçÓ¿Ð§¹û£¬³ÖÐø6Ãë¡£Ã¿´Î´øÓÐ¹âÁ÷µçÓ¿Ð§¹ûµÄµÐÈË±»Äã»÷ÖÐÊ±£¬ÓÐÒ»¶¨¼¸ÂÊÊ¹40ÂëÄÚ´øÓÐ¹âÁ÷µçÓ¿µÄÆäËûµÐÈËÊÜµ½40%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£")
-; ·ûÎÄ: ·çÓ¿À×¶¯ 
-RUNE_MONK_FISTS_OF_THUNDER_D := New SkillRune("·çÓ¿À×¶¯", "ÎïÀí", "d", "Ê¹Éú³ÉµÄÄÚÁ¦Ìá¸ßÖÁ20µã¡£À×¹âÈ­µÄÉËº¦ÀàÐÍ×ª»»ÎªÎïÀíÉËº¦¡£")
-; ·ûÎÄ: ½ð¹â±Å·¢ 
-RUNE_MONK_FISTS_OF_THUNDER_B := New SkillRune("½ð¹â±Å·¢", "ÉñÊ¥", "b", "µÚÈý»÷»áÊÍ·Å³öÉñÊ¥ÄÜÁ¿Á´£¬¿É¶îÍâ»÷ÖÐ×î¶à3ÃûµÐÈË¡£Ã¿´Î»÷ÖÐÔì³É240%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉñÊ¥ÉËº¦£©¡£")
-; ¼¼ÄÜ: À×¹âÈ­
-SKILL_ACTIVE_MONK_FISTS_OF_THUNDER := New ActiveSkill("À×¹âÈ­", "µç»÷", "Ö÷Òª"
+; ç¬¦æ–‡: é›·éœ†éœ‡å‡» 
+RUNE_MONK_FISTS_OF_THUNDER_A := New SkillRune("é›·éœ†éœ‡å‡»", "ç”µå‡»", "a", "æ¯ä¸€å‡»éƒ½ä¼šé‡Šæ”¾ä¸€æ¬¡ç”µèƒ½å†²å‡»æ³¢ï¼Œå‡»ä¸­ä½äºŽä¸»è¦æ•Œäºº6ç èŒƒå›´å†…çš„æ‰€æœ‰æ•Œäººï¼Œé€ æˆ120%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ï¼Œç¬¬ä¸‰å‡»å¯å°†å…¶å‡»é€€ã€‚")
+; ç¬¦æ–‡: å‡›é£Žå†²å‡» 
+RUNE_MONK_FISTS_OF_THUNDER_E := New SkillRune("å‡›é£Žå†²å‡»", "å†°å¯’", "e", "ç¬¬ä¸‰å‡»å†°å†»æ•Œäºº2ç§’ã€‚é›·å…‰æ‹³çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: å…‰æµç”µæ¶Œ 
+RUNE_MONK_FISTS_OF_THUNDER_C := New SkillRune("å…‰æµç”µæ¶Œ", "ç”µå‡»", "c", "å¯¹é›·å…‰æ‹³å‡»ä¸­çš„æ•Œäººé€ æˆå…‰æµç”µæ¶Œæ•ˆæžœï¼ŒæŒç»­6ç§’ã€‚æ¯æ¬¡å¸¦æœ‰å…‰æµç”µæ¶Œæ•ˆæžœçš„æ•Œäººè¢«ä½ å‡»ä¸­æ—¶ï¼Œæœ‰ä¸€å®šå‡ çŽ‡ä½¿40ç å†…å¸¦æœ‰å…‰æµç”µæ¶Œçš„å…¶ä»–æ•Œäººå—åˆ°40%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: é£Žæ¶Œé›·åŠ¨ 
+RUNE_MONK_FISTS_OF_THUNDER_D := New SkillRune("é£Žæ¶Œé›·åŠ¨", "ç‰©ç†", "d", "ä½¿ç”Ÿæˆçš„å†…åŠ›æé«˜è‡³20ç‚¹ã€‚é›·å…‰æ‹³çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºç‰©ç†ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: é‡‘å…‰è¿¸å‘ 
+RUNE_MONK_FISTS_OF_THUNDER_B := New SkillRune("é‡‘å…‰è¿¸å‘", "ç¥žåœ£", "b", "ç¬¬ä¸‰å‡»ä¼šé‡Šæ”¾å‡ºç¥žåœ£èƒ½é‡é“¾ï¼Œå¯é¢å¤–å‡»ä¸­æœ€å¤š3åæ•Œäººã€‚æ¯æ¬¡å‡»ä¸­é€ æˆ240%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç¥žåœ£ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: é›·å…‰æ‹³
+SKILL_ACTIVE_MONK_FISTS_OF_THUNDER := New ActiveSkill("é›·å…‰æ‹³", "ç”µå‡»", "ä¸»è¦"
 	, "images\skills\monk\active\monk_fistsofthunder_normal.png"
-	, "Éú³É£º14µãÄÚÁ¦\r\n´«ËÍµ½ÄãµÄÄ¿±êÎ»ÖÃ£¬´ò³öÒ»Á¬´®ËÙ¶È¼«¿ìµÄÖØÈ­£¬Ôì³É200%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£"
+	, "ç”Ÿæˆï¼š14ç‚¹å†…åŠ›\r\nä¼ é€åˆ°ä½ çš„ç›®æ ‡ä½ç½®ï¼Œæ‰“å‡ºä¸€è¿žä¸²é€Ÿåº¦æžå¿«çš„é‡æ‹³ï¼Œé€ æˆ200%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_MONK_FISTS_OF_THUNDER_A, RUNE_MONK_FISTS_OF_THUNDER_E, RUNE_MONK_FISTS_OF_THUNDER_C, RUNE_MONK_FISTS_OF_THUNDER_D, RUNE_MONK_FISTS_OF_THUNDER_B])
 ; ---------------------------
-; ¼¼ÄÜ: À×¹âÈ­ End
+; æŠ€èƒ½: é›·å…‰æ‹³ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÉñÁú°ÚÎ² Start
+; æŠ€èƒ½: ç¥žé¾™æ‘†å°¾ Start
 ; ---------------------------
-; ·ûÎÄ: Ó¥×¦ÍÈ 
-RUNE_MONK_LASHING_TAIL_KICK_A := New SkillRune("Ó¥×¦ÍÈ", "»ðÑæ", "a", "ÊÍ·ÅÅç±¡µÄÁÒÑæ£¬×ÆÉÕ¸½½üµÐÈË£¬¶Ô10ÂëÄÚµÄµÐÈËÔì³É755%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©£¬Í¬Ê±ÔÚ3ÃëÄÚÔì³É¶îÍâ230%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ºáÉ¨Ç§¾ü 
-RUNE_MONK_LASHING_TAIL_KICK_D := New SkillRune("ºáÉ¨Ç§¾ü", "ÎïÀí", "d", "Ê©Õ¹´ó·¶Î§µÄ»ØÐýÌß£¬¶Ô15ÂëÄÚµÄµÐÈËÔì³É825%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£")
-; ·ûÎÄ: »ðÑæÍÈ 
-RUNE_MONK_LASHING_TAIL_KICK_B := New SkillRune("»ðÑæÍÈ", "»ðÑæ", "b", "Ìß³öÒ»¸ù»ðÖù£¬ÔÚµÐÈË¼äÈ¼Æð»ðÑæ£¬¶ÔÃ¿¸ö±»»÷ÖÐµÄµÐÈËÔì³É755%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: Ð«×Ó°ÚÎ² 
-RUNE_MONK_LASHING_TAIL_KICK_E := New SkillRune("Ð«×Ó°ÚÎ²", "µç»÷", "e", "±»»÷ÖÐµÄµÐÈË»èÃÔ2Ãë¡£ÉñÁú°ÚÎ²µÄÉËº¦ÀàÐÍ×ª»»ÎªÉÁµçÉËº¦¡£")
-; ·ûÎÄ: ÒÁËþÖ®ÊÖ 
-RUNE_MONK_LASHING_TAIL_KICK_C := New SkillRune("ÒÁËþÖ®ÊÖ", "±ùº®", "c", "Ê¹Ô¶¾àÀëÖ®ÍâµÄµÐÈËÏÝÈëº®Àä£¬ËÙ¶È½µµÍ80%£¬³ÖÐø3Ãë¡£ÉñÁú°ÚÎ²µÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ¼¼ÄÜ: ÉñÁú°ÚÎ²
-SKILL_ACTIVE_MONK_LASHING_TAIL_KICK := New ActiveSkill("ÉñÁú°ÚÎ²", "ÎïÀí", "´ÎÒª"
+; ç¬¦æ–‡: é¹°çˆªè…¿ 
+RUNE_MONK_LASHING_TAIL_KICK_A := New SkillRune("é¹°çˆªè…¿", "ç«ç„°", "a", "é‡Šæ”¾å–·è–„çš„çƒˆç„°ï¼Œç¼çƒ§é™„è¿‘æ•Œäººï¼Œå¯¹10ç å†…çš„æ•Œäººé€ æˆ755%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ï¼ŒåŒæ—¶åœ¨3ç§’å†…é€ æˆé¢å¤–230%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: æ¨ªæ‰«åƒå†› 
+RUNE_MONK_LASHING_TAIL_KICK_D := New SkillRune("æ¨ªæ‰«åƒå†›", "ç‰©ç†", "d", "æ–½å±•å¤§èŒƒå›´çš„å›žæ—‹è¸¢ï¼Œå¯¹15ç å†…çš„æ•Œäººé€ æˆ825%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: ç«ç„°è…¿ 
+RUNE_MONK_LASHING_TAIL_KICK_B := New SkillRune("ç«ç„°è…¿", "ç«ç„°", "b", "è¸¢å‡ºä¸€æ ¹ç«æŸ±ï¼Œåœ¨æ•Œäººé—´ç‡ƒèµ·ç«ç„°ï¼Œå¯¹æ¯ä¸ªè¢«å‡»ä¸­çš„æ•Œäººé€ æˆ755%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: èŽå­æ‘†å°¾ 
+RUNE_MONK_LASHING_TAIL_KICK_E := New SkillRune("èŽå­æ‘†å°¾", "ç”µå‡»", "e", "è¢«å‡»ä¸­çš„æ•Œäººæ˜è¿·2ç§’ã€‚ç¥žé¾™æ‘†å°¾çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºé—ªç”µä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ä¼Šå¡”ä¹‹æ‰‹ 
+RUNE_MONK_LASHING_TAIL_KICK_C := New SkillRune("ä¼Šå¡”ä¹‹æ‰‹", "å†°å¯’", "c", "ä½¿è¿œè·ç¦»ä¹‹å¤–çš„æ•Œäººé™·å…¥å¯’å†·ï¼Œé€Ÿåº¦é™ä½Ž80%ï¼ŒæŒç»­3ç§’ã€‚ç¥žé¾™æ‘†å°¾çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; æŠ€èƒ½: ç¥žé¾™æ‘†å°¾
+SKILL_ACTIVE_MONK_LASHING_TAIL_KICK := New ActiveSkill("ç¥žé¾™æ‘†å°¾", "ç‰©ç†", "æ¬¡è¦"
 	, "images\skills\monk\active\monk_lashingtailkick_normal.png"
-	, "ÏûºÄ£º50µãÄÚÁ¦\r\nÎäÉ®Ìß³öÒ»¼ÇÖÂÃü»ØÐýÌß£¬¶ÔµÐÈËÔì³É755%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£"
+	, "æ¶ˆè€—ï¼š50ç‚¹å†…åŠ›\r\næ­¦åƒ§è¸¢å‡ºä¸€è®°è‡´å‘½å›žæ—‹è¸¢ï¼Œå¯¹æ•Œäººé€ æˆ755%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_MONK_LASHING_TAIL_KICK_A, RUNE_MONK_LASHING_TAIL_KICK_D, RUNE_MONK_LASHING_TAIL_KICK_B, RUNE_MONK_LASHING_TAIL_KICK_E, RUNE_MONK_LASHING_TAIL_KICK_C])
 ; ---------------------------
-; ¼¼ÄÜ: ÉñÁú°ÚÎ² End
+; æŠ€èƒ½: ç¥žé¾™æ‘†å°¾ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ³åÐÄÈ­ Start
+; æŠ€èƒ½: å†²å¿ƒæ‹³ Start
 ; ---------------------------
-; ·ûÎÄ: È­Â·½»´í 
-RUNE_MONK_DEADLY_REACH_B := New SkillRune("È­Â·½»´í", "ÎïÀí", "b", "Ê¹½«µÐÈË»÷·ÉµÄ¼¸ÂÊÌá¸ßÖÁ100%£¬²¢ÇÒµÚ¶þ»÷ºÍµÚÈý»÷µÄÐ§¹û·¶Î§À©´ó¡£")
-; ·ûÎÄ: ³ãÑæÈ­ 
-RUNE_MONK_DEADLY_REACH_E := New SkillRune("³ãÑæÈ­", "»ðÑæ", "e", "Ê¹ÉËº¦Ìá¸ßÖÁ260%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ÕðÀ×ÕÆ 
-RUNE_MONK_DEADLY_REACH_C := New SkillRune("ÕðÀ×ÕÆ", "µç»÷", "c", "µÚÈý»÷¶Ô25ÂëÄÚµÄµÐÈËËæ»úÔì³É215%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£")
-; ·ûÎÄ: ¸ô¿Õ´òÑ¨ 
-RUNE_MONK_DEADLY_REACH_D := New SkillRune("¸ô¿Õ´òÑ¨", "±ùº®", "d", "Ã¿µ±µÚÈý»÷»÷ÖÐÒ»ÃûµÐÈË£¬¶¼»áÊ¹ÄãÏÂÒ»¸öÄÚÁ¦ÏûºÄ¼¼ÄÜËùÏûºÄµÄÄÚÁ¦½µµÍ8%¡£³åÐÄÈ­µÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ·ûÎÄ: ¾«×¼Ô¤ÅÐ 
-RUNE_MONK_DEADLY_REACH_A := New SkillRune("¾«×¼Ô¤ÅÐ", "ÎïÀí", "a", "µÚÈý»÷»áÊ¹ÄãËùÓÐ¹¥»÷Ôì³ÉµÄÉËº¦Ìá¸ß15%£¬³ÖÐø5Ãë¡£")
-; ¼¼ÄÜ: ³åÐÄÈ­
-SKILL_ACTIVE_MONK_DEADLY_REACH := New ActiveSkill("³åÐÄÈ­", "ÎïÀí", "Ö÷Òª"
+; ç¬¦æ–‡: æ‹³è·¯äº¤é”™ 
+RUNE_MONK_DEADLY_REACH_B := New SkillRune("æ‹³è·¯äº¤é”™", "ç‰©ç†", "b", "ä½¿å°†æ•Œäººå‡»é£žçš„å‡ çŽ‡æé«˜è‡³100%ï¼Œå¹¶ä¸”ç¬¬äºŒå‡»å’Œç¬¬ä¸‰å‡»çš„æ•ˆæžœèŒƒå›´æ‰©å¤§ã€‚")
+; ç¬¦æ–‡: ç‚½ç„°æ‹³ 
+RUNE_MONK_DEADLY_REACH_E := New SkillRune("ç‚½ç„°æ‹³", "ç«ç„°", "e", "ä½¿ä¼¤å®³æé«˜è‡³260%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: éœ‡é›·æŽŒ 
+RUNE_MONK_DEADLY_REACH_C := New SkillRune("éœ‡é›·æŽŒ", "ç”µå‡»", "c", "ç¬¬ä¸‰å‡»å¯¹25ç å†…çš„æ•Œäººéšæœºé€ æˆ215%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: éš”ç©ºæ‰“ç©´ 
+RUNE_MONK_DEADLY_REACH_D := New SkillRune("éš”ç©ºæ‰“ç©´", "å†°å¯’", "d", "æ¯å½“ç¬¬ä¸‰å‡»å‡»ä¸­ä¸€åæ•Œäººï¼Œéƒ½ä¼šä½¿ä½ ä¸‹ä¸€ä¸ªå†…åŠ›æ¶ˆè€—æŠ€èƒ½æ‰€æ¶ˆè€—çš„å†…åŠ›é™ä½Ž8%ã€‚å†²å¿ƒæ‹³çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ç²¾å‡†é¢„åˆ¤ 
+RUNE_MONK_DEADLY_REACH_A := New SkillRune("ç²¾å‡†é¢„åˆ¤", "ç‰©ç†", "a", "ç¬¬ä¸‰å‡»ä¼šä½¿ä½ æ‰€æœ‰æ”»å‡»é€ æˆçš„ä¼¤å®³æé«˜15%ï¼ŒæŒç»­5ç§’ã€‚")
+; æŠ€èƒ½: å†²å¿ƒæ‹³
+SKILL_ACTIVE_MONK_DEADLY_REACH := New ActiveSkill("å†²å¿ƒæ‹³", "ç‰©ç†", "ä¸»è¦"
 	, "images\skills\monk\active\monk_deadlyreach_normal.png"
-	, "Éú³É£º12µãÄÚÁ¦\r\nÈ­ÖÐ±ÅÉä³öÒ»µÀµÀ´¿¾»Ö®Á¦£¬»÷ÖÐ¶Ì¾àÀëÖ®ÍâµÄµÐÈË£¬Ôì³É150%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£"
+	, "ç”Ÿæˆï¼š12ç‚¹å†…åŠ›\r\næ‹³ä¸­è¿¸å°„å‡ºä¸€é“é“çº¯å‡€ä¹‹åŠ›ï¼Œå‡»ä¸­çŸ­è·ç¦»ä¹‹å¤–çš„æ•Œäººï¼Œé€ æˆ150%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_MONK_DEADLY_REACH_B, RUNE_MONK_DEADLY_REACH_E, RUNE_MONK_DEADLY_REACH_C, RUNE_MONK_DEADLY_REACH_D, RUNE_MONK_DEADLY_REACH_A])
 ; ---------------------------
-; ¼¼ÄÜ: ³åÐÄÈ­ End
+; æŠ€èƒ½: å†²å¿ƒæ‹³ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Ñ£Ä¿ÉÁ Start
+; æŠ€èƒ½: çœ©ç›®é—ª Start
 ; ---------------------------
-; ·ûÎÄ: ÄÚÊ¡Ö®¹â 
-RUNE_MONK_BLINDING_FLASH_D := New SkillRune("ÄÚÊ¡Ö®¹â", "ÉñÊ¥", "d", "Ê¹µÐÈË±»ÖÂÃ¤µÄ³ÖÐøÊ±¼äÑÓ³¤ÖÁ6Ãë¡£")
-; ·ûÎÄ: ÐþÃØÖ®¹â 
-RUNE_MONK_BLINDING_FLASH_C := New SkillRune("ÐþÃØÖ®¹â", "ÉñÊ¥", "c", "±»ÖÂÃ¤µÄµÐÈËÍ¬Ê±»á±»¼õËÙ80%£¬³ÖÐø5Ãë¡£")
-; ·ûÎÄ: Õñ·ÜÖ®¹â 
-RUNE_MONK_BLINDING_FLASH_B := New SkillRune("Õñ·ÜÖ®¹â", "ÉñÊ¥", "b", "ÄãÖÂÃ¤µÄÃ¿¸öµÐÈË¶¼»áÎªÄã»Ö¸´10µãÄÚÁ¦¡£")
-; ·ûÎÄ: Ï÷ÈõÖ®¹â 
-RUNE_MONK_BLINDING_FLASH_E := New SkillRune("Ï÷ÈõÖ®¹â", "ÉñÊ¥", "e", "±»ÖÂÃ¤µÄµÐÈËÔÚÖÂÃ¤Ð§¹ûÏûÊ§ºóÔì³ÉµÄÉËº¦½µµÍ25%£¬³ÖÐø5Ãë¡£")
-; ·ûÎÄ: ÐÅÑöÖ®¹â 
-RUNE_MONK_BLINDING_FLASH_A := New SkillRune("ÐÅÑöÖ®¹â", "ÉñÊ¥", "a", "ÔÚÊ¹ÓÃÑ£Ä¿ÉÁºóµÄ3ÃëÄÚ£¬ÄãÔì³ÉµÄÉËº¦Ìá¸ß29%¡£")
-; ¼¼ÄÜ: Ñ£Ä¿ÉÁ
-SKILL_ACTIVE_MONK_BLINDING_FLASH := New ActiveSkill("Ñ£Ä¿ÉÁ", "ÉñÊ¥", "·ÀÓù"
+; ç¬¦æ–‡: å†…çœä¹‹å…‰ 
+RUNE_MONK_BLINDING_FLASH_D := New SkillRune("å†…çœä¹‹å…‰", "ç¥žåœ£", "d", "ä½¿æ•Œäººè¢«è‡´ç›²çš„æŒç»­æ—¶é—´å»¶é•¿è‡³6ç§’ã€‚")
+; ç¬¦æ–‡: çŽ„ç§˜ä¹‹å…‰ 
+RUNE_MONK_BLINDING_FLASH_C := New SkillRune("çŽ„ç§˜ä¹‹å…‰", "ç¥žåœ£", "c", "è¢«è‡´ç›²çš„æ•ŒäººåŒæ—¶ä¼šè¢«å‡é€Ÿ80%ï¼ŒæŒç»­5ç§’ã€‚")
+; ç¬¦æ–‡: æŒ¯å¥‹ä¹‹å…‰ 
+RUNE_MONK_BLINDING_FLASH_B := New SkillRune("æŒ¯å¥‹ä¹‹å…‰", "ç¥žåœ£", "b", "ä½ è‡´ç›²çš„æ¯ä¸ªæ•Œäººéƒ½ä¼šä¸ºä½ æ¢å¤10ç‚¹å†…åŠ›ã€‚")
+; ç¬¦æ–‡: å‰Šå¼±ä¹‹å…‰ 
+RUNE_MONK_BLINDING_FLASH_E := New SkillRune("å‰Šå¼±ä¹‹å…‰", "ç¥žåœ£", "e", "è¢«è‡´ç›²çš„æ•Œäººåœ¨è‡´ç›²æ•ˆæžœæ¶ˆå¤±åŽé€ æˆçš„ä¼¤å®³é™ä½Ž25%ï¼ŒæŒç»­5ç§’ã€‚")
+; ç¬¦æ–‡: ä¿¡ä»°ä¹‹å…‰ 
+RUNE_MONK_BLINDING_FLASH_A := New SkillRune("ä¿¡ä»°ä¹‹å…‰", "ç¥žåœ£", "a", "åœ¨ä½¿ç”¨çœ©ç›®é—ªåŽçš„3ç§’å†…ï¼Œä½ é€ æˆçš„ä¼¤å®³æé«˜29%ã€‚")
+; æŠ€èƒ½: çœ©ç›®é—ª
+SKILL_ACTIVE_MONK_BLINDING_FLASH := New ActiveSkill("çœ©ç›®é—ª", "ç¥žåœ£", "é˜²å¾¡"
 	, "images\skills\monk\active\monk_blindingflash_normal.png"
-	, "ÀäÈ´Ê±¼ä£º15Ãë\r\nÐÎ³ÉÒ»µÀÉÁ¹â£¬ÔÝÊ±ÖÂÃ¤20ÂëÄÚµÄËùÓÐµÐÈË£¬³ÖÐø3Ãë¡£¾«Ó¢¹ÖÎï»á½Ï¿ì¸´Ô­£¬µ«¹¥»÷ÓÐ30%µÄ¼¸ÂÊÎÞ·¨»÷ÖÐµÐÈË¡£"
+	, "å†·å´æ—¶é—´ï¼š15ç§’\r\nå½¢æˆä¸€é“é—ªå…‰ï¼Œæš‚æ—¶è‡´ç›²20ç å†…çš„æ‰€æœ‰æ•Œäººï¼ŒæŒç»­3ç§’ã€‚ç²¾è‹±æ€ªç‰©ä¼šè¾ƒå¿«å¤åŽŸï¼Œä½†æ”»å‡»æœ‰30%çš„å‡ çŽ‡æ— æ³•å‡»ä¸­æ•Œäººã€‚"
 	, [RUNE_MONK_BLINDING_FLASH_D, RUNE_MONK_BLINDING_FLASH_C, RUNE_MONK_BLINDING_FLASH_B, RUNE_MONK_BLINDING_FLASH_E, RUNE_MONK_BLINDING_FLASH_A])
 ; ---------------------------
-; ¼¼ÄÜ: Ñ£Ä¿ÉÁ End
+; æŠ€èƒ½: çœ©ç›®é—ª End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ·çÀ×³å Start
+; æŠ€èƒ½: é£Žé›·å†² Start
 ; ---------------------------
-; ·ûÎÄ: ±±·çºôÐ¥ 
-RUNE_MONK_TEMPEST_RUSH_D := New SkillRune("±±·çºôÐ¥", "ÉñÊ¥", "d", "Ê¹·çÀ×³åµÄÏûºÄ½µµÍÖÁ25µãÄÚÁ¦£¬²¢Ê¹ÉËº¦Ìá¸ßÖÁ500%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉñÊ¥ÉËº¦£©¡£")
-; ·ûÎÄ: Ë³·ç¶øÐÐ 
-RUNE_MONK_TEMPEST_RUSH_B := New SkillRune("Ë³·ç¶øÐÐ", "ÎïÀí", "b", "Ê¹ÓÃ·çÀ×³åÊ±µÄÒÆ¶¯ËÙ¶ÈÌá¸ß25%¡£")
-; ·ûÎÄ: ±ù·çÉ¨ÂÓ 
-RUNE_MONK_TEMPEST_RUSH_E := New SkillRune("±ù·çÉ¨ÂÓ", "±ùº®", "e", "µ±ÄãÍ£Ö¹Òýµ¼·çÀ×³åÊ±»áÊÍ·ÅÒ»µÀº®±ù³å»÷²¨£¬¹¥»÷15ÂëÄÚµÄËùÓÐµÐÈË¡£Òýµ¼·çÀ×³å»áÌá¸ß³å»÷²¨±¬Õ¨Ôì³ÉµÄÉËº¦£¬Ã¿²ãÐ§¹ûÔì³É90%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£·çÀ×³åµÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ·ûÎÄ: µçÁ÷½ûµØ 
-RUNE_MONK_TEMPEST_RUSH_C := New SkillRune("µçÁ÷½ûµØ", "µç»÷", "c", "Î»ÓÚ20ÂëÄÚµÄµÐÈËÃ¿ÃëÊÜµ½¶îÍâ135%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£·çÀ×³åµÄÉËº¦ÀàÐÍ×ª»»ÎªÉÁµçÉËº¦¡£")
-; ·ûÎÄ: ¿ñ·çÅ­ºÅ 
-RUNE_MONK_TEMPEST_RUSH_A := New SkillRune("¿ñ·çÅ­ºÅ", "»ðÑæ", "a", "»÷ÖÐµÐÈËºó»á½«Æä»÷ÍË£¬²¢Ê¹ÆäÔì³ÉµÄÉËº¦½µµÍ20%£¬³ÖÐø4Ãë¡£·çÀ×³åµÄÉËº¦ÀàÐÍ×ª»»Îª»ðÑæÉËº¦¡£")
-; ¼¼ÄÜ: ·çÀ×³å
-SKILL_ACTIVE_MONK_TEMPEST_RUSH := New ActiveSkill("·çÀ×³å", "ÎïÀí", "´ÎÒª"
+; ç¬¦æ–‡: åŒ—é£Žå‘¼å•¸ 
+RUNE_MONK_TEMPEST_RUSH_D := New SkillRune("åŒ—é£Žå‘¼å•¸", "ç¥žåœ£", "d", "ä½¿é£Žé›·å†²çš„æ¶ˆè€—é™ä½Žè‡³25ç‚¹å†…åŠ›ï¼Œå¹¶ä½¿ä¼¤å®³æé«˜è‡³500%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç¥žåœ£ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: é¡ºé£Žè€Œè¡Œ 
+RUNE_MONK_TEMPEST_RUSH_B := New SkillRune("é¡ºé£Žè€Œè¡Œ", "ç‰©ç†", "b", "ä½¿ç”¨é£Žé›·å†²æ—¶çš„ç§»åŠ¨é€Ÿåº¦æé«˜25%ã€‚")
+; ç¬¦æ–‡: å†°é£Žæ‰«æŽ  
+RUNE_MONK_TEMPEST_RUSH_E := New SkillRune("å†°é£Žæ‰«æŽ ", "å†°å¯’", "e", "å½“ä½ åœæ­¢å¼•å¯¼é£Žé›·å†²æ—¶ä¼šé‡Šæ”¾ä¸€é“å¯’å†°å†²å‡»æ³¢ï¼Œæ”»å‡»15ç å†…çš„æ‰€æœ‰æ•Œäººã€‚å¼•å¯¼é£Žé›·å†²ä¼šæé«˜å†²å‡»æ³¢çˆ†ç‚¸é€ æˆçš„ä¼¤å®³ï¼Œæ¯å±‚æ•ˆæžœé€ æˆ90%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚é£Žé›·å†²çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ç”µæµç¦åœ° 
+RUNE_MONK_TEMPEST_RUSH_C := New SkillRune("ç”µæµç¦åœ°", "ç”µå‡»", "c", "ä½äºŽ20ç å†…çš„æ•Œäººæ¯ç§’å—åˆ°é¢å¤–135%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚é£Žé›·å†²çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºé—ªç”µä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ç‹‚é£Žæ€’å· 
+RUNE_MONK_TEMPEST_RUSH_A := New SkillRune("ç‹‚é£Žæ€’å·", "ç«ç„°", "a", "å‡»ä¸­æ•ŒäººåŽä¼šå°†å…¶å‡»é€€ï¼Œå¹¶ä½¿å…¶é€ æˆçš„ä¼¤å®³é™ä½Ž20%ï¼ŒæŒç»­4ç§’ã€‚é£Žé›·å†²çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºç«ç„°ä¼¤å®³ã€‚")
+; æŠ€èƒ½: é£Žé›·å†²
+SKILL_ACTIVE_MONK_TEMPEST_RUSH := New ActiveSkill("é£Žé›·å†²", "ç‰©ç†", "æ¬¡è¦"
 	, "images\skills\monk\active\monk_hobble_normal.png"
-	, "ÏûºÄ£º30µãÄÚÁ¦¡£\r\n¾¶Ö±ÔÚµÐÈË¼ä³å·æ±¼ÐÐ£¬±¼ÅÜÊ±Ôì³É390%µÄÎäÆ÷ÉËº¦¡£"
+	, "æ¶ˆè€—ï¼š30ç‚¹å†…åŠ›ã€‚\r\nå¾„ç›´åœ¨æ•Œäººé—´å†²é”‹å¥”è¡Œï¼Œå¥”è·‘æ—¶é€ æˆ390%çš„æ­¦å™¨ä¼¤å®³ã€‚"
 	, [RUNE_MONK_TEMPEST_RUSH_D, RUNE_MONK_TEMPEST_RUSH_B, RUNE_MONK_TEMPEST_RUSH_E, RUNE_MONK_TEMPEST_RUSH_C, RUNE_MONK_TEMPEST_RUSH_A])
 ; ---------------------------
-; ¼¼ÄÜ: ·çÀ×³å End
+; æŠ€èƒ½: é£Žé›·å†² End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: »ØÌìÏ¢ Start
+; æŠ€èƒ½: å›žå¤©æ¯ Start
 ; ---------------------------
-; ·ûÎÄ: ×Æ»êÍÂÄÉ 
-RUNE_MONK_BREATH_OF_HEAVEN_A := New SkillRune("×Æ»êÍÂÄÉ", "ÉñÊ¥", "a", "»ØÌìÏ¢»¹»á×ÆÉÕµÐÈË£¬Ôì³É505%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉñÊ¥ÉËº¦£©¡£")
-; ·ûÎÄ: ·¼»ªÍÂÄÉ 
-RUNE_MONK_BREATH_OF_HEAVEN_B := New SkillRune("·¼»ªÍÂÄÉ", "ÉñÊ¥", "b", "Ê¹»ØÌìÏ¢µÄÖÎÁÆÐ§¹ûÌá¸ßÖÁ139469 - 182383µãÉúÃüÖµ¡£ÖÎÁÆÁ¿µÄ¼Ó³ÉÎªÉúÃüÇòÖÎÁÆ¼Ó³ÉµÄ30%¡£")
-; ·ûÎÄ: ³ãÑ×Å­»ð 
-RUNE_MONK_BREATH_OF_HEAVEN_C := New SkillRune("³ãÑ×Å­»ð", "ÉñÊ¥", "c", "»ØÌìÏ¢½«Ê¹Äã¹¥»÷Ôì³ÉµÄÉËº¦Ìá¸ß10%£¬³ÖÐø9Ãë¡£")
-; ·ûÎÄ: ¹âÄÜ¹à×¢ 
-RUNE_MONK_BREATH_OF_HEAVEN_D := New SkillRune("¹âÄÜ¹à×¢", "ÉñÊ¥", "d", "ÔÚÊ¹ÓÃ»ØÌìÏ¢ºóµÄ5ÃëÄÚ£¬´Ó¿ÉÉú³ÉÄÚÁ¦µÄ¹¥»÷ÖÐ»ñµÃ14µã¶îÍâµÄÄÚÁ¦¡£")
-; ·ûÎÄ: Óù·ç¶øÐÐ 
-RUNE_MONK_BREATH_OF_HEAVEN_E := New SkillRune("Óù·ç¶øÐÐ", "ÉñÊ¥", "e", "ÊÜµ½»ØÌìÏ¢ÖÎÁÆµÄÍ¬°éÒÆ¶¯ËÙ¶ÈÌá¸ß30%£¬³ÖÐø3Ãë¡£")
-; ¼¼ÄÜ: »ØÌìÏ¢
-SKILL_ACTIVE_MONK_BREATH_OF_HEAVEN := New ActiveSkill("»ØÌìÏ¢", "ÉñÊ¥", "·ÀÓù"
+; ç¬¦æ–‡: ç¼é­‚åçº³ 
+RUNE_MONK_BREATH_OF_HEAVEN_A := New SkillRune("ç¼é­‚åçº³", "ç¥žåœ£", "a", "å›žå¤©æ¯è¿˜ä¼šç¼çƒ§æ•Œäººï¼Œé€ æˆ505%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç¥žåœ£ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: èŠ³åŽåçº³ 
+RUNE_MONK_BREATH_OF_HEAVEN_B := New SkillRune("èŠ³åŽåçº³", "ç¥žåœ£", "b", "ä½¿å›žå¤©æ¯çš„æ²»ç–—æ•ˆæžœæé«˜è‡³139469 - 182383ç‚¹ç”Ÿå‘½å€¼ã€‚æ²»ç–—é‡çš„åŠ æˆä¸ºç”Ÿå‘½çƒæ²»ç–—åŠ æˆçš„30%ã€‚")
+; ç¬¦æ–‡: ç‚½ç‚Žæ€’ç« 
+RUNE_MONK_BREATH_OF_HEAVEN_C := New SkillRune("ç‚½ç‚Žæ€’ç«", "ç¥žåœ£", "c", "å›žå¤©æ¯å°†ä½¿ä½ æ”»å‡»é€ æˆçš„ä¼¤å®³æé«˜10%ï¼ŒæŒç»­9ç§’ã€‚")
+; ç¬¦æ–‡: å…‰èƒ½çŒæ³¨ 
+RUNE_MONK_BREATH_OF_HEAVEN_D := New SkillRune("å…‰èƒ½çŒæ³¨", "ç¥žåœ£", "d", "åœ¨ä½¿ç”¨å›žå¤©æ¯åŽçš„5ç§’å†…ï¼Œä»Žå¯ç”Ÿæˆå†…åŠ›çš„æ”»å‡»ä¸­èŽ·å¾—14ç‚¹é¢å¤–çš„å†…åŠ›ã€‚")
+; ç¬¦æ–‡: å¾¡é£Žè€Œè¡Œ 
+RUNE_MONK_BREATH_OF_HEAVEN_E := New SkillRune("å¾¡é£Žè€Œè¡Œ", "ç¥žåœ£", "e", "å—åˆ°å›žå¤©æ¯æ²»ç–—çš„åŒä¼´ç§»åŠ¨é€Ÿåº¦æé«˜30%ï¼ŒæŒç»­3ç§’ã€‚")
+; æŠ€èƒ½: å›žå¤©æ¯
+SKILL_ACTIVE_MONK_BREATH_OF_HEAVEN := New ActiveSkill("å›žå¤©æ¯", "ç¥žåœ£", "é˜²å¾¡"
 	, "images\skills\monk\active\monk_breathofheaven_normal.png"
-	, "ÀäÈ´Ê±¼ä£º15Ãë\r\nÒ»¹ÉÉñÊ¥ÄÜÁ¿±¬ÆÆ£¬ÎªÄãºÍÎ»ÓÚ12ÂëÄÚµÄËùÓÐÍ¬°é»Ö¸´69735 - 91192µãÉúÃüÖµ¡£"
+	, "å†·å´æ—¶é—´ï¼š15ç§’\r\nä¸€è‚¡ç¥žåœ£èƒ½é‡çˆ†ç ´ï¼Œä¸ºä½ å’Œä½äºŽ12ç å†…çš„æ‰€æœ‰åŒä¼´æ¢å¤69735 - 91192ç‚¹ç”Ÿå‘½å€¼ã€‚"
 	, [RUNE_MONK_BREATH_OF_HEAVEN_A, RUNE_MONK_BREATH_OF_HEAVEN_B, RUNE_MONK_BREATH_OF_HEAVEN_C, RUNE_MONK_BREATH_OF_HEAVEN_D, RUNE_MONK_BREATH_OF_HEAVEN_E])
 ; ---------------------------
-; ¼¼ÄÜ: »ØÌìÏ¢ End
+; æŠ€èƒ½: å›žå¤©æ¯ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ¼²·ç»÷ Start
+; æŠ€èƒ½: ç–¾é£Žå‡» Start
 ; ---------------------------
-; ·ûÎÄ: ÂäÐÇÖ®ËÙ 
-RUNE_MONK_DASHING_STRIKE_B := New SkillRune("ÂäÐÇÖ®ËÙ", "ÉñÊ¥", "b", "Ê¹ÓÃ¼²·ç»÷ºó£¬ÒÆ¶¯ËÙ¶ÈÌá¸ß20%£¬³ÖÐø4Ãë¡£¼²·ç»÷µÄÉËº¦ÀàÐÍ×ª»»ÎªÉñÊ¥ÉËº¦¡£")
-; ·ûÎÄ: Ñ£Ä¿¹âËÙ 
-RUNE_MONK_DASHING_STRIKE_C := New SkillRune("Ñ£Ä¿¹âËÙ", "±ùº®", "c", "Ê¹ÓÃ¼²·ç»÷ºó£¬¶ãÉÁ¼¸ÂÊÌá¸ß40%£¬³ÖÐø4Ãë¡£¼²·ç»÷µÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ·ûÎÄ: Á÷ÒøÐºµØ 
-RUNE_MONK_DASHING_STRIKE_D := New SkillRune("Á÷ÒøÐºµØ", "µç»÷", "d", "¼²·ç»÷µÄ´ÎÊýÉÏÏÞÌá¸ßÖÁ3´Î¡£¼²·ç»÷µÄÉËº¦ÀàÐÍ×ª»»ÎªÉÁµçÉËº¦¡£")
-; ·ûÎÄ: ¹â»ÔÈç¾æ 
-RUNE_MONK_DASHING_STRIKE_E := New SkillRune("¹â»ÔÈç¾æ", "»ðÑæ", "e", "Ê¹ÓÃ¼²·ç»÷ºó£¬¹¥»÷ËÙ¶ÈÌá¸ß15%£¬³ÖÐø4Ãë¡£¼²·ç»÷µÄÉËº¦ÀàÐÍ×ª»»Îª»ðÑæÉËº¦¡£")
-; ·ûÎÄ: ÂÒÈ­ÏàÏò 
-RUNE_MONK_DASHING_STRIKE_A := New SkillRune("ÂÒÈ­ÏàÏò", "ÎïÀí", "a", "ÄãÍ»½øËù¾­¹ýµÄ×îºóÒ»ÃûµÐÈË½«ÊÜµ½Ò»ÂÖÖØÈ­ÃÍ¹¥£¬ÔÚ2ÃëÄÚÊÜµ½¶îÍâ975%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£")
-; ¼¼ÄÜ: ¼²·ç»÷
-SKILL_ACTIVE_MONK_DASHING_STRIKE := New ActiveSkill("¼²·ç»÷", "ÎïÀí", "ÌåÊõ"
+; ç¬¦æ–‡: è½æ˜Ÿä¹‹é€Ÿ 
+RUNE_MONK_DASHING_STRIKE_B := New SkillRune("è½æ˜Ÿä¹‹é€Ÿ", "ç¥žåœ£", "b", "ä½¿ç”¨ç–¾é£Žå‡»åŽï¼Œç§»åŠ¨é€Ÿåº¦æé«˜20%ï¼ŒæŒç»­4ç§’ã€‚ç–¾é£Žå‡»çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºç¥žåœ£ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: çœ©ç›®å…‰é€Ÿ 
+RUNE_MONK_DASHING_STRIKE_C := New SkillRune("çœ©ç›®å…‰é€Ÿ", "å†°å¯’", "c", "ä½¿ç”¨ç–¾é£Žå‡»åŽï¼Œèº²é—ªå‡ çŽ‡æé«˜40%ï¼ŒæŒç»­4ç§’ã€‚ç–¾é£Žå‡»çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æµé“¶æ³»åœ° 
+RUNE_MONK_DASHING_STRIKE_D := New SkillRune("æµé“¶æ³»åœ°", "ç”µå‡»", "d", "ç–¾é£Žå‡»çš„æ¬¡æ•°ä¸Šé™æé«˜è‡³3æ¬¡ã€‚ç–¾é£Žå‡»çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºé—ªç”µä¼¤å®³ã€‚")
+; ç¬¦æ–‡: å…‰è¾‰å¦‚ç‚¬ 
+RUNE_MONK_DASHING_STRIKE_E := New SkillRune("å…‰è¾‰å¦‚ç‚¬", "ç«ç„°", "e", "ä½¿ç”¨ç–¾é£Žå‡»åŽï¼Œæ”»å‡»é€Ÿåº¦æé«˜15%ï¼ŒæŒç»­4ç§’ã€‚ç–¾é£Žå‡»çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºç«ç„°ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ä¹±æ‹³ç›¸å‘ 
+RUNE_MONK_DASHING_STRIKE_A := New SkillRune("ä¹±æ‹³ç›¸å‘", "ç‰©ç†", "a", "ä½ çªè¿›æ‰€ç»è¿‡çš„æœ€åŽä¸€åæ•Œäººå°†å—åˆ°ä¸€è½®é‡æ‹³çŒ›æ”»ï¼Œåœ¨2ç§’å†…å—åˆ°é¢å¤–975%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: ç–¾é£Žå‡»
+SKILL_ACTIVE_MONK_DASHING_STRIKE := New ActiveSkill("ç–¾é£Žå‡»", "ç‰©ç†", "ä½“æœ¯"
 	, "images\skills\monk\active\monk_dashingstrike_normal.png"
-	, "ÏûºÄ£º1´Î\r\n¼²³åÖÁ×îÔ¶50ÂëµÄ¾àÀëÍâ£¬¶ÔÐÐ½øÂ·ÏßÉÏµÄµÐÈËÔì³É370%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£"
+	, "æ¶ˆè€—ï¼š1æ¬¡\r\nç–¾å†²è‡³æœ€è¿œ50ç çš„è·ç¦»å¤–ï¼Œå¯¹è¡Œè¿›è·¯çº¿ä¸Šçš„æ•Œäººé€ æˆ370%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_MONK_DASHING_STRIKE_B, RUNE_MONK_DASHING_STRIKE_C, RUNE_MONK_DASHING_STRIKE_D, RUNE_MONK_DASHING_STRIKE_E, RUNE_MONK_DASHING_STRIKE_A])
 ; ---------------------------
-; ¼¼ÄÜ: ¼²·ç»÷ End
+; æŠ€èƒ½: ç–¾é£Žå‡» End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ¶Ï½î¾÷ Start
+; æŠ€èƒ½: æ–­ç­‹è¯€ Start
 ; ---------------------------
-; ·ûÎÄ: ÉË½î¶Ï¹Ç 
-RUNE_MONK_CRIPPLING_WAVE_A := New SkillRune("ÉË½î¶Ï¹Ç", "»ðÑæ", "a", "Ê¹ÉËº¦Ìá¸ßÖÁ255%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: Ë«·ç¹á¶ú 
-RUNE_MONK_CRIPPLING_WAVE_C := New SkillRune("Ë«·ç¹á¶ú", "ÎïÀí", "c", "±»¶Ï½î¾÷ÃüÖÐµÄµÐÈËÔì³ÉµÄÉËº¦½µµÍ20%£¬³ÖÐø3Ãë¡£")
-; ·ûÎÄ: ÄÚÁ¦¿ñ³± 
-RUNE_MONK_CRIPPLING_WAVE_D := New SkillRune("ÄÚÁ¦¿ñ³±", "ÉñÊ¥", "d", "Ã¿»÷ÖÐÒ»ÃûµÐÈË¿ÉÉú³É¶îÍâ2.5µãÄÚÁ¦¡£¶Ï½î¾÷µÄÉËº¦ÀàÐÍ×ª»»ÎªÉñÊ¥ÉËº¦¡£")
-; ·ûÎÄ: ÅÅÉ½µ¹º£ 
-RUNE_MONK_CRIPPLING_WAVE_B := New SkillRune("ÅÅÉ½µ¹º£", "±ùº®", "b", "¶Ï½î¾÷µÚÈý»÷µÄ¹¥»÷·¶Î§ÑÓ³¤ÖÁ17Âë£¬²¢±ù¶³µÐÈË1Ãë¡£¶Ï½î¾÷µÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ·ûÎÄ: ±¬Õð¼¤²¨ 
-RUNE_MONK_CRIPPLING_WAVE_E := New SkillRune("±¬Õð¼¤²¨", "ÎïÀí", "e", "±»¶Ï½î¾÷»÷ÖÐµÄµÐÈË´ÓËùÓÐ¹¥»÷ÖÐÊÜµ½µÄÉËº¦¶îÍâÌá¸ß10%£¬³ÖÐø3Ãë¡£")
-; ¼¼ÄÜ: ¶Ï½î¾÷
-SKILL_ACTIVE_MONK_CRIPPLING_WAVE := New ActiveSkill("¶Ï½î¾÷", "ÎïÀí", "Ö÷Òª"
+; ç¬¦æ–‡: ä¼¤ç­‹æ–­éª¨ 
+RUNE_MONK_CRIPPLING_WAVE_A := New SkillRune("ä¼¤ç­‹æ–­éª¨", "ç«ç„°", "a", "ä½¿ä¼¤å®³æé«˜è‡³255%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: åŒé£Žè´¯è€³ 
+RUNE_MONK_CRIPPLING_WAVE_C := New SkillRune("åŒé£Žè´¯è€³", "ç‰©ç†", "c", "è¢«æ–­ç­‹è¯€å‘½ä¸­çš„æ•Œäººé€ æˆçš„ä¼¤å®³é™ä½Ž20%ï¼ŒæŒç»­3ç§’ã€‚")
+; ç¬¦æ–‡: å†…åŠ›ç‹‚æ½® 
+RUNE_MONK_CRIPPLING_WAVE_D := New SkillRune("å†…åŠ›ç‹‚æ½®", "ç¥žåœ£", "d", "æ¯å‡»ä¸­ä¸€åæ•Œäººå¯ç”Ÿæˆé¢å¤–2.5ç‚¹å†…åŠ›ã€‚æ–­ç­‹è¯€çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºç¥žåœ£ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æŽ’å±±å€’æµ· 
+RUNE_MONK_CRIPPLING_WAVE_B := New SkillRune("æŽ’å±±å€’æµ·", "å†°å¯’", "b", "æ–­ç­‹è¯€ç¬¬ä¸‰å‡»çš„æ”»å‡»èŒƒå›´å»¶é•¿è‡³17ç ï¼Œå¹¶å†°å†»æ•Œäºº1ç§’ã€‚æ–­ç­‹è¯€çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: çˆ†éœ‡æ¿€æ³¢ 
+RUNE_MONK_CRIPPLING_WAVE_E := New SkillRune("çˆ†éœ‡æ¿€æ³¢", "ç‰©ç†", "e", "è¢«æ–­ç­‹è¯€å‡»ä¸­çš„æ•Œäººä»Žæ‰€æœ‰æ”»å‡»ä¸­å—åˆ°çš„ä¼¤å®³é¢å¤–æé«˜10%ï¼ŒæŒç»­3ç§’ã€‚")
+; æŠ€èƒ½: æ–­ç­‹è¯€
+SKILL_ACTIVE_MONK_CRIPPLING_WAVE := New ActiveSkill("æ–­ç­‹è¯€", "ç‰©ç†", "ä¸»è¦"
 	, "images\skills\monk\active\monk_cripplingwave_normal.png"
-	, "Éú³É£º12µãÄÚÁ¦\r\nÁ¬ÐøÊ©Õ¹´ó·ù¶ÈµÄºáÉ¨£¬¶ÔÇ°·½ËùÓÐµÐÈËÔì³É155%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£"
+	, "ç”Ÿæˆï¼š12ç‚¹å†…åŠ›\r\nè¿žç»­æ–½å±•å¤§å¹…åº¦çš„æ¨ªæ‰«ï¼Œå¯¹å‰æ–¹æ‰€æœ‰æ•Œäººé€ æˆ155%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_MONK_CRIPPLING_WAVE_A, RUNE_MONK_CRIPPLING_WAVE_C, RUNE_MONK_CRIPPLING_WAVE_D, RUNE_MONK_CRIPPLING_WAVE_B, RUNE_MONK_CRIPPLING_WAVE_E])
 ; ---------------------------
-; ¼¼ÄÜ: ¶Ï½î¾÷ End
+; æŠ€èƒ½: æ–­ç­‹è¯€ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ½ðÖÓÆÆ Start
+; æŠ€èƒ½: é‡‘é’Ÿç ´ Start
 ; ---------------------------
-; ·ûÎÄ: Éñ¹â±ÚÀÝ 
-RUNE_MONK_WAVE_OF_LIGHT_A := New SkillRune("Éñ¹â±ÚÀÝ", "ÎïÀí", "a", "½ðÖÓÆÆ¿ÉÊ¹µÐÈË»èÃÔ1Ãë¡£½ðÖÓÆÆµÄÉËº¦ÀàÐÍ×ª»»ÎªÎïÀíÉËº¦¡£")
-; ·ûÎÄ: ¹âÕÕ°Ë»Ä 
-RUNE_MONK_WAVE_OF_LIGHT_B := New SkillRune("¹âÕÕ°Ë»Ä", "»ðÑæ", "b", "ÊÍ·ÅÄÜÁ¿²¨£¬¶Ô¸½½üµÄµÐÈËÔì³É830%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ÖÓÃùÈëµÀ 
-RUNE_MONK_WAVE_OF_LIGHT_D := New SkillRune("ÖÓÃùÈëµÀ", "ÉñÊ¥", "d", "Ê¹½ðÖÓÆÆµÄÉËº¦Ìá¸ßÖÁ1045%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉñÊ¥ÉËº¦£©¡£")
-; ·ûÎÄ: ºéÖÓ¹á¶ú 
-RUNE_MONK_WAVE_OF_LIGHT_E := New SkillRune("ºéÖÓ¹á¶ú", "±ùº®", "e", "½ðÖÓÆÆÔÚÒ»ÌõÖ±ÏßÉÏÔì³É¶îÍâ820%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£")
-; ·ûÎÄ: ÏÈ×æÖ®Öù 
-RUNE_MONK_WAVE_OF_LIGHT_C := New SkillRune("ÏÈ×æÖ®Öù", "µç»÷", "c", "ÕÙ»½ÏÈ×æÖ®Öù£¬Ôì³É635%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©£¬²¢ÔÚ½ÓÏÂÀ´µÄ3ÃëÄÚÔì³É¶îÍâ785%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£")
-; ¼¼ÄÜ: ½ðÖÓÆÆ
-SKILL_ACTIVE_MONK_WAVE_OF_LIGHT := New ActiveSkill("½ðÖÓÆÆ", "ÉñÊ¥", "´ÎÒª"
+; ç¬¦æ–‡: ç¥žå…‰å£åž’ 
+RUNE_MONK_WAVE_OF_LIGHT_A := New SkillRune("ç¥žå…‰å£åž’", "ç‰©ç†", "a", "é‡‘é’Ÿç ´å¯ä½¿æ•Œäººæ˜è¿·1ç§’ã€‚é‡‘é’Ÿç ´çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºç‰©ç†ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: å…‰ç…§å…«è’ 
+RUNE_MONK_WAVE_OF_LIGHT_B := New SkillRune("å…‰ç…§å…«è’", "ç«ç„°", "b", "é‡Šæ”¾èƒ½é‡æ³¢ï¼Œå¯¹é™„è¿‘çš„æ•Œäººé€ æˆ830%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: é’Ÿé¸£å…¥é“ 
+RUNE_MONK_WAVE_OF_LIGHT_D := New SkillRune("é’Ÿé¸£å…¥é“", "ç¥žåœ£", "d", "ä½¿é‡‘é’Ÿç ´çš„ä¼¤å®³æé«˜è‡³1045%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç¥žåœ£ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: æ´ªé’Ÿè´¯è€³ 
+RUNE_MONK_WAVE_OF_LIGHT_E := New SkillRune("æ´ªé’Ÿè´¯è€³", "å†°å¯’", "e", "é‡‘é’Ÿç ´åœ¨ä¸€æ¡ç›´çº¿ä¸Šé€ æˆé¢å¤–820%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å…ˆç¥–ä¹‹æŸ± 
+RUNE_MONK_WAVE_OF_LIGHT_C := New SkillRune("å…ˆç¥–ä¹‹æŸ±", "ç”µå‡»", "c", "å¬å”¤å…ˆç¥–ä¹‹æŸ±ï¼Œé€ æˆ635%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ï¼Œå¹¶åœ¨æŽ¥ä¸‹æ¥çš„3ç§’å†…é€ æˆé¢å¤–785%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: é‡‘é’Ÿç ´
+SKILL_ACTIVE_MONK_WAVE_OF_LIGHT := New ActiveSkill("é‡‘é’Ÿç ´", "ç¥žåœ£", "æ¬¡è¦"
 	, "images\skills\monk\active\monk_waveoflight_normal.png"
-	, "ÏûºÄ£º75µãÄÚÁ¦\r\n»ã¾ÛÊ¥¹â³å»÷²¨·ÛËéµÐÈË£¬¶ÔÆäÔì³É835%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉñÊ¥ÉËº¦£©¡£"
+	, "æ¶ˆè€—ï¼š75ç‚¹å†…åŠ›\r\næ±‡èšåœ£å…‰å†²å‡»æ³¢ç²‰ç¢Žæ•Œäººï¼Œå¯¹å…¶é€ æˆ835%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç¥žåœ£ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_MONK_WAVE_OF_LIGHT_A, RUNE_MONK_WAVE_OF_LIGHT_B, RUNE_MONK_WAVE_OF_LIGHT_D, RUNE_MONK_WAVE_OF_LIGHT_E, RUNE_MONK_WAVE_OF_LIGHT_C])
 ; ---------------------------
-; ¼¼ÄÜ: ½ðÖÓÆÆ End
+; æŠ€èƒ½: é‡‘é’Ÿç ´ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ±¬ÁÑÕÆ Start
+; æŠ€èƒ½: çˆ†è£‚æŽŒ Start
 ; ---------------------------
-; ·ûÎÄ: ÎÞ³£É«Éí 
-RUNE_MONK_EXPLODING_PALM_C := New SkillRune("ÎÞ³£É«Éí", "ÎïÀí", "c", "±»»÷ÖÐµÄµÐÈËÔÚ9ÃëÄÚ³ÐÊÜ¶îÍâ15%µÄÉËº¦¡£")
-; ·ûÎÄ: ÉîºñÄÚÁ¦ 
-RUNE_MONK_EXPLODING_PALM_D := New SkillRune("ÉîºñÄÚÁ¦", "ÉñÊ¥", "d", "ÈôµÐÈËÔÚÁ÷ÑªÖ®ºó±¬Õ¨£¬Ã¿Õ¨µ½Ò»ÃûµÐÈË¼´¿É»Ö¸´15µãÄÚÁ¦¡£±¬ÁÑÕÆµÄÉËº¦ÀàÐÍ×ª»»ÎªÉñÊ¥ÉËº¦¡£")
-; ·ûÎÄ: ËÀµ½ÁÙÍ· 
-RUNE_MONK_EXPLODING_PALM_B := New SkillRune("ËÀµ½ÁÙÍ·", "±ùº®", "b", "±¬ÁÑÕÆ²»ÔÙÊ¹µÐÈËÁ÷Ñª£¬µ«ÈôµÐÈËÔÚ±¬ÁÑÕÆµÄÓ°ÏìÆÚ¼äËÀÍö£¬Ôò»á±¬Õ¨£¬Ôì³É6305%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£")
-; ·ûÎÄ: Åùö¨ÕÆ·¨ 
-RUNE_MONK_EXPLODING_PALM_A := New SkillRune("Åùö¨ÕÆ·¨", "µç»÷", "a", "±¬ÁÑÕÆ¿É¶îÍâ»÷ÖÐ¸½½ü15ÂëÄÚµÄÁíÒ»¸öÄ¿±ê¡£±¬ÁÑÕÆµÄÉËº¦ÀàÐÍ×ª»»ÎªÉÁµçÉËº¦¡£")
-; ·ûÎÄ: ÔªÉñ×ÆÉÕ 
-RUNE_MONK_EXPLODING_PALM_E := New SkillRune("ÔªÉñ×ÆÉÕ", "»ðÑæ", "e", "Ä¿±ê²»ÔÙÁ÷Ñª£¬¶øÊÇÒòÈ¼ÉÕÔÚ9ÃëÄÚÊÜµ½1875%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£Èç¹ûÄ¿±êÔÚ×ÆÉÕ¹ý³ÌÖÐËÀÍö£¬Ôò»á²úÉú±¬Õ¨£¬ÔÚ3ÃëÄÚ¶ÔÖÜÎ§µÄËùÓÐµÐÈËÔì³É3260%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ¼¼ÄÜ: ±¬ÁÑÕÆ
-SKILL_ACTIVE_MONK_EXPLODING_PALM := New ActiveSkill("±¬ÁÑÕÆ", "ÎïÀí", "ÌåÊõ"
+; ç¬¦æ–‡: æ— å¸¸è‰²èº« 
+RUNE_MONK_EXPLODING_PALM_C := New SkillRune("æ— å¸¸è‰²èº«", "ç‰©ç†", "c", "è¢«å‡»ä¸­çš„æ•Œäººåœ¨9ç§’å†…æ‰¿å—é¢å¤–15%çš„ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æ·±åŽšå†…åŠ› 
+RUNE_MONK_EXPLODING_PALM_D := New SkillRune("æ·±åŽšå†…åŠ›", "ç¥žåœ£", "d", "è‹¥æ•Œäººåœ¨æµè¡€ä¹‹åŽçˆ†ç‚¸ï¼Œæ¯ç‚¸åˆ°ä¸€åæ•Œäººå³å¯æ¢å¤15ç‚¹å†…åŠ›ã€‚çˆ†è£‚æŽŒçš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºç¥žåœ£ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æ­»åˆ°ä¸´å¤´ 
+RUNE_MONK_EXPLODING_PALM_B := New SkillRune("æ­»åˆ°ä¸´å¤´", "å†°å¯’", "b", "çˆ†è£‚æŽŒä¸å†ä½¿æ•Œäººæµè¡€ï¼Œä½†è‹¥æ•Œäººåœ¨çˆ†è£‚æŽŒçš„å½±å“æœŸé—´æ­»äº¡ï¼Œåˆ™ä¼šçˆ†ç‚¸ï¼Œé€ æˆ6305%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: éœ¹é›³æŽŒæ³• 
+RUNE_MONK_EXPLODING_PALM_A := New SkillRune("éœ¹é›³æŽŒæ³•", "ç”µå‡»", "a", "çˆ†è£‚æŽŒå¯é¢å¤–å‡»ä¸­é™„è¿‘15ç å†…çš„å¦ä¸€ä¸ªç›®æ ‡ã€‚çˆ†è£‚æŽŒçš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºé—ªç”µä¼¤å®³ã€‚")
+; ç¬¦æ–‡: å…ƒç¥žç¼çƒ§ 
+RUNE_MONK_EXPLODING_PALM_E := New SkillRune("å…ƒç¥žç¼çƒ§", "ç«ç„°", "e", "ç›®æ ‡ä¸å†æµè¡€ï¼Œè€Œæ˜¯å› ç‡ƒçƒ§åœ¨9ç§’å†…å—åˆ°1875%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚å¦‚æžœç›®æ ‡åœ¨ç¼çƒ§è¿‡ç¨‹ä¸­æ­»äº¡ï¼Œåˆ™ä¼šäº§ç”Ÿçˆ†ç‚¸ï¼Œåœ¨3ç§’å†…å¯¹å‘¨å›´çš„æ‰€æœ‰æ•Œäººé€ æˆ3260%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: çˆ†è£‚æŽŒ
+SKILL_ACTIVE_MONK_EXPLODING_PALM := New ActiveSkill("çˆ†è£‚æŽŒ", "ç‰©ç†", "ä½“æœ¯"
 	, "images\skills\monk\active\monk_explodingpalm_normal.png"
-	, "ÏûºÄ£º40µãÄÚÁ¦\r\nÊ¹µÐÈËÁ÷Ñª£¬ÔÚ9ÃëÄÚÊÜµ½1200%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£ÈôµÐÈËÔÚÁ÷Ñª¹ý³ÌÖÐËÀÍö£¬Ê¬Ìå»á±¬Õ¨²¢¶Ô¸½½üËùÓÐµÐÈËÔì³É2770%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£"
+	, "æ¶ˆè€—ï¼š40ç‚¹å†…åŠ›\r\nä½¿æ•Œäººæµè¡€ï¼Œåœ¨9ç§’å†…å—åˆ°1200%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚è‹¥æ•Œäººåœ¨æµè¡€è¿‡ç¨‹ä¸­æ­»äº¡ï¼Œå°¸ä½“ä¼šçˆ†ç‚¸å¹¶å¯¹é™„è¿‘æ‰€æœ‰æ•Œäººé€ æˆ2770%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_MONK_EXPLODING_PALM_C, RUNE_MONK_EXPLODING_PALM_D, RUNE_MONK_EXPLODING_PALM_B, RUNE_MONK_EXPLODING_PALM_A, RUNE_MONK_EXPLODING_PALM_E])
 ; ---------------------------
-; ¼¼ÄÜ: ±¬ÁÑÕÆ End
+; æŠ€èƒ½: çˆ†è£‚æŽŒ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ì«·çÆÆ Start
+; æŠ€èƒ½: é£“é£Žç ´ Start
 ; ---------------------------
-; ·ûÎÄ: ·ç±©Ö®ÑÛ 
-RUNE_MONK_CYCLONE_STRIKE_D := New SkillRune("·ç±©Ö®ÑÛ", "µç»÷", "d", "Ê¹ì«·çÆÆµÄÄÚÁ¦ÏûºÄ½µµÍÖÁ26µã¡£ì«·çÆÆµÄÉËº¦ÀàÐÍ×ª»»ÎªÉÁµçÉËº¦¡£")
-; ·ûÎÄ: ¾ÛÁ¦±¬ÆÆ 
-RUNE_MONK_CYCLONE_STRIKE_B := New SkillRune("¾ÛÁ¦±¬ÆÆ", "ÉñÊ¥", "b", "Ê¹½«µÐÈËÍÏ×§µ½ÄãÉí±ßµÄ¾àÀëÑÓ³¤ÖÁ34Âë¡£")
-; ·ûÎÄ: ÑôÑ×±¬ 
-RUNE_MONK_CYCLONE_STRIKE_A := New SkillRune("ÑôÑ×±¬", "»ðÑæ", "a", "ÓÃ±¬Õ¨³å»÷µÐÈË£¬Ôì³É454%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ¿ñ·çÇ½ 
-RUNE_MONK_CYCLONE_STRIKE_E := New SkillRune("¿ñ·çÇ½", "±ùº®", "e", "µÐÈË±»ÍÏ×§¹ýÀ´ºó£¬»á±»±ù¶³1.5Ãë¡£ì«·çÆÆµÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ·ûÎÄ: ÁÆÉËÇå·ç 
-RUNE_MONK_CYCLONE_STRIKE_C := New SkillRune("ÁÆÉËÇå·ç", "ÉñÊ¥", "c", "ì«·çÆÆ½«ÎªÄãºÍÎ»ÓÚ24ÂëÄÚµÄËùÓÐÍ¬°é»Ö¸´31036µãÉúÃüÖµ¡£ÖÎÁÆÁ¿µÄ¼Ó³ÉÎªÉúÃüÇòÖÎÁÆ¼Ó³ÉµÄ17%¡£")
-; ¼¼ÄÜ: ì«·çÆÆ
-SKILL_ACTIVE_MONK_CYCLONE_STRIKE := New ActiveSkill("ì«·çÆÆ", "ÉñÊ¥", "ìøÏë"
+; ç¬¦æ–‡: é£Žæš´ä¹‹çœ¼ 
+RUNE_MONK_CYCLONE_STRIKE_D := New SkillRune("é£Žæš´ä¹‹çœ¼", "ç”µå‡»", "d", "ä½¿é£“é£Žç ´çš„å†…åŠ›æ¶ˆè€—é™ä½Žè‡³26ç‚¹ã€‚é£“é£Žç ´çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºé—ªç”µä¼¤å®³ã€‚")
+; ç¬¦æ–‡: èšåŠ›çˆ†ç ´ 
+RUNE_MONK_CYCLONE_STRIKE_B := New SkillRune("èšåŠ›çˆ†ç ´", "ç¥žåœ£", "b", "ä½¿å°†æ•Œäººæ‹–æ‹½åˆ°ä½ èº«è¾¹çš„è·ç¦»å»¶é•¿è‡³34ç ã€‚")
+; ç¬¦æ–‡: é˜³ç‚Žçˆ† 
+RUNE_MONK_CYCLONE_STRIKE_A := New SkillRune("é˜³ç‚Žçˆ†", "ç«ç„°", "a", "ç”¨çˆ†ç‚¸å†²å‡»æ•Œäººï¼Œé€ æˆ454%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: ç‹‚é£Žå¢™ 
+RUNE_MONK_CYCLONE_STRIKE_E := New SkillRune("ç‹‚é£Žå¢™", "å†°å¯’", "e", "æ•Œäººè¢«æ‹–æ‹½è¿‡æ¥åŽï¼Œä¼šè¢«å†°å†»1.5ç§’ã€‚é£“é£Žç ´çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ç–—ä¼¤æ¸…é£Ž 
+RUNE_MONK_CYCLONE_STRIKE_C := New SkillRune("ç–—ä¼¤æ¸…é£Ž", "ç¥žåœ£", "c", "é£“é£Žç ´å°†ä¸ºä½ å’Œä½äºŽ24ç å†…çš„æ‰€æœ‰åŒä¼´æ¢å¤31036ç‚¹ç”Ÿå‘½å€¼ã€‚æ²»ç–—é‡çš„åŠ æˆä¸ºç”Ÿå‘½çƒæ²»ç–—åŠ æˆçš„17%ã€‚")
+; æŠ€èƒ½: é£“é£Žç ´
+SKILL_ACTIVE_MONK_CYCLONE_STRIKE := New ActiveSkill("é£“é£Žç ´", "ç¥žåœ£", "ç¦…æƒ³"
 	, "images\skills\monk\active\monk_cyclonestrike_normal.png"
-	, "ÏûºÄ£º50µãÄÚÁ¦\r\n½«24ÂëÄÚ×î¶à16ÃûµÐÈËÀ­µ½ÄãÉí±ß£¬ÄÜÁ¿³å»÷½ôËæÆäºó£¬Ôì³É261%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉñÊ¥ÉËº¦£©¡£"
+	, "æ¶ˆè€—ï¼š50ç‚¹å†…åŠ›\r\nå°†24ç å†…æœ€å¤š16åæ•Œäººæ‹‰åˆ°ä½ èº«è¾¹ï¼Œèƒ½é‡å†²å‡»ç´§éšå…¶åŽï¼Œé€ æˆ261%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç¥žåœ£ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_MONK_CYCLONE_STRIKE_D, RUNE_MONK_CYCLONE_STRIKE_B, RUNE_MONK_CYCLONE_STRIKE_A, RUNE_MONK_CYCLONE_STRIKE_E, RUNE_MONK_CYCLONE_STRIKE_C])
 ; ---------------------------
-; ¼¼ÄÜ: ì«·çÆÆ End
+; æŠ€èƒ½: é£“é£Žç ´ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: °ÙÁÑÈ­ Start
+; æŠ€èƒ½: ç™¾è£‚æ‹³ Start
 ; ---------------------------
-; ·ûÎÄ: ÉÁµç¿ìÈ­ 
-RUNE_MONK_WAY_OF_THE_HUNDRED_FISTS_B := New SkillRune("ÉÁµç¿ìÈ­", "µç»÷", "b", "Ê¹µÚ¶þ»÷µÄ´ò»÷´ÎÊý´Ó7´ÎÌá¸ßÖÁ10´Î£¬ÉËº¦Ìá¸ßÖÁ423%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£")
-; ·ûÎÄ: È­³ö»ðÊÆ 
-RUNE_MONK_WAY_OF_THE_HUNDRED_FISTS_C := New SkillRune("È­³ö»ðÊÆ", "»ðÑæ", "c", "±©»÷Ê¹ÄãµÄ¹¥»÷ºÍÒÆ¶¯ËÙ¶ÈÌá¸ß5%£¬³ÖÐø5Ãë¡£¸ÃÐ§¹û×î¶à¿Éµþ¼Ó3²ã¡£°ÙÁÑÈ­µÄÉËº¦ÀàÐÍ×ª»»Îª»ðÑæÉËº¦¡£")
-; ·ûÎÄ: Å­Òâ¹áÈ­ 
-RUNE_MONK_WAY_OF_THE_HUNDRED_FISTS_A := New SkillRune("Å­Òâ¹áÈ­", "ÉñÊ¥", "a", "ÔÚ´ò³öµÚÒ»»÷µÄÍ¬Ê±·¢Æð¶Ì¾à¼²³å£¬±»ÃüÖÐµÄµÐÈË»áÔÚ3ÃëÄÚÊÜµ½¶îÍâ60%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉñÊ¥ÉËº¦£©¡£Å­Òâ¹áÈ­µÄÉËº¦¿ÉÔÚÍ¬Ò»µÐÈËÉíÉÏµþ¼Ó¶à´Î¡£")
-; ·ûÎÄ: ÄÚÁ¦²ª·¢ 
-RUNE_MONK_WAY_OF_THE_HUNDRED_FISTS_D := New SkillRune("ÄÚÁ¦²ª·¢", "ÎïÀí", "d", "µÚÈý»÷Ã¿»÷ÖÐÒ»ÃûµÐÈË¶¼»áÊ¹ÄãµÄÉËº¦Ìá¸ß5%£¬³ÖÐø5Ãë¡£")
-; ·ûÎÄ: ·çÅ­¿ìÈ­ 
-RUNE_MONK_WAY_OF_THE_HUNDRED_FISTS_E := New SkillRune("·çÅ­¿ìÈ­", "±ùº®", "e", "µÚÈý»÷²úÉúÒ»¹É·çÁ¦£¬¶ÔÎ»ÓÚÄãÕýÇ°·½µÄµÐÈËÔì³É500%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£°ÙÁÑÈ­µÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ¼¼ÄÜ: °ÙÁÑÈ­
-SKILL_ACTIVE_MONK_WAY_OF_THE_HUNDRED_FISTS := New ActiveSkill("°ÙÁÑÈ­", "ÎïÀí", "Ö÷Òª"
+; ç¬¦æ–‡: é—ªç”µå¿«æ‹³ 
+RUNE_MONK_WAY_OF_THE_HUNDRED_FISTS_B := New SkillRune("é—ªç”µå¿«æ‹³", "ç”µå‡»", "b", "ä½¿ç¬¬äºŒå‡»çš„æ‰“å‡»æ¬¡æ•°ä»Ž7æ¬¡æé«˜è‡³10æ¬¡ï¼Œä¼¤å®³æé«˜è‡³423%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: æ‹³å‡ºç«åŠ¿ 
+RUNE_MONK_WAY_OF_THE_HUNDRED_FISTS_C := New SkillRune("æ‹³å‡ºç«åŠ¿", "ç«ç„°", "c", "æš´å‡»ä½¿ä½ çš„æ”»å‡»å’Œç§»åŠ¨é€Ÿåº¦æé«˜5%ï¼ŒæŒç»­5ç§’ã€‚è¯¥æ•ˆæžœæœ€å¤šå¯å åŠ 3å±‚ã€‚ç™¾è£‚æ‹³çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºç«ç„°ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æ€’æ„è´¯æ‹³ 
+RUNE_MONK_WAY_OF_THE_HUNDRED_FISTS_A := New SkillRune("æ€’æ„è´¯æ‹³", "ç¥žåœ£", "a", "åœ¨æ‰“å‡ºç¬¬ä¸€å‡»çš„åŒæ—¶å‘èµ·çŸ­è·ç–¾å†²ï¼Œè¢«å‘½ä¸­çš„æ•Œäººä¼šåœ¨3ç§’å†…å—åˆ°é¢å¤–60%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç¥žåœ£ä¼¤å®³ï¼‰ã€‚æ€’æ„è´¯æ‹³çš„ä¼¤å®³å¯åœ¨åŒä¸€æ•Œäººèº«ä¸Šå åŠ å¤šæ¬¡ã€‚")
+; ç¬¦æ–‡: å†…åŠ›å‹ƒå‘ 
+RUNE_MONK_WAY_OF_THE_HUNDRED_FISTS_D := New SkillRune("å†…åŠ›å‹ƒå‘", "ç‰©ç†", "d", "ç¬¬ä¸‰å‡»æ¯å‡»ä¸­ä¸€åæ•Œäººéƒ½ä¼šä½¿ä½ çš„ä¼¤å®³æé«˜5%ï¼ŒæŒç»­5ç§’ã€‚")
+; ç¬¦æ–‡: é£Žæ€’å¿«æ‹³ 
+RUNE_MONK_WAY_OF_THE_HUNDRED_FISTS_E := New SkillRune("é£Žæ€’å¿«æ‹³", "å†°å¯’", "e", "ç¬¬ä¸‰å‡»äº§ç”Ÿä¸€è‚¡é£ŽåŠ›ï¼Œå¯¹ä½äºŽä½ æ­£å‰æ–¹çš„æ•Œäººé€ æˆ500%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚ç™¾è£‚æ‹³çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; æŠ€èƒ½: ç™¾è£‚æ‹³
+SKILL_ACTIVE_MONK_WAY_OF_THE_HUNDRED_FISTS := New ActiveSkill("ç™¾è£‚æ‹³", "ç‰©ç†", "ä¸»è¦"
 	, "images\skills\monk\active\monk_wayofthehundredfists_normal.png"
-	, "Éú³É£º12µãÄÚÁ¦\r\n´ò³öÒ»´®¿ìÈ­£¬¹¥»÷µÐÈËÔì³É190%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£"
+	, "ç”Ÿæˆï¼š12ç‚¹å†…åŠ›\r\næ‰“å‡ºä¸€ä¸²å¿«æ‹³ï¼Œæ”»å‡»æ•Œäººé€ æˆ190%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_MONK_WAY_OF_THE_HUNDRED_FISTS_B, RUNE_MONK_WAY_OF_THE_HUNDRED_FISTS_C, RUNE_MONK_WAY_OF_THE_HUNDRED_FISTS_A, RUNE_MONK_WAY_OF_THE_HUNDRED_FISTS_D, RUNE_MONK_WAY_OF_THE_HUNDRED_FISTS_E])
 ; ---------------------------
-; ¼¼ÄÜ: °ÙÁÑÈ­ End
+; æŠ€èƒ½: ç™¾è£‚æ‹³ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ìø¶¨ Start
+; æŠ€èƒ½: ç¦…å®š Start
 ; ---------------------------
-; ·ûÎÄ: ÐÄÈçÖ¹Ë® 
-RUNE_MONK_SERENITY_A := New SkillRune("ÐÄÈçÖ¹Ë®", "ÉñÊ¥", "a", "ìø¶¨¼¤»îÊ±Ê¹Äã»Ö¸´93874 - 120695µãÉúÃüÖµ¡£ÖÎÁÆÁ¿µÄ¼Ó³ÉÎªÉúÃüÇòÖÎÁÆ¼Ó³ÉµÄ40%¡£")
-; ·ûÎÄ: ²»ËÙÖ®ÈÅ 
-RUNE_MONK_SERENITY_E := New SkillRune("²»ËÙÖ®ÈÅ", "ÎïÀí", "e", "ÔÚìø¶¨Ð§¹ûµÄÓ°ÏìÏÂ£¬20ÂëÄÚµÄµÐÈËÃ¿ÃëÊÜµ½438%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£")
-; ·ûÎÄ: Äþ¾²ÖÂÔ¶ 
-RUNE_MONK_SERENITY_D := New SkillRune("Äþ¾²ÖÂÔ¶", "ÉñÊ¥", "d", "ÓÃÒ»µÀ»¤¶Ü±£»¤45ÂëÄÚµÄÍ¬°é£¬ÒÆ³ýËûÃÇÉíÉÏµÄ¿ØÖÆÀàÏÞÖÆÐ§¹û£¬²¢½«×î¶à120158µãµÄÉËº¦Öµ×ªÒÆµ½ÄãÉíÉÏ£¬³ÖÐø3Ãë¡£»¤¶ÜÖµÌá¸ßÁ¿ÎªÉúÃüÇòÖÎÁÆ¼Ó³ÉµÄ40%¡£")
-; ·ûÎÄ: ÐÄÐÔ³¬ÍÑ 
-RUNE_MONK_SERENITY_C := New SkillRune("ÐÄÐÔ³¬ÍÑ", "ÉñÊ¥", "c", "Ê¹ìø¶¨µÄ³ÖÐøÊ±¼äÑÓ³¤ÖÁ4Ãë¡£")
-; ·ûÎÄ: ÏÖÊÀÏÖ±¨ 
-RUNE_MONK_SERENITY_B := New SkillRune("ÏÖÊÀÏÖ±¨", "ÉñÊ¥", "b", "ÔÚìø¶¨Ð§¹ûµÄÓ°ÏìÏÂ£¬ÄãµÄÒÆ¶¯²»ÊÜÏÞÖÆ¡£")
-; ¼¼ÄÜ: ìø¶¨
-SKILL_ACTIVE_MONK_SERENITY := New ActiveSkill("ìø¶¨", "ÉñÊ¥", "·ÀÓù"
+; ç¬¦æ–‡: å¿ƒå¦‚æ­¢æ°´ 
+RUNE_MONK_SERENITY_A := New SkillRune("å¿ƒå¦‚æ­¢æ°´", "ç¥žåœ£", "a", "ç¦…å®šæ¿€æ´»æ—¶ä½¿ä½ æ¢å¤93874 - 120695ç‚¹ç”Ÿå‘½å€¼ã€‚æ²»ç–—é‡çš„åŠ æˆä¸ºç”Ÿå‘½çƒæ²»ç–—åŠ æˆçš„40%ã€‚")
+; ç¬¦æ–‡: ä¸é€Ÿä¹‹æ‰° 
+RUNE_MONK_SERENITY_E := New SkillRune("ä¸é€Ÿä¹‹æ‰°", "ç‰©ç†", "e", "åœ¨ç¦…å®šæ•ˆæžœçš„å½±å“ä¸‹ï¼Œ20ç å†…çš„æ•Œäººæ¯ç§’å—åˆ°438%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å®é™è‡´è¿œ 
+RUNE_MONK_SERENITY_D := New SkillRune("å®é™è‡´è¿œ", "ç¥žåœ£", "d", "ç”¨ä¸€é“æŠ¤ç›¾ä¿æŠ¤45ç å†…çš„åŒä¼´ï¼Œç§»é™¤ä»–ä»¬èº«ä¸Šçš„æŽ§åˆ¶ç±»é™åˆ¶æ•ˆæžœï¼Œå¹¶å°†æœ€å¤š120158ç‚¹çš„ä¼¤å®³å€¼è½¬ç§»åˆ°ä½ èº«ä¸Šï¼ŒæŒç»­3ç§’ã€‚æŠ¤ç›¾å€¼æé«˜é‡ä¸ºç”Ÿå‘½çƒæ²»ç–—åŠ æˆçš„40%ã€‚")
+; ç¬¦æ–‡: å¿ƒæ€§è¶…è„± 
+RUNE_MONK_SERENITY_C := New SkillRune("å¿ƒæ€§è¶…è„±", "ç¥žåœ£", "c", "ä½¿ç¦…å®šçš„æŒç»­æ—¶é—´å»¶é•¿è‡³4ç§’ã€‚")
+; ç¬¦æ–‡: çŽ°ä¸–çŽ°æŠ¥ 
+RUNE_MONK_SERENITY_B := New SkillRune("çŽ°ä¸–çŽ°æŠ¥", "ç¥žåœ£", "b", "åœ¨ç¦…å®šæ•ˆæžœçš„å½±å“ä¸‹ï¼Œä½ çš„ç§»åŠ¨ä¸å—é™åˆ¶ã€‚")
+; æŠ€èƒ½: ç¦…å®š
+SKILL_ACTIVE_MONK_SERENITY := New ActiveSkill("ç¦…å®š", "ç¥žåœ£", "é˜²å¾¡"
 	, "images\skills\monk\active\monk_serenity_normal.png"
-	, "ÀäÈ´Ê±¼ä£º16Ãë\r\nÊ¹ÄãÊÜµ½Ò»µÀ»¤¶ÜµÄ±£»¤£¬ÎüÊÕËùÓÐÉËº¦£¬³ÖÐø3Ãë£¬²¢ÃâÒßËùÓÐ¿ØÖÆÀàÏÞÖÆÐ§¹û¡£"
+	, "å†·å´æ—¶é—´ï¼š16ç§’\r\nä½¿ä½ å—åˆ°ä¸€é“æŠ¤ç›¾çš„ä¿æŠ¤ï¼Œå¸æ”¶æ‰€æœ‰ä¼¤å®³ï¼ŒæŒç»­3ç§’ï¼Œå¹¶å…ç–«æ‰€æœ‰æŽ§åˆ¶ç±»é™åˆ¶æ•ˆæžœã€‚"
 	, [RUNE_MONK_SERENITY_A, RUNE_MONK_SERENITY_E, RUNE_MONK_SERENITY_D, RUNE_MONK_SERENITY_C, RUNE_MONK_SERENITY_B])
 ; ---------------------------
-; ¼¼ÄÜ: ìø¶¨ End
+; æŠ€èƒ½: ç¦…å®š End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÆßÏàÈ­ Start
+; æŠ€èƒ½: ä¸ƒç›¸æ‹³ Start
 ; ---------------------------
-; ·ûÎÄ: Ñ¸Ó°Í»Ï® 
-RUNE_MONK_SEVENSIDED_STRIKE_A := New SkillRune("Ñ¸Ó°Í»Ï®", "µç»÷", "a", "´«ËÍÖÁµÐÈËµÄÎ»ÖÃ£¬²¢Ê¹½ÓÏÂÀ´7»÷Ôì³ÉµÄÉËº¦Ìá¸ßÖÁ8285%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£")
-; ·ûÎÄ: ·ÙÉí»¯¹Ç 
-RUNE_MONK_SEVENSIDED_STRIKE_B := New SkillRune("·ÙÉí»¯¹Ç", "»ðÑæ", "b", "ÆßÏàÈ­Ê¹µÐÈËÈ¼ÉÕ£¬ÔÚ3ÃëÄÚÊÜµ½630%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ÐúÏùÉ±Òâ 
-RUNE_MONK_SEVENSIDED_STRIKE_C := New SkillRune("ÐúÏùÉ±Òâ", "±ùº®", "c", "ÒÆ³ýÄÚÁ¦ÏûºÄ£¬ÇÒ±»ÆßÏàÈ­»÷ÖÐµÄµÐÈË»á±»±ù¶³7Ãë¡£")
-; ·ûÎÄ: ÎÞ¼äÈ­·¨ 
-RUNE_MONK_SEVENSIDED_STRIKE_D := New SkillRune("ÎÞ¼äÈ­·¨", "ÎïÀí", "d", "Ê¹ÀäÈ´Ê±¼äËõ¶ÌÖÁ14Ãë¡£")
-; ·ûÎÄ: ±¬ÁÒÇ¿Ï® 
-RUNE_MONK_SEVENSIDED_STRIKE_E := New SkillRune("±¬ÁÒÇ¿Ï®", "ÉñÊ¥", "e", "Ã¿´Î»÷ÖÐºó±¬Õ¨£¬ÔÚµÐÈËÖÜÎ§7ÂëÄÚÔì³É877%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉñÊ¥ÉËº¦£©¡£")
-; ¼¼ÄÜ: ÆßÏàÈ­
-SKILL_ACTIVE_MONK_SEVENSIDED_STRIKE := New ActiveSkill("ÆßÏàÈ­", "ÎïÀí", "ìøÏë"
+; ç¬¦æ–‡: è¿…å½±çªè¢­ 
+RUNE_MONK_SEVENSIDED_STRIKE_A := New SkillRune("è¿…å½±çªè¢­", "ç”µå‡»", "a", "ä¼ é€è‡³æ•Œäººçš„ä½ç½®ï¼Œå¹¶ä½¿æŽ¥ä¸‹æ¥7å‡»é€ æˆçš„ä¼¤å®³æé«˜è‡³8285%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: ç„šèº«åŒ–éª¨ 
+RUNE_MONK_SEVENSIDED_STRIKE_B := New SkillRune("ç„šèº«åŒ–éª¨", "ç«ç„°", "b", "ä¸ƒç›¸æ‹³ä½¿æ•Œäººç‡ƒçƒ§ï¼Œåœ¨3ç§’å†…å—åˆ°630%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å–§åš£æ€æ„ 
+RUNE_MONK_SEVENSIDED_STRIKE_C := New SkillRune("å–§åš£æ€æ„", "å†°å¯’", "c", "ç§»é™¤å†…åŠ›æ¶ˆè€—ï¼Œä¸”è¢«ä¸ƒç›¸æ‹³å‡»ä¸­çš„æ•Œäººä¼šè¢«å†°å†»7ç§’ã€‚")
+; ç¬¦æ–‡: æ— é—´æ‹³æ³• 
+RUNE_MONK_SEVENSIDED_STRIKE_D := New SkillRune("æ— é—´æ‹³æ³•", "ç‰©ç†", "d", "ä½¿å†·å´æ—¶é—´ç¼©çŸ­è‡³14ç§’ã€‚")
+; ç¬¦æ–‡: çˆ†çƒˆå¼ºè¢­ 
+RUNE_MONK_SEVENSIDED_STRIKE_E := New SkillRune("çˆ†çƒˆå¼ºè¢­", "ç¥žåœ£", "e", "æ¯æ¬¡å‡»ä¸­åŽçˆ†ç‚¸ï¼Œåœ¨æ•Œäººå‘¨å›´7ç å†…é€ æˆ877%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç¥žåœ£ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: ä¸ƒç›¸æ‹³
+SKILL_ACTIVE_MONK_SEVENSIDED_STRIKE := New ActiveSkill("ä¸ƒç›¸æ‹³", "ç‰©ç†", "ç¦…æƒ³"
 	, "images\skills\monk\active\monk_sevensidedstrike_normal.png"
-	, "ÏûºÄ£º50µãÄÚÁ¦ÀäÈ´Ê±¼ä£º30Ãë\r\nÔÚ¸½½ü¶à¸öµÐÈË¼ä¿ìËÙ×ó³åÓÒÍ»£¬·¢Æð7¼ÇÃÍ»÷£¬Ôì³É5677%µÄÎäÆ÷ÉËº¦¡£"
+	, "æ¶ˆè€—ï¼š50ç‚¹å†…åŠ›å†·å´æ—¶é—´ï¼š30ç§’\r\nåœ¨é™„è¿‘å¤šä¸ªæ•Œäººé—´å¿«é€Ÿå·¦å†²å³çªï¼Œå‘èµ·7è®°çŒ›å‡»ï¼Œé€ æˆ5677%çš„æ­¦å™¨ä¼¤å®³ã€‚"
 	, [RUNE_MONK_SEVENSIDED_STRIKE_A, RUNE_MONK_SEVENSIDED_STRIKE_B, RUNE_MONK_SEVENSIDED_STRIKE_C, RUNE_MONK_SEVENSIDED_STRIKE_D, RUNE_MONK_SEVENSIDED_STRIKE_E])
 ; ---------------------------
-; ¼¼ÄÜ: ÆßÏàÈ­ End
+; æŠ€èƒ½: ä¸ƒç›¸æ‹³ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ¾ÈÊêÕæÑÔ Start
+; æŠ€èƒ½: æ•‘èµŽçœŸè¨€ Start
 ; ---------------------------
-; ·ûÎÄ: ¼áÈç½ð¸Õ 
-RUNE_MONK_MANTRA_OF_SALVATION_C := New SkillRune("¼áÈç½ð¸Õ", "ÎïÀí", "c", "±»¶¯£º¾ÈÊêÕæÑÔÍ¬Ê±»áÊ¹»¤¼×ÖµÌá¸ß20%¡£")
-; ·ûÎÄ: Éñ¶÷»¤Ìå 
-RUNE_MONK_MANTRA_OF_SALVATION_E := New SkillRune("Éñ¶÷»¤Ìå", "ÎïÀí", "e", "±»¶¯£º¾ÈÊêÕæÑÔÍ¬Ê±»á±£»¤ÄãºÍÄãµÄÍ¬°é£¬ÔÚÉúÃüÖµµÍÓÚ25%Ê±Éú³ÉÒ»µÀ»¤¶Ü£¬Ê¹ÊÜµ½µÄÉËº¦½µµÍ80%£¬³ÖÐø3Ãë¡£Ã¿¸öÄ¿±êÃ¿90Ãë¿É±»¸ÃÐ§¹û±£»¤Ò»´Î¡£")
-; ·ûÎÄ: ·ç·÷Â«µ´ 
-RUNE_MONK_MANTRA_OF_SALVATION_D := New SkillRune("·ç·÷Â«µ´", "ÎïÀí", "d", "±»¶¯£º¾ÈÊêÕæÑÔÍ¬Ê±»áÊ¹ÒÆ¶¯ËÙ¶ÈÌá¸ß10%¡£")
-; ·ûÎÄ: ÎåÐÐ¼ÓÉí 
-RUNE_MONK_MANTRA_OF_SALVATION_B := New SkillRune("ÎåÐÐ¼ÓÉí", "ÎïÀí", "b", "±»¶¯£º¶ÔÈ«ÔªËØ¿¹ÐÔ¼Ó³ÉÌá¸ßÖÁ40%¡£")
-; ·ûÎÄ: ÉíÇáÈçÑà 
-RUNE_MONK_MANTRA_OF_SALVATION_A := New SkillRune("ÉíÇáÈçÑà", "ÎïÀí", "a", "±»¶¯£º¾ÈÊêÕæÑÔÍ¬Ê±»áÊ¹¶ãÉÁ¼¸ÂÊÌá¸ß35%¡£")
-; ¼¼ÄÜ: ¾ÈÊêÕæÑÔ
-SKILL_ACTIVE_MONK_MANTRA_OF_SALVATION := New ActiveSkill("¾ÈÊêÕæÑÔ", "ÎïÀí", "ÕæÑÔ"
+; ç¬¦æ–‡: åšå¦‚é‡‘åˆš 
+RUNE_MONK_MANTRA_OF_SALVATION_C := New SkillRune("åšå¦‚é‡‘åˆš", "ç‰©ç†", "c", "è¢«åŠ¨ï¼šæ•‘èµŽçœŸè¨€åŒæ—¶ä¼šä½¿æŠ¤ç”²å€¼æé«˜20%ã€‚")
+; ç¬¦æ–‡: ç¥žæ©æŠ¤ä½“ 
+RUNE_MONK_MANTRA_OF_SALVATION_E := New SkillRune("ç¥žæ©æŠ¤ä½“", "ç‰©ç†", "e", "è¢«åŠ¨ï¼šæ•‘èµŽçœŸè¨€åŒæ—¶ä¼šä¿æŠ¤ä½ å’Œä½ çš„åŒä¼´ï¼Œåœ¨ç”Ÿå‘½å€¼ä½ŽäºŽ25%æ—¶ç”Ÿæˆä¸€é“æŠ¤ç›¾ï¼Œä½¿å—åˆ°çš„ä¼¤å®³é™ä½Ž80%ï¼ŒæŒç»­3ç§’ã€‚æ¯ä¸ªç›®æ ‡æ¯90ç§’å¯è¢«è¯¥æ•ˆæžœä¿æŠ¤ä¸€æ¬¡ã€‚")
+; ç¬¦æ–‡: é£Žæ‹‚èŠ¦è¡ 
+RUNE_MONK_MANTRA_OF_SALVATION_D := New SkillRune("é£Žæ‹‚èŠ¦è¡", "ç‰©ç†", "d", "è¢«åŠ¨ï¼šæ•‘èµŽçœŸè¨€åŒæ—¶ä¼šä½¿ç§»åŠ¨é€Ÿåº¦æé«˜10%ã€‚")
+; ç¬¦æ–‡: äº”è¡ŒåŠ èº« 
+RUNE_MONK_MANTRA_OF_SALVATION_B := New SkillRune("äº”è¡ŒåŠ èº«", "ç‰©ç†", "b", "è¢«åŠ¨ï¼šå¯¹å…¨å…ƒç´ æŠ—æ€§åŠ æˆæé«˜è‡³40%ã€‚")
+; ç¬¦æ–‡: èº«è½»å¦‚ç‡• 
+RUNE_MONK_MANTRA_OF_SALVATION_A := New SkillRune("èº«è½»å¦‚ç‡•", "ç‰©ç†", "a", "è¢«åŠ¨ï¼šæ•‘èµŽçœŸè¨€åŒæ—¶ä¼šä½¿èº²é—ªå‡ çŽ‡æé«˜35%ã€‚")
+; æŠ€èƒ½: æ•‘èµŽçœŸè¨€
+SKILL_ACTIVE_MONK_MANTRA_OF_SALVATION := New ActiveSkill("æ•‘èµŽçœŸè¨€", "ç‰©ç†", "çœŸè¨€"
 	, "images\skills\monk\active\monk_resistaura_normal.png"
-	, "ÏûºÄ£º50µãÄÚÁ¦\r\nÖ÷¶¯£ºÊ¹ÄãºÍ¸½½üÍ¬°é¶ÔÈ«ÔªËØ¿¹ÐÔ¶îÍâÌá¸ß20%£¬³ÖÐø3Ãë¡£"
+	, "æ¶ˆè€—ï¼š50ç‚¹å†…åŠ›\r\nä¸»åŠ¨ï¼šä½¿ä½ å’Œé™„è¿‘åŒä¼´å¯¹å…¨å…ƒç´ æŠ—æ€§é¢å¤–æé«˜20%ï¼ŒæŒç»­3ç§’ã€‚"
 	, [RUNE_MONK_MANTRA_OF_SALVATION_C, RUNE_MONK_MANTRA_OF_SALVATION_E, RUNE_MONK_MANTRA_OF_SALVATION_D, RUNE_MONK_MANTRA_OF_SALVATION_B, RUNE_MONK_MANTRA_OF_SALVATION_A])
 ; ---------------------------
-; ¼¼ÄÜ: ¾ÈÊêÕæÑÔ End
+; æŠ€èƒ½: æ•‘èµŽçœŸè¨€ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ¾¢·çÉ· Start
+; æŠ€èƒ½: åŠ²é£Žç…ž Start
 ; ---------------------------
-; ·ûÎÄ: Óù·ç´óÊ¦ 
-RUNE_MONK_SWEEPING_WIND_E := New SkillRune("Óù·ç´óÊ¦", "±ùº®", "e", "µ±Ðý·çÐ§¹ûµþ¼ÓÖÁ3²ã»òÒÔÉÏÊ±£¬³ÖÐøÊÜµ½¾¢·çÉ·ÉËº¦³¤´ï3ÃëµÄµÐÈË»á±»±ù¶³2Ãë¡£µÐÈËÃ¿3ÃëÖ»ÄÜ±»¾¢·çÉ·±ù¶³Ò»´Î¡£¾¢·çÉ·µÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ·ûÎÄ: ÀûÈÐ·ç±© 
-RUNE_MONK_SWEEPING_WIND_A := New SkillRune("ÀûÈÐ·ç±©", "ÎïÀí", "a", "Ê¹Ðý·ç±äµÃ¸üÎªÃÍÁÒ£¬Ã¿²ãÐ§¹û¿ÉÃ¿ÃëÔì³É145%µÄÎäÆ÷ÉËº¦¡£µ±Ð§¹ûµþ¼ÓÖÁ3²ãÊ±£¬Ôì³É435%µÄÎäÆ÷ÉËº¦¡£")
-; ·ûÎÄ: ÁÒÑæ·ç±© 
-RUNE_MONK_SWEEPING_WIND_B := New SkillRune("ÁÒÑæ·ç±©", "»ðÑæ", "b", "Ê¹Ðý·çµÄ·¶Î§À©´óÖÁ14Âë¡£¾¢·çÉ·µÄÉËº¦ÀàÐÍ×ª»»Îª»ðÑæÉËº¦¡£")
-; ·ûÎÄ: ÐÄÁé·ç±© 
-RUNE_MONK_SWEEPING_WIND_D := New SkillRune("ÐÄÁé·ç±©", "ÉñÊ¥", "d", "Ö»ÒªÐý·çÐ§¹ûµþ¼ÓÖÁ3²ã»òÒÔÉÏÊ±£¬ÄãÃ¿Ãë¿É»ñµÃ8µãÄÚÁ¦¡£¾¢·çÉ·µÄÉËº¦ÀàÐÍ×ª»»ÎªÉñÊ¥ÉËº¦¡£")
-; ·ûÎÄ: ÉÁµç·ç±© 
-RUNE_MONK_SWEEPING_WIND_C := New SkillRune("ÉÁµç·ç±©", "µç»÷", "c", "µ±Ðý·çÐ§¹ûµþ¼ÓÖÁ3²ã»òÒÔÉÏÊ±£¬±©»÷ÓÐÒ»¶¨¼¸ÂÊÉú³ÉÉÁµçÁú¾í·ç£¬ÖÜÆÚÐÔµØµç»÷¸½½üµÄµÐÈË£¬Ôì³É95%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£Éú³ÉµÄÃ¿¸öÉÁµçÁú¾í·ç¿É³ÖÐø3Ãë¡£¾¢·çÉ·µÄÉËº¦ÀàÐÍ×ª»»ÎªÉÁµçÉËº¦¡£")
-; ¼¼ÄÜ: ¾¢·çÉ·
-SKILL_ACTIVE_MONK_SWEEPING_WIND := New ActiveSkill("¾¢·çÉ·", "ÎïÀí", "ÌåÊõ"
+; ç¬¦æ–‡: å¾¡é£Žå¤§å¸ˆ 
+RUNE_MONK_SWEEPING_WIND_E := New SkillRune("å¾¡é£Žå¤§å¸ˆ", "å†°å¯’", "e", "å½“æ—‹é£Žæ•ˆæžœå åŠ è‡³3å±‚æˆ–ä»¥ä¸Šæ—¶ï¼ŒæŒç»­å—åˆ°åŠ²é£Žç…žä¼¤å®³é•¿è¾¾3ç§’çš„æ•Œäººä¼šè¢«å†°å†»2ç§’ã€‚æ•Œäººæ¯3ç§’åªèƒ½è¢«åŠ²é£Žç…žå†°å†»ä¸€æ¬¡ã€‚åŠ²é£Žç…žçš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: åˆ©åˆƒé£Žæš´ 
+RUNE_MONK_SWEEPING_WIND_A := New SkillRune("åˆ©åˆƒé£Žæš´", "ç‰©ç†", "a", "ä½¿æ—‹é£Žå˜å¾—æ›´ä¸ºçŒ›çƒˆï¼Œæ¯å±‚æ•ˆæžœå¯æ¯ç§’é€ æˆ145%çš„æ­¦å™¨ä¼¤å®³ã€‚å½“æ•ˆæžœå åŠ è‡³3å±‚æ—¶ï¼Œé€ æˆ435%çš„æ­¦å™¨ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: çƒˆç„°é£Žæš´ 
+RUNE_MONK_SWEEPING_WIND_B := New SkillRune("çƒˆç„°é£Žæš´", "ç«ç„°", "b", "ä½¿æ—‹é£Žçš„èŒƒå›´æ‰©å¤§è‡³14ç ã€‚åŠ²é£Žç…žçš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºç«ç„°ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: å¿ƒçµé£Žæš´ 
+RUNE_MONK_SWEEPING_WIND_D := New SkillRune("å¿ƒçµé£Žæš´", "ç¥žåœ£", "d", "åªè¦æ—‹é£Žæ•ˆæžœå åŠ è‡³3å±‚æˆ–ä»¥ä¸Šæ—¶ï¼Œä½ æ¯ç§’å¯èŽ·å¾—8ç‚¹å†…åŠ›ã€‚åŠ²é£Žç…žçš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºç¥žåœ£ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: é—ªç”µé£Žæš´ 
+RUNE_MONK_SWEEPING_WIND_C := New SkillRune("é—ªç”µé£Žæš´", "ç”µå‡»", "c", "å½“æ—‹é£Žæ•ˆæžœå åŠ è‡³3å±‚æˆ–ä»¥ä¸Šæ—¶ï¼Œæš´å‡»æœ‰ä¸€å®šå‡ çŽ‡ç”Ÿæˆé—ªç”µé¾™å·é£Žï¼Œå‘¨æœŸæ€§åœ°ç”µå‡»é™„è¿‘çš„æ•Œäººï¼Œé€ æˆ95%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚ç”Ÿæˆçš„æ¯ä¸ªé—ªç”µé¾™å·é£Žå¯æŒç»­3ç§’ã€‚åŠ²é£Žç…žçš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºé—ªç”µä¼¤å®³ã€‚")
+; æŠ€èƒ½: åŠ²é£Žç…ž
+SKILL_ACTIVE_MONK_SWEEPING_WIND := New ActiveSkill("åŠ²é£Žç…ž", "ç‰©ç†", "ä½“æœ¯"
 	, "images\skills\monk\active\monk_sweepingwind_normal.png"
-	, "ÏûºÄ£º75µãÄÚÁ¦\r\nÊ¹Äã×Ô¼º±»Ðý·ç»·ÈÆ£¬¶ÔÎ»ÓÚ10ÂëÄÚµÄËùÓÐµÐÈË³ÖÐøÔì³É105%µÄÎäÆ÷ÉËº¦¡£Ðý·ç¿É´æÔÚ6Ãë£¬ÇÒÃ¿µ±Äã¶ÔÒ»ÃûµÐÈËÊ¹ÓÃ½üÕ½¹¥»÷Ê±£¬¶¼»áÖØÖÃÆä³ÖÐøÊ±¼ä¡£±©»÷ÓÐÒ»¶¨¼¸ÂÊÊ¹Ðý·çÐ§¹ûµþ¼ÓÖÁ3²ã£¬¶Ô¸½½üµÐÈËÔì³É×Ü¼Æ315%µÄÎäÆ÷ÉËº¦¡£"
+	, "æ¶ˆè€—ï¼š75ç‚¹å†…åŠ›\r\nä½¿ä½ è‡ªå·±è¢«æ—‹é£ŽçŽ¯ç»•ï¼Œå¯¹ä½äºŽ10ç å†…çš„æ‰€æœ‰æ•ŒäººæŒç»­é€ æˆ105%çš„æ­¦å™¨ä¼¤å®³ã€‚æ—‹é£Žå¯å­˜åœ¨6ç§’ï¼Œä¸”æ¯å½“ä½ å¯¹ä¸€åæ•Œäººä½¿ç”¨è¿‘æˆ˜æ”»å‡»æ—¶ï¼Œéƒ½ä¼šé‡ç½®å…¶æŒç»­æ—¶é—´ã€‚æš´å‡»æœ‰ä¸€å®šå‡ çŽ‡ä½¿æ—‹é£Žæ•ˆæžœå åŠ è‡³3å±‚ï¼Œå¯¹é™„è¿‘æ•Œäººé€ æˆæ€»è®¡315%çš„æ­¦å™¨ä¼¤å®³ã€‚"
 	, [RUNE_MONK_SWEEPING_WIND_E, RUNE_MONK_SWEEPING_WIND_A, RUNE_MONK_SWEEPING_WIND_B, RUNE_MONK_SWEEPING_WIND_D, RUNE_MONK_SWEEPING_WIND_C])
 ; ---------------------------
-; ¼¼ÄÜ: ¾¢·çÉ· End
+; æŠ€èƒ½: åŠ²é£Žç…ž End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ³Í½äÕæÑÔ Start
+; æŠ€èƒ½: æƒ©æˆ’çœŸè¨€ Start
 ; ---------------------------
-; ·ûÎÄ: ¿ìÒâ¶÷³ð 
-RUNE_MONK_MANTRA_OF_RETRIBUTION_A := New SkillRune("¿ìÒâ¶÷³ð", "»ðÑæ", "a", "±»¶¯£ºÊ¹³Í½äÕæÑÔÔì³ÉµÄÉËº¦Ìá¸ßÖÁ202%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ½èÁ¦´òÁ¦ 
-RUNE_MONK_MANTRA_OF_RETRIBUTION_B := New SkillRune("½èÁ¦´òÁ¦", "ÉñÊ¥", "b", "±»¶¯£º³Í½äÕæÑÔÊ¹ÄãºÍÍ¬°éµÄ¹¥»÷ËÙ¶ÈÌá¸ß10%¡£")
-; ·ûÎÄ: Òå·ßÄÑÆ½ 
-RUNE_MONK_MANTRA_OF_RETRIBUTION_C := New SkillRune("Òå·ßÄÑÆ½", "ÉñÊ¥", "c", "±»¶¯£ºÊÜµ½³Í½äÕæÑÔÉËº¦µÄµÐÈËÓÐ20%µÄ¼¸ÂÊÏÝÈë»èÃÔ£¬³ÖÐø3Ãë¡£")
-; ·ûÎÄ: Åû¾£Õ¶¼¬ 
-RUNE_MONK_MANTRA_OF_RETRIBUTION_D := New SkillRune("Åû¾£Õ¶¼¬", "ÉñÊ¥", "d", "±»¶¯£º³Í½äÕæÑÔÔÚÔì³ÉÉËº¦Ê±ÓÐÒ»¶¨¼¸ÂÊ»Ö¸´3µãÄÚÁ¦¡£")
-; ·ûÎÄ: Ò»Ëð¾ãËð 
-RUNE_MONK_MANTRA_OF_RETRIBUTION_E := New SkillRune("Ò»Ëð¾ãËð", "ÉñÊ¥", "e", "±»¶¯£º±»³Í½äÕæÑÔÉËº¦µ½µÄµÐÈËÓÐ75%µÄ¼¸ÂÊÔâÊÜµ½·´µ¯³å»÷£¬¶Ô×ÔÉíºÍ¸½½üµÄµÐÈËÔì³É101%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉñÊ¥ÉËº¦£©¡£")
-; ¼¼ÄÜ: ³Í½äÕæÑÔ
-SKILL_ACTIVE_MONK_MANTRA_OF_RETRIBUTION := New ActiveSkill("³Í½äÕæÑÔ", "ÉñÊ¥", "ÕæÑÔ"
+; ç¬¦æ–‡: å¿«æ„æ©ä»‡ 
+RUNE_MONK_MANTRA_OF_RETRIBUTION_A := New SkillRune("å¿«æ„æ©ä»‡", "ç«ç„°", "a", "è¢«åŠ¨ï¼šä½¿æƒ©æˆ’çœŸè¨€é€ æˆçš„ä¼¤å®³æé«˜è‡³202%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å€ŸåŠ›æ‰“åŠ› 
+RUNE_MONK_MANTRA_OF_RETRIBUTION_B := New SkillRune("å€ŸåŠ›æ‰“åŠ›", "ç¥žåœ£", "b", "è¢«åŠ¨ï¼šæƒ©æˆ’çœŸè¨€ä½¿ä½ å’ŒåŒä¼´çš„æ”»å‡»é€Ÿåº¦æé«˜10%ã€‚")
+; ç¬¦æ–‡: ä¹‰æ„¤éš¾å¹³ 
+RUNE_MONK_MANTRA_OF_RETRIBUTION_C := New SkillRune("ä¹‰æ„¤éš¾å¹³", "ç¥žåœ£", "c", "è¢«åŠ¨ï¼šå—åˆ°æƒ©æˆ’çœŸè¨€ä¼¤å®³çš„æ•Œäººæœ‰20%çš„å‡ çŽ‡é™·å…¥æ˜è¿·ï¼ŒæŒç»­3ç§’ã€‚")
+; ç¬¦æ–‡: æŠ«è†æ–©æ£˜ 
+RUNE_MONK_MANTRA_OF_RETRIBUTION_D := New SkillRune("æŠ«è†æ–©æ£˜", "ç¥žåœ£", "d", "è¢«åŠ¨ï¼šæƒ©æˆ’çœŸè¨€åœ¨é€ æˆä¼¤å®³æ—¶æœ‰ä¸€å®šå‡ çŽ‡æ¢å¤3ç‚¹å†…åŠ›ã€‚")
+; ç¬¦æ–‡: ä¸€æŸä¿±æŸ 
+RUNE_MONK_MANTRA_OF_RETRIBUTION_E := New SkillRune("ä¸€æŸä¿±æŸ", "ç¥žåœ£", "e", "è¢«åŠ¨ï¼šè¢«æƒ©æˆ’çœŸè¨€ä¼¤å®³åˆ°çš„æ•Œäººæœ‰75%çš„å‡ çŽ‡é­å—åˆ°åå¼¹å†²å‡»ï¼Œå¯¹è‡ªèº«å’Œé™„è¿‘çš„æ•Œäººé€ æˆ101%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç¥žåœ£ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: æƒ©æˆ’çœŸè¨€
+SKILL_ACTIVE_MONK_MANTRA_OF_RETRIBUTION := New ActiveSkill("æƒ©æˆ’çœŸè¨€", "ç¥žåœ£", "çœŸè¨€"
 	, "images\skills\monk\active\monk_retributionaura_normal.png"
-	, "ÏûºÄ£º50µãÄÚÁ¦\r\nÖ÷¶¯£ºÔì³ÉµÄÉËº¦Ìá¸ßÖÁ202%£¬³ÖÐø3Ãë¡£"
+	, "æ¶ˆè€—ï¼š50ç‚¹å†…åŠ›\r\nä¸»åŠ¨ï¼šé€ æˆçš„ä¼¤å®³æé«˜è‡³202%ï¼ŒæŒç»­3ç§’ã€‚"
 	, [RUNE_MONK_MANTRA_OF_RETRIBUTION_A, RUNE_MONK_MANTRA_OF_RETRIBUTION_B, RUNE_MONK_MANTRA_OF_RETRIBUTION_C, RUNE_MONK_MANTRA_OF_RETRIBUTION_D, RUNE_MONK_MANTRA_OF_RETRIBUTION_E])
 ; ---------------------------
-; ¼¼ÄÜ: ³Í½äÕæÑÔ End
+; æŠ€èƒ½: æƒ©æˆ’çœŸè¨€ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ½ðÂÖÕó Start
+; æŠ€èƒ½: é‡‘è½®é˜µ Start
 ; ---------------------------
-; ·ûÎÄ: ÉñÊ¥Ö®µØ 
-RUNE_MONK_INNER_SANCTUARY_B := New SkillRune("ÉñÊ¥Ö®µØ", "ÉñÊ¥", "b", "½ðÂÖÕóµÄ³ÖÐøÊ±¼äÑÓ³¤ÖÁ8Ãë£¬ÇÒµÐÈËÎÞ·¨½øÈë¡£")
-; ·ûÎÄ: ±ÜÄÑÕó 
-RUNE_MONK_INNER_SANCTUARY_D := New SkillRune("±ÜÄÑÕó", "ÉñÊ¥", "d", "Ã¿ÃëÎª½ðÂÖÕóÄÚµÄÍ¬°é»Ö¸´35779µãÉúÃüÖµ¡£ÖÎÁÆÁ¿Ìá¸ß£¬ÊýÖµÏàµ±ÓÚÄãµÄÃ¿Ãë»Ø¸´ÉúÃüµÄ7%¡£")
-; ·ûÎÄ: ±Ó»¤Ö®µî 
-RUNE_MONK_INNER_SANCTUARY_C := New SkillRune("±Ó»¤Ö®µî", "ÉñÊ¥", "c", "ÔÚ½ðÂÖÕóÄÚµÄÍ¬°éÍ¬Ê±¶Ô¿ØÖÆÀàÏÞÖÆÐ§¹ûÃâÒß¡£")
-; ·ûÎÄ: ¼±ËÙÔ®»¤ 
-RUNE_MONK_INNER_SANCTUARY_A := New SkillRune("¼±ËÙÔ®»¤", "ÉñÊ¥", "a", "¼²³åÖÁÄ¿±êÎ»ÖÃ£¬Éú³ÉÒ»µÀ»¤¶Ü£¬×î¶à¿ÉÎüÊÕ11ÂëÄÚÍ¬°é107284µãÉËº¦£¬³ÖÐø3Ãë£¬²¢Ê©·Å½ðÂÖÕó¡£ÉËº¦ÎüÊÕÁ¿µÄ¼Ó³ÉÎªÉúÃüÇòÖÎÁÆ¼Ó³ÉµÄ28%¡£")
-; ·ûÎÄ: ½û¼ÉÖ®¹¬ 
-RUNE_MONK_INNER_SANCTUARY_E := New SkillRune("½û¼ÉÖ®¹¬", "ÉñÊ¥", "e", "ÔÚ½ðÂÖÕóÐ§¹û·¶Î§ÄÚµÄµÐÈË£¬ÆäÒÆ¶¯ËÙ¶È½µµÍ80%¡£")
-; ¼¼ÄÜ: ½ðÂÖÕó
-SKILL_ACTIVE_MONK_INNER_SANCTUARY := New ActiveSkill("½ðÂÖÕó", "ÉñÊ¥", "·ÀÓù"
+; ç¬¦æ–‡: ç¥žåœ£ä¹‹åœ° 
+RUNE_MONK_INNER_SANCTUARY_B := New SkillRune("ç¥žåœ£ä¹‹åœ°", "ç¥žåœ£", "b", "é‡‘è½®é˜µçš„æŒç»­æ—¶é—´å»¶é•¿è‡³8ç§’ï¼Œä¸”æ•Œäººæ— æ³•è¿›å…¥ã€‚")
+; ç¬¦æ–‡: é¿éš¾é˜µ 
+RUNE_MONK_INNER_SANCTUARY_D := New SkillRune("é¿éš¾é˜µ", "ç¥žåœ£", "d", "æ¯ç§’ä¸ºé‡‘è½®é˜µå†…çš„åŒä¼´æ¢å¤35779ç‚¹ç”Ÿå‘½å€¼ã€‚æ²»ç–—é‡æé«˜ï¼Œæ•°å€¼ç›¸å½“äºŽä½ çš„æ¯ç§’å›žå¤ç”Ÿå‘½çš„7%ã€‚")
+; ç¬¦æ–‡: åº‡æŠ¤ä¹‹æ®¿ 
+RUNE_MONK_INNER_SANCTUARY_C := New SkillRune("åº‡æŠ¤ä¹‹æ®¿", "ç¥žåœ£", "c", "åœ¨é‡‘è½®é˜µå†…çš„åŒä¼´åŒæ—¶å¯¹æŽ§åˆ¶ç±»é™åˆ¶æ•ˆæžœå…ç–«ã€‚")
+; ç¬¦æ–‡: æ€¥é€Ÿæ´æŠ¤ 
+RUNE_MONK_INNER_SANCTUARY_A := New SkillRune("æ€¥é€Ÿæ´æŠ¤", "ç¥žåœ£", "a", "ç–¾å†²è‡³ç›®æ ‡ä½ç½®ï¼Œç”Ÿæˆä¸€é“æŠ¤ç›¾ï¼Œæœ€å¤šå¯å¸æ”¶11ç å†…åŒä¼´107284ç‚¹ä¼¤å®³ï¼ŒæŒç»­3ç§’ï¼Œå¹¶æ–½æ”¾é‡‘è½®é˜µã€‚ä¼¤å®³å¸æ”¶é‡çš„åŠ æˆä¸ºç”Ÿå‘½çƒæ²»ç–—åŠ æˆçš„28%ã€‚")
+; ç¬¦æ–‡: ç¦å¿Œä¹‹å®« 
+RUNE_MONK_INNER_SANCTUARY_E := New SkillRune("ç¦å¿Œä¹‹å®«", "ç¥žåœ£", "e", "åœ¨é‡‘è½®é˜µæ•ˆæžœèŒƒå›´å†…çš„æ•Œäººï¼Œå…¶ç§»åŠ¨é€Ÿåº¦é™ä½Ž80%ã€‚")
+; æŠ€èƒ½: é‡‘è½®é˜µ
+SKILL_ACTIVE_MONK_INNER_SANCTUARY := New ActiveSkill("é‡‘è½®é˜µ", "ç¥žåœ£", "é˜²å¾¡"
 	, "images\skills\monk\active\monk_innersanctuary_normal.png"
-	, "ÀäÈ´Ê±¼ä£º20Ãë\r\nÔÚµØÉÏÉú³ÉÒ»¸ö·ûÎÄ·À»¤·¨Õó£¬³ÖÐø6Ãë¡£Ê¹·¨ÕóÄÚËùÓÐÍ¬°éËùÊÜµÄÉËº¦½µµÍ55%£¬ÇÒÊ¹µÐÈËÎÞ·¨½øÈë¡£"
+	, "å†·å´æ—¶é—´ï¼š20ç§’\r\nåœ¨åœ°ä¸Šç”Ÿæˆä¸€ä¸ªç¬¦æ–‡é˜²æŠ¤æ³•é˜µï¼ŒæŒç»­6ç§’ã€‚ä½¿æ³•é˜µå†…æ‰€æœ‰åŒä¼´æ‰€å—çš„ä¼¤å®³é™ä½Ž55%ï¼Œä¸”ä½¿æ•Œäººæ— æ³•è¿›å…¥ã€‚"
 	, [RUNE_MONK_INNER_SANCTUARY_B, RUNE_MONK_INNER_SANCTUARY_D, RUNE_MONK_INNER_SANCTUARY_C, RUNE_MONK_INNER_SANCTUARY_A, RUNE_MONK_INNER_SANCTUARY_E])
 ; ---------------------------
-; ¼¼ÄÜ: ½ðÂÖÕó End
+; æŠ€èƒ½: é‡‘è½®é˜µ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: »ÃÉí¾÷ Start
+; æŠ€èƒ½: å¹»èº«è¯€ Start
 ; ---------------------------
-; ·ûÎÄ: Ë®Ïà»ÃÉí 
-RUNE_MONK_MYSTIC_ALLY_B := New SkillRune("Ë®Ïà»ÃÉí", "±ùº®", "b", "Ö÷¶¯£ºÄãµÄ»ÃÉíÁ¬Ðø¿ìËÙÊ©Õ¹7´Î¹¥»÷£¬Ã¿´Î¿ÉÔì³É625%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©²¢ÇÒ±ù¶³µÐÈË£¬³ÖÐø3Ãë¡£±»¶¯£º»ÃÉí»áÓëÄã²¢¼ç×÷Õ½£¬ÈÃÄãÔÚ¹¥»÷Ê±Ê¹µÐÈË¼õËÙ60%£¬³ÖÐø3Ãë¡£")
-; ·ûÎÄ: »ðÏà»ÃÉí 
-RUNE_MONK_MYSTIC_ALLY_A := New SkillRune("»ðÏà»ÃÉí", "»ðÑæ", "a", "Ö÷¶¯£ºÄãµÄ»ÃÉí»á·ÖÁÑÎª5¸ö»ÃÉí£¬±¬Õ¨Ôì³É480%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£±»¶¯£º»ÃÉíÓëÄã²¢¼ç×÷Õ½£¬Ê¹ÄãÔì³ÉµÄÉËº¦Ìá¸ß10%¡£")
-; ·ûÎÄ: ·çÏà»ÃÉí 
-RUNE_MONK_MYSTIC_ALLY_D := New SkillRune("·çÏà»ÃÉí", "ÎïÀí", "d", "Ö÷¶¯£ºÎªÄã»Ö¸´100µãÄÚÁ¦¡£±»¶¯£º»ÃÉíÓëÄã²¢¼ç×÷Õ½£¬Ê¹Äã»Ö¸´µÄÄÚÁ¦Ìá¸ß4µã¡£")
-; ·ûÎÄ: ¼áÒã»ÃÉí 
-RUNE_MONK_MYSTIC_ALLY_E := New SkillRune("¼áÒã»ÃÉí", "ÎïÀí", "e", "Ö÷¶¯£ºÄãµÄ»ÃÉíÎþÉü×Ô¼ºÀ´ÖÎÁÆÄã£¬ÎªÄã»Ö¸´ÉúÃüÖµÉÏÏÞµÄ100%¡£»ÃÉí¾÷µÄÀäÈ´Ê±¼äÑÓ³¤ÖÁ50Ãë¡£±»¶¯£º»ÃÉíÓëÄã²¢¼ç×÷Õ½£¬Ê¹ÄãµÄÃ¿Ãë»Ø¸´ÉúÃüÌá¸ß10728¡£ÖÎÁÆÁ¿Ìá¸ß£¬ÊýÖµÏàµ±ÓÚÄãµÄÃ¿Ãë»Ø¸´ÉúÃüµÄ7%¡£")
-; ·ûÎÄ: ÍÁÏà»ÃÉí 
-RUNE_MONK_MYSTIC_ALLY_C := New SkillRune("ÍÁÏà»ÃÉí", "ÎïÀí", "c", "Ö÷¶¯£ºÄãµÄ»ÃÉí±ä³ÉÒ»¿é¾ÞÊ¯£¬³ÖÐø8Ãë¡£¾ÞÊ¯³åÏò¸½½üµÄµÐÈË²¢½«Æä»÷ÉÏ°ë¿Õ£¬Ã¿ÃëÔì³É380%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£±»¶¯£º»ÃÉíÓëÄã²¢¼ç×÷Õ½£¬Ê¹ÄãµÄÉúÃüÖµÌá¸ß20%¡£")
-; ¼¼ÄÜ: »ÃÉí¾÷
-SKILL_ACTIVE_MONK_MYSTIC_ALLY := New ActiveSkill("»ÃÉí¾÷", "ÎïÀí", "ìøÏë"
+; ç¬¦æ–‡: æ°´ç›¸å¹»èº« 
+RUNE_MONK_MYSTIC_ALLY_B := New SkillRune("æ°´ç›¸å¹»èº«", "å†°å¯’", "b", "ä¸»åŠ¨ï¼šä½ çš„å¹»èº«è¿žç»­å¿«é€Ÿæ–½å±•7æ¬¡æ”»å‡»ï¼Œæ¯æ¬¡å¯é€ æˆ625%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰å¹¶ä¸”å†°å†»æ•Œäººï¼ŒæŒç»­3ç§’ã€‚è¢«åŠ¨ï¼šå¹»èº«ä¼šä¸Žä½ å¹¶è‚©ä½œæˆ˜ï¼Œè®©ä½ åœ¨æ”»å‡»æ—¶ä½¿æ•Œäººå‡é€Ÿ60%ï¼ŒæŒç»­3ç§’ã€‚")
+; ç¬¦æ–‡: ç«ç›¸å¹»èº« 
+RUNE_MONK_MYSTIC_ALLY_A := New SkillRune("ç«ç›¸å¹»èº«", "ç«ç„°", "a", "ä¸»åŠ¨ï¼šä½ çš„å¹»èº«ä¼šåˆ†è£‚ä¸º5ä¸ªå¹»èº«ï¼Œçˆ†ç‚¸é€ æˆ480%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚è¢«åŠ¨ï¼šå¹»èº«ä¸Žä½ å¹¶è‚©ä½œæˆ˜ï¼Œä½¿ä½ é€ æˆçš„ä¼¤å®³æé«˜10%ã€‚")
+; ç¬¦æ–‡: é£Žç›¸å¹»èº« 
+RUNE_MONK_MYSTIC_ALLY_D := New SkillRune("é£Žç›¸å¹»èº«", "ç‰©ç†", "d", "ä¸»åŠ¨ï¼šä¸ºä½ æ¢å¤100ç‚¹å†…åŠ›ã€‚è¢«åŠ¨ï¼šå¹»èº«ä¸Žä½ å¹¶è‚©ä½œæˆ˜ï¼Œä½¿ä½ æ¢å¤çš„å†…åŠ›æé«˜4ç‚¹ã€‚")
+; ç¬¦æ–‡: åšæ¯…å¹»èº« 
+RUNE_MONK_MYSTIC_ALLY_E := New SkillRune("åšæ¯…å¹»èº«", "ç‰©ç†", "e", "ä¸»åŠ¨ï¼šä½ çš„å¹»èº«ç‰ºç‰²è‡ªå·±æ¥æ²»ç–—ä½ ï¼Œä¸ºä½ æ¢å¤ç”Ÿå‘½å€¼ä¸Šé™çš„100%ã€‚å¹»èº«è¯€çš„å†·å´æ—¶é—´å»¶é•¿è‡³50ç§’ã€‚è¢«åŠ¨ï¼šå¹»èº«ä¸Žä½ å¹¶è‚©ä½œæˆ˜ï¼Œä½¿ä½ çš„æ¯ç§’å›žå¤ç”Ÿå‘½æé«˜10728ã€‚æ²»ç–—é‡æé«˜ï¼Œæ•°å€¼ç›¸å½“äºŽä½ çš„æ¯ç§’å›žå¤ç”Ÿå‘½çš„7%ã€‚")
+; ç¬¦æ–‡: åœŸç›¸å¹»èº« 
+RUNE_MONK_MYSTIC_ALLY_C := New SkillRune("åœŸç›¸å¹»èº«", "ç‰©ç†", "c", "ä¸»åŠ¨ï¼šä½ çš„å¹»èº«å˜æˆä¸€å—å·¨çŸ³ï¼ŒæŒç»­8ç§’ã€‚å·¨çŸ³å†²å‘é™„è¿‘çš„æ•Œäººå¹¶å°†å…¶å‡»ä¸ŠåŠç©ºï¼Œæ¯ç§’é€ æˆ380%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚è¢«åŠ¨ï¼šå¹»èº«ä¸Žä½ å¹¶è‚©ä½œæˆ˜ï¼Œä½¿ä½ çš„ç”Ÿå‘½å€¼æé«˜20%ã€‚")
+; æŠ€èƒ½: å¹»èº«è¯€
+SKILL_ACTIVE_MONK_MYSTIC_ALLY := New ActiveSkill("å¹»èº«è¯€", "ç‰©ç†", "ç¦…æƒ³"
 	, "images\skills\monk\active\monk_mystically_normal.png"
-	, "ÀäÈ´Ê±¼ä£º30Ãë\r\nÖ÷¶¯£ºÊ¹Äã»ÃÉíÔì³ÉµÄÉËº¦Ìá¸ß50%£¬³ÖÐø10Ãë¡£"
+	, "å†·å´æ—¶é—´ï¼š30ç§’\r\nä¸»åŠ¨ï¼šä½¿ä½ å¹»èº«é€ æˆçš„ä¼¤å®³æé«˜50%ï¼ŒæŒç»­10ç§’ã€‚"
 	, [RUNE_MONK_MYSTIC_ALLY_B, RUNE_MONK_MYSTIC_ALLY_A, RUNE_MONK_MYSTIC_ALLY_D, RUNE_MONK_MYSTIC_ALLY_E, RUNE_MONK_MYSTIC_ALLY_C])
 ; ---------------------------
-; ¼¼ÄÜ: »ÃÉí¾÷ End
+; æŠ€èƒ½: å¹»èº«è¯€ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÖÎÓúÕæÑÔ Start
+; æŠ€èƒ½: æ²»æ„ˆçœŸè¨€ Start
 ; ---------------------------
-; ·ûÎÄ: ¾«Á¦³äÅæ 
-RUNE_MONK_MANTRA_OF_HEALING_A := New SkillRune("¾«Á¦³äÅæ", "ÉñÊ¥", "a", "±»¶¯£ºÊ¹ÖÎÓúÕæÑÔÃ¿Ãë»Ø¸´µÄÉúÃüÖµÌá¸ßÖÁ21457µãÃ¿Ãë»Ø¸´ÉúÃü¡£ÖÎÁÆÁ¿Ìá¸ß£¬ÊýÖµÏàµ±ÓÚÄãµÄÃ¿Ãë»Ø¸´ÉúÃüµÄ7%¡£")
-; ·ûÎÄ: ÆøÔËÖÜÌì 
-RUNE_MONK_MANTRA_OF_HEALING_D := New SkillRune("ÆøÔËÖÜÌì", "ÉñÊ¥", "d", "±»¶¯£ºÖÎÓúÕæÑÔ¿ÉÊ¹ÄãÃ¿Ãë¶îÍâ»Ö¸´3µãÄÚÁ¦¡£")
-; ·ûÎÄ: ¼¤ÀøÖ®´Í 
-RUNE_MONK_MANTRA_OF_HEALING_B := New SkillRune("¼¤ÀøÖ®´Í", "ÉñÊ¥", "b", "±»¶¯£ºÖÎÓúÕæÑÔÊ¹ÄãÔÚ»÷ÖÐµÐÈËÊ±»Ö¸´3576µãÉúÃüÖµ¡£ÖÎÁÆÁ¿Ìá¸ß£¬ÊýÖµÏàµ±ÓÚÄãµÄ»÷ÖÐ»Ø¸´ÉúÃüµÄ20%¡£")
-; ·ûÎÄ: ÌìÓÓÖ®Çû 
-RUNE_MONK_MANTRA_OF_HEALING_C := New SkillRune("ÌìÓÓÖ®Çû", "ÉñÊ¥", "c", "±»¶¯£ºÖÎÓúÕæÑÔ¶îÍâÊ¹ÉúÃüÖµÉÏÏÞÌá¸ß20%¡£")
-; ·ûÎÄ: Ñ©ÖÐËÍÌ¿ 
-RUNE_MONK_MANTRA_OF_HEALING_E := New SkillRune("Ñ©ÖÐËÍÌ¿", "ÉñÊ¥", "e", "±»¶¯£ºÖÎÓúÕæÑÔ¿É¶îÍâÊ¹ÄãºÍÍ¬°éÔÚÉúÃüÖµµÍÓÚ50%Ê±£¬ÊÜµ½µÄÉËº¦½µµÍ30%¡£")
-; ¼¼ÄÜ: ÖÎÓúÕæÑÔ
-SKILL_ACTIVE_MONK_MANTRA_OF_HEALING := New ActiveSkill("ÖÎÓúÕæÑÔ", "ÉñÊ¥", "ÕæÑÔ"
+; ç¬¦æ–‡: ç²¾åŠ›å……æ²› 
+RUNE_MONK_MANTRA_OF_HEALING_A := New SkillRune("ç²¾åŠ›å……æ²›", "ç¥žåœ£", "a", "è¢«åŠ¨ï¼šä½¿æ²»æ„ˆçœŸè¨€æ¯ç§’å›žå¤çš„ç”Ÿå‘½å€¼æé«˜è‡³21457ç‚¹æ¯ç§’å›žå¤ç”Ÿå‘½ã€‚æ²»ç–—é‡æé«˜ï¼Œæ•°å€¼ç›¸å½“äºŽä½ çš„æ¯ç§’å›žå¤ç”Ÿå‘½çš„7%ã€‚")
+; ç¬¦æ–‡: æ°”è¿å‘¨å¤© 
+RUNE_MONK_MANTRA_OF_HEALING_D := New SkillRune("æ°”è¿å‘¨å¤©", "ç¥žåœ£", "d", "è¢«åŠ¨ï¼šæ²»æ„ˆçœŸè¨€å¯ä½¿ä½ æ¯ç§’é¢å¤–æ¢å¤3ç‚¹å†…åŠ›ã€‚")
+; ç¬¦æ–‡: æ¿€åŠ±ä¹‹èµ 
+RUNE_MONK_MANTRA_OF_HEALING_B := New SkillRune("æ¿€åŠ±ä¹‹èµ", "ç¥žåœ£", "b", "è¢«åŠ¨ï¼šæ²»æ„ˆçœŸè¨€ä½¿ä½ åœ¨å‡»ä¸­æ•Œäººæ—¶æ¢å¤3576ç‚¹ç”Ÿå‘½å€¼ã€‚æ²»ç–—é‡æé«˜ï¼Œæ•°å€¼ç›¸å½“äºŽä½ çš„å‡»ä¸­å›žå¤ç”Ÿå‘½çš„20%ã€‚")
+; ç¬¦æ–‡: å¤©ä½‘ä¹‹èº¯ 
+RUNE_MONK_MANTRA_OF_HEALING_C := New SkillRune("å¤©ä½‘ä¹‹èº¯", "ç¥žåœ£", "c", "è¢«åŠ¨ï¼šæ²»æ„ˆçœŸè¨€é¢å¤–ä½¿ç”Ÿå‘½å€¼ä¸Šé™æé«˜20%ã€‚")
+; ç¬¦æ–‡: é›ªä¸­é€ç‚­ 
+RUNE_MONK_MANTRA_OF_HEALING_E := New SkillRune("é›ªä¸­é€ç‚­", "ç¥žåœ£", "e", "è¢«åŠ¨ï¼šæ²»æ„ˆçœŸè¨€å¯é¢å¤–ä½¿ä½ å’ŒåŒä¼´åœ¨ç”Ÿå‘½å€¼ä½ŽäºŽ50%æ—¶ï¼Œå—åˆ°çš„ä¼¤å®³é™ä½Ž30%ã€‚")
+; æŠ€èƒ½: æ²»æ„ˆçœŸè¨€
+SKILL_ACTIVE_MONK_MANTRA_OF_HEALING := New ActiveSkill("æ²»æ„ˆçœŸè¨€", "ç¥žåœ£", "çœŸè¨€"
 	, "images\skills\monk\active\monk_holyaura_normal.png"
-	, "ÏûºÄ£º50µãÄÚÁ¦\r\nÖ÷¶¯£ºÓÃÒ»µÀÉñÃØ»¤¶ÜÁýÕÖÄãºÍÍ¬°é£¬×î¸ß¿ÉÎüÊÕ62064µãÉËº¦£¬³ÖÐø3Ãë¡£ÉËº¦ÎüÊÕÁ¿Ìá¸ß£¬ÊýÖµÏàµ±ÓÚÄãµÄÉúÃüÇòÖÎÁÆ¼Ó³ÉµÄ15%¡£"
+	, "æ¶ˆè€—ï¼š50ç‚¹å†…åŠ›\r\nä¸»åŠ¨ï¼šç”¨ä¸€é“ç¥žç§˜æŠ¤ç›¾ç¬¼ç½©ä½ å’ŒåŒä¼´ï¼Œæœ€é«˜å¯å¸æ”¶62064ç‚¹ä¼¤å®³ï¼ŒæŒç»­3ç§’ã€‚ä¼¤å®³å¸æ”¶é‡æé«˜ï¼Œæ•°å€¼ç›¸å½“äºŽä½ çš„ç”Ÿå‘½çƒæ²»ç–—åŠ æˆçš„15%ã€‚"
 	, [RUNE_MONK_MANTRA_OF_HEALING_A, RUNE_MONK_MANTRA_OF_HEALING_D, RUNE_MONK_MANTRA_OF_HEALING_B, RUNE_MONK_MANTRA_OF_HEALING_C, RUNE_MONK_MANTRA_OF_HEALING_E])
 ; ---------------------------
-; ¼¼ÄÜ: ÖÎÓúÕæÑÔ End
+; æŠ€èƒ½: æ²»æ„ˆçœŸè¨€ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ¶¨×ïÕæÑÔ Start
+; æŠ€èƒ½: å®šç½ªçœŸè¨€ Start
 ; ---------------------------
-; ·ûÎÄ: Õð»êÉãÆÇ 
-RUNE_MONK_MANTRA_OF_CONVICTION_A := New SkillRune("Õð»êÉãÆÇ", "ÎïÀí", "a", "±»¶¯£ºÇ¿»¯¶¨×ïÕæÑÔµÄÐ§¹û£¬Ê¹µÐÈËÊÜµ½µÄÉËº¦Ìá¸ß12%¡£")
-; ·ûÎÄ: ²»Å­×ÔÍþ 
-RUNE_MONK_MANTRA_OF_CONVICTION_E := New SkillRune("²»Å­×ÔÍþ", "ÎïÀí", "e", "±»¶¯£ºÊÜ¶¨×ïÕæÑÔÓ°ÏìµÄµÐÈËÔì³ÉµÄÉËº¦½µµÍ15%¡£")
-; ·ûÎÄ: µ÷·ü¸ÕÇ¿ 
-RUNE_MONK_MANTRA_OF_CONVICTION_C := New SkillRune("µ÷·ü¸ÕÇ¿", "ÎïÀí", "c", "±»¶¯£º¶¨×ïÕæÑÔÍ¬Ê±Ê¹µÐÈËµÄÒÆ¶¯ËÙ¶È½µµÍ80%¡£")
-; ·ûÎÄ: ¿ì²½Á÷ÐÇ 
-RUNE_MONK_MANTRA_OF_CONVICTION_D := New SkillRune("¿ì²½Á÷ÐÇ", "ÎïÀí", "d", "±»¶¯£ºÏûÃðÊÜ¶¨×ïÕæÑÔÓ°ÏìµÄµÐÈË¿ÉÊ¹ÄãºÍÍ¬°éµÄÒÆ¶¯ËÙ¶ÈÌá¸ß30%£¬³ÖÐø3Ãë¡£")
-; ·ûÎÄ: Ð°²»Ê¤Õý 
-RUNE_MONK_MANTRA_OF_CONVICTION_B := New SkillRune("Ð°²»Ê¤Õý", "ÉñÊ¥", "b", "±»¶¯£ºÊÜ¶¨×ïÕæÑÔÓ°ÏìµÄµÐÈËÃ¿ÃëÊÜµ½38%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉñÊ¥ÉËº¦£©¡£")
-; ¼¼ÄÜ: ¶¨×ïÕæÑÔ
-SKILL_ACTIVE_MONK_MANTRA_OF_CONVICTION := New ActiveSkill("¶¨×ïÕæÑÔ", "ÎïÀí", "ÕæÑÔ"
+; ç¬¦æ–‡: éœ‡é­‚æ‘„é­„ 
+RUNE_MONK_MANTRA_OF_CONVICTION_A := New SkillRune("éœ‡é­‚æ‘„é­„", "ç‰©ç†", "a", "è¢«åŠ¨ï¼šå¼ºåŒ–å®šç½ªçœŸè¨€çš„æ•ˆæžœï¼Œä½¿æ•Œäººå—åˆ°çš„ä¼¤å®³æé«˜12%ã€‚")
+; ç¬¦æ–‡: ä¸æ€’è‡ªå¨ 
+RUNE_MONK_MANTRA_OF_CONVICTION_E := New SkillRune("ä¸æ€’è‡ªå¨", "ç‰©ç†", "e", "è¢«åŠ¨ï¼šå—å®šç½ªçœŸè¨€å½±å“çš„æ•Œäººé€ æˆçš„ä¼¤å®³é™ä½Ž15%ã€‚")
+; ç¬¦æ–‡: è°ƒä¼åˆšå¼º 
+RUNE_MONK_MANTRA_OF_CONVICTION_C := New SkillRune("è°ƒä¼åˆšå¼º", "ç‰©ç†", "c", "è¢«åŠ¨ï¼šå®šç½ªçœŸè¨€åŒæ—¶ä½¿æ•Œäººçš„ç§»åŠ¨é€Ÿåº¦é™ä½Ž80%ã€‚")
+; ç¬¦æ–‡: å¿«æ­¥æµæ˜Ÿ 
+RUNE_MONK_MANTRA_OF_CONVICTION_D := New SkillRune("å¿«æ­¥æµæ˜Ÿ", "ç‰©ç†", "d", "è¢«åŠ¨ï¼šæ¶ˆç­å—å®šç½ªçœŸè¨€å½±å“çš„æ•Œäººå¯ä½¿ä½ å’ŒåŒä¼´çš„ç§»åŠ¨é€Ÿåº¦æé«˜30%ï¼ŒæŒç»­3ç§’ã€‚")
+; ç¬¦æ–‡: é‚ªä¸èƒœæ­£ 
+RUNE_MONK_MANTRA_OF_CONVICTION_B := New SkillRune("é‚ªä¸èƒœæ­£", "ç¥žåœ£", "b", "è¢«åŠ¨ï¼šå—å®šç½ªçœŸè¨€å½±å“çš„æ•Œäººæ¯ç§’å—åˆ°38%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç¥žåœ£ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: å®šç½ªçœŸè¨€
+SKILL_ACTIVE_MONK_MANTRA_OF_CONVICTION := New ActiveSkill("å®šç½ªçœŸè¨€", "ç‰©ç†", "çœŸè¨€"
 	, "images\skills\monk\active\monk_dominateaura_normal.png"
-	, "ÏûºÄ£º50µãÄÚÁ¦\r\nÖ÷¶¯£ºÉËº¦¼Ó³ÉÌá¸ßÖÁ16%£¬³ÖÐø3Ãë¡£"
+	, "æ¶ˆè€—ï¼š50ç‚¹å†…åŠ›\r\nä¸»åŠ¨ï¼šä¼¤å®³åŠ æˆæé«˜è‡³16%ï¼ŒæŒç»­3ç§’ã€‚"
 	, [RUNE_MONK_MANTRA_OF_CONVICTION_A, RUNE_MONK_MANTRA_OF_CONVICTION_E, RUNE_MONK_MANTRA_OF_CONVICTION_C, RUNE_MONK_MANTRA_OF_CONVICTION_D, RUNE_MONK_MANTRA_OF_CONVICTION_B])
 ; ---------------------------
-; ¼¼ÄÜ: ¶¨×ïÕæÑÔ End
+; æŠ€èƒ½: å®šç½ªçœŸè¨€ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Áé¹âÎò Start
+; æŠ€èƒ½: çµå…‰æ‚Ÿ Start
 ; ---------------------------
-; ·ûÎÄ: Á÷É³¸´ 
-RUNE_MONK_EPIPHANY_A := New SkillRune("Á÷É³¸´", "ÎïÀí", "a", "Îª×Ô¼º¹à×¢·ÉÉ³Ö®Á¦£¬ÊÜµ½µÄÉËº¦½µµÍ50%¡£")
-; ·ûÎÄ: ÐîÀ×²½ 
-RUNE_MONK_EPIPHANY_E := New SkillRune("ÐîÀ×²½", "µç»÷", "e", "Îª×Ô¼º¹à×¢ÉÁµçÖ®Á¦£¬ÄãÒÆ¶¯10Âëºó·¢ÆðµÄÏÂÒ»´Î¹¥»÷¿ÉÊ¹µÐÈË»èÃÔ1.5Ãë¡£")
-; ·ûÎÄ: ÁÆÉËÎí 
-RUNE_MONK_EPIPHANY_B := New SkillRune("ÁÆÉËÎí", "±ùº®", "b", "Îª×Ô¼º¹à×¢Á÷Ë®Ö®Á¦£¬Ê¹ÄãµÄ¼¼ÄÜ¿ÉÖÎÁÆ×Ô¼ºÓë30ÂëÄÚµÄÍ¬°é£¬»Ö¸´16093µãÉúÃüÖµ¡£ÖÎÁÆÁ¿¼Ó³ÉÎªÉúÃüÇòÖÎÁÆ¼Ó³ÉµÄ4%¡£")
-; ·ûÎÄ: Ã÷ÐÄìø 
-RUNE_MONK_EPIPHANY_C := New SkillRune("Ã÷ÐÄìø", "ÉñÊ¥", "c", "Áé¹âÎòµÄÃ¿ÃëÄÚÁ¦»Ö¸´¼Ó³ÉÌá¸ßÖÁ45µã¡£")
-; ·ûÎÄ: ÀëÐÄ»ð 
-RUNE_MONK_EPIPHANY_D := New SkillRune("ÀëÐÄ»ð", "»ðÑæ", "d", "Áî×Ô¼º±»ÁÒÑæÍÌÊÉ£¬Ê¹ÄãµÄ¹¥»÷¶ÔµÐÈËÔì³É353%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ¼¼ÄÜ: Áé¹âÎò
-SKILL_ACTIVE_MONK_EPIPHANY := New ActiveSkill("Áé¹âÎò", "ÉñÊ¥", "ìøÏë"
+; ç¬¦æ–‡: æµæ²™å¤ 
+RUNE_MONK_EPIPHANY_A := New SkillRune("æµæ²™å¤", "ç‰©ç†", "a", "ä¸ºè‡ªå·±çŒæ³¨é£žæ²™ä¹‹åŠ›ï¼Œå—åˆ°çš„ä¼¤å®³é™ä½Ž50%ã€‚")
+; ç¬¦æ–‡: è“„é›·æ­¥ 
+RUNE_MONK_EPIPHANY_E := New SkillRune("è“„é›·æ­¥", "ç”µå‡»", "e", "ä¸ºè‡ªå·±çŒæ³¨é—ªç”µä¹‹åŠ›ï¼Œä½ ç§»åŠ¨10ç åŽå‘èµ·çš„ä¸‹ä¸€æ¬¡æ”»å‡»å¯ä½¿æ•Œäººæ˜è¿·1.5ç§’ã€‚")
+; ç¬¦æ–‡: ç–—ä¼¤é›¾ 
+RUNE_MONK_EPIPHANY_B := New SkillRune("ç–—ä¼¤é›¾", "å†°å¯’", "b", "ä¸ºè‡ªå·±çŒæ³¨æµæ°´ä¹‹åŠ›ï¼Œä½¿ä½ çš„æŠ€èƒ½å¯æ²»ç–—è‡ªå·±ä¸Ž30ç å†…çš„åŒä¼´ï¼Œæ¢å¤16093ç‚¹ç”Ÿå‘½å€¼ã€‚æ²»ç–—é‡åŠ æˆä¸ºç”Ÿå‘½çƒæ²»ç–—åŠ æˆçš„4%ã€‚")
+; ç¬¦æ–‡: æ˜Žå¿ƒç¦… 
+RUNE_MONK_EPIPHANY_C := New SkillRune("æ˜Žå¿ƒç¦…", "ç¥žåœ£", "c", "çµå…‰æ‚Ÿçš„æ¯ç§’å†…åŠ›æ¢å¤åŠ æˆæé«˜è‡³45ç‚¹ã€‚")
+; ç¬¦æ–‡: ç¦»å¿ƒç« 
+RUNE_MONK_EPIPHANY_D := New SkillRune("ç¦»å¿ƒç«", "ç«ç„°", "d", "ä»¤è‡ªå·±è¢«çƒˆç„°åžå™¬ï¼Œä½¿ä½ çš„æ”»å‡»å¯¹æ•Œäººé€ æˆ353%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: çµå…‰æ‚Ÿ
+SKILL_ACTIVE_MONK_EPIPHANY := New ActiveSkill("çµå…‰æ‚Ÿ", "ç¥žåœ£", "ç¦…æƒ³"
 	, "images\skills\monk\active\monk_epiphany_normal.png"
-	, "ÀäÈ´Ê±¼ä£º60Ãë\r\nÊ¹ÓÃÁé¹âÎòÊ±£¬Ã¿Ãë»Ö¸´µÄÄÚÁ¦Ìá¸ß20µã£¬²¢Ê¹ÄãÔÚ½üÕ½¹¥»÷Ê±Á¢¿Ì¼²³åµ½Ä¿±êÃæÇ°£¬³ÖÐø15Ãë¡£"
+	, "å†·å´æ—¶é—´ï¼š60ç§’\r\nä½¿ç”¨çµå…‰æ‚Ÿæ—¶ï¼Œæ¯ç§’æ¢å¤çš„å†…åŠ›æé«˜20ç‚¹ï¼Œå¹¶ä½¿ä½ åœ¨è¿‘æˆ˜æ”»å‡»æ—¶ç«‹åˆ»ç–¾å†²åˆ°ç›®æ ‡é¢å‰ï¼ŒæŒç»­15ç§’ã€‚"
 	, [RUNE_MONK_EPIPHANY_A, RUNE_MONK_EPIPHANY_E, RUNE_MONK_EPIPHANY_B, RUNE_MONK_EPIPHANY_C, RUNE_MONK_EPIPHANY_D])
 ; ---------------------------
-; ¼¼ÄÜ: Áé¹âÎò End
+; æŠ€èƒ½: çµå…‰æ‚Ÿ End
 ; ---------------------------
 
 ; ===========================
-; ÎäÉ® End
+; æ­¦åƒ§ End
 ; ===========================
 
 
 
 ; ===========================
-; ËÀÁé·¨Ê¦ Start
+; æ­»çµæ³•å¸ˆ Start
 ; ===========================
 ; ---------------------------
-; ¼¼ÄÜ: ¹Ç´Ì Start
+; æŠ€èƒ½: éª¨åˆº Start
 ; ---------------------------
-; ·ûÎÄ: ³öÆä²»Òâ 
-RUNE_NECROMANCER_BONE_SPIKES_A := New SkillRune("³öÆä²»Òâ", "ÎïÀí", "a", "¹Ç´ÌÊ¹µÐÈË»èÃÔ£¬³ÖÐø1Ãë¡£")
-; ·ûÎÄ: °×¹ÇÖ®Öù 
-RUNE_NECROMANCER_BONE_SPIKES_C := New SkillRune("°×¹ÇÖ®Öù", "¶¾ËØ", "c", "Ê¹ÓÃ¾Þ´óµÄ°×¹ÇÖ®Öù¹¥»÷Ä¿±ê¼°Æä¸½½ü×î¶àÁ½ÃûµÐÈË£¬Ã¿ÃëÔì³É225%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©¡£")
-; ·ûÎÄ: ËÀº®¹Ç´Ì 
-RUNE_NECROMANCER_BONE_SPIKES_D := New SkillRune("ËÀº®¹Ç´Ì", "±ùº®", "d", "ÁôÏÂÒ»Æ¬Ëªº®¹Ç´Ì£¬Ê¹µÐÈËµÄÒÆ¶¯ËÙ¶È½µµÍ60%£¬³ÖÐø2Ãë¡£¹Ç´ÌµÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ·ûÎÄ: °×¹ÇÖ®ºÛ 
-RUNE_NECROMANCER_BONE_SPIKES_B := New SkillRune("°×¹ÇÖ®ºÛ", "ÎïÀí", "b", "·¢ÉäÒ»ÅÅ¼â´Ì£¬Ôì³É100%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£¶Ô¾àÀë½ÏÔ¶µÄµÐÈËÔì³ÉµÄÉËº¦×î¶àÌá¸ß100%¡£")
-; ·ûÎÄ: ÏÊÑª¹Ç´Ì 
-RUNE_NECROMANCER_BONE_SPIKES_E := New SkillRune("ÏÊÑª¹Ç´Ì", "ÎïÀí", "e", "»÷ÖÐµÐÈË½«Ê¹ÆäÊÜÉË£¬ÔÚ2ÃëÄÚÔì³É50%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©£¬²¢ÔÚ³ÖÐøÆÚ¼äÎªÄã»Ö¸´×ÜÉúÃüÖµµÄ0.5%¡£")
-; ¼¼ÄÜ: ¹Ç´Ì
-SKILL_ACTIVE_NECROMANCER_BONE_SPIKES := New ActiveSkill("¹Ç´Ì", "ÎïÀí", "Ö÷Òª"
+; ç¬¦æ–‡: å‡ºå…¶ä¸æ„ 
+RUNE_NECROMANCER_BONE_SPIKES_A := New SkillRune("å‡ºå…¶ä¸æ„", "ç‰©ç†", "a", "éª¨åˆºä½¿æ•Œäººæ˜è¿·ï¼ŒæŒç»­1ç§’ã€‚")
+; ç¬¦æ–‡: ç™½éª¨ä¹‹æŸ± 
+RUNE_NECROMANCER_BONE_SPIKES_C := New SkillRune("ç™½éª¨ä¹‹æŸ±", "æ¯’ç´ ", "c", "ä½¿ç”¨å·¨å¤§çš„ç™½éª¨ä¹‹æŸ±æ”»å‡»ç›®æ ‡åŠå…¶é™„è¿‘æœ€å¤šä¸¤åæ•Œäººï¼Œæ¯ç§’é€ æˆ225%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: æ­»å¯’éª¨åˆº 
+RUNE_NECROMANCER_BONE_SPIKES_D := New SkillRune("æ­»å¯’éª¨åˆº", "å†°å¯’", "d", "ç•™ä¸‹ä¸€ç‰‡éœœå¯’éª¨åˆºï¼Œä½¿æ•Œäººçš„ç§»åŠ¨é€Ÿåº¦é™ä½Ž60%ï¼ŒæŒç»­2ç§’ã€‚éª¨åˆºçš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ç™½éª¨ä¹‹ç—• 
+RUNE_NECROMANCER_BONE_SPIKES_B := New SkillRune("ç™½éª¨ä¹‹ç—•", "ç‰©ç†", "b", "å‘å°„ä¸€æŽ’å°–åˆºï¼Œé€ æˆ100%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚å¯¹è·ç¦»è¾ƒè¿œçš„æ•Œäººé€ æˆçš„ä¼¤å®³æœ€å¤šæé«˜100%ã€‚")
+; ç¬¦æ–‡: é²œè¡€éª¨åˆº 
+RUNE_NECROMANCER_BONE_SPIKES_E := New SkillRune("é²œè¡€éª¨åˆº", "ç‰©ç†", "e", "å‡»ä¸­æ•Œäººå°†ä½¿å…¶å—ä¼¤ï¼Œåœ¨2ç§’å†…é€ æˆ50%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ï¼Œå¹¶åœ¨æŒç»­æœŸé—´ä¸ºä½ æ¢å¤æ€»ç”Ÿå‘½å€¼çš„0.5%ã€‚")
+; æŠ€èƒ½: éª¨åˆº
+SKILL_ACTIVE_NECROMANCER_BONE_SPIKES := New ActiveSkill("éª¨åˆº", "ç‰©ç†", "ä¸»è¦"
 	, "images\skills\necromancer\active\necromancer_bonespikes_normal.png"
-	, "Éú³É£º24µã¾«»ê\r\n´ÓµØÏÂÕÙ»½¹Ç´Ì¹¥»÷µÐÈË£¬Ã¿ÃëÔì³É150%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£"
+	, "ç”Ÿæˆï¼š24ç‚¹ç²¾é­‚\r\nä»Žåœ°ä¸‹å¬å”¤éª¨åˆºæ”»å‡»æ•Œäººï¼Œæ¯ç§’é€ æˆ150%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_NECROMANCER_BONE_SPIKES_A, RUNE_NECROMANCER_BONE_SPIKES_C, RUNE_NECROMANCER_BONE_SPIKES_D, RUNE_NECROMANCER_BONE_SPIKES_B, RUNE_NECROMANCER_BONE_SPIKES_E])
 ; ---------------------------
-; ¼¼ÄÜ: ¹Ç´Ì End
+; æŠ€èƒ½: éª¨åˆº End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ¹ÇÃ¬ Start
+; æŠ€èƒ½: éª¨çŸ› Start
 ; ---------------------------
-; ·ûÎÄ: ËÀÒß¹ÇËè 
-RUNE_NECROMANCER_BONE_SPEAR_C := New SkillRune("ËÀÒß¹ÇËè", "¶¾ËØ", "c", "¹ÇÃ¬Ã¿´©¹ýÒ»¸öµÐÈË£¬ÆäÉËº¦½«Ìá¸ß15%¡£¹ÇÃ¬µÄÉËº¦ÀàÐÍ×ª»»Îª¶¾ÐÔÉËº¦¡£")
-; ·ûÎÄ: °×¹ÇÀûÑÀ 
-RUNE_NECROMANCER_BONE_SPEAR_E := New SkillRune("°×¹ÇÀûÑÀ", "ÎïÀí", "e", "·¢Éä·æÀûµÄ¹ÇÑÀ£¬¶ÔÄãÇ°·½µÄµÐÈËÔì³É300%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£")
-; ·ûÎÄ: Ë®¾§°×¹Ç 
-RUNE_NECROMANCER_BONE_SPEAR_A := New SkillRune("Ë®¾§°×¹Ç", "±ùº®", "a", "Ê¹ËùÓÐ±»»÷ÖÐµÐÈËµÄ¹¥»÷ËÙ¶È½µµÍ20%£¬²¢Ê¹ÄãµÄ¹¥»÷ËÙ¶ÈÌá¸ß3%£¬³ÖÐø3Ãë£¬×î¶àµþ¼Ó10²ã¡£¹ÇÃ¬µÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ·ûÎÄ: ±¬ÁÑÖ®Á´ 
-RUNE_NECROMANCER_BONE_SPEAR_B := New SkillRune("±¬ÁÑÖ®Á´", "ÎïÀí", "b", "¹ÇÃ¬²»ÔÙ´Ì´©µÐÈË£¬¶ø»áÔÚ»÷ÖÐµÚÒ»¸öµÐÈËÊ±Òý±¬£¬¶ÔÎ»ÓÚ15Âë·¶Î§ÄÚµÄËùÓÐµÐÈËÔì³É500%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£")
-; ·ûÎÄ: ¿Ö²ÀÑªÃ¬ 
-RUNE_NECROMANCER_BONE_SPEAR_D := New SkillRune("¿Ö²ÀÑªÃ¬", "ÎïÀí", "d", "¹ÇÃ¬×ª±äÎªÑªÃ¬¡£ÉËº¦Ìá¸ßÖÁ650%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©£¬µ«»áÏûºÄ10%µÄÉúÃüÖµ¡£")
-; ¼¼ÄÜ: ¹ÇÃ¬
-SKILL_ACTIVE_NECROMANCER_BONE_SPEAR := New ActiveSkill("¹ÇÃ¬", "ÎïÀí", "´ÎÒª"
+; ç¬¦æ–‡: æ­»ç–«éª¨é«“ 
+RUNE_NECROMANCER_BONE_SPEAR_C := New SkillRune("æ­»ç–«éª¨é«“", "æ¯’ç´ ", "c", "éª¨çŸ›æ¯ç©¿è¿‡ä¸€ä¸ªæ•Œäººï¼Œå…¶ä¼¤å®³å°†æé«˜15%ã€‚éª¨çŸ›çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºæ¯’æ€§ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ç™½éª¨åˆ©ç‰™ 
+RUNE_NECROMANCER_BONE_SPEAR_E := New SkillRune("ç™½éª¨åˆ©ç‰™", "ç‰©ç†", "e", "å‘å°„é”‹åˆ©çš„éª¨ç‰™ï¼Œå¯¹ä½ å‰æ–¹çš„æ•Œäººé€ æˆ300%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: æ°´æ™¶ç™½éª¨ 
+RUNE_NECROMANCER_BONE_SPEAR_A := New SkillRune("æ°´æ™¶ç™½éª¨", "å†°å¯’", "a", "ä½¿æ‰€æœ‰è¢«å‡»ä¸­æ•Œäººçš„æ”»å‡»é€Ÿåº¦é™ä½Ž20%ï¼Œå¹¶ä½¿ä½ çš„æ”»å‡»é€Ÿåº¦æé«˜3%ï¼ŒæŒç»­3ç§’ï¼Œæœ€å¤šå åŠ 10å±‚ã€‚éª¨çŸ›çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: çˆ†è£‚ä¹‹é“¾ 
+RUNE_NECROMANCER_BONE_SPEAR_B := New SkillRune("çˆ†è£‚ä¹‹é“¾", "ç‰©ç†", "b", "éª¨çŸ›ä¸å†åˆºç©¿æ•Œäººï¼Œè€Œä¼šåœ¨å‡»ä¸­ç¬¬ä¸€ä¸ªæ•Œäººæ—¶å¼•çˆ†ï¼Œå¯¹ä½äºŽ15ç èŒƒå›´å†…çš„æ‰€æœ‰æ•Œäººé€ æˆ500%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: ææ€–è¡€çŸ› 
+RUNE_NECROMANCER_BONE_SPEAR_D := New SkillRune("ææ€–è¡€çŸ›", "ç‰©ç†", "d", "éª¨çŸ›è½¬å˜ä¸ºè¡€çŸ›ã€‚ä¼¤å®³æé«˜è‡³650%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ï¼Œä½†ä¼šæ¶ˆè€—10%çš„ç”Ÿå‘½å€¼ã€‚")
+; æŠ€èƒ½: éª¨çŸ›
+SKILL_ACTIVE_NECROMANCER_BONE_SPEAR := New ActiveSkill("éª¨çŸ›", "ç‰©ç†", "æ¬¡è¦"
 	, "images\skills\necromancer\active\necromancer_bonespear_normal.png"
-	, "ÏûºÄ£º20µã¾«»ê\r\nÕÙ»½Ò»¸ù´©´Ì°×¹Ç¹á´©ËùÓÐ±»»÷ÖÐµÄµÐÈË£¬Ôì³É500%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£"
+	, "æ¶ˆè€—ï¼š20ç‚¹ç²¾é­‚\r\nå¬å”¤ä¸€æ ¹ç©¿åˆºç™½éª¨è´¯ç©¿æ‰€æœ‰è¢«å‡»ä¸­çš„æ•Œäººï¼Œé€ æˆ500%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_NECROMANCER_BONE_SPEAR_C, RUNE_NECROMANCER_BONE_SPEAR_E, RUNE_NECROMANCER_BONE_SPEAR_A, RUNE_NECROMANCER_BONE_SPEAR_B, RUNE_NECROMANCER_BONE_SPEAR_D])
 ; ---------------------------
-; ¼¼ÄÜ: ¹ÇÃ¬ End
+; æŠ€èƒ½: éª¨çŸ› End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ¿ÖÁ­ Start
+; æŠ€èƒ½: æé•° Start
 ; ---------------------------
-; ·ûÎÄ: ´¦¾ö 
-RUNE_NECROMANCER_GRIM_SCYTHE_B := New SkillRune("´¦¾ö", "ÎïÀí", "b", "ÉúÃüÖµµÍÓÚ20%µÄµÐÈËÓÐ5%µÄ¼¸ÂÊ±»Á¢¿ÌÏûÃð¡£")
-; ·ûÎÄ: Ë«Á­ËÀÉñ 
-RUNE_NECROMANCER_GRIM_SCYTHE_D := New SkillRune("Ë«Á­ËÀÉñ", "ÎïÀí", "d", "Éú³É£º12µã¾«»ê£¨Ã¿»÷ÖÐÒ»¸öµÐÈË£©ÕÙ»½Á½°ÑÁ­µ¶ÏòÇ°»Ó¿³£¬Ôì³É150%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©£¬²¢½«µÐÈË¾ÛÂ£¡£")
-; ·ûÎÄ: ¶ñÖäÁ­µ¶ 
-RUNE_NECROMANCER_GRIM_SCYTHE_E := New SkillRune("¶ñÖäÁ­µ¶", "¶¾ËØ", "e", "±»Á­µ¶»÷ÖÐµÄµÐÈËÓÐ15%µÄ¼¸ÂÊÊÜµ½Ò»¸öËæ»ú×çÖäµÄÓ°Ïì¡£¿ÖÁ­µÄÉËº¦ÀàÐÍ×ª»»Îª¶¾ÐÔÉËº¦¡£")
-; ·ûÎÄ: ±ùËªÖ®Á­ 
-RUNE_NECROMANCER_GRIM_SCYTHE_C := New SkillRune("±ùËªÖ®Á­", "±ùº®", "c", "Ã¿»÷ÖÐÒ»ÃûµÐÈË¶¼½«Ê¹ÄãµÄ¹¥»÷ËÙ¶ÈÌá¸ß1%£¬³ÖÐø5Ãë¡£×î¶àµþ¼Ó15²ã¡£¿ÖÁ­µÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ·ûÎÄ: ÑªÁ­µ¶ 
-RUNE_NECROMANCER_GRIM_SCYTHE_A := New SkillRune("ÑªÁ­µ¶", "ÎïÀí", "a", "Ã¿»÷ÖÐÒ»ÃûµÐÈË£¬¶¼»áÎªÄã»Ö¸´1%µÄÉúÃüÖµ¡£")
-; ¼¼ÄÜ: ¿ÖÁ­
-SKILL_ACTIVE_NECROMANCER_GRIM_SCYTHE := New ActiveSkill("¿ÖÁ­", "ÎïÀí", "Ö÷Òª"
+; ç¬¦æ–‡: å¤„å†³ 
+RUNE_NECROMANCER_GRIM_SCYTHE_B := New SkillRune("å¤„å†³", "ç‰©ç†", "b", "ç”Ÿå‘½å€¼ä½ŽäºŽ20%çš„æ•Œäººæœ‰5%çš„å‡ çŽ‡è¢«ç«‹åˆ»æ¶ˆç­ã€‚")
+; ç¬¦æ–‡: åŒé•°æ­»ç¥ž 
+RUNE_NECROMANCER_GRIM_SCYTHE_D := New SkillRune("åŒé•°æ­»ç¥ž", "ç‰©ç†", "d", "ç”Ÿæˆï¼š12ç‚¹ç²¾é­‚ï¼ˆæ¯å‡»ä¸­ä¸€ä¸ªæ•Œäººï¼‰å¬å”¤ä¸¤æŠŠé•°åˆ€å‘å‰æŒ¥ç ï¼Œé€ æˆ150%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ï¼Œå¹¶å°†æ•Œäººèšæ‹¢ã€‚")
+; ç¬¦æ–‡: æ¶å’’é•°åˆ€ 
+RUNE_NECROMANCER_GRIM_SCYTHE_E := New SkillRune("æ¶å’’é•°åˆ€", "æ¯’ç´ ", "e", "è¢«é•°åˆ€å‡»ä¸­çš„æ•Œäººæœ‰15%çš„å‡ çŽ‡å—åˆ°ä¸€ä¸ªéšæœºè¯…å’’çš„å½±å“ã€‚æé•°çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºæ¯’æ€§ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: å†°éœœä¹‹é•° 
+RUNE_NECROMANCER_GRIM_SCYTHE_C := New SkillRune("å†°éœœä¹‹é•°", "å†°å¯’", "c", "æ¯å‡»ä¸­ä¸€åæ•Œäººéƒ½å°†ä½¿ä½ çš„æ”»å‡»é€Ÿåº¦æé«˜1%ï¼ŒæŒç»­5ç§’ã€‚æœ€å¤šå åŠ 15å±‚ã€‚æé•°çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: è¡€é•°åˆ€ 
+RUNE_NECROMANCER_GRIM_SCYTHE_A := New SkillRune("è¡€é•°åˆ€", "ç‰©ç†", "a", "æ¯å‡»ä¸­ä¸€åæ•Œäººï¼Œéƒ½ä¼šä¸ºä½ æ¢å¤1%çš„ç”Ÿå‘½å€¼ã€‚")
+; æŠ€èƒ½: æé•°
+SKILL_ACTIVE_NECROMANCER_GRIM_SCYTHE := New ActiveSkill("æé•°", "ç‰©ç†", "ä¸»è¦"
 	, "images\skills\necromancer\active\necromancer_grimscythe_normal.png"
-	, "Éú³É£º12µã¾«»ê£¨Ã¿»÷ÖÐÒ»¸öµÐÈË£©\r\nÕÙ»½Ò»°ÑÁ­µ¶ÏòÇ°»Ó¿³£¬Ôì³É150%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£"
+	, "ç”Ÿæˆï¼š12ç‚¹ç²¾é­‚ï¼ˆæ¯å‡»ä¸­ä¸€ä¸ªæ•Œäººï¼‰\r\nå¬å”¤ä¸€æŠŠé•°åˆ€å‘å‰æŒ¥ç ï¼Œé€ æˆ150%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_NECROMANCER_GRIM_SCYTHE_B, RUNE_NECROMANCER_GRIM_SCYTHE_D, RUNE_NECROMANCER_GRIM_SCYTHE_E, RUNE_NECROMANCER_GRIM_SCYTHE_C, RUNE_NECROMANCER_GRIM_SCYTHE_A])
 ; ---------------------------
-; ¼¼ÄÜ: ¿ÖÁ­ End
+; æŠ€èƒ½: æé•° End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Ð°±¬ Start
+; æŠ€èƒ½: é‚ªçˆ† Start
 ; ---------------------------
-; ·ûÎÄ: ÑªÈâÄ£ºý 
-RUNE_NECROMANCER_CORPSE_EXPLOSION_D := New SkillRune("ÑªÈâÄ£ºý", "ÎïÀí", "d", "±¬Õ¨·¶Î§À©´óÖÁ25Âë¡£")
-; ·ûÎÄ: ¶Ì±øÏà½Ó 
-RUNE_NECROMANCER_CORPSE_EXPLOSION_C := New SkillRune("¶Ì±øÏà½Ó", "¶¾ËØ", "c", "ÏÖÔÚ½«Òý±¬Äã¸½½ü×î¶à 5 ¾ßÊ¬º¡£¬¶ÔÎ»ÓÚ20Âë·¶Î§ÄÚµÄµÐÈËÔì³É525%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©¡£")
-; ·ûÎÄ: ö±ÉäÊ¬¿é 
-RUNE_NECROMANCER_CORPSE_EXPLOSION_A := New SkillRune("ö±ÉäÊ¬¿é", "¶¾ËØ", "a", "Ê¬º¡µÄ¾«»ê½«ÏòÔ¶ÀëÄãµÄ·½Ïò±¬Õ¨£¬»÷ÖÐ×¶ÐÎ·¶Î§ÄÚµÄËùÓÐµÐÈË¡£Ð°±¬µÄÉËº¦ÀàÐÍ×ª»»Îª¶¾ÐÔÉËº¦¡£")
-; ·ûÎÄ: ËÀº®ÆøÏ¢ 
-RUNE_NECROMANCER_CORPSE_EXPLOSION_E := New SkillRune("ËÀº®ÆøÏ¢", "±ùº®", "e", "¶³½áËùÓÐ±»±¬Õ¨»÷ÖÐµÄµÐÈË£¬³ÖÐø2Ãë¡£Ð°±¬µÄÉËº¦×ª±äÎª±ùËªÉËº¦¡£")
-; ·ûÎÄ: ÁÙËÀÖ®Óµ 
-RUNE_NECROMANCER_CORPSE_EXPLOSION_B := New SkillRune("ÁÙËÀÖ®Óµ", "ÎïÀí", "b", "Ê¬º¡µÄ¾«»êÔÚ±¬Õ¨Ç°½«³åÏò×î½üµÄµÐÈË£¬Ð°±¬Ã¿Òý±¬Ò»¾ßÊ¬º¡µÄ¾«»ê£¬¾Í»áÏûºÄ2%µÄÉúÃüÖµ¡£")
-; ¼¼ÄÜ: Ð°±¬
-SKILL_ACTIVE_NECROMANCER_CORPSE_EXPLOSION := New ActiveSkill("Ð°±¬", "ÎïÀí", "Ê¬º¡"
+; ç¬¦æ–‡: è¡€è‚‰æ¨¡ç³Š 
+RUNE_NECROMANCER_CORPSE_EXPLOSION_D := New SkillRune("è¡€è‚‰æ¨¡ç³Š", "ç‰©ç†", "d", "çˆ†ç‚¸èŒƒå›´æ‰©å¤§è‡³25ç ã€‚")
+; ç¬¦æ–‡: çŸ­å…µç›¸æŽ¥ 
+RUNE_NECROMANCER_CORPSE_EXPLOSION_C := New SkillRune("çŸ­å…µç›¸æŽ¥", "æ¯’ç´ ", "c", "çŽ°åœ¨å°†å¼•çˆ†ä½ é™„è¿‘æœ€å¤š 5 å…·å°¸éª¸ï¼Œå¯¹ä½äºŽ20ç èŒƒå›´å†…çš„æ•Œäººé€ æˆ525%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: éœ°å°„å°¸å— 
+RUNE_NECROMANCER_CORPSE_EXPLOSION_A := New SkillRune("éœ°å°„å°¸å—", "æ¯’ç´ ", "a", "å°¸éª¸çš„ç²¾é­‚å°†å‘è¿œç¦»ä½ çš„æ–¹å‘çˆ†ç‚¸ï¼Œå‡»ä¸­é”¥å½¢èŒƒå›´å†…çš„æ‰€æœ‰æ•Œäººã€‚é‚ªçˆ†çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºæ¯’æ€§ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æ­»å¯’æ°”æ¯ 
+RUNE_NECROMANCER_CORPSE_EXPLOSION_E := New SkillRune("æ­»å¯’æ°”æ¯", "å†°å¯’", "e", "å†»ç»“æ‰€æœ‰è¢«çˆ†ç‚¸å‡»ä¸­çš„æ•Œäººï¼ŒæŒç»­2ç§’ã€‚é‚ªçˆ†çš„ä¼¤å®³è½¬å˜ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ä¸´æ­»ä¹‹æ‹¥ 
+RUNE_NECROMANCER_CORPSE_EXPLOSION_B := New SkillRune("ä¸´æ­»ä¹‹æ‹¥", "ç‰©ç†", "b", "å°¸éª¸çš„ç²¾é­‚åœ¨çˆ†ç‚¸å‰å°†å†²å‘æœ€è¿‘çš„æ•Œäººï¼Œé‚ªçˆ†æ¯å¼•çˆ†ä¸€å…·å°¸éª¸çš„ç²¾é­‚ï¼Œå°±ä¼šæ¶ˆè€—2%çš„ç”Ÿå‘½å€¼ã€‚")
+; æŠ€èƒ½: é‚ªçˆ†
+SKILL_ACTIVE_NECROMANCER_CORPSE_EXPLOSION := New ActiveSkill("é‚ªçˆ†", "ç‰©ç†", "å°¸éª¸"
 	, "images\skills\necromancer\active\necromancer_corpseexplosion_normal.png"
-	, "ÔÚÖ¸¶¨ÇøÓò11Âë·¶Î§ÄÚÕÙ»½×î¶à 5 ¾ßÊ¬º¡µÄ¾«»ê²¢Òý·¢±¬Õ¨£¬¶Ô20Âë·¶Î§ÄÚµÄµÐÈËÔì³É350%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£"
+	, "åœ¨æŒ‡å®šåŒºåŸŸ11ç èŒƒå›´å†…å¬å”¤æœ€å¤š 5 å…·å°¸éª¸çš„ç²¾é­‚å¹¶å¼•å‘çˆ†ç‚¸ï¼Œå¯¹20ç èŒƒå›´å†…çš„æ•Œäººé€ æˆ350%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_NECROMANCER_CORPSE_EXPLOSION_D, RUNE_NECROMANCER_CORPSE_EXPLOSION_C, RUNE_NECROMANCER_CORPSE_EXPLOSION_A, RUNE_NECROMANCER_CORPSE_EXPLOSION_E, RUNE_NECROMANCER_CORPSE_EXPLOSION_B])
 ; ---------------------------
-; ¼¼ÄÜ: Ð°±¬ End
+; æŠ€èƒ½: é‚ªçˆ† End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÷¼÷Ã·¨Ê¦ Start
+; æŠ€èƒ½: éª·é«…æ³•å¸ˆ Start
 ; ---------------------------
-; ·ûÎÄ: Íö»êÖ®´Í 
-RUNE_NECROMANCER_SKELETAL_MAGE_A := New SkillRune("Íö»êÖ®´Í", "ÎïÀí", "a", "÷¼÷Ã·¨Ê¦½«ÔÚËÀÍö»òÏûÊ§Ê±ÁôÏÂÒ»¾ßÊ¬º¡¡£")
-; ·ûÎÄ: ÎÛÈ¾ 
-RUNE_NECROMANCER_SKELETAL_MAGE_D := New SkillRune("ÎÛÈ¾", "¶¾ËØ", "d", "¸´»îÒ»Ãû¸¯»¯·¨Ê¦Òýµ¼µòÁãÁéÆø£¬ÔÚ³ÖÐøÆÚ¼äÄÚÔì³É100%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©¡£")
-; ·ûÎÄ: ÷¼÷Ã¹­ÊÖ 
-RUNE_NECROMANCER_SKELETAL_MAGE_E := New SkillRune("÷¼÷Ã¹­ÊÖ", "±ùº®", "e", "¸´»îÒ»Ãû÷¼÷Ã¹­ÊÖ£¬Ôì³É400%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£÷¼÷Ã¹­ÊÖÃ¿´ÎÔì³ÉÉËº¦£¬¶¼½«Ê¹ÄãµÄ¹¥»÷ËÙ¶ÈÌá¸ß3%£¬³ÖÐø5Ãë¡£×î¶à¶Ñµþ10²ã¡£")
-; ·ûÎÄ: ¾«»ê¹à×¢ 
-RUNE_NECROMANCER_SKELETAL_MAGE_B := New SkillRune("¾«»ê¹à×¢", "ÎïÀí", "b", "ÏûºÄËùÓÐ¾«»ê£¬ÕÙ»½Ò»ÃûÇ¿´óµÄÆÍ´Ó¡£Ã¿ÏûºÄÒ»µã¾«»ê£¬¸ÃÆÍ´ÓµÄÉËº¦¶¼½«Ìá¸ß3%¡£")
-; ·ûÎÄ: ÉúÃü¹©¸ø 
-RUNE_NECROMANCER_SKELETAL_MAGE_C := New SkillRune("ÉúÃü¹©¸ø", "ÎïÀí", "c", "¸´»î÷¼÷Ã·¨Ê¦½«ÏûºÄ10%µÄÉúÃüÖµ£¬µ«³ÖÐøÊ±¼ä¶îÍâÑÓ³¤2Ãë¡£")
-; ¼¼ÄÜ: ÷¼÷Ã·¨Ê¦
-SKILL_ACTIVE_NECROMANCER_SKELETAL_MAGE := New ActiveSkill("÷¼÷Ã·¨Ê¦", "ÎïÀí", "´ÎÒª"
+; ç¬¦æ–‡: äº¡é­‚ä¹‹èµ 
+RUNE_NECROMANCER_SKELETAL_MAGE_A := New SkillRune("äº¡é­‚ä¹‹èµ", "ç‰©ç†", "a", "éª·é«…æ³•å¸ˆå°†åœ¨æ­»äº¡æˆ–æ¶ˆå¤±æ—¶ç•™ä¸‹ä¸€å…·å°¸éª¸ã€‚")
+; ç¬¦æ–‡: æ±¡æŸ“ 
+RUNE_NECROMANCER_SKELETAL_MAGE_D := New SkillRune("æ±¡æŸ“", "æ¯’ç´ ", "d", "å¤æ´»ä¸€åè…åŒ–æ³•å¸ˆå¼•å¯¼å‡‹é›¶çµæ°”ï¼Œåœ¨æŒç»­æœŸé—´å†…é€ æˆ100%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: éª·é«…å¼“æ‰‹ 
+RUNE_NECROMANCER_SKELETAL_MAGE_E := New SkillRune("éª·é«…å¼“æ‰‹", "å†°å¯’", "e", "å¤æ´»ä¸€åéª·é«…å¼“æ‰‹ï¼Œé€ æˆ400%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚éª·é«…å¼“æ‰‹æ¯æ¬¡é€ æˆä¼¤å®³ï¼Œéƒ½å°†ä½¿ä½ çš„æ”»å‡»é€Ÿåº¦æé«˜3%ï¼ŒæŒç»­5ç§’ã€‚æœ€å¤šå †å 10å±‚ã€‚")
+; ç¬¦æ–‡: ç²¾é­‚çŒæ³¨ 
+RUNE_NECROMANCER_SKELETAL_MAGE_B := New SkillRune("ç²¾é­‚çŒæ³¨", "ç‰©ç†", "b", "æ¶ˆè€—æ‰€æœ‰ç²¾é­‚ï¼Œå¬å”¤ä¸€åå¼ºå¤§çš„ä»†ä»Žã€‚æ¯æ¶ˆè€—ä¸€ç‚¹ç²¾é­‚ï¼Œè¯¥ä»†ä»Žçš„ä¼¤å®³éƒ½å°†æé«˜3%ã€‚")
+; ç¬¦æ–‡: ç”Ÿå‘½ä¾›ç»™ 
+RUNE_NECROMANCER_SKELETAL_MAGE_C := New SkillRune("ç”Ÿå‘½ä¾›ç»™", "ç‰©ç†", "c", "å¤æ´»éª·é«…æ³•å¸ˆå°†æ¶ˆè€—10%çš„ç”Ÿå‘½å€¼ï¼Œä½†æŒç»­æ—¶é—´é¢å¤–å»¶é•¿2ç§’ã€‚")
+; æŠ€èƒ½: éª·é«…æ³•å¸ˆ
+SKILL_ACTIVE_NECROMANCER_SKELETAL_MAGE := New ActiveSkill("éª·é«…æ³•å¸ˆ", "ç‰©ç†", "æ¬¡è¦"
 	, "images\skills\necromancer\active\necromancer_skeletalmage_normal.png"
-	, "ÏûºÄ£º40µã¾«»ê\r\n´ÓµØÏÂ¸´»îÒ»¾ß÷¼÷Ã¹¥»÷ÄãµÄµÐÈË£¬Ã¿Á½´Î¹¥»÷Ôì³É400%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£³ÖÐø6Ãë¡£"
+	, "æ¶ˆè€—ï¼š40ç‚¹ç²¾é­‚\r\nä»Žåœ°ä¸‹å¤æ´»ä¸€å…·éª·é«…æ”»å‡»ä½ çš„æ•Œäººï¼Œæ¯ä¸¤æ¬¡æ”»å‡»é€ æˆ400%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚æŒç»­6ç§’ã€‚"
 	, [RUNE_NECROMANCER_SKELETAL_MAGE_A, RUNE_NECROMANCER_SKELETAL_MAGE_D, RUNE_NECROMANCER_SKELETAL_MAGE_E, RUNE_NECROMANCER_SKELETAL_MAGE_B, RUNE_NECROMANCER_SKELETAL_MAGE_C])
 ; ---------------------------
-; ¼¼ÄÜ: ÷¼÷Ã·¨Ê¦ End
+; æŠ€èƒ½: éª·é«…æ³•å¸ˆ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Ê¬Ã¬ Start
+; æŠ€èƒ½: å°¸çŸ› Start
 ; ---------------------------
-; ·ûÎÄ: ËéÈâÁÑÃ¬ 
-RUNE_NECROMANCER_CORPSE_LANCE_E := New SkillRune("ËéÈâÁÑÃ¬", "¶¾ËØ", "e", "Ã¿Ö§Ê¬Ã¬¶¼»áÊ¹Ä¿±êµÄËÙ¶È½µµÍ10%£¬²¢Ê¹ÆäÔì³ÉµÄÉËº¦½µµÍ6%£¬³ÖÐø10Ãë¡£×î¶àµþ¼Ó5²ã¡£Ê¬Ã¬µÄÉËº¦ÀàÐÍ×ª»»Îª¶¾ÐÔÉËº¦¡£")
-; ·ûÎÄ: ´àÁÑÅö´¥ 
-RUNE_NECROMANCER_CORPSE_LANCE_B := New SkillRune("´àÁÑÅö´¥", "±ùº®", "b", "µÐÈË±äµÃ´àÈõ£¬Ê¹ÆäÃ¿´Î±»Ê¬Ã¬»÷ÖÐÊ±£¬ÊÜµ½±©»÷µÄ¼¸ÂÊ½«Ìá¸ß5%£¬³ÖÐø5Ãë¡£Ê¬Ã¬µÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ·ûÎÄ: ¹ÇÃ¬µ¯Éä 
-RUNE_NECROMANCER_CORPSE_LANCE_A := New SkillRune("¹ÇÃ¬µ¯Éä", "¶¾ËØ", "a", "Ê¬Ã¬ÓÐ20%µÄ¼¸ÂÊµ¯Éäµ½Ò»¸ö¶îÍâµÄÄ¿±êÉíÉÏ¡£Ê¬Ã¬µÄÉËº¦ÀàÐÍ×ª»»Îª¶¾ÐÔÉËº¦¡£")
-; ·ûÎÄ: ¶ñ¶¾´ò»÷ 
-RUNE_NECROMANCER_CORPSE_LANCE_D := New SkillRune("¶ñ¶¾´ò»÷", "ÎïÀí", "d", "Ê¹Ä¿±ê»èÃÔ£¬³ÖÐø3Ãë¡£")
-; ·ûÎÄ: ÑªÎÛÖ®Ã¬ 
-RUNE_NECROMANCER_CORPSE_LANCE_C := New SkillRune("ÑªÎÛÖ®Ã¬", "ÎïÀí", "c", "ÏûºÄ×ÜÉúÃüÖµµÄ2%£¬´Ó×Ô¼ºÉíÉÏÏòÄ¿±êÍ¶ÉäÒ»Ö§¶îÍâµÄÊ¬Ã¬£¬Ôì³É525%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£")
-; ¼¼ÄÜ: Ê¬Ã¬
-SKILL_ACTIVE_NECROMANCER_CORPSE_LANCE := New ActiveSkill("Ê¬Ã¬", "ÎïÀí", "Ê¬º¡"
+; ç¬¦æ–‡: ç¢Žè‚‰è£‚çŸ› 
+RUNE_NECROMANCER_CORPSE_LANCE_E := New SkillRune("ç¢Žè‚‰è£‚çŸ›", "æ¯’ç´ ", "e", "æ¯æ”¯å°¸çŸ›éƒ½ä¼šä½¿ç›®æ ‡çš„é€Ÿåº¦é™ä½Ž10%ï¼Œå¹¶ä½¿å…¶é€ æˆçš„ä¼¤å®³é™ä½Ž6%ï¼ŒæŒç»­10ç§’ã€‚æœ€å¤šå åŠ 5å±‚ã€‚å°¸çŸ›çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºæ¯’æ€§ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: è„†è£‚ç¢°è§¦ 
+RUNE_NECROMANCER_CORPSE_LANCE_B := New SkillRune("è„†è£‚ç¢°è§¦", "å†°å¯’", "b", "æ•Œäººå˜å¾—è„†å¼±ï¼Œä½¿å…¶æ¯æ¬¡è¢«å°¸çŸ›å‡»ä¸­æ—¶ï¼Œå—åˆ°æš´å‡»çš„å‡ çŽ‡å°†æé«˜5%ï¼ŒæŒç»­5ç§’ã€‚å°¸çŸ›çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: éª¨çŸ›å¼¹å°„ 
+RUNE_NECROMANCER_CORPSE_LANCE_A := New SkillRune("éª¨çŸ›å¼¹å°„", "æ¯’ç´ ", "a", "å°¸çŸ›æœ‰20%çš„å‡ çŽ‡å¼¹å°„åˆ°ä¸€ä¸ªé¢å¤–çš„ç›®æ ‡èº«ä¸Šã€‚å°¸çŸ›çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºæ¯’æ€§ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æ¶æ¯’æ‰“å‡» 
+RUNE_NECROMANCER_CORPSE_LANCE_D := New SkillRune("æ¶æ¯’æ‰“å‡»", "ç‰©ç†", "d", "ä½¿ç›®æ ‡æ˜è¿·ï¼ŒæŒç»­3ç§’ã€‚")
+; ç¬¦æ–‡: è¡€æ±¡ä¹‹çŸ› 
+RUNE_NECROMANCER_CORPSE_LANCE_C := New SkillRune("è¡€æ±¡ä¹‹çŸ›", "ç‰©ç†", "c", "æ¶ˆè€—æ€»ç”Ÿå‘½å€¼çš„2%ï¼Œä»Žè‡ªå·±èº«ä¸Šå‘ç›®æ ‡æŠ•å°„ä¸€æ”¯é¢å¤–çš„å°¸çŸ›ï¼Œé€ æˆ525%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: å°¸çŸ›
+SKILL_ACTIVE_NECROMANCER_CORPSE_LANCE := New ActiveSkill("å°¸çŸ›", "ç‰©ç†", "å°¸éª¸"
 	, "images\skills\necromancer\active\necromancer_corpselance_normal.png"
-	, "Ëø¶¨Ò»¸öÄ¿±ê£¬´ÓÆäÖÜÎ§µÄÊ¬º¡ËùÔÚÎ»ÖÃÕÙ»½ËéÃ¬¹¥»÷¸ÃÄ¿±ê£¬Ôì³É1750%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£"
+	, "é”å®šä¸€ä¸ªç›®æ ‡ï¼Œä»Žå…¶å‘¨å›´çš„å°¸éª¸æ‰€åœ¨ä½ç½®å¬å”¤ç¢ŽçŸ›æ”»å‡»è¯¥ç›®æ ‡ï¼Œé€ æˆ1750%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_NECROMANCER_CORPSE_LANCE_E, RUNE_NECROMANCER_CORPSE_LANCE_B, RUNE_NECROMANCER_CORPSE_LANCE_A, RUNE_NECROMANCER_CORPSE_LANCE_D, RUNE_NECROMANCER_CORPSE_LANCE_C])
 ; ---------------------------
-; ¼¼ÄÜ: Ê¬Ã¬ End
+; æŠ€èƒ½: å°¸çŸ› End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ºÅÁîº¡¹Ç Start
+; æŠ€èƒ½: å·ä»¤éª¸éª¨ Start
 ; ---------------------------
-; ·ûÎÄ: ÷¼÷Ã´òÊÖ 
-RUNE_NECROMANCER_COMMAND_SKELETONS_A := New SkillRune("÷¼÷Ã´òÊÖ", "ÎïÀí", "a", "Ö÷¶¯¼¤»îÊ±µÄ¾«»êÏûºÄ½µµÍ25µã¡£")
-; ·ûÎÄ: ¿ñÅ­Õß 
-RUNE_NECROMANCER_COMMAND_SKELETONS_E := New SkillRune("¿ñÅ­Õß", "ÎïÀí", "e", "ÃüÁî÷¼÷Ã½øÈë¿ñÂÒ×´Ì¬£¬¹¥»÷Ê±µÄ¹¥»÷ËÙ¶ÈÌá¸ß25%¡£")
-; ·ûÎÄ: ºÚ°µÓúºÏ 
-RUNE_NECROMANCER_COMMAND_SKELETONS_B := New SkillRune("ºÚ°µÓúºÏ", "ÎïÀí", "b", "÷¼÷ÃÆÍ´ÓÃ¿´Î»÷ÖÐµÐÈË¶¼»áÎªÄã»Ö¸´0.5%µÄ×î´óÉúÃüÖµ¡£")
-; ·ûÎÄ: ËÀº®Ö®ÎÕ 
-RUNE_NECROMANCER_COMMAND_SKELETONS_C := New SkillRune("ËÀº®Ö®ÎÕ", "±ùº®", "c", "ºÅÁîËùÖ¸µÄÄ¿±ê½«±»¶³½á3Ãë¡£ºÅÁîº¡¹ÇµÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ·ûÎÄ: É±Â¾ÃüÁî 
-RUNE_NECROMANCER_COMMAND_SKELETONS_D := New SkillRune("É±Â¾ÃüÁî", "¶¾ËØ", "d", "ÃüÁîÄãµÄ÷¼÷Ã±¬Õ¨£¬¶ÔÎ»ÓÚ15Âë·¶Î§ÄÚµÄµÐÈËÔì³É215%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©¡£")
-; ¼¼ÄÜ: ºÅÁîº¡¹Ç
-SKILL_ACTIVE_NECROMANCER_COMMAND_SKELETONS := New ActiveSkill("ºÅÁîº¡¹Ç", "ÎïÀí", "¸´»î"
+; ç¬¦æ–‡: éª·é«…æ‰“æ‰‹ 
+RUNE_NECROMANCER_COMMAND_SKELETONS_A := New SkillRune("éª·é«…æ‰“æ‰‹", "ç‰©ç†", "a", "ä¸»åŠ¨æ¿€æ´»æ—¶çš„ç²¾é­‚æ¶ˆè€—é™ä½Ž25ç‚¹ã€‚")
+; ç¬¦æ–‡: ç‹‚æ€’è€… 
+RUNE_NECROMANCER_COMMAND_SKELETONS_E := New SkillRune("ç‹‚æ€’è€…", "ç‰©ç†", "e", "å‘½ä»¤éª·é«…è¿›å…¥ç‹‚ä¹±çŠ¶æ€ï¼Œæ”»å‡»æ—¶çš„æ”»å‡»é€Ÿåº¦æé«˜25%ã€‚")
+; ç¬¦æ–‡: é»‘æš—æ„ˆåˆ 
+RUNE_NECROMANCER_COMMAND_SKELETONS_B := New SkillRune("é»‘æš—æ„ˆåˆ", "ç‰©ç†", "b", "éª·é«…ä»†ä»Žæ¯æ¬¡å‡»ä¸­æ•Œäººéƒ½ä¼šä¸ºä½ æ¢å¤0.5%çš„æœ€å¤§ç”Ÿå‘½å€¼ã€‚")
+; ç¬¦æ–‡: æ­»å¯’ä¹‹æ¡ 
+RUNE_NECROMANCER_COMMAND_SKELETONS_C := New SkillRune("æ­»å¯’ä¹‹æ¡", "å†°å¯’", "c", "å·ä»¤æ‰€æŒ‡çš„ç›®æ ‡å°†è¢«å†»ç»“3ç§’ã€‚å·ä»¤éª¸éª¨çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æ€æˆ®å‘½ä»¤ 
+RUNE_NECROMANCER_COMMAND_SKELETONS_D := New SkillRune("æ€æˆ®å‘½ä»¤", "æ¯’ç´ ", "d", "å‘½ä»¤ä½ çš„éª·é«…çˆ†ç‚¸ï¼Œå¯¹ä½äºŽ15ç èŒƒå›´å†…çš„æ•Œäººé€ æˆ215%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: å·ä»¤éª¸éª¨
+SKILL_ACTIVE_NECROMANCER_COMMAND_SKELETONS := New ActiveSkill("å·ä»¤éª¸éª¨", "ç‰©ç†", "å¤æ´»"
 	, "images\skills\necromancer\active\necromancer_raiseskeleton_normal.png"
-	, "ÏûºÄ£º50µã¾«»ê\r\nÖ÷¶¯£º¿ØÖÆÄãµÄ÷¼÷ÃÆÍ´Ó¹¥»÷Ä¿±ê²¢ÇÒËüÃÇµÄÉËº¦Ìá¸ß50%¡£"
+	, "æ¶ˆè€—ï¼š50ç‚¹ç²¾é­‚\r\nä¸»åŠ¨ï¼šæŽ§åˆ¶ä½ çš„éª·é«…ä»†ä»Žæ”»å‡»ç›®æ ‡å¹¶ä¸”å®ƒä»¬çš„ä¼¤å®³æé«˜50%ã€‚"
 	, [RUNE_NECROMANCER_COMMAND_SKELETONS_A, RUNE_NECROMANCER_COMMAND_SKELETONS_E, RUNE_NECROMANCER_COMMAND_SKELETONS_B, RUNE_NECROMANCER_COMMAND_SKELETONS_C, RUNE_NECROMANCER_COMMAND_SKELETONS_D])
 ; ---------------------------
-; ¼¼ÄÜ: ºÅÁîº¡¹Ç End
+; æŠ€èƒ½: å·ä»¤éª¸éª¨ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÏÊÑªºçÎü Start
+; æŠ€èƒ½: é²œè¡€è™¹å¸ Start
 ; ---------------------------
-; ·ûÎÄ: ÏÊÑª¼¢¿Ê 
-RUNE_NECROMANCER_SIPHON_BLOOD_E := New SkillRune("ÏÊÑª¼¢¿Ê", "ÎïÀí", "e", "Ê©·ÅÕâ¸ö¼¼ÄÜÊ±£¬Äã½«ÎüÊÕ40ÂëÄÚµÄËùÓÐÉúÃüÇò¡£")
-; ·ûÎÄ: ÕòÑ¹ 
-RUNE_NECROMANCER_SIPHON_BLOOD_A := New SkillRune("ÕòÑ¹", "±ùº®", "a", "ÊÜµ½ÏÊÑªºçÎüÓ°ÏìµÄµÐÈË»¹½«¼õËÙ75%¡£ÏÊÑªºçÎüµÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ·ûÎÄ: Ç¿Á¦ÏàÒÆ 
-RUNE_NECROMANCER_SIPHON_BLOOD_D := New SkillRune("Ç¿Á¦ÏàÒÆ", "¶¾ËØ", "d", "Ã¿´ÎÔì³ÉÉËº¦¶¼½«Ê¹ÉËº¦Ìá¸ß10%¡£×î¶àµþ¼Ó10´Î¡£ÏÊÑªºçÎüµÄÉËº¦ÀàÐÍ×ª»»Îª¶¾ÐÔÉËº¦¡£")
-; ·ûÎÄ: ´¿¾»¾«»ê 
-RUNE_NECROMANCER_SIPHON_BLOOD_B := New SkillRune("´¿¾»¾«»ê", "ÎïÀí", "b", "ÄãµÄÉúÃüÖµÈ«ÂúÊ±£¬»ñµÃµÄ¾«»ê½«Ìá¸ßÖÁ20µã¡£")
-; ·ûÎÄ: ÎüÈ¡ÉúÃü 
-RUNE_NECROMANCER_SIPHON_BLOOD_C := New SkillRune("ÎüÈ¡ÉúÃü", "ÎïÀí", "c", "Ê¹»Ö¸´µÄÉúÃüÖµÌá¸ßÖÁ6%£¬µ«²»ÔÙ»Ö¸´¾«»ê¡£")
-; ¼¼ÄÜ: ÏÊÑªºçÎü
-SKILL_ACTIVE_NECROMANCER_SIPHON_BLOOD := New ActiveSkill("ÏÊÑªºçÎü", "ÎïÀí", "Ö÷Òª"
+; ç¬¦æ–‡: é²œè¡€é¥¥æ¸´ 
+RUNE_NECROMANCER_SIPHON_BLOOD_E := New SkillRune("é²œè¡€é¥¥æ¸´", "ç‰©ç†", "e", "æ–½æ”¾è¿™ä¸ªæŠ€èƒ½æ—¶ï¼Œä½ å°†å¸æ”¶40ç å†…çš„æ‰€æœ‰ç”Ÿå‘½çƒã€‚")
+; ç¬¦æ–‡: é•‡åŽ‹ 
+RUNE_NECROMANCER_SIPHON_BLOOD_A := New SkillRune("é•‡åŽ‹", "å†°å¯’", "a", "å—åˆ°é²œè¡€è™¹å¸å½±å“çš„æ•Œäººè¿˜å°†å‡é€Ÿ75%ã€‚é²œè¡€è™¹å¸çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: å¼ºåŠ›ç›¸ç§» 
+RUNE_NECROMANCER_SIPHON_BLOOD_D := New SkillRune("å¼ºåŠ›ç›¸ç§»", "æ¯’ç´ ", "d", "æ¯æ¬¡é€ æˆä¼¤å®³éƒ½å°†ä½¿ä¼¤å®³æé«˜10%ã€‚æœ€å¤šå åŠ 10æ¬¡ã€‚é²œè¡€è™¹å¸çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºæ¯’æ€§ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: çº¯å‡€ç²¾é­‚ 
+RUNE_NECROMANCER_SIPHON_BLOOD_B := New SkillRune("çº¯å‡€ç²¾é­‚", "ç‰©ç†", "b", "ä½ çš„ç”Ÿå‘½å€¼å…¨æ»¡æ—¶ï¼ŒèŽ·å¾—çš„ç²¾é­‚å°†æé«˜è‡³20ç‚¹ã€‚")
+; ç¬¦æ–‡: å¸å–ç”Ÿå‘½ 
+RUNE_NECROMANCER_SIPHON_BLOOD_C := New SkillRune("å¸å–ç”Ÿå‘½", "ç‰©ç†", "c", "ä½¿æ¢å¤çš„ç”Ÿå‘½å€¼æé«˜è‡³6%ï¼Œä½†ä¸å†æ¢å¤ç²¾é­‚ã€‚")
+; æŠ€èƒ½: é²œè¡€è™¹å¸
+SKILL_ACTIVE_NECROMANCER_SIPHON_BLOOD := New ActiveSkill("é²œè¡€è™¹å¸", "ç‰©ç†", "ä¸»è¦"
 	, "images\skills\necromancer\active\necromancer_bloodsiphon_normal.png"
-	, "Éú³É£º15µã¾«»ê£¨Ã¿´ÎÔì³ÉÉËº¦£©\r\n´ÓÄ¿±êµÐÈËÉíÉÏÇÔÈ¡ÉúÃü£¬Ôì³É300%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£"
+	, "ç”Ÿæˆï¼š15ç‚¹ç²¾é­‚ï¼ˆæ¯æ¬¡é€ æˆä¼¤å®³ï¼‰\r\nä»Žç›®æ ‡æ•Œäººèº«ä¸Šçªƒå–ç”Ÿå‘½ï¼Œé€ æˆ300%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_NECROMANCER_SIPHON_BLOOD_E, RUNE_NECROMANCER_SIPHON_BLOOD_A, RUNE_NECROMANCER_SIPHON_BLOOD_D, RUNE_NECROMANCER_SIPHON_BLOOD_B, RUNE_NECROMANCER_SIPHON_BLOOD_C])
 ; ---------------------------
-; ¼¼ÄÜ: ÏÊÑªºçÎü End
+; æŠ€èƒ½: é²œè¡€è™¹å¸ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ËÀÍöÐÂÐÇ Start
+; æŠ€èƒ½: æ­»äº¡æ–°æ˜Ÿ Start
 ; ---------------------------
-; ·ûÎÄ: »ìãçÐÂÐÇ 
-RUNE_NECROMANCER_DEATH_NOVA_E := New SkillRune("»ìãçÐÂÐÇ", "¶¾ËØ", "e", "Ã¿´ÎÊÍ·Å¶¼»áÊ¹ÄãÏÂÒ»¸öÐÂÐÇµÄ·¶Î§À©´ó5Âë£¬×î¶àµþ¼Ó2´Î¡£")
-; ·ûÎÄ: ÎüÑªÐÂÐÇ 
-RUNE_NECROMANCER_DEATH_NOVA_A := New SkillRune("ÎüÑªÐÂÐÇ", "ÎïÀí", "a", "ÏÖÔÚÃ¿»÷ÖÐÒ»¸öÄ¿±ê¶¼»áÎªÄã»Ö¸´1%µÄÉúÃüÖµ£¬µ«Ôì³ÉµÄÉËº¦½µµÍÖÁ225%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£")
-; ·ûÎÄ: Òß²¡ÐÂÐÇ 
-RUNE_NECROMANCER_DEATH_NOVA_D := New SkillRune("Òß²¡ÐÂÐÇ", "¶¾ËØ", "d", "ÔÚµØÉÏÁôÏÂÒ»Æ¬ÃÖÂþµÄÎÁÒß£¬Ê¹µÐÈËµÄËÙ¶È½µµÍ60%£¬²¢Ê¹ÆäÔì³ÉµÄÉËº¦½µµÍ15%£¬³ÖÐø1Ãë¡£")
-; ·ûÎÄ: °×¹ÇÐÂÐÇ 
-RUNE_NECROMANCER_DEATH_NOVA_B := New SkillRune("°×¹ÇÐÂÐÇ", "ÎïÀí", "b", "ÏòËÄÖÜÀ©É¢¼¹´Ì£¬ÔÚ12Âë·¶Î§ÄÚÔì³É475%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£")
-; ·ûÎÄ: ÏÊÑªÐÂÐÇ 
-RUNE_NECROMANCER_DEATH_NOVA_C := New SkillRune("ÏÊÑªÐÂÐÇ", "ÎïÀí", "c", "ÏûºÄ10%µÄÉúÃüÖµ£¬ÊÍ·ÅÒ»´ÎÏÊÑªÐÂÐÇ£¬¶ÔÎ»ÓÚ25Âë·¶Î§ÄÚµÄËùÓÐµÐÈËÔì³É450%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£")
-; ¼¼ÄÜ: ËÀÍöÐÂÐÇ
-SKILL_ACTIVE_NECROMANCER_DEATH_NOVA := New ActiveSkill("ËÀÍöÐÂÐÇ", "¶¾ËØ", "´ÎÒª"
+; ç¬¦æ–‡: æ··æ²Œæ–°æ˜Ÿ 
+RUNE_NECROMANCER_DEATH_NOVA_E := New SkillRune("æ··æ²Œæ–°æ˜Ÿ", "æ¯’ç´ ", "e", "æ¯æ¬¡é‡Šæ”¾éƒ½ä¼šä½¿ä½ ä¸‹ä¸€ä¸ªæ–°æ˜Ÿçš„èŒƒå›´æ‰©å¤§5ç ï¼Œæœ€å¤šå åŠ 2æ¬¡ã€‚")
+; ç¬¦æ–‡: å¸è¡€æ–°æ˜Ÿ 
+RUNE_NECROMANCER_DEATH_NOVA_A := New SkillRune("å¸è¡€æ–°æ˜Ÿ", "ç‰©ç†", "a", "çŽ°åœ¨æ¯å‡»ä¸­ä¸€ä¸ªç›®æ ‡éƒ½ä¼šä¸ºä½ æ¢å¤1%çš„ç”Ÿå‘½å€¼ï¼Œä½†é€ æˆçš„ä¼¤å®³é™ä½Žè‡³225%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: ç–«ç—…æ–°æ˜Ÿ 
+RUNE_NECROMANCER_DEATH_NOVA_D := New SkillRune("ç–«ç—…æ–°æ˜Ÿ", "æ¯’ç´ ", "d", "åœ¨åœ°ä¸Šç•™ä¸‹ä¸€ç‰‡å¼¥æ¼«çš„ç˜Ÿç–«ï¼Œä½¿æ•Œäººçš„é€Ÿåº¦é™ä½Ž60%ï¼Œå¹¶ä½¿å…¶é€ æˆçš„ä¼¤å®³é™ä½Ž15%ï¼ŒæŒç»­1ç§’ã€‚")
+; ç¬¦æ–‡: ç™½éª¨æ–°æ˜Ÿ 
+RUNE_NECROMANCER_DEATH_NOVA_B := New SkillRune("ç™½éª¨æ–°æ˜Ÿ", "ç‰©ç†", "b", "å‘å››å‘¨æ‰©æ•£è„Šåˆºï¼Œåœ¨12ç èŒƒå›´å†…é€ æˆ475%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: é²œè¡€æ–°æ˜Ÿ 
+RUNE_NECROMANCER_DEATH_NOVA_C := New SkillRune("é²œè¡€æ–°æ˜Ÿ", "ç‰©ç†", "c", "æ¶ˆè€—10%çš„ç”Ÿå‘½å€¼ï¼Œé‡Šæ”¾ä¸€æ¬¡é²œè¡€æ–°æ˜Ÿï¼Œå¯¹ä½äºŽ25ç èŒƒå›´å†…çš„æ‰€æœ‰æ•Œäººé€ æˆ450%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: æ­»äº¡æ–°æ˜Ÿ
+SKILL_ACTIVE_NECROMANCER_DEATH_NOVA := New ActiveSkill("æ­»äº¡æ–°æ˜Ÿ", "æ¯’ç´ ", "æ¬¡è¦"
 	, "images\skills\necromancer\active\necromancer_deathnova_normal.png"
-	, "ÏûºÄ£º20µã¾«»ê\r\nÊÍ·ÅÒ»¹ÉÐÂÐÇ¶Ô25Âë·¶Î§ÄÚµÄËùÓÐµÐÈËÔì³É350%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©¡£"
+	, "æ¶ˆè€—ï¼š20ç‚¹ç²¾é­‚\r\né‡Šæ”¾ä¸€è‚¡æ–°æ˜Ÿå¯¹25ç èŒƒå›´å†…çš„æ‰€æœ‰æ•Œäººé€ æˆ350%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_NECROMANCER_DEATH_NOVA_E, RUNE_NECROMANCER_DEATH_NOVA_A, RUNE_NECROMANCER_DEATH_NOVA_D, RUNE_NECROMANCER_DEATH_NOVA_B, RUNE_NECROMANCER_DEATH_NOVA_C])
 ; ---------------------------
-; ¼¼ÄÜ: ËÀÍöÐÂÐÇ End
+; æŠ€èƒ½: æ­»äº¡æ–°æ˜Ÿ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ºÅÁî¿þÀÜ Start
+; æŠ€èƒ½: å·ä»¤å‚€å„¡ Start
 ; ---------------------------
-; ·ûÎÄ: ÑªÈâ¿þÀÜ 
-RUNE_NECROMANCER_COMMAND_GOLEM_D := New SkillRune("ÑªÈâ¿þÀÜ", "ÎïÀí", "d", "Ö÷¶¯£ºÃüÁî¿þÀÜÇ°ÍùÄ¿±êÎ»ÖÃ£¬²¢·Ö½âÎª8¾ßÊ¬º¡¡£")
-; ·ûÎÄ: º®±ù¿þÀÜ 
-RUNE_NECROMANCER_COMMAND_GOLEM_E := New SkillRune("º®±ù¿þÀÜ", "±ùº®", "e", "Ö÷¶¯£ºÃüÁî¿þÀÜÇ°ÍùÄ¿±êÎ»ÖÃÊ¹ÓÃ±ùËª³å»÷£¬Ê¹¸Ã´¦µÐÈË¶³½á3Ãë£¬²¢Ê¹ÆäÊÜµ½±©»÷µÄ¼¸ÂÊÌá¸ß10%£¬³ÖÐø10Ãë¡£ºÅÁî¿þÀÜµÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ·ûÎÄ: °×¹Ç¿þÀÜ 
-RUNE_NECROMANCER_COMMAND_GOLEM_A := New SkillRune("°×¹Ç¿þÀÜ", "ÎïÀí", "a", "Ö÷¶¯£º¿þÀÜ±ä³É°×¹ÇÐý·ç£¬½«¸½½üËùÓÐµÐÈËÏ¯¾íÖÁÄ¿±êÎ»ÖÃ£¬Ê¹Æä»èÃÔ3Ãë£¬²¢ÔÚ³ÖÐøÆÚ¼äÔì³É2000%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£")
-; ·ûÎÄ: µòÁã¿þÀÜ 
-RUNE_NECROMANCER_COMMAND_GOLEM_C := New SkillRune("µòÁã¿þÀÜ", "¶¾ËØ", "c", "Ö÷¶¯£º¿þÀÜÏûºÄÄ¿±êÎ»ÖÃµÄÊ¬º¡¾«»ê£¬Ã¿ÏûºÄÒ»¾ßÊ¬º¡µÄ¾«»ê¶¼»áÊ¹ÆäÉËº¦Ìá¸ß30%¡£ºÅÁî¿þÀÜµÄÉËº¦ÀàÐÍ×ª»»Îª¶¾ÐÔÉËº¦¡£")
-; ·ûÎÄ: ÏÊÑª¿þÀÜ 
-RUNE_NECROMANCER_COMMAND_GOLEM_B := New SkillRune("ÏÊÑª¿þÀÜ", "ÎïÀí", "b", "Ö÷¶¯£º¿þÀÜÎþÉü×Ô¼º£¬ÎªÄã»Ö¸´25%µÄÉúÃüÖµ£¬²¢ÔÚÄ¿±êÎ»ÖÃÖØ¹¹¡£¿þÀÜÖØ¹¹Ê±£¬¾íÐë½«¶Ô¸½½üµÐÈËÔì³É450%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£")
-; ¼¼ÄÜ: ºÅÁî¿þÀÜ
-SKILL_ACTIVE_NECROMANCER_COMMAND_GOLEM := New ActiveSkill("ºÅÁî¿þÀÜ", "ÎïÀí", "¸´»î"
+; ç¬¦æ–‡: è¡€è‚‰å‚€å„¡ 
+RUNE_NECROMANCER_COMMAND_GOLEM_D := New SkillRune("è¡€è‚‰å‚€å„¡", "ç‰©ç†", "d", "ä¸»åŠ¨ï¼šå‘½ä»¤å‚€å„¡å‰å¾€ç›®æ ‡ä½ç½®ï¼Œå¹¶åˆ†è§£ä¸º8å…·å°¸éª¸ã€‚")
+; ç¬¦æ–‡: å¯’å†°å‚€å„¡ 
+RUNE_NECROMANCER_COMMAND_GOLEM_E := New SkillRune("å¯’å†°å‚€å„¡", "å†°å¯’", "e", "ä¸»åŠ¨ï¼šå‘½ä»¤å‚€å„¡å‰å¾€ç›®æ ‡ä½ç½®ä½¿ç”¨å†°éœœå†²å‡»ï¼Œä½¿è¯¥å¤„æ•Œäººå†»ç»“3ç§’ï¼Œå¹¶ä½¿å…¶å—åˆ°æš´å‡»çš„å‡ çŽ‡æé«˜10%ï¼ŒæŒç»­10ç§’ã€‚å·ä»¤å‚€å„¡çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ç™½éª¨å‚€å„¡ 
+RUNE_NECROMANCER_COMMAND_GOLEM_A := New SkillRune("ç™½éª¨å‚€å„¡", "ç‰©ç†", "a", "ä¸»åŠ¨ï¼šå‚€å„¡å˜æˆç™½éª¨æ—‹é£Žï¼Œå°†é™„è¿‘æ‰€æœ‰æ•Œäººå¸­å·è‡³ç›®æ ‡ä½ç½®ï¼Œä½¿å…¶æ˜è¿·3ç§’ï¼Œå¹¶åœ¨æŒç»­æœŸé—´é€ æˆ2000%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å‡‹é›¶å‚€å„¡ 
+RUNE_NECROMANCER_COMMAND_GOLEM_C := New SkillRune("å‡‹é›¶å‚€å„¡", "æ¯’ç´ ", "c", "ä¸»åŠ¨ï¼šå‚€å„¡æ¶ˆè€—ç›®æ ‡ä½ç½®çš„å°¸éª¸ç²¾é­‚ï¼Œæ¯æ¶ˆè€—ä¸€å…·å°¸éª¸çš„ç²¾é­‚éƒ½ä¼šä½¿å…¶ä¼¤å®³æé«˜30%ã€‚å·ä»¤å‚€å„¡çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºæ¯’æ€§ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: é²œè¡€å‚€å„¡ 
+RUNE_NECROMANCER_COMMAND_GOLEM_B := New SkillRune("é²œè¡€å‚€å„¡", "ç‰©ç†", "b", "ä¸»åŠ¨ï¼šå‚€å„¡ç‰ºç‰²è‡ªå·±ï¼Œä¸ºä½ æ¢å¤25%çš„ç”Ÿå‘½å€¼ï¼Œå¹¶åœ¨ç›®æ ‡ä½ç½®é‡æž„ã€‚å‚€å„¡é‡æž„æ—¶ï¼Œå·é¡»å°†å¯¹é™„è¿‘æ•Œäººé€ æˆ450%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: å·ä»¤å‚€å„¡
+SKILL_ACTIVE_NECROMANCER_COMMAND_GOLEM := New ActiveSkill("å·ä»¤å‚€å„¡", "ç‰©ç†", "å¤æ´»"
 	, "images\skills\necromancer\active\necromancer_bloodgolem_normal.png"
-	, "ÀäÈ´Ê±¼ä£º45Ãë\r\nÖ÷¶¯£º¿ØÖÆ¿þÀÜÇ°ÍùÄ¿±êÎ»ÖÃ£¬ËéÁÑ³É5¾ßÊ¬º¡¡£"
+	, "å†·å´æ—¶é—´ï¼š45ç§’\r\nä¸»åŠ¨ï¼šæŽ§åˆ¶å‚€å„¡å‰å¾€ç›®æ ‡ä½ç½®ï¼Œç¢Žè£‚æˆ5å…·å°¸éª¸ã€‚"
 	, [RUNE_NECROMANCER_COMMAND_GOLEM_D, RUNE_NECROMANCER_COMMAND_GOLEM_E, RUNE_NECROMANCER_COMMAND_GOLEM_A, RUNE_NECROMANCER_COMMAND_GOLEM_C, RUNE_NECROMANCER_COMMAND_GOLEM_B])
 ; ---------------------------
-; ¼¼ÄÜ: ºÅÁî¿þÀÜ End
+; æŠ€èƒ½: å·ä»¤å‚€å„¡ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Ë¥ÀÏ Start
+; æŠ€èƒ½: è¡°è€ Start
 ; ---------------------------
-; ·ûÎÄ: Ñ£ÔÎ×çÖä 
-RUNE_NECROMANCER_DECREPIFY_E := New SkillRune("Ñ£ÔÎ×çÖä", "ÎïÀí", "e", "ÊÜ×çÖäµÄµÐÈË±»»÷ÖÐÊ±£¬ÓÐ10%µÄ¼¸ÂÊ»èÃÔ£¬³ÖÐø2Ãë¡£")
-; ·ûÎÄ: Ë¥Èõ 
-RUNE_NECROMANCER_DECREPIFY_A := New SkillRune("Ë¥Èõ", "ÎïÀí", "a", "Ê¹¼õËÙÐ§¹ûÌá¸ßÖÁ100%£¬È»ºóÔÚ5ÃëÄÚ¼õÍËÖÁÕý³£Ð§¹û¡£")
-; ·ûÎÄ: ÏàÊ±¶ø¶¯ 
-RUNE_NECROMANCER_DECREPIFY_B := New SkillRune("ÏàÊ±¶ø¶¯", "ÎïÀí", "b", "Ã¿×çÖäÒ»ÃûµÐÈË£¬¾ÍÄÜÊ¹ÒÆ¶¯ËÙ¶ÈÌá¸ß3%£¬×î¶àÌá¸ß30%¡£")
-; ·ûÎÄ: ¿ÝÎ® 
-RUNE_NECROMANCER_DECREPIFY_D := New SkillRune("¿ÝÎ®", "ÎïÀí", "d", "ÉËº¦½µµÍÐ§¹ûÌá¸ßÖÁ40%£¬µ«²»ÔÙ½µµÍÒÆ¶¯ËÙ¶È¡£")
-; ·ûÎÄ: Õù·Ö¶áÃë 
-RUNE_NECROMANCER_DECREPIFY_C := New SkillRune("Õù·Ö¶áÃë", "ÎïÀí", "c", "Ã¿×çÖäÒ»ÃûµÐÈË£¬¶¼½«»ñµÃ1%µÄÀäÈ´Ê±¼äËõ¶ÌÐ§¹û£¬×î¶à¿É´ïµ½20%¡£")
-; ¼¼ÄÜ: Ë¥ÀÏ
-SKILL_ACTIVE_NECROMANCER_DECREPIFY := New ActiveSkill("Ë¥ÀÏ", "ÎïÀí", "×çÖä"
+; ç¬¦æ–‡: çœ©æ™•è¯…å’’ 
+RUNE_NECROMANCER_DECREPIFY_E := New SkillRune("çœ©æ™•è¯…å’’", "ç‰©ç†", "e", "å—è¯…å’’çš„æ•Œäººè¢«å‡»ä¸­æ—¶ï¼Œæœ‰10%çš„å‡ çŽ‡æ˜è¿·ï¼ŒæŒç»­2ç§’ã€‚")
+; ç¬¦æ–‡: è¡°å¼± 
+RUNE_NECROMANCER_DECREPIFY_A := New SkillRune("è¡°å¼±", "ç‰©ç†", "a", "ä½¿å‡é€Ÿæ•ˆæžœæé«˜è‡³100%ï¼Œç„¶åŽåœ¨5ç§’å†…å‡é€€è‡³æ­£å¸¸æ•ˆæžœã€‚")
+; ç¬¦æ–‡: ç›¸æ—¶è€ŒåŠ¨ 
+RUNE_NECROMANCER_DECREPIFY_B := New SkillRune("ç›¸æ—¶è€ŒåŠ¨", "ç‰©ç†", "b", "æ¯è¯…å’’ä¸€åæ•Œäººï¼Œå°±èƒ½ä½¿ç§»åŠ¨é€Ÿåº¦æé«˜3%ï¼Œæœ€å¤šæé«˜30%ã€‚")
+; ç¬¦æ–‡: æž¯èŽ 
+RUNE_NECROMANCER_DECREPIFY_D := New SkillRune("æž¯èŽ", "ç‰©ç†", "d", "ä¼¤å®³é™ä½Žæ•ˆæžœæé«˜è‡³40%ï¼Œä½†ä¸å†é™ä½Žç§»åŠ¨é€Ÿåº¦ã€‚")
+; ç¬¦æ–‡: äº‰åˆ†å¤ºç§’ 
+RUNE_NECROMANCER_DECREPIFY_C := New SkillRune("äº‰åˆ†å¤ºç§’", "ç‰©ç†", "c", "æ¯è¯…å’’ä¸€åæ•Œäººï¼Œéƒ½å°†èŽ·å¾—1%çš„å†·å´æ—¶é—´ç¼©çŸ­æ•ˆæžœï¼Œæœ€å¤šå¯è¾¾åˆ°20%ã€‚")
+; æŠ€èƒ½: è¡°è€
+SKILL_ACTIVE_NECROMANCER_DECREPIFY := New ActiveSkill("è¡°è€", "ç‰©ç†", "è¯…å’’"
 	, "images\skills\necromancer\active\necromancer_decrepify_normal.png"
-	, "ÏûºÄ£º10µã¾«»ê\r\nÒ»ÖÖÖÂ²Ð×çÖä¡£Ê¹µÐÈËµÄÒÆ¶¯ËÙ¶È½µµÍ75%²¢Ê¹ÆäÉËº¦½µµÍ30%£¬³ÖÐø30Ãë¡£"
+	, "æ¶ˆè€—ï¼š10ç‚¹ç²¾é­‚\r\nä¸€ç§è‡´æ®‹è¯…å’’ã€‚ä½¿æ•Œäººçš„ç§»åŠ¨é€Ÿåº¦é™ä½Ž75%å¹¶ä½¿å…¶ä¼¤å®³é™ä½Ž30%ï¼ŒæŒç»­30ç§’ã€‚"
 	, [RUNE_NECROMANCER_DECREPIFY_E, RUNE_NECROMANCER_DECREPIFY_A, RUNE_NECROMANCER_DECREPIFY_B, RUNE_NECROMANCER_DECREPIFY_D, RUNE_NECROMANCER_DECREPIFY_C])
 ; ---------------------------
-; ¼¼ÄÜ: Ë¥ÀÏ End
+; æŠ€èƒ½: è¡°è€ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÍÌÊÉ Start
+; æŠ€èƒ½: åžå™¬ Start
 ; ---------------------------
-; ·ûÎÄ: ±¥²Í 
-RUNE_NECROMANCER_DEVOUR_E := New SkillRune("±¥²Í", "ÎïÀí", "e", "Ã¿ÏûºÄÒ»¾ßÊ¬º¡µÄ¾«»ê¶¼»áÊ¹ÄãµÄÉúÃüÖµÉÏÏÞÌá¸ß2%£¬³ÖÐø2Ãë¡£")
-; ·ûÎÄ: ²ÐÈÌ 
-RUNE_NECROMANCER_DEVOUR_B := New SkillRune("²ÐÈÌ", "ÎïÀí", "b", "»¹¿ÉÏûºÄÄãµÄÆÍ´Ó£¬Ã¿ÏûºÄÒ»ÃûÆÍ´Ó¿ÉÒÔ»Ö¸´10µã¾«»ê¡£")
-; ·ûÎÄ: ÊÉÑªÁéÆø 
-RUNE_NECROMANCER_DEVOUR_D := New SkillRune("ÊÉÑªÁéÆø", "ÎïÀí", "d", "ÄãÏòËÄÖÜÊÍ·Å³öÁéÆø£¬ÏûºÄ15Âë·¶Î§ÄÚÊ¬º¡µÄ¾«»ê£¬Ã¿ÏûºÄÒ»¾ßÊ¬º¡µÄ¾«»ê»Ö¸´11µã¾«»ê¡£¸ÃÐ§¹ûµÄ·¶Î§½«À©´ó£¬Ïàµ±ÓÚÄãµÄ½ð±ÒÊ°È¡·¶Î§µÄ50%¡£")
-; ·ûÎÄ: ÒûÑª 
-RUNE_NECROMANCER_DEVOUR_C := New SkillRune("ÒûÑª", "ÎïÀí", "c", "Ã¿ÏûºÄÒ»¾ßÊ¬º¡µÄ¾«»ê¶¼»áÊ¹¾«»êÏûºÄ½µµÍ2%£¬³ÖÐø5Ãë¡£")
-; ·ûÎÄ: ÍÌÑªÊ³Èâ 
-RUNE_NECROMANCER_DEVOUR_A := New SkillRune("ÍÌÑªÊ³Èâ", "ÎïÀí", "a", "Ã¿ÏûºÄÒ»¾ßÊ¬º¡µÄ¾«»ê»¹»á»Ö¸´3%µÄÉúÃüÖµ¡£")
-; ¼¼ÄÜ: ÍÌÊÉ
-SKILL_ACTIVE_NECROMANCER_DEVOUR := New ActiveSkill("ÍÌÊÉ", "ÎïÀí", "Ê¬º¡"
+; ç¬¦æ–‡: é¥±é¤ 
+RUNE_NECROMANCER_DEVOUR_E := New SkillRune("é¥±é¤", "ç‰©ç†", "e", "æ¯æ¶ˆè€—ä¸€å…·å°¸éª¸çš„ç²¾é­‚éƒ½ä¼šä½¿ä½ çš„ç”Ÿå‘½å€¼ä¸Šé™æé«˜2%ï¼ŒæŒç»­2ç§’ã€‚")
+; ç¬¦æ–‡: æ®‹å¿ 
+RUNE_NECROMANCER_DEVOUR_B := New SkillRune("æ®‹å¿", "ç‰©ç†", "b", "è¿˜å¯æ¶ˆè€—ä½ çš„ä»†ä»Žï¼Œæ¯æ¶ˆè€—ä¸€åä»†ä»Žå¯ä»¥æ¢å¤10ç‚¹ç²¾é­‚ã€‚")
+; ç¬¦æ–‡: å™¬è¡€çµæ°” 
+RUNE_NECROMANCER_DEVOUR_D := New SkillRune("å™¬è¡€çµæ°”", "ç‰©ç†", "d", "ä½ å‘å››å‘¨é‡Šæ”¾å‡ºçµæ°”ï¼Œæ¶ˆè€—15ç èŒƒå›´å†…å°¸éª¸çš„ç²¾é­‚ï¼Œæ¯æ¶ˆè€—ä¸€å…·å°¸éª¸çš„ç²¾é­‚æ¢å¤11ç‚¹ç²¾é­‚ã€‚è¯¥æ•ˆæžœçš„èŒƒå›´å°†æ‰©å¤§ï¼Œç›¸å½“äºŽä½ çš„é‡‘å¸æ‹¾å–èŒƒå›´çš„50%ã€‚")
+; ç¬¦æ–‡: é¥®è¡€ 
+RUNE_NECROMANCER_DEVOUR_C := New SkillRune("é¥®è¡€", "ç‰©ç†", "c", "æ¯æ¶ˆè€—ä¸€å…·å°¸éª¸çš„ç²¾é­‚éƒ½ä¼šä½¿ç²¾é­‚æ¶ˆè€—é™ä½Ž2%ï¼ŒæŒç»­5ç§’ã€‚")
+; ç¬¦æ–‡: åžè¡€é£Ÿè‚‰ 
+RUNE_NECROMANCER_DEVOUR_A := New SkillRune("åžè¡€é£Ÿè‚‰", "ç‰©ç†", "a", "æ¯æ¶ˆè€—ä¸€å…·å°¸éª¸çš„ç²¾é­‚è¿˜ä¼šæ¢å¤3%çš„ç”Ÿå‘½å€¼ã€‚")
+; æŠ€èƒ½: åžå™¬
+SKILL_ACTIVE_NECROMANCER_DEVOUR := New ActiveSkill("åžå™¬", "ç‰©ç†", "å°¸éª¸"
 	, "images\skills\necromancer\active\necromancer_devour_normal.png"
-	, "ÏûºÄ60Âë·¶Î§ÄÚÊ¬º¡µÄ¾«»ê£¬Ã¿ÏûºÄÒ»¾ßÊ¬º¡µÄ¾«»ê¿É»Ö¸´×ÔÉí10µã¾«»ê¡£"
+	, "æ¶ˆè€—60ç èŒƒå›´å†…å°¸éª¸çš„ç²¾é­‚ï¼Œæ¯æ¶ˆè€—ä¸€å…·å°¸éª¸çš„ç²¾é­‚å¯æ¢å¤è‡ªèº«10ç‚¹ç²¾é­‚ã€‚"
 	, [RUNE_NECROMANCER_DEVOUR_E, RUNE_NECROMANCER_DEVOUR_B, RUNE_NECROMANCER_DEVOUR_D, RUNE_NECROMANCER_DEVOUR_C, RUNE_NECROMANCER_DEVOUR_A])
 ; ---------------------------
-; ¼¼ÄÜ: ÍÌÊÉ End
+; æŠ€èƒ½: åžå™¬ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÎüÈ¡ÉúÃü Start
+; æŠ€èƒ½: å¸å–ç”Ÿå‘½ Start
 ; ---------------------------
-; ·ûÎÄ: ×çÖäÂûÑÓ 
-RUNE_NECROMANCER_LEECH_P6NECROLEECHNAME_B := New SkillRune("×çÖäÂûÑÓ", "ÎïÀí", "b", "ÊÜµ½×çÖäµÄµÐÈË±»ÏûÃðÊ±»á½«×çÖä´«²¥¸ø¸½½üÒ»¸öÎ´±»×çÖäµÄÄ¿±ê¡£")
-; ·ûÎÄ: ÉøÍ¸ 
-RUNE_NECROMANCER_LEECH_P6NECROLEECHNAME_A := New SkillRune("ÉøÍ¸", "ÎïÀí", "a", "Ã¿×çÖäÒ»¸öµÐÈË¶¼»áÊ¹ÄãµÄÃ¿Ãë»Ø¸´ÉúÃüÌá¸ß751µã£¬×î¶à20¸öµÐÈË¡£")
-; ·ûÎÄ: ÏÊÑªÒ©¼Á 
-RUNE_NECROMANCER_LEECH_P6NECROLEECHNAME_E := New SkillRune("ÏÊÑªÒ©¼Á", "ÎïÀí", "e", "Ã¿µ±Ò»ÃûÊÜ×çÖäµÄµÐÈË±»ÏûÃð£¬ÄãµÄÒ©Ë®ÀäÈ´Ê±¼ä½«Ëõ¶Ì1Ãë¡£")
-; ·ûÎÄ: Ä©ÈÕÑªÖä 
-RUNE_NECROMANCER_LEECH_P6NECROLEECHNAME_C := New SkillRune("Ä©ÈÕÑªÖä", "ÎïÀí", "c", "Ã¿µ±Ò»ÃûÊÜ×çÖäµÄµÐÈËËÀÍö£¬Äã½«»ñµÃÏàµ±ÓÚÏûÃð»Ø¸´ÉúÃü200%µÄÖÎÁÆ¡£")
-; ·ûÎÄ: ½µÖäÖ®µØ 
-RUNE_NECROMANCER_LEECH_P6NECROLEECHNAME_D := New SkillRune("½µÖäÖ®µØ", "ÎïÀí", "d", "×çÖäÄ¿±êÇøÓò£¬ÊÜ×çÖäÇøÓòÄÚµÄÃ¿ÃûµÐÈË½«Ã¿ÃëÎªÄã»Ö¸´ÉúÃüÖµÉÏÏÞµÄ1.0%¡£")
-; ¼¼ÄÜ: ÎüÈ¡ÉúÃü
-SKILL_ACTIVE_NECROMANCER_LEECH_P6NECROLEECHNAME := New ActiveSkill("ÎüÈ¡ÉúÃü", "ÎïÀí", "×çÖä"
+; ç¬¦æ–‡: è¯…å’’è”“å»¶ 
+RUNE_NECROMANCER_LEECH_P6NECROLEECHNAME_B := New SkillRune("è¯…å’’è”“å»¶", "ç‰©ç†", "b", "å—åˆ°è¯…å’’çš„æ•Œäººè¢«æ¶ˆç­æ—¶ä¼šå°†è¯…å’’ä¼ æ’­ç»™é™„è¿‘ä¸€ä¸ªæœªè¢«è¯…å’’çš„ç›®æ ‡ã€‚")
+; ç¬¦æ–‡: æ¸—é€ 
+RUNE_NECROMANCER_LEECH_P6NECROLEECHNAME_A := New SkillRune("æ¸—é€", "ç‰©ç†", "a", "æ¯è¯…å’’ä¸€ä¸ªæ•Œäººéƒ½ä¼šä½¿ä½ çš„æ¯ç§’å›žå¤ç”Ÿå‘½æé«˜751ç‚¹ï¼Œæœ€å¤š20ä¸ªæ•Œäººã€‚")
+; ç¬¦æ–‡: é²œè¡€è¯å‰‚ 
+RUNE_NECROMANCER_LEECH_P6NECROLEECHNAME_E := New SkillRune("é²œè¡€è¯å‰‚", "ç‰©ç†", "e", "æ¯å½“ä¸€åå—è¯…å’’çš„æ•Œäººè¢«æ¶ˆç­ï¼Œä½ çš„è¯æ°´å†·å´æ—¶é—´å°†ç¼©çŸ­1ç§’ã€‚")
+; ç¬¦æ–‡: æœ«æ—¥è¡€å’’ 
+RUNE_NECROMANCER_LEECH_P6NECROLEECHNAME_C := New SkillRune("æœ«æ—¥è¡€å’’", "ç‰©ç†", "c", "æ¯å½“ä¸€åå—è¯…å’’çš„æ•Œäººæ­»äº¡ï¼Œä½ å°†èŽ·å¾—ç›¸å½“äºŽæ¶ˆç­å›žå¤ç”Ÿå‘½200%çš„æ²»ç–—ã€‚")
+; ç¬¦æ–‡: é™å’’ä¹‹åœ° 
+RUNE_NECROMANCER_LEECH_P6NECROLEECHNAME_D := New SkillRune("é™å’’ä¹‹åœ°", "ç‰©ç†", "d", "è¯…å’’ç›®æ ‡åŒºåŸŸï¼Œå—è¯…å’’åŒºåŸŸå†…çš„æ¯åæ•Œäººå°†æ¯ç§’ä¸ºä½ æ¢å¤ç”Ÿå‘½å€¼ä¸Šé™çš„1.0%ã€‚")
+; æŠ€èƒ½: å¸å–ç”Ÿå‘½
+SKILL_ACTIVE_NECROMANCER_LEECH_P6NECROLEECHNAME := New ActiveSkill("å¸å–ç”Ÿå‘½", "ç‰©ç†", "è¯…å’’"
 	, "images\skills\necromancer\active\necromancer_leech_normal.png"
-	, "ÏûºÄ£º10µã¾«»ê\r\nÔÚÄ¿±êÎ»ÖÃ½µÏÂ×çÖä¡£»÷ÖÐ±»×çÖäµÄµÐÈËÊ±£¬¹¥»÷Õß¿ÉÒÔÎª×Ô¼º»Ö¸´×ÜÉúÃüÖµµÄ2%¡£³ÖÐø30Ãë¡£"
+	, "æ¶ˆè€—ï¼š10ç‚¹ç²¾é­‚\r\nåœ¨ç›®æ ‡ä½ç½®é™ä¸‹è¯…å’’ã€‚å‡»ä¸­è¢«è¯…å’’çš„æ•Œäººæ—¶ï¼Œæ”»å‡»è€…å¯ä»¥ä¸ºè‡ªå·±æ¢å¤æ€»ç”Ÿå‘½å€¼çš„2%ã€‚æŒç»­30ç§’ã€‚"
 	, [RUNE_NECROMANCER_LEECH_P6NECROLEECHNAME_B, RUNE_NECROMANCER_LEECH_P6NECROLEECHNAME_A, RUNE_NECROMANCER_LEECH_P6NECROLEECHNAME_E, RUNE_NECROMANCER_LEECH_P6NECROLEECHNAME_C, RUNE_NECROMANCER_LEECH_P6NECROLEECHNAME_D])
 ; ---------------------------
-; ¼¼ÄÜ: ÎüÈ¡ÉúÃü End
+; æŠ€èƒ½: å¸å–ç”Ÿå‘½ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ¹Ç¼× Start
+; æŠ€èƒ½: éª¨ç”² Start
 ; ---------------------------
-; ·ûÎÄ: ¸´³ð°×¹Ç 
-RUNE_NECROMANCER_BONE_ARMOR_A := New SkillRune("¸´³ð°×¹Ç", "ÎïÀí", "a", "Ôì³ÉµÄÉËº¦Ìá¸ßµ½145%µÄÎäÆ÷ÉËº¦¡£")
-; ·ûÎÄ: °×¹ÇÍÑ¾Ê 
-RUNE_NECROMANCER_BONE_ARMOR_C := New SkillRune("°×¹ÇÍÑ¾Ê", "¶¾ËØ", "c", "±»»÷ÖÐµÄµÐÈË»¹½«»èÃÔ£¬³ÖÐø2Ãë¡£¹Ç¼×µÄÉËº¦ÀàÐÍ×ª»»Îª¶¾ÐÔÉËº¦¡£")
-; ·ûÎÄ: ÏÞÖÆÃâÒß 
-RUNE_NECROMANCER_BONE_ARMOR_B := New SkillRune("ÏÞÖÆÃâÒß", "ÎïÀí", "b", "ÀäÈ´Ê±¼ä£º45ÃëÄãµÄ»¤¼×½«ÎüÊÕËùÓÐÊÜµ½µÄÉËº¦£¬²¢Ê¹ÄãÃâÒßËùÓÐ¿ØÖÆÀàÏÞÖÆÐ§¹û£¬µ«Ö»ÄÜ³ÖÐø5Ãë¡£")
-; ·ûÎÄ: ¿àÍ´ÊÕ¸î 
-RUNE_NECROMANCER_BONE_ARMOR_E := New SkillRune("¿àÍ´ÊÕ¸î", "±ùº®", "e", "Ã¿»÷ÖÐÒ»ÃûµÐÈË£¬¹Ç¼×»¹»áÊ¹ÄãµÄÒÆ¶¯ËÙ¶ÈÌá¸ß1%¡£¹Ç¼×µÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ·ûÎÄ: Ñª¹ÇÏàÁ¬ 
-RUNE_NECROMANCER_BONE_ARMOR_D := New SkillRune("Ñª¹ÇÏàÁ¬", "ÎïÀí", "d", "ÏûºÄ£º20%ÉúÃüÖµÃ¿»÷ÖÐÒ»ÃûµÐÈË£¬¶¼½«Ê¹ÄãµÄÃ¿Ãë»Ø¸´ÉúÃüÌá¸ß10%¡£")
-; ¼¼ÄÜ: ¹Ç¼×
-SKILL_ACTIVE_NECROMANCER_BONE_ARMOR := New ActiveSkill("¹Ç¼×", "ÎïÀí", "ÑªÓë¹Ç"
+; ç¬¦æ–‡: å¤ä»‡ç™½éª¨ 
+RUNE_NECROMANCER_BONE_ARMOR_A := New SkillRune("å¤ä»‡ç™½éª¨", "ç‰©ç†", "a", "é€ æˆçš„ä¼¤å®³æé«˜åˆ°145%çš„æ­¦å™¨ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ç™½éª¨è„±è‡¼ 
+RUNE_NECROMANCER_BONE_ARMOR_C := New SkillRune("ç™½éª¨è„±è‡¼", "æ¯’ç´ ", "c", "è¢«å‡»ä¸­çš„æ•Œäººè¿˜å°†æ˜è¿·ï¼ŒæŒç»­2ç§’ã€‚éª¨ç”²çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºæ¯’æ€§ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: é™åˆ¶å…ç–« 
+RUNE_NECROMANCER_BONE_ARMOR_B := New SkillRune("é™åˆ¶å…ç–«", "ç‰©ç†", "b", "å†·å´æ—¶é—´ï¼š45ç§’ä½ çš„æŠ¤ç”²å°†å¸æ”¶æ‰€æœ‰å—åˆ°çš„ä¼¤å®³ï¼Œå¹¶ä½¿ä½ å…ç–«æ‰€æœ‰æŽ§åˆ¶ç±»é™åˆ¶æ•ˆæžœï¼Œä½†åªèƒ½æŒç»­5ç§’ã€‚")
+; ç¬¦æ–‡: è‹¦ç—›æ”¶å‰² 
+RUNE_NECROMANCER_BONE_ARMOR_E := New SkillRune("è‹¦ç—›æ”¶å‰²", "å†°å¯’", "e", "æ¯å‡»ä¸­ä¸€åæ•Œäººï¼Œéª¨ç”²è¿˜ä¼šä½¿ä½ çš„ç§»åŠ¨é€Ÿåº¦æé«˜1%ã€‚éª¨ç”²çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: è¡€éª¨ç›¸è¿ž 
+RUNE_NECROMANCER_BONE_ARMOR_D := New SkillRune("è¡€éª¨ç›¸è¿ž", "ç‰©ç†", "d", "æ¶ˆè€—ï¼š20%ç”Ÿå‘½å€¼æ¯å‡»ä¸­ä¸€åæ•Œäººï¼Œéƒ½å°†ä½¿ä½ çš„æ¯ç§’å›žå¤ç”Ÿå‘½æé«˜10%ã€‚")
+; æŠ€èƒ½: éª¨ç”²
+SKILL_ACTIVE_NECROMANCER_BONE_ARMOR := New ActiveSkill("éª¨ç”²", "ç‰©ç†", "è¡€ä¸Žéª¨"
 	, "images\skills\necromancer\active\necromancer_bonearmor_normal.png"
-	, "ÀäÈ´Ê±¼ä£º10Ãë\r\nËº³¶¸½½üµÐÈËµÄ¹Ç÷À£¬Ôì³É125%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©²¢Éú³É»¤¼×¡£Ã¿»÷ÖÐÒ»¸öµÐÈË¶¼»áÊ¹ÊÜµ½µÄÉËº¦½µµÍ3%£¬×î¶àÀÛ¼Æ10¸öµÐÈË¡£ ³ÖÐø60Ãë¡£"
+	, "å†·å´æ—¶é—´ï¼š10ç§’\r\næ’•æ‰¯é™„è¿‘æ•Œäººçš„éª¨éª¼ï¼Œé€ æˆ125%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰å¹¶ç”ŸæˆæŠ¤ç”²ã€‚æ¯å‡»ä¸­ä¸€ä¸ªæ•Œäººéƒ½ä¼šä½¿å—åˆ°çš„ä¼¤å®³é™ä½Ž3%ï¼Œæœ€å¤šç´¯è®¡10ä¸ªæ•Œäººã€‚ æŒç»­60ç§’ã€‚"
 	, [RUNE_NECROMANCER_BONE_ARMOR_A, RUNE_NECROMANCER_BONE_ARMOR_C, RUNE_NECROMANCER_BONE_ARMOR_B, RUNE_NECROMANCER_BONE_ARMOR_E, RUNE_NECROMANCER_BONE_ARMOR_D])
 ; ---------------------------
-; ¼¼ÄÜ: ¹Ç¼× End
+; æŠ€èƒ½: éª¨ç”² End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÍöÕß´ó¾ü Start
+; æŠ€èƒ½: äº¡è€…å¤§å†› Start
 ; ---------------------------
-; ·ûÎÄ: »ÄÒß¹íÊÖ 
-RUNE_NECROMANCER_ARMY_OF_THE_DEAD_A := New SkillRune("»ÄÒß¹íÊÖ", "¶¾ËØ", "a", "´ÓµØÏÂÕÙ»½³ö¹íÊÖ¹¥»÷15Âë·¶Î§ÄÚµÄµÐÈË£¬Ôì³É14000%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©¡£³ÖÐø5Ãë¡£")
-; ·ûÎÄ: ËÀÍöÖ®¹È 
-RUNE_NECROMANCER_ARMY_OF_THE_DEAD_D := New SkillRune("ËÀÍöÖ®¹È", "ÎïÀí", "d", "ÍöÕß´ó¾ü»á½«ËùÓÐÊÜÓ°ÏìµÄµÐÈË»÷ÏòÖÐÐÄÎ»ÖÃ¡£")
-; ·ûÎÄ: Òì½ç´ó¾ü 
-RUNE_NECROMANCER_ARMY_OF_THE_DEAD_C := New SkillRune("Òì½ç´ó¾ü", "ÎïÀí", "c", "´ÓµØÏÂ¸´»îµÄ÷¼÷Ã½«¹¥»÷Ëæ»úÄ¿±ê£¬Ôì³É×Ü¼Æ50000%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©£¬³ÖÐø4Ãë¡£")
-; ·ûÎÄ: ËÀº®´ó¾ü 
-RUNE_NECROMANCER_ARMY_OF_THE_DEAD_B := New SkillRune("ËÀº®´ó¾ü", "±ùº®", "b", "¸´»îÒ»Ö§ÍöÕß´ó¾ü£¬²ÈÌ¤ÕýÇ°·½µÄËùÓÐµÐÈË£¬Ôì³É12000%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£")
-; ·ûÎÄ: Íö»ê·ç±© 
-RUNE_NECROMANCER_ARMY_OF_THE_DEAD_E := New SkillRune("Íö»ê·ç±©", "ÎïÀí", "e", "ÏûºÄ£º20%µÄÉúÃüÖµÔÚÄãËÄÖÜÕÙ»½Ò»¹ÉÍö»ê·ç±©£¬¶ÔµÐÈËÔì³É15500%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©£¬³ÖÐø5Ãë¡£")
-; ¼¼ÄÜ: ÍöÕß´ó¾ü
-SKILL_ACTIVE_NECROMANCER_ARMY_OF_THE_DEAD := New ActiveSkill("ÍöÕß´ó¾ü", "ÎïÀí", "¸´»î"
+; ç¬¦æ–‡: è’ç–«é¬¼æ‰‹ 
+RUNE_NECROMANCER_ARMY_OF_THE_DEAD_A := New SkillRune("è’ç–«é¬¼æ‰‹", "æ¯’ç´ ", "a", "ä»Žåœ°ä¸‹å¬å”¤å‡ºé¬¼æ‰‹æ”»å‡»15ç èŒƒå›´å†…çš„æ•Œäººï¼Œé€ æˆ14000%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ã€‚æŒç»­5ç§’ã€‚")
+; ç¬¦æ–‡: æ­»äº¡ä¹‹è°· 
+RUNE_NECROMANCER_ARMY_OF_THE_DEAD_D := New SkillRune("æ­»äº¡ä¹‹è°·", "ç‰©ç†", "d", "äº¡è€…å¤§å†›ä¼šå°†æ‰€æœ‰å—å½±å“çš„æ•Œäººå‡»å‘ä¸­å¿ƒä½ç½®ã€‚")
+; ç¬¦æ–‡: å¼‚ç•Œå¤§å†› 
+RUNE_NECROMANCER_ARMY_OF_THE_DEAD_C := New SkillRune("å¼‚ç•Œå¤§å†›", "ç‰©ç†", "c", "ä»Žåœ°ä¸‹å¤æ´»çš„éª·é«…å°†æ”»å‡»éšæœºç›®æ ‡ï¼Œé€ æˆæ€»è®¡50000%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ï¼ŒæŒç»­4ç§’ã€‚")
+; ç¬¦æ–‡: æ­»å¯’å¤§å†› 
+RUNE_NECROMANCER_ARMY_OF_THE_DEAD_B := New SkillRune("æ­»å¯’å¤§å†›", "å†°å¯’", "b", "å¤æ´»ä¸€æ”¯äº¡è€…å¤§å†›ï¼Œè¸©è¸æ­£å‰æ–¹çš„æ‰€æœ‰æ•Œäººï¼Œé€ æˆ12000%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: äº¡é­‚é£Žæš´ 
+RUNE_NECROMANCER_ARMY_OF_THE_DEAD_E := New SkillRune("äº¡é­‚é£Žæš´", "ç‰©ç†", "e", "æ¶ˆè€—ï¼š20%çš„ç”Ÿå‘½å€¼åœ¨ä½ å››å‘¨å¬å”¤ä¸€è‚¡äº¡é­‚é£Žæš´ï¼Œå¯¹æ•Œäººé€ æˆ15500%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ï¼ŒæŒç»­5ç§’ã€‚")
+; æŠ€èƒ½: äº¡è€…å¤§å†›
+SKILL_ACTIVE_NECROMANCER_ARMY_OF_THE_DEAD := New ActiveSkill("äº¡è€…å¤§å†›", "ç‰©ç†", "å¤æ´»"
 	, "images\skills\necromancer\active\necromancer_armyofthedead_normal.png"
-	, "ÀäÈ´Ê±¼ä£º120Ãë\r\n¸´»îÒ»Ö§÷¼÷Ã´ó¾ü³åÏòÄ¿±êÎ»ÖÃ£¬¶Ô15Âë·¶Î§ÄÚµÄµÐÈËÔì³É12000%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£"
+	, "å†·å´æ—¶é—´ï¼š120ç§’\r\nå¤æ´»ä¸€æ”¯éª·é«…å¤§å†›å†²å‘ç›®æ ‡ä½ç½®ï¼Œå¯¹15ç èŒƒå›´å†…çš„æ•Œäººé€ æˆ12000%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_NECROMANCER_ARMY_OF_THE_DEAD_A, RUNE_NECROMANCER_ARMY_OF_THE_DEAD_D, RUNE_NECROMANCER_ARMY_OF_THE_DEAD_C, RUNE_NECROMANCER_ARMY_OF_THE_DEAD_B, RUNE_NECROMANCER_ARMY_OF_THE_DEAD_E])
 ; ---------------------------
-; ¼¼ÄÜ: ÍöÕß´ó¾ü End
+; æŠ€èƒ½: äº¡è€…å¤§å†› End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ´àÈõ Start
+; æŠ€èƒ½: è„†å¼± Start
 ; ---------------------------
-; ·ûÎÄ: ÑªÖ®ÆøÏ¢ 
-RUNE_NECROMANCER_FRAILTY_D := New SkillRune("ÑªÖ®ÆøÏ¢", "ÎïÀí", "d", "ÄãµÄÆÍ´Ó¶ÔÊÜ×çÖäµÐÈËÔì³ÉµÄÉËº¦Ìá¸ß15%¡£")
-; ·ûÎÄ: ·è¿ñÍö»ê 
-RUNE_NECROMANCER_FRAILTY_C := New SkillRune("·è¿ñÍö»ê", "ÎïÀí", "c", "ÊÜ×çÖäµÄµÐÈË½«ÔÚËÀÍöÊ±±¬Õ¨£¬Ôì³É100%µÄÎäÆ÷ÉËº¦¡£")
-; ·ûÎÄ: ´àÈõÁéÆø 
-RUNE_NECROMANCER_FRAILTY_E := New SkillRune("´àÈõÁéÆø", "ÎïÀí", "e", "´àÈõ»¯ÎªÁéÆø£¬×çÖä15Âë·¶Î§ÄÚµÄËùÓÐµÐÈË¡£¸ÃÐ§¹ûµÄ·¶Î§½«À©´ó£¬Ïàµ±ÓÚÄãµÄ½ð±ÒÊ°È¡·¶Î§µÄ50%¡£")
-; ·ûÎÄ: ÊÕ¸î¾«»ê 
-RUNE_NECROMANCER_FRAILTY_B := New SkillRune("ÊÕ¸î¾«»ê", "ÎïÀí", "b", "Ã¿µ±Ò»ÃûÊÜµ½×çÖäµÄµÐÈË±»ÏûÃð£¬¾ÍÄÜ»ñµÃ2µã¾«»ê¡£")
-; ·ûÎÄ: ¼¢¿Ê·ØÄ¹ 
-RUNE_NECROMANCER_FRAILTY_A := New SkillRune("¼¢¿Ê·ØÄ¹", "ÎïÀí", "a", "µÐ·½ÉúÃüÖµ´ïµ½18%µÄÊ±ºò´¥·¢£¬µ«ÐèÒªÏûºÄÄã10%µÄÉúÃüÖµ¡£")
-; ¼¼ÄÜ: ´àÈõ
-SKILL_ACTIVE_NECROMANCER_FRAILTY := New ActiveSkill("´àÈõ", "ÎïÀí", "×çÖä"
+; ç¬¦æ–‡: è¡€ä¹‹æ°”æ¯ 
+RUNE_NECROMANCER_FRAILTY_D := New SkillRune("è¡€ä¹‹æ°”æ¯", "ç‰©ç†", "d", "ä½ çš„ä»†ä»Žå¯¹å—è¯…å’’æ•Œäººé€ æˆçš„ä¼¤å®³æé«˜15%ã€‚")
+; ç¬¦æ–‡: ç–¯ç‹‚äº¡é­‚ 
+RUNE_NECROMANCER_FRAILTY_C := New SkillRune("ç–¯ç‹‚äº¡é­‚", "ç‰©ç†", "c", "å—è¯…å’’çš„æ•Œäººå°†åœ¨æ­»äº¡æ—¶çˆ†ç‚¸ï¼Œé€ æˆ100%çš„æ­¦å™¨ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: è„†å¼±çµæ°” 
+RUNE_NECROMANCER_FRAILTY_E := New SkillRune("è„†å¼±çµæ°”", "ç‰©ç†", "e", "è„†å¼±åŒ–ä¸ºçµæ°”ï¼Œè¯…å’’15ç èŒƒå›´å†…çš„æ‰€æœ‰æ•Œäººã€‚è¯¥æ•ˆæžœçš„èŒƒå›´å°†æ‰©å¤§ï¼Œç›¸å½“äºŽä½ çš„é‡‘å¸æ‹¾å–èŒƒå›´çš„50%ã€‚")
+; ç¬¦æ–‡: æ”¶å‰²ç²¾é­‚ 
+RUNE_NECROMANCER_FRAILTY_B := New SkillRune("æ”¶å‰²ç²¾é­‚", "ç‰©ç†", "b", "æ¯å½“ä¸€åå—åˆ°è¯…å’’çš„æ•Œäººè¢«æ¶ˆç­ï¼Œå°±èƒ½èŽ·å¾—2ç‚¹ç²¾é­‚ã€‚")
+; ç¬¦æ–‡: é¥¥æ¸´åŸå¢“ 
+RUNE_NECROMANCER_FRAILTY_A := New SkillRune("é¥¥æ¸´åŸå¢“", "ç‰©ç†", "a", "æ•Œæ–¹ç”Ÿå‘½å€¼è¾¾åˆ°18%çš„æ—¶å€™è§¦å‘ï¼Œä½†éœ€è¦æ¶ˆè€—ä½ 10%çš„ç”Ÿå‘½å€¼ã€‚")
+; æŠ€èƒ½: è„†å¼±
+SKILL_ACTIVE_NECROMANCER_FRAILTY := New ActiveSkill("è„†å¼±", "ç‰©ç†", "è¯…å’’"
 	, "images\skills\necromancer\active\necromancer_frailty_normal.png"
-	, "ÏûºÄ£º10µã¾«»ê\r\nÒ»ÖÖÖÂ²Ð×çÖä¡£Á¢¿ÌÏûÃðÉúÃüÖµµÍÓÚ15%µÄµÐÈË¡£³ÖÐø30Ãë¡£"
+	, "æ¶ˆè€—ï¼š10ç‚¹ç²¾é­‚\r\nä¸€ç§è‡´æ®‹è¯…å’’ã€‚ç«‹åˆ»æ¶ˆç­ç”Ÿå‘½å€¼ä½ŽäºŽ15%çš„æ•Œäººã€‚æŒç»­30ç§’ã€‚"
 	, [RUNE_NECROMANCER_FRAILTY_D, RUNE_NECROMANCER_FRAILTY_C, RUNE_NECROMANCER_FRAILTY_E, RUNE_NECROMANCER_FRAILTY_B, RUNE_NECROMANCER_FRAILTY_A])
 ; ---------------------------
-; ¼¼ÄÜ: ´àÈõ End
+; æŠ€èƒ½: è„†å¼± End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Íö»ê¸´Éú Start
+; æŠ€èƒ½: äº¡é­‚å¤ç”Ÿ Start
 ; ---------------------------
-; ·ûÎÄ: Íö»ê»¤Ìå 
-RUNE_NECROMANCER_REVIVE_C := New SkillRune("Íö»ê»¤Ìå", "ÎïÀí", "c", "Ã¿´æÔÚÒ»Ãû¸´»îµÄÆÍ´Ó¶¼»áÊ¹ÄãÊÜµ½µÄÉËº¦½µµÍ1%¡£")
-; ·ûÎÄ: ¿Ö¾åÖØÉú 
-RUNE_NECROMANCER_REVIVE_E := New SkillRune("¿Ö¾åÖØÉú", "¶¾ËØ", "e", "µ±Ê¬º¡ÖØ·µÕ½¶·Ê±£¬Î»ÓÚ20Âë·¶Î§ÄÚµÄµÐÈË½«Òò¿Ö¾å¶øÌÓÅÜ£¬³ÖÐø3Ãë¡£Ôì³ÉµÄÉËº¦±äÎª¶¾ÐÔÉËº¦¡£")
-; ·ûÎÄ: Á¶Óü 
-RUNE_NECROMANCER_REVIVE_A := New SkillRune("Á¶Óü", "ÎïÀí", "a", "¸´»îµÄÆÍ´Ó½«ÔÚ³ÖÐøÊ±¼ä½áÊøºó»¯ÎªÒ»¾ß¿É¹©Ê¹ÓÃµÄÊ¬º¡¡£")
-; ·ûÎÄ: Â³Ã§ 
-RUNE_NECROMANCER_REVIVE_D := New SkillRune("Â³Ã§", "±ùº®", "d", "¸´»îµÄÆÍ´Ó¶îÍâÔì³É25%µÄÉËº¦£¬µ«Ö»³ÖÐø10Ãë¡£Ôì³ÉµÄÉËº¦±äÎª±ùËªÉËº¦¡£")
-; ·ûÎÄ: Íö»êÏ×¼À 
-RUNE_NECROMANCER_REVIVE_B := New SkillRune("Íö»êÏ×¼À", "ÎïÀí", "b", "±»¸´»îÉúÎïµÄÉËº¦Ìá¸ß20%£¬µ«Ã¿´Î¸´»î¶¼½«ÏûºÄ3%µÄÉúÃüÖµ¡£")
-; ¼¼ÄÜ: Íö»ê¸´Éú
-SKILL_ACTIVE_NECROMANCER_REVIVE := New ActiveSkill("Íö»ê¸´Éú", "ÎïÀí", "Ê¬º¡"
+; ç¬¦æ–‡: äº¡é­‚æŠ¤ä½“ 
+RUNE_NECROMANCER_REVIVE_C := New SkillRune("äº¡é­‚æŠ¤ä½“", "ç‰©ç†", "c", "æ¯å­˜åœ¨ä¸€åå¤æ´»çš„ä»†ä»Žéƒ½ä¼šä½¿ä½ å—åˆ°çš„ä¼¤å®³é™ä½Ž1%ã€‚")
+; ç¬¦æ–‡: ææƒ§é‡ç”Ÿ 
+RUNE_NECROMANCER_REVIVE_E := New SkillRune("ææƒ§é‡ç”Ÿ", "æ¯’ç´ ", "e", "å½“å°¸éª¸é‡è¿”æˆ˜æ–—æ—¶ï¼Œä½äºŽ20ç èŒƒå›´å†…çš„æ•Œäººå°†å› ææƒ§è€Œé€ƒè·‘ï¼ŒæŒç»­3ç§’ã€‚é€ æˆçš„ä¼¤å®³å˜ä¸ºæ¯’æ€§ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ç‚¼ç‹± 
+RUNE_NECROMANCER_REVIVE_A := New SkillRune("ç‚¼ç‹±", "ç‰©ç†", "a", "å¤æ´»çš„ä»†ä»Žå°†åœ¨æŒç»­æ—¶é—´ç»“æŸåŽåŒ–ä¸ºä¸€å…·å¯ä¾›ä½¿ç”¨çš„å°¸éª¸ã€‚")
+; ç¬¦æ–‡: é²èŽ½ 
+RUNE_NECROMANCER_REVIVE_D := New SkillRune("é²èŽ½", "å†°å¯’", "d", "å¤æ´»çš„ä»†ä»Žé¢å¤–é€ æˆ25%çš„ä¼¤å®³ï¼Œä½†åªæŒç»­10ç§’ã€‚é€ æˆçš„ä¼¤å®³å˜ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: äº¡é­‚çŒ®ç¥­ 
+RUNE_NECROMANCER_REVIVE_B := New SkillRune("äº¡é­‚çŒ®ç¥­", "ç‰©ç†", "b", "è¢«å¤æ´»ç”Ÿç‰©çš„ä¼¤å®³æé«˜20%ï¼Œä½†æ¯æ¬¡å¤æ´»éƒ½å°†æ¶ˆè€—3%çš„ç”Ÿå‘½å€¼ã€‚")
+; æŠ€èƒ½: äº¡é­‚å¤ç”Ÿ
+SKILL_ACTIVE_NECROMANCER_REVIVE := New ActiveSkill("äº¡é­‚å¤ç”Ÿ", "ç‰©ç†", "å°¸éª¸"
 	, "images\skills\necromancer\active\necromancer_revive_normal.png"
-	, "Ê¹Ä¿±êÇøÓò20Âë·¶Î§ÄÚµÄ×î¶à10¾ßÊ¬º¡ÖØ·µÕ½¶·£¬³ÖÐø15Ãë¡£"
+	, "ä½¿ç›®æ ‡åŒºåŸŸ20ç èŒƒå›´å†…çš„æœ€å¤š10å…·å°¸éª¸é‡è¿”æˆ˜æ–—ï¼ŒæŒç»­15ç§’ã€‚"
 	, [RUNE_NECROMANCER_REVIVE_C, RUNE_NECROMANCER_REVIVE_E, RUNE_NECROMANCER_REVIVE_A, RUNE_NECROMANCER_REVIVE_D, RUNE_NECROMANCER_REVIVE_B])
 ; ---------------------------
-; ¼¼ÄÜ: Íö»ê¸´Éú End
+; æŠ€èƒ½: äº¡é­‚å¤ç”Ÿ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ¹Ç»ê Start
+; æŠ€èƒ½: éª¨é­‚ Start
 ; ---------------------------
-; ·ûÎÄ: ÐÇ½çÍ¶Ó° 
-RUNE_NECROMANCER_BONE_SPIRIT_E := New SkillRune("ÐÇ½çÍ¶Ó°", "±ùº®", "e", "¹Ç»êÔÚ×·×ÙÄ¿±êµÄ¹ý³ÌÖÐ£¬Ã¿´©¹ýÒ»ÃûµÐÈË¶¼»áÊ¹ÆäÉËº¦Ìá¸ß15%¡£ÉËº¦ÀàÐÍ×ªÎª±ùËªÉËº¦¡£")
-; ·ûÎÄ: °×¹Ç¾ª»ê 
-RUNE_NECROMANCER_BONE_SPIRIT_B := New SkillRune("°×¹Ç¾ª»ê", "¶¾ËØ", "b", "¹Ç»êÒý±¬Ê±£¬Î»ÓÚ10Âë·¶Î§ÄÚµÄµÐÈË½«ÏÝÈë¿Ö¾å£¬³ÖÐø2Ãë¡£ÉËº¦ÀàÐÍ×ª»»Îª¶¾ÐÔÉËº¦¡£")
-; ·ûÎÄ: ¼âÐ¥¹Ç»ê 
-RUNE_NECROMANCER_BONE_SPIRIT_C := New SkillRune("¼âÐ¥¹Ç»ê", "ÎïÀí", "c", "Ê¹×î´óÐîÄÜ´ÎÊýÌá¸ßÖÁ4²ã¡£")
-; ·ûÎÄ: Õ½¶·Î´¾¹ 
-RUNE_NECROMANCER_BONE_SPIRIT_D := New SkillRune("Õ½¶·Î´¾¹", "±ùº®", "d", "¹Ç»êÒý±¬Ê±£¬¶ÔÎ»ÓÚ10Âë·¶Î§ÄÚµÄËùÓÐµÐÈËÔì³É1250%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£")
-; ·ûÎÄ: ¹íÓ°¸½Éí 
-RUNE_NECROMANCER_BONE_SPIRIT_A := New SkillRune("¹íÓ°¸½Éí", "ÎïÀí", "a", "¹Ç»êÏÖÔÚ½«÷È»óÄ¿±ê£¬³ÖÐø10Ãë£¬µ«»áÏûºÄ5%µÄÉúÃüÖµ¡£")
-; ¼¼ÄÜ: ¹Ç»ê
-SKILL_ACTIVE_NECROMANCER_BONE_SPIRIT := New ActiveSkill("¹Ç»ê", "ÎïÀí", "ÑªÓë¹Ç"
+; ç¬¦æ–‡: æ˜Ÿç•ŒæŠ•å½± 
+RUNE_NECROMANCER_BONE_SPIRIT_E := New SkillRune("æ˜Ÿç•ŒæŠ•å½±", "å†°å¯’", "e", "éª¨é­‚åœ¨è¿½è¸ªç›®æ ‡çš„è¿‡ç¨‹ä¸­ï¼Œæ¯ç©¿è¿‡ä¸€åæ•Œäººéƒ½ä¼šä½¿å…¶ä¼¤å®³æé«˜15%ã€‚ä¼¤å®³ç±»åž‹è½¬ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ç™½éª¨æƒŠé­‚ 
+RUNE_NECROMANCER_BONE_SPIRIT_B := New SkillRune("ç™½éª¨æƒŠé­‚", "æ¯’ç´ ", "b", "éª¨é­‚å¼•çˆ†æ—¶ï¼Œä½äºŽ10ç èŒƒå›´å†…çš„æ•Œäººå°†é™·å…¥ææƒ§ï¼ŒæŒç»­2ç§’ã€‚ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºæ¯’æ€§ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: å°–å•¸éª¨é­‚ 
+RUNE_NECROMANCER_BONE_SPIRIT_C := New SkillRune("å°–å•¸éª¨é­‚", "ç‰©ç†", "c", "ä½¿æœ€å¤§è“„èƒ½æ¬¡æ•°æé«˜è‡³4å±‚ã€‚")
+; ç¬¦æ–‡: æˆ˜æ–—æœªç«Ÿ 
+RUNE_NECROMANCER_BONE_SPIRIT_D := New SkillRune("æˆ˜æ–—æœªç«Ÿ", "å†°å¯’", "d", "éª¨é­‚å¼•çˆ†æ—¶ï¼Œå¯¹ä½äºŽ10ç èŒƒå›´å†…çš„æ‰€æœ‰æ•Œäººé€ æˆ1250%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: é¬¼å½±é™„èº« 
+RUNE_NECROMANCER_BONE_SPIRIT_A := New SkillRune("é¬¼å½±é™„èº«", "ç‰©ç†", "a", "éª¨é­‚çŽ°åœ¨å°†é­…æƒ‘ç›®æ ‡ï¼ŒæŒç»­10ç§’ï¼Œä½†ä¼šæ¶ˆè€—5%çš„ç”Ÿå‘½å€¼ã€‚")
+; æŠ€èƒ½: éª¨é­‚
+SKILL_ACTIVE_NECROMANCER_BONE_SPIRIT := New ActiveSkill("éª¨é­‚", "ç‰©ç†", "è¡€ä¸Žéª¨"
 	, "images\skills\necromancer\active\necromancer_bonespirit_normal.png"
-	, "ÕÙ»½¹Ç»ê×·×ÙµÐÈË¡£¶Ô»÷ÖÐµÄµÐÈËÔì³É4000%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£\r\nÃ¿15Ãë»ñµÃÒ»²ãÐîÄÜ´ÎÊý£¬¿É×î¶à±£Áô3²ãÐîÄÜ¡£Ã¿ÏûºÄÒ»¾ßÊ¬º¡µÄ¾«»ê£¬³äÄÜÊ±¼ä¾Í»áËõ¶Ì1Ãë¡£"
+	, "å¬å”¤éª¨é­‚è¿½è¸ªæ•Œäººã€‚å¯¹å‡»ä¸­çš„æ•Œäººé€ æˆ4000%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚\r\næ¯15ç§’èŽ·å¾—ä¸€å±‚è“„èƒ½æ¬¡æ•°ï¼Œå¯æœ€å¤šä¿ç•™3å±‚è“„èƒ½ã€‚æ¯æ¶ˆè€—ä¸€å…·å°¸éª¸çš„ç²¾é­‚ï¼Œå……èƒ½æ—¶é—´å°±ä¼šç¼©çŸ­1ç§’ã€‚"
 	, [RUNE_NECROMANCER_BONE_SPIRIT_E, RUNE_NECROMANCER_BONE_SPIRIT_B, RUNE_NECROMANCER_BONE_SPIRIT_C, RUNE_NECROMANCER_BONE_SPIRIT_D, RUNE_NECROMANCER_BONE_SPIRIT_A])
 ; ---------------------------
-; ¼¼ÄÜ: ¹Ç»ê End
+; æŠ€èƒ½: éª¨é­‚ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÏÊÑª±¼ÐÐ Start
+; æŠ€èƒ½: é²œè¡€å¥”è¡Œ Start
 ; ---------------------------
-; ·ûÎÄ: ÏÊÑªÇ±ÄÜ 
-RUNE_NECROMANCER_BLOOD_RUSH_D := New SkillRune("ÏÊÑªÇ±ÄÜ", "ÎïÀí", "d", "Ê¹ÄãµÄ»¤¼×ÖµÌá¸ß100%£¬³ÖÐø2Ãë¡£")
-; ·ûÎÄ: ÏÊÑª¹à×¢ 
-RUNE_NECROMANCER_BLOOD_RUSH_A := New SkillRune("ÏÊÑª¹à×¢", "ÎïÀí", "a", "Ã¿´©¹ýÒ»¸öµÐÈË£¬¶¼»áÎªÄã»Ö¸´ÉúÃüÖµÉÏÏÞµÄ2%¡£")
-; ·ûÎÄ: ÑªÈâÍÉ±ä 
-RUNE_NECROMANCER_BLOOD_RUSH_E := New SkillRune("ÑªÈâÍÉ±ä", "ÎïÀí", "e", "ÔÚÄãÊ¹ÓÃ¼¼ÄÜµÄ³õÊ¼Î»ÖÃÁôÏÂÒ»¾ßÊ¬º¡¡£")
-; ·ûÎÄ: ÏÊÑª½û±Õ 
-RUNE_NECROMANCER_BLOOD_RUSH_B := New SkillRune("ÏÊÑª½û±Õ", "ÎïÀí", "b", "ÒÆ³ýÉúÃüÖµÏûºÄ¡£")
-; ·ûÎÄ: ÏÊÑª´úÐ» 
-RUNE_NECROMANCER_BLOOD_RUSH_C := New SkillRune("ÏÊÑª´úÐ»", "ÎïÀí", "c", "¶îÍâÌá¹©Ò»²ãÊ¹ÓÃ´ÎÊý£¬µ«ÉúÃüÖµÏûºÄ·­±¶¡£")
-; ¼¼ÄÜ: ÏÊÑª±¼ÐÐ
-SKILL_ACTIVE_NECROMANCER_BLOOD_RUSH := New ActiveSkill("ÏÊÑª±¼ÐÐ", "ÎïÀí", "ÑªÓë¹Ç"
+; ç¬¦æ–‡: é²œè¡€æ½œèƒ½ 
+RUNE_NECROMANCER_BLOOD_RUSH_D := New SkillRune("é²œè¡€æ½œèƒ½", "ç‰©ç†", "d", "ä½¿ä½ çš„æŠ¤ç”²å€¼æé«˜100%ï¼ŒæŒç»­2ç§’ã€‚")
+; ç¬¦æ–‡: é²œè¡€çŒæ³¨ 
+RUNE_NECROMANCER_BLOOD_RUSH_A := New SkillRune("é²œè¡€çŒæ³¨", "ç‰©ç†", "a", "æ¯ç©¿è¿‡ä¸€ä¸ªæ•Œäººï¼Œéƒ½ä¼šä¸ºä½ æ¢å¤ç”Ÿå‘½å€¼ä¸Šé™çš„2%ã€‚")
+; ç¬¦æ–‡: è¡€è‚‰èœ•å˜ 
+RUNE_NECROMANCER_BLOOD_RUSH_E := New SkillRune("è¡€è‚‰èœ•å˜", "ç‰©ç†", "e", "åœ¨ä½ ä½¿ç”¨æŠ€èƒ½çš„åˆå§‹ä½ç½®ç•™ä¸‹ä¸€å…·å°¸éª¸ã€‚")
+; ç¬¦æ–‡: é²œè¡€ç¦é—­ 
+RUNE_NECROMANCER_BLOOD_RUSH_B := New SkillRune("é²œè¡€ç¦é—­", "ç‰©ç†", "b", "ç§»é™¤ç”Ÿå‘½å€¼æ¶ˆè€—ã€‚")
+; ç¬¦æ–‡: é²œè¡€ä»£è°¢ 
+RUNE_NECROMANCER_BLOOD_RUSH_C := New SkillRune("é²œè¡€ä»£è°¢", "ç‰©ç†", "c", "é¢å¤–æä¾›ä¸€å±‚ä½¿ç”¨æ¬¡æ•°ï¼Œä½†ç”Ÿå‘½å€¼æ¶ˆè€—ç¿»å€ã€‚")
+; æŠ€èƒ½: é²œè¡€å¥”è¡Œ
+SKILL_ACTIVE_NECROMANCER_BLOOD_RUSH := New ActiveSkill("é²œè¡€å¥”è¡Œ", "ç‰©ç†", "è¡€ä¸Žéª¨"
 	, "images\skills\necromancer\active\necromancer_bloodrush_normal.png"
-	, "ÏûºÄ£º5%ÉúÃüÖµÀäÈ´Ê±¼ä£º5Ãë\r\n½«±¾Ìå»¯×÷Ñª»êÈ»ºóÔÚ×î¶à50ÂëÍâÖØÐÂ³öÏÖ¡£"
+	, "æ¶ˆè€—ï¼š5%ç”Ÿå‘½å€¼å†·å´æ—¶é—´ï¼š5ç§’\r\nå°†æœ¬ä½“åŒ–ä½œè¡€é­‚ç„¶åŽåœ¨æœ€å¤š50ç å¤–é‡æ–°å‡ºçŽ°ã€‚"
 	, [RUNE_NECROMANCER_BLOOD_RUSH_D, RUNE_NECROMANCER_BLOOD_RUSH_A, RUNE_NECROMANCER_BLOOD_RUSH_E, RUNE_NECROMANCER_BLOOD_RUSH_B, RUNE_NECROMANCER_BLOOD_RUSH_C])
 ; ---------------------------
-; ¼¼ÄÜ: ÏÊÑª±¼ÐÐ End
+; æŠ€èƒ½: é²œè¡€å¥”è¡Œ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÍöÕßÁìÓò Start
+; æŠ€èƒ½: äº¡è€…é¢†åŸŸ Start
 ; ---------------------------
-; ·ûÎÄ: ËÀº®Ö®µØ 
-RUNE_NECROMANCER_LAND_OF_THE_DEAD_B := New SkillRune("ËÀº®Ö®µØ", "±ùº®", "b", "Î»ÓÚÍöÕßÁìÓòÖÐµÄµÐÈË½«±»ÖÜÆÚÐÔµØ±ù¶³¡£")
-; ·ûÎÄ: ÎÁÒßÖ®µØ 
-RUNE_NECROMANCER_LAND_OF_THE_DEAD_C := New SkillRune("ÎÁÒßÖ®µØ", "¶¾ËØ", "c", "Î»ÓÚÍöÕßÁìÓòÖ®ÖÐµÄµÐÈËÃ¿Ãë³ÐÊÜ100%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©£¬×î¸ßÊÜµ½10000%µÄÎäÆ÷ÉËº¦¡£")
-; ·ûÎÄ: ÂÒÔáÇ³·Ø 
-RUNE_NECROMANCER_LAND_OF_THE_DEAD_E := New SkillRune("ÂÒÔáÇ³·Ø", "ÎïÀí", "e", "Ã¿»÷É±10ÃûµÐÈË£¬¾Í»áÊ¹ÍöÕßÁìÓòµÄ³ÖÐøÊ±¼äÑÓ³¤1Ãë£¬×î¶àÑÓ³¤2Ãë¡£")
-; ·ûÎÄ: ¾«Á¦³äÅæ 
-RUNE_NECROMANCER_LAND_OF_THE_DEAD_A := New SkillRune("¾«Á¦³äÅæ", "ÎïÀí", "a", "ÍöÕßÁìÓò¼¤»îÊ±£¬ÄãµÄ¼¼ÄÜ²»ÏûºÄ¾«»ê¡£")
-; ·ûÎÄ: Íö»ê¿ñÎè 
-RUNE_NECROMANCER_LAND_OF_THE_DEAD_D := New SkillRune("Íö»ê¿ñÎè", "ÎïÀí", "d", "ÍöÕßÁìÓò¼¤»îÊ±£¬Ã¿ÏûÃðÒ»ÃûµÐÈË£¬¾Í»áÎªÄã»Ö¸´ÉúÃüÖµÉÏÏÞµÄ2%¡£")
-; ¼¼ÄÜ: ÍöÕßÁìÓò
-SKILL_ACTIVE_NECROMANCER_LAND_OF_THE_DEAD := New ActiveSkill("ÍöÕßÁìÓò", "ÎïÀí", "¸´»î"
+; ç¬¦æ–‡: æ­»å¯’ä¹‹åœ° 
+RUNE_NECROMANCER_LAND_OF_THE_DEAD_B := New SkillRune("æ­»å¯’ä¹‹åœ°", "å†°å¯’", "b", "ä½äºŽäº¡è€…é¢†åŸŸä¸­çš„æ•Œäººå°†è¢«å‘¨æœŸæ€§åœ°å†°å†»ã€‚")
+; ç¬¦æ–‡: ç˜Ÿç–«ä¹‹åœ° 
+RUNE_NECROMANCER_LAND_OF_THE_DEAD_C := New SkillRune("ç˜Ÿç–«ä¹‹åœ°", "æ¯’ç´ ", "c", "ä½äºŽäº¡è€…é¢†åŸŸä¹‹ä¸­çš„æ•Œäººæ¯ç§’æ‰¿å—100%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ï¼Œæœ€é«˜å—åˆ°10000%çš„æ­¦å™¨ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ä¹±è‘¬æµ…åŸ 
+RUNE_NECROMANCER_LAND_OF_THE_DEAD_E := New SkillRune("ä¹±è‘¬æµ…åŸ", "ç‰©ç†", "e", "æ¯å‡»æ€10åæ•Œäººï¼Œå°±ä¼šä½¿äº¡è€…é¢†åŸŸçš„æŒç»­æ—¶é—´å»¶é•¿1ç§’ï¼Œæœ€å¤šå»¶é•¿2ç§’ã€‚")
+; ç¬¦æ–‡: ç²¾åŠ›å……æ²› 
+RUNE_NECROMANCER_LAND_OF_THE_DEAD_A := New SkillRune("ç²¾åŠ›å……æ²›", "ç‰©ç†", "a", "äº¡è€…é¢†åŸŸæ¿€æ´»æ—¶ï¼Œä½ çš„æŠ€èƒ½ä¸æ¶ˆè€—ç²¾é­‚ã€‚")
+; ç¬¦æ–‡: äº¡é­‚ç‹‚èˆž 
+RUNE_NECROMANCER_LAND_OF_THE_DEAD_D := New SkillRune("äº¡é­‚ç‹‚èˆž", "ç‰©ç†", "d", "äº¡è€…é¢†åŸŸæ¿€æ´»æ—¶ï¼Œæ¯æ¶ˆç­ä¸€åæ•Œäººï¼Œå°±ä¼šä¸ºä½ æ¢å¤ç”Ÿå‘½å€¼ä¸Šé™çš„2%ã€‚")
+; æŠ€èƒ½: äº¡è€…é¢†åŸŸ
+SKILL_ACTIVE_NECROMANCER_LAND_OF_THE_DEAD := New ActiveSkill("äº¡è€…é¢†åŸŸ", "ç‰©ç†", "å¤æ´»"
 	, "images\skills\necromancer\active\necromancer_landofthedead_normal.png"
-	, "ÀäÈ´Ê±¼ä£º120Ãë\r\n10ÃëÄÚ¿ÉÊ¹ÓÃËùÓÐÊ¬º¡¼¼ÄÜ¶øÎÞÐèÊ¬º¡¡£"
+	, "å†·å´æ—¶é—´ï¼š120ç§’\r\n10ç§’å†…å¯ä½¿ç”¨æ‰€æœ‰å°¸éª¸æŠ€èƒ½è€Œæ— éœ€å°¸éª¸ã€‚"
 	, [RUNE_NECROMANCER_LAND_OF_THE_DEAD_B, RUNE_NECROMANCER_LAND_OF_THE_DEAD_C, RUNE_NECROMANCER_LAND_OF_THE_DEAD_E, RUNE_NECROMANCER_LAND_OF_THE_DEAD_A, RUNE_NECROMANCER_LAND_OF_THE_DEAD_D])
 ; ---------------------------
-; ¼¼ÄÜ: ÍöÕßÁìÓò End
+; æŠ€èƒ½: äº¡è€…é¢†åŸŸ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Ñª»êË«·Ö Start
+; æŠ€èƒ½: è¡€é­‚åŒåˆ† Start
 ; ---------------------------
-; ·ûÎÄ: ×çÖäÐÎÌ¬ 
-RUNE_NECROMANCER_SIMULACRUM_B := New SkillRune("×çÖäÐÎÌ¬", "ÎïÀí", "b", "¼¤»îÊ±£¬ÄãµÄ×çÖä¼¼ÄÜÏÖÔÚ½«Ê©¼ÓËùÓÐÈýÖÖ×çÖäÐ§¹û¡£")
-; ·ûÎÄ: ÑªÓ¯Ñª»ê 
-RUNE_NECROMANCER_SIMULACRUM_A := New SkillRune("ÑªÓ¯Ñª»ê", "ÎïÀí", "a", "·ÖÉí¼¤»îÊ±£¬ÄãµÄ¾«»êÉÏÏÞ½«Ìá¸ß100%¡£")
-; ·ûÎÄ: Ñª»ê×Ô¾¡ 
-RUNE_NECROMANCER_SIMULACRUM_E := New SkillRune("Ñª»ê×Ô¾¡", "ÎïÀí", "e", "Èç¹ûÄãÔÚ·ÖÉí¼¤»îÆÚ¼äÊÜµ½ÖÂÃüÉËº¦£¬Ôò·ÖÉí½«±»´Ý»Ù£¬Äã½«»Ö¸´ËùÓÐÉúÃüÖµ¡£")
-; ·ûÎÄ: ÑªÕ® 
-RUNE_NECROMANCER_SIMULACRUM_C := New SkillRune("ÑªÕ®", "ÎïÀí", "c", "·ÖÉí¼¤»îÊ±£¬ÏÊÑª¼¼ÄÜÏûºÄµÄÉúÃüÖµ½µµÍ75%¡£")
-; ·ûÎÄ: ÏÊÑªÓë°×¹Ç 
-RUNE_NECROMANCER_SIMULACRUM_D := New SkillRune("ÏÊÑªÓë°×¹Ç", "ÎïÀí", "d", "ÏÖÔÚ»á¶à´´ÔìÒ»¸ö°×¹Ç·ÖÉí£¬µ«³ÖÐøÊ±¼äËõ¶ÌÖÁ10Ãë¡£")
-; ¼¼ÄÜ: Ñª»êË«·Ö
-SKILL_ACTIVE_NECROMANCER_SIMULACRUM := New ActiveSkill("Ñª»êË«·Ö", "ÎïÀí", "ÑªÓë¹Ç"
+; ç¬¦æ–‡: è¯…å’’å½¢æ€ 
+RUNE_NECROMANCER_SIMULACRUM_B := New SkillRune("è¯…å’’å½¢æ€", "ç‰©ç†", "b", "æ¿€æ´»æ—¶ï¼Œä½ çš„è¯…å’’æŠ€èƒ½çŽ°åœ¨å°†æ–½åŠ æ‰€æœ‰ä¸‰ç§è¯…å’’æ•ˆæžœã€‚")
+; ç¬¦æ–‡: è¡€ç›ˆè¡€é­‚ 
+RUNE_NECROMANCER_SIMULACRUM_A := New SkillRune("è¡€ç›ˆè¡€é­‚", "ç‰©ç†", "a", "åˆ†èº«æ¿€æ´»æ—¶ï¼Œä½ çš„ç²¾é­‚ä¸Šé™å°†æé«˜100%ã€‚")
+; ç¬¦æ–‡: è¡€é­‚è‡ªå°½ 
+RUNE_NECROMANCER_SIMULACRUM_E := New SkillRune("è¡€é­‚è‡ªå°½", "ç‰©ç†", "e", "å¦‚æžœä½ åœ¨åˆ†èº«æ¿€æ´»æœŸé—´å—åˆ°è‡´å‘½ä¼¤å®³ï¼Œåˆ™åˆ†èº«å°†è¢«æ‘§æ¯ï¼Œä½ å°†æ¢å¤æ‰€æœ‰ç”Ÿå‘½å€¼ã€‚")
+; ç¬¦æ–‡: è¡€å€º 
+RUNE_NECROMANCER_SIMULACRUM_C := New SkillRune("è¡€å€º", "ç‰©ç†", "c", "åˆ†èº«æ¿€æ´»æ—¶ï¼Œé²œè¡€æŠ€èƒ½æ¶ˆè€—çš„ç”Ÿå‘½å€¼é™ä½Ž75%ã€‚")
+; ç¬¦æ–‡: é²œè¡€ä¸Žç™½éª¨ 
+RUNE_NECROMANCER_SIMULACRUM_D := New SkillRune("é²œè¡€ä¸Žç™½éª¨", "ç‰©ç†", "d", "çŽ°åœ¨ä¼šå¤šåˆ›é€ ä¸€ä¸ªç™½éª¨åˆ†èº«ï¼Œä½†æŒç»­æ—¶é—´ç¼©çŸ­è‡³10ç§’ã€‚")
+; æŠ€èƒ½: è¡€é­‚åŒåˆ†
+SKILL_ACTIVE_NECROMANCER_SIMULACRUM := New ActiveSkill("è¡€é­‚åŒåˆ†", "ç‰©ç†", "è¡€ä¸Žéª¨"
 	, "images\skills\necromancer\active\necromancer_simulacrum_normal.png"
-	, "ÏûºÄ£º25%ÉúÃüÖµÀäÈ´Ê±¼ä£º120Ãë\r\nÕÙ»½Ò»¸öÓÉÏÊÑª»¯³ÉµÄ·ÖÉí¸´ÖÆÄãµÄ´ÎÒª¼¼ÄÜ£¬³ÖÐø15Ãë¡£"
+	, "æ¶ˆè€—ï¼š25%ç”Ÿå‘½å€¼å†·å´æ—¶é—´ï¼š120ç§’\r\nå¬å”¤ä¸€ä¸ªç”±é²œè¡€åŒ–æˆçš„åˆ†èº«å¤åˆ¶ä½ çš„æ¬¡è¦æŠ€èƒ½ï¼ŒæŒç»­15ç§’ã€‚"
 	, [RUNE_NECROMANCER_SIMULACRUM_B, RUNE_NECROMANCER_SIMULACRUM_A, RUNE_NECROMANCER_SIMULACRUM_E, RUNE_NECROMANCER_SIMULACRUM_C, RUNE_NECROMANCER_SIMULACRUM_D])
 ; ---------------------------
-; ¼¼ÄÜ: Ñª»êË«·Ö End
+; æŠ€èƒ½: è¡€é­‚åŒåˆ† End
 ; ---------------------------
 
 ; ===========================
-; ËÀÁé·¨Ê¦ End
+; æ­»çµæ³•å¸ˆ End
 ; ===========================
 
 
 
 ; ===========================
-; Î×Ò½ Start
+; å·«åŒ» Start
 ; ===========================
 ; ---------------------------
-; ¼¼ÄÜ: ¾ç¶¾·ÉïÚ Start
+; æŠ€èƒ½: å‰§æ¯’é£žé•– Start
 ; ---------------------------
-; ·ûÎÄ: ¾ç¶¾ïÚÓê 
-RUNE_WITCH_DOCTOR_POISON_DART_B := New SkillRune("¾ç¶¾ïÚÓê", "¶¾ËØ", "b", "Éä³ö3·¢¾ç¶¾·ÉïÚ£¬Ã¿·¢Ôì³É110%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©¡£")
-; ·ûÎÄ: Âé±Ô·ÉïÚ 
-RUNE_WITCH_DOCTOR_POISON_DART_C := New SkillRune("Âé±Ô·ÉïÚ", "±ùº®", "c", "Éä³öÒ»·¢±ùËª·ÉïÚ£¬Ê¹µÐÈËµÄÒÆ¶¯ËÙ¶È½µµÍ60%£¬³ÖÐø2Ãë¡£")
-; ·ûÎÄ: ¼¹´Ì·ÉïÚ 
-RUNE_WITCH_DOCTOR_POISON_DART_D := New SkillRune("¼¹´Ì·ÉïÚ", "ÎïÀí", "d", "Ã¿µ±¾ç¶¾·ÉïÚ»÷ÖÐÒ»ÃûµÐÈË¼´¿É»ñµÃ50µã·¨Á¦Öµ¡£ÉËº¦ÀàÐÍ×ª»»ÎªÎïÀíÉËº¦¡£")
-; ·ûÎÄ: »ðÑæ·ÉïÚ 
-RUNE_WITCH_DOCTOR_POISON_DART_A := New SkillRune("»ðÑæ·ÉïÚ", "»ðÑæ", "a", "µãÈ¼·ÉïÚ£¬Ê¹ÆäÔÚ4ÃëÄÚÔì³É565%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ¶¾Éß²øÉí 
-RUNE_WITCH_DOCTOR_POISON_DART_E := New SkillRune("¶¾Éß²øÉí", "¶¾ËØ", "e", "°ÑÄãµÄ¾ç¶¾·ÉïÚ±äÎª¶¾Éß£¬ÓÐ35%µÄ¼¸ÂÊÊ¹µÐÈË»èÃÔ1.5Ãë¡£")
-; ¼¼ÄÜ: ¾ç¶¾·ÉïÚ
-SKILL_ACTIVE_WITCH_DOCTOR_POISON_DART := New ActiveSkill("¾ç¶¾·ÉïÚ", "¶¾ËØ", "Ö÷Òª"
+; ç¬¦æ–‡: å‰§æ¯’é•–é›¨ 
+RUNE_WITCH_DOCTOR_POISON_DART_B := New SkillRune("å‰§æ¯’é•–é›¨", "æ¯’ç´ ", "b", "å°„å‡º3å‘å‰§æ¯’é£žé•–ï¼Œæ¯å‘é€ æˆ110%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: éº»ç—¹é£žé•– 
+RUNE_WITCH_DOCTOR_POISON_DART_C := New SkillRune("éº»ç—¹é£žé•–", "å†°å¯’", "c", "å°„å‡ºä¸€å‘å†°éœœé£žé•–ï¼Œä½¿æ•Œäººçš„ç§»åŠ¨é€Ÿåº¦é™ä½Ž60%ï¼ŒæŒç»­2ç§’ã€‚")
+; ç¬¦æ–‡: è„Šåˆºé£žé•– 
+RUNE_WITCH_DOCTOR_POISON_DART_D := New SkillRune("è„Šåˆºé£žé•–", "ç‰©ç†", "d", "æ¯å½“å‰§æ¯’é£žé•–å‡»ä¸­ä¸€åæ•Œäººå³å¯èŽ·å¾—50ç‚¹æ³•åŠ›å€¼ã€‚ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºç‰©ç†ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ç«ç„°é£žé•– 
+RUNE_WITCH_DOCTOR_POISON_DART_A := New SkillRune("ç«ç„°é£žé•–", "ç«ç„°", "a", "ç‚¹ç‡ƒé£žé•–ï¼Œä½¿å…¶åœ¨4ç§’å†…é€ æˆ565%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: æ¯’è›‡ç¼ èº« 
+RUNE_WITCH_DOCTOR_POISON_DART_E := New SkillRune("æ¯’è›‡ç¼ èº«", "æ¯’ç´ ", "e", "æŠŠä½ çš„å‰§æ¯’é£žé•–å˜ä¸ºæ¯’è›‡ï¼Œæœ‰35%çš„å‡ çŽ‡ä½¿æ•Œäººæ˜è¿·1.5ç§’ã€‚")
+; æŠ€èƒ½: å‰§æ¯’é£žé•–
+SKILL_ACTIVE_WITCH_DOCTOR_POISON_DART := New ActiveSkill("å‰§æ¯’é£žé•–", "æ¯’ç´ ", "ä¸»è¦"
 	, "images\skills\witch-doctor\active\witchdoctor_poisondart_normal.png"
-	, "ÕâÊÇÒ»ÖÖÐÞÎª·¨Êõ¡£Ê©·ÅÐÞÎª·¨ÊõÎÞÐèÏûºÄ·¨Á¦Öµ¡£\r\nÉä³öÒ»Ö§ÖÂÃü¾ç¶¾·ÉïÚ£¬Ôì³É185%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©£¬²¢ÔÚ½ÓÏÂÀ´µÄ2ÃëÄÚÔì³É¶îÍâ40%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©¡£"
+	, "è¿™æ˜¯ä¸€ç§ä¿®ä¸ºæ³•æœ¯ã€‚æ–½æ”¾ä¿®ä¸ºæ³•æœ¯æ— éœ€æ¶ˆè€—æ³•åŠ›å€¼ã€‚\r\nå°„å‡ºä¸€æ”¯è‡´å‘½å‰§æ¯’é£žé•–ï¼Œé€ æˆ185%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ï¼Œå¹¶åœ¨æŽ¥ä¸‹æ¥çš„2ç§’å†…é€ æˆé¢å¤–40%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_WITCH_DOCTOR_POISON_DART_B, RUNE_WITCH_DOCTOR_POISON_DART_C, RUNE_WITCH_DOCTOR_POISON_DART_D, RUNE_WITCH_DOCTOR_POISON_DART_A, RUNE_WITCH_DOCTOR_POISON_DART_E])
 ; ---------------------------
-; ¼¼ÄÜ: ¾ç¶¾·ÉïÚ End
+; æŠ€èƒ½: å‰§æ¯’é£žé•– End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÍöÕßÖ®ÎÕ Start
+; æŠ€èƒ½: äº¡è€…ä¹‹æ¡ Start
 ; ---------------------------
-; ·ûÎÄ: ²øÉíÖ®ÎÕ 
-RUNE_WITCH_DOCTOR_GRASP_OF_THE_DEAD_C := New SkillRune("²øÉíÖ®ÎÕ", "±ùº®", "c", "ÒÆ³ý·¨Á¦ÏûºÄ£¬Ê¹¼õËÙÐ§¹ûÌá¸ßÖÁ80%¡£ÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ·ûÎÄ: Çù³æº£ 
-RUNE_WITCH_DOCTOR_GRASP_OF_THE_DEAD_A := New SkillRune("Çù³æº£", "ÎïÀí", "a", "Ê¹ËùÔì³ÉµÄÉËº¦Ìá¸ßÖÁ1360%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£")
-; ·ûÎÄ: ËÀ¼´ÊÇÉú 
-RUNE_WITCH_DOCTOR_GRASP_OF_THE_DEAD_E := New SkillRune("ËÀ¼´ÊÇÉú", "¶¾ËØ", "e", "ËÀÔÚÍöÕßÖ®ÎÕ·¶Î§ÄÚµÄµÐÈËÓÐ70%µÄ¼¸ÂÊÕÙ»½Ò»Ö»½©Ê¬È®¡£ÉËº¦ÀàÐÍ×ª»»Îª¶¾ÐÔÉËº¦¡£")
-; ·ûÎÄ: ¾øÍûÖ®ÎÕ 
-RUNE_WITCH_DOCTOR_GRASP_OF_THE_DEAD_D := New SkillRune("¾øÍûÖ®ÎÕ", "¶¾ËØ", "d", "Ê¹ÍöÕßÖ®ÎÕµÄÀäÈ´Ê±¼äËõ¶ÌÖÁ4Ãë¡£ÉËº¦ÀàÐÍ×ª»»Îª¶¾ÐÔÉËº¦¡£")
-; ·ûÎÄ: Ìì½µÊ¬Óê 
-RUNE_WITCH_DOCTOR_GRASP_OF_THE_DEAD_B := New SkillRune("Ìì½µÊ¬Óê", "ÎïÀí", "b", "Ê¬Ìå´ÓÌì¶ø½µ£¬ÔÚ3ÃëÄÚ¶Ô¸½½üµÄµÐÈËÔì³É420%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©¡£")
-; ¼¼ÄÜ: ÍöÕßÖ®ÎÕ
-SKILL_ACTIVE_WITCH_DOCTOR_GRASP_OF_THE_DEAD := New ActiveSkill("ÍöÕßÖ®ÎÕ", "ÎïÀí", "´ÎÒª"
+; ç¬¦æ–‡: ç¼ èº«ä¹‹æ¡ 
+RUNE_WITCH_DOCTOR_GRASP_OF_THE_DEAD_C := New SkillRune("ç¼ èº«ä¹‹æ¡", "å†°å¯’", "c", "ç§»é™¤æ³•åŠ›æ¶ˆè€—ï¼Œä½¿å‡é€Ÿæ•ˆæžœæé«˜è‡³80%ã€‚ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: è›†è™«æµ· 
+RUNE_WITCH_DOCTOR_GRASP_OF_THE_DEAD_A := New SkillRune("è›†è™«æµ·", "ç‰©ç†", "a", "ä½¿æ‰€é€ æˆçš„ä¼¤å®³æé«˜è‡³1360%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: æ­»å³æ˜¯ç”Ÿ 
+RUNE_WITCH_DOCTOR_GRASP_OF_THE_DEAD_E := New SkillRune("æ­»å³æ˜¯ç”Ÿ", "æ¯’ç´ ", "e", "æ­»åœ¨äº¡è€…ä¹‹æ¡èŒƒå›´å†…çš„æ•Œäººæœ‰70%çš„å‡ çŽ‡å¬å”¤ä¸€åªåƒµå°¸çŠ¬ã€‚ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºæ¯’æ€§ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ç»æœ›ä¹‹æ¡ 
+RUNE_WITCH_DOCTOR_GRASP_OF_THE_DEAD_D := New SkillRune("ç»æœ›ä¹‹æ¡", "æ¯’ç´ ", "d", "ä½¿äº¡è€…ä¹‹æ¡çš„å†·å´æ—¶é—´ç¼©çŸ­è‡³4ç§’ã€‚ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºæ¯’æ€§ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: å¤©é™å°¸é›¨ 
+RUNE_WITCH_DOCTOR_GRASP_OF_THE_DEAD_B := New SkillRune("å¤©é™å°¸é›¨", "ç‰©ç†", "b", "å°¸ä½“ä»Žå¤©è€Œé™ï¼Œåœ¨3ç§’å†…å¯¹é™„è¿‘çš„æ•Œäººé€ æˆ420%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: äº¡è€…ä¹‹æ¡
+SKILL_ACTIVE_WITCH_DOCTOR_GRASP_OF_THE_DEAD := New ActiveSkill("äº¡è€…ä¹‹æ¡", "ç‰©ç†", "æ¬¡è¦"
 	, "images\skills\witch-doctor\active\witchdoctor_graspofthedead_normal.png"
-	, "ÏûºÄ£º150µã·¨Á¦ÖµÀäÈ´Ê±¼ä£º8Ãë\r\n´ÓµØÏÂÉì³öÍöÕßÖ®ÊÖ£¬Ê¹µÐÈËµÄÒÆ¶¯ËÙ¶È½µµÍ60%£¬²¢ÔÚ8ÃëÄÚÔì³É760%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£"
+	, "æ¶ˆè€—ï¼š150ç‚¹æ³•åŠ›å€¼å†·å´æ—¶é—´ï¼š8ç§’\r\nä»Žåœ°ä¸‹ä¼¸å‡ºäº¡è€…ä¹‹æ‰‹ï¼Œä½¿æ•Œäººçš„ç§»åŠ¨é€Ÿåº¦é™ä½Ž60%ï¼Œå¹¶åœ¨8ç§’å†…é€ æˆ760%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_WITCH_DOCTOR_GRASP_OF_THE_DEAD_C, RUNE_WITCH_DOCTOR_GRASP_OF_THE_DEAD_A, RUNE_WITCH_DOCTOR_GRASP_OF_THE_DEAD_E, RUNE_WITCH_DOCTOR_GRASP_OF_THE_DEAD_D, RUNE_WITCH_DOCTOR_GRASP_OF_THE_DEAD_B])
 ; ---------------------------
-; ¼¼ÄÜ: ÍöÕßÖ®ÎÕ End
+; æŠ€èƒ½: äº¡è€…ä¹‹æ¡ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Ê¬Öë Start
+; æŠ€èƒ½: å°¸è›› Start
 ; ---------------------------
-; ·ûÎÄ: ÌøÔ¾Ö©Öë 
-RUNE_WITCH_DOCTOR_CORPSE_SPIDERS_C := New SkillRune("ÌøÔ¾Ö©Öë", "¶¾ËØ", "c", "ÖÀ³öÒ»¸ö×°ÂúÌøÔ¾Ö©ÖëµÄÌ³×Ó£¬×î¶àÌøÔ¾25ÂëÒÔ½Ó´¥µ½Ä¿±ê²¢·¢¶¯¹¥»÷£¬Ôì³É645%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©¡£")
-; ·ûÎÄ: Öëºó 
-RUNE_WITCH_DOCTOR_CORPSE_SPIDERS_B := New SkillRune("Öëºó", "¶¾ËØ", "b", "ÖÀ³öÒ»¸ö×°ÓÐÖëºóµÄÌ³×Ó£¬²ú³öÐ¡Ö©Öë£¬ÔÚ15ÃëÄÚ¶ÔÇøÓòÄÚµÄµÐÈËÔì³É2625%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©¡£Í¬Ò»Ê±¼äÄÚÄãÖ»ÄÜÕÙ»½Ò»Ö»Öëºó¡£")
-; ·ûÎÄ: ¹Ñ¸¾ÖÆÔìÕß 
-RUNE_WITCH_DOCTOR_CORPSE_SPIDERS_D := New SkillRune("¹Ñ¸¾ÖÆÔìÕß", "ÎïÀí", "d", "Í¶ÖÀÒ»¸ö×°Âú¶¾¹Ñ¸¾Ö©ÖëµÄ¹Þ×Ó£¬Ôì³É×Ü¼Æ700%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£")
-; ·ûÎÄ: Âé±Ô¶¾Öë 
-RUNE_WITCH_DOCTOR_CORPSE_SPIDERS_E := New SkillRune("Âé±Ô¶¾Öë", "±ùº®", "e", "ÖÀ³öÒ»¸ö×°ÂúÂé±Ô¶¾ÖëµÄÌ³×Ó£¬Ã¿´Î¹¥»÷ÓÐ100%µÄ¼¸ÂÊÊ¹µÐÈËµÄÒÆ¶¯ËÙ¶È½µµÍ60%¡£")
-; ·ûÎÄ: ³ãÑ×Ö©Öë 
-RUNE_WITCH_DOCTOR_CORPSE_SPIDERS_A := New SkillRune("³ãÑ×Ö©Öë", "»ðÑæ", "a", "ÖÀ³öÒ»¸ö×°Âú»ðÑæÖ©ÖëµÄÌ³×Ó£¬Ã¿´Î»÷ÖÐÎªÄã·µ»¹3µã·¨Á¦¡£")
-; ¼¼ÄÜ: Ê¬Öë
-SKILL_ACTIVE_WITCH_DOCTOR_CORPSE_SPIDERS := New ActiveSkill("Ê¬Öë", "ÎïÀí", "Ö÷Òª"
+; ç¬¦æ–‡: è·³è·ƒèœ˜è›› 
+RUNE_WITCH_DOCTOR_CORPSE_SPIDERS_C := New SkillRune("è·³è·ƒèœ˜è››", "æ¯’ç´ ", "c", "æŽ·å‡ºä¸€ä¸ªè£…æ»¡è·³è·ƒèœ˜è››çš„å›å­ï¼Œæœ€å¤šè·³è·ƒ25ç ä»¥æŽ¥è§¦åˆ°ç›®æ ‡å¹¶å‘åŠ¨æ”»å‡»ï¼Œé€ æˆ645%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: è››åŽ 
+RUNE_WITCH_DOCTOR_CORPSE_SPIDERS_B := New SkillRune("è››åŽ", "æ¯’ç´ ", "b", "æŽ·å‡ºä¸€ä¸ªè£…æœ‰è››åŽçš„å›å­ï¼Œäº§å‡ºå°èœ˜è››ï¼Œåœ¨15ç§’å†…å¯¹åŒºåŸŸå†…çš„æ•Œäººé€ æˆ2625%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ã€‚åŒä¸€æ—¶é—´å†…ä½ åªèƒ½å¬å”¤ä¸€åªè››åŽã€‚")
+; ç¬¦æ–‡: å¯¡å¦‡åˆ¶é€ è€… 
+RUNE_WITCH_DOCTOR_CORPSE_SPIDERS_D := New SkillRune("å¯¡å¦‡åˆ¶é€ è€…", "ç‰©ç†", "d", "æŠ•æŽ·ä¸€ä¸ªè£…æ»¡æ¯’å¯¡å¦‡èœ˜è››çš„ç½å­ï¼Œé€ æˆæ€»è®¡700%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: éº»ç—¹æ¯’è›› 
+RUNE_WITCH_DOCTOR_CORPSE_SPIDERS_E := New SkillRune("éº»ç—¹æ¯’è››", "å†°å¯’", "e", "æŽ·å‡ºä¸€ä¸ªè£…æ»¡éº»ç—¹æ¯’è››çš„å›å­ï¼Œæ¯æ¬¡æ”»å‡»æœ‰100%çš„å‡ çŽ‡ä½¿æ•Œäººçš„ç§»åŠ¨é€Ÿåº¦é™ä½Ž60%ã€‚")
+; ç¬¦æ–‡: ç‚½ç‚Žèœ˜è›› 
+RUNE_WITCH_DOCTOR_CORPSE_SPIDERS_A := New SkillRune("ç‚½ç‚Žèœ˜è››", "ç«ç„°", "a", "æŽ·å‡ºä¸€ä¸ªè£…æ»¡ç«ç„°èœ˜è››çš„å›å­ï¼Œæ¯æ¬¡å‡»ä¸­ä¸ºä½ è¿”è¿˜3ç‚¹æ³•åŠ›ã€‚")
+; æŠ€èƒ½: å°¸è››
+SKILL_ACTIVE_WITCH_DOCTOR_CORPSE_SPIDERS := New ActiveSkill("å°¸è››", "ç‰©ç†", "ä¸»è¦"
 	, "images\skills\witch-doctor\active\witchdoctor_corpsespiders_normal.png"
-	, "ÕâÊÇÒ»ÖÖÐÞÎª·¨Êõ¡£Ê©·ÅÐÞÎª·¨ÊõÎÞÐèÏûºÄ·¨Á¦Öµ¡£\r\nÖÀ³öÒ»Ö»×°ÓÐ4Ö»Ö©ÖëµÄÌ³×Ó£¬Ö©Öë»á¹¥»÷¸½½üµÐÈË£¬ÔÚËÀÈ¥Ö®Ç°Ôì³É×Ü¹²576%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£"
+	, "è¿™æ˜¯ä¸€ç§ä¿®ä¸ºæ³•æœ¯ã€‚æ–½æ”¾ä¿®ä¸ºæ³•æœ¯æ— éœ€æ¶ˆè€—æ³•åŠ›å€¼ã€‚\r\næŽ·å‡ºä¸€åªè£…æœ‰4åªèœ˜è››çš„å›å­ï¼Œèœ˜è››ä¼šæ”»å‡»é™„è¿‘æ•Œäººï¼Œåœ¨æ­»åŽ»ä¹‹å‰é€ æˆæ€»å…±576%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_WITCH_DOCTOR_CORPSE_SPIDERS_C, RUNE_WITCH_DOCTOR_CORPSE_SPIDERS_B, RUNE_WITCH_DOCTOR_CORPSE_SPIDERS_D, RUNE_WITCH_DOCTOR_CORPSE_SPIDERS_E, RUNE_WITCH_DOCTOR_CORPSE_SPIDERS_A])
 ; ---------------------------
-; ¼¼ÄÜ: Ê¬Öë End
+; æŠ€èƒ½: å°¸è›› End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÕÙ»½½©Ê¬È® Start
+; æŠ€èƒ½: å¬å”¤åƒµå°¸çŠ¬ Start
 ; ---------------------------
-; ·ûÎÄ: ¿ñÔêÊ¬È® 
-RUNE_WITCH_DOCTOR_SUMMON_ZOMBIE_DOGS_C := New SkillRune("¿ñÔêÊ¬È®", "¶¾ËØ", "c", "ÄãµÄ½©Ê¬È®ËºÒ§Ä¿±êºó»áÊ¹ÆäÊÜµ½¸ÐÈ¾£¬ÔÚ3ÃëÄÚÊÜµ½Ïàµ±ÓÚÄãÎäÆ÷ÉËº¦120%µÄÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©¡£")
-; ·ûÎÄ: ³¹¹ÇÖ®º® 
-RUNE_WITCH_DOCTOR_SUMMON_ZOMBIE_DOGS_D := New SkillRune("³¹¹ÇÖ®º®", "±ùº®", "d", "¹¥»÷»÷ÖÐÄãµÄ½©Ê¬È®»ò±»ÄãµÄ½©Ê¬È®ÃüÖÐµÄµÐÈËÏÝÈëº®Àä×´Ì¬£¬³ÖÐø3Ãë¡£")
-; ·ûÎÄ: ÉúÃüÁ¬½á 
-RUNE_WITCH_DOCTOR_SUMMON_ZOMBIE_DOGS_B := New SkillRune("ÉúÃüÁ¬½á", "ÎïÀí", "b", "ÄãµÄ½©Ê¬È®»áÎüÊÕÄãÊÜµ½ËùÓÐÉËº¦µÄ10%¡£")
-; ·ûÎÄ: ÁÒÑæ¿ñÈ® 
-RUNE_WITCH_DOCTOR_SUMMON_ZOMBIE_DOGS_A := New SkillRune("ÁÒÑæ¿ñÈ®", "»ðÑæ", "a", "ÄãµÄ½©Ê¬È®È¼ÆðÁÒÑæ£¬ÉÕ×Æ¸½½üµÄµÐÈË£¬Ã¿ÃëÔì³ÉÏàµ±ÓÚÄãÎäÆ÷ÉËº¦80%µÄÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ÎüÑªÊÞ 
-RUNE_WITCH_DOCTOR_SUMMON_ZOMBIE_DOGS_E := New SkillRune("ÎüÑªÊÞ", "ÎïÀí", "e", "ÄãµÄ½©Ê¬È®¹¥»÷Ê±¿ÉÎªÄãÖÎÁÆÏàµ±ÓÚÄã»÷ÖÐ»Ø¸´ÉúÃü100%µÄÉúÃüÖµ¡£")
-; ¼¼ÄÜ: ÕÙ»½½©Ê¬È®
-SKILL_ACTIVE_WITCH_DOCTOR_SUMMON_ZOMBIE_DOGS := New ActiveSkill("ÕÙ»½½©Ê¬È®", "ÎïÀí", "·ÀÓù"
+; ç¬¦æ–‡: ç‹‚èºå°¸çŠ¬ 
+RUNE_WITCH_DOCTOR_SUMMON_ZOMBIE_DOGS_C := New SkillRune("ç‹‚èºå°¸çŠ¬", "æ¯’ç´ ", "c", "ä½ çš„åƒµå°¸çŠ¬æ’•å’¬ç›®æ ‡åŽä¼šä½¿å…¶å—åˆ°æ„ŸæŸ“ï¼Œåœ¨3ç§’å†…å—åˆ°ç›¸å½“äºŽä½ æ­¦å™¨ä¼¤å®³120%çš„ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å½»éª¨ä¹‹å¯’ 
+RUNE_WITCH_DOCTOR_SUMMON_ZOMBIE_DOGS_D := New SkillRune("å½»éª¨ä¹‹å¯’", "å†°å¯’", "d", "æ”»å‡»å‡»ä¸­ä½ çš„åƒµå°¸çŠ¬æˆ–è¢«ä½ çš„åƒµå°¸çŠ¬å‘½ä¸­çš„æ•Œäººé™·å…¥å¯’å†·çŠ¶æ€ï¼ŒæŒç»­3ç§’ã€‚")
+; ç¬¦æ–‡: ç”Ÿå‘½è¿žç»“ 
+RUNE_WITCH_DOCTOR_SUMMON_ZOMBIE_DOGS_B := New SkillRune("ç”Ÿå‘½è¿žç»“", "ç‰©ç†", "b", "ä½ çš„åƒµå°¸çŠ¬ä¼šå¸æ”¶ä½ å—åˆ°æ‰€æœ‰ä¼¤å®³çš„10%ã€‚")
+; ç¬¦æ–‡: çƒˆç„°ç‹‚çŠ¬ 
+RUNE_WITCH_DOCTOR_SUMMON_ZOMBIE_DOGS_A := New SkillRune("çƒˆç„°ç‹‚çŠ¬", "ç«ç„°", "a", "ä½ çš„åƒµå°¸çŠ¬ç‡ƒèµ·çƒˆç„°ï¼Œçƒ§ç¼é™„è¿‘çš„æ•Œäººï¼Œæ¯ç§’é€ æˆç›¸å½“äºŽä½ æ­¦å™¨ä¼¤å®³80%çš„ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å¸è¡€å…½ 
+RUNE_WITCH_DOCTOR_SUMMON_ZOMBIE_DOGS_E := New SkillRune("å¸è¡€å…½", "ç‰©ç†", "e", "ä½ çš„åƒµå°¸çŠ¬æ”»å‡»æ—¶å¯ä¸ºä½ æ²»ç–—ç›¸å½“äºŽä½ å‡»ä¸­å›žå¤ç”Ÿå‘½100%çš„ç”Ÿå‘½å€¼ã€‚")
+; æŠ€èƒ½: å¬å”¤åƒµå°¸çŠ¬
+SKILL_ACTIVE_WITCH_DOCTOR_SUMMON_ZOMBIE_DOGS := New ActiveSkill("å¬å”¤åƒµå°¸çŠ¬", "ç‰©ç†", "é˜²å¾¡"
 	, "images\skills\witch-doctor\active\witchdoctor_summonzombiedog_normal.png"
-	, "ÀäÈ´Ê±¼ä£º45Ãë\r\n´ÓÉîÔ¨ÖÐÕÙ»½3Ö»½©Ê¬È®À´Ð­Í¬×÷Õ½¡£Ã¿Ö»½©Ê¬È®Ã¿Ò»»÷¿ÉÔì³ÉÏàµ±ÓÚÄãÎäÆ÷ÉËº¦120%µÄÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£"
+	, "å†·å´æ—¶é—´ï¼š45ç§’\r\nä»Žæ·±æ¸Šä¸­å¬å”¤3åªåƒµå°¸çŠ¬æ¥ååŒä½œæˆ˜ã€‚æ¯åªåƒµå°¸çŠ¬æ¯ä¸€å‡»å¯é€ æˆç›¸å½“äºŽä½ æ­¦å™¨ä¼¤å®³120%çš„ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_WITCH_DOCTOR_SUMMON_ZOMBIE_DOGS_C, RUNE_WITCH_DOCTOR_SUMMON_ZOMBIE_DOGS_D, RUNE_WITCH_DOCTOR_SUMMON_ZOMBIE_DOGS_B, RUNE_WITCH_DOCTOR_SUMMON_ZOMBIE_DOGS_A, RUNE_WITCH_DOCTOR_SUMMON_ZOMBIE_DOGS_E])
 ; ---------------------------
-; ¼¼ÄÜ: ÕÙ»½½©Ê¬È® End
+; æŠ€èƒ½: å¬å”¤åƒµå°¸çŠ¬ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: »ðòð Start
+; æŠ€èƒ½: ç«è  Start
 ; ---------------------------
-; ·ûÎÄ: ¿Ö²Àòùòð 
-RUNE_WITCH_DOCTOR_FIREBATS_A := New SkillRune("¿Ö²Àòùòð", "»ðÑæ", "a", "ÕÙ»½òùòðµÄÊýÁ¿¼õÉÙ£¬µ«òùòðµÄÌå»ýÔö´ó£¬¿É³¤¾àÀë·ÉÐÐ£¬Ôì³É500%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ÎüÑªòùòð 
-RUNE_WITCH_DOCTOR_FIREBATS_D := New SkillRune("ÎüÑªòùòð", "ÎïÀí", "d", "»ðòðµÄ³õÊ¼ÏûºÄÌá¸ßÖÁ250µã·¨Á¦Öµ£¬µ«²»ÔÙÓÐÒýµ¼ÏûºÄ¡£»ðòðµÄÉËº¦ÀàÐÍ×ª»»ÎªÎïÀíÉËº¦¡£")
-; ·ûÎÄ: ÎÁÒßòùòð 
-RUNE_WITCH_DOCTOR_FIREBATS_C := New SkillRune("ÎÁÒßòùòð", "¶¾ËØ", "c", "ÎÁÒßòùòð³¯µÐÈË·ÉÈ¥²¢Ê¹ÆäÈ¾²¡¡£³õÊ¼»á»ºÂýÊÜµ½ÉËº¦£¬µ«ÉËº¦»áËæÊ±¼äÍÆÒÆ¶øÖð½¥Ìá¸ß£¬×î¸ß¿ÉÔì³É720%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©¡£")
-; ·ûÎÄ: ¼¢¶öòùòð 
-RUNE_WITCH_DOCTOR_FIREBATS_B := New SkillRune("¼¢¶öòùòð", "»ðÑæ", "b", "¿ìËÙÕÙ»½Á½Ö»òùòð£¬Ã¿Ö»¶¼»á×·×Ù¸½½üµÄÒ»ÃûµÐÈË£¬Ôì³É750%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: òðÔÆÃÜ²¼ 
-RUNE_WITCH_DOCTOR_FIREBATS_E := New SkillRune("òðÔÆÃÜ²¼", "»ðÑæ", "e", "ÕÙ»½Ò»Èºòùòð¹¥»÷¸½½üµÄµÐÈË£¬Ôì³É425%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£òùòðÔì³ÉµÄÉËº¦Ã¿ÃëÌá¸ß£¬3 ÃëºóÔì³É×î¶à850%µÄÎäÆ÷ÉËº¦¡£")
-; ¼¼ÄÜ: »ðòð
-SKILL_ACTIVE_WITCH_DOCTOR_FIREBATS := New ActiveSkill("»ðòð", "»ðÑæ", "´ÎÒª"
+; ç¬¦æ–‡: ææ€–è™è  
+RUNE_WITCH_DOCTOR_FIREBATS_A := New SkillRune("ææ€–è™è ", "ç«ç„°", "a", "å¬å”¤è™è çš„æ•°é‡å‡å°‘ï¼Œä½†è™è çš„ä½“ç§¯å¢žå¤§ï¼Œå¯é•¿è·ç¦»é£žè¡Œï¼Œé€ æˆ500%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å¸è¡€è™è  
+RUNE_WITCH_DOCTOR_FIREBATS_D := New SkillRune("å¸è¡€è™è ", "ç‰©ç†", "d", "ç«è çš„åˆå§‹æ¶ˆè€—æé«˜è‡³250ç‚¹æ³•åŠ›å€¼ï¼Œä½†ä¸å†æœ‰å¼•å¯¼æ¶ˆè€—ã€‚ç«è çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºç‰©ç†ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ç˜Ÿç–«è™è  
+RUNE_WITCH_DOCTOR_FIREBATS_C := New SkillRune("ç˜Ÿç–«è™è ", "æ¯’ç´ ", "c", "ç˜Ÿç–«è™è æœæ•Œäººé£žåŽ»å¹¶ä½¿å…¶æŸ“ç—…ã€‚åˆå§‹ä¼šç¼“æ…¢å—åˆ°ä¼¤å®³ï¼Œä½†ä¼¤å®³ä¼šéšæ—¶é—´æŽ¨ç§»è€Œé€æ¸æé«˜ï¼Œæœ€é«˜å¯é€ æˆ720%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: é¥¥é¥¿è™è  
+RUNE_WITCH_DOCTOR_FIREBATS_B := New SkillRune("é¥¥é¥¿è™è ", "ç«ç„°", "b", "å¿«é€Ÿå¬å”¤ä¸¤åªè™è ï¼Œæ¯åªéƒ½ä¼šè¿½è¸ªé™„è¿‘çš„ä¸€åæ•Œäººï¼Œé€ æˆ750%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: è äº‘å¯†å¸ƒ 
+RUNE_WITCH_DOCTOR_FIREBATS_E := New SkillRune("è äº‘å¯†å¸ƒ", "ç«ç„°", "e", "å¬å”¤ä¸€ç¾¤è™è æ”»å‡»é™„è¿‘çš„æ•Œäººï¼Œé€ æˆ425%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚è™è é€ æˆçš„ä¼¤å®³æ¯ç§’æé«˜ï¼Œ3 ç§’åŽé€ æˆæœ€å¤š850%çš„æ­¦å™¨ä¼¤å®³ã€‚")
+; æŠ€èƒ½: ç«è 
+SKILL_ACTIVE_WITCH_DOCTOR_FIREBATS := New ActiveSkill("ç«è ", "ç«ç„°", "æ¬¡è¦"
 	, "images\skills\witch-doctor\active\witchdoctor_firebats_normal.png"
-	, "ÏûºÄ£º125µã·¨Á¦Öµ\r\nÕÙ»½³öÒ»´óÈº»ðòð×ÆÉÕÄãÇ°·½µÄµÐÈË£¬Ôì³É475%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£"
+	, "æ¶ˆè€—ï¼š125ç‚¹æ³•åŠ›å€¼\r\nå¬å”¤å‡ºä¸€å¤§ç¾¤ç«è ç¼çƒ§ä½ å‰æ–¹çš„æ•Œäººï¼Œé€ æˆ475%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_WITCH_DOCTOR_FIREBATS_A, RUNE_WITCH_DOCTOR_FIREBATS_D, RUNE_WITCH_DOCTOR_FIREBATS_C, RUNE_WITCH_DOCTOR_FIREBATS_B, RUNE_WITCH_DOCTOR_FIREBATS_E])
 ; ---------------------------
-; ¼¼ÄÜ: »ðòð End
+; æŠ€èƒ½: ç«è  End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ¾åÁé Start
+; æŠ€èƒ½: æƒ§çµ Start
 ; ---------------------------
-; ·ûÎÄ: ¼«¶È¾ªã¤ 
-RUNE_WITCH_DOCTOR_HORRIFY_C := New SkillRune("¼«¶È¾ªã¤", "ÎïÀí", "c", "µÐÈË²»ÔÙ±»¶¨Éí£¬¶øÊÇÒò¿Ö¾å¶øÌÓÅÜ£¬³ÖÐø5Ãë¡£")
-; ·ûÎÄ: ¿Ö²À×·ÁÔ 
-RUNE_WITCH_DOCTOR_HORRIFY_E := New SkillRune("¿Ö²À×·ÁÔ", "ÎïÀí", "e", "Ê©·Å¾åÁéºó£¬ÒÆ¶¯ËÙ¶ÈÌá¸ß20%£¬³ÖÐø4Ãë¡£")
-; ·ûÎÄ: ËÀÉñÖ®Ãæ 
-RUNE_WITCH_DOCTOR_HORRIFY_B := New SkillRune("ËÀÉñÖ®Ãæ", "ÎïÀí", "b", "Ê¹¾åÁéµÄÐ§¹û·¶Î§À©´óÖÁ24Âë¡£")
-; ·ûÎÄ: º§ÈËÒÇÈÝ 
-RUNE_WITCH_DOCTOR_HORRIFY_A := New SkillRune("º§ÈËÒÇÈÝ", "ÎïÀí", "a", "Ê©·Å¾åÁéºó£¬¿É»ñµÃ¶îÍâ50%µÄ»¤¼×Öµ£¬³ÖÐø8Ãë¡£")
-; ·ûÎÄ: ÎÞÇé¿ÖÏÅ 
-RUNE_WITCH_DOCTOR_HORRIFY_D := New SkillRune("ÎÞÇé¿ÖÏÅ", "ÎïÀí", "d", "´ÓÃ¿¸ö±»¿Ö¾åµÄµÐÈËÉíÉÏ»ñµÃ55µã·¨Á¦Öµ¡£")
-; ¼¼ÄÜ: ¾åÁé
-SKILL_ACTIVE_WITCH_DOCTOR_HORRIFY := New ActiveSkill("¾åÁé", "ÎïÀí", "·ÀÓù"
+; ç¬¦æ–‡: æžåº¦æƒŠæ‚š 
+RUNE_WITCH_DOCTOR_HORRIFY_C := New SkillRune("æžåº¦æƒŠæ‚š", "ç‰©ç†", "c", "æ•Œäººä¸å†è¢«å®šèº«ï¼Œè€Œæ˜¯å› ææƒ§è€Œé€ƒè·‘ï¼ŒæŒç»­5ç§’ã€‚")
+; ç¬¦æ–‡: ææ€–è¿½çŒŽ 
+RUNE_WITCH_DOCTOR_HORRIFY_E := New SkillRune("ææ€–è¿½çŒŽ", "ç‰©ç†", "e", "æ–½æ”¾æƒ§çµåŽï¼Œç§»åŠ¨é€Ÿåº¦æé«˜20%ï¼ŒæŒç»­4ç§’ã€‚")
+; ç¬¦æ–‡: æ­»ç¥žä¹‹é¢ 
+RUNE_WITCH_DOCTOR_HORRIFY_B := New SkillRune("æ­»ç¥žä¹‹é¢", "ç‰©ç†", "b", "ä½¿æƒ§çµçš„æ•ˆæžœèŒƒå›´æ‰©å¤§è‡³24ç ã€‚")
+; ç¬¦æ–‡: éª‡äººä»ªå®¹ 
+RUNE_WITCH_DOCTOR_HORRIFY_A := New SkillRune("éª‡äººä»ªå®¹", "ç‰©ç†", "a", "æ–½æ”¾æƒ§çµåŽï¼Œå¯èŽ·å¾—é¢å¤–50%çš„æŠ¤ç”²å€¼ï¼ŒæŒç»­8ç§’ã€‚")
+; ç¬¦æ–‡: æ— æƒ…æå“ 
+RUNE_WITCH_DOCTOR_HORRIFY_D := New SkillRune("æ— æƒ…æå“", "ç‰©ç†", "d", "ä»Žæ¯ä¸ªè¢«ææƒ§çš„æ•Œäººèº«ä¸ŠèŽ·å¾—55ç‚¹æ³•åŠ›å€¼ã€‚")
+; æŠ€èƒ½: æƒ§çµ
+SKILL_ACTIVE_WITCH_DOCTOR_HORRIFY := New ActiveSkill("æƒ§çµ", "ç‰©ç†", "é˜²å¾¡"
 	, "images\skills\witch-doctor\active\witchdoctor_horrify_normal.png"
-	, "ÀäÈ´Ê±¼ä£º10Ãë\r\n´÷ÉÏÒ»¸ö¹í¹ÖÃæ¾ß£¬¾ªÏÅÎ»ÓÚ18ÂëÄÚµÄËùÓÐµÐÈË£¬Ê¹ÆäÒò¿Ö¾å¶øÌÓÅÜ£¬ÇÒ±»¶¨Éí3Ãë¡£"
+	, "å†·å´æ—¶é—´ï¼š10ç§’\r\næˆ´ä¸Šä¸€ä¸ªé¬¼æ€ªé¢å…·ï¼ŒæƒŠå“ä½äºŽ18ç å†…çš„æ‰€æœ‰æ•Œäººï¼Œä½¿å…¶å› ææƒ§è€Œé€ƒè·‘ï¼Œä¸”è¢«å®šèº«3ç§’ã€‚"
 	, [RUNE_WITCH_DOCTOR_HORRIFY_C, RUNE_WITCH_DOCTOR_HORRIFY_E, RUNE_WITCH_DOCTOR_HORRIFY_B, RUNE_WITCH_DOCTOR_HORRIFY_A, RUNE_WITCH_DOCTOR_HORRIFY_D])
 ; ---------------------------
-; ¼¼ÄÜ: ¾åÁé End
+; æŠ€èƒ½: æƒ§çµ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Áé»êÊÕ¸î Start
+; æŠ€èƒ½: çµé­‚æ”¶å‰² Start
 ; ---------------------------
-; ·ûÎÄ: ÍÌÊÉÁé»ê 
-RUNE_WITCH_DOCTOR_SOUL_HARVEST_D := New SkillRune("ÍÌÊÉÁé»ê", "¶¾ËØ", "d", "´ÓÃ¿¸ö±»ÊÕ¸îµÄµÐÈËÉíÉÏ»ñµÃ·¨Á¦Öµ£¬²¢Ê¹·¨Á¦ÖµÉÏÏÞÌá¸ß5%¡£")
-; ·ûÎÄ: Áé»êºçÎü 
-RUNE_WITCH_DOCTOR_SOUL_HARVEST_A := New SkillRune("Áé»êºçÎü", "ÎïÀí", "a", "´ÓÃ¿¸ö±»ÊÕ¸îµÄµÐÈËÉíÉÏ¼³È¡32185µãÉúÃüÖµ¡£")
-; ·ûÎÄ: À§»êÑ¹ÆÇ 
-RUNE_WITCH_DOCTOR_SOUL_HARVEST_C := New SkillRune("À§»êÑ¹ÆÇ", "±ùº®", "c", "ÄãÃ¿ÊÕ¸îÒ»ÃûµÐÈË¼´¿ÉÊ¹ÄãµÄ»¤¼×ÖµÌá¸ß10%£¬Í¬Ê±±»ÊÕ¸îµÐÈËµÄÒÆ¶¯ËÙ¶È½µµÍ80%£¬³ÖÐø5Ãë¡£")
-; ·ûÎÄ: Áé»êºÄ½ß 
-RUNE_WITCH_DOCTOR_SOUL_HARVEST_B := New SkillRune("Áé»êºÄ½ß", "»ðÑæ", "b", "Áé»êÊÕ¸îÃ¿»÷ÖÐÒ»ÃûµÐÈË£¬ÄãµÄÒÆ¶¯ËÙ¶ÈÌá¸ß5%¡£")
-; ·ûÎÄ: ¸´³ðÔ¹»ê 
-RUNE_WITCH_DOCTOR_SOUL_HARVEST_E := New SkillRune("¸´³ðÔ¹»ê", "ÎïÀí", "e", "±»ÊÕ¸îµÄµÐÈËÍ¬Ê±³ÐÊÜ640%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£")
-; ¼¼ÄÜ: Áé»êÊÕ¸î
-SKILL_ACTIVE_WITCH_DOCTOR_SOUL_HARVEST := New ActiveSkill("Áé»êÊÕ¸î", "ÎïÀí", "¿Ö¾å"
+; ç¬¦æ–‡: åžå™¬çµé­‚ 
+RUNE_WITCH_DOCTOR_SOUL_HARVEST_D := New SkillRune("åžå™¬çµé­‚", "æ¯’ç´ ", "d", "ä»Žæ¯ä¸ªè¢«æ”¶å‰²çš„æ•Œäººèº«ä¸ŠèŽ·å¾—æ³•åŠ›å€¼ï¼Œå¹¶ä½¿æ³•åŠ›å€¼ä¸Šé™æé«˜5%ã€‚")
+; ç¬¦æ–‡: çµé­‚è™¹å¸ 
+RUNE_WITCH_DOCTOR_SOUL_HARVEST_A := New SkillRune("çµé­‚è™¹å¸", "ç‰©ç†", "a", "ä»Žæ¯ä¸ªè¢«æ”¶å‰²çš„æ•Œäººèº«ä¸Šæ±²å–32185ç‚¹ç”Ÿå‘½å€¼ã€‚")
+; ç¬¦æ–‡: å›°é­‚åŽ‹é­„ 
+RUNE_WITCH_DOCTOR_SOUL_HARVEST_C := New SkillRune("å›°é­‚åŽ‹é­„", "å†°å¯’", "c", "ä½ æ¯æ”¶å‰²ä¸€åæ•Œäººå³å¯ä½¿ä½ çš„æŠ¤ç”²å€¼æé«˜10%ï¼ŒåŒæ—¶è¢«æ”¶å‰²æ•Œäººçš„ç§»åŠ¨é€Ÿåº¦é™ä½Ž80%ï¼ŒæŒç»­5ç§’ã€‚")
+; ç¬¦æ–‡: çµé­‚è€—ç«­ 
+RUNE_WITCH_DOCTOR_SOUL_HARVEST_B := New SkillRune("çµé­‚è€—ç«­", "ç«ç„°", "b", "çµé­‚æ”¶å‰²æ¯å‡»ä¸­ä¸€åæ•Œäººï¼Œä½ çš„ç§»åŠ¨é€Ÿåº¦æé«˜5%ã€‚")
+; ç¬¦æ–‡: å¤ä»‡æ€¨é­‚ 
+RUNE_WITCH_DOCTOR_SOUL_HARVEST_E := New SkillRune("å¤ä»‡æ€¨é­‚", "ç‰©ç†", "e", "è¢«æ”¶å‰²çš„æ•ŒäººåŒæ—¶æ‰¿å—640%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: çµé­‚æ”¶å‰²
+SKILL_ACTIVE_WITCH_DOCTOR_SOUL_HARVEST := New ActiveSkill("çµé­‚æ”¶å‰²", "ç‰©ç†", "ææƒ§"
 	, "images\skills\witch-doctor\active\witchdoctor_soulharvest_normal.png"
-	, "ÀäÈ´Ê±¼ä£º12Ãë\r\n¼³È¡18Âë·¶Î§ÄÚËùÓÐµÐÈËµÄÉúÃüÁ¦¡£´ÓÃ¿¸öÊÜÓ°ÏìµÄµÐÈËÉíÉÏ»ñµÃ3%µÄÖÇÁ¦£¬³ÖÐø30Ãë¡£¸ÃÐ§¹û×î¶à¿Éµþ¼Ó5´Î¡£"
+	, "å†·å´æ—¶é—´ï¼š12ç§’\r\næ±²å–18ç èŒƒå›´å†…æ‰€æœ‰æ•Œäººçš„ç”Ÿå‘½åŠ›ã€‚ä»Žæ¯ä¸ªå—å½±å“çš„æ•Œäººèº«ä¸ŠèŽ·å¾—3%çš„æ™ºåŠ›ï¼ŒæŒç»­30ç§’ã€‚è¯¥æ•ˆæžœæœ€å¤šå¯å åŠ 5æ¬¡ã€‚"
 	, [RUNE_WITCH_DOCTOR_SOUL_HARVEST_D, RUNE_WITCH_DOCTOR_SOUL_HARVEST_A, RUNE_WITCH_DOCTOR_SOUL_HARVEST_C, RUNE_WITCH_DOCTOR_SOUL_HARVEST_B, RUNE_WITCH_DOCTOR_SOUL_HARVEST_E])
 ; ---------------------------
-; ¼¼ÄÜ: Áé»êÊÕ¸î End
+; æŠ€èƒ½: çµé­‚æ”¶å‰² End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ó¸òÜÖ®Òß Start
+; æŠ€èƒ½: èŸ¾èœä¹‹ç–« Start
 ; ---------------------------
-; ·ûÎÄ: ±¬Õ¨ó¸òÜ 
-RUNE_WITCH_DOCTOR_PLAGUE_OF_TOADS_A := New SkillRune("±¬Õ¨ó¸òÜ", "»ðÑæ", "a", "±äÒìÎªÁÒÑæÅ£ÍÜ£¬±¬Õ¨Ôì³É245%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ´©Éí¶¾ó¸ 
-RUNE_WITCH_DOCTOR_PLAGUE_OF_TOADS_C := New SkillRune("´©Éí¶¾ó¸", "ÎïÀí", "c", "±äÒì³É¿É´©Í¸µÐÈËµÄ¶¾ÍÜ£¬Ôì³É130%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£")
-; ·ûÎÄ: ó¸òÜÓê 
-RUNE_WITCH_DOCTOR_PLAGUE_OF_TOADS_B := New SkillRune("ó¸òÜÓê", "¶¾ËØ", "b", "Ê¹Ìì¿ÕÂäÏÂó¸òÜÓê£¬ÔÚ2ÃëÄÚ¶ÔÇøÓòÄÚµÄµÐÈËÔì³É182%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©¡£")
-; ·ûÎÄ: ¹Æ¶¾ó¸òÜ 
-RUNE_WITCH_DOCTOR_PLAGUE_OF_TOADS_E := New SkillRune("¹Æ¶¾ó¸òÜ", "¶¾ËØ", "e", "±äÒìÎª»ÆÉ«ó¸òÜ£¬Ôì³É190%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©£¬²¢ÓÐ15%µÄ¼¸ÂÊÊ¹ÊÜÓ°ÏìµÄµÐÈËÏÝÈë»ìÂÒ£¬³ÖÐø4Ãë¡£")
-; ·ûÎÄ: ó¸òÜÇ×ºÍ 
-RUNE_WITCH_DOCTOR_PLAGUE_OF_TOADS_D := New SkillRune("ó¸òÜÇ×ºÍ", "±ùº®", "d", "Ã¿µ±ó¸òÜ»÷ÖÐµÐÈË£¬»ñµÃ9µã·¨Á¦Öµ¡£ó¸òÜÖ®ÒßµÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ¼¼ÄÜ: ó¸òÜÖ®Òß
-SKILL_ACTIVE_WITCH_DOCTOR_PLAGUE_OF_TOADS := New ActiveSkill("ó¸òÜÖ®Òß", "¶¾ËØ", "Ö÷Òª"
+; ç¬¦æ–‡: çˆ†ç‚¸èŸ¾èœ 
+RUNE_WITCH_DOCTOR_PLAGUE_OF_TOADS_A := New SkillRune("çˆ†ç‚¸èŸ¾èœ", "ç«ç„°", "a", "å˜å¼‚ä¸ºçƒˆç„°ç‰›è›™ï¼Œçˆ†ç‚¸é€ æˆ245%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: ç©¿èº«æ¯’èŸ¾ 
+RUNE_WITCH_DOCTOR_PLAGUE_OF_TOADS_C := New SkillRune("ç©¿èº«æ¯’èŸ¾", "ç‰©ç†", "c", "å˜å¼‚æˆå¯ç©¿é€æ•Œäººçš„æ¯’è›™ï¼Œé€ æˆ130%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: èŸ¾èœé›¨ 
+RUNE_WITCH_DOCTOR_PLAGUE_OF_TOADS_B := New SkillRune("èŸ¾èœé›¨", "æ¯’ç´ ", "b", "ä½¿å¤©ç©ºè½ä¸‹èŸ¾èœé›¨ï¼Œåœ¨2ç§’å†…å¯¹åŒºåŸŸå†…çš„æ•Œäººé€ æˆ182%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: è›Šæ¯’èŸ¾èœ 
+RUNE_WITCH_DOCTOR_PLAGUE_OF_TOADS_E := New SkillRune("è›Šæ¯’èŸ¾èœ", "æ¯’ç´ ", "e", "å˜å¼‚ä¸ºé»„è‰²èŸ¾èœï¼Œé€ æˆ190%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ï¼Œå¹¶æœ‰15%çš„å‡ çŽ‡ä½¿å—å½±å“çš„æ•Œäººé™·å…¥æ··ä¹±ï¼ŒæŒç»­4ç§’ã€‚")
+; ç¬¦æ–‡: èŸ¾èœäº²å’Œ 
+RUNE_WITCH_DOCTOR_PLAGUE_OF_TOADS_D := New SkillRune("èŸ¾èœäº²å’Œ", "å†°å¯’", "d", "æ¯å½“èŸ¾èœå‡»ä¸­æ•Œäººï¼ŒèŽ·å¾—9ç‚¹æ³•åŠ›å€¼ã€‚èŸ¾èœä¹‹ç–«çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; æŠ€èƒ½: èŸ¾èœä¹‹ç–«
+SKILL_ACTIVE_WITCH_DOCTOR_PLAGUE_OF_TOADS := New ActiveSkill("èŸ¾èœä¹‹ç–«", "æ¯’ç´ ", "ä¸»è¦"
 	, "images\skills\witch-doctor\active\witchdoctor_plagueoftoads_normal.png"
-	, "ÕâÊÇÒ»ÖÖÐÞÎª·¨Êõ¡£Ê©·ÅÐÞÎª·¨ÊõÎÞÐèÏûºÄ·¨Á¦Öµ¡£\r\n·Å³öÒ»Èºó¸òÜ£¬¶Ô²ÈÖÐµÄÈÎºÎµÐÈËÔì³É190%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©¡£"
+	, "è¿™æ˜¯ä¸€ç§ä¿®ä¸ºæ³•æœ¯ã€‚æ–½æ”¾ä¿®ä¸ºæ³•æœ¯æ— éœ€æ¶ˆè€—æ³•åŠ›å€¼ã€‚\r\næ”¾å‡ºä¸€ç¾¤èŸ¾èœï¼Œå¯¹è¸©ä¸­çš„ä»»ä½•æ•Œäººé€ æˆ190%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_WITCH_DOCTOR_PLAGUE_OF_TOADS_A, RUNE_WITCH_DOCTOR_PLAGUE_OF_TOADS_C, RUNE_WITCH_DOCTOR_PLAGUE_OF_TOADS_B, RUNE_WITCH_DOCTOR_PLAGUE_OF_TOADS_E, RUNE_WITCH_DOCTOR_PLAGUE_OF_TOADS_D])
 ; ---------------------------
-; ¼¼ÄÜ: ó¸òÜÖ®Òß End
+; æŠ€èƒ½: èŸ¾èœä¹‹ç–« End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Ê´»ê Start
+; æŠ€èƒ½: èš€é­‚ Start
 ; ---------------------------
-; ·ûÎÄ: ÍÌÊÉÖ®»ê 
-RUNE_WITCH_DOCTOR_HAUNT_A := New SkillRune("ÍÌÊÉÖ®»ê", "»ðÑæ", "a", "¹í»êÃ¿Ãë·µ»¹4291µãÉúÃüÖµ¡£Ê´»êµÄÉËº¦ÀàÐÍ×ª»»Îª»ðÑæÉËº¦¡£")
-; ·ûÎÄ: Ë«ÉúÔ¹»ê 
-RUNE_WITCH_DOCTOR_HAUNT_E := New SkillRune("Ë«ÉúÔ¹»ê", "±ùº®", "e", "Ã¿´ÎÊ©·ÅÕÙ»½³öÁ½¸ö¹í»ê¡£")
-; ·ûÎÄ: ÓÎµ´Ö®»ê 
-RUNE_WITCH_DOCTOR_HAUNT_B := New SkillRune("ÓÎµ´Ö®»ê", "±ùº®", "b", "Èç¹û¸½½üÃ»ÓÐµÐÈËÁË£¬Ôò¹í»ê×î¶à»á¶ºÁô10Ãë£¬Ñ°ÕÒÐÂµÄµÐÈË¡£")
-; ·ûÎÄ: ¾ç¶¾Ö®»ê 
-RUNE_WITCH_DOCTOR_HAUNT_C := New SkillRune("¾ç¶¾Ö®»ê", "¶¾ËØ", "c", "±»¹í»ê¾À²øµÄµÐÈË´ÓÄãµÄ¹¥»÷ÖÐÊÜµ½µÄÉËº¦Ìá¸ß20%¡£Ê´»êµÄÉËº¦ÀàÐÍ×ª»»Îª¶¾ÐÔÉËº¦¡£")
-; ·ûÎÄ: Îü¾«Ö®»ê 
-RUNE_WITCH_DOCTOR_HAUNT_D := New SkillRune("Îü¾«Ö®»ê", "ÎïÀí", "d", "¹í»êÃ¿Ãë·µ»¹13µã·¨Á¦Öµ¡£Ê´»êµÄÉËº¦×ª»»ÎªÎïÀíÉËº¦¡£")
-; ¼¼ÄÜ: Ê´»ê
-SKILL_ACTIVE_WITCH_DOCTOR_HAUNT := New ActiveSkill("Ê´»ê", "±ùº®", "´ÎÒª"
+; ç¬¦æ–‡: åžå™¬ä¹‹é­‚ 
+RUNE_WITCH_DOCTOR_HAUNT_A := New SkillRune("åžå™¬ä¹‹é­‚", "ç«ç„°", "a", "é¬¼é­‚æ¯ç§’è¿”è¿˜4291ç‚¹ç”Ÿå‘½å€¼ã€‚èš€é­‚çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºç«ç„°ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: åŒç”Ÿæ€¨é­‚ 
+RUNE_WITCH_DOCTOR_HAUNT_E := New SkillRune("åŒç”Ÿæ€¨é­‚", "å†°å¯’", "e", "æ¯æ¬¡æ–½æ”¾å¬å”¤å‡ºä¸¤ä¸ªé¬¼é­‚ã€‚")
+; ç¬¦æ–‡: æ¸¸è¡ä¹‹é­‚ 
+RUNE_WITCH_DOCTOR_HAUNT_B := New SkillRune("æ¸¸è¡ä¹‹é­‚", "å†°å¯’", "b", "å¦‚æžœé™„è¿‘æ²¡æœ‰æ•Œäººäº†ï¼Œåˆ™é¬¼é­‚æœ€å¤šä¼šé€—ç•™10ç§’ï¼Œå¯»æ‰¾æ–°çš„æ•Œäººã€‚")
+; ç¬¦æ–‡: å‰§æ¯’ä¹‹é­‚ 
+RUNE_WITCH_DOCTOR_HAUNT_C := New SkillRune("å‰§æ¯’ä¹‹é­‚", "æ¯’ç´ ", "c", "è¢«é¬¼é­‚çº ç¼ çš„æ•Œäººä»Žä½ çš„æ”»å‡»ä¸­å—åˆ°çš„ä¼¤å®³æé«˜20%ã€‚èš€é­‚çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºæ¯’æ€§ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: å¸ç²¾ä¹‹é­‚ 
+RUNE_WITCH_DOCTOR_HAUNT_D := New SkillRune("å¸ç²¾ä¹‹é­‚", "ç‰©ç†", "d", "é¬¼é­‚æ¯ç§’è¿”è¿˜13ç‚¹æ³•åŠ›å€¼ã€‚èš€é­‚çš„ä¼¤å®³è½¬æ¢ä¸ºç‰©ç†ä¼¤å®³ã€‚")
+; æŠ€èƒ½: èš€é­‚
+SKILL_ACTIVE_WITCH_DOCTOR_HAUNT := New ActiveSkill("èš€é­‚", "å†°å¯’", "æ¬¡è¦"
 	, "images\skills\witch-doctor\active\witchdoctor_haunt_normal.png"
-	, "ÏûºÄ£º50µã·¨Á¦Öµ\r\nÊ¹µÐÈË±»¹í»ê¾À²ø£¬ÔÚ12ÃëÄÚÔì³É4000%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£Èç¹ûÄ¿±êËÀÍö£¬¹í»êÔò»á×Ô¶¯¾À²ø¸½½üµÄÁíÒ»ÃûµÐÈË¡£"
+	, "æ¶ˆè€—ï¼š50ç‚¹æ³•åŠ›å€¼\r\nä½¿æ•Œäººè¢«é¬¼é­‚çº ç¼ ï¼Œåœ¨12ç§’å†…é€ æˆ4000%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚å¦‚æžœç›®æ ‡æ­»äº¡ï¼Œé¬¼é­‚åˆ™ä¼šè‡ªåŠ¨çº ç¼ é™„è¿‘çš„å¦ä¸€åæ•Œäººã€‚"
 	, [RUNE_WITCH_DOCTOR_HAUNT_A, RUNE_WITCH_DOCTOR_HAUNT_E, RUNE_WITCH_DOCTOR_HAUNT_B, RUNE_WITCH_DOCTOR_HAUNT_C, RUNE_WITCH_DOCTOR_HAUNT_D])
 ; ---------------------------
-; ¼¼ÄÜ: Ê´»ê End
+; æŠ€èƒ½: èš€é­‚ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÎþÉü Start
+; æŠ€èƒ½: ç‰ºç‰² Start
 ; ---------------------------
-; ·ûÎÄ: ºÚÑª 
-RUNE_WITCH_DOCTOR_SACRIFICE_C := New SkillRune("ºÚÑª", "ÎïÀí", "c", "´Ó½©Ê¬È®µÄÊ¬ÌåÉÏÅç³öÅ§Ë®£¬²¢Ê¹µÐÈË»èÃÔ3Ãë¡£")
-; ·ûÎÄ: ÏàÉú²»Ãð 
-RUNE_WITCH_DOCTOR_SACRIFICE_E := New SkillRune("ÏàÉú²»Ãð", "ÎïÀí", "e", "ÄãËùÎþÉüµÄÃ¿Ìõ½©Ê¬È®¶¼ÓÐ35%µÄ¼¸ÂÊ¸´»î³ÉÒ»ÌõÐÂµÄ½©Ê¬È®¡£")
-; ·ûÎÄ: Õ¥¸É¼ÀÆ· 
-RUNE_WITCH_DOCTOR_SACRIFICE_D := New SkillRune("Õ¥¸É¼ÀÆ·", "ÎïÀí", "d", "ÄãÃ¿ÎþÉüÒ»Ìõ½©Ê¬È®¼´¿É»Ö¸´280µã·¨Á¦Öµ¡£")
-; ·ûÎÄ: Ö÷ÈËÖÁÉÏ 
-RUNE_WITCH_DOCTOR_SACRIFICE_B := New SkillRune("Ö÷ÈËÖÁÉÏ", "ÎïÀí", "b", "ÃüÁîÄãËùÓÐµÄ½©Ê¬È®Í¬Ê±³åÏòÄ¿±ê£¬Ã¿Ö»½©Ê¬È®Ôì³É1300%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£")
-; ·ûÎÄ: ¼¤Å­ÊÞÈº 
-RUNE_WITCH_DOCTOR_SACRIFICE_A := New SkillRune("¼¤Å­ÊÞÈº", "ÎïÀí", "a", "Ê¹ÓÃÎþÉüºó£¬Ê¹ÄãÔì³ÉµÄÉËº¦Ìá¸ß20%£¬³ÖÐø5Ãë¡£")
-; ¼¼ÄÜ: ÎþÉü
-SKILL_ACTIVE_WITCH_DOCTOR_SACRIFICE := New ActiveSkill("ÎþÉü", "ÎïÀí", "¿Ö¾å"
+; ç¬¦æ–‡: é»‘è¡€ 
+RUNE_WITCH_DOCTOR_SACRIFICE_C := New SkillRune("é»‘è¡€", "ç‰©ç†", "c", "ä»Žåƒµå°¸çŠ¬çš„å°¸ä½“ä¸Šå–·å‡ºè„“æ°´ï¼Œå¹¶ä½¿æ•Œäººæ˜è¿·3ç§’ã€‚")
+; ç¬¦æ–‡: ç›¸ç”Ÿä¸ç­ 
+RUNE_WITCH_DOCTOR_SACRIFICE_E := New SkillRune("ç›¸ç”Ÿä¸ç­", "ç‰©ç†", "e", "ä½ æ‰€ç‰ºç‰²çš„æ¯æ¡åƒµå°¸çŠ¬éƒ½æœ‰35%çš„å‡ çŽ‡å¤æ´»æˆä¸€æ¡æ–°çš„åƒµå°¸çŠ¬ã€‚")
+; ç¬¦æ–‡: æ¦¨å¹²ç¥­å“ 
+RUNE_WITCH_DOCTOR_SACRIFICE_D := New SkillRune("æ¦¨å¹²ç¥­å“", "ç‰©ç†", "d", "ä½ æ¯ç‰ºç‰²ä¸€æ¡åƒµå°¸çŠ¬å³å¯æ¢å¤280ç‚¹æ³•åŠ›å€¼ã€‚")
+; ç¬¦æ–‡: ä¸»äººè‡³ä¸Š 
+RUNE_WITCH_DOCTOR_SACRIFICE_B := New SkillRune("ä¸»äººè‡³ä¸Š", "ç‰©ç†", "b", "å‘½ä»¤ä½ æ‰€æœ‰çš„åƒµå°¸çŠ¬åŒæ—¶å†²å‘ç›®æ ‡ï¼Œæ¯åªåƒµå°¸çŠ¬é€ æˆ1300%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: æ¿€æ€’å…½ç¾¤ 
+RUNE_WITCH_DOCTOR_SACRIFICE_A := New SkillRune("æ¿€æ€’å…½ç¾¤", "ç‰©ç†", "a", "ä½¿ç”¨ç‰ºç‰²åŽï¼Œä½¿ä½ é€ æˆçš„ä¼¤å®³æé«˜20%ï¼ŒæŒç»­5ç§’ã€‚")
+; æŠ€èƒ½: ç‰ºç‰²
+SKILL_ACTIVE_WITCH_DOCTOR_SACRIFICE := New ActiveSkill("ç‰ºç‰²", "ç‰©ç†", "ææƒ§"
 	, "images\skills\witch-doctor\active\witchdoctor_sacrifice_normal.png"
-	, "·ÅÖðÒ»Ö»ÒÑÕÙ»½µÄ½©Ê¬È®²¢Ê¹Æä±¬Õ¨£¬¶ÔÎ»ÓÚ12ÂëÄÚµÄËùÓÐµÐÈËÔì³ÉÏàµ±ÓÚÄãÎäÆ÷ÉËº¦1090%µÄÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£"
+	, "æ”¾é€ä¸€åªå·²å¬å”¤çš„åƒµå°¸çŠ¬å¹¶ä½¿å…¶çˆ†ç‚¸ï¼Œå¯¹ä½äºŽ12ç å†…çš„æ‰€æœ‰æ•Œäººé€ æˆç›¸å½“äºŽä½ æ­¦å™¨ä¼¤å®³1090%çš„ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_WITCH_DOCTOR_SACRIFICE_C, RUNE_WITCH_DOCTOR_SACRIFICE_E, RUNE_WITCH_DOCTOR_SACRIFICE_D, RUNE_WITCH_DOCTOR_SACRIFICE_B, RUNE_WITCH_DOCTOR_SACRIFICE_A])
 ; ---------------------------
-; ¼¼ÄÜ: ÎþÉü End
+; æŠ€èƒ½: ç‰ºç‰² End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ½©Ê¬ËÀÊ¿ Start
+; æŠ€èƒ½: åƒµå°¸æ­»å£« Start
 ; ---------------------------
-; ·ûÎÄ: ËÀÊ¬¾ÞËþ 
-RUNE_WITCH_DOCTOR_ZOMBIE_CHARGER_C := New SkillRune("ËÀÊ¬¾ÞËþ", "ÎïÀí", "c", "ÕÙ»½½©Ê¬Ëþ£¬µ¹ËúÊ±¶ÔÔÒÖÐµÄËùÓÐµÐÈËÔì³É880%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£")
-; ·ûÎÄ: Ç°¸°ºó¼Ì 
-RUNE_WITCH_DOCTOR_ZOMBIE_CHARGER_D := New SkillRune("Ç°¸°ºó¼Ì", "¶¾ËØ", "d", "Èç¹û½©Ê¬ËÀÊ¿ÏûÃðÈÎºÎµÐÈË£¬ËÀÊ¿»á¸´»î²¢¶Ô¸½½üµÄµÐÈË·¢Æð³å·æ£¬Ôì³É480%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©¡£¸ÃÐ§¹û×î¶à¿ÉÖØ¸´2´Î¡£")
-; ·ûÎÄ: Â¡¶¬Ö®º® 
-RUNE_WITCH_DOCTOR_ZOMBIE_CHARGER_B := New SkillRune("Â¡¶¬Ö®º®", "±ùº®", "b", "½©Ê¬¶¬ÐÜ´ÓµØÏÂÅÀ³ö£¬±¼ÏòËÄÃæ°Ë·½¡£¶Ô¸½½üµÄµÐÈËÔì³É280%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£")
-; ·ûÎÄ: ÊÞÌåÕ¨µ¯ 
-RUNE_WITCH_DOCTOR_ZOMBIE_CHARGER_E := New SkillRune("ÊÞÌåÕ¨µ¯", "»ðÑæ", "e", "ÕÙ»½Ò»Ìõ±¬Õ¨ÐÔµÄ½©Ê¬È®£¬±¼ÏòÄãµÄÄ¿±êÈ»ºó±¬Õ¨£¬¶Ô12ÂëÄÚµÄËùÓÐµÐÈËÔì³É680%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ½©Ê¬ÐÜ 
-RUNE_WITCH_DOCTOR_ZOMBIE_CHARGER_A := New SkillRune("½©Ê¬ÐÜ", "¶¾ËØ", "a", "ÕÙ»½½©Ê¬ÐÜ£¬·äÓµ×²Ì¤ÄãµÄµÐÈË¡£Ã¿Ö»ÐÜ¶ÔÄ¿±êÇøÓòÄÚµÄµÐÈËÔì³É520%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©¡£")
-; ¼¼ÄÜ: ½©Ê¬ËÀÊ¿
-SKILL_ACTIVE_WITCH_DOCTOR_ZOMBIE_CHARGER := New ActiveSkill("½©Ê¬ËÀÊ¿", "¶¾ËØ", "µòÁã"
+; ç¬¦æ–‡: æ­»å°¸å·¨å¡” 
+RUNE_WITCH_DOCTOR_ZOMBIE_CHARGER_C := New SkillRune("æ­»å°¸å·¨å¡”", "ç‰©ç†", "c", "å¬å”¤åƒµå°¸å¡”ï¼Œå€’å¡Œæ—¶å¯¹ç ¸ä¸­çš„æ‰€æœ‰æ•Œäººé€ æˆ880%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å‰èµ´åŽç»§ 
+RUNE_WITCH_DOCTOR_ZOMBIE_CHARGER_D := New SkillRune("å‰èµ´åŽç»§", "æ¯’ç´ ", "d", "å¦‚æžœåƒµå°¸æ­»å£«æ¶ˆç­ä»»ä½•æ•Œäººï¼Œæ­»å£«ä¼šå¤æ´»å¹¶å¯¹é™„è¿‘çš„æ•Œäººå‘èµ·å†²é”‹ï¼Œé€ æˆ480%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ã€‚è¯¥æ•ˆæžœæœ€å¤šå¯é‡å¤2æ¬¡ã€‚")
+; ç¬¦æ–‡: éš†å†¬ä¹‹å¯’ 
+RUNE_WITCH_DOCTOR_ZOMBIE_CHARGER_B := New SkillRune("éš†å†¬ä¹‹å¯’", "å†°å¯’", "b", "åƒµå°¸å†¬ç†Šä»Žåœ°ä¸‹çˆ¬å‡ºï¼Œå¥”å‘å››é¢å…«æ–¹ã€‚å¯¹é™„è¿‘çš„æ•Œäººé€ æˆ280%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å…½ä½“ç‚¸å¼¹ 
+RUNE_WITCH_DOCTOR_ZOMBIE_CHARGER_E := New SkillRune("å…½ä½“ç‚¸å¼¹", "ç«ç„°", "e", "å¬å”¤ä¸€æ¡çˆ†ç‚¸æ€§çš„åƒµå°¸çŠ¬ï¼Œå¥”å‘ä½ çš„ç›®æ ‡ç„¶åŽçˆ†ç‚¸ï¼Œå¯¹12ç å†…çš„æ‰€æœ‰æ•Œäººé€ æˆ680%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: åƒµå°¸ç†Š 
+RUNE_WITCH_DOCTOR_ZOMBIE_CHARGER_A := New SkillRune("åƒµå°¸ç†Š", "æ¯’ç´ ", "a", "å¬å”¤åƒµå°¸ç†Šï¼Œèœ‚æ‹¥æ’žè¸ä½ çš„æ•Œäººã€‚æ¯åªç†Šå¯¹ç›®æ ‡åŒºåŸŸå†…çš„æ•Œäººé€ æˆ520%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: åƒµå°¸æ­»å£«
+SKILL_ACTIVE_WITCH_DOCTOR_ZOMBIE_CHARGER := New ActiveSkill("åƒµå°¸æ­»å£«", "æ¯’ç´ ", "å‡‹é›¶"
 	, "images\skills\witch-doctor\active\witchdoctor_zombiecharger_normal.png"
-	, "ÏûºÄ£º150µã·¨Á¦Öµ\r\nÕÙ»½Ò»Ö»¿ñÈÈµÄ×ÔÎÒ»ÙÃðÐÍ½©Ê¬£¬¶ÔÆäÐÐ½øÂ·ÏßÉÏÓöµ½µÄËùÓÐµÐÈËÔì³É560%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©¡£"
+	, "æ¶ˆè€—ï¼š150ç‚¹æ³•åŠ›å€¼\r\nå¬å”¤ä¸€åªç‹‚çƒ­çš„è‡ªæˆ‘æ¯ç­åž‹åƒµå°¸ï¼Œå¯¹å…¶è¡Œè¿›è·¯çº¿ä¸Šé‡åˆ°çš„æ‰€æœ‰æ•Œäººé€ æˆ560%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_WITCH_DOCTOR_ZOMBIE_CHARGER_C, RUNE_WITCH_DOCTOR_ZOMBIE_CHARGER_D, RUNE_WITCH_DOCTOR_ZOMBIE_CHARGER_B, RUNE_WITCH_DOCTOR_ZOMBIE_CHARGER_E, RUNE_WITCH_DOCTOR_ZOMBIE_CHARGER_A])
 ; ---------------------------
-; ¼¼ÄÜ: ½©Ê¬ËÀÊ¿ End
+; æŠ€èƒ½: åƒµå°¸æ­»å£« End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Áé»êÐÐ×ß Start
+; æŠ€èƒ½: çµé­‚è¡Œèµ° Start
 ; ---------------------------
-; ·ûÎÄ: ÓÎ»ê 
-RUNE_WITCH_DOCTOR_SPIRIT_WALK_B := New SkillRune("ÓÎ»ê", "ÎïÀí", "b", "Ê¹Áé»êÐÐ×ßµÄ³ÖÐøÊ±¼äÑÓ³¤ÖÁ3Ãë¡£")
-; ·ûÎÄ: Áé½ç¹ó±ö 
-RUNE_WITCH_DOCTOR_SPIRIT_WALK_D := New SkillRune("Áé½ç¹ó±ö", "ÎïÀí", "d", "µ±Áé»êÐÐ×ß¼¤»îÊ±£¬Äã½«»ñµÃ·¨Á¦ÖµÉÏÏÞµÄ20%¡£")
-; ·ûÎÄ: Òõ½çÕð»÷ 
-RUNE_WITCH_DOCTOR_SPIRIT_WALK_C := New SkillRune("Òõ½çÕð»÷", "»ðÑæ", "c", "Áé»êÐÐ×ßÐ§¹û½áÊøºó£¬ÄãµÄÇûÌå»á·¢Éú±¬Õ¨£¬¶Ô10Âë·¶Î§ÄÚµÄËùÓÐµÐÈËÔì³É750%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ×²»ê 
-RUNE_WITCH_DOCTOR_SPIRIT_WALK_A := New SkillRune("×²»ê", "ÎïÀí", "a", "Ê¹ÄãÔÚÁé»ê½çÓòÖÐµÄÒÆ¶¯ËÙ¶È¶îÍâÌá¸ß100%¡£")
-; ·ûÎÄ: ÓúÌåÖ®ÂÃ 
-RUNE_WITCH_DOCTOR_SPIRIT_WALK_E := New SkillRune("ÓúÌåÖ®ÂÃ", "ÎïÀí", "e", "Áé»êÐÐ×ß¼¤»îÊ±£¬Äã½«»Ö¸´ÉúÃüÖµÉÏÏÞµÄ15%¡£")
-; ¼¼ÄÜ: Áé»êÐÐ×ß
-SKILL_ACTIVE_WITCH_DOCTOR_SPIRIT_WALK := New ActiveSkill("Áé»êÐÐ×ß", "ÎïÀí", "·ÀÓù"
+; ç¬¦æ–‡: æ¸¸é­‚ 
+RUNE_WITCH_DOCTOR_SPIRIT_WALK_B := New SkillRune("æ¸¸é­‚", "ç‰©ç†", "b", "ä½¿çµé­‚è¡Œèµ°çš„æŒç»­æ—¶é—´å»¶é•¿è‡³3ç§’ã€‚")
+; ç¬¦æ–‡: çµç•Œè´µå®¾ 
+RUNE_WITCH_DOCTOR_SPIRIT_WALK_D := New SkillRune("çµç•Œè´µå®¾", "ç‰©ç†", "d", "å½“çµé­‚è¡Œèµ°æ¿€æ´»æ—¶ï¼Œä½ å°†èŽ·å¾—æ³•åŠ›å€¼ä¸Šé™çš„20%ã€‚")
+; ç¬¦æ–‡: é˜´ç•Œéœ‡å‡» 
+RUNE_WITCH_DOCTOR_SPIRIT_WALK_C := New SkillRune("é˜´ç•Œéœ‡å‡»", "ç«ç„°", "c", "çµé­‚è¡Œèµ°æ•ˆæžœç»“æŸåŽï¼Œä½ çš„èº¯ä½“ä¼šå‘ç”Ÿçˆ†ç‚¸ï¼Œå¯¹10ç èŒƒå›´å†…çš„æ‰€æœ‰æ•Œäººé€ æˆ750%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: æ’žé­‚ 
+RUNE_WITCH_DOCTOR_SPIRIT_WALK_A := New SkillRune("æ’žé­‚", "ç‰©ç†", "a", "ä½¿ä½ åœ¨çµé­‚ç•ŒåŸŸä¸­çš„ç§»åŠ¨é€Ÿåº¦é¢å¤–æé«˜100%ã€‚")
+; ç¬¦æ–‡: æ„ˆä½“ä¹‹æ—… 
+RUNE_WITCH_DOCTOR_SPIRIT_WALK_E := New SkillRune("æ„ˆä½“ä¹‹æ—…", "ç‰©ç†", "e", "çµé­‚è¡Œèµ°æ¿€æ´»æ—¶ï¼Œä½ å°†æ¢å¤ç”Ÿå‘½å€¼ä¸Šé™çš„15%ã€‚")
+; æŠ€èƒ½: çµé­‚è¡Œèµ°
+SKILL_ACTIVE_WITCH_DOCTOR_SPIRIT_WALK := New ActiveSkill("çµé­‚è¡Œèµ°", "ç‰©ç†", "é˜²å¾¡"
 	, "images\skills\witch-doctor\active\witchdoctor_spiritwalk_normal.png"
-	, "ÀäÈ´Ê±¼ä£º10Ãë\r\n»êÆÇ³öÇÏ£¬½øÈëÁé»ê½çÓò£¬³ÖÐø2Ãë¡£ÔÚÁé»êÎ»ÃæÖÐÄãµÄÒÆ¶¯²»ÊÜÏÞÖÆ¡£"
+	, "å†·å´æ—¶é—´ï¼š10ç§’\r\né­‚é­„å‡ºçªï¼Œè¿›å…¥çµé­‚ç•ŒåŸŸï¼ŒæŒç»­2ç§’ã€‚åœ¨çµé­‚ä½é¢ä¸­ä½ çš„ç§»åŠ¨ä¸å—é™åˆ¶ã€‚"
 	, [RUNE_WITCH_DOCTOR_SPIRIT_WALK_B, RUNE_WITCH_DOCTOR_SPIRIT_WALK_D, RUNE_WITCH_DOCTOR_SPIRIT_WALK_C, RUNE_WITCH_DOCTOR_SPIRIT_WALK_A, RUNE_WITCH_DOCTOR_SPIRIT_WALK_E])
 ; ---------------------------
-; ¼¼ÄÜ: Áé»êÐÐ×ß End
+; æŠ€èƒ½: çµé­‚è¡Œèµ° End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Áé»êµ¯Ä» Start
+; æŠ€èƒ½: çµé­‚å¼¹å¹• Start
 ; ---------------------------
-; ·ûÎÄ: ÍòÁéÖ®Ô¸ 
-RUNE_WITCH_DOCTOR_SPIRIT_BARRAGE_D := New SkillRune("ÍòÁéÖ®Ô¸", "±ùº®", "d", "Ã¿µ±Áé»êµ¯Ä»ÃüÖÐÊ±£¬¼´¿É»ñµÃ12µã·¨Á¦Öµ¡£")
-; ·ûÎÄ: Áé»êÖ®¾® 
-RUNE_WITCH_DOCTOR_SPIRIT_BARRAGE_B := New SkillRune("Áé»êÖ®¾®", "»ðÑæ", "b", "Éä³ö¶îÍâ3·¢Áé»ê·Éµ¯£¬×·×ÙÆäËüµÐÈË£¬Ôì³É65%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ÓÄ»ê¹íÓ° 
-RUNE_WITCH_DOCTOR_SPIRIT_BARRAGE_C := New SkillRune("ÓÄ»ê¹íÓ°", "±ùº®", "c", "ÕÙ»½Ò»¸ö¹í»ê£¬ÔÚ5ÃëÄÚ¶Ô10ÂëÄÚµÄËùÓÐµÐÈËÔì³É750%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£ÄãÍ¬Ê±¿ÉÕÙ»½×î¶à3¸ö¹í»ê¡£")
-; ·ûÎÄ: ÷È»ê·Éµ¯ 
-RUNE_WITCH_DOCTOR_SPIRIT_BARRAGE_A := New SkillRune("÷È»ê·Éµ¯", "±ùº®", "a", "Ã¿´ÎÁé»êµ¯Ä»ÃüÖÐ¼´¿É»ñµÃ6437µãÉúÃüÖµ¡£")
-; ·ûÎÄ: ¸¡¿ÕÓÄ»ê 
-RUNE_WITCH_DOCTOR_SPIRIT_BARRAGE_E := New SkillRune("¸¡¿ÕÓÄ»ê", "±ùº®", "e", "ÕÙ»½Ò»¸ö¹í»ê£¬³ÖÐø20Ãë£¬ÔÚÄãÉÏ·½ÅÌÐý£¬³¯¸½½üµÄµÐÈËÉä³öÁé»ê¼ý£¬Ôì³É6000%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£")
-; ¼¼ÄÜ: Áé»êµ¯Ä»
-SKILL_ACTIVE_WITCH_DOCTOR_SPIRIT_BARRAGE := New ActiveSkill("Áé»êµ¯Ä»", "±ùº®", "µòÁã"
+; ç¬¦æ–‡: ä¸‡çµä¹‹æ„¿ 
+RUNE_WITCH_DOCTOR_SPIRIT_BARRAGE_D := New SkillRune("ä¸‡çµä¹‹æ„¿", "å†°å¯’", "d", "æ¯å½“çµé­‚å¼¹å¹•å‘½ä¸­æ—¶ï¼Œå³å¯èŽ·å¾—12ç‚¹æ³•åŠ›å€¼ã€‚")
+; ç¬¦æ–‡: çµé­‚ä¹‹äº• 
+RUNE_WITCH_DOCTOR_SPIRIT_BARRAGE_B := New SkillRune("çµé­‚ä¹‹äº•", "ç«ç„°", "b", "å°„å‡ºé¢å¤–3å‘çµé­‚é£žå¼¹ï¼Œè¿½è¸ªå…¶å®ƒæ•Œäººï¼Œé€ æˆ65%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å¹½é­‚é¬¼å½± 
+RUNE_WITCH_DOCTOR_SPIRIT_BARRAGE_C := New SkillRune("å¹½é­‚é¬¼å½±", "å†°å¯’", "c", "å¬å”¤ä¸€ä¸ªé¬¼é­‚ï¼Œåœ¨5ç§’å†…å¯¹10ç å†…çš„æ‰€æœ‰æ•Œäººé€ æˆ750%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚ä½ åŒæ—¶å¯å¬å”¤æœ€å¤š3ä¸ªé¬¼é­‚ã€‚")
+; ç¬¦æ–‡: é­…é­‚é£žå¼¹ 
+RUNE_WITCH_DOCTOR_SPIRIT_BARRAGE_A := New SkillRune("é­…é­‚é£žå¼¹", "å†°å¯’", "a", "æ¯æ¬¡çµé­‚å¼¹å¹•å‘½ä¸­å³å¯èŽ·å¾—6437ç‚¹ç”Ÿå‘½å€¼ã€‚")
+; ç¬¦æ–‡: æµ®ç©ºå¹½é­‚ 
+RUNE_WITCH_DOCTOR_SPIRIT_BARRAGE_E := New SkillRune("æµ®ç©ºå¹½é­‚", "å†°å¯’", "e", "å¬å”¤ä¸€ä¸ªé¬¼é­‚ï¼ŒæŒç»­20ç§’ï¼Œåœ¨ä½ ä¸Šæ–¹ç›˜æ—‹ï¼Œæœé™„è¿‘çš„æ•Œäººå°„å‡ºçµé­‚ç®­ï¼Œé€ æˆ6000%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: çµé­‚å¼¹å¹•
+SKILL_ACTIVE_WITCH_DOCTOR_SPIRIT_BARRAGE := New ActiveSkill("çµé­‚å¼¹å¹•", "å†°å¯’", "å‡‹é›¶"
 	, "images\skills\witch-doctor\active\witchdoctor_spiritbarrage_normal.png"
-	, "ÏûºÄ£º100µã·¨Á¦Öµ\r\nÓÃ4·¢Áé»ê·Éµ¯ºä»÷Ä¿±ê£¬×Ü¹²Ôì³É600%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£"
+	, "æ¶ˆè€—ï¼š100ç‚¹æ³•åŠ›å€¼\r\nç”¨4å‘çµé­‚é£žå¼¹è½°å‡»ç›®æ ‡ï¼Œæ€»å…±é€ æˆ600%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_WITCH_DOCTOR_SPIRIT_BARRAGE_D, RUNE_WITCH_DOCTOR_SPIRIT_BARRAGE_B, RUNE_WITCH_DOCTOR_SPIRIT_BARRAGE_C, RUNE_WITCH_DOCTOR_SPIRIT_BARRAGE_A, RUNE_WITCH_DOCTOR_SPIRIT_BARRAGE_E])
 ; ---------------------------
-; ¼¼ÄÜ: Áé»êµ¯Ä» End
+; æŠ€èƒ½: çµé­‚å¼¹å¹• End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ½©Ê¬¾ÞÊÞ Start
+; æŠ€èƒ½: åƒµå°¸å·¨å…½ Start
 ; ---------------------------
-; ·ûÎÄ: Ä§ÈËÊÞ 
-RUNE_WITCH_DOCTOR_GARGANTUAN_B := New SkillRune("Ä§ÈËÊÞ", "±ùº®", "b", "½©Ê¬¾ÞÊÞ»ñµÃË³ÅüÕ¶¼¼ÄÜ£¬Ê¹Æä¹¥»÷¿É»÷ÖÐ¶à¸öÄ¿±ê£¬Ôì³ÉÏàµ±ÓÚÄãÎäÆ÷ÉËº¦585%µÄÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£")
-; ·ûÎÄ: ¿ñÔê¾ÞÊ¬ 
-RUNE_WITCH_DOCTOR_GARGANTUAN_A := New SkillRune("¿ñÔê¾ÞÊ¬", "ÎïÀí", "a", "µ±½©Ê¬¾ÞÊÞÓöµ½Ò»¸ö¾«Ó¢µÐÈË»òÕßÉí±ßÓÐ5¸öµÐÈËÊ±»á±»¼¤Å­£¬³ÖÐø15Ãë²¢ÇÒ£ºÒÆ¶¯ËÙ¶ÈÌá¸ß20%¹¥»÷ËÙ¶ÈÌá¸ß35%Ôì³ÉµÄÎïÀíÉËº¦Ìá¸ß200%¸ÃÐ§¹ûÃ¿45Ãë×î¶à³öÏÖÒ»´Î¡£¾«Ó¢µÐÈË°üÀ¨ÓÂÊ¿¡¢ Ï¡ÓÐ¡¢Ê×ÁìºÍÆäËûÍæ¼Ò¡£")
-; ·ûÎÄ: ±©Å­ÊØ»¤Õß 
-RUNE_WITCH_DOCTOR_GARGANTUAN_D := New SkillRune("±©Å­ÊØ»¤Õß", "»ðÑæ", "d", "ÕÙ»½Ò»Ö»¸üÎªÇ¿´óµÄ½©Ê¬¾ÞÊÞ£¬ÎªÄãÕ½¶·15Ãë¡£½©Ê¬¾ÞÊÞµÄË«È­È¼Æð»ðÑæ£¬Ôì³ÉÏàµ±ÓÚÄã575%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©£¬²¢½«µÐÈË»÷·É¡£")
-; ·ûÎÄ: ´ó¶¾Ê¬ 
-RUNE_WITCH_DOCTOR_GARGANTUAN_C := New SkillRune("´ó¶¾Ê¬", "¶¾ËØ", "c", "½©Ê¬¾ÞÊÞ±»¶¾ÔÆ»·ÈÆ£¬¶Ô¸½½üµÄµÐÈËÃ¿ÃëÔì³É135%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©¡£")
-; ·ûÎÄ: ¶·ºÝ¾ÞÊ¬ 
-RUNE_WITCH_DOCTOR_GARGANTUAN_E := New SkillRune("¶·ºÝ¾ÞÊ¬", "»ðÑæ", "e", "½©Ê¬¾ÞÊÞ»ñµÃÐÂµÄ¼¼ÄÜ£¬¿ÉÖÜÆÚÐÔµØÖØ»÷µÐÈË£¬Ôì³É200%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©£¬²¢Ê¹Æä»èÃÔ3Ãë¡£")
-; ¼¼ÄÜ: ½©Ê¬¾ÞÊÞ
-SKILL_ACTIVE_WITCH_DOCTOR_GARGANTUAN := New ActiveSkill("½©Ê¬¾ÞÊÞ", "ÎïÀí", "Î×¶¾"
+; ç¬¦æ–‡: é­”äººå…½ 
+RUNE_WITCH_DOCTOR_GARGANTUAN_B := New SkillRune("é­”äººå…½", "å†°å¯’", "b", "åƒµå°¸å·¨å…½èŽ·å¾—é¡ºåŠˆæ–©æŠ€èƒ½ï¼Œä½¿å…¶æ”»å‡»å¯å‡»ä¸­å¤šä¸ªç›®æ ‡ï¼Œé€ æˆç›¸å½“äºŽä½ æ­¦å™¨ä¼¤å®³585%çš„ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: ç‹‚èºå·¨å°¸ 
+RUNE_WITCH_DOCTOR_GARGANTUAN_A := New SkillRune("ç‹‚èºå·¨å°¸", "ç‰©ç†", "a", "å½“åƒµå°¸å·¨å…½é‡åˆ°ä¸€ä¸ªç²¾è‹±æ•Œäººæˆ–è€…èº«è¾¹æœ‰5ä¸ªæ•Œäººæ—¶ä¼šè¢«æ¿€æ€’ï¼ŒæŒç»­15ç§’å¹¶ä¸”ï¼šç§»åŠ¨é€Ÿåº¦æé«˜20%æ”»å‡»é€Ÿåº¦æé«˜35%é€ æˆçš„ç‰©ç†ä¼¤å®³æé«˜200%è¯¥æ•ˆæžœæ¯45ç§’æœ€å¤šå‡ºçŽ°ä¸€æ¬¡ã€‚ç²¾è‹±æ•ŒäººåŒ…æ‹¬å‹‡å£«ã€ ç¨€æœ‰ã€é¦–é¢†å’Œå…¶ä»–çŽ©å®¶ã€‚")
+; ç¬¦æ–‡: æš´æ€’å®ˆæŠ¤è€… 
+RUNE_WITCH_DOCTOR_GARGANTUAN_D := New SkillRune("æš´æ€’å®ˆæŠ¤è€…", "ç«ç„°", "d", "å¬å”¤ä¸€åªæ›´ä¸ºå¼ºå¤§çš„åƒµå°¸å·¨å…½ï¼Œä¸ºä½ æˆ˜æ–—15ç§’ã€‚åƒµå°¸å·¨å…½çš„åŒæ‹³ç‡ƒèµ·ç«ç„°ï¼Œé€ æˆç›¸å½“äºŽä½ 575%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ï¼Œå¹¶å°†æ•Œäººå‡»é£žã€‚")
+; ç¬¦æ–‡: å¤§æ¯’å°¸ 
+RUNE_WITCH_DOCTOR_GARGANTUAN_C := New SkillRune("å¤§æ¯’å°¸", "æ¯’ç´ ", "c", "åƒµå°¸å·¨å…½è¢«æ¯’äº‘çŽ¯ç»•ï¼Œå¯¹é™„è¿‘çš„æ•Œäººæ¯ç§’é€ æˆ135%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: æ–—ç‹ å·¨å°¸ 
+RUNE_WITCH_DOCTOR_GARGANTUAN_E := New SkillRune("æ–—ç‹ å·¨å°¸", "ç«ç„°", "e", "åƒµå°¸å·¨å…½èŽ·å¾—æ–°çš„æŠ€èƒ½ï¼Œå¯å‘¨æœŸæ€§åœ°é‡å‡»æ•Œäººï¼Œé€ æˆ200%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ï¼Œå¹¶ä½¿å…¶æ˜è¿·3ç§’ã€‚")
+; æŠ€èƒ½: åƒµå°¸å·¨å…½
+SKILL_ACTIVE_WITCH_DOCTOR_GARGANTUAN := New ActiveSkill("åƒµå°¸å·¨å…½", "ç‰©ç†", "å·«æ¯’"
 	, "images\skills\witch-doctor\active\witchdoctor_gargantuan_normal.png"
-	, "ÀäÈ´Ê±¼ä£º60Ãë\r\nÕÙ»½Ò»Ö»½©Ê¬¾ÞÊÞÎªÄã×÷Õ½¡£½©Ê¬¾ÞÊÞµÄ¹¥»÷¿ÉÔì³ÉÏàµ±ÓÚÄãÎäÆ÷ÉËº¦450%µÄÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£"
+	, "å†·å´æ—¶é—´ï¼š60ç§’\r\nå¬å”¤ä¸€åªåƒµå°¸å·¨å…½ä¸ºä½ ä½œæˆ˜ã€‚åƒµå°¸å·¨å…½çš„æ”»å‡»å¯é€ æˆç›¸å½“äºŽä½ æ­¦å™¨ä¼¤å®³450%çš„ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_WITCH_DOCTOR_GARGANTUAN_B, RUNE_WITCH_DOCTOR_GARGANTUAN_A, RUNE_WITCH_DOCTOR_GARGANTUAN_D, RUNE_WITCH_DOCTOR_GARGANTUAN_C, RUNE_WITCH_DOCTOR_GARGANTUAN_E])
 ; ---------------------------
-; ¼¼ÄÜ: ½©Ê¬¾ÞÊÞ End
+; æŠ€èƒ½: åƒµå°¸å·¨å…½ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÎÁÒß³æÈº Start
+; æŠ€èƒ½: ç˜Ÿç–«è™«ç¾¤ Start
 ; ---------------------------
-; ·ûÎÄ: ¾ç¶¾³æÈº 
-RUNE_WITCH_DOCTOR_LOCUST_SWARM_B := New SkillRune("¾ç¶¾³æÈº", "¶¾ËØ", "b", "ÎÁÒß³æÈºÌøÔ¾Ê±ÓÐ100%µÄ¼¸ÂÊÌøÏòÁ½¸ö¶îÍâÄ¿±ê£¬¶ø²»ÔÙÖ»ÊÇÒ»¸öÄ¿±ê¡£")
-; ·ûÎÄ: ÊÉÒ§³æÈº 
-RUNE_WITCH_DOCTOR_LOCUST_SWARM_D := New SkillRune("ÊÉÒ§³æÈº", "±ùº®", "d", "ÔÚÊ×¸ö±»ÃüÖÐµÄµÐÈËÈÔÊÜµ½³æÈºÓ°ÏìµÄ³ÖÐøÆÚ¼ä£¬Ã¿Ãë»ñµÃ25µã·¨Á¦Öµ¡£")
-; ·ûÎÄ: ÂþÌì³æÈº 
-RUNE_WITCH_DOCTOR_LOCUST_SWARM_C := New SkillRune("ÂþÌì³æÈº", "ÎïÀí", "c", "ÊÜÓ°ÏìµÄµÐÈËÔì³ÉµÄÉËº¦½µµÍ25%¡£")
-; ·ûÎÄ: Òß²¡³æÈº 
-RUNE_WITCH_DOCTOR_LOCUST_SWARM_E := New SkillRune("Òß²¡³æÈº", "¶¾ËØ", "e", "±»ÎÁÒß³æÈºÏûÃðµÄµÐÈË»áÁôÏÂÒ»Æ¬³æÈºÖ®ÔÆ£¬ÔÚ3ÃëÄÚÔì³É750%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©¡£")
-; ·ûÎÄ: ×ÆÈÈ³æÈº 
-RUNE_WITCH_DOCTOR_LOCUST_SWARM_A := New SkillRune("×ÆÈÈ³æÈº", "»ðÑæ", "a", "ÓÃ×ÆÈÈµÄ³æÈºÍÌÊÉµÐÈË£¬Ê¹ÆäÔÚ8ÃëÄÚÊÜµ½1480%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ¼¼ÄÜ: ÎÁÒß³æÈº
-SKILL_ACTIVE_WITCH_DOCTOR_LOCUST_SWARM := New ActiveSkill("ÎÁÒß³æÈº", "¶¾ËØ", "´ÎÒª"
+; ç¬¦æ–‡: å‰§æ¯’è™«ç¾¤ 
+RUNE_WITCH_DOCTOR_LOCUST_SWARM_B := New SkillRune("å‰§æ¯’è™«ç¾¤", "æ¯’ç´ ", "b", "ç˜Ÿç–«è™«ç¾¤è·³è·ƒæ—¶æœ‰100%çš„å‡ çŽ‡è·³å‘ä¸¤ä¸ªé¢å¤–ç›®æ ‡ï¼Œè€Œä¸å†åªæ˜¯ä¸€ä¸ªç›®æ ‡ã€‚")
+; ç¬¦æ–‡: å™¬å’¬è™«ç¾¤ 
+RUNE_WITCH_DOCTOR_LOCUST_SWARM_D := New SkillRune("å™¬å’¬è™«ç¾¤", "å†°å¯’", "d", "åœ¨é¦–ä¸ªè¢«å‘½ä¸­çš„æ•Œäººä»å—åˆ°è™«ç¾¤å½±å“çš„æŒç»­æœŸé—´ï¼Œæ¯ç§’èŽ·å¾—25ç‚¹æ³•åŠ›å€¼ã€‚")
+; ç¬¦æ–‡: æ¼«å¤©è™«ç¾¤ 
+RUNE_WITCH_DOCTOR_LOCUST_SWARM_C := New SkillRune("æ¼«å¤©è™«ç¾¤", "ç‰©ç†", "c", "å—å½±å“çš„æ•Œäººé€ æˆçš„ä¼¤å®³é™ä½Ž25%ã€‚")
+; ç¬¦æ–‡: ç–«ç—…è™«ç¾¤ 
+RUNE_WITCH_DOCTOR_LOCUST_SWARM_E := New SkillRune("ç–«ç—…è™«ç¾¤", "æ¯’ç´ ", "e", "è¢«ç˜Ÿç–«è™«ç¾¤æ¶ˆç­çš„æ•Œäººä¼šç•™ä¸‹ä¸€ç‰‡è™«ç¾¤ä¹‹äº‘ï¼Œåœ¨3ç§’å†…é€ æˆ750%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: ç¼çƒ­è™«ç¾¤ 
+RUNE_WITCH_DOCTOR_LOCUST_SWARM_A := New SkillRune("ç¼çƒ­è™«ç¾¤", "ç«ç„°", "a", "ç”¨ç¼çƒ­çš„è™«ç¾¤åžå™¬æ•Œäººï¼Œä½¿å…¶åœ¨8ç§’å†…å—åˆ°1480%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: ç˜Ÿç–«è™«ç¾¤
+SKILL_ACTIVE_WITCH_DOCTOR_LOCUST_SWARM := New ActiveSkill("ç˜Ÿç–«è™«ç¾¤", "æ¯’ç´ ", "æ¬¡è¦"
 	, "images\skills\witch-doctor\active\witchdoctor_locustswarm_normal.png"
-	, "ÏûºÄ£º300µã·¨Á¦Öµ\r\nÊÍ·ÅÎÁÒß³æÈºÏ¯¾íÒ»ÃûµÐÈË£¬ÔÚ8ÃëÄÚÔì³É1040%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©¡£"
+	, "æ¶ˆè€—ï¼š300ç‚¹æ³•åŠ›å€¼\r\né‡Šæ”¾ç˜Ÿç–«è™«ç¾¤å¸­å·ä¸€åæ•Œäººï¼Œåœ¨8ç§’å†…é€ æˆ1040%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_WITCH_DOCTOR_LOCUST_SWARM_B, RUNE_WITCH_DOCTOR_LOCUST_SWARM_D, RUNE_WITCH_DOCTOR_LOCUST_SWARM_C, RUNE_WITCH_DOCTOR_LOCUST_SWARM_E, RUNE_WITCH_DOCTOR_LOCUST_SWARM_A])
 ; ---------------------------
-; ¼¼ÄÜ: ÎÁÒß³æÈº End
+; æŠ€èƒ½: ç˜Ÿç–«è™«ç¾¤ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÁÒÑæÕ¨µ¯ Start
+; æŠ€èƒ½: çƒˆç„°ç‚¸å¼¹ Start
 ; ---------------------------
-; ·ûÎÄ: Ô¾¶¯Ö®»ð 
-RUNE_WITCH_DOCTOR_FIREBOMB_E := New SkillRune("Ô¾¶¯Ö®»ð", "»ðÑæ", "e", "²»ÔÙÒò±¬Õ¨¶øÔì³É·¶Î§ÉËº¦£¬Ã¿¸öÁÒÑæÕ¨µ¯»áÌø×ªÖÁ×î¶à6¸ö¶îÍâÄ¿±êÉíÉÏ¡£Ã¿Ò»ÌøÉËº¦½µµÍ15%¡£")
-; ·ûÎÄ: µ¯ÌøÖ®¹Ç 
-RUNE_WITCH_DOCTOR_FIREBOMB_B := New SkillRune("µ¯ÌøÖ®¹Ç", "»ðÑæ", "b", "Í·¹Ç×î¶àµ¯Ìø2´Î¡£")
-; ·ûÎÄ: ÁÒÑæÖ®³Ø 
-RUNE_WITCH_DOCTOR_FIREBOMB_C := New SkillRune("ÁÒÑæÖ®³Ø", "»ðÑæ", "c", "±¬Õ¨»áÐÎ³ÉÒ»¸öÁÒÑæÖ®³Ø£¬ÔÚ3ÃëÄÚÔì³É60%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ÁÒÑæ»ðÖù 
-RUNE_WITCH_DOCTOR_FIREBOMB_D := New SkillRune("ÁÒÑæ»ðÖù", "»ðÑæ", "d", "Éú³ÉÒ»¸ùÁÒÑæ»ðÖù£¬Ïò×î½üµÄµÐÈËÅç»ð£¬ÔÚ6ÃëÄÚÔì³É880%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£ÄãÍ¬Ê±Ö»ÄÜÓÐ×î¶à3¸ùÁÒÑæ»ðÖù¡£")
-; ·ûÎÄ: ÓÄ»êÕ¨µ¯ 
-RUNE_WITCH_DOCTOR_FIREBOMB_A := New SkillRune("ÓÄ»êÕ¨µ¯", "±ùº®", "a", "³ýÁË»ù´¡±¬Õ¨Íâ£¬Í·¹Ç»¹»áÔì³ÉÒ»´Î¸ü´óµÄ³å»÷£¬¶Ô28ÂëÄÚµÄËùÓÐµÐÈËÔì³É¶îÍâ30%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£")
-; ¼¼ÄÜ: ÁÒÑæÕ¨µ¯
-SKILL_ACTIVE_WITCH_DOCTOR_FIREBOMB := New ActiveSkill("ÁÒÑæÕ¨µ¯", "»ðÑæ", "Ö÷Òª"
+; ç¬¦æ–‡: è·ƒåŠ¨ä¹‹ç« 
+RUNE_WITCH_DOCTOR_FIREBOMB_E := New SkillRune("è·ƒåŠ¨ä¹‹ç«", "ç«ç„°", "e", "ä¸å†å› çˆ†ç‚¸è€Œé€ æˆèŒƒå›´ä¼¤å®³ï¼Œæ¯ä¸ªçƒˆç„°ç‚¸å¼¹ä¼šè·³è½¬è‡³æœ€å¤š6ä¸ªé¢å¤–ç›®æ ‡èº«ä¸Šã€‚æ¯ä¸€è·³ä¼¤å®³é™ä½Ž15%ã€‚")
+; ç¬¦æ–‡: å¼¹è·³ä¹‹éª¨ 
+RUNE_WITCH_DOCTOR_FIREBOMB_B := New SkillRune("å¼¹è·³ä¹‹éª¨", "ç«ç„°", "b", "å¤´éª¨æœ€å¤šå¼¹è·³2æ¬¡ã€‚")
+; ç¬¦æ–‡: çƒˆç„°ä¹‹æ±  
+RUNE_WITCH_DOCTOR_FIREBOMB_C := New SkillRune("çƒˆç„°ä¹‹æ± ", "ç«ç„°", "c", "çˆ†ç‚¸ä¼šå½¢æˆä¸€ä¸ªçƒˆç„°ä¹‹æ± ï¼Œåœ¨3ç§’å†…é€ æˆ60%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: çƒˆç„°ç«æŸ± 
+RUNE_WITCH_DOCTOR_FIREBOMB_D := New SkillRune("çƒˆç„°ç«æŸ±", "ç«ç„°", "d", "ç”Ÿæˆä¸€æ ¹çƒˆç„°ç«æŸ±ï¼Œå‘æœ€è¿‘çš„æ•Œäººå–·ç«ï¼Œåœ¨6ç§’å†…é€ æˆ880%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚ä½ åŒæ—¶åªèƒ½æœ‰æœ€å¤š3æ ¹çƒˆç„°ç«æŸ±ã€‚")
+; ç¬¦æ–‡: å¹½é­‚ç‚¸å¼¹ 
+RUNE_WITCH_DOCTOR_FIREBOMB_A := New SkillRune("å¹½é­‚ç‚¸å¼¹", "å†°å¯’", "a", "é™¤äº†åŸºç¡€çˆ†ç‚¸å¤–ï¼Œå¤´éª¨è¿˜ä¼šé€ æˆä¸€æ¬¡æ›´å¤§çš„å†²å‡»ï¼Œå¯¹28ç å†…çš„æ‰€æœ‰æ•Œäººé€ æˆé¢å¤–30%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: çƒˆç„°ç‚¸å¼¹
+SKILL_ACTIVE_WITCH_DOCTOR_FIREBOMB := New ActiveSkill("çƒˆç„°ç‚¸å¼¹", "ç«ç„°", "ä¸»è¦"
 	, "images\skills\witch-doctor\active\witchdoctor_firebomb_normal.png"
-	, "ÕâÊÇÒ»ÖÖÐÞÎª·¨Êõ¡£Ê©·ÅÐÞÎª·¨ÊõÎÞÐèÏûºÄ·¨Á¦Öµ¡£\r\nÖÀ³öÒ»¸ö±¬Õ¨Í·¹Ç£¬¶ÔÎ»ÓÚ8ÂëÄÚµÄËùÓÐµÐÈËÔì³É155%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£"
+	, "è¿™æ˜¯ä¸€ç§ä¿®ä¸ºæ³•æœ¯ã€‚æ–½æ”¾ä¿®ä¸ºæ³•æœ¯æ— éœ€æ¶ˆè€—æ³•åŠ›å€¼ã€‚\r\næŽ·å‡ºä¸€ä¸ªçˆ†ç‚¸å¤´éª¨ï¼Œå¯¹ä½äºŽ8ç å†…çš„æ‰€æœ‰æ•Œäººé€ æˆ155%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_WITCH_DOCTOR_FIREBOMB_E, RUNE_WITCH_DOCTOR_FIREBOMB_B, RUNE_WITCH_DOCTOR_FIREBOMB_C, RUNE_WITCH_DOCTOR_FIREBOMB_D, RUNE_WITCH_DOCTOR_FIREBOMB_A])
 ; ---------------------------
-; ¼¼ÄÜ: ÁÒÑæÕ¨µ¯ End
+; æŠ€èƒ½: çƒˆç„°ç‚¸å¼¹ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÑýÊõ Start
+; æŠ€èƒ½: å¦–æœ¯ Start
 ; ---------------------------
-; ·ûÎÄ: ÓúÌå´ó·¨ 
-RUNE_WITCH_DOCTOR_HEX_D := New SkillRune("ÓúÌå´ó·¨", "±ùº®", "d", "¹íÍÞÈøÂú»áÖÜÆÚÐÔµØÎªÍ¬°é»Ö¸´32185µãÉúÃüÖµ¡£")
-; ·ûÎÄ: ¶òÔË²øÉí 
-RUNE_WITCH_DOCTOR_HEX_E := New SkillRune("¶òÔË²øÉí", "¶¾ËØ", "e", "±»ÑýÊõ±äÐÎµÄµÐÈËÊÜµ½µÄÉËº¦Ìá¸ß15%¡£")
-; ·ûÎÄ: ·ßÅ­Ð¡¼¦ 
-RUNE_WITCH_DOCTOR_HEX_B := New SkillRune("·ßÅ­Ð¡¼¦", "¶¾ËØ", "b", "Äã±ä³ÉÒ»Ö»·ßÅ­µÄÐ¡¼¦£¬×î¶à³ÖÐø2Ãë£¬±¬Õ¨ºó¶Ô¸½½ü12ÂëÄÚµÄËùÓÐµÐÈËÔì³É1350%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©¡£")
-; ·ûÎÄ: ¾Þó¸Ö®ÔÖ 
-RUNE_WITCH_DOCTOR_HEX_A := New SkillRune("¾Þó¸Ö®ÔÖ", "¶¾ËØ", "a", "ÕÙ»½¾Þ´óµÄó¸òÜ£¬½«µÐÈËÀ­¹ýÀ´²¢Ò»¿ÚÍÌÈë¸¹ÖÐ£¬È»ºó½«ËüÃÇÍÂ³öÀ´¡£±»ÍÂ³öµÄµÐÈË±íÃæ¸´¸Ç×ÅÒ»²ãÕ³Òº£¬ÔÚ5ÃëÄÚ³ÖÐøÊÜµ½750%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©£¬ÒÆ¶¯ËÙ¶È½µµÍÇÒ³ÐÊÜµÄËùÓÐÉËº¦Ìá¸ß15%¡£")
-; ·ûÎÄ: ²»ÎÈÐÎÌ¬ 
-RUNE_WITCH_DOCTOR_HEX_C := New SkillRune("²»ÎÈÐÎÌ¬", "»ðÑæ", "c", "ÊÜµ½ÑýÊõÐ§¹ûÓ°ÏìµÄµÐÈËÔÚ±»ÏûÃðÊ±»á±¬Õ¨£¬¶ÔÎ»ÓÚ8ÂëÄÚµÄËùÓÐµÐÈËÔì³É500%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ¼¼ÄÜ: ÑýÊõ
-SKILL_ACTIVE_WITCH_DOCTOR_HEX := New ActiveSkill("ÑýÊõ", "ÎïÀí", "·ÀÓù"
+; ç¬¦æ–‡: æ„ˆä½“å¤§æ³• 
+RUNE_WITCH_DOCTOR_HEX_D := New SkillRune("æ„ˆä½“å¤§æ³•", "å†°å¯’", "d", "é¬¼å¨ƒè¨æ»¡ä¼šå‘¨æœŸæ€§åœ°ä¸ºåŒä¼´æ¢å¤32185ç‚¹ç”Ÿå‘½å€¼ã€‚")
+; ç¬¦æ–‡: åŽ„è¿ç¼ èº« 
+RUNE_WITCH_DOCTOR_HEX_E := New SkillRune("åŽ„è¿ç¼ èº«", "æ¯’ç´ ", "e", "è¢«å¦–æœ¯å˜å½¢çš„æ•Œäººå—åˆ°çš„ä¼¤å®³æé«˜15%ã€‚")
+; ç¬¦æ–‡: æ„¤æ€’å°é¸¡ 
+RUNE_WITCH_DOCTOR_HEX_B := New SkillRune("æ„¤æ€’å°é¸¡", "æ¯’ç´ ", "b", "ä½ å˜æˆä¸€åªæ„¤æ€’çš„å°é¸¡ï¼Œæœ€å¤šæŒç»­2ç§’ï¼Œçˆ†ç‚¸åŽå¯¹é™„è¿‘12ç å†…çš„æ‰€æœ‰æ•Œäººé€ æˆ1350%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å·¨èŸ¾ä¹‹ç¾ 
+RUNE_WITCH_DOCTOR_HEX_A := New SkillRune("å·¨èŸ¾ä¹‹ç¾", "æ¯’ç´ ", "a", "å¬å”¤å·¨å¤§çš„èŸ¾èœï¼Œå°†æ•Œäººæ‹‰è¿‡æ¥å¹¶ä¸€å£åžå…¥è…¹ä¸­ï¼Œç„¶åŽå°†å®ƒä»¬åå‡ºæ¥ã€‚è¢«åå‡ºçš„æ•Œäººè¡¨é¢å¤ç›–ç€ä¸€å±‚ç²˜æ¶²ï¼Œåœ¨5ç§’å†…æŒç»­å—åˆ°750%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ï¼Œç§»åŠ¨é€Ÿåº¦é™ä½Žä¸”æ‰¿å—çš„æ‰€æœ‰ä¼¤å®³æé«˜15%ã€‚")
+; ç¬¦æ–‡: ä¸ç¨³å½¢æ€ 
+RUNE_WITCH_DOCTOR_HEX_C := New SkillRune("ä¸ç¨³å½¢æ€", "ç«ç„°", "c", "å—åˆ°å¦–æœ¯æ•ˆæžœå½±å“çš„æ•Œäººåœ¨è¢«æ¶ˆç­æ—¶ä¼šçˆ†ç‚¸ï¼Œå¯¹ä½äºŽ8ç å†…çš„æ‰€æœ‰æ•Œäººé€ æˆ500%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: å¦–æœ¯
+SKILL_ACTIVE_WITCH_DOCTOR_HEX := New ActiveSkill("å¦–æœ¯", "ç‰©ç†", "é˜²å¾¡"
 	, "images\skills\witch-doctor\active\witchdoctor_hex_normal.png"
-	, "ÀäÈ´Ê±¼ä£º15Ãë\r\nÕÙ»½Ò»¸ö¹íÍÞÈøÂú£¬³ÖÐø12Ãë£¬»á½«Èô¸ÉµÐÈË±äÎªÐ¡¼¦¡£±»±äÐÎµÄµÐÈË½«ÎÞ·¨×÷³ö¹¥»÷ÐÐÎª¡£"
+	, "å†·å´æ—¶é—´ï¼š15ç§’\r\nå¬å”¤ä¸€ä¸ªé¬¼å¨ƒè¨æ»¡ï¼ŒæŒç»­12ç§’ï¼Œä¼šå°†è‹¥å¹²æ•Œäººå˜ä¸ºå°é¸¡ã€‚è¢«å˜å½¢çš„æ•Œäººå°†æ— æ³•ä½œå‡ºæ”»å‡»è¡Œä¸ºã€‚"
 	, [RUNE_WITCH_DOCTOR_HEX_D, RUNE_WITCH_DOCTOR_HEX_E, RUNE_WITCH_DOCTOR_HEX_B, RUNE_WITCH_DOCTOR_HEX_A, RUNE_WITCH_DOCTOR_HEX_C])
 ; ---------------------------
-; ¼¼ÄÜ: ÑýÊõ End
+; æŠ€èƒ½: å¦–æœ¯ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ËáÊ´Ö®ÔÆ Start
+; æŠ€èƒ½: é…¸èš€ä¹‹äº‘ Start
 ; ---------------------------
-; ·ûÎÄ: ËáÓêÇã½µ 
-RUNE_WITCH_DOCTOR_ACID_CLOUD_B := New SkillRune("ËáÓêÇã½µ", "¶¾ËØ", "b", "Ê¹ËáÊ´Ö®ÔÆµÄ³õÊ¼Ð§¹û·¶Î§À©´óÖÁ24Âë¡£")
-; ·ûÎÄ: ËáÊ´ÈíÄà 
-RUNE_WITCH_DOCTOR_ACID_CLOUD_C := New SkillRune("ËáÊ´ÈíÄà", "¶¾ËØ", "c", "µØÉÏµÄËáÐÔÎïÖÊÈÚºÏ³ÉÒ»Ö»ÈíÄà¹Ö£¬·øÉä¸½½üµÄµÐÈË£¬Ôì³É600%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©¡£ÈíÄà¹ÖÔÚ5ÃëºóÏûÉ¢¡£")
-; ·ûÎÄ: »ºÂýÉÕ×Æ 
-RUNE_WITCH_DOCTOR_ACID_CLOUD_D := New SkillRune("»ºÂýÉÕ×Æ", "±ùº®", "d", "ÐÎ³É±ùËªÖ®³Ø£¬ÔÚ6ÃëÄÚÔì³É720%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£")
-; ·ûÎÄ: ËÀÍöÖ®ÎÇ 
-RUNE_WITCH_DOCTOR_ACID_CLOUD_E := New SkillRune("ËÀÍöÖ®ÎÇ", "¶¾ËØ", "e", "ÅçÍÂÒ»Æ¬ËáÊ´Ö®ÔÆ£¬Ôì³É333%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©£¬²¢ÔÚ3ÃëÄÚÔì³ÉºóÐø400%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©¡£")
-; ·ûÎÄ: ËÀÊ¬Õ¨µ¯ 
-RUNE_WITCH_DOCTOR_ACID_CLOUD_A := New SkillRune("ËÀÊ¬Õ¨µ¯", "»ðÑæ", "a", "´ÓµØÉÏ¸´»îÒ»¾ßÊ¬Ìå£¬±¬Õ¨ºó¶ÔÇøÓòÄÚµÄµÐÈËÔì³É700%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ¼¼ÄÜ: ËáÊ´Ö®ÔÆ
-SKILL_ACTIVE_WITCH_DOCTOR_ACID_CLOUD := New ActiveSkill("ËáÊ´Ö®ÔÆ", "¶¾ËØ", "µòÁã"
+; ç¬¦æ–‡: é…¸é›¨å€¾é™ 
+RUNE_WITCH_DOCTOR_ACID_CLOUD_B := New SkillRune("é…¸é›¨å€¾é™", "æ¯’ç´ ", "b", "ä½¿é…¸èš€ä¹‹äº‘çš„åˆå§‹æ•ˆæžœèŒƒå›´æ‰©å¤§è‡³24ç ã€‚")
+; ç¬¦æ–‡: é…¸èš€è½¯æ³¥ 
+RUNE_WITCH_DOCTOR_ACID_CLOUD_C := New SkillRune("é…¸èš€è½¯æ³¥", "æ¯’ç´ ", "c", "åœ°ä¸Šçš„é…¸æ€§ç‰©è´¨èžåˆæˆä¸€åªè½¯æ³¥æ€ªï¼Œè¾å°„é™„è¿‘çš„æ•Œäººï¼Œé€ æˆ600%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ã€‚è½¯æ³¥æ€ªåœ¨5ç§’åŽæ¶ˆæ•£ã€‚")
+; ç¬¦æ–‡: ç¼“æ…¢çƒ§ç¼ 
+RUNE_WITCH_DOCTOR_ACID_CLOUD_D := New SkillRune("ç¼“æ…¢çƒ§ç¼", "å†°å¯’", "d", "å½¢æˆå†°éœœä¹‹æ± ï¼Œåœ¨6ç§’å†…é€ æˆ720%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: æ­»äº¡ä¹‹å» 
+RUNE_WITCH_DOCTOR_ACID_CLOUD_E := New SkillRune("æ­»äº¡ä¹‹å»", "æ¯’ç´ ", "e", "å–·åä¸€ç‰‡é…¸èš€ä¹‹äº‘ï¼Œé€ æˆ333%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ï¼Œå¹¶åœ¨3ç§’å†…é€ æˆåŽç»­400%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: æ­»å°¸ç‚¸å¼¹ 
+RUNE_WITCH_DOCTOR_ACID_CLOUD_A := New SkillRune("æ­»å°¸ç‚¸å¼¹", "ç«ç„°", "a", "ä»Žåœ°ä¸Šå¤æ´»ä¸€å…·å°¸ä½“ï¼Œçˆ†ç‚¸åŽå¯¹åŒºåŸŸå†…çš„æ•Œäººé€ æˆ700%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: é…¸èš€ä¹‹äº‘
+SKILL_ACTIVE_WITCH_DOCTOR_ACID_CLOUD := New ActiveSkill("é…¸èš€ä¹‹äº‘", "æ¯’ç´ ", "å‡‹é›¶"
 	, "images\skills\witch-doctor\active\witchdoctor_acidcloud_normal.png"
-	, "ÏûºÄ£º175µã·¨Á¦Öµ\r\nËáÓêÇãÅè¶ø½µ£¬³õÊ¼Ôì³É300%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©£¬²¢¶ÔÁôÔÚËáÓêÇã½µ·¶Î§ÄÚµÄµÐÈËÔì³ÉºóÐø360%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©£¬³ÖÐø3Ãë¡£"
+	, "æ¶ˆè€—ï¼š175ç‚¹æ³•åŠ›å€¼\r\né…¸é›¨å€¾ç›†è€Œé™ï¼Œåˆå§‹é€ æˆ300%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ï¼Œå¹¶å¯¹ç•™åœ¨é…¸é›¨å€¾é™èŒƒå›´å†…çš„æ•Œäººé€ æˆåŽç»­360%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ï¼ŒæŒç»­3ç§’ã€‚"
 	, [RUNE_WITCH_DOCTOR_ACID_CLOUD_B, RUNE_WITCH_DOCTOR_ACID_CLOUD_C, RUNE_WITCH_DOCTOR_ACID_CLOUD_D, RUNE_WITCH_DOCTOR_ACID_CLOUD_E, RUNE_WITCH_DOCTOR_ACID_CLOUD_A])
 ; ---------------------------
-; ¼¼ÄÜ: ËáÊ´Ö®ÔÆ End
+; æŠ€èƒ½: é…¸èš€ä¹‹äº‘ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÈºÌå»ìÂÒ Start
+; æŠ€èƒ½: ç¾¤ä½“æ··ä¹± Start
 ; ---------------------------
-; ·ûÎÄ: ²»ÎÈ½çÓò 
-RUNE_WITCH_DOCTOR_MASS_CONFUSION_D := New SkillRune("²»ÎÈ½çÓò", "ÎïÀí", "d", "Ê¹ÈºÌå»ìÂÒµÄÀäÈ´Ê±¼äËõ¶ÌÖÁ30Ãë¡£")
-; ·ûÎÄ: ËÀÊ¬×ªÉú 
-RUNE_WITCH_DOCTOR_MASS_CONFUSION_E := New SkillRune("ËÀÊ¬×ªÉú", "ÎïÀí", "e", "ÔÚÏÝÈë»ìÂÒÊ±±»ÏûÃðµÄµÐÈËÓÐ100%µÄ¼¸ÂÊÉú³ÉÒ»Ö»½©Ê¬È®¡£")
-; ·ûÎÄ: ÈºÌå¿ñÂÒ 
-RUNE_WITCH_DOCTOR_MASS_CONFUSION_B := New SkillRune("ÈºÌå¿ñÂÒ", "ÎïÀí", "b", "×î¶à10¸öÃ»ÓÐÏÝÈë»ìÂÒµÄµÐÈË»á»èÃÔ£¬³ÖÐø3Ãë¡£")
-; ·ûÎÄ: ÊÜº¦ÍýÏë 
-RUNE_WITCH_DOCTOR_MASS_CONFUSION_A := New SkillRune("ÊÜº¦ÍýÏë", "ÎïÀí", "a", "Î»ÓÚÈºÌå»ìÂÒÓ°ÏìÇøÓòÄÚµÄËùÓÐµÐÈË£¬ÆäÔì³ÉµÄÉËº¦½µµÍ30%£¬³ÖÐø12Ãë¡£")
-; ·ûÎÄ: »ÃÏó¾ÞÁé 
-RUNE_WITCH_DOCTOR_MASS_CONFUSION_C := New SkillRune("»ÃÏó¾ÞÁé", "ÎïÀí", "c", "»ìÂÒÖ®ÖÐ£¬¾ÞÈËµÄÁé»ê¶ÔµÐÈË·¢Æð¹¥»÷£¬¶ÔËù¼°Ö®´¦µÄµÐÈËÃ¿ÃëÔì³É400%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£")
-; ¼¼ÄÜ: ÈºÌå»ìÂÒ
-SKILL_ACTIVE_WITCH_DOCTOR_MASS_CONFUSION := New ActiveSkill("ÈºÌå»ìÂÒ", "ÎïÀí", "¿Ö¾å"
+; ç¬¦æ–‡: ä¸ç¨³ç•ŒåŸŸ 
+RUNE_WITCH_DOCTOR_MASS_CONFUSION_D := New SkillRune("ä¸ç¨³ç•ŒåŸŸ", "ç‰©ç†", "d", "ä½¿ç¾¤ä½“æ··ä¹±çš„å†·å´æ—¶é—´ç¼©çŸ­è‡³30ç§’ã€‚")
+; ç¬¦æ–‡: æ­»å°¸è½¬ç”Ÿ 
+RUNE_WITCH_DOCTOR_MASS_CONFUSION_E := New SkillRune("æ­»å°¸è½¬ç”Ÿ", "ç‰©ç†", "e", "åœ¨é™·å…¥æ··ä¹±æ—¶è¢«æ¶ˆç­çš„æ•Œäººæœ‰100%çš„å‡ çŽ‡ç”Ÿæˆä¸€åªåƒµå°¸çŠ¬ã€‚")
+; ç¬¦æ–‡: ç¾¤ä½“ç‹‚ä¹± 
+RUNE_WITCH_DOCTOR_MASS_CONFUSION_B := New SkillRune("ç¾¤ä½“ç‹‚ä¹±", "ç‰©ç†", "b", "æœ€å¤š10ä¸ªæ²¡æœ‰é™·å…¥æ··ä¹±çš„æ•Œäººä¼šæ˜è¿·ï¼ŒæŒç»­3ç§’ã€‚")
+; ç¬¦æ–‡: å—å®³å¦„æƒ³ 
+RUNE_WITCH_DOCTOR_MASS_CONFUSION_A := New SkillRune("å—å®³å¦„æƒ³", "ç‰©ç†", "a", "ä½äºŽç¾¤ä½“æ··ä¹±å½±å“åŒºåŸŸå†…çš„æ‰€æœ‰æ•Œäººï¼Œå…¶é€ æˆçš„ä¼¤å®³é™ä½Ž30%ï¼ŒæŒç»­12ç§’ã€‚")
+; ç¬¦æ–‡: å¹»è±¡å·¨çµ 
+RUNE_WITCH_DOCTOR_MASS_CONFUSION_C := New SkillRune("å¹»è±¡å·¨çµ", "ç‰©ç†", "c", "æ··ä¹±ä¹‹ä¸­ï¼Œå·¨äººçš„çµé­‚å¯¹æ•Œäººå‘èµ·æ”»å‡»ï¼Œå¯¹æ‰€åŠä¹‹å¤„çš„æ•Œäººæ¯ç§’é€ æˆ400%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: ç¾¤ä½“æ··ä¹±
+SKILL_ACTIVE_WITCH_DOCTOR_MASS_CONFUSION := New ActiveSkill("ç¾¤ä½“æ··ä¹±", "ç‰©ç†", "ææƒ§"
 	, "images\skills\witch-doctor\active\witchdoctor_massconfusion_normal.png"
-	, "ÀäÈ´Ê±¼ä£º60Ãë\r\n¼¤ÆðµÐÈËÄÚÐÄµÄÍýÏë£¬Ê¹µÐÈËÏÝÈë»ìÂÒ£¬²¢÷È»ó²¿·ÖµÐÈË£¬Ê¹Æä×ª¶øÎªÄã×÷Õ½£¬³ÖÐø12Ãë¡£"
+	, "å†·å´æ—¶é—´ï¼š60ç§’\r\næ¿€èµ·æ•Œäººå†…å¿ƒçš„å¦„æƒ³ï¼Œä½¿æ•Œäººé™·å…¥æ··ä¹±ï¼Œå¹¶é­…æƒ‘éƒ¨åˆ†æ•Œäººï¼Œä½¿å…¶è½¬è€Œä¸ºä½ ä½œæˆ˜ï¼ŒæŒç»­12ç§’ã€‚"
 	, [RUNE_WITCH_DOCTOR_MASS_CONFUSION_D, RUNE_WITCH_DOCTOR_MASS_CONFUSION_E, RUNE_WITCH_DOCTOR_MASS_CONFUSION_B, RUNE_WITCH_DOCTOR_MASS_CONFUSION_A, RUNE_WITCH_DOCTOR_MASS_CONFUSION_C])
 ; ---------------------------
-; ¼¼ÄÜ: ÈºÌå»ìÂÒ End
+; æŠ€èƒ½: ç¾¤ä½“æ··ä¹± End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Î×¶¾¿ñÎè Start
+; æŠ€èƒ½: å·«æ¯’ç‹‚èˆž Start
 ; ---------------------------
-; ·ûÎÄ: ´ÔÁÖ¾ª¹Ä 
-RUNE_WITCH_DOCTOR_BIG_BAD_VOODOO_B := New SkillRune("´ÔÁÖ¾ª¹Ä", "ÎïÀí", "b", "Ê¹ÒÇÊ½µÄ³ÖÐøÊ±¼äÑÓ³¤ÖÁ30Ãë¡£")
-; ·ûÎÄ: ÆíÓêÎè 
-RUNE_WITCH_DOCTOR_BIG_BAD_VOODOO_D := New SkillRune("ÆíÓêÎè", "ÎïÀí", "d", "Õ¾ÔÚÒÇÊ½ÇøÓòÄÚÃ¿Ãë¿É»Ö¸´250µã·¨Á¦Öµ¡£")
-; ·ûÎÄ: ÕðµØ¿ñÎè 
-RUNE_WITCH_DOCTOR_BIG_BAD_VOODOO_A := New SkillRune("ÕðµØ¿ñÎè", "ÎïÀí", "a", "¹íÍÞÊ¹¸½½üËùÓÐÍ¬°éÔì³ÉµÄÉËº¦Ìá¸ß15%¡£")
-; ·ûÎÄ: ¹í»ê¶÷Ôó 
-RUNE_WITCH_DOCTOR_BIG_BAD_VOODOO_C := New SkillRune("¹í»ê¶÷Ôó", "ÎïÀí", "c", "ÒÇÊ½ÖÎÁÆ¸½½üµÄËùÓÐÍ¬°é£¬Ã¿ÃëÎªÆä»Ö¸´ÉúÃüÖµÉÏÏÞµÄ5%£¬ÊÜµ½µÄËùÓÐÉËº¦½µµÍ20%¡£")
-; ·ûÎÄ: ÎèÊ¬»¯È® 
-RUNE_WITCH_DOCTOR_BIG_BAD_VOODOO_E := New SkillRune("ÎèÊ¬»¯È®", "ÎïÀí", "e", "ÔÚÒÇÊ½ÇøÓòÄÚËÀÈ¥µÄµÐÈËÓÐ50%µÄ¼¸ÂÊ±»¸´»î³ÉÒ»Ìõ½©Ê¬È®¡£")
-; ¼¼ÄÜ: Î×¶¾¿ñÎè
-SKILL_ACTIVE_WITCH_DOCTOR_BIG_BAD_VOODOO := New ActiveSkill("Î×¶¾¿ñÎè", "ÎïÀí", "Î×¶¾"
+; ç¬¦æ–‡: ä¸›æž—æƒŠé¼“ 
+RUNE_WITCH_DOCTOR_BIG_BAD_VOODOO_B := New SkillRune("ä¸›æž—æƒŠé¼“", "ç‰©ç†", "b", "ä½¿ä»ªå¼çš„æŒç»­æ—¶é—´å»¶é•¿è‡³30ç§’ã€‚")
+; ç¬¦æ–‡: ç¥ˆé›¨èˆž 
+RUNE_WITCH_DOCTOR_BIG_BAD_VOODOO_D := New SkillRune("ç¥ˆé›¨èˆž", "ç‰©ç†", "d", "ç«™åœ¨ä»ªå¼åŒºåŸŸå†…æ¯ç§’å¯æ¢å¤250ç‚¹æ³•åŠ›å€¼ã€‚")
+; ç¬¦æ–‡: éœ‡åœ°ç‹‚èˆž 
+RUNE_WITCH_DOCTOR_BIG_BAD_VOODOO_A := New SkillRune("éœ‡åœ°ç‹‚èˆž", "ç‰©ç†", "a", "é¬¼å¨ƒä½¿é™„è¿‘æ‰€æœ‰åŒä¼´é€ æˆçš„ä¼¤å®³æé«˜15%ã€‚")
+; ç¬¦æ–‡: é¬¼é­‚æ©æ³½ 
+RUNE_WITCH_DOCTOR_BIG_BAD_VOODOO_C := New SkillRune("é¬¼é­‚æ©æ³½", "ç‰©ç†", "c", "ä»ªå¼æ²»ç–—é™„è¿‘çš„æ‰€æœ‰åŒä¼´ï¼Œæ¯ç§’ä¸ºå…¶æ¢å¤ç”Ÿå‘½å€¼ä¸Šé™çš„5%ï¼Œå—åˆ°çš„æ‰€æœ‰ä¼¤å®³é™ä½Ž20%ã€‚")
+; ç¬¦æ–‡: èˆžå°¸åŒ–çŠ¬ 
+RUNE_WITCH_DOCTOR_BIG_BAD_VOODOO_E := New SkillRune("èˆžå°¸åŒ–çŠ¬", "ç‰©ç†", "e", "åœ¨ä»ªå¼åŒºåŸŸå†…æ­»åŽ»çš„æ•Œäººæœ‰50%çš„å‡ çŽ‡è¢«å¤æ´»æˆä¸€æ¡åƒµå°¸çŠ¬ã€‚")
+; æŠ€èƒ½: å·«æ¯’ç‹‚èˆž
+SKILL_ACTIVE_WITCH_DOCTOR_BIG_BAD_VOODOO := New ActiveSkill("å·«æ¯’ç‹‚èˆž", "ç‰©ç†", "å·«æ¯’"
 	, "images\skills\witch-doctor\active\witchdoctor_bigbadvoodoo_normal.png"
-	, "ÀäÈ´Ê±¼ä£º120Ãë\r\nÕÙ»½Ò»¸ö¹íÍÞ£¬±íÑÝÒ»¶Î³çÉñÒÇÊ½Ö®Îè£¬Ê¹¸½½üËùÓÐÍ¬°éµÄ¹¥»÷ºÍÒÆ¶¯ËÙ¶ÈÌá¸ß15%£¬³ÖÐø20Ãë¡£"
+	, "å†·å´æ—¶é—´ï¼š120ç§’\r\nå¬å”¤ä¸€ä¸ªé¬¼å¨ƒï¼Œè¡¨æ¼”ä¸€æ®µå´‡ç¥žä»ªå¼ä¹‹èˆžï¼Œä½¿é™„è¿‘æ‰€æœ‰åŒä¼´çš„æ”»å‡»å’Œç§»åŠ¨é€Ÿåº¦æé«˜15%ï¼ŒæŒç»­20ç§’ã€‚"
 	, [RUNE_WITCH_DOCTOR_BIG_BAD_VOODOO_B, RUNE_WITCH_DOCTOR_BIG_BAD_VOODOO_D, RUNE_WITCH_DOCTOR_BIG_BAD_VOODOO_A, RUNE_WITCH_DOCTOR_BIG_BAD_VOODOO_C, RUNE_WITCH_DOCTOR_BIG_BAD_VOODOO_E])
 ; ---------------------------
-; ¼¼ÄÜ: Î×¶¾¿ñÎè End
+; æŠ€èƒ½: å·«æ¯’ç‹‚èˆž End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÍöÕßÖ®Ç½ Start
+; æŠ€èƒ½: äº¡è€…ä¹‹å¢™ Start
 ; ---------------------------
-; ·ûÎÄ: ¶¾»· 
-RUNE_WITCH_DOCTOR_WALL_OF_DEATH_B := New SkillRune("¶¾»·", "¶¾ËØ", "b", "ÕÙ»½Ò»¸öÖÂÃüµÄ¶¾»·£¬³ÖÐø5Ãë£¬Ê¹¸½½üµÄµÐÈËÖÐ¶¾£¬ÔÚ8ÃëÄÚÔì³É1200%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©¡£")
-; ·ûÎÄ: Ê¬Ç½ 
-RUNE_WITCH_DOCTOR_WALL_OF_DEATH_D := New SkillRune("Ê¬Ç½", "ÎïÀí", "d", "Ê¹Ç½µÄ¿í¶ÈÀ©´óÖÁ50Âë¡£ÄãÇ°·½µÄËùÓÐµÐÈË½«±»»÷ÍËÖÁÇ½ºó¡£")
-; ·ûÎÄ: ËÀÍöÎ§ÈÆ 
-RUNE_WITCH_DOCTOR_WALL_OF_DEATH_A := New SkillRune("ËÀÍöÎ§ÈÆ", "ÎïÀí", "a", "´ÓµØÏÂÕÙ»½³öÒ»ÅÅ½©Ê¬£¬À§×¡²¢¹¥»÷¸½½üµÄµÐÈË£¬ÔÚ5ÃëÄÚÔì³É1250%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£")
-; ·ûÎÄ: »ðÇ½ 
-RUNE_WITCH_DOCTOR_WALL_OF_DEATH_E := New SkillRune("»ðÇ½", "»ðÑæ", "e", "ÕÙ»½Ò»µÀ¿í40ÂëµÄ»ðÇ½£¬³ÖÐø8Ãë£¬µãÈ¼´ÓÖÐ´©¹ýµÄµÐÈË£¬Ê¹ÆäÔÚ4ÃëÄÚÊÜµ½1100%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ÚÍ»ê 
-RUNE_WITCH_DOCTOR_WALL_OF_DEATH_C := New SkillRune("ÚÍ»ê", "±ùº®", "c", "ÕÙ»½Ò»È¦¹í»ê£¬³ÖÐø6Ãë£¬¶Ô¸½½üËùÓÐµÐÈËÔì³É1200%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©£¬²¢Ê¹ÆäÊÜµ½º®ÀäÐ§¹ûÓ°Ïì£¬ËÙ¶È½µµÍ60%£¬Ôì³ÉµÄÉËº¦½µµÍ25%³ÖÐø3Ãë¡£")
-; ¼¼ÄÜ: ÍöÕßÖ®Ç½
-SKILL_ACTIVE_WITCH_DOCTOR_WALL_OF_DEATH := New ActiveSkill("ÍöÕßÖ®Ç½", "ÎïÀí", "µòÁã"
+; ç¬¦æ–‡: æ¯’çŽ¯ 
+RUNE_WITCH_DOCTOR_WALL_OF_DEATH_B := New SkillRune("æ¯’çŽ¯", "æ¯’ç´ ", "b", "å¬å”¤ä¸€ä¸ªè‡´å‘½çš„æ¯’çŽ¯ï¼ŒæŒç»­5ç§’ï¼Œä½¿é™„è¿‘çš„æ•Œäººä¸­æ¯’ï¼Œåœ¨8ç§’å†…é€ æˆ1200%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å°¸å¢™ 
+RUNE_WITCH_DOCTOR_WALL_OF_DEATH_D := New SkillRune("å°¸å¢™", "ç‰©ç†", "d", "ä½¿å¢™çš„å®½åº¦æ‰©å¤§è‡³50ç ã€‚ä½ å‰æ–¹çš„æ‰€æœ‰æ•Œäººå°†è¢«å‡»é€€è‡³å¢™åŽã€‚")
+; ç¬¦æ–‡: æ­»äº¡å›´ç»• 
+RUNE_WITCH_DOCTOR_WALL_OF_DEATH_A := New SkillRune("æ­»äº¡å›´ç»•", "ç‰©ç†", "a", "ä»Žåœ°ä¸‹å¬å”¤å‡ºä¸€æŽ’åƒµå°¸ï¼Œå›°ä½å¹¶æ”»å‡»é™„è¿‘çš„æ•Œäººï¼Œåœ¨5ç§’å†…é€ æˆ1250%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: ç«å¢™ 
+RUNE_WITCH_DOCTOR_WALL_OF_DEATH_E := New SkillRune("ç«å¢™", "ç«ç„°", "e", "å¬å”¤ä¸€é“å®½40ç çš„ç«å¢™ï¼ŒæŒç»­8ç§’ï¼Œç‚¹ç‡ƒä»Žä¸­ç©¿è¿‡çš„æ•Œäººï¼Œä½¿å…¶åœ¨4ç§’å†…å—åˆ°1100%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: è°•é­‚ 
+RUNE_WITCH_DOCTOR_WALL_OF_DEATH_C := New SkillRune("è°•é­‚", "å†°å¯’", "c", "å¬å”¤ä¸€åœˆé¬¼é­‚ï¼ŒæŒç»­6ç§’ï¼Œå¯¹é™„è¿‘æ‰€æœ‰æ•Œäººé€ æˆ1200%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ï¼Œå¹¶ä½¿å…¶å—åˆ°å¯’å†·æ•ˆæžœå½±å“ï¼Œé€Ÿåº¦é™ä½Ž60%ï¼Œé€ æˆçš„ä¼¤å®³é™ä½Ž25%æŒç»­3ç§’ã€‚")
+; æŠ€èƒ½: äº¡è€…ä¹‹å¢™
+SKILL_ACTIVE_WITCH_DOCTOR_WALL_OF_DEATH := New ActiveSkill("äº¡è€…ä¹‹å¢™", "ç‰©ç†", "å‡‹é›¶"
 	, "images\skills\witch-doctor\active\witchdoctor_wallofzombies_normal.png"
-	, "ÀäÈ´Ê±¼ä£º8Ãë\r\nÕÙ»½Ò»µÀ28Âë¿íµÄ½©Ê¬Ö®Ç½£¬×èµ²²¢¹¥»÷¸½½üµÄµÐÈË£¬ÔÚ6ÃëÄÚÔì³É1200%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£"
+	, "å†·å´æ—¶é—´ï¼š8ç§’\r\nå¬å”¤ä¸€é“28ç å®½çš„åƒµå°¸ä¹‹å¢™ï¼Œé˜»æŒ¡å¹¶æ”»å‡»é™„è¿‘çš„æ•Œäººï¼Œåœ¨6ç§’å†…é€ æˆ1200%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_WITCH_DOCTOR_WALL_OF_DEATH_B, RUNE_WITCH_DOCTOR_WALL_OF_DEATH_D, RUNE_WITCH_DOCTOR_WALL_OF_DEATH_A, RUNE_WITCH_DOCTOR_WALL_OF_DEATH_E, RUNE_WITCH_DOCTOR_WALL_OF_DEATH_C])
 ; ---------------------------
-; ¼¼ÄÜ: ÍöÕßÖ®Ç½ End
+; æŠ€èƒ½: äº¡è€…ä¹‹å¢™ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ¹íÍÞ´ó¾ü Start
+; æŠ€èƒ½: é¬¼å¨ƒå¤§å†› Start
 ; ---------------------------
-; ·ûÎÄ: ¹íÍÞ·ü»÷ 
-RUNE_WITCH_DOCTOR_FETISH_ARMY_A := New SkillRune("¹íÍÞ·ü»÷", "±ùº®", "a", "µ±¹íÍÞ±»ÕÙ»½Ê±£¬Ã¿¸ö¹íÍÞ¶¼»á¶Ô¸½½üµÄÈÎÒâµÐÈËÔì³É680%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£")
-; ·ûÎÄ: ÊÄËÀ×·Ëæ 
-RUNE_WITCH_DOCTOR_FETISH_ARMY_D := New SkillRune("ÊÄËÀ×·Ëæ", "ÎïÀí", "d", "Ê¹¹íÍÞ´ó¾üµÄÀäÈ´Ê±¼äËõ¶ÌÖÁ90Ãë¡£")
-; ·ûÎÄ: ÀûÈÐ¾üÍÅ 
-RUNE_WITCH_DOCTOR_FETISH_ARMY_B := New SkillRune("ÀûÈÐ¾üÍÅ", "ÎïÀí", "b", "Ê¹ÊÖ³ÖØ°Ê××÷Õ½µÄ¹íÍÞÔö¼Ó3Ãû¡£")
-; ·ûÎÄ: Åç»ð¹íÍÞ 
-RUNE_WITCH_DOCTOR_FETISH_ARMY_C := New SkillRune("Åç»ð¹íÍÞ", "»ðÑæ", "c", "ÕÙ»½¶îÍâ2Ãû¹íÍÞÊ©·¨Õß£¬ÅçÍÂ»ðÑæ£¬¶ÔÃæÇ°×¶ÐÎÇøÓòÄÚµÄµÐÈËÔì³É85%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ÁÔÍ·¹íÍÞ 
-RUNE_WITCH_DOCTOR_FETISH_ARMY_E := New SkillRune("ÁÔÍ·¹íÍÞ", "¶¾ËØ", "e", "ÕÙ»½¶îÍâ2¸ö¹íÍÞÁÔÊÖ£¬ÏòµÐÈË´µ¼ý£¬Ôì³ÉÏàµ±ÓÚÄãÎäÆ÷ÉËº¦130%µÄÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©¡£")
-; ¼¼ÄÜ: ¹íÍÞ´ó¾ü
-SKILL_ACTIVE_WITCH_DOCTOR_FETISH_ARMY := New ActiveSkill("¹íÍÞ´ó¾ü", "ÎïÀí", "Î×¶¾"
+; ç¬¦æ–‡: é¬¼å¨ƒä¼å‡» 
+RUNE_WITCH_DOCTOR_FETISH_ARMY_A := New SkillRune("é¬¼å¨ƒä¼å‡»", "å†°å¯’", "a", "å½“é¬¼å¨ƒè¢«å¬å”¤æ—¶ï¼Œæ¯ä¸ªé¬¼å¨ƒéƒ½ä¼šå¯¹é™„è¿‘çš„ä»»æ„æ•Œäººé€ æˆ680%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: èª“æ­»è¿½éš 
+RUNE_WITCH_DOCTOR_FETISH_ARMY_D := New SkillRune("èª“æ­»è¿½éš", "ç‰©ç†", "d", "ä½¿é¬¼å¨ƒå¤§å†›çš„å†·å´æ—¶é—´ç¼©çŸ­è‡³90ç§’ã€‚")
+; ç¬¦æ–‡: åˆ©åˆƒå†›å›¢ 
+RUNE_WITCH_DOCTOR_FETISH_ARMY_B := New SkillRune("åˆ©åˆƒå†›å›¢", "ç‰©ç†", "b", "ä½¿æ‰‹æŒåŒ•é¦–ä½œæˆ˜çš„é¬¼å¨ƒå¢žåŠ 3åã€‚")
+; ç¬¦æ–‡: å–·ç«é¬¼å¨ƒ 
+RUNE_WITCH_DOCTOR_FETISH_ARMY_C := New SkillRune("å–·ç«é¬¼å¨ƒ", "ç«ç„°", "c", "å¬å”¤é¢å¤–2åé¬¼å¨ƒæ–½æ³•è€…ï¼Œå–·åç«ç„°ï¼Œå¯¹é¢å‰é”¥å½¢åŒºåŸŸå†…çš„æ•Œäººé€ æˆ85%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: çŒŽå¤´é¬¼å¨ƒ 
+RUNE_WITCH_DOCTOR_FETISH_ARMY_E := New SkillRune("çŒŽå¤´é¬¼å¨ƒ", "æ¯’ç´ ", "e", "å¬å”¤é¢å¤–2ä¸ªé¬¼å¨ƒçŒŽæ‰‹ï¼Œå‘æ•Œäººå¹ç®­ï¼Œé€ æˆç›¸å½“äºŽä½ æ­¦å™¨ä¼¤å®³130%çš„ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: é¬¼å¨ƒå¤§å†›
+SKILL_ACTIVE_WITCH_DOCTOR_FETISH_ARMY := New ActiveSkill("é¬¼å¨ƒå¤§å†›", "ç‰©ç†", "å·«æ¯’"
 	, "images\skills\witch-doctor\active\witchdoctor_fetisharmy_normal.png"
-	, "ÀäÈ´Ê±¼ä£º120Ãë\r\nÕÙ»½Ò»Ö§ÓÉ5ÃûÊÖ³ÖØ°Ê×µÄ¹íÍÞ×é³ÉµÄ´ó¾üÓëÄã²¢¼ç×÷Õ½£¬³ÖÐø20Ãë¡£¹íÍÞ¹¥»÷¿ÉÔì³ÉÏàµ±ÓÚÄãÎäÆ÷ÉËº¦180%µÄÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£"
+	, "å†·å´æ—¶é—´ï¼š120ç§’\r\nå¬å”¤ä¸€æ”¯ç”±5åæ‰‹æŒåŒ•é¦–çš„é¬¼å¨ƒç»„æˆçš„å¤§å†›ä¸Žä½ å¹¶è‚©ä½œæˆ˜ï¼ŒæŒç»­20ç§’ã€‚é¬¼å¨ƒæ”»å‡»å¯é€ æˆç›¸å½“äºŽä½ æ­¦å™¨ä¼¤å®³180%çš„ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_WITCH_DOCTOR_FETISH_ARMY_A, RUNE_WITCH_DOCTOR_FETISH_ARMY_D, RUNE_WITCH_DOCTOR_FETISH_ARMY_B, RUNE_WITCH_DOCTOR_FETISH_ARMY_C, RUNE_WITCH_DOCTOR_FETISH_ARMY_E])
 ; ---------------------------
-; ¼¼ÄÜ: ¹íÍÞ´ó¾ü End
+; æŠ€èƒ½: é¬¼å¨ƒå¤§å†› End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Ê³ÈËÓã Start
+; æŠ€èƒ½: é£Ÿäººé±¼ Start
 ; ---------------------------
-; ·ûÎÄ: Ð°Áé¾Þöù 
-RUNE_WITCH_DOCTOR_PIRANHAS_A := New SkillRune("Ð°Áé¾Þöù", "ÎïÀí", "a", "Ë®³ØÖÐ³öÏÖÒ»Ö»¾Þ´óµÄöùÓã£¬»÷ÔÎ²¢ËºÒ§Ò»ÃûµÐÈË£¬Ôì³É1100%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÎïÀíÉËº¦£©¡£")
-; ·ûÎÄ: ½©Ê¬Ê³ÈËÓã 
-RUNE_WITCH_DOCTOR_PIRANHAS_B := New SkillRune("½©Ê¬Ê³ÈËÓã", "¶¾ËØ", "b", "½«Ê³ÈËÓã±ä³É½©Ê¬Ê³ÈËÓã¡£½©Ê¬Ê³ÈËÓã»áÐ×ÃÍµØÔ¾³öË®³Ø£¬¹¥»÷¸½½üµÄµÐÈË¡£")
-; ·ûÎÄ: Ê³ÈËÓãÐý·ç 
-RUNE_WITCH_DOCTOR_PIRANHAS_C := New SkillRune("Ê³ÈËÓãÐý·ç", "¶¾ËØ", "c", "½«Ò»³ØÊ³ÈËÓã±ä³ÉÊ³ÈËÓãÐý·ç£¬³ÖÐø4Ãë¡£¸½½üµÄµÐÈË»áÖÜÆÚÐÔµØ±»Ðý·çÎüÈë¡£Ê¹ÀäÈ´Ê±¼äÑÓ³¤ÖÁ16Ãë¡£")
-; ·ûÎÄ: Ê³ÈË²¨ÌÎ 
-RUNE_WITCH_DOCTOR_PIRANHAS_D := New SkillRune("Ê³ÈË²¨ÌÎ", "¶¾ËØ", "d", "Ã¿´ÎÊ©·Å¶¼»áÊÍ·Å³öÒ»²¨Ê³ÈËÓãÏòÇ°Ô¾»÷£¬Ôì³É475%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©£¬²¢Ê¹ÊÜÓ°ÏìµÄËùÓÐµÐÈË¶îÍâÊÜµ½15%µÄÉËº¦£¬³ÖÐø8Ãë¡£")
-; ·ûÎÄ: º®±ùÊ³ÈËÓã 
-RUNE_WITCH_DOCTOR_PIRANHAS_E := New SkillRune("º®±ùÊ³ÈËÓã", "±ùº®", "e", "½«ÉËº¦¸Ä±äÎªÔÚ8ÃëÄÚÔì³É400%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©£¬ÔÚÕû¸öÐ§¹û³ÖÐøÆÚ¼äÊ¹µÐÈËÏÝÈëº®Àä¡£")
-; ¼¼ÄÜ: Ê³ÈËÓã
-SKILL_ACTIVE_WITCH_DOCTOR_PIRANHAS := New ActiveSkill("Ê³ÈËÓã", "¶¾ËØ", "µòÁã"
+; ç¬¦æ–‡: é‚ªçµå·¨é³„ 
+RUNE_WITCH_DOCTOR_PIRANHAS_A := New SkillRune("é‚ªçµå·¨é³„", "ç‰©ç†", "a", "æ°´æ± ä¸­å‡ºçŽ°ä¸€åªå·¨å¤§çš„é³„é±¼ï¼Œå‡»æ™•å¹¶æ’•å’¬ä¸€åæ•Œäººï¼Œé€ æˆ1100%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç‰©ç†ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: åƒµå°¸é£Ÿäººé±¼ 
+RUNE_WITCH_DOCTOR_PIRANHAS_B := New SkillRune("åƒµå°¸é£Ÿäººé±¼", "æ¯’ç´ ", "b", "å°†é£Ÿäººé±¼å˜æˆåƒµå°¸é£Ÿäººé±¼ã€‚åƒµå°¸é£Ÿäººé±¼ä¼šå‡¶çŒ›åœ°è·ƒå‡ºæ°´æ± ï¼Œæ”»å‡»é™„è¿‘çš„æ•Œäººã€‚")
+; ç¬¦æ–‡: é£Ÿäººé±¼æ—‹é£Ž 
+RUNE_WITCH_DOCTOR_PIRANHAS_C := New SkillRune("é£Ÿäººé±¼æ—‹é£Ž", "æ¯’ç´ ", "c", "å°†ä¸€æ± é£Ÿäººé±¼å˜æˆé£Ÿäººé±¼æ—‹é£Žï¼ŒæŒç»­4ç§’ã€‚é™„è¿‘çš„æ•Œäººä¼šå‘¨æœŸæ€§åœ°è¢«æ—‹é£Žå¸å…¥ã€‚ä½¿å†·å´æ—¶é—´å»¶é•¿è‡³16ç§’ã€‚")
+; ç¬¦æ–‡: é£Ÿäººæ³¢æ¶› 
+RUNE_WITCH_DOCTOR_PIRANHAS_D := New SkillRune("é£Ÿäººæ³¢æ¶›", "æ¯’ç´ ", "d", "æ¯æ¬¡æ–½æ”¾éƒ½ä¼šé‡Šæ”¾å‡ºä¸€æ³¢é£Ÿäººé±¼å‘å‰è·ƒå‡»ï¼Œé€ æˆ475%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ï¼Œå¹¶ä½¿å—å½±å“çš„æ‰€æœ‰æ•Œäººé¢å¤–å—åˆ°15%çš„ä¼¤å®³ï¼ŒæŒç»­8ç§’ã€‚")
+; ç¬¦æ–‡: å¯’å†°é£Ÿäººé±¼ 
+RUNE_WITCH_DOCTOR_PIRANHAS_E := New SkillRune("å¯’å†°é£Ÿäººé±¼", "å†°å¯’", "e", "å°†ä¼¤å®³æ”¹å˜ä¸ºåœ¨8ç§’å†…é€ æˆ400%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ï¼Œåœ¨æ•´ä¸ªæ•ˆæžœæŒç»­æœŸé—´ä½¿æ•Œäººé™·å…¥å¯’å†·ã€‚")
+; æŠ€èƒ½: é£Ÿäººé±¼
+SKILL_ACTIVE_WITCH_DOCTOR_PIRANHAS := New ActiveSkill("é£Ÿäººé±¼", "æ¯’ç´ ", "å‡‹é›¶"
 	, "images\skills\witch-doctor\active\witchdoctor_piranhas_normal.png"
-	, "ÏûºÄ£º250µã·¨Á¦ÖµÀäÈ´Ê±¼ä£º8Ãë\r\nÕÙ»½Ò»³ØÖÂÃüµÄÊ³ÈËÓã£¬ÔÚ8ÃëÄÚÔì³É400%µÄÎäÆ÷ÉËº¦£¨×÷Îª¶¾ÐÔÉËº¦£©¡£ÊÜµ½Ó°ÏìµÄµÐÈË»á¶îÍâÊÜµ½15%µÄÉËº¦¡£"
+	, "æ¶ˆè€—ï¼š250ç‚¹æ³•åŠ›å€¼å†·å´æ—¶é—´ï¼š8ç§’\r\nå¬å”¤ä¸€æ± è‡´å‘½çš„é£Ÿäººé±¼ï¼Œåœ¨8ç§’å†…é€ æˆ400%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºæ¯’æ€§ä¼¤å®³ï¼‰ã€‚å—åˆ°å½±å“çš„æ•Œäººä¼šé¢å¤–å—åˆ°15%çš„ä¼¤å®³ã€‚"
 	, [RUNE_WITCH_DOCTOR_PIRANHAS_A, RUNE_WITCH_DOCTOR_PIRANHAS_B, RUNE_WITCH_DOCTOR_PIRANHAS_C, RUNE_WITCH_DOCTOR_PIRANHAS_D, RUNE_WITCH_DOCTOR_PIRANHAS_E])
 ; ---------------------------
-; ¼¼ÄÜ: Ê³ÈËÓã End
+; æŠ€èƒ½: é£Ÿäººé±¼ End
 ; ---------------------------
 
 ; ===========================
-; Î×Ò½ End
+; å·«åŒ» End
 ; ===========================
 
 
 
 ; ===========================
-; Ä§·¨Ê¦ Start
+; é­”æ³•å¸ˆ Start
 ; ===========================
 ; ---------------------------
-; ¼¼ÄÜ: Ä§·¨·Éµ¯ Start
+; æŠ€èƒ½: é­”æ³•é£žå¼¹ Start
 ; ---------------------------
-; ·ûÎÄ: ³äÄÜ±¬ÆÆ 
-RUNE_WIZARD_MAGIC_MISSILE_A := New SkillRune("³äÄÜ±¬ÆÆ", "ÃØ·¨", "a", "Ê¹Ä§·¨·Éµ¯µÄÉËº¦Ìá¸ßÖÁ325%µÄÎäÆ÷ÉËº¦£¨×÷Îª°ÂÊõÉËº¦£©¡£")
-; ·ûÎÄ: ±ù´¨¼â´Ì 
-RUNE_WIZARD_MAGIC_MISSILE_D := New SkillRune("±ù´¨¼â´Ì", "±ùº®", "d", "ÖÀ³öÒ»¿éº®±ùËéÆ¬£¬»áÔÚ»÷ÖÐÊ±±¬ÁÑ£¬¶Ô4.5ÂëÄÚµÄµÐÈËÔì³É175%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©£¬²¢½«Æä±ù¶³1Ãë¡£µÐÈËÃ¿5ÃëÖ»ÄÜ±»±ù´¨¼â´Ì±ù¶³Ò»´Î¡£")
-; ·ûÎÄ: ¶àÖØ·Éµ¯ 
-RUNE_WIZARD_MAGIC_MISSILE_B := New SkillRune("¶àÖØ·Éµ¯", "ÃØ·¨", "b", "Éä³ö3¿Å·Éµ¯£¬Ã¿¿ÅÔì³É80%µÄÎäÆ÷ÉËº¦£¨×÷Îª°ÂÊõÉËº¦£©¡£")
-; ·ûÎÄ: ×·×Ù·Éµ¯ 
-RUNE_WIZARD_MAGIC_MISSILE_E := New SkillRune("×·×Ù·Éµ¯", "ÃØ·¨", "e", "·Éµ¯×·Öð×î½üµÄµÐÈËÇÒÔì³ÉµÄÉËº¦Ìá¸ßÖÁ285%µÄÎäÆ÷ÉËº¦£¨×÷Îª°ÂÊõÉËº¦£©¡£")
-; ·ûÎÄ: ÁÒÑæ·Éµ¯ 
-RUNE_WIZARD_MAGIC_MISSILE_C := New SkillRune("ÁÒÑæ·Éµ¯", "»ðÑæ", "c", "·Éµ¯»á´©Í¸µÐÈËÊ¹ÆäÈ¼ÉÕ£¬ÔÚ3ÃëÄÚÔì³É130%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£È¼ÉÕÉËº¦×î¶à¿Éµþ¼Ó3´Î£¬²¢ÇÒÄãµÄÆäËû·¨ÊõÔì³É»ðÑæÉËº¦Ê±»áÖØÖÃ´Ëµþ¼ÓÐ§¹ûµÄ³ÖÐøÊ±¼ä¡£")
-; ¼¼ÄÜ: Ä§·¨·Éµ¯
-SKILL_ACTIVE_WIZARD_MAGIC_MISSILE := New ActiveSkill("Ä§·¨·Éµ¯", "ÃØ·¨", "Ö÷Òª"
+; ç¬¦æ–‡: å……èƒ½çˆ†ç ´ 
+RUNE_WIZARD_MAGIC_MISSILE_A := New SkillRune("å……èƒ½çˆ†ç ´", "ç§˜æ³•", "a", "ä½¿é­”æ³•é£žå¼¹çš„ä¼¤å®³æé«˜è‡³325%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå¥¥æœ¯ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å†°å·å°–åˆº 
+RUNE_WIZARD_MAGIC_MISSILE_D := New SkillRune("å†°å·å°–åˆº", "å†°å¯’", "d", "æŽ·å‡ºä¸€å—å¯’å†°ç¢Žç‰‡ï¼Œä¼šåœ¨å‡»ä¸­æ—¶çˆ†è£‚ï¼Œå¯¹4.5ç å†…çš„æ•Œäººé€ æˆ175%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ï¼Œå¹¶å°†å…¶å†°å†»1ç§’ã€‚æ•Œäººæ¯5ç§’åªèƒ½è¢«å†°å·å°–åˆºå†°å†»ä¸€æ¬¡ã€‚")
+; ç¬¦æ–‡: å¤šé‡é£žå¼¹ 
+RUNE_WIZARD_MAGIC_MISSILE_B := New SkillRune("å¤šé‡é£žå¼¹", "ç§˜æ³•", "b", "å°„å‡º3é¢—é£žå¼¹ï¼Œæ¯é¢—é€ æˆ80%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå¥¥æœ¯ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: è¿½è¸ªé£žå¼¹ 
+RUNE_WIZARD_MAGIC_MISSILE_E := New SkillRune("è¿½è¸ªé£žå¼¹", "ç§˜æ³•", "e", "é£žå¼¹è¿½é€æœ€è¿‘çš„æ•Œäººä¸”é€ æˆçš„ä¼¤å®³æé«˜è‡³285%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå¥¥æœ¯ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: çƒˆç„°é£žå¼¹ 
+RUNE_WIZARD_MAGIC_MISSILE_C := New SkillRune("çƒˆç„°é£žå¼¹", "ç«ç„°", "c", "é£žå¼¹ä¼šç©¿é€æ•Œäººä½¿å…¶ç‡ƒçƒ§ï¼Œåœ¨3ç§’å†…é€ æˆ130%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚ç‡ƒçƒ§ä¼¤å®³æœ€å¤šå¯å åŠ 3æ¬¡ï¼Œå¹¶ä¸”ä½ çš„å…¶ä»–æ³•æœ¯é€ æˆç«ç„°ä¼¤å®³æ—¶ä¼šé‡ç½®æ­¤å åŠ æ•ˆæžœçš„æŒç»­æ—¶é—´ã€‚")
+; æŠ€èƒ½: é­”æ³•é£žå¼¹
+SKILL_ACTIVE_WIZARD_MAGIC_MISSILE := New ActiveSkill("é­”æ³•é£žå¼¹", "ç§˜æ³•", "ä¸»è¦"
 	, "images\skills\wizard\active\wizard_magicmissile_normal.png"
-	, "ÕâÊÇÒ»ÖÖÐÞÎª·¨Êõ¡£Ê©·ÅÐÞÎª·¨ÊõÎÞÐèÏûºÄ·¨Á¦Öµ¡£\r\n·¢³öÄ§·¨ÄÜÁ¿·Éµ¯£¬Ôì³É230%µÄÎäÆ÷ÉËº¦£¨×÷Îª°ÂÊõÉËº¦£©¡£"
+	, "è¿™æ˜¯ä¸€ç§ä¿®ä¸ºæ³•æœ¯ã€‚æ–½æ”¾ä¿®ä¸ºæ³•æœ¯æ— éœ€æ¶ˆè€—æ³•åŠ›å€¼ã€‚\r\nå‘å‡ºé­”æ³•èƒ½é‡é£žå¼¹ï¼Œé€ æˆ230%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå¥¥æœ¯ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_WIZARD_MAGIC_MISSILE_A, RUNE_WIZARD_MAGIC_MISSILE_D, RUNE_WIZARD_MAGIC_MISSILE_B, RUNE_WIZARD_MAGIC_MISSILE_E, RUNE_WIZARD_MAGIC_MISSILE_C])
 ; ---------------------------
-; ¼¼ÄÜ: Ä§·¨·Éµ¯ End
+; æŠ€èƒ½: é­”æ³•é£žå¼¹ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ±ùËªÉäÏß Start
+; æŠ€èƒ½: å†°éœœå°„çº¿ Start
 ; ---------------------------
-; ·ûÎÄ: ±ùÀäÑªÂö 
-RUNE_WIZARD_RAY_OF_FROST_D := New SkillRune("±ùÀäÑªÂö", "±ùº®", "d", "Ê¹Òýµ¼ÏûºÄ½µµÍÖÁ11µã°ÂÄÜ¡£")
-; ·ûÎÄ: ¶³ÌåÂé±Ô 
-RUNE_WIZARD_RAY_OF_FROST_C := New SkillRune("¶³ÌåÂé±Ô", "±ùº®", "c", "±ùËªÉäÏßÓÐ10%µÄ¼¸ÂÊ½«µÐÈË±ù¶³1Ãë£¬²¢Ê¹¼õËÙÐ§¹ûÌá¸ßÖÁ80%£¬³ÖÐø3Ãë¡£")
-; ·ûÎÄ: ºÚ±ù 
-RUNE_WIZARD_RAY_OF_FROST_E := New SkillRune("ºÚ±ù", "±ùº®", "e", "±»±ùËªÉäÏßÏûÃðµÄµÐÈË»áÁôÏÂÒ»¿éº®±ù£¬ÔÚ3ÃëÄÚ¶Ô¾­¹ýµÄµÐÈËÔì³É1625%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£")
-; ·ûÎÄ: ¶³Óê·ç±© 
-RUNE_WIZARD_RAY_OF_FROST_B := New SkillRune("¶³Óê·ç±©", "±ùº®", "b", "ÔÚÄãÖÜÎ§ÐÎ³ÉÒ»ÍÅäöÎÐ·ç±©£¬Ð§¹û·¶Î§×î´ó¿É´ïµ½22Âë£¬²¢¶Ô±»¾íÈë·ç±©µÄËùÓÐµÐÈËÔì³É300%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£±ùËªÉäÏßÃ¿Ãë»áÌá¸ßÏàµ±ÓÚ220%µÄÎäÆ÷ÉËº¦£¬×î¶à¿ÉÌá¸ßÖÁ740%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£")
-; ·ûÎÄ: ±ùÑ©³å»÷ 
-RUNE_WIZARD_RAY_OF_FROST_A := New SkillRune("±ùÑ©³å»÷", "±ùº®", "a", "±»±ùËªÉäÏßÃüÖÐµÄµÐÈË£¬ÊÜµ½µÄ±ùËªÉËº¦Ìá¸ß15%£¬³ÖÐø4Ãë¡£")
-; ¼¼ÄÜ: ±ùËªÉäÏß
-SKILL_ACTIVE_WIZARD_RAY_OF_FROST := New ActiveSkill("±ùËªÉäÏß", "±ùº®", "´ÎÒª"
+; ç¬¦æ–‡: å†°å†·è¡€è„‰ 
+RUNE_WIZARD_RAY_OF_FROST_D := New SkillRune("å†°å†·è¡€è„‰", "å†°å¯’", "d", "ä½¿å¼•å¯¼æ¶ˆè€—é™ä½Žè‡³11ç‚¹å¥¥èƒ½ã€‚")
+; ç¬¦æ–‡: å†»ä½“éº»ç—¹ 
+RUNE_WIZARD_RAY_OF_FROST_C := New SkillRune("å†»ä½“éº»ç—¹", "å†°å¯’", "c", "å†°éœœå°„çº¿æœ‰10%çš„å‡ çŽ‡å°†æ•Œäººå†°å†»1ç§’ï¼Œå¹¶ä½¿å‡é€Ÿæ•ˆæžœæé«˜è‡³80%ï¼ŒæŒç»­3ç§’ã€‚")
+; ç¬¦æ–‡: é»‘å†° 
+RUNE_WIZARD_RAY_OF_FROST_E := New SkillRune("é»‘å†°", "å†°å¯’", "e", "è¢«å†°éœœå°„çº¿æ¶ˆç­çš„æ•Œäººä¼šç•™ä¸‹ä¸€å—å¯’å†°ï¼Œåœ¨3ç§’å†…å¯¹ç»è¿‡çš„æ•Œäººé€ æˆ1625%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å†»é›¨é£Žæš´ 
+RUNE_WIZARD_RAY_OF_FROST_B := New SkillRune("å†»é›¨é£Žæš´", "å†°å¯’", "b", "åœ¨ä½ å‘¨å›´å½¢æˆä¸€å›¢æ¼©æ¶¡é£Žæš´ï¼Œæ•ˆæžœèŒƒå›´æœ€å¤§å¯è¾¾åˆ°22ç ï¼Œå¹¶å¯¹è¢«å·å…¥é£Žæš´çš„æ‰€æœ‰æ•Œäººé€ æˆ300%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚å†°éœœå°„çº¿æ¯ç§’ä¼šæé«˜ç›¸å½“äºŽ220%çš„æ­¦å™¨ä¼¤å®³ï¼Œæœ€å¤šå¯æé«˜è‡³740%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å†°é›ªå†²å‡» 
+RUNE_WIZARD_RAY_OF_FROST_A := New SkillRune("å†°é›ªå†²å‡»", "å†°å¯’", "a", "è¢«å†°éœœå°„çº¿å‘½ä¸­çš„æ•Œäººï¼Œå—åˆ°çš„å†°éœœä¼¤å®³æé«˜15%ï¼ŒæŒç»­4ç§’ã€‚")
+; æŠ€èƒ½: å†°éœœå°„çº¿
+SKILL_ACTIVE_WIZARD_RAY_OF_FROST := New ActiveSkill("å†°éœœå°„çº¿", "å†°å¯’", "æ¬¡è¦"
 	, "images\skills\wizard\active\wizard_rayoffrost_normal.png"
-	, "ÏûºÄ£º16µã°ÂÄÜ\r\nÉä³ö¼«º®ÉäÏß£¬ºä»÷Î»ÓÚÊ×¸ö±»ÃüÖÐµÐÈË¸½½ü5ÂëÄÚµÄËùÓÐµÐÈË£¬Ôì³É430%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©£¬²¢Ê¹ÆäÒÆ¶¯ËÙ¶È½µµÍ60%£¬³ÖÐø3Ãë¡£"
+	, "æ¶ˆè€—ï¼š16ç‚¹å¥¥èƒ½\r\nå°„å‡ºæžå¯’å°„çº¿ï¼Œè½°å‡»ä½äºŽé¦–ä¸ªè¢«å‘½ä¸­æ•Œäººé™„è¿‘5ç å†…çš„æ‰€æœ‰æ•Œäººï¼Œé€ æˆ430%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ï¼Œå¹¶ä½¿å…¶ç§»åŠ¨é€Ÿåº¦é™ä½Ž60%ï¼ŒæŒç»­3ç§’ã€‚"
 	, [RUNE_WIZARD_RAY_OF_FROST_D, RUNE_WIZARD_RAY_OF_FROST_C, RUNE_WIZARD_RAY_OF_FROST_E, RUNE_WIZARD_RAY_OF_FROST_B, RUNE_WIZARD_RAY_OF_FROST_A])
 ; ---------------------------
-; ¼¼ÄÜ: ±ùËªÉäÏß End
+; æŠ€èƒ½: å†°éœœå°„çº¿ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ³å»÷Õð²¨ Start
+; æŠ€èƒ½: å†²å‡»éœ‡æ³¢ Start
 ; ---------------------------
-; ·ûÎÄ: ±¬ÁÑÕð»÷ 
-RUNE_WIZARD_SHOCK_PULSE_E := New SkillRune("±¬ÁÑÕð»÷", "±ùº®", "e", "±»ÏûÃðµÄµÐÈË»á±¬Õ¨£¬¶Ô10ÂëÄÚµÄÃ¿¸öµÐÈËÔì³É184%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£³å»÷Õð²¨µÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ·ûÎÄ: »ðÑæ¼ý 
-RUNE_WIZARD_SHOCK_PULSE_A := New SkillRune("»ðÑæ¼ý", "»ðÑæ", "a", "Ê©·Å3Ö§»ðÑæ¼ý£¬Ã¿Ö§Ôì³É274%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ´©´ÌÖ®Çò 
-RUNE_WIZARD_SHOCK_PULSE_C := New SkillRune("´©´ÌÖ®Çò", "µç»÷", "c", "½«¼ýÊ¸ºÏ²¢³ÉÒ»¸ö¾Þ´óµÄÇòÌå£¬Õñµ´Ç°ÐÐ£¬¶Ô»÷ÖÐµÄËùÓÐÄ¿±êÔì³É214%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£")
-; ·ûÎÄ: ÄÜÁ¿Ç×ºÍ 
-RUNE_WIZARD_SHOCK_PULSE_D := New SkillRune("ÄÜÁ¿Ç×ºÍ", "ÃØ·¨", "d", "Ã¿»÷ÖÐÒ»ÃûµÐÈË¼´¿É»Ö¸´2µã°ÂÄÜ¡£³å»÷Õð²¨µÄÉËº¦ÀàÐÍ×ª»»Îª°ÂÊõÉËº¦¡£")
-; ·ûÎÄ: »îÌåÉÁµç 
-RUNE_WIZARD_SHOCK_PULSE_B := New SkillRune("»îÌåÉÁµç", "µç»÷", "b", "ÕÙ³öÒ»¹É¾¶Ö±ÏòÇ°Æ®ÒÆµÄÉÁµç£¬µç»÷¸½½üµÄµÐÈË£¬Ôì³É165%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£")
-; ¼¼ÄÜ: ³å»÷Õð²¨
-SKILL_ACTIVE_WIZARD_SHOCK_PULSE := New ActiveSkill("³å»÷Õð²¨", "µç»÷", "Ö÷Òª"
+; ç¬¦æ–‡: çˆ†è£‚éœ‡å‡» 
+RUNE_WIZARD_SHOCK_PULSE_E := New SkillRune("çˆ†è£‚éœ‡å‡»", "å†°å¯’", "e", "è¢«æ¶ˆç­çš„æ•Œäººä¼šçˆ†ç‚¸ï¼Œå¯¹10ç å†…çš„æ¯ä¸ªæ•Œäººé€ æˆ184%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚å†²å‡»éœ‡æ³¢çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ç«ç„°ç®­ 
+RUNE_WIZARD_SHOCK_PULSE_A := New SkillRune("ç«ç„°ç®­", "ç«ç„°", "a", "æ–½æ”¾3æ”¯ç«ç„°ç®­ï¼Œæ¯æ”¯é€ æˆ274%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: ç©¿åˆºä¹‹çƒ 
+RUNE_WIZARD_SHOCK_PULSE_C := New SkillRune("ç©¿åˆºä¹‹çƒ", "ç”µå‡»", "c", "å°†ç®­çŸ¢åˆå¹¶æˆä¸€ä¸ªå·¨å¤§çš„çƒä½“ï¼ŒæŒ¯è¡å‰è¡Œï¼Œå¯¹å‡»ä¸­çš„æ‰€æœ‰ç›®æ ‡é€ æˆ214%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: èƒ½é‡äº²å’Œ 
+RUNE_WIZARD_SHOCK_PULSE_D := New SkillRune("èƒ½é‡äº²å’Œ", "ç§˜æ³•", "d", "æ¯å‡»ä¸­ä¸€åæ•Œäººå³å¯æ¢å¤2ç‚¹å¥¥èƒ½ã€‚å†²å‡»éœ‡æ³¢çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå¥¥æœ¯ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æ´»ä½“é—ªç”µ 
+RUNE_WIZARD_SHOCK_PULSE_B := New SkillRune("æ´»ä½“é—ªç”µ", "ç”µå‡»", "b", "å¬å‡ºä¸€è‚¡å¾„ç›´å‘å‰é£˜ç§»çš„é—ªç”µï¼Œç”µå‡»é™„è¿‘çš„æ•Œäººï¼Œé€ æˆ165%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: å†²å‡»éœ‡æ³¢
+SKILL_ACTIVE_WIZARD_SHOCK_PULSE := New ActiveSkill("å†²å‡»éœ‡æ³¢", "ç”µå‡»", "ä¸»è¦"
 	, "images\skills\wizard\active\wizard_chargedbolt_normal.png"
-	, "ÕâÊÇÒ»ÖÖÐÞÎª·¨Êõ¡£Ê©·ÅÐÞÎª·¨ÊõÎÞÐèÏûºÄ·¨Á¦Öµ¡£\r\nÊÍ·Å³ö3¹É²»¿ÉÔ¤²âµÄÖÐ¾àÀëµçÁ÷£¬Ôì³É194%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£"
+	, "è¿™æ˜¯ä¸€ç§ä¿®ä¸ºæ³•æœ¯ã€‚æ–½æ”¾ä¿®ä¸ºæ³•æœ¯æ— éœ€æ¶ˆè€—æ³•åŠ›å€¼ã€‚\r\né‡Šæ”¾å‡º3è‚¡ä¸å¯é¢„æµ‹çš„ä¸­è·ç¦»ç”µæµï¼Œé€ æˆ194%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_WIZARD_SHOCK_PULSE_E, RUNE_WIZARD_SHOCK_PULSE_A, RUNE_WIZARD_SHOCK_PULSE_C, RUNE_WIZARD_SHOCK_PULSE_D, RUNE_WIZARD_SHOCK_PULSE_B])
 ; ---------------------------
-; ¼¼ÄÜ: ³å»÷Õð²¨ End
+; æŠ€èƒ½: å†²å‡»éœ‡æ³¢ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ±ùËªÐÂÐÇ Start
+; æŠ€èƒ½: å†°éœœæ–°æ˜Ÿ Start
 ; ---------------------------
-; ·ûÎÄ: ±ù±¬ 
-RUNE_WIZARD_FROST_NOVA_B := New SkillRune("±ù±¬", "±ùº®", "b", "±»±ù¶³µÄµÐÈËÔÚ±»ÏûÃðÊ±ÓÐ100%µÄ¼¸ÂÊ±¬ÆÆ³öÁíÒ»¸ö±ùËªÐÂÐÇ¡£")
-; ·ûÎÄ: ¼«ËÙ±ù¶³ 
-RUNE_WIZARD_FROST_NOVA_D := New SkillRune("¼«ËÙ±ù¶³", "±ùº®", "d", "Ê¹±ùËªÐÂÐÇµÄÀäÈ´Ê±¼äËõ¶ÌÖÁ7.5Ãë£¬³ÖÐøÊ±¼äÑÓ³¤ÖÁ3Ãë¡£")
-; ·ûÎÄ: ±ù¶³ÃÔÎí 
-RUNE_WIZARD_FROST_NOVA_C := New SkillRune("±ù¶³ÃÔÎí", "±ùº®", "c", "±ùËªÐÂÐÇ²»ÔÙ±ù¶³µÐÈË£¬¶øÊÇÁôÏÂÒ»Æ¬±ùËªÃÔÎí£¬ÔÚ8ÃëÄÚÔì³É915%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£")
-; ·ûÎÄ: Éî¶È±ù¶³ 
-RUNE_WIZARD_FROST_NOVA_E := New SkillRune("Éî¶È±ù¶³", "±ùº®", "e", "Èç¹û±ùËªÐÂÐÇ»÷ÖÐÖÁÉÙ5¸öÄ¿±ê£¬Äã¿É»ñµÃ10%µÄ±©»÷¼¸ÂÊ¼Ó³É£¬³ÖÐø11Ãë¡£")
-; ·ûÎÄ: ¶³¹ÇÖ®º® 
-RUNE_WIZARD_FROST_NOVA_A := New SkillRune("¶³¹ÇÖ®º®", "±ùº®", "a", "ÊÜ±ùËªÐÂÐÇ±ù¶³»òº®ÀäÐ§¹ûÓ°ÏìµÄµÐÈË½«ÊÜµ½¶îÍâ33%µÄÉËº¦¡£")
-; ¼¼ÄÜ: ±ùËªÐÂÐÇ
-SKILL_ACTIVE_WIZARD_FROST_NOVA := New ActiveSkill("±ùËªÐÂÐÇ", "±ùº®", "·ÀÓù"
+; ç¬¦æ–‡: å†°çˆ† 
+RUNE_WIZARD_FROST_NOVA_B := New SkillRune("å†°çˆ†", "å†°å¯’", "b", "è¢«å†°å†»çš„æ•Œäººåœ¨è¢«æ¶ˆç­æ—¶æœ‰100%çš„å‡ çŽ‡çˆ†ç ´å‡ºå¦ä¸€ä¸ªå†°éœœæ–°æ˜Ÿã€‚")
+; ç¬¦æ–‡: æžé€Ÿå†°å†» 
+RUNE_WIZARD_FROST_NOVA_D := New SkillRune("æžé€Ÿå†°å†»", "å†°å¯’", "d", "ä½¿å†°éœœæ–°æ˜Ÿçš„å†·å´æ—¶é—´ç¼©çŸ­è‡³7.5ç§’ï¼ŒæŒç»­æ—¶é—´å»¶é•¿è‡³3ç§’ã€‚")
+; ç¬¦æ–‡: å†°å†»è¿·é›¾ 
+RUNE_WIZARD_FROST_NOVA_C := New SkillRune("å†°å†»è¿·é›¾", "å†°å¯’", "c", "å†°éœœæ–°æ˜Ÿä¸å†å†°å†»æ•Œäººï¼Œè€Œæ˜¯ç•™ä¸‹ä¸€ç‰‡å†°éœœè¿·é›¾ï¼Œåœ¨8ç§’å†…é€ æˆ915%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: æ·±åº¦å†°å†» 
+RUNE_WIZARD_FROST_NOVA_E := New SkillRune("æ·±åº¦å†°å†»", "å†°å¯’", "e", "å¦‚æžœå†°éœœæ–°æ˜Ÿå‡»ä¸­è‡³å°‘5ä¸ªç›®æ ‡ï¼Œä½ å¯èŽ·å¾—10%çš„æš´å‡»å‡ çŽ‡åŠ æˆï¼ŒæŒç»­11ç§’ã€‚")
+; ç¬¦æ–‡: å†»éª¨ä¹‹å¯’ 
+RUNE_WIZARD_FROST_NOVA_A := New SkillRune("å†»éª¨ä¹‹å¯’", "å†°å¯’", "a", "å—å†°éœœæ–°æ˜Ÿå†°å†»æˆ–å¯’å†·æ•ˆæžœå½±å“çš„æ•Œäººå°†å—åˆ°é¢å¤–33%çš„ä¼¤å®³ã€‚")
+; æŠ€èƒ½: å†°éœœæ–°æ˜Ÿ
+SKILL_ACTIVE_WIZARD_FROST_NOVA := New ActiveSkill("å†°éœœæ–°æ˜Ÿ", "å†°å¯’", "é˜²å¾¡"
 	, "images\skills\wizard\active\wizard_frostnova_normal.png"
-	, "ÀäÈ´Ê±¼ä£º11Ãë\r\nÓÃº®±ù±¬ÆÆ³å»÷¸½½üµÄµÐÈË£¬½«Æä±ù¶³2Ãë¡£"
+	, "å†·å´æ—¶é—´ï¼š11ç§’\r\nç”¨å¯’å†°çˆ†ç ´å†²å‡»é™„è¿‘çš„æ•Œäººï¼Œå°†å…¶å†°å†»2ç§’ã€‚"
 	, [RUNE_WIZARD_FROST_NOVA_B, RUNE_WIZARD_FROST_NOVA_D, RUNE_WIZARD_FROST_NOVA_C, RUNE_WIZARD_FROST_NOVA_E, RUNE_WIZARD_FROST_NOVA_A])
 ; ---------------------------
-; ¼¼ÄÜ: ±ùËªÐÂÐÇ End
+; æŠ€èƒ½: å†°éœœæ–°æ˜Ÿ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: °ÂÊõÖ®Çò Start
+; æŠ€èƒ½: å¥¥æœ¯ä¹‹çƒ Start
 ; ---------------------------
-; ·ûÎÄ: äÎÃðÖ®Çò 
-RUNE_WIZARD_ARCANE_ORB_A := New SkillRune("äÎÃðÖ®Çò", "ÃØ·¨", "a", "Ìá¸ßÇòÌåµÄËÙ¶È£¬²¢Ê¹ÉËº¦Ìá¸ßÖÁ700%µÄÎäÆ÷ÉËº¦£¨×÷Îª°ÂÊõÉËº¦£©£¬µ«Ð§¹û·¶Î§ËõÐ¡ÖÁ8Âë¡£")
-; ·ûÎÄ: °ÂÊõÐÇ»· 
-RUNE_WIZARD_ARCANE_ORB_C := New SkillRune("°ÂÊõÐÇ»·", "ÃØ·¨", "c", "Éú³É4¸öÎ§ÈÆÄ§·¨Ê¦Ðý×ªµÄ°ÂÊõÖ®Çò£¬µ±µÐÈË¿¿½üÊ±±ã»á±¬Õ¨£¬Ôì³É265%µÄÎäÆ÷ÉËº¦£¨×÷Îª°ÂÊõÉËº¦£©¡£")
-; ·ûÎÄ: µçÄÜ»ð»¨ 
-RUNE_WIZARD_ARCANE_ORB_B := New SkillRune("µçÄÜ»ð»¨", "µç»÷", "b", "³¯µÐÈËÖÀ³ö´øµçµÄ°ÂÊõÖ®Çò£¬Ôì³É349%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©£¬Ã¿»÷ÖÐÒ»ÃûµÐÈË¶¼¿ÉÊ¹ÄãÊ©·ÅµÄÏÂÒ»¸öÉÁµç·¨ÊõµÄÉËº¦Ìá¸ß2%£¬×î¶à¿É»÷ÖÐ15Ãû¡£")
-; ·ûÎÄ: ×ÆÉÕÖ®Çò 
-RUNE_WIZARD_ARCANE_ORB_D := New SkillRune("×ÆÉÕÖ®Çò", "»ðÑæ", "d", "Éä³öÒ»¿ÅÈ¼ÉÕµÄÄÜÁ¿Çò£¬Ôì³É221%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£ÇòÌå»áÔÚÐÐ½øÂ·ÏßÉÏÁôÏÂÒ»µÀ»ðÑæ£¬ÔÚ5ÃëÄÚÔì³É734%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ±ù¶³Ö®Çò 
-RUNE_WIZARD_ARCANE_ORB_E := New SkillRune("±ù¶³Ö®Çò", "±ùº®", "e", "ÖÆÔìÒ»¸ö±ù¶³ËÀÍöÖ®Çò£¬Ðý×ªÇ°½ø²¢ÏòÖÜÎ§·¢Éäº®±ù¼ý£¬Ôì³É950%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£")
-; ¼¼ÄÜ: °ÂÊõÖ®Çò
-SKILL_ACTIVE_WIZARD_ARCANE_ORB := New ActiveSkill("°ÂÊõÖ®Çò", "ÃØ·¨", "´ÎÒª"
+; ç¬¦æ–‡: æ¹®ç­ä¹‹çƒ 
+RUNE_WIZARD_ARCANE_ORB_A := New SkillRune("æ¹®ç­ä¹‹çƒ", "ç§˜æ³•", "a", "æé«˜çƒä½“çš„é€Ÿåº¦ï¼Œå¹¶ä½¿ä¼¤å®³æé«˜è‡³700%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå¥¥æœ¯ä¼¤å®³ï¼‰ï¼Œä½†æ•ˆæžœèŒƒå›´ç¼©å°è‡³8ç ã€‚")
+; ç¬¦æ–‡: å¥¥æœ¯æ˜ŸçŽ¯ 
+RUNE_WIZARD_ARCANE_ORB_C := New SkillRune("å¥¥æœ¯æ˜ŸçŽ¯", "ç§˜æ³•", "c", "ç”Ÿæˆ4ä¸ªå›´ç»•é­”æ³•å¸ˆæ—‹è½¬çš„å¥¥æœ¯ä¹‹çƒï¼Œå½“æ•Œäººé è¿‘æ—¶ä¾¿ä¼šçˆ†ç‚¸ï¼Œé€ æˆ265%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå¥¥æœ¯ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: ç”µèƒ½ç«èŠ± 
+RUNE_WIZARD_ARCANE_ORB_B := New SkillRune("ç”µèƒ½ç«èŠ±", "ç”µå‡»", "b", "æœæ•ŒäººæŽ·å‡ºå¸¦ç”µçš„å¥¥æœ¯ä¹‹çƒï¼Œé€ æˆ349%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ï¼Œæ¯å‡»ä¸­ä¸€åæ•Œäººéƒ½å¯ä½¿ä½ æ–½æ”¾çš„ä¸‹ä¸€ä¸ªé—ªç”µæ³•æœ¯çš„ä¼¤å®³æé«˜2%ï¼Œæœ€å¤šå¯å‡»ä¸­15åã€‚")
+; ç¬¦æ–‡: ç¼çƒ§ä¹‹çƒ 
+RUNE_WIZARD_ARCANE_ORB_D := New SkillRune("ç¼çƒ§ä¹‹çƒ", "ç«ç„°", "d", "å°„å‡ºä¸€é¢—ç‡ƒçƒ§çš„èƒ½é‡çƒï¼Œé€ æˆ221%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚çƒä½“ä¼šåœ¨è¡Œè¿›è·¯çº¿ä¸Šç•™ä¸‹ä¸€é“ç«ç„°ï¼Œåœ¨5ç§’å†…é€ æˆ734%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å†°å†»ä¹‹çƒ 
+RUNE_WIZARD_ARCANE_ORB_E := New SkillRune("å†°å†»ä¹‹çƒ", "å†°å¯’", "e", "åˆ¶é€ ä¸€ä¸ªå†°å†»æ­»äº¡ä¹‹çƒï¼Œæ—‹è½¬å‰è¿›å¹¶å‘å‘¨å›´å‘å°„å¯’å†°ç®­ï¼Œé€ æˆ950%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: å¥¥æœ¯ä¹‹çƒ
+SKILL_ACTIVE_WIZARD_ARCANE_ORB := New ActiveSkill("å¥¥æœ¯ä¹‹çƒ", "ç§˜æ³•", "æ¬¡è¦"
 	, "images\skills\wizard\active\wizard_arcaneorb_normal.png"
-	, "ÏûºÄ£º30µã°ÂÄÜ\r\nÖÀ³öÒ»¸öÓëÄ¿±ê½Ó´¥¼´±¬Õ¨µÄ´¿¾»ÄÜÁ¿Ö®Çò£¬¶ÔÎ»ÓÚ15ÂëÄÚµÄËùÓÐµÐÈËÔì³É435%µÄÎäÆ÷ÉËº¦£¨×÷Îª°ÂÊõÉËº¦£©¡£"
+	, "æ¶ˆè€—ï¼š30ç‚¹å¥¥èƒ½\r\næŽ·å‡ºä¸€ä¸ªä¸Žç›®æ ‡æŽ¥è§¦å³çˆ†ç‚¸çš„çº¯å‡€èƒ½é‡ä¹‹çƒï¼Œå¯¹ä½äºŽ15ç å†…çš„æ‰€æœ‰æ•Œäººé€ æˆ435%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå¥¥æœ¯ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_WIZARD_ARCANE_ORB_A, RUNE_WIZARD_ARCANE_ORB_C, RUNE_WIZARD_ARCANE_ORB_B, RUNE_WIZARD_ARCANE_ORB_D, RUNE_WIZARD_ARCANE_ORB_E])
 ; ---------------------------
-; ¼¼ÄÜ: °ÂÊõÖ®Çò End
+; æŠ€èƒ½: å¥¥æœ¯ä¹‹çƒ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ×êÊ¯Ìå·ô Start
+; æŠ€èƒ½: é’»çŸ³ä½“è‚¤ Start
 ; ---------------------------
-; ·ûÎÄ: ¾§»¯Çû¿Ç 
-RUNE_WIZARD_DIAMOND_SKIN_C := New SkillRune("¾§»¯Çû¿Ç", "ÃØ·¨", "c", "Ê¹ÉËº¦ÎüÊÕÁ¿ÉÏÏÞÌá¸ßÖÁÄãÉúÃüÖµµÄ80%¡£")
-; ·ûÎÄ: ½ÚÄÜÀâ¾µ 
-RUNE_WIZARD_DIAMOND_SKIN_D := New SkillRune("½ÚÄÜÀâ¾µ", "ÃØ·¨", "d", "µ±×êÊ¯Ìå·ô¼¤»îÊ±£¬ËùÓÐ¼¼ÄÜËùÏûºÄµÄ°ÂÄÜ½µµÍ9µã¡£")
-; ·ûÎÄ: ¾µ¹âÌå·ô 
-RUNE_WIZARD_DIAMOND_SKIN_A := New SkillRune("¾µ¹âÌå·ô", "ÃØ·¨", "a", "µ±×êÊ¯Ìå·ô¼¤»îÊ±£¬Ê¹ÄãµÄÒÆ¶¯ËÙ¶ÈÌá¸ß30%¡£")
-; ·ûÎÄ: ÄÍ¾ÃÌå·ô 
-RUNE_WIZARD_DIAMOND_SKIN_B := New SkillRune("ÄÍ¾ÃÌå·ô", "ÃØ·¨", "b", "Ê¹×êÊ¯Ìå·ôµÄ³ÖÐøÊ±¼äÑÓ³¤ÖÁ6Ãë¡£")
-; ·ûÎÄ: ×êÊ¯ËéÆ¬ 
-RUNE_WIZARD_DIAMOND_SKIN_E := New SkillRune("×êÊ¯ËéÆ¬", "ÃØ·¨", "e", "µ±×êÊ¯Ìå·ô½áÊøÊ±£¬×êÊ¯ËéÆ¬½«»á³¯ËÄÏò±¬Õ¨£¬¶Ô¸½½üµÄµÐÈËÔì³É863%µÄÎäÆ÷ÉËº¦£¨×÷Îª°ÂÊõÉËº¦£©¡£")
-; ¼¼ÄÜ: ×êÊ¯Ìå·ô
-SKILL_ACTIVE_WIZARD_DIAMOND_SKIN := New ActiveSkill("×êÊ¯Ìå·ô", "ÃØ·¨", "·ÀÓù"
+; ç¬¦æ–‡: æ™¶åŒ–èº¯å£³ 
+RUNE_WIZARD_DIAMOND_SKIN_C := New SkillRune("æ™¶åŒ–èº¯å£³", "ç§˜æ³•", "c", "ä½¿ä¼¤å®³å¸æ”¶é‡ä¸Šé™æé«˜è‡³ä½ ç”Ÿå‘½å€¼çš„80%ã€‚")
+; ç¬¦æ–‡: èŠ‚èƒ½æ£±é•œ 
+RUNE_WIZARD_DIAMOND_SKIN_D := New SkillRune("èŠ‚èƒ½æ£±é•œ", "ç§˜æ³•", "d", "å½“é’»çŸ³ä½“è‚¤æ¿€æ´»æ—¶ï¼Œæ‰€æœ‰æŠ€èƒ½æ‰€æ¶ˆè€—çš„å¥¥èƒ½é™ä½Ž9ç‚¹ã€‚")
+; ç¬¦æ–‡: é•œå…‰ä½“è‚¤ 
+RUNE_WIZARD_DIAMOND_SKIN_A := New SkillRune("é•œå…‰ä½“è‚¤", "ç§˜æ³•", "a", "å½“é’»çŸ³ä½“è‚¤æ¿€æ´»æ—¶ï¼Œä½¿ä½ çš„ç§»åŠ¨é€Ÿåº¦æé«˜30%ã€‚")
+; ç¬¦æ–‡: è€ä¹…ä½“è‚¤ 
+RUNE_WIZARD_DIAMOND_SKIN_B := New SkillRune("è€ä¹…ä½“è‚¤", "ç§˜æ³•", "b", "ä½¿é’»çŸ³ä½“è‚¤çš„æŒç»­æ—¶é—´å»¶é•¿è‡³6ç§’ã€‚")
+; ç¬¦æ–‡: é’»çŸ³ç¢Žç‰‡ 
+RUNE_WIZARD_DIAMOND_SKIN_E := New SkillRune("é’»çŸ³ç¢Žç‰‡", "ç§˜æ³•", "e", "å½“é’»çŸ³ä½“è‚¤ç»“æŸæ—¶ï¼Œé’»çŸ³ç¢Žç‰‡å°†ä¼šæœå››å‘çˆ†ç‚¸ï¼Œå¯¹é™„è¿‘çš„æ•Œäººé€ æˆ863%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå¥¥æœ¯ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: é’»çŸ³ä½“è‚¤
+SKILL_ACTIVE_WIZARD_DIAMOND_SKIN := New ActiveSkill("é’»çŸ³ä½“è‚¤", "ç§˜æ³•", "é˜²å¾¡"
 	, "images\skills\wizard\active\wizard_diamondskin_normal.png"
-	, "ÀäÈ´Ê±¼ä£º15Ãë\r\n½«ÄãµÄÆ¤·ô±äµÃÈç×êÊ¯Ò»Ñù¼áÓ²£¬³ÖÐø3Ãë£¬¿É´Ó¹¥»÷ÖÐÎüÊÕ×î¶àÏàµ±ÓÚÄãÉúÃüÖµ40%µÄÉËº¦¡£"
+	, "å†·å´æ—¶é—´ï¼š15ç§’\r\nå°†ä½ çš„çš®è‚¤å˜å¾—å¦‚é’»çŸ³ä¸€æ ·åšç¡¬ï¼ŒæŒç»­3ç§’ï¼Œå¯ä»Žæ”»å‡»ä¸­å¸æ”¶æœ€å¤šç›¸å½“äºŽä½ ç”Ÿå‘½å€¼40%çš„ä¼¤å®³ã€‚"
 	, [RUNE_WIZARD_DIAMOND_SKIN_C, RUNE_WIZARD_DIAMOND_SKIN_D, RUNE_WIZARD_DIAMOND_SKIN_A, RUNE_WIZARD_DIAMOND_SKIN_B, RUNE_WIZARD_DIAMOND_SKIN_E])
 ; ---------------------------
-; ¼¼ÄÜ: ×êÊ¯Ìå·ô End
+; æŠ€èƒ½: é’»çŸ³ä½“è‚¤ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Ô­Á¦Ö®²¨ Start
+; æŠ€èƒ½: åŽŸåŠ›ä¹‹æ³¢ Start
 ; ---------------------------
-; ·ûÎÄ: Ç¿Á¦Õð²¨ 
-RUNE_WIZARD_WAVE_OF_FORCE_A := New SkillRune("Ç¿Á¦Õð²¨", "ÃØ·¨", "a", "Ô­Á¦Ö®²¨»á·´µ¯Ô¶³Ì¹¥»÷µ½¹¥»÷ÕßÉíÉÏ£¬»÷ÍË¸½½üµÄµÐÈË²¢Ê¹ÆäÒÆ¶¯ËÙ¶È½µµÍ60%£¬³ÖÐø3Ãë¡£Ô­Á¦Ö®²¨»ñµÃ5ÃëÀäÈ´Ê±¼ä¡£")
-; ·ûÎÄ: Ë¥ÈõÖ®Á¦ 
-RUNE_WIZARD_WAVE_OF_FORCE_E := New SkillRune("Ë¥ÈõÖ®Á¦", "ÃØ·¨", "e", "±»»÷ÖÐµÄµÐÈËÔì³ÉµÄÉËº¦½µµÍ20%£¬³ÖÐø4¡£")
-; ·ûÎÄ: °ÂÊõÐ­µ÷ 
-RUNE_WIZARD_WAVE_OF_FORCE_D := New SkillRune("°ÂÊõÐ­µ÷", "ÃØ·¨", "d", "Ã¿»÷ÖÐÒ»ÃûµÐÈË¿ÉÊ¹ÄãÏÂÒ»¸ö°ÂÊõ·¨ÊõµÄÉËº¦Ìá¸ß4%¡£")
-; ·ûÎÄ: ¾²µçÂö³å 
-RUNE_WIZARD_WAVE_OF_FORCE_B := New SkillRune("¾²µçÂö³å", "µç»÷", "b", "Ã¿»÷ÖÐÒ»ÃûµÐÈË¼´¿É»Ö¸´1µã°ÂÄÜ¡£Ô­Á¦Ö®²¨µÄÉËº¦ÀàÐÍ×ª»»ÎªÉÁµçÉËº¦¡£")
-; ·ûÎÄ: ÈÈÁ¦Ö®²¨ 
-RUNE_WIZARD_WAVE_OF_FORCE_C := New SkillRune("ÈÈÁ¦Ö®²¨", "»ðÑæ", "c", "Ê¹ÉËº¦Ìá¸ßÖÁ475%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ¼¼ÄÜ: Ô­Á¦Ö®²¨
-SKILL_ACTIVE_WIZARD_WAVE_OF_FORCE := New ActiveSkill("Ô­Á¦Ö®²¨", "ÃØ·¨", "Ô­Á¦"
+; ç¬¦æ–‡: å¼ºåŠ›éœ‡æ³¢ 
+RUNE_WIZARD_WAVE_OF_FORCE_A := New SkillRune("å¼ºåŠ›éœ‡æ³¢", "ç§˜æ³•", "a", "åŽŸåŠ›ä¹‹æ³¢ä¼šåå¼¹è¿œç¨‹æ”»å‡»åˆ°æ”»å‡»è€…èº«ä¸Šï¼Œå‡»é€€é™„è¿‘çš„æ•Œäººå¹¶ä½¿å…¶ç§»åŠ¨é€Ÿåº¦é™ä½Ž60%ï¼ŒæŒç»­3ç§’ã€‚åŽŸåŠ›ä¹‹æ³¢èŽ·å¾—5ç§’å†·å´æ—¶é—´ã€‚")
+; ç¬¦æ–‡: è¡°å¼±ä¹‹åŠ› 
+RUNE_WIZARD_WAVE_OF_FORCE_E := New SkillRune("è¡°å¼±ä¹‹åŠ›", "ç§˜æ³•", "e", "è¢«å‡»ä¸­çš„æ•Œäººé€ æˆçš„ä¼¤å®³é™ä½Ž20%ï¼ŒæŒç»­4ã€‚")
+; ç¬¦æ–‡: å¥¥æœ¯åè°ƒ 
+RUNE_WIZARD_WAVE_OF_FORCE_D := New SkillRune("å¥¥æœ¯åè°ƒ", "ç§˜æ³•", "d", "æ¯å‡»ä¸­ä¸€åæ•Œäººå¯ä½¿ä½ ä¸‹ä¸€ä¸ªå¥¥æœ¯æ³•æœ¯çš„ä¼¤å®³æé«˜4%ã€‚")
+; ç¬¦æ–‡: é™ç”µè„‰å†² 
+RUNE_WIZARD_WAVE_OF_FORCE_B := New SkillRune("é™ç”µè„‰å†²", "ç”µå‡»", "b", "æ¯å‡»ä¸­ä¸€åæ•Œäººå³å¯æ¢å¤1ç‚¹å¥¥èƒ½ã€‚åŽŸåŠ›ä¹‹æ³¢çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºé—ªç”µä¼¤å®³ã€‚")
+; ç¬¦æ–‡: çƒ­åŠ›ä¹‹æ³¢ 
+RUNE_WIZARD_WAVE_OF_FORCE_C := New SkillRune("çƒ­åŠ›ä¹‹æ³¢", "ç«ç„°", "c", "ä½¿ä¼¤å®³æé«˜è‡³475%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: åŽŸåŠ›ä¹‹æ³¢
+SKILL_ACTIVE_WIZARD_WAVE_OF_FORCE := New ActiveSkill("åŽŸåŠ›ä¹‹æ³¢", "ç§˜æ³•", "åŽŸåŠ›"
 	, "images\skills\wizard\active\wizard_waveofforce_normal.png"
-	, "ÏûºÄ£º25µã°ÂÄÜ\r\n·¢³öÒ»¹É´¿¾»ÄÜÁ¿³å»÷²¨£¬¶Ô¸½½üµÄµÐÈËÔì³É390%µÄÎäÆ÷ÉËº¦£¨×÷Îª°ÂÊõÉËº¦£©¡£"
+	, "æ¶ˆè€—ï¼š25ç‚¹å¥¥èƒ½\r\nå‘å‡ºä¸€è‚¡çº¯å‡€èƒ½é‡å†²å‡»æ³¢ï¼Œå¯¹é™„è¿‘çš„æ•Œäººé€ æˆ390%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå¥¥æœ¯ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_WIZARD_WAVE_OF_FORCE_A, RUNE_WIZARD_WAVE_OF_FORCE_E, RUNE_WIZARD_WAVE_OF_FORCE_D, RUNE_WIZARD_WAVE_OF_FORCE_B, RUNE_WIZARD_WAVE_OF_FORCE_C])
 ; ---------------------------
-; ¼¼ÄÜ: Ô­Á¦Ö®²¨ End
+; æŠ€èƒ½: åŽŸåŠ›ä¹‹æ³¢ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÓÄ»êÖ®ÈÐ Start
+; æŠ€èƒ½: å¹½é­‚ä¹‹åˆƒ Start
 ; ---------------------------
-; ·ûÎÄ: ÁÒÑæÖ®ÈÐ 
-RUNE_WIZARD_SPECTRAL_BLADE_A := New SkillRune("ÁÒÑæÖ®ÈÐ", "»ðÑæ", "a", "Ã¿»÷ÖÐÒ»ÃûµÐÈË¿ÉÊ¹Äã»ðÑæ·¨ÊõÔì³ÉµÄÉËº¦Ìá¸ß1%£¬×î¸ß¿É´ï30%£¬³ÖÐø5Ãë¡£")
-; ·ûÎÄ: ºçÎüÖ®ÈÐ 
-RUNE_WIZARD_SPECTRAL_BLADE_D := New SkillRune("ºçÎüÖ®ÈÐ", "ÃØ·¨", "d", "Ã¿»÷ÖÐÒ»ÃûµÐÈË¿É»ñµÃ2µã°ÂÄÜ¡£")
-; ·ûÎÄ: ·ÉÖÀÖ®ÈÐ 
-RUNE_WIZARD_SPECTRAL_BLADE_B := New SkillRune("·ÉÖÀÖ®ÈÐ", "µç»÷", "b", "Ê¹ÓÄ»êÖ®ÈÐµÄ¹¥»÷·¶Î§À©´óÖÁ20Âë£¬ÉËº¦Ìá¸ßÖÁ231%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£")
-; ·ûÎÄ: ±ÚÀÝÖ®ÈÐ 
-RUNE_WIZARD_SPECTRAL_BLADE_E := New SkillRune("±ÚÀÝÖ®ÈÐ", "ÃØ·¨", "e", "Ã¿´ÎÊ©·Å¿É»ñµÃÒ»µÀ»¤¶Ü£¬³ÖÐø3Ãë£¬¿ÉÎüÊÕÏàµ±ÓÚÄãÉúÃüÖµ4%µÄÉËº¦¡£")
-; ·ûÎÄ: ±ùº®Ö®ÈÐ 
-RUNE_WIZARD_SPECTRAL_BLADE_C := New SkillRune("±ùº®Ö®ÈÐ", "±ùº®", "c", "ÏÝÈëº®ÀäµÄµÐÈËÓÐ5%µÄ¼¸ÂÊ±»±ù¶³£¬¶ø±»±ù¶³µÄµÐÈËÓÐ5%µÄ¶îÍâ¼¸ÂÊÊÜµ½ÓÄ»êÖ®ÈÐµÄ±©»÷¡£")
-; ¼¼ÄÜ: ÓÄ»êÖ®ÈÐ
-SKILL_ACTIVE_WIZARD_SPECTRAL_BLADE := New ActiveSkill("ÓÄ»êÖ®ÈÐ", "ÃØ·¨", "Ö÷Òª"
+; ç¬¦æ–‡: çƒˆç„°ä¹‹åˆƒ 
+RUNE_WIZARD_SPECTRAL_BLADE_A := New SkillRune("çƒˆç„°ä¹‹åˆƒ", "ç«ç„°", "a", "æ¯å‡»ä¸­ä¸€åæ•Œäººå¯ä½¿ä½ ç«ç„°æ³•æœ¯é€ æˆçš„ä¼¤å®³æé«˜1%ï¼Œæœ€é«˜å¯è¾¾30%ï¼ŒæŒç»­5ç§’ã€‚")
+; ç¬¦æ–‡: è™¹å¸ä¹‹åˆƒ 
+RUNE_WIZARD_SPECTRAL_BLADE_D := New SkillRune("è™¹å¸ä¹‹åˆƒ", "ç§˜æ³•", "d", "æ¯å‡»ä¸­ä¸€åæ•Œäººå¯èŽ·å¾—2ç‚¹å¥¥èƒ½ã€‚")
+; ç¬¦æ–‡: é£žæŽ·ä¹‹åˆƒ 
+RUNE_WIZARD_SPECTRAL_BLADE_B := New SkillRune("é£žæŽ·ä¹‹åˆƒ", "ç”µå‡»", "b", "ä½¿å¹½é­‚ä¹‹åˆƒçš„æ”»å‡»èŒƒå›´æ‰©å¤§è‡³20ç ï¼Œä¼¤å®³æé«˜è‡³231%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å£åž’ä¹‹åˆƒ 
+RUNE_WIZARD_SPECTRAL_BLADE_E := New SkillRune("å£åž’ä¹‹åˆƒ", "ç§˜æ³•", "e", "æ¯æ¬¡æ–½æ”¾å¯èŽ·å¾—ä¸€é“æŠ¤ç›¾ï¼ŒæŒç»­3ç§’ï¼Œå¯å¸æ”¶ç›¸å½“äºŽä½ ç”Ÿå‘½å€¼4%çš„ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: å†°å¯’ä¹‹åˆƒ 
+RUNE_WIZARD_SPECTRAL_BLADE_C := New SkillRune("å†°å¯’ä¹‹åˆƒ", "å†°å¯’", "c", "é™·å…¥å¯’å†·çš„æ•Œäººæœ‰5%çš„å‡ çŽ‡è¢«å†°å†»ï¼Œè€Œè¢«å†°å†»çš„æ•Œäººæœ‰5%çš„é¢å¤–å‡ çŽ‡å—åˆ°å¹½é­‚ä¹‹åˆƒçš„æš´å‡»ã€‚")
+; æŠ€èƒ½: å¹½é­‚ä¹‹åˆƒ
+SKILL_ACTIVE_WIZARD_SPECTRAL_BLADE := New ActiveSkill("å¹½é­‚ä¹‹åˆƒ", "ç§˜æ³•", "ä¸»è¦"
 	, "images\skills\wizard\active\wizard_spectralblade_normal.png"
-	, "ÕâÊÇÒ»ÖÖÐÞÎª·¨Êõ¡£Ê©·ÅÐÞÎª·¨ÊõÎÞÐèÏûºÄ·¨Á¦Öµ¡£\r\nÕÙ»½³öÒ»°ÑÓÄ»êÖ®ÈÐ£¬¹¥»÷Î»ÓÚÄãÇ°·½×îÔ¶15ÂëÄÚµÄËùÓÐµÐÈË£¬Ôì³É168%µÄÎäÆ÷ÉËº¦£¨×÷Îª°ÂÊõÉËº¦£©¡£"
+	, "è¿™æ˜¯ä¸€ç§ä¿®ä¸ºæ³•æœ¯ã€‚æ–½æ”¾ä¿®ä¸ºæ³•æœ¯æ— éœ€æ¶ˆè€—æ³•åŠ›å€¼ã€‚\r\nå¬å”¤å‡ºä¸€æŠŠå¹½é­‚ä¹‹åˆƒï¼Œæ”»å‡»ä½äºŽä½ å‰æ–¹æœ€è¿œ15ç å†…çš„æ‰€æœ‰æ•Œäººï¼Œé€ æˆ168%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå¥¥æœ¯ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_WIZARD_SPECTRAL_BLADE_A, RUNE_WIZARD_SPECTRAL_BLADE_D, RUNE_WIZARD_SPECTRAL_BLADE_B, RUNE_WIZARD_SPECTRAL_BLADE_E, RUNE_WIZARD_SPECTRAL_BLADE_C])
 ; ---------------------------
-; ¼¼ÄÜ: ÓÄ»êÖ®ÈÐ End
+; æŠ€èƒ½: å¹½é­‚ä¹‹åˆƒ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: °ÂÊõºéÁ÷ Start
+; æŠ€èƒ½: å¥¥æœ¯æ´ªæµ Start
 ; ---------------------------
-; ·ûÎÄ: »ðÑæ½á½ç 
-RUNE_WIZARD_ARCANE_TORRENT_A := New SkillRune("»ðÑæ½á½ç", "»ðÑæ", "a", "ÄãÔÚÒýµ¼Ê±ÊÜµ½µÄÉËº¦½µµÍ15%£¬¸ÃÐ§¹ûÃ¿Ãë»áÌá¸ß5%£¬×î¶à¿É½µµÍ25%µÄÉËº¦¡£°ÂÊõºéÁ÷µÄÉËº¦ÀàÐÍ×ª»»Îª»ðÑæÉËº¦¡£")
-; ·ûÎÄ: ËÀÍöÕÀ·Å 
-RUNE_WIZARD_ARCANE_TORRENT_E := New SkillRune("ËÀÍöÕÀ·Å", "ÃØ·¨", "e", "ÇãÐº³¬Ô½Äã¿ØÖÆÁ¦µÄºéÁ÷¡£Äã½«ÎÞ·¨Ö¸¶¨ºéÁ÷µÄ·½Ïò£¬µ«ÊÇÆäÉËº¦½«´ó·ù¶ÈÌá¸ßÖÁ1215%µÄÎäÆ÷ÉËº¦£¨×÷Îª°ÂÊõÉËº¦£©¡£°ÂÊõºéÁ÷Ã¿Ãë»áÌá¸ßÏàµ±ÓÚ640%µÄÎäÆ÷ÉËº¦£¬×î¶à¿ÉÌá¸ßÖÁ2495%µÄÎäÆ÷ÉËº¦£¨×÷Îª°ÂÊõÉËº¦£©¡£")
-; ·ûÎÄ: °ÂÊõµØÀ× 
-RUNE_WIZARD_ARCANE_TORRENT_C := New SkillRune("°ÂÊõµØÀ×", "ÃØ·¨", "c", "ÂñÏÂ°ÂÊõµØÀ×£¬ÔÚ2Ãëºó¾ÍÐ÷¡£µ±ÓÐµÐÈË½Ó½üÊ±±¬Õ¨£¬Ôì³É825%µÄÎäÆ÷ÉËº¦£¨×÷Îª°ÂÊõÉËº¦£©¡£ÊÜµ½±¬Õ¨Ð§¹ûÓ°ÏìµÄµÐÈËÒÆ¶¯ËÙ¶ÈºÍ¹¥»÷ËÙ¶È½µµÍ60%£¬³ÖÐø3Ãë¡£")
-; ·ûÎÄ: ¾²µç·ÅÉä 
-RUNE_WIZARD_ARCANE_TORRENT_D := New SkillRune("¾²µç·ÅÉä", "µç»÷", "d", "Ã¿·¢·Éµ¯±¬Õ¨ºó»á²úÉú2µÀ´©Í¸Ä¿±êµÄµçÁ÷£¬Ã¿µÀµçÁ÷»áÔì³É150%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£")
-; ·ûÎÄ: °ÂÄÜÑÜÉú 
-RUNE_WIZARD_ARCANE_TORRENT_B := New SkillRune("°ÂÄÜÑÜÉú", "ÃØ·¨", "b", "±»°ÂÊõºéÁ÷ÃüÖÐµÄµÐÈËÓÐ12.5%µÄ¼¸ÂÊÏò¸½½üµÄÒ»¸öµÐÈË·¢Éä·Éµ¯£¬Ôì³É582%µÄÎäÆ÷ÉËº¦£¨×÷Îª°ÂÊõÉËº¦£©¡£")
-; ¼¼ÄÜ: °ÂÊõºéÁ÷
-SKILL_ACTIVE_WIZARD_ARCANE_TORRENT := New ActiveSkill("°ÂÊõºéÁ÷", "ÃØ·¨", "´ÎÒª"
+; ç¬¦æ–‡: ç«ç„°ç»“ç•Œ 
+RUNE_WIZARD_ARCANE_TORRENT_A := New SkillRune("ç«ç„°ç»“ç•Œ", "ç«ç„°", "a", "ä½ åœ¨å¼•å¯¼æ—¶å—åˆ°çš„ä¼¤å®³é™ä½Ž15%ï¼Œè¯¥æ•ˆæžœæ¯ç§’ä¼šæé«˜5%ï¼Œæœ€å¤šå¯é™ä½Ž25%çš„ä¼¤å®³ã€‚å¥¥æœ¯æ´ªæµçš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºç«ç„°ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æ­»äº¡ç»½æ”¾ 
+RUNE_WIZARD_ARCANE_TORRENT_E := New SkillRune("æ­»äº¡ç»½æ”¾", "ç§˜æ³•", "e", "å€¾æ³»è¶…è¶Šä½ æŽ§åˆ¶åŠ›çš„æ´ªæµã€‚ä½ å°†æ— æ³•æŒ‡å®šæ´ªæµçš„æ–¹å‘ï¼Œä½†æ˜¯å…¶ä¼¤å®³å°†å¤§å¹…åº¦æé«˜è‡³1215%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå¥¥æœ¯ä¼¤å®³ï¼‰ã€‚å¥¥æœ¯æ´ªæµæ¯ç§’ä¼šæé«˜ç›¸å½“äºŽ640%çš„æ­¦å™¨ä¼¤å®³ï¼Œæœ€å¤šå¯æé«˜è‡³2495%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå¥¥æœ¯ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å¥¥æœ¯åœ°é›· 
+RUNE_WIZARD_ARCANE_TORRENT_C := New SkillRune("å¥¥æœ¯åœ°é›·", "ç§˜æ³•", "c", "åŸ‹ä¸‹å¥¥æœ¯åœ°é›·ï¼Œåœ¨2ç§’åŽå°±ç»ªã€‚å½“æœ‰æ•ŒäººæŽ¥è¿‘æ—¶çˆ†ç‚¸ï¼Œé€ æˆ825%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå¥¥æœ¯ä¼¤å®³ï¼‰ã€‚å—åˆ°çˆ†ç‚¸æ•ˆæžœå½±å“çš„æ•Œäººç§»åŠ¨é€Ÿåº¦å’Œæ”»å‡»é€Ÿåº¦é™ä½Ž60%ï¼ŒæŒç»­3ç§’ã€‚")
+; ç¬¦æ–‡: é™ç”µæ”¾å°„ 
+RUNE_WIZARD_ARCANE_TORRENT_D := New SkillRune("é™ç”µæ”¾å°„", "ç”µå‡»", "d", "æ¯å‘é£žå¼¹çˆ†ç‚¸åŽä¼šäº§ç”Ÿ2é“ç©¿é€ç›®æ ‡çš„ç”µæµï¼Œæ¯é“ç”µæµä¼šé€ æˆ150%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å¥¥èƒ½è¡ç”Ÿ 
+RUNE_WIZARD_ARCANE_TORRENT_B := New SkillRune("å¥¥èƒ½è¡ç”Ÿ", "ç§˜æ³•", "b", "è¢«å¥¥æœ¯æ´ªæµå‘½ä¸­çš„æ•Œäººæœ‰12.5%çš„å‡ çŽ‡å‘é™„è¿‘çš„ä¸€ä¸ªæ•Œäººå‘å°„é£žå¼¹ï¼Œé€ æˆ582%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå¥¥æœ¯ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: å¥¥æœ¯æ´ªæµ
+SKILL_ACTIVE_WIZARD_ARCANE_TORRENT := New ActiveSkill("å¥¥æœ¯æ´ªæµ", "ç§˜æ³•", "æ¬¡è¦"
 	, "images\skills\wizard\active\wizard_arcanetorrent_normal.png"
-	, "ÏûºÄ£º16µã°ÂÄÜ\r\nÊ©·Å³ö·Éµ¯µ¯Ä»£¬¶Ô·Éµ¯»÷ÖÐÎ»ÖÃ¸½½üµÄËùÓÐµÐÈËÔì³É400%µÄÎäÆ÷ÉËº¦£¨×÷Îª°ÂÊõÉËº¦£©¡£"
+	, "æ¶ˆè€—ï¼š16ç‚¹å¥¥èƒ½\r\næ–½æ”¾å‡ºé£žå¼¹å¼¹å¹•ï¼Œå¯¹é£žå¼¹å‡»ä¸­ä½ç½®é™„è¿‘çš„æ‰€æœ‰æ•Œäººé€ æˆ400%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå¥¥æœ¯ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_WIZARD_ARCANE_TORRENT_A, RUNE_WIZARD_ARCANE_TORRENT_E, RUNE_WIZARD_ARCANE_TORRENT_C, RUNE_WIZARD_ARCANE_TORRENT_D, RUNE_WIZARD_ARCANE_TORRENT_B])
 ; ---------------------------
-; ¼¼ÄÜ: °ÂÊõºéÁ÷ End
+; æŠ€èƒ½: å¥¥æœ¯æ´ªæµ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÄÜÁ¿ÆøÐý Start
+; æŠ€èƒ½: èƒ½é‡æ°”æ—‹ Start
 ; ---------------------------
-; ·ûÎÄ: ±±·ç¾¢´µ 
-RUNE_WIZARD_ENERGY_TWISTER_D := New SkillRune("±±·ç¾¢´µ", "±ùº®", "d", "Ê¹ÄÜÁ¿ÆøÐýµÄÊ©·¨ÏûºÄ½µµÍÖÁ25µã°ÂÄÜ¡£ÄÜÁ¿ÆøÐýµÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ·ûÎÄ: ¿ñ·çÖ®Á¦ 
-RUNE_WIZARD_ENERGY_TWISTER_A := New SkillRune("¿ñ·çÖ®Á¦", "»ðÑæ", "a", "±»ÄÜÁ¿ÆøÐý»÷ÖÐµÄµÐÈË£¬ÊÜµ½µÄ»ðÑæÉËº¦Ìá¸ß15%£¬³ÖÐø4Ãë¡£")
-; ·ûÎÄ: ËÁÅ°·ç±© 
-RUNE_WIZARD_ENERGY_TWISTER_B := New SkillRune("ËÁÅ°·ç±©", "ÃØ·¨", "b", "µ±Á½¹ÉÆøÐýÅö×²ºó»áºÏ²¢ÎªÒ»¹ÉÐý·ç£¬Ð§¹û·¶Î§À©´ó£¬ÔÚ6ÃëÄÚÔì³É3200%µÄÎäÆ÷ÉËº¦£¨×÷Îª°ÂÊõÉËº¦£©¡£")
-; ·ûÎÄ: Ð°·ç 
-RUNE_WIZARD_ENERGY_TWISTER_E := New SkillRune("Ð°·ç", "ÃØ·¨", "e", "ÆøÐý²»ÔÙÐÐ½ø£¬¶øÊÇÔÚÔ­µØÐý×ª£¬ÔÚ6ÃëÄÚ¶Ô±»¾íÈëÆäÖÐµÄÒ»ÇÐÄ¿±êÔì³É835%µÄÎäÆ÷ÉËº¦£¨×÷Îª°ÂÊõÉËº¦£©¡£")
-; ·ûÎÄ: Öð·çÕß 
-RUNE_WIZARD_ENERGY_TWISTER_C := New SkillRune("Öð·çÕß", "µç»÷", "c", "Ã¿´ÎÊ©·ÅÄÜÁ¿ÆøÐý¿ÉÊ¹Äã»ñµÃÒ»²ãÉÁµç³äÄÜ£¬×î¶à¿ÉÀÛ»ý3²ã¡£Ê©·ÅÐÞÎª·¨Êõ¿ÉÊÍ·ÅËùÓÐÉÁµç³äÄÜÐ§¹û£¬ÐÎ³ÉÒ»µÀÉÁµç¼ý£¬Ã¿²ã³äÄÜÊ¹ÉÁµç¼ýÔì³É196%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£ÄÜÁ¿ÆøÐýµÄÉËº¦ÀàÐÍ×ª»»ÎªÉÁµçÉËº¦¡£ÐÞÎª·¨Êõ°üÀ¨£ºÄ§·¨·Éµ¯³å»÷Õð²¨ÓÄ»êÖ®ÈÐµçÐÌ")
-; ¼¼ÄÜ: ÄÜÁ¿ÆøÐý
-SKILL_ACTIVE_WIZARD_ENERGY_TWISTER := New ActiveSkill("ÄÜÁ¿ÆøÐý", "ÃØ·¨", "Ô­Á¦"
+; ç¬¦æ–‡: åŒ—é£ŽåŠ²å¹ 
+RUNE_WIZARD_ENERGY_TWISTER_D := New SkillRune("åŒ—é£ŽåŠ²å¹", "å†°å¯’", "d", "ä½¿èƒ½é‡æ°”æ—‹çš„æ–½æ³•æ¶ˆè€—é™ä½Žè‡³25ç‚¹å¥¥èƒ½ã€‚èƒ½é‡æ°”æ—‹çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ç‹‚é£Žä¹‹åŠ› 
+RUNE_WIZARD_ENERGY_TWISTER_A := New SkillRune("ç‹‚é£Žä¹‹åŠ›", "ç«ç„°", "a", "è¢«èƒ½é‡æ°”æ—‹å‡»ä¸­çš„æ•Œäººï¼Œå—åˆ°çš„ç«ç„°ä¼¤å®³æé«˜15%ï¼ŒæŒç»­4ç§’ã€‚")
+; ç¬¦æ–‡: è‚†è™é£Žæš´ 
+RUNE_WIZARD_ENERGY_TWISTER_B := New SkillRune("è‚†è™é£Žæš´", "ç§˜æ³•", "b", "å½“ä¸¤è‚¡æ°”æ—‹ç¢°æ’žåŽä¼šåˆå¹¶ä¸ºä¸€è‚¡æ—‹é£Žï¼Œæ•ˆæžœèŒƒå›´æ‰©å¤§ï¼Œåœ¨6ç§’å†…é€ æˆ3200%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå¥¥æœ¯ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: é‚ªé£Ž 
+RUNE_WIZARD_ENERGY_TWISTER_E := New SkillRune("é‚ªé£Ž", "ç§˜æ³•", "e", "æ°”æ—‹ä¸å†è¡Œè¿›ï¼Œè€Œæ˜¯åœ¨åŽŸåœ°æ—‹è½¬ï¼Œåœ¨6ç§’å†…å¯¹è¢«å·å…¥å…¶ä¸­çš„ä¸€åˆ‡ç›®æ ‡é€ æˆ835%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå¥¥æœ¯ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: é€é£Žè€… 
+RUNE_WIZARD_ENERGY_TWISTER_C := New SkillRune("é€é£Žè€…", "ç”µå‡»", "c", "æ¯æ¬¡æ–½æ”¾èƒ½é‡æ°”æ—‹å¯ä½¿ä½ èŽ·å¾—ä¸€å±‚é—ªç”µå……èƒ½ï¼Œæœ€å¤šå¯ç´¯ç§¯3å±‚ã€‚æ–½æ”¾ä¿®ä¸ºæ³•æœ¯å¯é‡Šæ”¾æ‰€æœ‰é—ªç”µå……èƒ½æ•ˆæžœï¼Œå½¢æˆä¸€é“é—ªç”µç®­ï¼Œæ¯å±‚å……èƒ½ä½¿é—ªç”µç®­é€ æˆ196%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚èƒ½é‡æ°”æ—‹çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºé—ªç”µä¼¤å®³ã€‚ä¿®ä¸ºæ³•æœ¯åŒ…æ‹¬ï¼šé­”æ³•é£žå¼¹å†²å‡»éœ‡æ³¢å¹½é­‚ä¹‹åˆƒç”µåˆ‘")
+; æŠ€èƒ½: èƒ½é‡æ°”æ—‹
+SKILL_ACTIVE_WIZARD_ENERGY_TWISTER := New ActiveSkill("èƒ½é‡æ°”æ—‹", "ç§˜æ³•", "åŽŸåŠ›"
 	, "images\skills\wizard\active\wizard_tornado_normal.png"
-	, "ÏûºÄ£º35µã°ÂÄÜ\r\nÕÙ»½Ò»Õó´¿¾»ÄÜÁ¿ÆøÐý£¬ÔÚ6ÃëÄÚ¶ÔÆäÐÐ½øÂ·ÏßÉÏµÄËùÓÐÄ¿±êÔì³É1525%µÄÎäÆ÷ÉËº¦£¨×÷Îª°ÂÊõÉËº¦£©¡£"
+	, "æ¶ˆè€—ï¼š35ç‚¹å¥¥èƒ½\r\nå¬å”¤ä¸€é˜µçº¯å‡€èƒ½é‡æ°”æ—‹ï¼Œåœ¨6ç§’å†…å¯¹å…¶è¡Œè¿›è·¯çº¿ä¸Šçš„æ‰€æœ‰ç›®æ ‡é€ æˆ1525%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå¥¥æœ¯ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_WIZARD_ENERGY_TWISTER_D, RUNE_WIZARD_ENERGY_TWISTER_A, RUNE_WIZARD_ENERGY_TWISTER_B, RUNE_WIZARD_ENERGY_TWISTER_E, RUNE_WIZARD_ENERGY_TWISTER_C])
 ; ---------------------------
-; ¼¼ÄÜ: ÄÜÁ¿ÆøÐý End
+; æŠ€èƒ½: èƒ½é‡æ°”æ—‹ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: º®±ù»¤¼× Start
+; æŠ€èƒ½: å¯’å†°æŠ¤ç”² Start
 ; ---------------------------
-; ·ûÎÄ: º®Àä¹â»· 
-RUNE_WIZARD_ICE_ARMOR_B := New SkillRune("º®Àä¹â»·", "±ùº®", "b", "½µµÍÄãÖÜÎ§¿ÕÆøµÄÎÂ¶È¡£¸½½üµÄµÐÈËÏÝÈëº®Àä×´Ì¬£¬ÒÆ¶¯ËÙ¶È½µµÍ80%¡£")
-; ·ûÎÄ: ±ù¾§»¤Ìå 
-RUNE_WIZARD_ICE_ARMOR_D := New SkillRune("±ù¾§»¤Ìå", "±ùº®", "d", "Ã¿µ±Äã±»½üÕ½¹¥»÷»÷ÖÐÊ±£¬ÄãµÄ»¤¼×ÖµÌá¸ß20%£¬³ÖÐø30Ãë¡£¸ÃÐ§¹û×î¶à¿Éµþ¼Ó3´Î¡£")
-; ·ûÎÄ: ±ù´Ì»·Éí 
-RUNE_WIZARD_ICE_ARMOR_A := New SkillRune("±ù´Ì»·Éí", "±ùº®", "a", "½üÕ½¹¥»÷ÕßÍ¬Ê±ÊÜµ½189%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£")
-; ·ûÎÄ: º®±ù·´Éä 
-RUNE_WIZARD_ICE_ARMOR_E := New SkillRune("º®±ù·´Éä", "±ùº®", "e", "½üÕ½¹¥»÷ÓÐ40%µÄ¼¸ÂÊÒÔ¹¥»÷ÕßÎªÖÐÐÄ´¥·¢±ùËªÐÂÐÇ£¬Ôì³É75%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£")
-; ·ûÎÄ: ±ùËª·ç±© 
-RUNE_WIZARD_ICE_ARMOR_C := New SkillRune("±ùËª·ç±©", "±ùº®", "c", "ÔÚÄãÉí±ßÐÎ³ÉÐý×ªµÄº®±ù·ç±©£¬Ã¿ÃëÔì³É80%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£")
-; ¼¼ÄÜ: º®±ù»¤¼×
-SKILL_ACTIVE_WIZARD_ICE_ARMOR := New ActiveSkill("º®±ù»¤¼×", "±ùº®", "»¤Ìå"
+; ç¬¦æ–‡: å¯’å†·å…‰çŽ¯ 
+RUNE_WIZARD_ICE_ARMOR_B := New SkillRune("å¯’å†·å…‰çŽ¯", "å†°å¯’", "b", "é™ä½Žä½ å‘¨å›´ç©ºæ°”çš„æ¸©åº¦ã€‚é™„è¿‘çš„æ•Œäººé™·å…¥å¯’å†·çŠ¶æ€ï¼Œç§»åŠ¨é€Ÿåº¦é™ä½Ž80%ã€‚")
+; ç¬¦æ–‡: å†°æ™¶æŠ¤ä½“ 
+RUNE_WIZARD_ICE_ARMOR_D := New SkillRune("å†°æ™¶æŠ¤ä½“", "å†°å¯’", "d", "æ¯å½“ä½ è¢«è¿‘æˆ˜æ”»å‡»å‡»ä¸­æ—¶ï¼Œä½ çš„æŠ¤ç”²å€¼æé«˜20%ï¼ŒæŒç»­30ç§’ã€‚è¯¥æ•ˆæžœæœ€å¤šå¯å åŠ 3æ¬¡ã€‚")
+; ç¬¦æ–‡: å†°åˆºçŽ¯èº« 
+RUNE_WIZARD_ICE_ARMOR_A := New SkillRune("å†°åˆºçŽ¯èº«", "å†°å¯’", "a", "è¿‘æˆ˜æ”»å‡»è€…åŒæ—¶å—åˆ°189%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å¯’å†°åå°„ 
+RUNE_WIZARD_ICE_ARMOR_E := New SkillRune("å¯’å†°åå°„", "å†°å¯’", "e", "è¿‘æˆ˜æ”»å‡»æœ‰40%çš„å‡ çŽ‡ä»¥æ”»å‡»è€…ä¸ºä¸­å¿ƒè§¦å‘å†°éœœæ–°æ˜Ÿï¼Œé€ æˆ75%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å†°éœœé£Žæš´ 
+RUNE_WIZARD_ICE_ARMOR_C := New SkillRune("å†°éœœé£Žæš´", "å†°å¯’", "c", "åœ¨ä½ èº«è¾¹å½¢æˆæ—‹è½¬çš„å¯’å†°é£Žæš´ï¼Œæ¯ç§’é€ æˆ80%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: å¯’å†°æŠ¤ç”²
+SKILL_ACTIVE_WIZARD_ICE_ARMOR := New ActiveSkill("å¯’å†°æŠ¤ç”²", "å†°å¯’", "æŠ¤ä½“"
 	, "images\skills\wizard\active\wizard_icearmor_normal.png"
-	, "ÏûºÄ£º25µã°ÂÄÜ\r\nÊ¹Äã×Ô¼º±»Ò»µÀº®±ùÆÁÕÏ°üÎ§¡£ÊÜµ½µÄ½üÕ½ÉËº¦½µµÍ12%¡£½üÕ½¹¥»÷Õß»áÏÝÈëº®Àä»ò±ù¶³×´Ì¬£¬³ÖÐø3Ãë¡£¸ÃÐ§¹û¿É³ÖÐø10·ÖÖÓ¡£"
+	, "æ¶ˆè€—ï¼š25ç‚¹å¥¥èƒ½\r\nä½¿ä½ è‡ªå·±è¢«ä¸€é“å¯’å†°å±éšœåŒ…å›´ã€‚å—åˆ°çš„è¿‘æˆ˜ä¼¤å®³é™ä½Ž12%ã€‚è¿‘æˆ˜æ”»å‡»è€…ä¼šé™·å…¥å¯’å†·æˆ–å†°å†»çŠ¶æ€ï¼ŒæŒç»­3ç§’ã€‚è¯¥æ•ˆæžœå¯æŒç»­10åˆ†é’Ÿã€‚"
 	, [RUNE_WIZARD_ICE_ARMOR_B, RUNE_WIZARD_ICE_ARMOR_D, RUNE_WIZARD_ICE_ARMOR_A, RUNE_WIZARD_ICE_ARMOR_E, RUNE_WIZARD_ICE_ARMOR_C])
 ; ---------------------------
-; ¼¼ÄÜ: º®±ù»¤¼× End
+; æŠ€èƒ½: å¯’å†°æŠ¤ç”² End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: µçÐÌ Start
+; æŠ€èƒ½: ç”µåˆ‘ Start
 ; ---------------------------
-; ·ûÎÄ: Á¬»·ÉÁµç 
-RUNE_WIZARD_ELECTROCUTE_B := New SkillRune("Á¬»·ÉÁµç", "µç»÷", "b", "Ìá¸ß¿ÉµçÐÌµÐÈËµÄÊýÁ¿ÉÏÏÞ£¬×î¶à¿ÉµçÐÌ10¸öµÐÈË¡£")
-; ·ûÎÄ: ²æ×´ÉÁµç 
-RUNE_WIZARD_ELECTROCUTE_E := New SkillRune("²æ×´ÉÁµç", "»ðÑæ", "e", "±©»÷ºó»á³¯Ëæ»ú·½ÏòÊÍ·Å³ö4µÀÉÁµçÅùö¨£¬¶Ô±»ÆäÃüÖÐµÄËùÓÐµÐÈËÔì³É44%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ÉÁµç³å»÷ 
-RUNE_WIZARD_ELECTROCUTE_A := New SkillRune("ÉÁµç³å»÷", "µç»÷", "a", "ÊÍ·ÅÒ»µÀµÀ¿É´©Í¸µÐÈËµÄÉÁµç£¬Ôì³É140%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£")
-; ·ûÎÄ: ÄÜÁ¿±¼Ó¿ 
-RUNE_WIZARD_ELECTROCUTE_D := New SkillRune("ÄÜÁ¿±¼Ó¿", "µç»÷", "d", "µçÐÌÃ¿»÷ÖÐÒ»ÃûµÐÈËºó¿É»ñµÃ1µã°ÂÄÜ¡£")
-; ·ûÎÄ: »¡¹âÉÁµç 
-RUNE_WIZARD_ELECTROCUTE_C := New SkillRune("»¡¹âÉÁµç", "µç»÷", "c", "ÓÃ×¶ÐÎÉÁµç³å»÷µÐÈË£¬¶ÔËùÓÐÊÜµ½Ó°ÏìµÄµÐÈËÔì³É310%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£")
-; ¼¼ÄÜ: µçÐÌ
-SKILL_ACTIVE_WIZARD_ELECTROCUTE := New ActiveSkill("µçÐÌ", "µç»÷", "Ö÷Òª"
+; ç¬¦æ–‡: è¿žçŽ¯é—ªç”µ 
+RUNE_WIZARD_ELECTROCUTE_B := New SkillRune("è¿žçŽ¯é—ªç”µ", "ç”µå‡»", "b", "æé«˜å¯ç”µåˆ‘æ•Œäººçš„æ•°é‡ä¸Šé™ï¼Œæœ€å¤šå¯ç”µåˆ‘10ä¸ªæ•Œäººã€‚")
+; ç¬¦æ–‡: å‰çŠ¶é—ªç”µ 
+RUNE_WIZARD_ELECTROCUTE_E := New SkillRune("å‰çŠ¶é—ªç”µ", "ç«ç„°", "e", "æš´å‡»åŽä¼šæœéšæœºæ–¹å‘é‡Šæ”¾å‡º4é“é—ªç”µéœ¹é›³ï¼Œå¯¹è¢«å…¶å‘½ä¸­çš„æ‰€æœ‰æ•Œäººé€ æˆ44%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: é—ªç”µå†²å‡» 
+RUNE_WIZARD_ELECTROCUTE_A := New SkillRune("é—ªç”µå†²å‡»", "ç”µå‡»", "a", "é‡Šæ”¾ä¸€é“é“å¯ç©¿é€æ•Œäººçš„é—ªç”µï¼Œé€ æˆ140%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: èƒ½é‡å¥”æ¶Œ 
+RUNE_WIZARD_ELECTROCUTE_D := New SkillRune("èƒ½é‡å¥”æ¶Œ", "ç”µå‡»", "d", "ç”µåˆ‘æ¯å‡»ä¸­ä¸€åæ•ŒäººåŽå¯èŽ·å¾—1ç‚¹å¥¥èƒ½ã€‚")
+; ç¬¦æ–‡: å¼§å…‰é—ªç”µ 
+RUNE_WIZARD_ELECTROCUTE_C := New SkillRune("å¼§å…‰é—ªç”µ", "ç”µå‡»", "c", "ç”¨é”¥å½¢é—ªç”µå†²å‡»æ•Œäººï¼Œå¯¹æ‰€æœ‰å—åˆ°å½±å“çš„æ•Œäººé€ æˆ310%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: ç”µåˆ‘
+SKILL_ACTIVE_WIZARD_ELECTROCUTE := New ActiveSkill("ç”µåˆ‘", "ç”µå‡»", "ä¸»è¦"
 	, "images\skills\wizard\active\wizard_electrocute_normal.png"
-	, "ÕâÊÇÒ»ÖÖÐÞÎª·¨Êõ¡£Ê©·ÅÐÞÎª·¨ÊõÎÞÐèÏûºÄ·¨Á¦Öµ¡£\r\nÉÁµç´ÓÄãÖ¸¼â±Å³ö£¬Ôì³É138%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£ÉÁµç»áÌøÔ¾£¬×î¶à¿É»÷ÖÐ¶îÍâ2¸öµÐÈË¡£"
+	, "è¿™æ˜¯ä¸€ç§ä¿®ä¸ºæ³•æœ¯ã€‚æ–½æ”¾ä¿®ä¸ºæ³•æœ¯æ— éœ€æ¶ˆè€—æ³•åŠ›å€¼ã€‚\r\né—ªç”µä»Žä½ æŒ‡å°–è¿¸å‡ºï¼Œé€ æˆ138%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚é—ªç”µä¼šè·³è·ƒï¼Œæœ€å¤šå¯å‡»ä¸­é¢å¤–2ä¸ªæ•Œäººã€‚"
 	, [RUNE_WIZARD_ELECTROCUTE_B, RUNE_WIZARD_ELECTROCUTE_E, RUNE_WIZARD_ELECTROCUTE_A, RUNE_WIZARD_ELECTROCUTE_D, RUNE_WIZARD_ELECTROCUTE_C])
 ; ---------------------------
-; ¼¼ÄÜ: µçÐÌ End
+; æŠ€èƒ½: ç”µåˆ‘ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Ê±¼äÑÓ»º Start
+; æŠ€èƒ½: æ—¶é—´å»¶ç¼“ Start
 ; ---------------------------
-; ·ûÎÄ: Ê±¿Õ»¤Ìå 
-RUNE_WIZARD_SLOW_TIME_C := New SkillRune("Ê±¿Õ»¤Ìå", "ÃØ·¨", "c", "Ê¹ÒÆ¶¯ËÙ¶È½µµÍµÄÐ§¹ûÌá¸ßÖÁ80%£¬ÀäÈ´Ê±¼äËõ¶ÌÖÁ12Ãë¡£")
-; ·ûÎÄ: ¾«Æ£Á¦½ß 
-RUNE_WIZARD_SLOW_TIME_D := New SkillRune("¾«Æ£Á¦½ß", "ÃØ·¨", "d", "ÊÜµ½Ê±¼äÑÓ»ºÓ°ÏìµÄµÐÈË£¬Ôì³ÉµÄÉËº¦½µµÍ25%¡£")
-; ·ûÎÄ: Ê±¿ÕÅ¤Çú 
-RUNE_WIZARD_SLOW_TIME_A := New SkillRune("Ê±¿ÕÅ¤Çú", "ÃØ·¨", "a", "±»Ê±¿ÕÅ¤ÇúÆøÅÝÓ°ÏìµÄµÐÈË£¬ÊÜµ½µÄÉËº¦Ìá¸ß15%¡£")
-; ·ûÎÄ: ÓÐ½øÎÞÍË 
-RUNE_WIZARD_SLOW_TIME_B := New SkillRune("ÓÐ½øÎÞÍË", "ÃØ·¨", "b", "½øÈë»òÀë¿ªÊ±¼äÑÓ»ºÇøÓòµÄµÐÈË¶¼»á»èÃÔ5Ãë¡£")
-; ·ûÎÄ: Ê±¹âÑÓÉì 
-RUNE_WIZARD_SLOW_TIME_E := New SkillRune("Ê±¹âÑÓÉì", "ÃØ·¨", "e", "ËùÓÐÕ¾ÔÚÇøÓòÄÚµÄÍ¬°é¶¼ÄÜ»ñµÃ¼ÓËÙÐ§¹û£¬¹¥»÷ËÙ¶ÈÌá¸ß10%¡£")
-; ¼¼ÄÜ: Ê±¼äÑÓ»º
-SKILL_ACTIVE_WIZARD_SLOW_TIME := New ActiveSkill("Ê±¼äÑÓ»º", "ÃØ·¨", "·ÀÓù"
+; ç¬¦æ–‡: æ—¶ç©ºæŠ¤ä½“ 
+RUNE_WIZARD_SLOW_TIME_C := New SkillRune("æ—¶ç©ºæŠ¤ä½“", "ç§˜æ³•", "c", "ä½¿ç§»åŠ¨é€Ÿåº¦é™ä½Žçš„æ•ˆæžœæé«˜è‡³80%ï¼Œå†·å´æ—¶é—´ç¼©çŸ­è‡³12ç§’ã€‚")
+; ç¬¦æ–‡: ç²¾ç–²åŠ›ç«­ 
+RUNE_WIZARD_SLOW_TIME_D := New SkillRune("ç²¾ç–²åŠ›ç«­", "ç§˜æ³•", "d", "å—åˆ°æ—¶é—´å»¶ç¼“å½±å“çš„æ•Œäººï¼Œé€ æˆçš„ä¼¤å®³é™ä½Ž25%ã€‚")
+; ç¬¦æ–‡: æ—¶ç©ºæ‰­æ›² 
+RUNE_WIZARD_SLOW_TIME_A := New SkillRune("æ—¶ç©ºæ‰­æ›²", "ç§˜æ³•", "a", "è¢«æ—¶ç©ºæ‰­æ›²æ°”æ³¡å½±å“çš„æ•Œäººï¼Œå—åˆ°çš„ä¼¤å®³æé«˜15%ã€‚")
+; ç¬¦æ–‡: æœ‰è¿›æ— é€€ 
+RUNE_WIZARD_SLOW_TIME_B := New SkillRune("æœ‰è¿›æ— é€€", "ç§˜æ³•", "b", "è¿›å…¥æˆ–ç¦»å¼€æ—¶é—´å»¶ç¼“åŒºåŸŸçš„æ•Œäººéƒ½ä¼šæ˜è¿·5ç§’ã€‚")
+; ç¬¦æ–‡: æ—¶å…‰å»¶ä¼¸ 
+RUNE_WIZARD_SLOW_TIME_E := New SkillRune("æ—¶å…‰å»¶ä¼¸", "ç§˜æ³•", "e", "æ‰€æœ‰ç«™åœ¨åŒºåŸŸå†…çš„åŒä¼´éƒ½èƒ½èŽ·å¾—åŠ é€Ÿæ•ˆæžœï¼Œæ”»å‡»é€Ÿåº¦æé«˜10%ã€‚")
+; æŠ€èƒ½: æ—¶é—´å»¶ç¼“
+SKILL_ACTIVE_WIZARD_SLOW_TIME := New ActiveSkill("æ—¶é—´å»¶ç¼“", "ç§˜æ³•", "é˜²å¾¡"
 	, "images\skills\wizard\active\wizard_slowtime_normal.png"
-	, "ÀäÈ´Ê±¼ä£º15Ãë\r\nÔÚ×îÔ¶60ÂëÖ®ÍâµÄÄ¿±êÎ»ÖÃÕÙ³öÒ»¸öÅ¤ÇúÊ±¿ÕµÄÆøÅÝ£¬´æÔÚ15Ãë£¬Ê¹µÐÈË¹¥»÷ËÙ¶È½µµÍ20%£¬ÒÆ¶¯ËÙ¶È½µµÍ60%¡£¸ÃÆøÅÝÍ¬Ê±»¹»áÊ¹µÐ·½Í¶ÉäÎïµÄ·ÉÐÐËÙ¶È½µµÍ90%¡£"
+	, "å†·å´æ—¶é—´ï¼š15ç§’\r\nåœ¨æœ€è¿œ60ç ä¹‹å¤–çš„ç›®æ ‡ä½ç½®å¬å‡ºä¸€ä¸ªæ‰­æ›²æ—¶ç©ºçš„æ°”æ³¡ï¼Œå­˜åœ¨15ç§’ï¼Œä½¿æ•Œäººæ”»å‡»é€Ÿåº¦é™ä½Ž20%ï¼Œç§»åŠ¨é€Ÿåº¦é™ä½Ž60%ã€‚è¯¥æ°”æ³¡åŒæ—¶è¿˜ä¼šä½¿æ•Œæ–¹æŠ•å°„ç‰©çš„é£žè¡Œé€Ÿåº¦é™ä½Ž90%ã€‚"
 	, [RUNE_WIZARD_SLOW_TIME_C, RUNE_WIZARD_SLOW_TIME_D, RUNE_WIZARD_SLOW_TIME_A, RUNE_WIZARD_SLOW_TIME_B, RUNE_WIZARD_SLOW_TIME_E])
 ; ---------------------------
-; ¼¼ÄÜ: Ê±¼äÑÓ»º End
+; æŠ€èƒ½: æ—¶é—´å»¶ç¼“ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ·ç±©»¤¼× Start
+; æŠ€èƒ½: é£Žæš´æŠ¤ç”² Start
 ; ---------------------------
-; ·ûÎÄ: ·´ÖÆµç¼× 
-RUNE_WIZARD_STORM_ARMOR_C := New SkillRune("·´ÖÆµç¼×", "µç»÷", "c", "Ô¶³ÌºÍ½üÕ½¹¥»÷ÕßÔâÊÜ189%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£")
-; ·ûÎÄ: ·ç±©Ö®Á¦ 
-RUNE_WIZARD_STORM_ARMOR_D := New SkillRune("·ç±©Ö®Á¦", "µç»÷", "d", "µ±·ç±©»¤¼×¼¤»îÊ±£¬ËùÓÐ¼¼ÄÜÏûºÄµÄ°ÂÄÜ½µµÍ3µã¡£")
-; ·ûÎÄ: À×µç·ç±© 
-RUNE_WIZARD_STORM_ARMOR_A := New SkillRune("À×µç·ç±©", "µç»÷", "a", "Ê¹Õð»÷ÉËº¦Ìá¸ßÖÁ315%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£")
-; ·ûÎÄ: µç¹â¼²ÐÐ 
-RUNE_WIZARD_STORM_ARMOR_B := New SkillRune("µç¹â¼²ÐÐ", "µç»÷", "b", "Ã¿µ±Äã±»½üÕ½»òÔ¶³Ì¹¥»÷ÃüÖÐÊ±£¬¼´¿ÉÊ¹ÄãµÄÒÆ¶¯ËÙ¶ÈÌá¸ß25%£¬³ÖÐø3Ãë¡£")
-; ·ûÎÄ: µçºÉÖ®Éí 
-RUNE_WIZARD_STORM_ARMOR_E := New SkillRune("µçºÉÖ®Éí", "µç»÷", "e", "±©»÷ÓÐÒ»¶¨¼¸ÂÊÕð»÷µ½¸½½üµÄÒ»¸öµÐÈË£¬Ôì³É425%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£")
-; ¼¼ÄÜ: ·ç±©»¤¼×
-SKILL_ACTIVE_WIZARD_STORM_ARMOR := New ActiveSkill("·ç±©»¤¼×", "µç»÷", "»¤Ìå"
+; ç¬¦æ–‡: ååˆ¶ç”µç”² 
+RUNE_WIZARD_STORM_ARMOR_C := New SkillRune("ååˆ¶ç”µç”²", "ç”µå‡»", "c", "è¿œç¨‹å’Œè¿‘æˆ˜æ”»å‡»è€…é­å—189%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: é£Žæš´ä¹‹åŠ› 
+RUNE_WIZARD_STORM_ARMOR_D := New SkillRune("é£Žæš´ä¹‹åŠ›", "ç”µå‡»", "d", "å½“é£Žæš´æŠ¤ç”²æ¿€æ´»æ—¶ï¼Œæ‰€æœ‰æŠ€èƒ½æ¶ˆè€—çš„å¥¥èƒ½é™ä½Ž3ç‚¹ã€‚")
+; ç¬¦æ–‡: é›·ç”µé£Žæš´ 
+RUNE_WIZARD_STORM_ARMOR_A := New SkillRune("é›·ç”µé£Žæš´", "ç”µå‡»", "a", "ä½¿éœ‡å‡»ä¼¤å®³æé«˜è‡³315%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: ç”µå…‰ç–¾è¡Œ 
+RUNE_WIZARD_STORM_ARMOR_B := New SkillRune("ç”µå…‰ç–¾è¡Œ", "ç”µå‡»", "b", "æ¯å½“ä½ è¢«è¿‘æˆ˜æˆ–è¿œç¨‹æ”»å‡»å‘½ä¸­æ—¶ï¼Œå³å¯ä½¿ä½ çš„ç§»åŠ¨é€Ÿåº¦æé«˜25%ï¼ŒæŒç»­3ç§’ã€‚")
+; ç¬¦æ–‡: ç”µè·ä¹‹èº« 
+RUNE_WIZARD_STORM_ARMOR_E := New SkillRune("ç”µè·ä¹‹èº«", "ç”µå‡»", "e", "æš´å‡»æœ‰ä¸€å®šå‡ çŽ‡éœ‡å‡»åˆ°é™„è¿‘çš„ä¸€ä¸ªæ•Œäººï¼Œé€ æˆ425%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: é£Žæš´æŠ¤ç”²
+SKILL_ACTIVE_WIZARD_STORM_ARMOR := New ActiveSkill("é£Žæš´æŠ¤ç”²", "ç”µå‡»", "æŠ¤ä½“"
 	, "images\skills\wizard\active\wizard_stormarmor_normal.png"
-	, "ÏûºÄ£º25µã°ÂÄÜ\r\nÄã±»µçÁ÷Î§ÈÆ£¬ÖÜÆÚÐÔµØ¶Ô¸½½üÒ»ÃûµÐÈËÔì³É175%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£³ÖÐø10·ÖÖÓ¡£"
+	, "æ¶ˆè€—ï¼š25ç‚¹å¥¥èƒ½\r\nä½ è¢«ç”µæµå›´ç»•ï¼Œå‘¨æœŸæ€§åœ°å¯¹é™„è¿‘ä¸€åæ•Œäººé€ æˆ175%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚æŒç»­10åˆ†é’Ÿã€‚"
 	, [RUNE_WIZARD_STORM_ARMOR_C, RUNE_WIZARD_STORM_ARMOR_D, RUNE_WIZARD_STORM_ARMOR_A, RUNE_WIZARD_STORM_ARMOR_B, RUNE_WIZARD_STORM_ARMOR_E])
 ; ---------------------------
-; ¼¼ÄÜ: ·ç±©»¤¼× End
+; æŠ€èƒ½: é£Žæš´æŠ¤ç”² End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ¾ÛÄÜ±¬ÆÆ Start
+; æŠ€èƒ½: èšèƒ½çˆ†ç ´ Start
 ; ---------------------------
-; ·ûÎÄ: ÄÜÁ¿ÊÍ·Å 
-RUNE_WIZARD_EXPLOSIVE_BLAST_D := New SkillRune("ÄÜÁ¿ÊÍ·Å", "ÃØ·¨", "d", "Ê¹¾ÛÄÜ±¬ÆÆµÄÉËº¦Ìá¸ßÖÁ1485%¡£")
-; ·ûÎÄ: Òý±¬Ñ¸»÷ 
-RUNE_WIZARD_EXPLOSIVE_BLAST_C := New SkillRune("Òý±¬Ñ¸»÷", "µç»÷", "c", "Ê¹¾ÛÄÜ±¬ÆÆµÄÀäÈ´Ê±¼äËõ¶ÌÖÁ3Ãë¡£¾ÛÄÜ±¬ÆÆµÄÉËº¦ÀàÐÍ×ª»»ÎªÉÁµçÉËº¦¡£")
-; ·ûÎÄ: ³¬¶ÌÒýÏß 
-RUNE_WIZARD_EXPLOSIVE_BLAST_A := New SkillRune("³¬¶ÌÒýÏß", "»ðÑæ", "a", "Á¢¼´ÊÍ·Å¾ÛÄÜ±¬ÆÆµÄÄÜÁ¿£¬Ôì³É909%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: äÎÃ» 
-RUNE_WIZARD_EXPLOSIVE_BLAST_B := New SkillRune("äÎÃ»", "±ùº®", "b", "Ê©·ÅÍþÁ¦Ç¿´óµÄ¾ÛÄÜ±¬ÆÆ£¬¶Ô18ÂëÄÚµÄËùÓÐµÐÈËÔì³É990%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£")
-; ·ûÎÄ: Á¬ËøÐ§Ó¦ 
-RUNE_WIZARD_EXPLOSIVE_BLAST_E := New SkillRune("Á¬ËøÐ§Ó¦", "»ðÑæ", "e", "ÖÆÔì3´ÎÁ¬»·±¬Õ¨¶ø·Çµ¥´Î±¬Õ¨£¬Ã¿´ÎÔì³É520%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ¼¼ÄÜ: ¾ÛÄÜ±¬ÆÆ
-SKILL_ACTIVE_WIZARD_EXPLOSIVE_BLAST := New ActiveSkill("¾ÛÄÜ±¬ÆÆ", "ÃØ·¨", "¼ÝÔ¦"
+; ç¬¦æ–‡: èƒ½é‡é‡Šæ”¾ 
+RUNE_WIZARD_EXPLOSIVE_BLAST_D := New SkillRune("èƒ½é‡é‡Šæ”¾", "ç§˜æ³•", "d", "ä½¿èšèƒ½çˆ†ç ´çš„ä¼¤å®³æé«˜è‡³1485%ã€‚")
+; ç¬¦æ–‡: å¼•çˆ†è¿…å‡» 
+RUNE_WIZARD_EXPLOSIVE_BLAST_C := New SkillRune("å¼•çˆ†è¿…å‡»", "ç”µå‡»", "c", "ä½¿èšèƒ½çˆ†ç ´çš„å†·å´æ—¶é—´ç¼©çŸ­è‡³3ç§’ã€‚èšèƒ½çˆ†ç ´çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºé—ªç”µä¼¤å®³ã€‚")
+; ç¬¦æ–‡: è¶…çŸ­å¼•çº¿ 
+RUNE_WIZARD_EXPLOSIVE_BLAST_A := New SkillRune("è¶…çŸ­å¼•çº¿", "ç«ç„°", "a", "ç«‹å³é‡Šæ”¾èšèƒ½çˆ†ç ´çš„èƒ½é‡ï¼Œé€ æˆ909%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: æ¹®æ²¡ 
+RUNE_WIZARD_EXPLOSIVE_BLAST_B := New SkillRune("æ¹®æ²¡", "å†°å¯’", "b", "æ–½æ”¾å¨åŠ›å¼ºå¤§çš„èšèƒ½çˆ†ç ´ï¼Œå¯¹18ç å†…çš„æ‰€æœ‰æ•Œäººé€ æˆ990%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: è¿žé”æ•ˆåº” 
+RUNE_WIZARD_EXPLOSIVE_BLAST_E := New SkillRune("è¿žé”æ•ˆåº”", "ç«ç„°", "e", "åˆ¶é€ 3æ¬¡è¿žçŽ¯çˆ†ç‚¸è€Œéžå•æ¬¡çˆ†ç‚¸ï¼Œæ¯æ¬¡é€ æˆ520%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: èšèƒ½çˆ†ç ´
+SKILL_ACTIVE_WIZARD_EXPLOSIVE_BLAST := New ActiveSkill("èšèƒ½çˆ†ç ´", "ç§˜æ³•", "é©¾é©­"
 	, "images\skills\wizard\active\wizard_explosiveblast_normal.png"
-	, "ÏûºÄ£º20µã°ÂÄÜÀäÈ´Ê±¼ä£º6Ãë\r\nÔÚÄãËÄÖÜ»ã¾ÛÄÜÁ¿£¬²¢ÓÚ1.5Ãëºó·¢Éú±¬ÆÆ£¬¶ÔÎ»ÓÚ12ÂëÄÚµÄËùÓÐµÐÈËÔì³É945%µÄÎäÆ÷ÉËº¦£¨×÷Îª°ÂÊõÉËº¦£©¡£"
+	, "æ¶ˆè€—ï¼š20ç‚¹å¥¥èƒ½å†·å´æ—¶é—´ï¼š6ç§’\r\nåœ¨ä½ å››å‘¨æ±‡èšèƒ½é‡ï¼Œå¹¶äºŽ1.5ç§’åŽå‘ç”Ÿçˆ†ç ´ï¼Œå¯¹ä½äºŽ12ç å†…çš„æ‰€æœ‰æ•Œäººé€ æˆ945%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå¥¥æœ¯ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_WIZARD_EXPLOSIVE_BLAST_D, RUNE_WIZARD_EXPLOSIVE_BLAST_C, RUNE_WIZARD_EXPLOSIVE_BLAST_A, RUNE_WIZARD_EXPLOSIVE_BLAST_B, RUNE_WIZARD_EXPLOSIVE_BLAST_E])
 ; ---------------------------
-; ¼¼ÄÜ: ¾ÛÄÜ±¬ÆÆ End
+; æŠ€èƒ½: èšèƒ½çˆ†ç ´ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Ä§·¨ÎäÆ÷ Start
+; æŠ€èƒ½: é­”æ³•æ­¦å™¨ Start
 ; ---------------------------
-; ·ûÎÄ: Í¨µç 
-RUNE_WIZARD_MAGIC_WEAPON_B := New SkillRune("Í¨µç", "µç»÷", "b", "¹¥»÷ÓÐÒ»¶¨¼¸ÂÊÊ¹ÉÁµçµ¯Éäµ½¸½½ü3¸öµÐÈËÉíÉÏ£¬Ôì³É61%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£")
-; ·ûÎÄ: Ô­Á¦ÎäÆ÷ 
-RUNE_WIZARD_MAGIC_WEAPON_C := New SkillRune("Ô­Á¦ÎäÆ÷", "ÃØ·¨", "c", "Ê¹Ä§·¨ÎäÆ÷µÄÉËº¦¼Ó³ÉÌá¸ßÖÁ20%¡£")
-; ·ûÎÄ: ÄÜÁ¿Òýµ¼ 
-RUNE_WIZARD_MAGIC_WEAPON_D := New SkillRune("ÄÜÁ¿Òýµ¼", "ÃØ·¨", "d", "ÄãµÄ¹¥»÷»÷ÖÐµÐÈËÊ±×î¶à¿ÉÊ¹Äã»Ö¸´3µã°ÂÄÜ¡£")
-; ·ûÎÄ: ÁÒ»ð·ÙÉí 
-RUNE_WIZARD_MAGIC_WEAPON_A := New SkillRune("ÁÒ»ð·ÙÉí", "»ðÑæ", "a", "¹¥»÷ÓÐÒ»¶¨¼¸ÂÊÊ¹µÐÈËÈ¼ÉÕ£¬ÔÚ3ÃëÄÚ¶ÔÆäÔì³É300%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: Æ«Ð±»¤¶Ü 
-RUNE_WIZARD_MAGIC_WEAPON_E := New SkillRune("Æ«Ð±»¤¶Ü", "ÃØ·¨", "e", "µ±Äã·¢Æð¹¥»÷Ê±»ñµÃÒ»µÀ»¤¶Ü£¬³ÖÐø3Ãë£¬¿ÉÎüÊÕÏàµ±ÓÚÄãÉúÃüÖµ4%µÄÉËº¦¡£")
-; ¼¼ÄÜ: Ä§·¨ÎäÆ÷
-SKILL_ACTIVE_WIZARD_MAGIC_WEAPON := New ActiveSkill("Ä§·¨ÎäÆ÷", "ÃØ·¨", "»¤Ìå"
+; ç¬¦æ–‡: é€šç”µ 
+RUNE_WIZARD_MAGIC_WEAPON_B := New SkillRune("é€šç”µ", "ç”µå‡»", "b", "æ”»å‡»æœ‰ä¸€å®šå‡ çŽ‡ä½¿é—ªç”µå¼¹å°„åˆ°é™„è¿‘3ä¸ªæ•Œäººèº«ä¸Šï¼Œé€ æˆ61%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: åŽŸåŠ›æ­¦å™¨ 
+RUNE_WIZARD_MAGIC_WEAPON_C := New SkillRune("åŽŸåŠ›æ­¦å™¨", "ç§˜æ³•", "c", "ä½¿é­”æ³•æ­¦å™¨çš„ä¼¤å®³åŠ æˆæé«˜è‡³20%ã€‚")
+; ç¬¦æ–‡: èƒ½é‡å¼•å¯¼ 
+RUNE_WIZARD_MAGIC_WEAPON_D := New SkillRune("èƒ½é‡å¼•å¯¼", "ç§˜æ³•", "d", "ä½ çš„æ”»å‡»å‡»ä¸­æ•Œäººæ—¶æœ€å¤šå¯ä½¿ä½ æ¢å¤3ç‚¹å¥¥èƒ½ã€‚")
+; ç¬¦æ–‡: çƒˆç«ç„šèº« 
+RUNE_WIZARD_MAGIC_WEAPON_A := New SkillRune("çƒˆç«ç„šèº«", "ç«ç„°", "a", "æ”»å‡»æœ‰ä¸€å®šå‡ çŽ‡ä½¿æ•Œäººç‡ƒçƒ§ï¼Œåœ¨3ç§’å†…å¯¹å…¶é€ æˆ300%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: åæ–œæŠ¤ç›¾ 
+RUNE_WIZARD_MAGIC_WEAPON_E := New SkillRune("åæ–œæŠ¤ç›¾", "ç§˜æ³•", "e", "å½“ä½ å‘èµ·æ”»å‡»æ—¶èŽ·å¾—ä¸€é“æŠ¤ç›¾ï¼ŒæŒç»­3ç§’ï¼Œå¯å¸æ”¶ç›¸å½“äºŽä½ ç”Ÿå‘½å€¼4%çš„ä¼¤å®³ã€‚")
+; æŠ€èƒ½: é­”æ³•æ­¦å™¨
+SKILL_ACTIVE_WIZARD_MAGIC_WEAPON := New ActiveSkill("é­”æ³•æ­¦å™¨", "ç§˜æ³•", "æŠ¤ä½“"
 	, "images\skills\wizard\active\wizard_magicweapon_normal.png"
-	, "ÏûºÄ£º25µã°ÂÄÜ\r\n½«Ä§·¨ÄÜÁ¿¹àÈëÎäÆ÷ÖÐ£¬Ê¹ÆäËùÔì³ÉµÄÉËº¦Ìá¸ß10%¡£Ð§¹û³ÖÐø10·ÖÖÓ¡£"
+	, "æ¶ˆè€—ï¼š25ç‚¹å¥¥èƒ½\r\nå°†é­”æ³•èƒ½é‡çŒå…¥æ­¦å™¨ä¸­ï¼Œä½¿å…¶æ‰€é€ æˆçš„ä¼¤å®³æé«˜10%ã€‚æ•ˆæžœæŒç»­10åˆ†é’Ÿã€‚"
 	, [RUNE_WIZARD_MAGIC_WEAPON_B, RUNE_WIZARD_MAGIC_WEAPON_C, RUNE_WIZARD_MAGIC_WEAPON_D, RUNE_WIZARD_MAGIC_WEAPON_A, RUNE_WIZARD_MAGIC_WEAPON_E])
 ; ---------------------------
-; ¼¼ÄÜ: Ä§·¨ÎäÆ÷ End
+; æŠ€èƒ½: é­”æ³•æ­¦å™¨ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ¶àÍ·Éß Start
+; æŠ€èƒ½: å¤šå¤´è›‡ Start
 ; ---------------------------
-; ·ûÎÄ: °ÂÊõ¶àÍ·Éß 
-RUNE_WIZARD_HYDRA_E := New SkillRune("°ÂÊõ¶àÍ·Éß", "ÃØ·¨", "e", "ÕÙ»½Ò»Ö»°ÂÊõ¶àÍ·Éß£¬ÅçÍÂ°ÂÊõÖ®Çò£¬»÷ÖÐºó±¬Õ¨£¬¶Ô±¬Õ¨µã¸½½üµÄµÐÈËÔì³É205%µÄÎäÆ÷ÉËº¦£¨×÷Îª°ÂÊõÉËº¦£©¡£")
-; ·ûÎÄ: ÉÁµç¶àÍ·Éß 
-RUNE_WIZARD_HYDRA_B := New SkillRune("ÉÁµç¶àÍ·Éß", "µç»÷", "b", "ÕÙ»½Ò»Ö»ÉÁµç¶àÍ·Éßµç»÷µÐÈË£¬Ôì³É255%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£")
-; ·ûÎÄ: ÁÒÑæ¶àÍ·Éß 
-RUNE_WIZARD_HYDRA_C := New SkillRune("ÁÒÑæ¶àÍ·Éß", "»ðÑæ", "c", "ÕÙ»½Ò»Ö»ÁÒÑæ¶àÍ·Éß£¬ÅçÉä»ðÑæÉÕ×Æ³å»÷µØµã¸½½üµÄµÐÈË£¬ÔÚ3ÃëÄÚÔì³É155%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£È¼ÉÕÉËº¦¿ÉÔÚÍ¬Ò»ÃûµÐÈËÉíÉÏµþ¼Ó¶à´Î¡£")
-; ·ûÎÄ: ±ùËª¶àÍ·Éß 
-RUNE_WIZARD_HYDRA_A := New SkillRune("±ùËª¶àÍ·Éß", "±ùº®", "a", "ÕÙ»½Ò»Ö»±ùËª¶àÍ·Éß£¬ÔÚ½ü¾à·¶Î§ÄÚÅçÍÂ×¶ÐÎº®Ëª£¬¶Ô×¶ÐÎÇøÓòÄÚµÄËùÓÐµÐÈËÔì³É255%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£")
-; ·ûÎÄ: ¾ÞÐÍ¶àÍ·Éß 
-RUNE_WIZARD_HYDRA_D := New SkillRune("¾ÞÐÍ¶àÍ·Éß", "»ðÑæ", "d", "ÕÙ»½Ò»Ö»¾ÞÐÍ¶àÍ·Éß£¬Ïò¸½½üµÄµÐÈËÅçÍÂÁÒÑæ£¬¶ÔÕ¾ÔÚ×ÆÈÈ´óµØÉÏµÄµÐÈËÃ¿ÃëÔì³É330%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ¼¼ÄÜ: ¶àÍ·Éß
-SKILL_ACTIVE_WIZARD_HYDRA := New ActiveSkill("¶àÍ·Éß", "»ðÑæ", "Ô­Á¦"
+; ç¬¦æ–‡: å¥¥æœ¯å¤šå¤´è›‡ 
+RUNE_WIZARD_HYDRA_E := New SkillRune("å¥¥æœ¯å¤šå¤´è›‡", "ç§˜æ³•", "e", "å¬å”¤ä¸€åªå¥¥æœ¯å¤šå¤´è›‡ï¼Œå–·åå¥¥æœ¯ä¹‹çƒï¼Œå‡»ä¸­åŽçˆ†ç‚¸ï¼Œå¯¹çˆ†ç‚¸ç‚¹é™„è¿‘çš„æ•Œäººé€ æˆ205%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå¥¥æœ¯ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: é—ªç”µå¤šå¤´è›‡ 
+RUNE_WIZARD_HYDRA_B := New SkillRune("é—ªç”µå¤šå¤´è›‡", "ç”µå‡»", "b", "å¬å”¤ä¸€åªé—ªç”µå¤šå¤´è›‡ç”µå‡»æ•Œäººï¼Œé€ æˆ255%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: çƒˆç„°å¤šå¤´è›‡ 
+RUNE_WIZARD_HYDRA_C := New SkillRune("çƒˆç„°å¤šå¤´è›‡", "ç«ç„°", "c", "å¬å”¤ä¸€åªçƒˆç„°å¤šå¤´è›‡ï¼Œå–·å°„ç«ç„°çƒ§ç¼å†²å‡»åœ°ç‚¹é™„è¿‘çš„æ•Œäººï¼Œåœ¨3ç§’å†…é€ æˆ155%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚ç‡ƒçƒ§ä¼¤å®³å¯åœ¨åŒä¸€åæ•Œäººèº«ä¸Šå åŠ å¤šæ¬¡ã€‚")
+; ç¬¦æ–‡: å†°éœœå¤šå¤´è›‡ 
+RUNE_WIZARD_HYDRA_A := New SkillRune("å†°éœœå¤šå¤´è›‡", "å†°å¯’", "a", "å¬å”¤ä¸€åªå†°éœœå¤šå¤´è›‡ï¼Œåœ¨è¿‘è·èŒƒå›´å†…å–·åé”¥å½¢å¯’éœœï¼Œå¯¹é”¥å½¢åŒºåŸŸå†…çš„æ‰€æœ‰æ•Œäººé€ æˆ255%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å·¨åž‹å¤šå¤´è›‡ 
+RUNE_WIZARD_HYDRA_D := New SkillRune("å·¨åž‹å¤šå¤´è›‡", "ç«ç„°", "d", "å¬å”¤ä¸€åªå·¨åž‹å¤šå¤´è›‡ï¼Œå‘é™„è¿‘çš„æ•Œäººå–·åçƒˆç„°ï¼Œå¯¹ç«™åœ¨ç¼çƒ­å¤§åœ°ä¸Šçš„æ•Œäººæ¯ç§’é€ æˆ330%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: å¤šå¤´è›‡
+SKILL_ACTIVE_WIZARD_HYDRA := New ActiveSkill("å¤šå¤´è›‡", "ç«ç„°", "åŽŸåŠ›"
 	, "images\skills\wizard\active\wizard_hydra_normal.png"
-	, "ÏûºÄ£º15µã°ÂÄÜ\r\nÕÙ³öÒ»Ö»¶àÍ·Éß£¬ÓÃ»ðÑæ¹¥»÷µÐÈË£¬Ôì³É165%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©£¬³ÖÐø15Ãë¡£"
+	, "æ¶ˆè€—ï¼š15ç‚¹å¥¥èƒ½\r\nå¬å‡ºä¸€åªå¤šå¤´è›‡ï¼Œç”¨ç«ç„°æ”»å‡»æ•Œäººï¼Œé€ æˆ165%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ï¼ŒæŒç»­15ç§’ã€‚"
 	, [RUNE_WIZARD_HYDRA_E, RUNE_WIZARD_HYDRA_B, RUNE_WIZARD_HYDRA_C, RUNE_WIZARD_HYDRA_A, RUNE_WIZARD_HYDRA_D])
 ; ---------------------------
-; ¼¼ÄÜ: ¶àÍ·Éß End
+; æŠ€èƒ½: å¤šå¤´è›‡ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Íß½âÉäÏß Start
+; æŠ€èƒ½: ç“¦è§£å°„çº¿ Start
 ; ---------------------------
-; ·ûÎÄ: ÈÈÄÜ»ã¾Û 
-RUNE_WIZARD_DISINTEGRATE_B := New SkillRune("ÈÈÄÜ»ã¾Û", "»ðÑæ", "b", "Ê¹ÉäÏß±äµÃ¸ü¼Ó¿í¹ãÒÔ»÷ÖÐ¸ü¶àµÐÈË¡£Íß½âÉäÏßµÄÉËº¦ÀàÐÍ×ª»»Îª»ðÑæÉËº¦¡£")
-; ·ûÎÄ: ¼¤±¬ 
-RUNE_WIZARD_DISINTEGRATE_E := New SkillRune("¼¤±¬", "ÃØ·¨", "e", "±»ÉäÏßÏûÃðµÄµÐÈËÓÐ35%µÄ¼¸ÂÊ±¬Õ¨£¬¶Ô8ÂëÄÚµÄËùÓÐµÐÈËÔì³É750%µÄÎäÆ÷ÉËº¦£¨×÷Îª°ÂÊõÉËº¦£©¡£")
-; ·ûÎÄ: ¹âÄÜ³å»÷ 
-RUNE_WIZARD_DISINTEGRATE_C := New SkillRune("¹âÄÜ³å»÷", "ÃØ·¨", "c", "ÔÚ½ü¾àÀë×¶ÐÎ·¶Î§ÄÚÒýµ¼É¢ÉäµÄÄÜÁ¿ÉäÏß£¬Ôì³É435%µÄÎäÆ÷ÉËº¦£¨×÷Îª°ÂÊõÉËº¦£©¡£Íß½âÉäÏßÃ¿Ãë»áÌá¸ßÏàµ±ÓÚ340%µÄÎäÆ÷ÉËº¦£¬×î¶à¿ÉÌá¸ßÖÁ1115%µÄÎäÆ÷ÉËº¦£¨×÷Îª°ÂÊõÉËº¦£©¡£")
-; ·ûÎÄ: »ìãç¹âÊà 
-RUNE_WIZARD_DISINTEGRATE_D := New SkillRune("»ìãç¹âÊà", "ÃØ·¨", "d", "Ê©·ÅÉäÏßÊ±Äã³äÂúÁËÄÜÁ¿£¬¿É³¯¸½½üµÐÈËÅçÉä£¬Ôì³É115%µÄÎäÆ÷ÉËº¦£¨×÷Îª°ÂÊõÉËº¦£©¡£")
-; ·ûÎÄ: °ÂÄÜÔö·ù 
-RUNE_WIZARD_DISINTEGRATE_A := New SkillRune("°ÂÄÜÔö·ù", "ÃØ·¨", "a", "±»Íß½âÉäÏß»÷ÖÐµÄµÐÈËÊÜµ½µÄ°ÂÊõÉËº¦Ìá¸ß15%£¬³ÖÐø4Ãë¡£")
-; ¼¼ÄÜ: Íß½âÉäÏß
-SKILL_ACTIVE_WIZARD_DISINTEGRATE := New ActiveSkill("Íß½âÉäÏß", "ÃØ·¨", "´ÎÒª"
+; ç¬¦æ–‡: çƒ­èƒ½æ±‡èš 
+RUNE_WIZARD_DISINTEGRATE_B := New SkillRune("çƒ­èƒ½æ±‡èš", "ç«ç„°", "b", "ä½¿å°„çº¿å˜å¾—æ›´åŠ å®½å¹¿ä»¥å‡»ä¸­æ›´å¤šæ•Œäººã€‚ç“¦è§£å°„çº¿çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºç«ç„°ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æ¿€çˆ† 
+RUNE_WIZARD_DISINTEGRATE_E := New SkillRune("æ¿€çˆ†", "ç§˜æ³•", "e", "è¢«å°„çº¿æ¶ˆç­çš„æ•Œäººæœ‰35%çš„å‡ çŽ‡çˆ†ç‚¸ï¼Œå¯¹8ç å†…çš„æ‰€æœ‰æ•Œäººé€ æˆ750%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå¥¥æœ¯ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å…‰èƒ½å†²å‡» 
+RUNE_WIZARD_DISINTEGRATE_C := New SkillRune("å…‰èƒ½å†²å‡»", "ç§˜æ³•", "c", "åœ¨è¿‘è·ç¦»é”¥å½¢èŒƒå›´å†…å¼•å¯¼æ•£å°„çš„èƒ½é‡å°„çº¿ï¼Œé€ æˆ435%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå¥¥æœ¯ä¼¤å®³ï¼‰ã€‚ç“¦è§£å°„çº¿æ¯ç§’ä¼šæé«˜ç›¸å½“äºŽ340%çš„æ­¦å™¨ä¼¤å®³ï¼Œæœ€å¤šå¯æé«˜è‡³1115%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå¥¥æœ¯ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: æ··æ²Œå…‰æž¢ 
+RUNE_WIZARD_DISINTEGRATE_D := New SkillRune("æ··æ²Œå…‰æž¢", "ç§˜æ³•", "d", "æ–½æ”¾å°„çº¿æ—¶ä½ å……æ»¡äº†èƒ½é‡ï¼Œå¯æœé™„è¿‘æ•Œäººå–·å°„ï¼Œé€ æˆ115%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå¥¥æœ¯ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å¥¥èƒ½å¢žå¹… 
+RUNE_WIZARD_DISINTEGRATE_A := New SkillRune("å¥¥èƒ½å¢žå¹…", "ç§˜æ³•", "a", "è¢«ç“¦è§£å°„çº¿å‡»ä¸­çš„æ•Œäººå—åˆ°çš„å¥¥æœ¯ä¼¤å®³æé«˜15%ï¼ŒæŒç»­4ç§’ã€‚")
+; æŠ€èƒ½: ç“¦è§£å°„çº¿
+SKILL_ACTIVE_WIZARD_DISINTEGRATE := New ActiveSkill("ç“¦è§£å°„çº¿", "ç§˜æ³•", "æ¬¡è¦"
 	, "images\skills\wizard\active\wizard_disintegrate_normal.png"
-	, "ÏûºÄ£º18µã°ÂÄÜ\r\nÒýµ¼Ò»µÀ´¿¾»ÄÜÁ¿ÉäÏß£¬Ôì³É390%µÄÎäÆ÷ÉËº¦£¨×÷Îª°ÂÊõÉËº¦£©¡£"
+	, "æ¶ˆè€—ï¼š18ç‚¹å¥¥èƒ½\r\nå¼•å¯¼ä¸€é“çº¯å‡€èƒ½é‡å°„çº¿ï¼Œé€ æˆ390%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå¥¥æœ¯ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_WIZARD_DISINTEGRATE_B, RUNE_WIZARD_DISINTEGRATE_E, RUNE_WIZARD_DISINTEGRATE_C, RUNE_WIZARD_DISINTEGRATE_D, RUNE_WIZARD_DISINTEGRATE_A])
 ; ---------------------------
-; ¼¼ÄÜ: Íß½âÉäÏß End
+; æŠ€èƒ½: ç“¦è§£å°„çº¿ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Ä§ÐÇ Start
+; æŠ€èƒ½: é­”æ˜Ÿ Start
 ; ---------------------------
-; ·ûÎÄ: ÁÒÑæ»ð»¨ 
-RUNE_WIZARD_FAMILIAR_A := New SkillRune("ÁÒÑæ»ð»¨", "»ðÑæ", "a", "ÕÙ»½Ò»¸ö»ðÑæÄ§ÐÇ£¬Ê¹ÄãÔì³ÉµÄÉËº¦Ìá¸ß10%¡£")
-; ·ûÎÄ: ±ù×¶Ä§ÐÇ 
-RUNE_WIZARD_FAMILIAR_C := New SkillRune("±ù×¶Ä§ÐÇ", "±ùº®", "c", "Ä§ÐÇµÄÔ¶³Ì¹¥»÷ÓÐ35%µÄ¼¸ÂÊ±ù¶³µÐÈË1Ãë¡£")
-; ·ûÎÄ: Ô¶¹ÅÎÀÊ¿ 
-RUNE_WIZARD_FAMILIAR_E := New SkillRune("Ô¶¹ÅÎÀÊ¿", "ÃØ·¨", "e", "ÕÙ»½Ò»¸ö»¤ÌåÄ§ÐÇ¡£µ±ÄãµÄÉúÃüÖµµÍÓÚ50%Ê±£¬Ä§ÐÇ»áÃ¿¸ô6ÃëÎüÊÕ1´Î¹¥»÷µÄÉËº¦¡£")
-; ·ûÎÄ: °ÂÄÜ¼¤Ó¿ 
-RUNE_WIZARD_FAMILIAR_D := New SkillRune("°ÂÄÜ¼¤Ó¿", "ÃØ·¨", "d", "µ±Ä§ÐÇ¼¤»îÊ±£¬ÄãÃ¿Ãë¿É»Ö¸´4.5µã°ÂÄÜ¡£")
-; ·ûÎÄ: ±¬Õ¨Ä§ÐÇ 
-RUNE_WIZARD_FAMILIAR_B := New SkillRune("±¬Õ¨Ä§ÐÇ", "ÃØ·¨", "b", "Ä§ÐÇµÄÔ¶³Ì¹¥»÷ÔÚ»÷ÖÐºó»á±¬Õ¨£¬¶Ô6ÂëÄÚµÄËùÓÐµÐÈËÔì³É240%µÄÎäÆ÷ÉËº¦£¨×÷Îª°ÂÊõÉËº¦£©¡£")
-; ¼¼ÄÜ: Ä§ÐÇ
-SKILL_ACTIVE_WIZARD_FAMILIAR := New ActiveSkill("Ä§ÐÇ", "ÃØ·¨", "»¤Ìå"
+; ç¬¦æ–‡: çƒˆç„°ç«èŠ± 
+RUNE_WIZARD_FAMILIAR_A := New SkillRune("çƒˆç„°ç«èŠ±", "ç«ç„°", "a", "å¬å”¤ä¸€ä¸ªç«ç„°é­”æ˜Ÿï¼Œä½¿ä½ é€ æˆçš„ä¼¤å®³æé«˜10%ã€‚")
+; ç¬¦æ–‡: å†°é”¥é­”æ˜Ÿ 
+RUNE_WIZARD_FAMILIAR_C := New SkillRune("å†°é”¥é­”æ˜Ÿ", "å†°å¯’", "c", "é­”æ˜Ÿçš„è¿œç¨‹æ”»å‡»æœ‰35%çš„å‡ çŽ‡å†°å†»æ•Œäºº1ç§’ã€‚")
+; ç¬¦æ–‡: è¿œå¤å«å£« 
+RUNE_WIZARD_FAMILIAR_E := New SkillRune("è¿œå¤å«å£«", "ç§˜æ³•", "e", "å¬å”¤ä¸€ä¸ªæŠ¤ä½“é­”æ˜Ÿã€‚å½“ä½ çš„ç”Ÿå‘½å€¼ä½ŽäºŽ50%æ—¶ï¼Œé­”æ˜Ÿä¼šæ¯éš”6ç§’å¸æ”¶1æ¬¡æ”»å‡»çš„ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: å¥¥èƒ½æ¿€æ¶Œ 
+RUNE_WIZARD_FAMILIAR_D := New SkillRune("å¥¥èƒ½æ¿€æ¶Œ", "ç§˜æ³•", "d", "å½“é­”æ˜Ÿæ¿€æ´»æ—¶ï¼Œä½ æ¯ç§’å¯æ¢å¤4.5ç‚¹å¥¥èƒ½ã€‚")
+; ç¬¦æ–‡: çˆ†ç‚¸é­”æ˜Ÿ 
+RUNE_WIZARD_FAMILIAR_B := New SkillRune("çˆ†ç‚¸é­”æ˜Ÿ", "ç§˜æ³•", "b", "é­”æ˜Ÿçš„è¿œç¨‹æ”»å‡»åœ¨å‡»ä¸­åŽä¼šçˆ†ç‚¸ï¼Œå¯¹6ç å†…çš„æ‰€æœ‰æ•Œäººé€ æˆ240%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå¥¥æœ¯ä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: é­”æ˜Ÿ
+SKILL_ACTIVE_WIZARD_FAMILIAR := New ActiveSkill("é­”æ˜Ÿ", "ç§˜æ³•", "æŠ¤ä½“"
 	, "images\skills\wizard\active\wizard_familiar_normal.png"
-	, "ÏûºÄ£º20µã°ÂÄÜ\r\nÕÙ»½Ò»¸öÄ§ÐÇ¹¥»÷µÐÈË£¬¶ÔÆäÔì³É240%µÄÎäÆ÷ÉËº¦£¨×÷Îª°ÂÊõÉËº¦£©¡£µÐÈËÎÞ·¨½«Ä§ÐÇÑ¡ÎªÄ¿±ê»ò¶ÔÆäÔì³ÉÉËº¦£¬¿É´æÔÚ10·ÖÖÓ¡£"
+	, "æ¶ˆè€—ï¼š20ç‚¹å¥¥èƒ½\r\nå¬å”¤ä¸€ä¸ªé­”æ˜Ÿæ”»å‡»æ•Œäººï¼Œå¯¹å…¶é€ æˆ240%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå¥¥æœ¯ä¼¤å®³ï¼‰ã€‚æ•Œäººæ— æ³•å°†é­”æ˜Ÿé€‰ä¸ºç›®æ ‡æˆ–å¯¹å…¶é€ æˆä¼¤å®³ï¼Œå¯å­˜åœ¨10åˆ†é’Ÿã€‚"
 	, [RUNE_WIZARD_FAMILIAR_A, RUNE_WIZARD_FAMILIAR_C, RUNE_WIZARD_FAMILIAR_E, RUNE_WIZARD_FAMILIAR_D, RUNE_WIZARD_FAMILIAR_B])
 ; ---------------------------
-; ¼¼ÄÜ: Ä§ÐÇ End
+; æŠ€èƒ½: é­”æ˜Ÿ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ´«ËÍ Start
+; æŠ€èƒ½: ä¼ é€ Start
 ; ---------------------------
-; ·ûÎÄ: °²È«Í¨µÀ 
-RUNE_WIZARD_TELEPORT_C := New SkillRune("°²È«Í¨µÀ", "ÃØ·¨", "c", "ÔÚ´«ËÍºóµÄ5ÃëÄÚÄãÊÜµ½µÄÉËº¦½µµÍ25%¡£")
-; ·ûÎÄ: ³æ¶´ 
-RUNE_WIZARD_TELEPORT_E := New SkillRune("³æ¶´", "ÃØ·¨", "e", "Ê©·Å´«ËÍºó£¬Äã¿ÉÒÔÔÚ3ÃëÄÚ¶îÍâ´«ËÍ1´Î¡£")
-; ·ûÎÄ: Ê±¿Õ·´×ª 
-RUNE_WIZARD_TELEPORT_D := New SkillRune("Ê±¿Õ·´×ª", "ÃØ·¨", "d", "ÔÚ5ÃëÄÚÔÙ´ÎÊ©·Å´«ËÍ½«»áÁ¢¼´½«Äã´«ËÍ»Ø³õÊ¼Î»ÖÃ£¬²¢Ê¹Ê£âÅÀäÈ´Ê±¼äËõ¶ÌÖÁ1Ãë¡£")
-; ·ûÎÄ: ÉíÓ°ÏàËæ 
-RUNE_WIZARD_TELEPORT_B := New SkillRune("ÉíÓ°ÏàËæ", "ÃØ·¨", "b", "´«ËÍºóÕÙ»½2¸ö¾µÏñ£¬³ÖÐø6Ãë¡£")
-; ·ûÎÄ: ÔÖ¶ò½µÁÙ 
-RUNE_WIZARD_TELEPORT_A := New SkillRune("ÔÖ¶ò½µÁÙ", "ÃØ·¨", "a", "µÖ´ïÊ±Ê©·ÅÒ»¸ö½ü¾àÀëµÄÔ­Á¦Ö®²¨£¬¶Ô¸½½üµÄËùÓÐµÐÈËÔì³É175%µÄÎäÆ÷ÉËº¦£¨×÷Îª°ÂÊõÉËº¦£©£¬²¢Ê¹Æä»èÃÔ1Ãë¡£")
-; ¼¼ÄÜ: ´«ËÍ
-SKILL_ACTIVE_WIZARD_TELEPORT := New ActiveSkill("´«ËÍ", "ÃØ·¨", "·ÀÓù"
+; ç¬¦æ–‡: å®‰å…¨é€šé“ 
+RUNE_WIZARD_TELEPORT_C := New SkillRune("å®‰å…¨é€šé“", "ç§˜æ³•", "c", "åœ¨ä¼ é€åŽçš„5ç§’å†…ä½ å—åˆ°çš„ä¼¤å®³é™ä½Ž25%ã€‚")
+; ç¬¦æ–‡: è™«æ´ž 
+RUNE_WIZARD_TELEPORT_E := New SkillRune("è™«æ´ž", "ç§˜æ³•", "e", "æ–½æ”¾ä¼ é€åŽï¼Œä½ å¯ä»¥åœ¨3ç§’å†…é¢å¤–ä¼ é€1æ¬¡ã€‚")
+; ç¬¦æ–‡: æ—¶ç©ºåè½¬ 
+RUNE_WIZARD_TELEPORT_D := New SkillRune("æ—¶ç©ºåè½¬", "ç§˜æ³•", "d", "åœ¨5ç§’å†…å†æ¬¡æ–½æ”¾ä¼ é€å°†ä¼šç«‹å³å°†ä½ ä¼ é€å›žåˆå§‹ä½ç½®ï¼Œå¹¶ä½¿å‰©é¦€å†·å´æ—¶é—´ç¼©çŸ­è‡³1ç§’ã€‚")
+; ç¬¦æ–‡: èº«å½±ç›¸éš 
+RUNE_WIZARD_TELEPORT_B := New SkillRune("èº«å½±ç›¸éš", "ç§˜æ³•", "b", "ä¼ é€åŽå¬å”¤2ä¸ªé•œåƒï¼ŒæŒç»­6ç§’ã€‚")
+; ç¬¦æ–‡: ç¾åŽ„é™ä¸´ 
+RUNE_WIZARD_TELEPORT_A := New SkillRune("ç¾åŽ„é™ä¸´", "ç§˜æ³•", "a", "æŠµè¾¾æ—¶æ–½æ”¾ä¸€ä¸ªè¿‘è·ç¦»çš„åŽŸåŠ›ä¹‹æ³¢ï¼Œå¯¹é™„è¿‘çš„æ‰€æœ‰æ•Œäººé€ æˆ175%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå¥¥æœ¯ä¼¤å®³ï¼‰ï¼Œå¹¶ä½¿å…¶æ˜è¿·1ç§’ã€‚")
+; æŠ€èƒ½: ä¼ é€
+SKILL_ACTIVE_WIZARD_TELEPORT := New ActiveSkill("ä¼ é€", "ç§˜æ³•", "é˜²å¾¡"
 	, "images\skills\wizard\active\wizard_teleport_normal.png"
-	, "ÀäÈ´Ê±¼ä£º11Ãë\r\n¾­ÓÉÐé¿Õ´«ËÍµ½Ö¸¶¨Î»ÖÃ£¬×îÔ¶¿ÉÖÁ50ÂëÖ®Íâ¡£"
+	, "å†·å´æ—¶é—´ï¼š11ç§’\r\nç»ç”±è™šç©ºä¼ é€åˆ°æŒ‡å®šä½ç½®ï¼Œæœ€è¿œå¯è‡³50ç ä¹‹å¤–ã€‚"
 	, [RUNE_WIZARD_TELEPORT_C, RUNE_WIZARD_TELEPORT_E, RUNE_WIZARD_TELEPORT_D, RUNE_WIZARD_TELEPORT_B, RUNE_WIZARD_TELEPORT_A])
 ; ---------------------------
-; ¼¼ÄÜ: ´«ËÍ End
+; æŠ€èƒ½: ä¼ é€ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ¾µÏñ Start
+; æŠ€èƒ½: é•œåƒ Start
 ; ---------------------------
-; ·ûÎÄ: Ç¿¹â¾µÏñ 
-RUNE_WIZARD_MIRROR_IMAGE_C := New SkillRune("Ç¿¹â¾µÏñ", "ÃØ·¨", "c", "Ê¹¾µÏñµÄÉúÃüÖµÌá¸ßÖÁÏàµ±ÓÚÄã×ÔÉíÉúÃüÖµµÄ200%¡£")
-; ·ûÎÄ: ¶àÖØ·ÖÉí 
-RUNE_WIZARD_MIRROR_IMAGE_B := New SkillRune("¶àÖØ·ÖÉí", "ÃØ·¨", "b", "ÕÙ»½4¸ö¾µÏñ³°·í¸½½üµÄµÐÈË£¬³ÖÐø1Ãë£¬Ã¿¸ö¾ßÓÐÄã50%µÄÉúÃüÖµ¡£")
-; ·ûÎÄ: ²ÐÓ°±¬ÆÆ 
-RUNE_WIZARD_MIRROR_IMAGE_E := New SkillRune("²ÐÓ°±¬ÆÆ", "ÃØ·¨", "e", "µ±Ò»¸ö¾µÏñ±»ÏûÃðÊ±»á·¢Éú±¬Õ¨£¬Ôì³É309%µÄÎäÆ÷ÉËº¦£¨×÷Îª°ÂÊõÉËº¦£©£¬²¢ÓÐ50%µÄ¼¸ÂÊÁîµÐÈË»èÃÔ2Ãë¡£")
-; ·ûÎÄ: ÒâÖ¾ÑÓÉì 
-RUNE_WIZARD_MIRROR_IMAGE_D := New SkillRune("ÒâÖ¾ÑÓÉì", "ÃØ·¨", "d", "¾µÏñµÄ³ÖÐøÊ±¼äÑÓ³¤ÖÁ10Ãë£¬ÇÒÊ¹Äã¾µÏñµÄÉúÃüÖµÌá¸ßÖÁÏàµ±ÓÚÄãÉúÃüÖµµÄ100%¡£")
-; ·ûÎÄ: ¾µÏñÄ£·Â 
-RUNE_WIZARD_MIRROR_IMAGE_A := New SkillRune("¾µÏñÄ£·Â", "ÃØ·¨", "a", "ÓÉ¾µÏñÊ©·ÅµÄ·¨Êõ£¬¿ÉÔì³ÉÏàµ±ÓÚÄã×ÔÉí·¨Êõ20%µÄÉËº¦¡£")
-; ¼¼ÄÜ: ¾µÏñ
-SKILL_ACTIVE_WIZARD_MIRROR_IMAGE := New ActiveSkill("¾µÏñ", "ÃØ·¨", "¼ÝÔ¦"
+; ç¬¦æ–‡: å¼ºå…‰é•œåƒ 
+RUNE_WIZARD_MIRROR_IMAGE_C := New SkillRune("å¼ºå…‰é•œåƒ", "ç§˜æ³•", "c", "ä½¿é•œåƒçš„ç”Ÿå‘½å€¼æé«˜è‡³ç›¸å½“äºŽä½ è‡ªèº«ç”Ÿå‘½å€¼çš„200%ã€‚")
+; ç¬¦æ–‡: å¤šé‡åˆ†èº« 
+RUNE_WIZARD_MIRROR_IMAGE_B := New SkillRune("å¤šé‡åˆ†èº«", "ç§˜æ³•", "b", "å¬å”¤4ä¸ªé•œåƒå˜²è®½é™„è¿‘çš„æ•Œäººï¼ŒæŒç»­1ç§’ï¼Œæ¯ä¸ªå…·æœ‰ä½ 50%çš„ç”Ÿå‘½å€¼ã€‚")
+; ç¬¦æ–‡: æ®‹å½±çˆ†ç ´ 
+RUNE_WIZARD_MIRROR_IMAGE_E := New SkillRune("æ®‹å½±çˆ†ç ´", "ç§˜æ³•", "e", "å½“ä¸€ä¸ªé•œåƒè¢«æ¶ˆç­æ—¶ä¼šå‘ç”Ÿçˆ†ç‚¸ï¼Œé€ æˆ309%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå¥¥æœ¯ä¼¤å®³ï¼‰ï¼Œå¹¶æœ‰50%çš„å‡ çŽ‡ä»¤æ•Œäººæ˜è¿·2ç§’ã€‚")
+; ç¬¦æ–‡: æ„å¿—å»¶ä¼¸ 
+RUNE_WIZARD_MIRROR_IMAGE_D := New SkillRune("æ„å¿—å»¶ä¼¸", "ç§˜æ³•", "d", "é•œåƒçš„æŒç»­æ—¶é—´å»¶é•¿è‡³10ç§’ï¼Œä¸”ä½¿ä½ é•œåƒçš„ç”Ÿå‘½å€¼æé«˜è‡³ç›¸å½“äºŽä½ ç”Ÿå‘½å€¼çš„100%ã€‚")
+; ç¬¦æ–‡: é•œåƒæ¨¡ä»¿ 
+RUNE_WIZARD_MIRROR_IMAGE_A := New SkillRune("é•œåƒæ¨¡ä»¿", "ç§˜æ³•", "a", "ç”±é•œåƒæ–½æ”¾çš„æ³•æœ¯ï¼Œå¯é€ æˆç›¸å½“äºŽä½ è‡ªèº«æ³•æœ¯20%çš„ä¼¤å®³ã€‚")
+; æŠ€èƒ½: é•œåƒ
+SKILL_ACTIVE_WIZARD_MIRROR_IMAGE := New ActiveSkill("é•œåƒ", "ç§˜æ³•", "é©¾é©­"
 	, "images\skills\wizard\active\wizard_mirrorimage_normal.png"
-	, "ÀäÈ´Ê±¼ä£º15Ãë\r\nÕÙ»½2¸öÐé»Ã¸´ÖÆÌå³°·í¸½½üµÄµÐÈË1Ãë£¬¸´ÖÆÌå´æÔÚ7Ãë£¬ÉúÃüÖµÎªÄãµÄ50%¡£"
+	, "å†·å´æ—¶é—´ï¼š15ç§’\r\nå¬å”¤2ä¸ªè™šå¹»å¤åˆ¶ä½“å˜²è®½é™„è¿‘çš„æ•Œäºº1ç§’ï¼Œå¤åˆ¶ä½“å­˜åœ¨7ç§’ï¼Œç”Ÿå‘½å€¼ä¸ºä½ çš„50%ã€‚"
 	, [RUNE_WIZARD_MIRROR_IMAGE_C, RUNE_WIZARD_MIRROR_IMAGE_B, RUNE_WIZARD_MIRROR_IMAGE_E, RUNE_WIZARD_MIRROR_IMAGE_D, RUNE_WIZARD_MIRROR_IMAGE_A])
 ; ---------------------------
-; ¼¼ÄÜ: ¾µÏñ End
+; æŠ€èƒ½: é•œåƒ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÔÉÊ¯Êõ Start
+; æŠ€èƒ½: é™¨çŸ³æœ¯ Start
 ; ---------------------------
-; ·ûÎÄ: À×öª×²»÷ 
-RUNE_WIZARD_METEOR_E := New SkillRune("À×öª×²»÷", "µç»÷", "e", "ÒÆ³ýÔÉÊ¯×¹ÂäµÄÑÓ³ÙÊ±¼ä¡£ÔÉÊ¯ÊõµÄÉËº¦ÀàÐÍ×ª»»ÎªÉÁµçÉËº¦¡£")
-; ·ûÎÄ: ÐÇ³½ÆõÔ¼ 
-RUNE_WIZARD_METEOR_D := New SkillRune("ÐÇ³½ÆõÔ¼", "ÃØ·¨", "d", "ÏûºÄËùÓÐÊ£âÅ°ÂÄÜ¡£Ã¿ÏûºÄ1µã¶îÍâµÄ°ÂÄÜ»áÊ¹ÔÉÊ¯ÊõµÄ×²»÷ÉËº¦Ìá¸ßÏàµ±ÓÚ20%µÄÎäÆ÷ÉËº¦£¨×÷Îª°ÂÊõÉËº¦£©¡£")
-; ·ûÎÄ: Ìì±ù³å×² 
-RUNE_WIZARD_METEOR_C := New SkillRune("Ìì±ù³å×²", "±ùº®", "c", "ÕÙ»½Ò»¿ÅåçÐÇ£¬×²»÷µØÃæÊ±Ôì³É740%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©£¬²¢ÇÒ±ù¶³ÊÜµ½º®ÀäÐ§¹ûÓ°ÏìµÄµÐÈË£¬³ÖÐø1Ãë¡£×²»÷µØµã»á±»Ò»Æ¬±ùÎíÁýÕÖ£¬ÔÚ3ÃëÄÚÔì³É235%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£")
-; ·ûÎÄ: ÔÉÊ¯Óê 
-RUNE_WIZARD_METEOR_B := New SkillRune("ÔÉÊ¯Óê", "»ðÑæ", "b", "ÊÍ·Å7¿Å½ÏÐ¡µÄÔÉÊ¯£¬Ã¿¿ÅÔì³É277%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ÈÛ»ð³å»÷ 
-RUNE_WIZARD_METEOR_A := New SkillRune("ÈÛ»ð³å»÷", "»ðÑæ", "a", "Ê¹ÔÉÊ¯µÄÌå»ý´ó´óÔö¼Ó£¬²¢Ê¹×²»÷Ôì³ÉµÄÉËº¦Ìá¸ßÖÁ1648%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©£¬ ÇÒÈÛÉÕ»ðÑæ»áÔÚ3ÃëÄÚÔì³É625%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£ÓÐ15ÃëÀäÈ´Ê±¼ä¡£")
-; ¼¼ÄÜ: ÔÉÊ¯Êõ
-SKILL_ACTIVE_WIZARD_METEOR := New ActiveSkill("ÔÉÊ¯Êõ", "»ðÑæ", "Ô­Á¦"
+; ç¬¦æ–‡: é›·éœ†æ’žå‡» 
+RUNE_WIZARD_METEOR_E := New SkillRune("é›·éœ†æ’žå‡»", "ç”µå‡»", "e", "ç§»é™¤é™¨çŸ³å è½çš„å»¶è¿Ÿæ—¶é—´ã€‚é™¨çŸ³æœ¯çš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºé—ªç”µä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æ˜Ÿè¾°å¥‘çº¦ 
+RUNE_WIZARD_METEOR_D := New SkillRune("æ˜Ÿè¾°å¥‘çº¦", "ç§˜æ³•", "d", "æ¶ˆè€—æ‰€æœ‰å‰©é¦€å¥¥èƒ½ã€‚æ¯æ¶ˆè€—1ç‚¹é¢å¤–çš„å¥¥èƒ½ä¼šä½¿é™¨çŸ³æœ¯çš„æ’žå‡»ä¼¤å®³æé«˜ç›¸å½“äºŽ20%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå¥¥æœ¯ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: å¤©å†°å†²æ’ž 
+RUNE_WIZARD_METEOR_C := New SkillRune("å¤©å†°å†²æ’ž", "å†°å¯’", "c", "å¬å”¤ä¸€é¢—å½—æ˜Ÿï¼Œæ’žå‡»åœ°é¢æ—¶é€ æˆ740%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ï¼Œå¹¶ä¸”å†°å†»å—åˆ°å¯’å†·æ•ˆæžœå½±å“çš„æ•Œäººï¼ŒæŒç»­1ç§’ã€‚æ’žå‡»åœ°ç‚¹ä¼šè¢«ä¸€ç‰‡å†°é›¾ç¬¼ç½©ï¼Œåœ¨3ç§’å†…é€ æˆ235%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: é™¨çŸ³é›¨ 
+RUNE_WIZARD_METEOR_B := New SkillRune("é™¨çŸ³é›¨", "ç«ç„°", "b", "é‡Šæ”¾7é¢—è¾ƒå°çš„é™¨çŸ³ï¼Œæ¯é¢—é€ æˆ277%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: ç†”ç«å†²å‡» 
+RUNE_WIZARD_METEOR_A := New SkillRune("ç†”ç«å†²å‡»", "ç«ç„°", "a", "ä½¿é™¨çŸ³çš„ä½“ç§¯å¤§å¤§å¢žåŠ ï¼Œå¹¶ä½¿æ’žå‡»é€ æˆçš„ä¼¤å®³æé«˜è‡³1648%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ï¼Œ ä¸”ç†”çƒ§ç«ç„°ä¼šåœ¨3ç§’å†…é€ æˆ625%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚æœ‰15ç§’å†·å´æ—¶é—´ã€‚")
+; æŠ€èƒ½: é™¨çŸ³æœ¯
+SKILL_ACTIVE_WIZARD_METEOR := New ActiveSkill("é™¨çŸ³æœ¯", "ç«ç„°", "åŽŸåŠ›"
 	, "images\skills\wizard\active\wizard_meteor_normal.png"
-	, "ÏûºÄ£º40µã°ÂÄÜ\r\n´ÓÌì¿ÕÕÙ»½Ò»¿Å¾Þ´óµÄÔÉÊ¯ÔÒÏòµÐÈË£¬Ôì³É740%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£±»ÔÒÖÐµÄµØÃæ»áÒòÉÕÈÛ¶øÔÚ3ÃëÄÚ¶ÔµÐÈËÔì³É235%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£"
+	, "æ¶ˆè€—ï¼š40ç‚¹å¥¥èƒ½\r\nä»Žå¤©ç©ºå¬å”¤ä¸€é¢—å·¨å¤§çš„é™¨çŸ³ç ¸å‘æ•Œäººï¼Œé€ æˆ740%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚è¢«ç ¸ä¸­çš„åœ°é¢ä¼šå› çƒ§ç†”è€Œåœ¨3ç§’å†…å¯¹æ•Œäººé€ æˆ235%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_WIZARD_METEOR_E, RUNE_WIZARD_METEOR_D, RUNE_WIZARD_METEOR_C, RUNE_WIZARD_METEOR_B, RUNE_WIZARD_METEOR_A])
 ; ---------------------------
-; ¼¼ÄÜ: ÔÉÊ¯Êõ End
+; æŠ€èƒ½: é™¨çŸ³æœ¯ End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ±©·çÑ© Start
+; æŠ€èƒ½: æš´é£Žé›ª Start
 ; ---------------------------
-; ·ûÎÄ: ÉÁµç·ç±© 
-RUNE_WIZARD_BLIZZARD_C := New SkillRune("ÉÁµç·ç±©", "µç»÷", "c", "ÊÜ±©·çÑ©Ó°ÏìµÄµÐÈË£¬³ÐÊÜµÄÉÁµçÉËº¦Ìá¸ß15%¡£")
-; ·ûÎÄ: ËªÄý±ù½á 
-RUNE_WIZARD_BLIZZARD_E := New SkillRune("ËªÄý±ù½á", "±ùº®", "e", "ÏÝÈë±©·çÑ©ÖÐµÄµÐÈËÓÐ100%¼¸ÂÊ±»±ù¶³£¬³ÖÐø2.5Ãë¡£")
-; ·ûÎÄ: ±ù·âÖ®Ñ© 
-RUNE_WIZARD_BLIZZARD_D := New SkillRune("±ù·âÖ®Ñ©", "±ùº®", "d", "Ê¹±©·çÑ©µÄÊ©·¨ÏûºÄ½µµÍÖÁ10µã°ÂÄÜ¡£")
-; ·ûÎÄ: ÒìÏóÌìÆô 
-RUNE_WIZARD_BLIZZARD_B := New SkillRune("ÒìÏóÌìÆô", "»ðÑæ", "b", "Ê¹±©·çÑ©µÄÐ§¹û·¶Î§À©´óÖÁ30Âë¡£±©·çÑ©µÄÉËº¦ÀàÐÍ×ª»»Îª»ðÑæÉËº¦¡£")
-; ·ûÎÄ: ÎÞÇé·ç±© 
-RUNE_WIZARD_BLIZZARD_A := New SkillRune("ÎÞÇé·ç±©", "±ùº®", "a", "ÑÓ³¤±©·çÑ©µÄ³ÖÐøÊ±¼ä²¢Ìá¸ßÉËº¦£¬ÔÚ8ÃëÄÚÔì³É1810%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£")
-; ¼¼ÄÜ: ±©·çÑ©
-SKILL_ACTIVE_WIZARD_BLIZZARD := New ActiveSkill("±©·çÑ©", "±ùº®", "Ô­Á¦"
+; ç¬¦æ–‡: é—ªç”µé£Žæš´ 
+RUNE_WIZARD_BLIZZARD_C := New SkillRune("é—ªç”µé£Žæš´", "ç”µå‡»", "c", "å—æš´é£Žé›ªå½±å“çš„æ•Œäººï¼Œæ‰¿å—çš„é—ªç”µä¼¤å®³æé«˜15%ã€‚")
+; ç¬¦æ–‡: éœœå‡å†°ç»“ 
+RUNE_WIZARD_BLIZZARD_E := New SkillRune("éœœå‡å†°ç»“", "å†°å¯’", "e", "é™·å…¥æš´é£Žé›ªä¸­çš„æ•Œäººæœ‰100%å‡ çŽ‡è¢«å†°å†»ï¼ŒæŒç»­2.5ç§’ã€‚")
+; ç¬¦æ–‡: å†°å°ä¹‹é›ª 
+RUNE_WIZARD_BLIZZARD_D := New SkillRune("å†°å°ä¹‹é›ª", "å†°å¯’", "d", "ä½¿æš´é£Žé›ªçš„æ–½æ³•æ¶ˆè€—é™ä½Žè‡³10ç‚¹å¥¥èƒ½ã€‚")
+; ç¬¦æ–‡: å¼‚è±¡å¤©å¯ 
+RUNE_WIZARD_BLIZZARD_B := New SkillRune("å¼‚è±¡å¤©å¯", "ç«ç„°", "b", "ä½¿æš´é£Žé›ªçš„æ•ˆæžœèŒƒå›´æ‰©å¤§è‡³30ç ã€‚æš´é£Žé›ªçš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºç«ç„°ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æ— æƒ…é£Žæš´ 
+RUNE_WIZARD_BLIZZARD_A := New SkillRune("æ— æƒ…é£Žæš´", "å†°å¯’", "a", "å»¶é•¿æš´é£Žé›ªçš„æŒç»­æ—¶é—´å¹¶æé«˜ä¼¤å®³ï¼Œåœ¨8ç§’å†…é€ æˆ1810%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚")
+; æŠ€èƒ½: æš´é£Žé›ª
+SKILL_ACTIVE_WIZARD_BLIZZARD := New ActiveSkill("æš´é£Žé›ª", "å†°å¯’", "åŽŸåŠ›"
 	, "images\skills\wizard\active\wizard_blizzard_normal.png"
-	, "ÏûºÄ£º40µã°ÂÄÜ\r\nÕÙ»½º®±ùËéÆ¬ÔÒÏòÄ¿±êÇøÓò£¬ÔÚ6ÃëÄÚ¶Ô12ÂëÄÚµÄµÐÈËÔì³É1075%µÄÎäÆ÷ÉËº¦£¨×÷Îª±ùËªÉËº¦£©¡£ÔÚÍ¬Ò»ÇøÓòÄÚ¶à´ÎÊ©·Å²»¿Éµþ¼Ó¡£"
+	, "æ¶ˆè€—ï¼š40ç‚¹å¥¥èƒ½\r\nå¬å”¤å¯’å†°ç¢Žç‰‡ç ¸å‘ç›®æ ‡åŒºåŸŸï¼Œåœ¨6ç§’å†…å¯¹12ç å†…çš„æ•Œäººé€ æˆ1075%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå†°éœœä¼¤å®³ï¼‰ã€‚åœ¨åŒä¸€åŒºåŸŸå†…å¤šæ¬¡æ–½æ”¾ä¸å¯å åŠ ã€‚"
 	, [RUNE_WIZARD_BLIZZARD_C, RUNE_WIZARD_BLIZZARD_E, RUNE_WIZARD_BLIZZARD_D, RUNE_WIZARD_BLIZZARD_B, RUNE_WIZARD_BLIZZARD_A])
 ; ---------------------------
-; ¼¼ÄÜ: ±©·çÑ© End
+; æŠ€èƒ½: æš´é£Žé›ª End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ÄÜÁ¿»¤¼× Start
+; æŠ€èƒ½: èƒ½é‡æŠ¤ç”² Start
 ; ---------------------------
-; ·ûÎÄ: ÎüÄÜ»¤¼× 
-RUNE_WIZARD_ENERGY_ARMOR_D := New SkillRune("ÎüÄÜ»¤¼×", "ÃØ·¨", "d", "Ã¿µ±Äã±»Ô¶³Ì»òÕß½üÕ½¹¥»÷ÃüÖÐÊ±£¬ÓÐÒ»¶¨¼¸ÂÊ»ñµÃ4µã°ÂÄÜ¡£")
-; ·ûÎÄ: ¾ÛÄÜÆÁÕÏ 
-RUNE_WIZARD_ENERGY_ARMOR_E := New SkillRune("¾ÛÄÜÆÁÕÏ", "ÃØ·¨", "e", "µ±ÄÜÁ¿»¤¼×¼¤»îÊ±£¬Ê¹ÄãµÄ±©»÷¼¸ÂÊÌá¸ß5%¡£")
-; ·ûÎÄ: ÄÜÁ¿·ÖÁ÷ 
-RUNE_WIZARD_ENERGY_ARMOR_B := New SkillRune("ÄÜÁ¿·ÖÁ÷", "ÃØ·¨", "b", "²»ÔÙ½µµÍÄãµÄ°ÂÄÜÉÏÏÞ£¬¶øÊÇµ±ÄÜÁ¿»¤¼×¼¤»îÊ±Ê¹ÄãµÄ°ÂÄÜÉÏÏÞÌá¸ß20µã¡£")
-; ·ûÎÄ: Ô­Á¦»¤¼× 
-RUNE_WIZARD_ENERGY_ARMOR_C := New SkillRune("Ô­Á¦»¤¼×", "ÃØ·¨", "c", "»á¶ÔÄãÔì³É¸ßÓÚ35%ÉúÃüÖµÉÏÏÞµÄÉËº¦½µµÍÎªÄãÉúÃüÖµÉÏÏÞµÄ35%¡£ÎüÊÕµÄÉËº¦Á¿²»ÄÜ³¬¹ýÄãÉúÃüÖµÉÏÏÞµÄ100%¡£")
-; ·ûÎÄ: Àâ¾µ»¤¼× 
-RUNE_WIZARD_ENERGY_ARMOR_A := New SkillRune("Àâ¾µ»¤¼×", "ÃØ·¨", "a", "ÄÜÁ¿»¤¼×¼¤»îÊ±Ê¹ÄãËùÓÐ¿¹ÐÔÌá¸ß25%¡£")
-; ¼¼ÄÜ: ÄÜÁ¿»¤¼×
-SKILL_ACTIVE_WIZARD_ENERGY_ARMOR := New ActiveSkill("ÄÜÁ¿»¤¼×", "ÃØ·¨", "»¤Ìå"
+; ç¬¦æ–‡: å¸èƒ½æŠ¤ç”² 
+RUNE_WIZARD_ENERGY_ARMOR_D := New SkillRune("å¸èƒ½æŠ¤ç”²", "ç§˜æ³•", "d", "æ¯å½“ä½ è¢«è¿œç¨‹æˆ–è€…è¿‘æˆ˜æ”»å‡»å‘½ä¸­æ—¶ï¼Œæœ‰ä¸€å®šå‡ çŽ‡èŽ·å¾—4ç‚¹å¥¥èƒ½ã€‚")
+; ç¬¦æ–‡: èšèƒ½å±éšœ 
+RUNE_WIZARD_ENERGY_ARMOR_E := New SkillRune("èšèƒ½å±éšœ", "ç§˜æ³•", "e", "å½“èƒ½é‡æŠ¤ç”²æ¿€æ´»æ—¶ï¼Œä½¿ä½ çš„æš´å‡»å‡ çŽ‡æé«˜5%ã€‚")
+; ç¬¦æ–‡: èƒ½é‡åˆ†æµ 
+RUNE_WIZARD_ENERGY_ARMOR_B := New SkillRune("èƒ½é‡åˆ†æµ", "ç§˜æ³•", "b", "ä¸å†é™ä½Žä½ çš„å¥¥èƒ½ä¸Šé™ï¼Œè€Œæ˜¯å½“èƒ½é‡æŠ¤ç”²æ¿€æ´»æ—¶ä½¿ä½ çš„å¥¥èƒ½ä¸Šé™æé«˜20ç‚¹ã€‚")
+; ç¬¦æ–‡: åŽŸåŠ›æŠ¤ç”² 
+RUNE_WIZARD_ENERGY_ARMOR_C := New SkillRune("åŽŸåŠ›æŠ¤ç”²", "ç§˜æ³•", "c", "ä¼šå¯¹ä½ é€ æˆé«˜äºŽ35%ç”Ÿå‘½å€¼ä¸Šé™çš„ä¼¤å®³é™ä½Žä¸ºä½ ç”Ÿå‘½å€¼ä¸Šé™çš„35%ã€‚å¸æ”¶çš„ä¼¤å®³é‡ä¸èƒ½è¶…è¿‡ä½ ç”Ÿå‘½å€¼ä¸Šé™çš„100%ã€‚")
+; ç¬¦æ–‡: æ£±é•œæŠ¤ç”² 
+RUNE_WIZARD_ENERGY_ARMOR_A := New SkillRune("æ£±é•œæŠ¤ç”²", "ç§˜æ³•", "a", "èƒ½é‡æŠ¤ç”²æ¿€æ´»æ—¶ä½¿ä½ æ‰€æœ‰æŠ—æ€§æé«˜25%ã€‚")
+; æŠ€èƒ½: èƒ½é‡æŠ¤ç”²
+SKILL_ACTIVE_WIZARD_ENERGY_ARMOR := New ActiveSkill("èƒ½é‡æŠ¤ç”²", "ç§˜æ³•", "æŠ¤ä½“"
 	, "images\skills\wizard\active\wizard_energyarmor_normal.png"
-	, "ÏûºÄ£º25µã°ÂÄÜ\r\n»ã¾Û×ÔÉíÄÜÁ¿£¬Ê¹ÄãµÄ»¤¼×ÖµÌá¸ß35%£¬µ«°ÂÄÜÉÏÏÞ½µµÍ20µã¡£¸ÃÐ§¹û¿É³ÖÐø10·ÖÖÓ¡£"
+	, "æ¶ˆè€—ï¼š25ç‚¹å¥¥èƒ½\r\næ±‡èšè‡ªèº«èƒ½é‡ï¼Œä½¿ä½ çš„æŠ¤ç”²å€¼æé«˜35%ï¼Œä½†å¥¥èƒ½ä¸Šé™é™ä½Ž20ç‚¹ã€‚è¯¥æ•ˆæžœå¯æŒç»­10åˆ†é’Ÿã€‚"
 	, [RUNE_WIZARD_ENERGY_ARMOR_D, RUNE_WIZARD_ENERGY_ARMOR_E, RUNE_WIZARD_ENERGY_ARMOR_B, RUNE_WIZARD_ENERGY_ARMOR_C, RUNE_WIZARD_ENERGY_ARMOR_A])
 ; ---------------------------
-; ¼¼ÄÜ: ÄÜÁ¿»¤¼× End
+; æŠ€èƒ½: èƒ½é‡æŠ¤ç”² End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: Óù·¨Õß Start
+; æŠ€èƒ½: å¾¡æ³•è€… Start
 ; ---------------------------
-; ·ûÎÄ: ÁÒÑæ±¬·¢ 
-RUNE_WIZARD_ARCHON_E := New SkillRune("ÁÒÑæ±¬·¢", "»ðÑæ", "e", "µ±Äã±äÐÎÊ±ÔÚÄãÉí±ß·¢Éú±¬Õ¨£¬¶Ô15ÂëÄÚµÄËùÓÐµÐÈËÔì³ÉÔì³É3680%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£Óù·¨ÕßµÄ¼¼ÄÜÔì³É»ðÑæ¶ø·Ç°ÂÊõÉËº¦¡£")
-; ·ûÎÄ: ´«ËÍ 
-RUNE_WIZARD_ARCHON_C := New SkillRune("´«ËÍ", "ÃØ·¨", "c", "Óù·¨ÕßÐÎÌ¬ÏÖÔÚ¿ÉÊ©·Å´«ËÍ¼¼ÄÜ£¬ÀäÈ´Ê±¼äÎª2Ãë¡£")
-; ·ûÎÄ: ´¿¾»ÄÜÁ¿ 
-RUNE_WIZARD_ARCHON_D := New SkillRune("´¿¾»ÄÜÁ¿", "µç»÷", "d", "Ê¹Óù·¨ÕßµÄÀäÈ´Ê±¼äËõ¶ÌÖÁ100Ãë¡£Óù·¨ÕßµÄ¼¼ÄÜÔì³ÉÉÁµç¶ø·Ç°ÂÊõÉËº¦¡£")
-; ·ûÎÄ: Ê±¼äÑÓ»º 
-RUNE_WIZARD_ARCHON_B := New SkillRune("Ê±¼äÑÓ»º", "±ùº®", "b", "Óù·¨ÕßÐÎÌ¬¿ÉÒÔÊ©·ÅÒ»¸öÄÜ¸úËæÄãÒÆ¶¯µÄÊ±¼äÑÓ»ºÆøÅÝ£»Í¬Ê±ÄãµÄ°ÂÊõ±¬ÆÆÓë°ÂÊõÇÖÏ®½«Ê¹µÐÈË±ù¶³1Ãë¡£Óù·¨ÕßµÄ¼¼ÄÜÔì³É±ùËª¶ø·Ç°ÂÊõÉËº¦¡£")
-; ·ûÎÄ: ÌìÈËÍ¬Ïó 
-RUNE_WIZARD_ARCHON_A := New SkillRune("ÌìÈËÍ¬Ïó", "ÃØ·¨", "a", "Ê¹ËùÓÐÓù·¨Õß¼¼ÄÜµÄÉËº¦Ìá¸ß50%¡£")
-; ¼¼ÄÜ: Óù·¨Õß
-SKILL_ACTIVE_WIZARD_ARCHON := New ActiveSkill("Óù·¨Õß", "ÃØ·¨", "¼ÝÔ¦"
+; ç¬¦æ–‡: çƒˆç„°çˆ†å‘ 
+RUNE_WIZARD_ARCHON_E := New SkillRune("çƒˆç„°çˆ†å‘", "ç«ç„°", "e", "å½“ä½ å˜å½¢æ—¶åœ¨ä½ èº«è¾¹å‘ç”Ÿçˆ†ç‚¸ï¼Œå¯¹15ç å†…çš„æ‰€æœ‰æ•Œäººé€ æˆé€ æˆ3680%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚å¾¡æ³•è€…çš„æŠ€èƒ½é€ æˆç«ç„°è€Œéžå¥¥æœ¯ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: ä¼ é€ 
+RUNE_WIZARD_ARCHON_C := New SkillRune("ä¼ é€", "ç§˜æ³•", "c", "å¾¡æ³•è€…å½¢æ€çŽ°åœ¨å¯æ–½æ”¾ä¼ é€æŠ€èƒ½ï¼Œå†·å´æ—¶é—´ä¸º2ç§’ã€‚")
+; ç¬¦æ–‡: çº¯å‡€èƒ½é‡ 
+RUNE_WIZARD_ARCHON_D := New SkillRune("çº¯å‡€èƒ½é‡", "ç”µå‡»", "d", "ä½¿å¾¡æ³•è€…çš„å†·å´æ—¶é—´ç¼©çŸ­è‡³100ç§’ã€‚å¾¡æ³•è€…çš„æŠ€èƒ½é€ æˆé—ªç”µè€Œéžå¥¥æœ¯ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: æ—¶é—´å»¶ç¼“ 
+RUNE_WIZARD_ARCHON_B := New SkillRune("æ—¶é—´å»¶ç¼“", "å†°å¯’", "b", "å¾¡æ³•è€…å½¢æ€å¯ä»¥æ–½æ”¾ä¸€ä¸ªèƒ½è·Ÿéšä½ ç§»åŠ¨çš„æ—¶é—´å»¶ç¼“æ°”æ³¡ï¼›åŒæ—¶ä½ çš„å¥¥æœ¯çˆ†ç ´ä¸Žå¥¥æœ¯ä¾µè¢­å°†ä½¿æ•Œäººå†°å†»1ç§’ã€‚å¾¡æ³•è€…çš„æŠ€èƒ½é€ æˆå†°éœœè€Œéžå¥¥æœ¯ä¼¤å®³ã€‚")
+; ç¬¦æ–‡: å¤©äººåŒè±¡ 
+RUNE_WIZARD_ARCHON_A := New SkillRune("å¤©äººåŒè±¡", "ç§˜æ³•", "a", "ä½¿æ‰€æœ‰å¾¡æ³•è€…æŠ€èƒ½çš„ä¼¤å®³æé«˜50%ã€‚")
+; æŠ€èƒ½: å¾¡æ³•è€…
+SKILL_ACTIVE_WIZARD_ARCHON := New ActiveSkill("å¾¡æ³•è€…", "ç§˜æ³•", "é©¾é©­"
 	, "images\skills\wizard\active\wizard_archon_normal.png"
-	, "ÀäÈ´Ê±¼ä£º120Ãë\r\n±äÐÎÎª´¿¾»°ÂÊõÄÜÁ¿µÄ¾ÛºÏÌå£¬³ÖÐø20Ãë¡£ÔÚÓù·¨ÕßÐÎÌ¬ÏÂ£¬ÄãµÄÆÕÍ¨¼¼ÄÜ½«±»Ç¿´óµÄÓù·¨Õß¼¼ÄÜËùÈ¡´ú£¬ÄãµÄÉËº¦Ìá¸ß30%£¬»¤¼×ÖµºÍ¿¹ÐÔÌá¸ß150%¡£"
+	, "å†·å´æ—¶é—´ï¼š120ç§’\r\nå˜å½¢ä¸ºçº¯å‡€å¥¥æœ¯èƒ½é‡çš„èšåˆä½“ï¼ŒæŒç»­20ç§’ã€‚åœ¨å¾¡æ³•è€…å½¢æ€ä¸‹ï¼Œä½ çš„æ™®é€šæŠ€èƒ½å°†è¢«å¼ºå¤§çš„å¾¡æ³•è€…æŠ€èƒ½æ‰€å–ä»£ï¼Œä½ çš„ä¼¤å®³æé«˜30%ï¼ŒæŠ¤ç”²å€¼å’ŒæŠ—æ€§æé«˜150%ã€‚"
 	, [RUNE_WIZARD_ARCHON_E, RUNE_WIZARD_ARCHON_C, RUNE_WIZARD_ARCHON_D, RUNE_WIZARD_ARCHON_B, RUNE_WIZARD_ARCHON_A])
 ; ---------------------------
-; ¼¼ÄÜ: Óù·¨Õß End
+; æŠ€èƒ½: å¾¡æ³•è€… End
 ; ---------------------------
 
 ; ---------------------------
-; ¼¼ÄÜ: ºÚ¶´ Start
+; æŠ€èƒ½: é»‘æ´ž Start
 ; ---------------------------
-; ·ûÎÄ: ³¬ÖØºÚ¶´ 
-RUNE_WIZARD_BLACK_HOLE_A := New SkillRune("³¬ÖØºÚ¶´", "µç»÷", "a", "Ê¹ºÚ¶´µÄ°ë¾¶·¶Î§À©´óÖÁ20Âë£¬ÔÚ2ÃëÄÚÔì³ÉµÄÉËº¦Ìá¸ßÖÁ1290%µÄÎäÆ÷ÉËº¦£¨×÷ÎªÉÁµçÉËº¦£©¡£")
-; ·ûÎÄ: ¾ø¶ÔÁã¶È 
-RUNE_WIZARD_BLACK_HOLE_E := New SkillRune("¾ø¶ÔÁã¶È", "±ùº®", "e", "Ã¿»÷ÖÐÒ»ÃûµÐÈË¿ÉÊ¹Äã±ùËª·¨ÊõÔì³ÉµÄÉËº¦Ìá¸ß3%£¬³ÖÐø10Ãë¡£ºÚ¶´µÄÉËº¦ÀàÐÍ×ª»»Îª±ùËªÉËº¦¡£")
-; ·ûÎÄ: ºÚ¶´ÊÓ½ç 
-RUNE_WIZARD_BLACK_HOLE_B := New SkillRune("ºÚ¶´ÊÓ½ç", "ÃØ·¨", "b", "ºÚ¶´Í¬Ê±»áÎüÊÕ15ÂëÄÚµÐÈË£¨°üÀ¨¾«Ó¢¹ÖÎï£©·¢³öµÄÔ¶³Ì¹¥»÷¡£")
-; ·ûÎÄ: Ò«±äÌå 
-RUNE_WIZARD_BLACK_HOLE_C := New SkillRune("Ò«±äÌå", "»ðÑæ", "c", "ÔÚÄ¿±êÎ»ÖÃÕÙ»½³öÒ»¸öºÚ¶´°ÑµÐÈËÎü¹ýÈ¥£¬²¢ÔÚ2ÃëÄÚ¶Ô¾àÀë15ÂëÄÚµÄËùÓÐµÐÈËÔì³É700%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£ºÚ¶´ÏûÊ§ºó»áÐÎ³ÉÁÒÑæ±¬Õ¨£¬¶Ô15ÂëÄÚµÄµÐÈËÔì³É725%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
-; ·ûÎÄ: ·¨ÊõÇÔÈ¡ 
-RUNE_WIZARD_BLACK_HOLE_D := New SkillRune("·¨ÊõÇÔÈ¡", "ÃØ·¨", "d", "ºÚ¶´Ã¿»÷ÖÐÒ»ÃûµÐÈË£¬¿ÉÊ¹ÄãÔì³ÉµÄÉËº¦Ìá¸ß3%£¬³ÖÐø5Ãë¡£µÐÈË±»ºÚ¶´»÷ÖÐºó£¬Ôì³ÉµÄÉËº¦½µµÍ10%£¬³ÖÐø5Ãë¡£")
-; ¼¼ÄÜ: ºÚ¶´
-SKILL_ACTIVE_WIZARD_BLACK_HOLE := New ActiveSkill("ºÚ¶´", "ÃØ·¨", "¼ÝÔ¦"
+; ç¬¦æ–‡: è¶…é‡é»‘æ´ž 
+RUNE_WIZARD_BLACK_HOLE_A := New SkillRune("è¶…é‡é»‘æ´ž", "ç”µå‡»", "a", "ä½¿é»‘æ´žçš„åŠå¾„èŒƒå›´æ‰©å¤§è‡³20ç ï¼Œåœ¨2ç§’å†…é€ æˆçš„ä¼¤å®³æé«˜è‡³1290%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºé—ªç”µä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: ç»å¯¹é›¶åº¦ 
+RUNE_WIZARD_BLACK_HOLE_E := New SkillRune("ç»å¯¹é›¶åº¦", "å†°å¯’", "e", "æ¯å‡»ä¸­ä¸€åæ•Œäººå¯ä½¿ä½ å†°éœœæ³•æœ¯é€ æˆçš„ä¼¤å®³æé«˜3%ï¼ŒæŒç»­10ç§’ã€‚é»‘æ´žçš„ä¼¤å®³ç±»åž‹è½¬æ¢ä¸ºå†°éœœä¼¤å®³ã€‚")
+; ç¬¦æ–‡: é»‘æ´žè§†ç•Œ 
+RUNE_WIZARD_BLACK_HOLE_B := New SkillRune("é»‘æ´žè§†ç•Œ", "ç§˜æ³•", "b", "é»‘æ´žåŒæ—¶ä¼šå¸æ”¶15ç å†…æ•Œäººï¼ˆåŒ…æ‹¬ç²¾è‹±æ€ªç‰©ï¼‰å‘å‡ºçš„è¿œç¨‹æ”»å‡»ã€‚")
+; ç¬¦æ–‡: è€€å˜ä½“ 
+RUNE_WIZARD_BLACK_HOLE_C := New SkillRune("è€€å˜ä½“", "ç«ç„°", "c", "åœ¨ç›®æ ‡ä½ç½®å¬å”¤å‡ºä¸€ä¸ªé»‘æ´žæŠŠæ•Œäººå¸è¿‡åŽ»ï¼Œå¹¶åœ¨2ç§’å†…å¯¹è·ç¦»15ç å†…çš„æ‰€æœ‰æ•Œäººé€ æˆ700%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚é»‘æ´žæ¶ˆå¤±åŽä¼šå½¢æˆçƒˆç„°çˆ†ç‚¸ï¼Œå¯¹15ç å†…çš„æ•Œäººé€ æˆ725%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
+; ç¬¦æ–‡: æ³•æœ¯çªƒå– 
+RUNE_WIZARD_BLACK_HOLE_D := New SkillRune("æ³•æœ¯çªƒå–", "ç§˜æ³•", "d", "é»‘æ´žæ¯å‡»ä¸­ä¸€åæ•Œäººï¼Œå¯ä½¿ä½ é€ æˆçš„ä¼¤å®³æé«˜3%ï¼ŒæŒç»­5ç§’ã€‚æ•Œäººè¢«é»‘æ´žå‡»ä¸­åŽï¼Œé€ æˆçš„ä¼¤å®³é™ä½Ž10%ï¼ŒæŒç»­5ç§’ã€‚")
+; æŠ€èƒ½: é»‘æ´ž
+SKILL_ACTIVE_WIZARD_BLACK_HOLE := New ActiveSkill("é»‘æ´ž", "ç§˜æ³•", "é©¾é©­"
 	, "images\skills\wizard\active\wizard_blackhole_normal.png"
-	, "ÏûºÄ£º20µã°ÂÄÜÀäÈ´Ê±¼ä£º12Ãë\r\nÔÚÄ¿±êÎ»ÖÃÕÙ»½³öÒ»¸öºÚ¶´°ÑµÐÈËÎü¹ýÈ¥£¬²¢ÔÚ2ÃëÄÚ¶Ô¾àÀë15ÂëÄÚµÄËùÓÐµÐÈËÔì³É700%µÄÎäÆ÷ÉËº¦£¨×÷Îª°ÂÊõÉËº¦£©¡£"
+	, "æ¶ˆè€—ï¼š20ç‚¹å¥¥èƒ½å†·å´æ—¶é—´ï¼š12ç§’\r\nåœ¨ç›®æ ‡ä½ç½®å¬å”¤å‡ºä¸€ä¸ªé»‘æ´žæŠŠæ•Œäººå¸è¿‡åŽ»ï¼Œå¹¶åœ¨2ç§’å†…å¯¹è·ç¦»15ç å†…çš„æ‰€æœ‰æ•Œäººé€ æˆ700%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºå¥¥æœ¯ä¼¤å®³ï¼‰ã€‚"
 	, [RUNE_WIZARD_BLACK_HOLE_A, RUNE_WIZARD_BLACK_HOLE_E, RUNE_WIZARD_BLACK_HOLE_B, RUNE_WIZARD_BLACK_HOLE_C, RUNE_WIZARD_BLACK_HOLE_D])
 ; ---------------------------
-; ¼¼ÄÜ: ºÚ¶´ End
+; æŠ€èƒ½: é»‘æ´ž End
 ; ---------------------------
 
 ; ===========================
-; Ä§·¨Ê¦ End
+; é­”æ³•å¸ˆ End
 ; ===========================
 
 

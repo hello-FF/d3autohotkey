@@ -1,166 +1,183 @@
-; ·ûÎÄ
+ï»¿#Include, Keys.ahk
+
+SKILL_POSITION_L = "L"
+SKILL_POSITION_R = "R"
+SKILL_POSITION_1 = "1"
+SKILL_POSITION_2 = "2"
+SKILL_POSITION_3 = "3"
+SKILL_POSITION_4 = "4"
+
+SKILL_POSITION_KEY_MAP := {}
+SKILL_POSITION_KEY_MAP[SKILL_POSITION_L] := KEY_SKILL_LEFT
+SKILL_POSITION_KEY_MAP[SKILL_POSITION_R] := KEY_SKILL_RIGHT
+SKILL_POSITION_KEY_MAP[SKILL_POSITION_1] := KEY_SKILL_FIRST
+SKILL_POSITION_KEY_MAP[SKILL_POSITION_2] := KEY_SKILL_SECOND
+SKILL_POSITION_KEY_MAP[SKILL_POSITION_3] := KEY_SKILL_THIRD
+SKILL_POSITION_KEY_MAP[SKILL_POSITION_4] := KEY_SKILL_FOURTH
+
+; ç¬¦æ–‡
 Class SkillRune
 {
 	/**
-	* @param name ·ûÎÄÃû³Æ
-	* @param type ·ûÎÄÉËº¦ÀàĞÍ, ÎïÀí, »ğÑæ, ±ùËª...
-	* @param icon ·ûÎÄÍ¼±ê, a,b,c,d,e
-	* @param desc ·ûÎÄÃèÊö
+	* @param name ç¬¦æ–‡åç§°
+	* @param type ç¬¦æ–‡ä¼¤å®³ç±»å‹, ç‰©ç†, ç«ç„°, å†°éœœ...
+	* @param icon ç¬¦æ–‡å›¾æ ‡, a,b,c,d,e
+	* @param desc ç¬¦æ–‡æè¿°
 	*/
 	__New(name, type, icon, desc)
 	{
-		This.V_name := name
-		This.V_type := type
-		This.V_icon := icon
-		This.V_desc := desc
+		This._name := name
+		This._type := type
+		This._icon := icon
+		This._desc := desc
 	}
 	name[]
 	{
 		get {
-			Return This.V_name
+			Return This._name
 		}
 		set {
-			Return This.V_name
+			Return This._name
 		}
 	}
 	type[]
 	{
 		get {
-			Return This.V_type
+			Return This._type
 		}
 		set {
-			Return This.V_type
+			Return This._type
 		}
 	}
 	icon[]
 	{
 		get {
-			Return This.V_icon
+			Return This._icon
 		}
 		set {
-			Return This.V_icon
+			Return This._icon
 		}
 	}
 	desc[]
 	{
 		get {
-			Return This.V_desc
+			Return This._desc
 		}
 		set {
-			Return This.V_desc
+			Return This._desc
 		}
 	}
 }
 
-; ¼¼ÄÜ
+; æŠ€èƒ½
 Class Skill
 {
 	/**
-	* @param name   ¼¼ÄÜÃû³Æ
-	* @param icon   ¼¼ÄÜÍ¼±ê, a,b,c,d,e
-	* @param desc   ¼¼ÄÜÃèÊö
-	* @param action ¼¼ÄÜÖ÷¶¯active, ±»¶¯passive
+	* @param name   æŠ€èƒ½åç§°
+	* @param icon   æŠ€èƒ½å›¾æ ‡, a,b,c,d,e
+	* @param desc   æŠ€èƒ½æè¿°
+	* @param action æŠ€èƒ½ä¸»åŠ¨active, è¢«åŠ¨passive
 	*/
 	__New(name, icon, desc, action)
 	{
-		This.V_name := name
-		This.V_icon := icon
-		This.V_desc := desc
-		This.V_action := action
+		This._name := name
+		This._icon := icon
+		This._desc := desc
+		This._action := action
 	}
 	name[]
 	{
 		get {
-			Return This.V_name
+			Return This._name
 		}
 		set {
-			Return This.V_name
+			Return This._name
 		}
 	}
 	icon[]
 	{
 		get {
-			Return This.V_icon
+			Return This._icon
 		}
 		set {
-			Return This.V_icon
+			Return This._icon
 		}
 	}
 	desc[]
 	{
 		get {
-			Return This.V_desc
+			Return This._desc
 		}
 		set {
-			Return This.V_desc
+			Return This._desc
 		}
 	}
 	action[]
 	{
 		get {
-			Return This.V_action
+			Return This._action
 		}
 		set {
-			Return This.V_action
+			Return This._action
 		}
 	}
 }
 
 
-; Ö÷¶¯¼¼ÄÜ
+; ä¸»åŠ¨æŠ€èƒ½
 Class ActiveSkill extends Skill
 {
 	/**
-	* @param name     ¼¼ÄÜÃû³Æ
-	* @param type     ¼¼ÄÜÔªËØÉËº¦ÀàĞÍ, ÎïÀí, »ğÑæ...
-	* @param category ¼¼ÄÜÀàĞÍ, Ö÷Òª, ´ÎÒª, ·ÀÓù...
-	* @param icon     ¼¼ÄÜÍ¼±ê, a,b,c,d,e
-	* @param desc     ¼¼ÄÜÃèÊö
-	* @param runes    ¼¼ÄÜ·ûÎÄÁĞ±í
+	* @param name     æŠ€èƒ½åç§°
+	* @param type     æŠ€èƒ½å…ƒç´ ä¼¤å®³ç±»å‹, ç‰©ç†, ç«ç„°...
+	* @param category æŠ€èƒ½ç±»å‹, ä¸»è¦, æ¬¡è¦, é˜²å¾¡...
+	* @param icon     æŠ€èƒ½å›¾æ ‡, a,b,c,d,e
+	* @param desc     æŠ€èƒ½æè¿°
+	* @param runes    æŠ€èƒ½ç¬¦æ–‡åˆ—è¡¨
 	*/
 	__New(name, type, category, icon, desc, runes)
 	{
 		Base.__New(name, icon, desc, "active")
-		This.V_type := type
-		This.V_category := category
-		This.V_runes := runes
+		This._type := type
+		This._category := category
+		This._runes := runes
 	}
 	type[]
 	{
 		get {
-			Return This.V_type
+			Return This._type
 		}
 		set {
-			Return This.V_type
+			Return This._type
 		}
 	}
 	category[]
 	{
 		get {
-			Return This.V_category
+			Return This._category
 		}
 		set {
-			Return This.V_category
+			Return This._category
 		}
 	}
 	runes[]
 	{
 		get {
-			Return This.V_runes
+			Return This._runes
 		}
 		set {
-			Return This.V_runes
+			Return This._runes
 		}
 	}
 }
 
-; ±»¶¯¼¼ÄÜ
+; è¢«åŠ¨æŠ€èƒ½
 Class PassiveSkill extends Skill
 {
 	/**
-	* @param name ¼¼ÄÜÃû³Æ
-	* @param icon ¼¼ÄÜÍ¼±ê, a,b,c,d,e
-	* @param desc ¼¼ÄÜÃèÊö
+	* @param name æŠ€èƒ½åç§°
+	* @param icon æŠ€èƒ½å›¾æ ‡, a,b,c,d,e
+	* @param desc æŠ€èƒ½æè¿°
 	*/
 	__New(name, icon, desc)
 	{
@@ -168,12 +185,12 @@ Class PassiveSkill extends Skill
 	}
 }
 
-; ¼¼ÄÜ´îÅä
+; æŠ€èƒ½æ­é…
 Class SkillCase
 {
 	/**
-	* @param skill        ¼¼ÄÜ
-	* @param rune		  ·ûÎÄ
+	* @param skill        æŠ€èƒ½
+	* @param rune		  ç¬¦æ–‡
 	*/
 	__New(skill, rune)
 	{
@@ -182,54 +199,104 @@ Class SkillCase
 	}
 }
 
-; ¼¼ÄÜ»î¶¯
+; æŠ€èƒ½æ´»åŠ¨
 Class SkillAction
 {
-	V_Listeners := []      ; ¼àÌı
-	V_OptionalCases := []   ; ±¸Ñ¡¼¼ÄÜ
+	_Listeners := []      ; ç›‘å¬
+	_OptionalCases := []  ; å¤‡é€‰æŠ€èƒ½
+	_Key :=               ; æŒ‰é”®
 
 	/**
-	* @param case ¼¼ÄÜ·½°¸
-	* @param key  ¿ì½İ¼ü
+	* @param case æŠ€èƒ½æ–¹æ¡ˆ
+	* @param key  å¿«æ·é”®
 	*/
-	_New(case, key)
+	_New(case)
 	{
-		This.V_SkillCase := case
-		This.V_Key := key
+		This._SkillCase := case
 	}
 
 	/**
-	* ÖØĞÂ°ó¶¨¿ì½İ¼ü
-	* @key ¿ì½İ¼ü
+	* ç»‘å®šå¿«æ·é”®
+	* @key å¿«æ·é”®
 	*/
 	BindKey(key)
 	{
-		This.V_Key := key
+		This._Key := key
 	}
 
 	/**
-	* Ìí¼Ó±¸Ñ¡¼¼ÄÜ
-	* @param case ¼¼ÄÜ
+	* æ·»åŠ å¤‡é€‰æŠ€èƒ½
+	* @param case æŠ€èƒ½
 	*/
 	AddOptionalCase(case)
 	{
-		This.V_OptionalCases.Push(case)
+		This._OptionalCases.Push(case)
 	}
 
 	/**
-	* Ìí¼Ó¼¼ÄÜ¼àÌı
+	* æ·»åŠ æŠ€èƒ½ç›‘å¬
 	* @param listener
 	*/
 	AddListener(listener)
 	{
-		This.V_Listeners.Push(listener)
+		This._Listeners.Push(listener)
 	}
 
 	/**
-	* ¶¯×÷, µã»÷¼¼ÄÜ
+	* åŠ¨ä½œ, ç‚¹å‡»æŠ€èƒ½
 	*/
 	Call()
 	{
-		This.V_Key.Click()
+		Send, {% This._Key}
+	}
+	
+	/**
+	* è‡ªåŠ¨ç‚¹å‡»æŠ€èƒ½
+	* @param interval  é¢‘ç‡
+	* @eparam clickNow ç«‹å³æ‰§è¡Œä¸€æ¬¡
+	*/
+	AutoClick(interval, clickNow=True)
+	{
+		if clickNow
+			This.Call()
+		SetTimer, % This, %interval%
+	}
+	
+	/**
+	* åœæ­¢è‡ªåŠ¨ç‚¹å‡»
+	*/
+	StopAuto()
+	{
+		SetTimer, % This, Off
+	}
+}
+
+
+; æŠ€èƒ½æ 
+Class SkillBar
+{
+	_SkillActions := {}
+
+	; æ·»åŠ æŠ€èƒ½
+	AddSkill(position, skill, rune)
+	{
+		Return This.AddSkillCase(position, New SkillCase(skill, rune))
+	}
+
+	; æ·»åŠ æŠ€èƒ½
+	AddSkillCase(position, case)
+	{
+		V_Action := New SkillAction(case)
+		V_Action.BindKey(SKILL_POSITION_KEY_MAP[position])
+		This._SkillActions[position] := V_Action
+		Return V_Action
+	}
+
+	; äº¤æ¢æŠ€èƒ½
+	Swap(postion1, position2)
+	{
+		V_Temp := This._SkillActions[postion1]
+		This._SkillActions[postion1] := This._SkillActions[postion2]
+		This._SkillActions[postion2] := V_Temp
 	}
 }

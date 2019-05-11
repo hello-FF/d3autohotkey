@@ -1,4 +1,4 @@
-; 程序入口
+﻿; 程序入口
 #Include, Setting.ahk
 #Include, Keys.ahk
 

@@ -1,11 +1,12 @@
-Class T
-{
-	V_Value := "1"
-	Call()
-	{
-		MsgBox, % This.V_Value
-	}
-}
+﻿~a::
+	SetTimer, Label, 2000
+return
 
-t := New T
-t.Call()
+~s::
+	SetTimer, Label, Off
+return
+
+Label:
+	Send, {e}
+return
+

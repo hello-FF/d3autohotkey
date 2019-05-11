@@ -1,850 +1,850 @@
-#Include, Skill.ahk
+ï»¿#Include, Skill.ahk
 
 ; ===========================
-; Ò°ÐUÈË Start
+; é‡Žè »äºº Start
 ; ===========================
 ; ---------------------------
-; ¼¼ÄÜ: ÑªÈâ´ú¼Û 
+; æŠ€èƒ½: è¡€è‚‰ä»£ä»· 
 ; ---------------------------
-SKILL_PASSIVE_BARBARIAN_POUND_OF_FLESH := New PassiveSkill("ÑªÈâ´ú¼Û"
+SKILL_PASSIVE_BARBARIAN_POUND_OF_FLESH := New PassiveSkill("è¡€è‚‰ä»£ä»·"
 	, "images\skills\barbarian\passive\traits_barbarian_poundofflesh_normal.png"
-	, "µ±ÉúÃüÖ®ÇòÖÎÁÆÄãÊ±£¬Ã¿ÃëÉúÃü»Ö¸´Ìá¸ß2%£¬ÒÆ¶¯ËÙ¶ÈÌá¸ß4%£¬³ÖÐø15Ãë¡£´ËÐ§¹û×î¶à¿É¶Ñµþ5´Î¡£")
+	, "å½“ç”Ÿå‘½ä¹‹çƒæ²»ç–—ä½ æ—¶ï¼Œæ¯ç§’ç”Ÿå‘½æ¢å¤æé«˜2%ï¼Œç§»åŠ¨é€Ÿåº¦æé«˜4%ï¼ŒæŒç»­15ç§’ã€‚æ­¤æ•ˆæžœæœ€å¤šå¯å †å 5æ¬¡ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÎÞÇé±©Å° 
+; æŠ€èƒ½: æ— æƒ…æš´è™ 
 ; ---------------------------
-SKILL_PASSIVE_BARBARIAN_RUTHLESS := New PassiveSkill("ÎÞÇé±©Å°"
+SKILL_PASSIVE_BARBARIAN_RUTHLESS := New PassiveSkill("æ— æƒ…æš´è™"
 	, "images\skills\barbarian\passive\traits_common_weakspot_normal.png"
-	, "¶ÔÉúÃüÖµµÍÓÚ30%µÄµÐÈË¶îÍâÔì³É40%ÉËº¦¡£")
+	, "å¯¹ç”Ÿå‘½å€¼ä½ŽäºŽ30%çš„æ•Œäººé¢å¤–é€ æˆ40%ä¼¤å®³ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ¸ÖÌúµ¨Ê¶ 
+; æŠ€èƒ½: é’¢é“èƒ†è¯† 
 ; ---------------------------
-SKILL_PASSIVE_BARBARIAN_NERVES_OF_STEEL := New PassiveSkill("¸ÖÌúµ¨Ê¶"
+SKILL_PASSIVE_BARBARIAN_NERVES_OF_STEEL := New PassiveSkill("é’¢é“èƒ†è¯†"
 	, "images\skills\barbarian\passive\traits_barbarian_nervesofsteel_normal.png"
-	, "µ±ÊÜµ½×ãÒÔÖÂÃüµÄÉËº¦Ê±£¬Äã½«»Ö¸´ÖÁ15%µÄÉúÃüÖµ¡£ÔÚ´ËÐ§¹û´¥·¢ºóµÄ3ÃëÄÚ£¬ÄãÊÜµ½µÄÉËº¦½µµÍ95%£¬²¢ÇÒ¶ÔËùÓÐ¿Ø³¡Ð§¹ûÃâÒß¡£\r\n´ËÐ§¹ûÃ¿60Ãë¿É´¥·¢Ò»´Î¡£")
+	, "å½“å—åˆ°è¶³ä»¥è‡´å‘½çš„ä¼¤å®³æ—¶ï¼Œä½ å°†æ¢å¤è‡³15%çš„ç”Ÿå‘½å€¼ã€‚åœ¨æ­¤æ•ˆæžœè§¦å‘åŽçš„3ç§’å†…ï¼Œä½ å—åˆ°çš„ä¼¤å®³é™ä½Ž95%ï¼Œå¹¶ä¸”å¯¹æ‰€æœ‰æŽ§åœºæ•ˆæžœå…ç–«ã€‚\r\næ­¤æ•ˆæžœæ¯60ç§’å¯è§¦å‘ä¸€æ¬¡ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÎäÆ÷´óÊ¦ 
+; æŠ€èƒ½: æ­¦å™¨å¤§å¸ˆ 
 ; ---------------------------
-SKILL_PASSIVE_BARBARIAN_WEAPONS_MASTER := New PassiveSkill("ÎäÆ÷´óÊ¦"
+SKILL_PASSIVE_BARBARIAN_WEAPONS_MASTER := New PassiveSkill("æ­¦å™¨å¤§å¸ˆ"
 	, "images\skills\barbarian\passive\traits_barbarian_thunderousblows_normal.png"
-	, "ÊÓÖ÷ÊÖÎäÆ÷ÀàÐÍÌá¹©¼Ó³ÉÐ§¹û£º½£/Ø°Ê×£ºÉËº¦Ìá¸ß8%´¸/¸«£º±¬»÷»úÂÊÌá¸ß5%³¤±úÎäÆ÷/Ã¬£º¹¥»÷ËÙ¶ÈÌá¸ß8%ÖØÐÍÎäÆ÷£ºÃ¿´Î»÷ÖÐÊ±»ñµÃ2µãÅ­Æø")
+	, "è§†ä¸»æ‰‹æ­¦å™¨ç±»åž‹æä¾›åŠ æˆæ•ˆæžœï¼šå‰‘/åŒ•é¦–ï¼šä¼¤å®³æé«˜8%é”¤/æ–§ï¼šçˆ†å‡»æœºçŽ‡æé«˜5%é•¿æŸ„æ­¦å™¨/çŸ›ï¼šæ”»å‡»é€Ÿåº¦æé«˜8%é‡åž‹æ­¦å™¨ï¼šæ¯æ¬¡å‡»ä¸­æ—¶èŽ·å¾—2ç‚¹æ€’æ°”")
 ; ---------------------------
-; ¼¼ÄÜ: ¼¤Àø·ç²É 
+; æŠ€èƒ½: æ¿€åŠ±é£Žé‡‡ 
 ; ---------------------------
-SKILL_PASSIVE_BARBARIAN_INSPIRING_PRESENCE := New PassiveSkill("¼¤Àø·ç²É"
+SKILL_PASSIVE_BARBARIAN_INSPIRING_PRESENCE := New PassiveSkill("æ¿€åŠ±é£Žé‡‡"
 	, "images\skills\barbarian\passive\traits_barbarian_innerrage_normal.png"
-	, "Å­ºðµÄ³ÖÐøÊ±¼äÑÓ³¤Ò»±¶¡£Ê¹ÓÃÅ­ºðºó¿ÉÊ¹ÄãºÍ100ÂëÄÚµÄËùÓÐÃËÓÑ£¬Ã¿Ãë»Ö¸´ÉúÃüÖµÉÏÏÞµÄ3%£¬³ÖÐø120Ãë¡£\r\nÅ­ºð¼¼ÄÜ£ºÕ½¶·±©Å­ÍþÏÅÅ­ºðÕ½ºð")
+	, "æ€’å¼çš„æŒç»­æ—¶é—´å»¶é•¿ä¸€å€ã€‚ä½¿ç”¨æ€’å¼åŽå¯ä½¿ä½ å’Œ100ç å†…çš„æ‰€æœ‰ç›Ÿå‹ï¼Œæ¯ç§’æ¢å¤ç”Ÿå‘½å€¼ä¸Šé™çš„3%ï¼ŒæŒç»­120ç§’ã€‚\r\næ€’å¼æŠ€èƒ½ï¼šæˆ˜æ–—æš´æ€’å¨å“æ€’å¼æˆ˜å¼")
 ; ---------------------------
-; ¼¼ÄÜ: ¿ñ±©Å­Æø 
+; æŠ€èƒ½: ç‹‚æš´æ€’æ°” 
 ; ---------------------------
-SKILL_PASSIVE_BARBARIAN_BERSERKER_RAGE := New PassiveSkill("¿ñ±©Å­Æø"
+SKILL_PASSIVE_BARBARIAN_BERSERKER_RAGE := New PassiveSkill("ç‹‚æš´æ€’æ°”"
 	, "images\skills\barbarian\passive\traits_barbarian_slaughter_normal.png"
-	, "Å­Æø½Ó½üÈ«ÂúÊ±£¬Ôì³ÉµÄÉËº¦Ìá¸ß25%¡£")
+	, "æ€’æ°”æŽ¥è¿‘å…¨æ»¡æ—¶ï¼Œé€ æˆçš„ä¼¤å®³æé«˜25%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÊÈÑª¿ñÈË 
+; æŠ€èƒ½: å—œè¡€ç‹‚äºº 
 ; ---------------------------
-SKILL_PASSIVE_BARBARIAN_BLOODTHIRST := New PassiveSkill("ÊÈÑª¿ñÈË"
+SKILL_PASSIVE_BARBARIAN_BLOODTHIRST := New PassiveSkill("å—œè¡€ç‹‚äºº"
 	, "images\skills\barbarian\passive\traits_common_cruelty_normal.png"
-	, "Ã¿ÏûºÄÒ»µãÅ­Æø¿É»Ö¸´966µãÉúÃüÖµ¡£\r\nÖÎÁÆÁ¿¼Ó³ÉÎªÉúÃüÖ®ÇòÐ§¹û¼Ó³ÉµÄ1%¡£")
+	, "æ¯æ¶ˆè€—ä¸€ç‚¹æ€’æ°”å¯æ¢å¤966ç‚¹ç”Ÿå‘½å€¼ã€‚\r\næ²»ç–—é‡åŠ æˆä¸ºç”Ÿå‘½ä¹‹çƒæ•ˆæžœåŠ æˆçš„1%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: Å­Òâ¸ßÕÇ 
+; æŠ€èƒ½: æ€’æ„é«˜æ¶¨ 
 ; ---------------------------
-SKILL_PASSIVE_BARBARIAN_ANIMOSITY := New PassiveSkill("Å­Òâ¸ßÕÇ"
+SKILL_PASSIVE_BARBARIAN_ANIMOSITY := New PassiveSkill("æ€’æ„é«˜æ¶¨"
 	, "images\skills\barbarian\passive\traits_barbarian_badtemper_normal.png"
-	, "²úÉúµÄÅ­ÆøÌá¸ß10%¡£Å­ÆøÉÏÏÞÌá¸ß20µã¡£\r\n¾ø´ó¶àÊýµÄÇ¿Á¦¹¥»÷¶¼ÒªÏûºÄÅ­Æø·½ÄÜÊ¹ÓÃ¡£")
+	, "äº§ç”Ÿçš„æ€’æ°”æé«˜10%ã€‚æ€’æ°”ä¸Šé™æé«˜20ç‚¹ã€‚\r\nç»å¤§å¤šæ•°çš„å¼ºåŠ›æ”»å‡»éƒ½è¦æ¶ˆè€—æ€’æ°”æ–¹èƒ½ä½¿ç”¨ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÃÔÐÅ 
+; æŠ€èƒ½: è¿·ä¿¡ 
 ; ---------------------------
-SKILL_PASSIVE_BARBARIAN_SUPERSTITION := New PassiveSkill("ÃÔÐÅ"
+SKILL_PASSIVE_BARBARIAN_SUPERSTITION := New PassiveSkill("è¿·ä¿¡"
 	, "images\skills\barbarian\passive\traits_barbarian_superstitious_normal.png"
-	, "ÊÜµ½µÄËùÓÐ·ÇÎïÀíÉËº¦½µµÍ20%¡£µ±ÄãÊÜµ½Ô¶³Ì»òÔªËØÉËº¦Ê±£¬ÓÐÒ»¶¨»úÂÊ»ñµÃ2µãÅ­Æø¡£")
+	, "å—åˆ°çš„æ‰€æœ‰éžç‰©ç†ä¼¤å®³é™ä½Ž20%ã€‚å½“ä½ å—åˆ°è¿œç¨‹æˆ–å…ƒç´ ä¼¤å®³æ—¶ï¼Œæœ‰ä¸€å®šæœºçŽ‡èŽ·å¾—2ç‚¹æ€’æ°”ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÒâÖ¾¼á¶¨ 
+; æŠ€èƒ½: æ„å¿—åšå®š 
 ; ---------------------------
-SKILL_PASSIVE_BARBARIAN_TOUGH_AS_NAILS := New PassiveSkill("ÒâÖ¾¼á¶¨"
+SKILL_PASSIVE_BARBARIAN_TOUGH_AS_NAILS := New PassiveSkill("æ„å¿—åšå®š"
 	, "images\skills\barbarian\passive\traits_barbarian_ironskin_normal.png"
-	, "»¤¼×ÖµÌá¸ß25%¡£¾£¼¬ÉËº¦Ìá¸ß100%¡£")
+	, "æŠ¤ç”²å€¼æé«˜25%ã€‚è†æ£˜ä¼¤å®³æé«˜100%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÎÞ´¦¿ÉÌÓ 
+; æŠ€èƒ½: æ— å¤„å¯é€ƒ 
 ; ---------------------------
-SKILL_PASSIVE_BARBARIAN_NO_ESCAPE := New PassiveSkill("ÎÞ´¦¿ÉÌÓ"
+SKILL_PASSIVE_BARBARIAN_NO_ESCAPE := New PassiveSkill("æ— å¤„å¯é€ƒ"
 	, "images\skills\barbarian\passive\traits_barbarian_frenziedattacks_normal.png"
-	, "¶Ô¹¥»÷¾àÀë³¬¹ý15ÂëµÄµÐÈËÊ±£¬ÖÀÈÐÕ¶¡¢êVµØÃÍ»÷¡¢ÉÏ¹ÅÖ®Ã¬ºÍÉ½±ÀµØÁÑÔì³ÉµÄÉËº¦Ìá¸ß30%¡£")
+	, "å¯¹æ”»å‡»è·ç¦»è¶…è¿‡15ç çš„æ•Œäººæ—¶ï¼ŒæŽ·åˆƒæ–©ã€é—¢åœ°çŒ›å‡»ã€ä¸Šå¤ä¹‹çŸ›å’Œå±±å´©åœ°è£‚é€ æˆçš„ä¼¤å®³æé«˜30%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ·ÜÕ½²»Ð¸ 
+; æŠ€èƒ½: å¥‹æˆ˜ä¸æ‡ˆ 
 ; ---------------------------
-SKILL_PASSIVE_BARBARIAN_RELENTLESS := New PassiveSkill("·ÜÕ½²»Ð¸"
+SKILL_PASSIVE_BARBARIAN_RELENTLESS := New PassiveSkill("å¥‹æˆ˜ä¸æ‡ˆ"
 	, "images\skills\barbarian\passive\traits_barbarian_insanecourage_normal.png"
-	, "ÉúÃüÖµµÍÓÚ35%Ê±£¬ËùÓÐ¼¼ÄÜÏûºÄµÄÅ­Æø½µµÍ50%£¬ÏûºÄÅ­Æø»Ö¸´ÉúÃüÖµµÄÐ§¹û¼Ó±¶£¬ËùÊÜÉËº¦½µµÍ50%¡£")
+	, "ç”Ÿå‘½å€¼ä½ŽäºŽ35%æ—¶ï¼Œæ‰€æœ‰æŠ€èƒ½æ¶ˆè€—çš„æ€’æ°”é™ä½Ž50%ï¼Œæ¶ˆè€—æ€’æ°”æ¢å¤ç”Ÿå‘½å€¼çš„æ•ˆæžœåŠ å€ï¼Œæ‰€å—ä¼¤å®³é™ä½Ž50%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÕùÕ½Õß 
+; æŠ€èƒ½: äº‰æˆ˜è€… 
 ; ---------------------------
-SKILL_PASSIVE_BARBARIAN_BRAWLER := New PassiveSkill("ÕùÕ½Õß"
+SKILL_PASSIVE_BARBARIAN_BRAWLER := New PassiveSkill("äº‰æˆ˜è€…"
 	, "images\skills\barbarian\passive\traits_monk_strengthinadversity_normal.png"
-	, "ÔÚ12ÂëÄÚÓÐ3ÃûµÐÈËÊ±£¬ÄãÔì³ÉµÄËùÓÐÉËº¦Ìá¸ß20%¡£")
+	, "åœ¨12ç å†…æœ‰3åæ•Œäººæ—¶ï¼Œä½ é€ æˆçš„æ‰€æœ‰ä¼¤å®³æé«˜20%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÊÆ²»¿Éµ± 
+; æŠ€èƒ½: åŠ¿ä¸å¯å½“ 
 ; ---------------------------
-SKILL_PASSIVE_BARBARIAN_JUGGERNAUT := New PassiveSkill("ÊÆ²»¿Éµ±"
+SKILL_PASSIVE_BARBARIAN_JUGGERNAUT := New PassiveSkill("åŠ¿ä¸å¯å½“"
 	, "images\skills\barbarian\passive\traits_barbarian_shieldofiron_normal.png"
-	, "ÄãËùÊÜµÄ¿Ø³¡Ð§¹û³ÖÐøÊ±¼äËõ¶Ì50%¡£³ý´ËÖ®Íâ£¬µ±ÄãÊÜµ½»èÃÔ¡¢¶³½á¡¢¿Ö¾å»ò¶¨ÉíÐ§¹ûÓ°ÏìÊ±£¬ÓÐÒ»¶¨»úÂÊ»Ö¸´ÉúÃüÖµÉÏÏÞµÄ20%¡£")
+	, "ä½ æ‰€å—çš„æŽ§åœºæ•ˆæžœæŒç»­æ—¶é—´ç¼©çŸ­50%ã€‚é™¤æ­¤ä¹‹å¤–ï¼Œå½“ä½ å—åˆ°æ˜è¿·ã€å†»ç»“ã€ææƒ§æˆ–å®šèº«æ•ˆæžœå½±å“æ—¶ï¼Œæœ‰ä¸€å®šæœºçŽ‡æ¢å¤ç”Ÿå‘½å€¼ä¸Šé™çš„20%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÎÞ¿ÉÈÄË¡ 
+; æŠ€èƒ½: æ— å¯é¥¶æ• 
 ; ---------------------------
-SKILL_PASSIVE_BARBARIAN_UNFORGIVING := New PassiveSkill("ÎÞ¿ÉÈÄË¡"
+SKILL_PASSIVE_BARBARIAN_UNFORGIVING := New PassiveSkill("æ— å¯é¥¶æ•"
 	, "images\skills\barbarian\passive\traits_common_aggression_normal.png"
-	, "ÄãµÄÅ­Æø²»ÔÙË¥½ß¡£Ïà·´µÄ£¬ÄãÃ¿1ÃëÄÜ²úÉú2µãÅ­Æø¡£")
+	, "ä½ çš„æ€’æ°”ä¸å†è¡°ç«­ã€‚ç›¸åçš„ï¼Œä½ æ¯1ç§’èƒ½äº§ç”Ÿ2ç‚¹æ€’æ°”ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ²¼¶û¿­Ë÷µÄ¶÷Ôó 
+; æŠ€èƒ½: å¸ƒå°”å‡¯ç´¢çš„æ©æ³½ 
 ; ---------------------------
-SKILL_PASSIVE_BARBARIAN_BOON_OF_BULKATHOS := New PassiveSkill("²¼¶û¿­Ë÷µÄ¶÷Ôó"
+SKILL_PASSIVE_BARBARIAN_BOON_OF_BULKATHOS := New PassiveSkill("å¸ƒå°”å‡¯ç´¢çš„æ©æ³½"
 	, "images\skills\barbarian\passive\traits_barbarian_warpaint_normal.png"
-	, "ÒÔÏÂ¼¼ÄÜÀäÈ´Ê±¼äËõ¶Ì£ºÁÑµØÖ®ÕðËõ¶Ì15Ãë¡£ÏÈ×æÕÙ»½Ëõ¶Ì30Ãë¡£¿ñÕ½Ö®Å­Ëõ¶Ì30Ãë¡£")
+	, "ä»¥ä¸‹æŠ€èƒ½å†·å´æ—¶é—´ç¼©çŸ­ï¼šè£‚åœ°ä¹‹éœ‡ç¼©çŸ­15ç§’ã€‚å…ˆç¥–å¬å”¤ç¼©çŸ­30ç§’ã€‚ç‹‚æˆ˜ä¹‹æ€’ç¼©çŸ­30ç§’ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ´óµØÖ®Å­ 
+; æŠ€èƒ½: å¤§åœ°ä¹‹æ€’ 
 ; ---------------------------
-SKILL_PASSIVE_BARBARIAN_EARTHEN_MIGHT := New PassiveSkill("´óµØÖ®Å­"
+SKILL_PASSIVE_BARBARIAN_EARTHEN_MIGHT := New PassiveSkill("å¤§åœ°ä¹‹æ€’"
 	, "images\skills\barbarian\passive\traits_barbarian_earthenmight_normal.png"
-	, "ÔÚÉ½±ÀµØÁÑ»òÁÑµØÖ®Õð´¥·¢Ê±»ñµÃ30µãÅ­Æø¡£")
+	, "åœ¨å±±å´©åœ°è£‚æˆ–è£‚åœ°ä¹‹éœ‡è§¦å‘æ—¶èŽ·å¾—30ç‚¹æ€’æ°”ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ½£¶ÜºÏèµ 
+; æŠ€èƒ½: å‰‘ç›¾åˆç’§ 
 ; ---------------------------
-SKILL_PASSIVE_BARBARIAN_SWORD_AND_BOARD := New PassiveSkill("½£¶ÜºÏèµ"
+SKILL_PASSIVE_BARBARIAN_SWORD_AND_BOARD := New PassiveSkill("å‰‘ç›¾åˆç’§"
 	, "images\skills\barbarian\passive\traits_barbarian_swordandboard_normal.png"
-	, "×°±¸¶ÜÅÆÊ±£¬ÊÜµ½µÄËùÓÐÉËº¦½µµÍ30%£¬ÏûºÄµÄÅ­Æø½µµÍ20%¡£")
+	, "è£…å¤‡ç›¾ç‰Œæ—¶ï¼Œå—åˆ°çš„æ‰€æœ‰ä¼¤å®³é™ä½Ž30%ï¼Œæ¶ˆè€—çš„æ€’æ°”é™ä½Ž20%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ¿ñ±©É±Â¾ 
+; æŠ€èƒ½: ç‹‚æš´æ€æˆ® 
 ; ---------------------------
-SKILL_PASSIVE_BARBARIAN_RAMPAGE := New PassiveSkill("¿ñ±©É±Â¾"
+SKILL_PASSIVE_BARBARIAN_RAMPAGE := New PassiveSkill("ç‹‚æš´æ€æˆ®"
 	, "images\skills\barbarian\passive\traits_barbarian_rampage_normal.png"
-	, "ÔÚ»÷É±»òÐ­Öú»÷É±µÐÈËºóÔö¼Ó1%Á¦Á¿£¬³ÖÐø8Ãë¡£´ËÐ§¹û×î¶à¿É¶Ñµþ25´Î¡£")
+	, "åœ¨å‡»æ€æˆ–ååŠ©å‡»æ€æ•ŒäººåŽå¢žåŠ 1%åŠ›é‡ï¼ŒæŒç»­8ç§’ã€‚æ­¤æ•ˆæžœæœ€å¤šå¯å †å 25æ¬¡ã€‚")
 ; ===========================
-; Ò°ÐUÈË End
+; é‡Žè »äºº End
 ; ===========================
 
 
 
 ; ===========================
-; Â}½ÌÜŠ Start
+; è–æ•™è» Start
 ; ===========================
 ; ---------------------------
-; ¼¼ÄÜ: ÌìÌÃÖ®Á¦ 
+; æŠ€èƒ½: å¤©å ‚ä¹‹åŠ› 
 ; ---------------------------
-SKILL_PASSIVE_CRUSADER_HEAVENLY_STRENGTH := New PassiveSkill("ÌìÌÃÖ®Á¦"
+SKILL_PASSIVE_CRUSADER_HEAVENLY_STRENGTH := New PassiveSkill("å¤©å ‚ä¹‹åŠ›"
 	, "images\skills\crusader\passive\traits_crusader_heavenlystrength_normal.png"
-	, "ÄãÔÚÊÖ³Ö¶ÜÅÆÊ±£¬¿ÉÒÔÔÚÖ÷ÊÖ×°±¸Ë«ÊÖÎäÆ÷¡£\r\nÄãÔì³ÉµÄÉËº¦½µµÍ20%¡£")
+	, "ä½ åœ¨æ‰‹æŒç›¾ç‰Œæ—¶ï¼Œå¯ä»¥åœ¨ä¸»æ‰‹è£…å¤‡åŒæ‰‹æ­¦å™¨ã€‚\r\nä½ é€ æˆçš„ä¼¤å®³é™ä½Ž20%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ò¯ÐÅ 
+; æŠ€èƒ½: è™”ä¿¡ 
 ; ---------------------------
-SKILL_PASSIVE_CRUSADER_FERVOR := New PassiveSkill("ò¯ÐÅ"
+SKILL_PASSIVE_CRUSADER_FERVOR := New PassiveSkill("è™”ä¿¡"
 	, "images\skills\crusader\passive\traits_crusader_fervor_normal.png"
-	, "×°±¸µ¥ÊÖÎäÆ÷Ê±£¬¹¥»÷ËÙ¶ÈÌá¸ß15%£¬ËùÓÐ¼¼ÄÜµÄÀäÈ´Ê±¼äËõ¶Ì15%¡£")
+	, "è£…å¤‡å•æ‰‹æ­¦å™¨æ—¶ï¼Œæ”»å‡»é€Ÿåº¦æé«˜15%ï¼Œæ‰€æœ‰æŠ€èƒ½çš„å†·å´æ—¶é—´ç¼©çŸ­15%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: È«Éñ½ä±¸ 
+; æŠ€èƒ½: å…¨ç¥žæˆ’å¤‡ 
 ; ---------------------------
-SKILL_PASSIVE_CRUSADER_VIGILANT := New PassiveSkill("È«Éñ½ä±¸"
+SKILL_PASSIVE_CRUSADER_VIGILANT := New PassiveSkill("å…¨ç¥žæˆ’å¤‡"
 	, "images\skills\crusader\passive\traits_crusader_vigilant_normal.png"
-	, "ÉúÃüÖµ»Ö¸´ÂÊÌá¸ß2682µã¡£\r\nËùÓÐÊÜµ½µÄ·ÇÎïÀíÉËº¦½µµÍ20%¡£")
+	, "ç”Ÿå‘½å€¼æ¢å¤çŽ‡æé«˜2682ç‚¹ã€‚\r\næ‰€æœ‰å—åˆ°çš„éžç‰©ç†ä¼¤å®³é™ä½Ž20%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÕýÒåÖ®Å­ 
+; æŠ€èƒ½: æ­£ä¹‰ä¹‹æ€’ 
 ; ---------------------------
-SKILL_PASSIVE_CRUSADER_RIGHTEOUSNESS := New PassiveSkill("ÕýÒåÖ®Å­"
+SKILL_PASSIVE_CRUSADER_RIGHTEOUSNESS := New PassiveSkill("æ­£ä¹‰ä¹‹æ€’"
 	, "images\skills\crusader\passive\traits_crusader_fanaticism_normal.png"
-	, "Ê¹ÓÃÖ÷Òª¼¼ÄÜ¿É¶îÍâ²úÉú3µãÊ¥Å­¡£\r\nÊ¥Å­ÉÏÏÞÌá¸ß30µã¡£")
+	, "ä½¿ç”¨ä¸»è¦æŠ€èƒ½å¯é¢å¤–äº§ç”Ÿ3ç‚¹åœ£æ€’ã€‚\r\nåœ£æ€’ä¸Šé™æé«˜30ç‚¹ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÎÞÐ¸¿É»÷ 
+; æŠ€èƒ½: æ— æ‡ˆå¯å‡» 
 ; ---------------------------
-SKILL_PASSIVE_CRUSADER_INSURMOUNTABLE := New PassiveSkill("ÎÞÐ¸¿É»÷"
+SKILL_PASSIVE_CRUSADER_INSURMOUNTABLE := New PassiveSkill("æ— æ‡ˆå¯å‡»"
 	, "images\skills\crusader\passive\traits_crusader_insurmountable_normal.png"
-	, "¸ñµ²¹¥»÷Ê±»á²úÉú6µãÊ¥Å­¡£")
+	, "æ ¼æŒ¡æ”»å‡»æ—¶ä¼šäº§ç”Ÿ6ç‚¹åœ£æ€’ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ¿ñÈÈ¹¥ËÙ 
+; æŠ€èƒ½: ç‹‚çƒ­æ”»é€Ÿ 
 ; ---------------------------
-SKILL_PASSIVE_CRUSADER_FANATICISM := New PassiveSkill("¿ñÈÈ¹¥ËÙ"
+SKILL_PASSIVE_CRUSADER_FANATICISM := New PassiveSkill("ç‹‚çƒ­æ”»é€Ÿ"
 	, "images\skills\crusader\passive\traits_crusader_nephalemmajesty_normal.png"
-	, "ÖÆ²Ã¡¢ÁÒ¿ÕÕ¶¡¢å€»÷ºÍÕýÒåÖ®´¸µÄ¹¥»÷ËÙ¶ÈÌá¸ß15%¡£")
+	, "åˆ¶è£ã€çƒˆç©ºæ–©ã€éŠå‡»å’Œæ­£ä¹‰ä¹‹é”¤çš„æ”»å‡»é€Ÿåº¦æé«˜15%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: Ô½´ìÔ½ÓÂ 
+; æŠ€èƒ½: è¶ŠæŒ«è¶Šå‹‡ 
 ; ---------------------------
-SKILL_PASSIVE_CRUSADER_INDESTRUCTIBLE := New PassiveSkill("Ô½´ìÔ½ÓÂ"
+SKILL_PASSIVE_CRUSADER_INDESTRUCTIBLE := New PassiveSkill("è¶ŠæŒ«è¶Šå‹‡"
 	, "images\skills\crusader\passive\traits_crusader_indestructible_normal.png"
-	, "µ±ÊÜµ½×ãÒÔÖÂÃüµÄÉËº¦Ê±£¬Äã»á¶ÔÉËº¦ÃâÒß£¬²¢ÇÒÔì³ÉµÄÉËº¦Ìá¸ß35%£¬Í¬Ê±»ñµÃ107284µã»÷É±ÉúÃü»Ö¸´£¬³ÖÐø5Ãë¡£\r\n´ËÐ§¹ûÃ¿60Ãë¿É´¥·¢Ò»´Î¡£")
+	, "å½“å—åˆ°è¶³ä»¥è‡´å‘½çš„ä¼¤å®³æ—¶ï¼Œä½ ä¼šå¯¹ä¼¤å®³å…ç–«ï¼Œå¹¶ä¸”é€ æˆçš„ä¼¤å®³æé«˜35%ï¼ŒåŒæ—¶èŽ·å¾—107284ç‚¹å‡»æ€ç”Ÿå‘½æ¢å¤ï¼ŒæŒç»­5ç§’ã€‚\r\næ­¤æ•ˆæžœæ¯60ç§’å¯è§¦å‘ä¸€æ¬¡ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÉñÊ¥Ê¹Ãü 
+; æŠ€èƒ½: ç¥žåœ£ä½¿å‘½ 
 ; ---------------------------
-SKILL_PASSIVE_CRUSADER_HOLY_CAUSE := New PassiveSkill("ÉñÊ¥Ê¹Ãü"
+SKILL_PASSIVE_CRUSADER_HOLY_CAUSE := New PassiveSkill("ç¥žåœ£ä½¿å‘½"
 	, "images\skills\crusader\passive\traits_crusader_holycause_normal.png"
-	, "Ê¹ÄãÎäÆ÷Ôì³ÉµÄÉËº¦Ìá¸ß10%¡£\r\nµ±ÄãÔì³ÉÉñÊ¥ÉËº¦Ê±£¬»á»ñµÃ×î¶àÏàµ±ÓÚÉúÃüÖµÉÏÏÞ1%µÄÖÎÁÆ¡£")
+	, "ä½¿ä½ æ­¦å™¨é€ æˆçš„ä¼¤å®³æé«˜10%ã€‚\r\nå½“ä½ é€ æˆç¥žåœ£ä¼¤å®³æ—¶ï¼Œä¼šèŽ·å¾—æœ€å¤šç›¸å½“äºŽç”Ÿå‘½å€¼ä¸Šé™1%çš„æ²»ç–—ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: Ê¥Å­Ö®°K 
+; æŠ€èƒ½: åœ£æ€’ä¹‹ç™’ 
 ; ---------------------------
-SKILL_PASSIVE_CRUSADER_WRATHFUL := New PassiveSkill("Ê¥Å­Ö®°K"
+SKILL_PASSIVE_CRUSADER_WRATHFUL := New PassiveSkill("åœ£æ€’ä¹‹ç™’"
 	, "images\skills\crusader\passive\traits_crusader_wrathful_normal.png"
-	, "Ã¿ÏûºÄÒ»µãÊ¥Å­¿ÉÊ¹Äã»Ö¸´1341µãÉúÃüÖµ¡£\r\nÖÎÁÆÁ¿¼Ó³ÉÎªÉúÃüÖ®ÇòÐ§¹û¼Ó³ÉµÄ1%¡£")
+	, "æ¯æ¶ˆè€—ä¸€ç‚¹åœ£æ€’å¯ä½¿ä½ æ¢å¤1341ç‚¹ç”Ÿå‘½å€¼ã€‚\r\næ²»ç–—é‡åŠ æˆä¸ºç”Ÿå‘½ä¹‹çƒæ•ˆæžœåŠ æˆçš„1%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÉñÊ¥±ÚÀÝ 
+; æŠ€èƒ½: ç¥žåœ£å£åž’ 
 ; ---------------------------
-SKILL_PASSIVE_CRUSADER_DIVINE_FORTRESS := New PassiveSkill("ÉñÊ¥±ÚÀÝ"
+SKILL_PASSIVE_CRUSADER_DIVINE_FORTRESS := New PassiveSkill("ç¥žåœ£å£åž’"
 	, "images\skills\crusader\passive\traits_crusader_divinefortress_normal.png"
-	, "Ìá¸ß»¤¼×Öµ£¬Ìá¸ßµÄ±ÈÀýÏàµ±ÓÚÄã¶ÜÅÆµÄ¸ñµ²»úÂÊ¡£")
+	, "æé«˜æŠ¤ç”²å€¼ï¼Œæé«˜çš„æ¯”ä¾‹ç›¸å½“äºŽä½ ç›¾ç‰Œçš„æ ¼æŒ¡æœºçŽ‡ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: Ö¸»ÓºÅÁî 
+; æŠ€èƒ½: æŒ‡æŒ¥å·ä»¤ 
 ; ---------------------------
-SKILL_PASSIVE_CRUSADER_LORD_COMMANDER := New PassiveSkill("Ö¸»ÓºÅÁî"
+SKILL_PASSIVE_CRUSADER_LORD_COMMANDER := New PassiveSkill("æŒ‡æŒ¥å·ä»¤"
 	, "images\skills\crusader\passive\traits_crusader_lordcommander_normal.png"
-	, "Õ½Âí±¼ÌÚµÄÀäÈ´Ê±¼äËõ¶Ì25%£¬»ð³hºäÕ¨µÄÀäÈ´Ê±¼äËõ¶Ì35%¡£\r\nÊ¥¾üÖ®ÕóÔì³ÉµÄÉËº¦Ìá¸ß20%¡£")
+	, "æˆ˜é©¬å¥”è…¾çš„å†·å´æ—¶é—´ç¼©çŸ­25%ï¼Œç«ç ²è½°ç‚¸çš„å†·å´æ—¶é—´ç¼©çŸ­35%ã€‚\r\nåœ£å†›ä¹‹é˜µé€ æˆçš„ä¼¤å®³æé«˜20%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ¼áÊØÕóµØ 
+; æŠ€èƒ½: åšå®ˆé˜µåœ° 
 ; ---------------------------
-SKILL_PASSIVE_CRUSADER_HOLD_YOUR_GROUND := New PassiveSkill("¼áÊØÕóµØ"
+SKILL_PASSIVE_CRUSADER_HOLD_YOUR_GROUND := New PassiveSkill("åšå®ˆé˜µåœ°"
 	, "images\skills\crusader\passive\traits_crusader_holdyourground_normal.png"
-	, "ÄãÎÞ·¨ÉÁ¶ã£¬µ«¸ñµ²»úÂÊÌá¸ß30%¡£")
+	, "ä½ æ— æ³•é—ªèº²ï¼Œä½†æ ¼æŒ¡æœºçŽ‡æé«˜30%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÂÉÁîÎÞ½® 
+; æŠ€èƒ½: å¾‹ä»¤æ— ç–† 
 ; ---------------------------
-SKILL_PASSIVE_CRUSADER_LONG_ARM_OF_THE_LAW := New PassiveSkill("ÂÉÁîÎÞ½®"
+SKILL_PASSIVE_CRUSADER_LONG_ARM_OF_THE_LAW := New PassiveSkill("å¾‹ä»¤æ— ç–†"
 	, "images\skills\crusader\passive\traits_crusader_longarmofthelaw_normal.png"
-	, "Ê¹ËùÓÐÂÉÁîÖ÷¶¯Ð§¹ûµÄ³ÖÐøÊ±¼äÑÓ³¤5Ãë¡£")
+	, "ä½¿æ‰€æœ‰å¾‹ä»¤ä¸»åŠ¨æ•ˆæžœçš„æŒç»­æ—¶é—´å»¶é•¿5ç§’ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: Ìú´¦Å® 
+; æŠ€èƒ½: é“å¤„å¥³ 
 ; ---------------------------
-SKILL_PASSIVE_CRUSADER_IRON_MAIDEN := New PassiveSkill("Ìú´¦Å®"
+SKILL_PASSIVE_CRUSADER_IRON_MAIDEN := New PassiveSkill("é“å¤„å¥³"
 	, "images\skills\crusader\passive\traits_crusader_ironmaiden_normal.png"
-	, "ÄãµÄ¾£¼¬ÉËº¦Ìá¸ß50%¡£")
+	, "ä½ çš„è†æ£˜ä¼¤å®³æé«˜50%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ¸ñµ²»Ö¸´ 
+; æŠ€èƒ½: æ ¼æŒ¡æ¢å¤ 
 ; ---------------------------
-SKILL_PASSIVE_CRUSADER_RENEWAL := New PassiveSkill("¸ñµ²»Ö¸´"
+SKILL_PASSIVE_CRUSADER_RENEWAL := New PassiveSkill("æ ¼æŒ¡æ¢å¤"
 	, "images\skills\crusader\passive\traits_crusader_renewal_normal.png"
-	, "Ã¿´Î¸ñµ²Ê±¿É»Ö¸´16093µãÉúÃüÖµ¡£")
+	, "æ¯æ¬¡æ ¼æŒ¡æ—¶å¯æ¢å¤16093ç‚¹ç”Ÿå‘½å€¼ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ±¦Ê¯Ö®Á¦ 
+; æŠ€èƒ½: å®çŸ³ä¹‹åŠ› 
 ; ---------------------------
-SKILL_PASSIVE_CRUSADER_FINERY := New PassiveSkill("±¦Ê¯Ö®Á¦"
+SKILL_PASSIVE_CRUSADER_FINERY := New PassiveSkill("å®çŸ³ä¹‹åŠ›"
 	, "images\skills\crusader\passive\traits_crusader_finery_normal.png"
-	, "ÄãÔÚ×°±¸ÉÏÃ¿ÏâÇ¶Ò»Ã¶±¦Ê¯£¬¿É»ñµÃ1.5%Á¦Á¿¡£")
+	, "ä½ åœ¨è£…å¤‡ä¸Šæ¯é•¶åµŒä¸€æžšå®çŸ³ï¼Œå¯èŽ·å¾—1.5%åŠ›é‡ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÖØ»÷Ö®´¸ 
+; æŠ€èƒ½: é‡å‡»ä¹‹é”¤ 
 ; ---------------------------
-SKILL_PASSIVE_CRUSADER_BLUNT := New PassiveSkill("ÖØ»÷Ö®´¸"
+SKILL_PASSIVE_CRUSADER_BLUNT := New PassiveSkill("é‡å‡»ä¹‹é”¤"
 	, "images\skills\crusader\passive\traits_crusader_blunt_normal.png"
-	, "ÕýÒåÖ®´¸ºÍ×£¸£Ö®´¸ËùÔì³ÉµÄÉËº¦Ìá¸ß20%¡£")
+	, "æ­£ä¹‰ä¹‹é”¤å’Œç¥ç¦ä¹‹é”¤æ‰€é€ æˆçš„ä¼¤å®³æé«˜20%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÊØÓùÖ®¶Ü 
+; æŠ€èƒ½: å®ˆå¾¡ä¹‹ç›¾ 
 ; ---------------------------
-SKILL_PASSIVE_CRUSADER_TOWERING_SHIELD := New PassiveSkill("ÊØÓùÖ®¶Ü"
+SKILL_PASSIVE_CRUSADER_TOWERING_SHIELD := New PassiveSkill("å®ˆå¾¡ä¹‹ç›¾"
 	, "images\skills\crusader\passive\traits_crusader_toweringshield_normal.png"
-	, "ÖÆ²Ã¡¢¶ÜÅÆÃÍ»÷ºÍ×£¸£Ö®¶ÜµÄÉËº¦Ìá¸ß20%¡£\r\nÊ¥¶ÜìÅ¹âµÄÀäÈ´Ê±¼äËõ¶Ì30%¡£")
+	, "åˆ¶è£ã€ç›¾ç‰ŒçŒ›å‡»å’Œç¥ç¦ä¹‹ç›¾çš„ä¼¤å®³æé«˜20%ã€‚\r\nåœ£ç›¾ç‚«å…‰çš„å†·å´æ—¶é—´ç¼©çŸ­30%ã€‚")
 ; ===========================
-; Â}½ÌÜŠ End
+; è–æ•™è» End
 ; ===========================
 
 
 
 ; ===========================
-; ÁÔÄ§ÈË Start
+; çŒŽé­”äºº Start
 ; ===========================
 ; ---------------------------
-; ¼¼ÄÜ: ×·ÁÔ¿ì¸Ð 
+; æŠ€èƒ½: è¿½çŒŽå¿«æ„Ÿ 
 ; ---------------------------
-SKILL_PASSIVE_DEMON_HUNTER_THRILL_OF_THE_HUNT := New PassiveSkill("×·ÁÔ¿ì¸Ð"
+SKILL_PASSIVE_DEMON_HUNTER_THRILL_OF_THE_HUNT := New PassiveSkill("è¿½çŒŽå¿«æ„Ÿ"
 	, "images\skills\demon-hunter\passive\traits_demonhunter_opportunity_normal.png"
-	, "±»ÄãµÄÔ÷ºÞÖµÏûºÄ¼¼ÄÜÃüÖÐµÄµÐÈËÆäÒÆ¶¯ËÙ¶È½µµÍ80%£¬³ÖÐø2Ãë¡£")
+	, "è¢«ä½ çš„æ†Žæ¨å€¼æ¶ˆè€—æŠ€èƒ½å‘½ä¸­çš„æ•Œäººå…¶ç§»åŠ¨é€Ÿåº¦é™ä½Ž80%ï¼ŒæŒç»­2ç§’ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: Õ½ÊõÓÅÊÆ 
+; æŠ€èƒ½: æˆ˜æœ¯ä¼˜åŠ¿ 
 ; ---------------------------
-SKILL_PASSIVE_DEMON_HUNTER_TACTICAL_ADVANTAGE := New PassiveSkill("Õ½ÊõÓÅÊÆ"
+SKILL_PASSIVE_DEMON_HUNTER_TACTICAL_ADVANTAGE := New PassiveSkill("æˆ˜æœ¯ä¼˜åŠ¿"
 	, "images\skills\demon-hunter\passive\traits_demonhunter_tacticaladvantage_normal.png"
-	, "Ã¿µ±ÄãÊ¹ÓÃÓ°ÂÖ·­¡¢°µÓ°Ö®Á¦¡¢ÑÌÎíµ¯£¬»òÔÚÊ¹ÓÃÉÁ±ÜÉä»÷½øÐÐºó¿Õ·­Ê±£¬ÄãµÄÒÆ¶¯ËÙ¶È¼´¿ÉÌá¸ß60%£¬³ÖÐø2Ãë¡£")
+	, "æ¯å½“ä½ ä½¿ç”¨å½±è½®ç¿»ã€æš—å½±ä¹‹åŠ›ã€çƒŸé›¾å¼¹ï¼Œæˆ–åœ¨ä½¿ç”¨é—ªé¿å°„å‡»è¿›è¡ŒåŽç©ºç¿»æ—¶ï¼Œä½ çš„ç§»åŠ¨é€Ÿåº¦å³å¯æé«˜60%ï¼ŒæŒç»­2ç§’ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÑªÐÈ¸´³ð 
+; æŠ€èƒ½: è¡€è…¥å¤ä»‡ 
 ; ---------------------------
-SKILL_PASSIVE_DEMON_HUNTER_BLOOD_VENGEANCE := New PassiveSkill("ÑªÐÈ¸´³ð"
+SKILL_PASSIVE_DEMON_HUNTER_BLOOD_VENGEANCE := New PassiveSkill("è¡€è…¥å¤ä»‡"
 	, "images\skills\demon-hunter\passive\traits_demonhunter_vengeance_normal.png"
-	, "ÄãµÄÔ÷ºÞÖµÉÏÏÞÌá¸ß25µã¡£´ËÍâ£¬Ã¿µ±Äã±»ÉúÃüÇòÖÎÁÆÊ±£¬Äã»¹ÄÜ»ñµÃ30µãÔ÷ºÞÖµºÍ3µã½äÂÉÖµ¡£")
+	, "ä½ çš„æ†Žæ¨å€¼ä¸Šé™æé«˜25ç‚¹ã€‚æ­¤å¤–ï¼Œæ¯å½“ä½ è¢«ç”Ÿå‘½çƒæ²»ç–—æ—¶ï¼Œä½ è¿˜èƒ½èŽ·å¾—30ç‚¹æ†Žæ¨å€¼å’Œ3ç‚¹æˆ’å¾‹å€¼ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÎÈ¹ÌÃé×¼ 
+; æŠ€èƒ½: ç¨³å›ºçž„å‡† 
 ; ---------------------------
-SKILL_PASSIVE_DEMON_HUNTER_STEADY_AIM := New PassiveSkill("ÎÈ¹ÌÃé×¼"
+SKILL_PASSIVE_DEMON_HUNTER_STEADY_AIM := New PassiveSkill("ç¨³å›ºçž„å‡†"
 	, "images\skills\demon-hunter\passive\traits_demonhunter_marksman_normal.png"
-	, "Ö»ÒªÔÚ10Âë·¶Î§ÄÚÃ»ÓÐÈÎºÎµÐÈË£¬ÄãËùÔì³ÉµÄËùÓÐÉËº¦¼´¿ÉÌá¸ß20%¡£")
+	, "åªè¦åœ¨10ç èŒƒå›´å†…æ²¡æœ‰ä»»ä½•æ•Œäººï¼Œä½ æ‰€é€ æˆçš„æ‰€æœ‰ä¼¤å®³å³å¯æé«˜20%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÊÑÇ¿ÁèÈõ 
+; æŠ€èƒ½: æƒå¼ºå‡Œå¼± 
 ; ---------------------------
-SKILL_PASSIVE_DEMON_HUNTER_CULL_THE_WEAK := New PassiveSkill("ÊÑÇ¿ÁèÈõ"
+SKILL_PASSIVE_DEMON_HUNTER_CULL_THE_WEAK := New PassiveSkill("æƒå¼ºå‡Œå¼±"
 	, "images\skills\demon-hunter\passive\traits_common_intimidation_normal.png"
-	, "¶Ô±»¼õËÙ»òÏÝÈëº®ÀäµÐÈËËùÔì³ÉµÄÉËº¦Ìá¸ß20%¡£")
+	, "å¯¹è¢«å‡é€Ÿæˆ–é™·å…¥å¯’å†·æ•Œäººæ‰€é€ æˆçš„ä¼¤å®³æé«˜20%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: °µÒ¹×·×ÙÕß 
+; æŠ€èƒ½: æš—å¤œè¿½è¸ªè€… 
 ; ---------------------------
-SKILL_PASSIVE_DEMON_HUNTER_NIGHT_STALKER := New PassiveSkill("°µÒ¹×·×ÙÕß"
+SKILL_PASSIVE_DEMON_HUNTER_NIGHT_STALKER := New PassiveSkill("æš—å¤œè¿½è¸ªè€…"
 	, "images\skills\demon-hunter\passive\traits_demonhunter_cloakofshadows_normal.png"
-	, "ÄãµÄÖ÷Òª¼¼ÄÜÉú³É¶îÍâ4µãÔ÷ºÞÖµ¡£")
+	, "ä½ çš„ä¸»è¦æŠ€èƒ½ç”Ÿæˆé¢å¤–4ç‚¹æ†Žæ¨å€¼ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÓúÌå 
+; æŠ€èƒ½: æ„ˆä½“ 
 ; ---------------------------
-SKILL_PASSIVE_DEMON_HUNTER_BROODING := New PassiveSkill("ÓúÌå"
+SKILL_PASSIVE_DEMON_HUNTER_BROODING := New PassiveSkill("æ„ˆä½“"
 	, "images\skills\demon-hunter\passive\traits_demonhunter_focuseddiscipline_normal.png"
-	, "¾²Ö¹²»¶¯Ê±Ã¿Ãë¿É»ñµÃÉúÃüÖµÉÏÏÞ3.0%µÄÉúÃü»Ö¸´¼Ó³É£¬×î¶à¿Éµþ¼Ó3´Î¡£¸Ã¼Ó³ÉÐ§¹û»áÔÚÒÆ¶¯ºó5ÃëÖØÖÃ¡£")
+	, "é™æ­¢ä¸åŠ¨æ—¶æ¯ç§’å¯èŽ·å¾—ç”Ÿå‘½å€¼ä¸Šé™3.0%çš„ç”Ÿå‘½æ¢å¤åŠ æˆï¼Œæœ€å¤šå¯å åŠ 3æ¬¡ã€‚è¯¥åŠ æˆæ•ˆæžœä¼šåœ¨ç§»åŠ¨åŽ5ç§’é‡ç½®ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÈÈÁ¦×·»÷ 
+; æŠ€èƒ½: çƒ­åŠ›è¿½å‡» 
 ; ---------------------------
-SKILL_PASSIVE_DEMON_HUNTER_HOT_PURSUIT := New PassiveSkill("ÈÈÁ¦×·»÷"
+SKILL_PASSIVE_DEMON_HUNTER_HOT_PURSUIT := New PassiveSkill("çƒ­åŠ›è¿½å‡»"
 	, "images\skills\demon-hunter\passive\traits_demonhunter_hotpursuit_normal.png"
-	, "Ã¿µ±Äã»÷ÖÐµÐÈËÊ±£¬ÒÆ¶¯ËÙ¶ÈÌá¸ß20%£¬³ÖÐø4Ãë¡£")
+	, "æ¯å½“ä½ å‡»ä¸­æ•Œäººæ—¶ï¼Œç§»åŠ¨é€Ÿåº¦æé«˜20%ï¼ŒæŒç»­4ç§’ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ¼ýÊõ¸ß³¬ 
+; æŠ€èƒ½: ç®­æœ¯é«˜è¶… 
 ; ---------------------------
-SKILL_PASSIVE_DEMON_HUNTER_ARCHERY := New PassiveSkill("¼ýÊõ¸ß³¬"
+SKILL_PASSIVE_DEMON_HUNTER_ARCHERY := New PassiveSkill("ç®­æœ¯é«˜è¶…"
 	, "images\skills\demon-hunter\passive\traits_demonhunter_archery_normal.png"
-	, "»ùÓÚÄãËùÊ¹ÓÃµÄÎäÆ÷ÀàÐÍ£¬¿É»ñµÃÏàÓ¦¼Ó³É£º¹­ÀàÎäÆ÷£ºÉËº¦Ìá¸ß8%åóÀàÎäÆ÷£º±©»÷ÉËº¦Ìá¸ß50%ÊÖåóÀàÎäÆ÷£º±©»÷¼¸ÂÊÌá¸ß5%×°±¸ÓÚ¸±ÊÖµÄÊÖåóÀàÎäÆ÷£ºÃ¿Ãë»Ö¸´1µãÔ÷ºÞÖµ")
+	, "åŸºäºŽä½ æ‰€ä½¿ç”¨çš„æ­¦å™¨ç±»åž‹ï¼Œå¯èŽ·å¾—ç›¸åº”åŠ æˆï¼šå¼“ç±»æ­¦å™¨ï¼šä¼¤å®³æé«˜8%å¼©ç±»æ­¦å™¨ï¼šæš´å‡»ä¼¤å®³æé«˜50%æ‰‹å¼©ç±»æ­¦å™¨ï¼šæš´å‡»å‡ çŽ‡æé«˜5%è£…å¤‡äºŽå‰¯æ‰‹çš„æ‰‹å¼©ç±»æ­¦å™¨ï¼šæ¯ç§’æ¢å¤1ç‚¹æ†Žæ¨å€¼")
 ; ---------------------------
-; ¼¼ÄÜ: Âé±ÔÏÝÚå 
+; æŠ€èƒ½: éº»ç—¹é™·é˜± 
 ; ---------------------------
-SKILL_PASSIVE_DEMON_HUNTER_NUMBING_TRAPS := New PassiveSkill("Âé±ÔÏÝÚå"
+SKILL_PASSIVE_DEMON_HUNTER_NUMBING_TRAPS := New PassiveSkill("éº»ç—¹é™·é˜±"
 	, "images\skills\demon-hunter\passive\traits_demonhunter_numbingtraps_normal.png"
-	, "±»µ¶ÉÈ¡¢¼â´ÌÏÝÚå¡¢ÌúÝðÞ¼¡¢ÊÖÀ×ÒÔ¼°¼ýËþ»÷ÖÐ»òÔì³É¼õËÙ¡¢º®ÀäÐ§¹ûµÄµÐÈË£¬Ôì³ÉµÄÉËº¦½µµÍ25%£¬³ÖÐø5Ãë¡£")
+	, "è¢«åˆ€æ‰‡ã€å°–åˆºé™·é˜±ã€é“è’ºè—œã€æ‰‹é›·ä»¥åŠç®­å¡”å‡»ä¸­æˆ–é€ æˆå‡é€Ÿã€å¯’å†·æ•ˆæžœçš„æ•Œäººï¼Œé€ æˆçš„ä¼¤å®³é™ä½Ž25%ï¼ŒæŒç»­5ç§’ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÍêÃÀÖ÷ÒåÕß 
+; æŠ€èƒ½: å®Œç¾Žä¸»ä¹‰è€… 
 ; ---------------------------
-SKILL_PASSIVE_DEMON_HUNTER_PERFECTIONIST := New PassiveSkill("ÍêÃÀÖ÷ÒåÕß"
+SKILL_PASSIVE_DEMON_HUNTER_PERFECTIONIST := New PassiveSkill("å®Œç¾Žä¸»ä¹‰è€…"
 	, "images\skills\demon-hunter\passive\traits_demonhunter_yearsoftraining_normal.png"
-	, "Ê¹ËùÓÐ¼¼ÄÜµÄ½äÂÉÖµÏûºÄ½µµÍ10%¡£Ê¹ÄãµÄ»¤¼×ÖµÒÔ¼°¶ÔËùÓÐÉËº¦µÄ¿¹ÐÔÌá¸ß10%¡£\r\nÁÔÄ§ÈËµÄÐí¶àÕ½Êõ»ò·ÀÓù¼¼ÄÜ¶¼ÐèÒªÏûºÄ½äÂÉÖµ¡£")
+	, "ä½¿æ‰€æœ‰æŠ€èƒ½çš„æˆ’å¾‹å€¼æ¶ˆè€—é™ä½Ž10%ã€‚ä½¿ä½ çš„æŠ¤ç”²å€¼ä»¥åŠå¯¹æ‰€æœ‰ä¼¤å®³çš„æŠ—æ€§æé«˜10%ã€‚\r\nçŒŽé­”äººçš„è®¸å¤šæˆ˜æœ¯æˆ–é˜²å¾¡æŠ€èƒ½éƒ½éœ€è¦æ¶ˆè€—æˆ’å¾‹å€¼ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ±øÆ÷×¨¼Ò 
+; æŠ€èƒ½: å…µå™¨ä¸“å®¶ 
 ; ---------------------------
-SKILL_PASSIVE_DEMON_HUNTER_CUSTOM_ENGINEERING := New PassiveSkill("±øÆ÷×¨¼Ò"
+SKILL_PASSIVE_DEMON_HUNTER_CUSTOM_ENGINEERING := New PassiveSkill("å…µå™¨ä¸“å®¶"
 	, "images\skills\demon-hunter\passive\traits_common_superiorskill_normal.png"
-	, "Ê¹ÄãÌúÝðÞ¼¡¢ËÀÍöÓ¡¼Ç¡¢¼â´ÌÏÝÚåºÍ¼ýËþµÄ³ÖÐøÊ±¼äÑÓ³¤100%¡£\r\n¼ýËþµÄÊýÁ¿ÉÏÏÞÌá¸ßÖÁ3¸ö£¬¼â´ÌÏÝÚåµÄÊýÁ¿ÉÏÏÞÌá¸ßÖÁ5¸ö¡£")
+	, "ä½¿ä½ é“è’ºè—œã€æ­»äº¡å°è®°ã€å°–åˆºé™·é˜±å’Œç®­å¡”çš„æŒç»­æ—¶é—´å»¶é•¿100%ã€‚\r\nç®­å¡”çš„æ•°é‡ä¸Šé™æé«˜è‡³3ä¸ªï¼Œå°–åˆºé™·é˜±çš„æ•°é‡ä¸Šé™æé«˜è‡³5ä¸ªã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÖÀµ¯±ø 
+; æŠ€èƒ½: æŽ·å¼¹å…µ 
 ; ---------------------------
-SKILL_PASSIVE_DEMON_HUNTER_GRENADIER := New PassiveSkill("ÖÀµ¯±ø"
+SKILL_PASSIVE_DEMON_HUNTER_GRENADIER := New PassiveSkill("æŽ·å¼¹å…µ"
 	, "images\skills\demon-hunter\passive\traits_demonhunter_killingspree_normal.png"
-	, "Ê¹ÊÖÀ×Ôì³ÉµÄÉËº¦Ìá¸ß10%¡£Ê¹ÊÖÀ×±¬Õ¨µÄ·¶Î§À©´ó20%¡£\r\nËÀÍöÊ±Äã½«ÖÀ³öÒ»Ã¶¾ÞÐÍÊÖÀ×£¬±¬Õ¨Ôì³É1000%µÄÎäÆ÷ÉËº¦£¨×÷Îª»ðÑæÉËº¦£©¡£")
+	, "ä½¿æ‰‹é›·é€ æˆçš„ä¼¤å®³æé«˜10%ã€‚ä½¿æ‰‹é›·çˆ†ç‚¸çš„èŒƒå›´æ‰©å¤§20%ã€‚\r\næ­»äº¡æ—¶ä½ å°†æŽ·å‡ºä¸€æžšå·¨åž‹æ‰‹é›·ï¼Œçˆ†ç‚¸é€ æˆ1000%çš„æ­¦å™¨ä¼¤å®³ï¼ˆä½œä¸ºç«ç„°ä¼¤å®³ï¼‰ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: °Ù²½´©Ñî 
+; æŠ€èƒ½: ç™¾æ­¥ç©¿æ¨ 
 ; ---------------------------
-SKILL_PASSIVE_DEMON_HUNTER_SHARPSHOOTER := New PassiveSkill("°Ù²½´©Ñî"
+SKILL_PASSIVE_DEMON_HUNTER_SHARPSHOOTER := New PassiveSkill("ç™¾æ­¥ç©¿æ¨"
 	, "images\skills\demon-hunter\passive\traits_demonhunter_sharpshooter_normal.png"
-	, "Ôì³É±©»÷µÄ¼¸ÂÊÃ¿ÃëÌá¸ß4%¡£¸Ã¼Ó³É½«ÓÚÄã³É¹¦´ò³ö±©»÷1ÃëºóÖØÖÃ¡£")
+	, "é€ æˆæš´å‡»çš„å‡ çŽ‡æ¯ç§’æé«˜4%ã€‚è¯¥åŠ æˆå°†äºŽä½ æˆåŠŸæ‰“å‡ºæš´å‡»1ç§’åŽé‡ç½®ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: µ¯µÀÑ§ 
+; æŠ€èƒ½: å¼¹é“å­¦ 
 ; ---------------------------
-SKILL_PASSIVE_DEMON_HUNTER_BALLISTICS := New PassiveSkill("µ¯µÀÑ§"
+SKILL_PASSIVE_DEMON_HUNTER_BALLISTICS := New PassiveSkill("å¼¹é“å­¦"
 	, "images\skills\demon-hunter\passive\traits_demonhunter_ballistics_normal.png"
-	, "µ¼µ¯ÉËº¦Ìá¸ß100%¡£\r\n´ËÍâ£¬µ±Äã¹¥»÷Ê±£¬ÓÐ20%µÄ¼¸ÂÊ·¢ÉäÒ»Ã¶×·×Ùµ¼µ¯£¬Ôì³É150%µÄÎäÆ÷ÉËº¦¡£")
+	, "å¯¼å¼¹ä¼¤å®³æé«˜100%ã€‚\r\næ­¤å¤–ï¼Œå½“ä½ æ”»å‡»æ—¶ï¼Œæœ‰20%çš„å‡ çŽ‡å‘å°„ä¸€æžšè¿½è¸ªå¯¼å¼¹ï¼Œé€ æˆ150%çš„æ­¦å™¨ä¼¤å®³ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÎüÑª 
+; æŠ€èƒ½: å¸è¡€ 
 ; ---------------------------
-SKILL_PASSIVE_DEMON_HUNTER_LEECH := New PassiveSkill("ÎüÑª"
+SKILL_PASSIVE_DEMON_HUNTER_LEECH := New PassiveSkill("å¸è¡€"
 	, "images\skills\demon-hunter\passive\traits_demonhunter_leech_normal.png"
-	, "»ñµÃ18507µã»÷ÖÐ»Ø¸´ÉúÃü¡£\r\nÖÎÁÆÁ¿Ìá¸ß£¬ÊýÖµÏàµ±ÓÚÄãµÄÏûÃð»Ø¸´ÉúÃüµÄ75%¡£")
+	, "èŽ·å¾—18507ç‚¹å‡»ä¸­å›žå¤ç”Ÿå‘½ã€‚\r\næ²»ç–—é‡æé«˜ï¼Œæ•°å€¼ç›¸å½“äºŽä½ çš„æ¶ˆç­å›žå¤ç”Ÿå‘½çš„75%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ·ü»÷ 
+; æŠ€èƒ½: ä¼å‡» 
 ; ---------------------------
-SKILL_PASSIVE_DEMON_HUNTER_AMBUSH := New PassiveSkill("·ü»÷"
+SKILL_PASSIVE_DEMON_HUNTER_AMBUSH := New PassiveSkill("ä¼å‡»"
 	, "images\skills\demon-hunter\passive\traits_demonhunter_ambush_normal.png"
-	, "Äã¶ÔÉúÃüÖµ¸ßÓÚ75%µÄµÐÈËÔì³É40%µÄ¶îÍâÉËº¦¡£")
+	, "ä½ å¯¹ç”Ÿå‘½å€¼é«˜äºŽ75%çš„æ•Œäººé€ æˆ40%çš„é¢å¤–ä¼¤å®³ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ±ôËÀ±¾ÄÜ 
+; æŠ€èƒ½: æ¿’æ­»æœ¬èƒ½ 
 ; ---------------------------
-SKILL_PASSIVE_DEMON_HUNTER_AWARENESS := New PassiveSkill("±ôËÀ±¾ÄÜ"
+SKILL_PASSIVE_DEMON_HUNTER_AWARENESS := New PassiveSkill("æ¿’æ­»æœ¬èƒ½"
 	, "images\skills\demon-hunter\passive\traits_demonhunter_awareness_normal.png"
-	, "µ±ÄãÊÜµ½ÖÂÃüÉËº¦Ê±²»»áËÀÍö£¬¶ø»áÒþÐÎ2Ãë£¬²¢»Ö¸´ÉúÃüÖµÉÏÏÞµÄ50%¡£\r\n¸ÃÐ§¹ûÃ¿60ÃëÖ»ÄÜ´¥·¢Ò»´Î¡£")
+	, "å½“ä½ å—åˆ°è‡´å‘½ä¼¤å®³æ—¶ä¸ä¼šæ­»äº¡ï¼Œè€Œä¼šéšå½¢2ç§’ï¼Œå¹¶æ¢å¤ç”Ÿå‘½å€¼ä¸Šé™çš„50%ã€‚\r\nè¯¥æ•ˆæžœæ¯60ç§’åªèƒ½è§¦å‘ä¸€æ¬¡ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÖðÒ»»÷ÆÆ 
+; æŠ€èƒ½: é€ä¸€å‡»ç ´ 
 ; ---------------------------
-SKILL_PASSIVE_DEMON_HUNTER_SINGLE_OUT := New PassiveSkill("ÖðÒ»»÷ÆÆ"
+SKILL_PASSIVE_DEMON_HUNTER_SINGLE_OUT := New PassiveSkill("é€ä¸€å‡»ç ´"
 	, "images\skills\demon-hunter\passive\traits_demonhunter_singleout_normal.png"
-	, "µ±Ä¿±êÖÜÎ§20Âë·¶Î§ÄÚÃ»ÓÐÆäËûµÐÈËÊ±£¬¶ÔÆäÔì³É±©»÷µÄ¼¸ÂÊÌá¸ß25%¡£")
+	, "å½“ç›®æ ‡å‘¨å›´20ç èŒƒå›´å†…æ²¡æœ‰å…¶ä»–æ•Œäººæ—¶ï¼Œå¯¹å…¶é€ æˆæš´å‡»çš„å‡ çŽ‡æé«˜25%ã€‚")
 ; ===========================
-; ÁÔÄ§ÈË End
+; çŒŽé­”äºº End
 ; ===========================
 
 
 
 ; ===========================
-; ÎäÉ® Start
+; æ­¦åƒ§ Start
 ; ===========================
 ; ---------------------------
-; ¼¼ÄÜ: ¾«³ÏÖ®ÐÄ 
+; æŠ€èƒ½: ç²¾è¯šä¹‹å¿ƒ 
 ; ---------------------------
-SKILL_PASSIVE_MONK_RESOLVE := New PassiveSkill("¾«³ÏÖ®ÐÄ"
+SKILL_PASSIVE_MONK_RESOLVE := New PassiveSkill("ç²¾è¯šä¹‹å¿ƒ"
 	, "images\skills\monk\passive\traits_common_unbreakablewill_normal.png"
-	, "ÄãËùÔì³ÉµÄÉËº¦¿ÉÊ¹µÐÈËÔì³ÉµÄÉËº¦½µµÍ20%£¬³ÖÐø4Ãë¡£")
+	, "ä½ æ‰€é€ æˆçš„ä¼¤å®³å¯ä½¿æ•Œäººé€ æˆçš„ä¼¤å®³é™ä½Ž20%ï¼ŒæŒç»­4ç§’ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ½¡²½Èç·É 
+; æŠ€èƒ½: å¥æ­¥å¦‚é£ž 
 ; ---------------------------
-SKILL_PASSIVE_MONK_FLEET_FOOTED := New PassiveSkill("½¡²½Èç·É"
+SKILL_PASSIVE_MONK_FLEET_FOOTED := New PassiveSkill("å¥æ­¥å¦‚é£ž"
 	, "images\skills\monk\passive\traits_monk_fleet_normal.png"
-	, "Ê¹ÒÆ¶¯ËÙ¶ÈÌá¸ß10%¡£")
+	, "ä½¿ç§»åŠ¨é€Ÿåº¦æé«˜10%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: Ææ½îÒì¹Ç 
+; æŠ€èƒ½: å¥‡ç­‹å¼‚éª¨ 
 ; ---------------------------
-SKILL_PASSIVE_MONK_EXALTED_SOUL := New PassiveSkill("Ææ½îÒì¹Ç"
+SKILL_PASSIVE_MONK_EXALTED_SOUL := New PassiveSkill("å¥‡ç­‹å¼‚éª¨"
 	, "images\skills\monk\passive\traits_monk_exaltedsoul_normal.png"
-	, "Ê¹ÄÚÁ¦ÉÏÏÞÌá¸ß50µã£¬²¢ÇÒÃ¿Ãë»Ö¸´µÄÄÚÁ¦Ôö¼Ó4µã¡£\r\nÎäÉ®µÄÐí¶à·ÀÓùÓë¹¥»÷¼¼ÄÜ¶¼ÐèÒªÏûºÄÄÚÁ¦¡£")
+	, "ä½¿å†…åŠ›ä¸Šé™æé«˜50ç‚¹ï¼Œå¹¶ä¸”æ¯ç§’æ¢å¤çš„å†…åŠ›å¢žåŠ 4ç‚¹ã€‚\r\næ­¦åƒ§çš„è®¸å¤šé˜²å¾¡ä¸Žæ”»å‡»æŠ€èƒ½éƒ½éœ€è¦æ¶ˆè€—å†…åŠ›ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÍÑ·²Èë»¯ 
+; æŠ€èƒ½: è„±å‡¡å…¥åŒ– 
 ; ---------------------------
-SKILL_PASSIVE_MONK_TRANSCENDENCE := New PassiveSkill("ÍÑ·²Èë»¯"
+SKILL_PASSIVE_MONK_TRANSCENDENCE := New PassiveSkill("è„±å‡¡å…¥åŒ–"
 	, "images\skills\monk\passive\traits_monk_strengthofspirit_normal.png"
-	, "ÄãËùÏûºÄµÄÃ¿1µãÄÚÁ¦£¬¶¼¿ÉÎªÄã»Ö¸´429µãÉúÃüÖµ¡£\r\nÖÎÁÆÁ¿µÄ¼Ó³ÉÎªÉúÃüÇòÖÎÁÆ¼Ó³ÉµÄ0.4%¡£")
+	, "ä½ æ‰€æ¶ˆè€—çš„æ¯1ç‚¹å†…åŠ›ï¼Œéƒ½å¯ä¸ºä½ æ¢å¤429ç‚¹ç”Ÿå‘½å€¼ã€‚\r\næ²»ç–—é‡çš„åŠ æˆä¸ºç”Ÿå‘½çƒæ²»ç–—åŠ æˆçš„0.4%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÕæÑÔÐ³Ãù 
+; æŠ€èƒ½: çœŸè¨€è°é¸£ 
 ; ---------------------------
-SKILL_PASSIVE_MONK_CHANT_OF_RESONANCE := New PassiveSkill("ÕæÑÔÐ³Ãù"
+SKILL_PASSIVE_MONK_CHANT_OF_RESONANCE := New PassiveSkill("çœŸè¨€è°é¸£"
 	, "images\skills\monk\passive\traits_monk_resonance_normal.png"
-	, "Ê¹¼¤»îÕæÑÔÏûºÄµÄÄÚÁ¦½µµÍ50%£¬²¢ÇÒµ±ÓÐÕæÑÔ´¦ÓÚ¼¤»î×´Ì¬Ê±£¬Äã¿ÉÓÚÃ¿Ãë»ñµÃ4µãÄÚÁ¦¡£")
+	, "ä½¿æ¿€æ´»çœŸè¨€æ¶ˆè€—çš„å†…åŠ›é™ä½Ž50%ï¼Œå¹¶ä¸”å½“æœ‰çœŸè¨€å¤„äºŽæ¿€æ´»çŠ¶æ€æ—¶ï¼Œä½ å¯äºŽæ¯ç§’èŽ·å¾—4ç‚¹å†…åŠ›ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÏÈ·¢ÖÆÈË 
+; æŠ€èƒ½: å…ˆå‘åˆ¶äºº 
 ; ---------------------------
-SKILL_PASSIVE_MONK_SEIZE_THE_INITIATIVE := New PassiveSkill("ÏÈ·¢ÖÆÈË"
+SKILL_PASSIVE_MONK_SEIZE_THE_INITIATIVE := New PassiveSkill("å…ˆå‘åˆ¶äºº"
 	, "images\skills\monk\passive\traits_monk_untouchable_normal.png"
-	, "Äã¶ÔÉúÃüÖµ¸ßÓÚ75%µÄµÐÈËÔì³ÉÉËº¦Ê±£¬¿ÉÊ¹¹¥»÷ËÙ¶ÈÌá¸ß30%£¬³ÖÐø4Ãë¡£")
+	, "ä½ å¯¹ç”Ÿå‘½å€¼é«˜äºŽ75%çš„æ•Œäººé€ æˆä¼¤å®³æ—¶ï¼Œå¯ä½¿æ”»å‡»é€Ÿåº¦æé«˜30%ï¼ŒæŒç»­4ç§’ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÒÔ¹¥ÎªÊØ 
+; æŠ€èƒ½: ä»¥æ”»ä¸ºå®ˆ 
 ; ---------------------------
-SKILL_PASSIVE_MONK_THE_GUARDIANS_PATH := New PassiveSkill("ÒÔ¹¥ÎªÊØ"
+SKILL_PASSIVE_MONK_THE_GUARDIANS_PATH := New PassiveSkill("ä»¥æ”»ä¸ºå®ˆ"
 	, "images\skills\monk\passive\traits_monk_frenziedattacks_normal.png"
-	, "µ±ÊÖ³ÖÁ½°ÑÎäÆ÷Ê±£¬ÄãÓÐ35%µÄ¼¸ÂÊ±Ü¿ª¹¥»÷¡£µ±ÊÖ³ÖË«ÊÖÎäÆ÷Ê±£¬ËùÓÐÄÚÁ¦»Ö¸´ËÙ¶È¶¼Ìá¸ß15%¡£")
+	, "å½“æ‰‹æŒä¸¤æŠŠæ­¦å™¨æ—¶ï¼Œä½ æœ‰35%çš„å‡ çŽ‡é¿å¼€æ”»å‡»ã€‚å½“æ‰‹æŒåŒæ‰‹æ­¦å™¨æ—¶ï¼Œæ‰€æœ‰å†…åŠ›æ¢å¤é€Ÿåº¦éƒ½æé«˜15%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÏÈÖªÏÈ¾õ 
+; æŠ€èƒ½: å…ˆçŸ¥å…ˆè§‰ 
 ; ---------------------------
-SKILL_PASSIVE_MONK_SIXTH_SENSE := New PassiveSkill("ÏÈÖªÏÈ¾õ"
+SKILL_PASSIVE_MONK_SIXTH_SENSE := New PassiveSkill("å…ˆçŸ¥å…ˆè§‰"
 	, "images\skills\monk\passive\traits_monk_sixthsense_normal.png"
-	, "ÊÜµ½µÄËùÓÐ·ÇÎïÀíÉËº¦½µµÍ25%¡£")
+	, "å—åˆ°çš„æ‰€æœ‰éžç‰©ç†ä¼¤å®³é™ä½Ž25%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ¶·Ö¾¼á¾ö 
+; æŠ€èƒ½: æ–—å¿—åšå†³ 
 ; ---------------------------
-SKILL_PASSIVE_MONK_DETERMINATION := New PassiveSkill("¶·Ö¾¼á¾ö"
+SKILL_PASSIVE_MONK_DETERMINATION := New PassiveSkill("æ–—å¿—åšå†³"
 	, "images\skills\monk\passive\traits_monk_determination_normal.png"
-	, "ÔÚÄã¸½½ü12ÂëÄÚµÄÃ¿¸öµÐÈË¶¼¿ÉÊ¹ÄãÉËº¦Ìá¸ß4%£¬×î¶à¿ÉÌá¸ß20%¡£")
+	, "åœ¨ä½ é™„è¿‘12ç å†…çš„æ¯ä¸ªæ•Œäººéƒ½å¯ä½¿ä½ ä¼¤å®³æé«˜4%ï¼Œæœ€å¤šå¯æé«˜20%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÎÞÇéÃÍÏ® 
+; æŠ€èƒ½: æ— æƒ…çŒ›è¢­ 
 ; ---------------------------
-SKILL_PASSIVE_MONK_RELENTLESS_ASSAULT := New PassiveSkill("ÎÞÇéÃÍÏ®"
+SKILL_PASSIVE_MONK_RELENTLESS_ASSAULT := New PassiveSkill("æ— æƒ…çŒ›è¢­"
 	, "images\skills\monk\passive\traits_monk_assault_normal.png"
-	, "Äã¶Ô±»ÖÂÃ¤¡¢±ù¶³»òÏÝÈë»èÃÔ×´Ì¬µÄµÐÈËÔì³ÉµÄÉËº¦Ìá¸ß20%¡£")
+	, "ä½ å¯¹è¢«è‡´ç›²ã€å†°å†»æˆ–é™·å…¥æ˜è¿·çŠ¶æ€çš„æ•Œäººé€ æˆçš„ä¼¤å®³æé«˜20%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÒÁËþÖ®»Ô 
+; æŠ€èƒ½: ä¼Šå¡”ä¹‹è¾‰ 
 ; ---------------------------
-SKILL_PASSIVE_MONK_BEACON_OF_YTAR := New PassiveSkill("ÒÁËþÖ®»Ô"
+SKILL_PASSIVE_MONK_BEACON_OF_YTAR := New PassiveSkill("ä¼Šå¡”ä¹‹è¾‰"
 	, "images\skills\monk\passive\traits_monk_harmony_normal.png"
-	, "Ê¹ËùÓÐÀäÈ´Ê±¼äËõ¶Ì20%¡£")
+	, "ä½¿æ‰€æœ‰å†·å´æ—¶é—´ç¼©çŸ­20%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ¶¯Èç±¼À× 
+; æŠ€èƒ½: åŠ¨å¦‚å¥”é›· 
 ; ---------------------------
-SKILL_PASSIVE_MONK_ALACRITY := New PassiveSkill("¶¯Èç±¼À×"
+SKILL_PASSIVE_MONK_ALACRITY := New PassiveSkill("åŠ¨å¦‚å¥”é›·"
 	, "images\skills\monk\passive\traits_monk_counterattack_normal.png"
-	, "Ê¹ÄÚÁ¦Éú³É¼¼ÄÜµÄ¹¥»÷ËÙ¶ÈÌá¸ß15%¡£")
+	, "ä½¿å†…åŠ›ç”ŸæˆæŠ€èƒ½çš„æ”»å‡»é€Ÿåº¦æé«˜15%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÌìÈËºÏÒ» 
+; æŠ€èƒ½: å¤©äººåˆä¸€ 
 ; ---------------------------
-SKILL_PASSIVE_MONK_HARMONY := New PassiveSkill("ÌìÈËºÏÒ»"
+SKILL_PASSIVE_MONK_HARMONY := New PassiveSkill("å¤©äººåˆä¸€"
 	, "images\skills\monk\passive\traits_monk_flawlesstechnique_normal.png"
-	, "Äã´ÓÎïÆ·ÖÐ»ñµÃµÄµ¥Ò»ÔªËØ¿¹ÐÔ¼Ó³ÉµÄ40%»á×ªÎªÌá¸ßÈ«ÔªËØ¿¹ÐÔ¡£")
+	, "ä½ ä»Žç‰©å“ä¸­èŽ·å¾—çš„å•ä¸€å…ƒç´ æŠ—æ€§åŠ æˆçš„40%ä¼šè½¬ä¸ºæé«˜å…¨å…ƒç´ æŠ—æ€§ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÈÚ»á¹áÍ¨ 
+; æŠ€èƒ½: èžä¼šè´¯é€š 
 ; ---------------------------
-SKILL_PASSIVE_MONK_COMBINATION_STRIKE := New PassiveSkill("ÈÚ»á¹áÍ¨"
+SKILL_PASSIVE_MONK_COMBINATION_STRIKE := New PassiveSkill("èžä¼šè´¯é€š"
 	, "images\skills\monk\passive\traits_monk_combinationstrikes_normal.png"
-	, "ÄãËùÊ¹ÓÃµÄÃ¿¸ö¿Éµ¥¶ÀÉú³ÉÄÚÁ¦µÄ¼¼ÄÜ£¬¶¼ÄÜÊ¹ÄãµÄÉËº¦Ìá¸ß10%£¬³ÖÐø3Ãë¡£")
+	, "ä½ æ‰€ä½¿ç”¨çš„æ¯ä¸ªå¯å•ç‹¬ç”Ÿæˆå†…åŠ›çš„æŠ€èƒ½ï¼Œéƒ½èƒ½ä½¿ä½ çš„ä¼¤å®³æé«˜10%ï¼ŒæŒç»­3ç§’ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ±ôËÀÌåÑé 
+; æŠ€èƒ½: æ¿’æ­»ä½“éªŒ 
 ; ---------------------------
-SKILL_PASSIVE_MONK_NEAR_DEATH_EXPERIENCE := New PassiveSkill("±ôËÀÌåÑé"
+SKILL_PASSIVE_MONK_NEAR_DEATH_EXPERIENCE := New PassiveSkill("æ¿’æ­»ä½“éªŒ"
 	, "images\skills\monk\passive\traits_monk_neardeathexperience_normal.png"
-	, "µ±ÊÜµ½ÖÂÃüÉËº¦Ê±£¬Äã½«×ª¶ø»Ö¸´ÉúÃüÖµÉÏÏÞµÄ35%£¬ÒÔ¼°ÄÚÁ¦ÉÏÏÞµÄ35%£¬ÇÒ¶ÔÉËº¦ºÍ¿ØÖÆÀàÏÞÖÆÐ§¹ûÃâÒß£¬³ÖÐø2Ãë¡£\r\n¸ÃÐ§¹ûÃ¿60ÃëÖ»ÄÜÉúÐ§Ò»´Î¡£")
+	, "å½“å—åˆ°è‡´å‘½ä¼¤å®³æ—¶ï¼Œä½ å°†è½¬è€Œæ¢å¤ç”Ÿå‘½å€¼ä¸Šé™çš„35%ï¼Œä»¥åŠå†…åŠ›ä¸Šé™çš„35%ï¼Œä¸”å¯¹ä¼¤å®³å’ŒæŽ§åˆ¶ç±»é™åˆ¶æ•ˆæžœå…ç–«ï¼ŒæŒç»­2ç§’ã€‚\r\nè¯¥æ•ˆæžœæ¯60ç§’åªèƒ½ç”Ÿæ•ˆä¸€æ¬¡ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÆëÐÄÐ­Á¦ 
+; æŠ€èƒ½: é½å¿ƒååŠ› 
 ; ---------------------------
-SKILL_PASSIVE_MONK_UNITY := New PassiveSkill("ÆëÐÄÐ­Á¦"
+SKILL_PASSIVE_MONK_UNITY := New PassiveSkill("é½å¿ƒååŠ›"
 	, "images\skills\monk\passive\traits_monk_nirvana_normal.png"
-	, "Ã¿¸öÊÜÄãÕæÑÔÐ§¹ûÓ°ÏìµÄÍ¬°é¿ÉÊ¹ÄãÔì³ÉµÄÉËº¦Ìá¸ß5%£¬×î¶à¿ÉÌá¸ß20%£¬Í¬Ê±Ê¹¸ÃÍ¬°éÔì³ÉµÄÉËº¦Ìá¸ß5%¡£")
+	, "æ¯ä¸ªå—ä½ çœŸè¨€æ•ˆæžœå½±å“çš„åŒä¼´å¯ä½¿ä½ é€ æˆçš„ä¼¤å®³æé«˜5%ï¼Œæœ€å¤šå¯æé«˜20%ï¼ŒåŒæ—¶ä½¿è¯¥åŒä¼´é€ æˆçš„ä¼¤å®³æé«˜5%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ¾¢Á¦¿ñÔö 
+; æŠ€èƒ½: åŠ²åŠ›ç‹‚å¢ž 
 ; ---------------------------
-SKILL_PASSIVE_MONK_MOMENTUM := New PassiveSkill("¾¢Á¦¿ñÔö"
+SKILL_PASSIVE_MONK_MOMENTUM := New PassiveSkill("åŠ²åŠ›ç‹‚å¢ž"
 	, "images\skills\monk\passive\traits_monk_momentum_normal.png"
-	, "Ã¿ÒÆ¶¯25Âë¾àÀë½«Ê¹ÄãÔì³ÉµÄÉËº¦Ìá¸ß20%£¬³ÖÐø6Ãë¡£")
+	, "æ¯ç§»åŠ¨25ç è·ç¦»å°†ä½¿ä½ é€ æˆçš„ä¼¤å®³æé«˜20%ï¼ŒæŒç»­6ç§’ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÉñÃØÔÏÂÉ 
+; æŠ€èƒ½: ç¥žç§˜éŸµå¾‹ 
 ; ---------------------------
-SKILL_PASSIVE_MONK_MYTHIC_RHYTHM := New PassiveSkill("ÉñÃØÔÏÂÉ"
+SKILL_PASSIVE_MONK_MYTHIC_RHYTHM := New PassiveSkill("ç¥žç§˜éŸµå¾‹"
 	, "images\skills\monk\passive\traits_monk_mythicrhythm_normal.png"
-	, "ÄÚÁ¦Éú³É¼¼ÄÜµÄµÚÈý»÷»áÊ¹ÄãÊ©Õ¹µÄÏÂÒ»¸öÄÚÁ¦ÏûºÄ¼¼ÄÜÔì³ÉµÄÉËº¦Ìá¸ß40%¡£")
+	, "å†…åŠ›ç”ŸæˆæŠ€èƒ½çš„ç¬¬ä¸‰å‡»ä¼šä½¿ä½ æ–½å±•çš„ä¸‹ä¸€ä¸ªå†…åŠ›æ¶ˆè€—æŠ€èƒ½é€ æˆçš„ä¼¤å®³æé«˜40%ã€‚")
 ; ===========================
-; ÎäÉ® End
+; æ­¦åƒ§ End
 ; ===========================
 
 
 
 ; ===========================
-; ËÀÁé·¨Ê¦ Start
+; æ­»çµæ³•å¸ˆ Start
 ; ===========================
 ; ---------------------------
-; ¼¼ÄÜ: ÍöÕß×ÌÑø 
+; æŠ€èƒ½: äº¡è€…æ»‹å…» 
 ; ---------------------------
-SKILL_PASSIVE_NECROMANCER_LIFE_FROM_DEATH := New PassiveSkill("ÍöÕß×ÌÑø"
+SKILL_PASSIVE_NECROMANCER_LIFE_FROM_DEATH := New PassiveSkill("äº¡è€…æ»‹å…»"
 	, "images\skills\necromancer\passive\traits_necromancer_lifefromdeath_normal.png"
-	, "ÏûºÄÒ»¾ßÊ¬º¡µÄ¾«»êÓÐÒ»¶¨¼¸ÂÊË¢ÐÂÒ»¸öÉúÃüÇò¡£")
+	, "æ¶ˆè€—ä¸€å…·å°¸éª¸çš„ç²¾é­‚æœ‰ä¸€å®šå‡ çŽ‡åˆ·æ–°ä¸€ä¸ªç”Ÿå‘½çƒã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: Íö»ê¹à×¢ 
+; æŠ€èƒ½: äº¡é­‚çŒæ³¨ 
 ; ---------------------------
-SKILL_PASSIVE_NECROMANCER_FUELED_BY_DEATH := New PassiveSkill("Íö»ê¹à×¢"
+SKILL_PASSIVE_NECROMANCER_FUELED_BY_DEATH := New PassiveSkill("äº¡é­‚çŒæ³¨"
 	, "images\skills\necromancer\passive\traits_necromancer_fueledbydeath_normal.png"
-	, "ÏûºÄÒ»¾ßÊ¬º¡µÄ¾«»ê¿ÉÒÔÊ¹ÄãµÄÒÆ¶¯ËÙ¶È¼Ó¿ì3%£¬³ÖÐø5Ãë¡£¸ÃÐ§¹û×î¶à¿Éµþ¼Ó10²ã¡£")
+	, "æ¶ˆè€—ä¸€å…·å°¸éª¸çš„ç²¾é­‚å¯ä»¥ä½¿ä½ çš„ç§»åŠ¨é€Ÿåº¦åŠ å¿«3%ï¼ŒæŒç»­5ç§’ã€‚è¯¥æ•ˆæžœæœ€å¤šå¯å åŠ 10å±‚ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ¹Â»êËÀÁé 
+; æŠ€èƒ½: å­¤é­‚æ­»çµ 
 ; ---------------------------
-SKILL_PASSIVE_NECROMANCER_STAND_ALONE := New PassiveSkill("¹Â»êËÀÁé"
+SKILL_PASSIVE_NECROMANCER_STAND_ALONE := New PassiveSkill("å­¤é­‚æ­»çµ"
 	, "images\skills\necromancer\passive\traits_necromancer_standalone_normal.png"
-	, "»¤¼×ÖµÌá¸ß100%£¬µ«ÊÇÃ¿¼¤»îÒ»¸öÆÍ´Ó£¬»¤¼×Öµ¾Í»á½µµÍ10%¡£")
+	, "æŠ¤ç”²å€¼æé«˜100%ï¼Œä½†æ˜¯æ¯æ¿€æ´»ä¸€ä¸ªä»†ä»Žï¼ŒæŠ¤ç”²å€¼å°±ä¼šé™ä½Ž10%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: °×¹ÇÀÎÁý 
+; æŠ€èƒ½: ç™½éª¨ç‰¢ç¬¼ 
 ; ---------------------------
-SKILL_PASSIVE_NECROMANCER_BONE_PRISON := New PassiveSkill("°×¹ÇÀÎÁý"
+SKILL_PASSIVE_NECROMANCER_BONE_PRISON := New PassiveSkill("ç™½éª¨ç‰¢ç¬¼"
 	, "images\skills\necromancer\passive\traits_necromancer_boneprison_normal.png"
-	, "¹ÇÃ¬¡¢¹Ç´ÌºÍ¹Ç»êÓÐ30%µÄ¼¸ÂÊ½«µÐÈËÀ§ÔÚ°×¹ÇÀÎÁýÖÐ£¬³ÖÐø3Ãë¡£")
+	, "éª¨çŸ›ã€éª¨åˆºå’Œéª¨é­‚æœ‰30%çš„å‡ çŽ‡å°†æ•Œäººå›°åœ¨ç™½éª¨ç‰¢ç¬¼ä¸­ï¼ŒæŒç»­3ç§’ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: Ñ¸½ÝÊÕ¸î 
+; æŠ€èƒ½: è¿…æ·æ”¶å‰² 
 ; ---------------------------
-SKILL_PASSIVE_NECROMANCER_SWIFT_HARVESTING := New PassiveSkill("Ñ¸½ÝÊÕ¸î"
+SKILL_PASSIVE_NECROMANCER_SWIFT_HARVESTING := New PassiveSkill("è¿…æ·æ”¶å‰²"
 	, "images\skills\necromancer\passive\traits_necromancer_swiftharvesting_normal.png"
-	, "¹Ç´Ì¡¢ÏÊÑªºçÎüºÍ¿ÖÁ­µÄ¹¥»÷ËÙ¶È¼Ó¿ì15%¡£")
+	, "éª¨åˆºã€é²œè¡€è™¹å¸å’Œæé•°çš„æ”»å‡»é€Ÿåº¦åŠ å¿«15%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ºÅÁîÍöÕß 
+; æŠ€èƒ½: å·ä»¤äº¡è€… 
 ; ---------------------------
-SKILL_PASSIVE_NECROMANCER_COMMANDER_OF_THE_RISEN_DEAD := New PassiveSkill("ºÅÁîÍöÕß"
+SKILL_PASSIVE_NECROMANCER_COMMANDER_OF_THE_RISEN_DEAD := New PassiveSkill("å·ä»¤äº¡è€…"
 	, "images\skills\necromancer\passive\traits_necromancer_commanderofthedead_normal.png"
-	, "ºÅÁîº¡¹ÇµÄ¾«»êÏûºÄºÍºÅÁî¿þÀÜµÄÀäÈ´Ê±¼ä½µµÍ30%¡£")
+	, "å·ä»¤éª¸éª¨çš„ç²¾é­‚æ¶ˆè€—å’Œå·ä»¤å‚€å„¡çš„å†·å´æ—¶é—´é™ä½Ž30%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÇóËÀ²»ÄÜ 
+; æŠ€èƒ½: æ±‚æ­»ä¸èƒ½ 
 ; ---------------------------
-SKILL_PASSIVE_NECROMANCER_EXTENDED_SERVITUDE := New PassiveSkill("ÇóËÀ²»ÄÜ"
+SKILL_PASSIVE_NECROMANCER_EXTENDED_SERVITUDE := New PassiveSkill("æ±‚æ­»ä¸èƒ½"
 	, "images\skills\necromancer\passive\traits_necromancer_extendedservitude_normal.png"
-	, "÷¼÷Ã·¨Ê¦ºÍ¸´ÉúÆÍ´ÓµÄ³ÖÐøÊ±¼äÑÓ³¤25%¡£")
+	, "éª·é«…æ³•å¸ˆå’Œå¤ç”Ÿä»†ä»Žçš„æŒç»­æ—¶é—´å»¶é•¿25%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ËÀ½©ÔÖÒß 
+; æŠ€èƒ½: æ­»åƒµç¾ç–« 
 ; ---------------------------
-SKILL_PASSIVE_NECROMANCER_RIGOR_MORTIS := New PassiveSkill("ËÀ½©ÔÖÒß"
+SKILL_PASSIVE_NECROMANCER_RIGOR_MORTIS := New PassiveSkill("æ­»åƒµç¾ç–«"
 	, "images\skills\necromancer\passive\traits_necromancer_rigormortis_normal.png"
-	, "¶¾ÐÔ¼¼ÄÜ»¹»áÊ¹µÐÈËµÄËÙ¶È½µµÍ30%£¬¹¥»÷ËÙ¶È½µµÍ30%£¬³ÖÐø5Ãë¡£")
+	, "æ¯’æ€§æŠ€èƒ½è¿˜ä¼šä½¿æ•Œäººçš„é€Ÿåº¦é™ä½Ž30%ï¼Œæ”»å‡»é€Ÿåº¦é™ä½Ž30%ï¼ŒæŒç»­5ç§’ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ¾«»êÆÇÉí 
+; æŠ€èƒ½: ç²¾é­‚é­„èº« 
 ; ---------------------------
-SKILL_PASSIVE_NECROMANCER_OVERWHELMING_ESSENCE := New PassiveSkill("¾«»êÆÇÉí"
+SKILL_PASSIVE_NECROMANCER_OVERWHELMING_ESSENCE := New PassiveSkill("ç²¾é­‚é­„èº«"
 	, "images\skills\necromancer\passive\traits_necromancer_overwhelmingessence_normal.png"
-	, "ÄãµÄ×î´ó¾«»êÖµÌá¸ß40µã¡£")
+	, "ä½ çš„æœ€å¤§ç²¾é­‚å€¼æé«˜40ç‚¹ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ËÀÉñÊÕ¸î 
+; æŠ€èƒ½: æ­»ç¥žæ”¶å‰² 
 ; ---------------------------
-SKILL_PASSIVE_NECROMANCER_DARK_REAPING := New PassiveSkill("ËÀÉñÊÕ¸î"
+SKILL_PASSIVE_NECROMANCER_DARK_REAPING := New PassiveSkill("æ­»ç¥žæ”¶å‰²"
 	, "images\skills\necromancer\passive\traits_necromancer_reaping_normal.png"
-	, "Ê¹ÓÃÁ­µ¶Ê±£¬Ã¿É±ËÀÒ»¸öµÐÈË¾Í»á»Ö¸´2%µÄ¾«»êºÍÉúÃüÖµ¡£")
+	, "ä½¿ç”¨é•°åˆ€æ—¶ï¼Œæ¯æ€æ­»ä¸€ä¸ªæ•Œäººå°±ä¼šæ¢å¤2%çš„ç²¾é­‚å’Œç”Ÿå‘½å€¼ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: Èõµã¼ÓÉî 
+; æŠ€èƒ½: å¼±ç‚¹åŠ æ·± 
 ; ---------------------------
-SKILL_PASSIVE_NECROMANCER_SPREADING_MALEDICTION := New PassiveSkill("Èõµã¼ÓÉî"
+SKILL_PASSIVE_NECROMANCER_SPREADING_MALEDICTION := New PassiveSkill("å¼±ç‚¹åŠ æ·±"
 	, "images\skills\necromancer\passive\traits_necromancer_exploitweakness_normal.png"
-	, "Ã¿¸öÊÜÄã×çÖäÓ°ÏìµÄµÐÈË¶¼»áÊ¹Äã»ñµÃ1%µÄÉËº¦¼Ó³É¡£")
+	, "æ¯ä¸ªå—ä½ è¯…å’’å½±å“çš„æ•Œäººéƒ½ä¼šä½¿ä½ èŽ·å¾—1%çš„ä¼¤å®³åŠ æˆã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÓÀºã¿áÐÌ 
+; æŠ€èƒ½: æ°¸æ’é…·åˆ‘ 
 ; ---------------------------
-SKILL_PASSIVE_NECROMANCER_ETERNAL_TORMENT := New PassiveSkill("ÓÀºã¿áÐÌ"
+SKILL_PASSIVE_NECROMANCER_ETERNAL_TORMENT := New PassiveSkill("æ°¸æ’é…·åˆ‘"
 	, "images\skills\necromancer\passive\traits_necromancer_eternaltorment_normal.png"
-	, "ÄãµÄ×çÖäÏûºÄµÄ¾«»ê½µµÍ50%²¢ÇÒÓÀ¾Ã³ÖÐø¡£")
+	, "ä½ çš„è¯…å’’æ¶ˆè€—çš„ç²¾é­‚é™ä½Ž50%å¹¶ä¸”æ°¸ä¹…æŒç»­ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ¾øÃüÐ§ÖÒ 
+; æŠ€èƒ½: ç»å‘½æ•ˆå¿  
 ; ---------------------------
-SKILL_PASSIVE_NECROMANCER_FINAL_SERVICE := New PassiveSkill("¾øÃüÐ§ÖÒ"
+SKILL_PASSIVE_NECROMANCER_FINAL_SERVICE := New PassiveSkill("ç»å‘½æ•ˆå¿ "
 	, "images\skills\necromancer\passive\traits_necromancer_finalservice_normal.png"
-	, "µ±ÄãÊÜµ½ÖÂÃüÉËº¦Ê±£¬ÄãÃâÒßËùÓÐÉËº¦£¬³ÖÐø4Ãë¡£´ËÍâ£¬ÄãÏûºÄÆÍ´Ó»Ö¸´ÉúÃü£¬Ã¿ÏûºÄÒ»ÃûÆÍ´Ó¿ÉÎªÄã»Ö¸´ÉúÃüÖµµÄ10%¡£ ¸ÃÐ§¹ûÃ¿60ÃëÖ»ÄÜÉúÐ§Ò»´Î¡£")
+	, "å½“ä½ å—åˆ°è‡´å‘½ä¼¤å®³æ—¶ï¼Œä½ å…ç–«æ‰€æœ‰ä¼¤å®³ï¼ŒæŒç»­4ç§’ã€‚æ­¤å¤–ï¼Œä½ æ¶ˆè€—ä»†ä»Žæ¢å¤ç”Ÿå‘½ï¼Œæ¯æ¶ˆè€—ä¸€åä»†ä»Žå¯ä¸ºä½ æ¢å¤ç”Ÿå‘½å€¼çš„10%ã€‚ è¯¥æ•ˆæžœæ¯60ç§’åªèƒ½ç”Ÿæ•ˆä¸€æ¬¡ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ¿Ö²À¹±Æ· 
+; æŠ€èƒ½: ææ€–è´¡å“ 
 ; ---------------------------
-SKILL_PASSIVE_NECROMANCER_GRISLY_TRIBUTE := New PassiveSkill("¿Ö²À¹±Æ·"
+SKILL_PASSIVE_NECROMANCER_GRISLY_TRIBUTE := New PassiveSkill("ææ€–è´¡å“"
 	, "images\skills\necromancer\passive\traits_necromancer_grislytribute_normal.png"
-	, "ÄãµÄÆÍ´Ó»÷ÖÐÒ»¸öµÐÈËºóÎªÄã»Ö¸´ÉúÃüÖµ£¬ÊýÖµÏàµ±ÓÚÄãµÄ»÷ÖÐ»Ø¸´ÉúÃüÊýÖµµÄ10%¡£")
+	, "ä½ çš„ä»†ä»Žå‡»ä¸­ä¸€ä¸ªæ•ŒäººåŽä¸ºä½ æ¢å¤ç”Ÿå‘½å€¼ï¼Œæ•°å€¼ç›¸å½“äºŽä½ çš„å‡»ä¸­å›žå¤ç”Ÿå‘½æ•°å€¼çš„10%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÎüÊÕÉúÃü 
+; æŠ€èƒ½: å¸æ”¶ç”Ÿå‘½ 
 ; ---------------------------
-SKILL_PASSIVE_NECROMANCER_DRAW_LIFE := New PassiveSkill("ÎüÊÕÉúÃü"
+SKILL_PASSIVE_NECROMANCER_DRAW_LIFE := New PassiveSkill("å¸æ”¶ç”Ÿå‘½"
 	, "images\skills\necromancer\passive\traits_necromancer_drawlife_normal.png"
-	, "ÖÜÎ§20Âë·¶Î§ÄÚÃ¿¸öµÐÈË¶¼¿ÉÒÔÊ¹ÄãµÄÉúÃü»Ö¸´ËÙ¶ÈÌá¸ß10%¡£")
+	, "å‘¨å›´20ç èŒƒå›´å†…æ¯ä¸ªæ•Œäººéƒ½å¯ä»¥ä½¿ä½ çš„ç”Ÿå‘½æ¢å¤é€Ÿåº¦æé«˜10%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ¹Ç´ÌÔöÉú 
+; æŠ€èƒ½: éª¨åˆºå¢žç”Ÿ 
 ; ---------------------------
-SKILL_PASSIVE_NECROMANCER_SERRATION := New PassiveSkill("¹Ç´ÌÔöÉú"
+SKILL_PASSIVE_NECROMANCER_SERRATION := New PassiveSkill("éª¨åˆºå¢žç”Ÿ"
 	, "images\skills\necromancer\passive\traits_necromancer_serration_normal.png"
-	, "Ä¿±êºÍÄãÖ®¼äÃ¿¸ô1.5Âë£¬¹Ç´Ì¡¢¹ÇÃ¬ºÍ¹Ç»êµÄÉËº¦¾Í»áÌá¸ß1%£¬×î¶àÌá¸ß20%¡£")
+	, "ç›®æ ‡å’Œä½ ä¹‹é—´æ¯éš”1.5ç ï¼Œéª¨åˆºã€éª¨çŸ›å’Œéª¨é­‚çš„ä¼¤å®³å°±ä¼šæé«˜1%ï¼Œæœ€å¤šæé«˜20%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: »û±ä¸´Éú 
+; æŠ€èƒ½: ç•¸å˜å¤ç”Ÿ 
 ; ---------------------------
-SKILL_PASSIVE_NECROMANCER_ABERRANT_ANIMATOR := New PassiveSkill("»û±ä¸´Éú"
+SKILL_PASSIVE_NECROMANCER_ABERRANT_ANIMATOR := New PassiveSkill("ç•¸å˜å¤ç”Ÿ"
 	, "images\skills\necromancer\passive\traits_necromancer_aberrantanimator_normal.png"
-	, "ÄãµÄÆÍ´Ó»ñµÃ¾£¼¬ÉËº¦£¬ÊýÖµÏàµ±ÓÚÄã¾£¼¬ÉËº¦µÄ200%¡£")
+	, "ä½ çš„ä»†ä»ŽèŽ·å¾—è†æ£˜ä¼¤å®³ï¼Œæ•°å€¼ç›¸å½“äºŽä½ è†æ£˜ä¼¤å®³çš„200%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÑªÕ®Ñª³¥ 
+; æŠ€èƒ½: è¡€å€ºè¡€å¿ 
 ; ---------------------------
-SKILL_PASSIVE_NECROMANCER_BLOOD_FOR_BLOOD := New PassiveSkill("ÑªÕ®Ñª³¥"
+SKILL_PASSIVE_NECROMANCER_BLOOD_FOR_BLOOD := New PassiveSkill("è¡€å€ºè¡€å¿"
 	, "images\skills\necromancer\passive\traits_necromancer_bloodforblood_normal.png"
-	, "Ê°È¡Ò»¸öÉúÃüÖ®Çò¿ÉÒÔÒÆ³ýÏÂÒ»¸öÏÊÑª·¨ÊõµÄÉúÃüÖµÏûºÄ¡£ ¸ÃÐ§¹û×î¶à¿Éµþ¼Ó10²ã¡£")
+	, "æ‹¾å–ä¸€ä¸ªç”Ÿå‘½ä¹‹çƒå¯ä»¥ç§»é™¤ä¸‹ä¸€ä¸ªé²œè¡€æ³•æœ¯çš„ç”Ÿå‘½å€¼æ¶ˆè€—ã€‚ è¯¥æ•ˆæžœæœ€å¤šå¯å åŠ 10å±‚ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÏÊÑªÖ®Á¦ 
+; æŠ€èƒ½: é²œè¡€ä¹‹åŠ› 
 ; ---------------------------
-SKILL_PASSIVE_NECROMANCER_BLOOD_IS_POWER := New PassiveSkill("ÏÊÑªÖ®Á¦"
+SKILL_PASSIVE_NECROMANCER_BLOOD_IS_POWER := New PassiveSkill("é²œè¡€ä¹‹åŠ›"
 	, "images\skills\necromancer\passive\traits_necromancer_bloodispower_normal.png"
-	, "ÀÛ¼ÆËðÊ§×î´óÉúÃüÖµµÄ100%ºó£¬ËùÓÐ¼¼ÄÜµÄÀäÈ´Ê±¼ä¶¼½«Ëõ¶Ì20%¡£Ã¿´Îµ±¸Ã±»¶¯ÌØÐ§´¥·¢Ê±£¬Ã¿¸ö¼¼ÄÜµÄÀäÈ´Ê±¼äÖ»ÄÜÒÔ´ËÖÖ·½Ê½±»Ëõ¶ÌÒ»´Î¡£")
+	, "ç´¯è®¡æŸå¤±æœ€å¤§ç”Ÿå‘½å€¼çš„100%åŽï¼Œæ‰€æœ‰æŠ€èƒ½çš„å†·å´æ—¶é—´éƒ½å°†ç¼©çŸ­20%ã€‚æ¯æ¬¡å½“è¯¥è¢«åŠ¨ç‰¹æ•ˆè§¦å‘æ—¶ï¼Œæ¯ä¸ªæŠ€èƒ½çš„å†·å´æ—¶é—´åªèƒ½ä»¥æ­¤ç§æ–¹å¼è¢«ç¼©çŸ­ä¸€æ¬¡ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: À­Ë¹ÂêÖ®¶Ü 
+; æŠ€èƒ½: æ‹‰æ–¯çŽ›ä¹‹ç›¾ 
 ; ---------------------------
-SKILL_PASSIVE_NECROMANCER_RATHMAS_SHIELD := New PassiveSkill("À­Ë¹ÂêÖ®¶Ü"
+SKILL_PASSIVE_NECROMANCER_RATHMAS_SHIELD := New PassiveSkill("æ‹‰æ–¯çŽ›ä¹‹ç›¾"
 	, "images\skills\necromancer\passive\traits_necromancer_rathmasshield_normal.png"
-	, "Ê¹ÓÃÍöÕßÁìÓò¡¢ÍöÕß´ó¾üºÍÑª»êË«·ÖºóµÄ4ÃëÄÚÄã²»»áËðÊ§ÉúÃüÖµ¡£")
+	, "ä½¿ç”¨äº¡è€…é¢†åŸŸã€äº¡è€…å¤§å†›å’Œè¡€é­‚åŒåˆ†åŽçš„4ç§’å†…ä½ ä¸ä¼šæŸå¤±ç”Ÿå‘½å€¼ã€‚")
 ; ===========================
-; ËÀÁé·¨Ê¦ End
+; æ­»çµæ³•å¸ˆ End
 ; ===========================
 
 
 
 ; ===========================
-; Î×Ò½ Start
+; å·«åŒ» Start
 ; ===========================
 ; ---------------------------
-; ¼¼ÄÜ: ´ÔÁÖ¼áÒã 
+; æŠ€èƒ½: ä¸›æž—åšæ¯… 
 ; ---------------------------
-SKILL_PASSIVE_WITCH_DOCTOR_JUNGLE_FORTITUDE := New PassiveSkill("´ÔÁÖ¼áÒã"
+SKILL_PASSIVE_WITCH_DOCTOR_JUNGLE_FORTITUDE := New PassiveSkill("ä¸›æž—åšæ¯…"
 	, "images\skills\witch-doctor\passive\traits_witchdoctor_junglefortitude_normal.png"
-	, "Ê¹ÄãºÍ³èÎïÊÜµ½µÄËùÓÐÉËº¦½µµÍ15%¡£")
+	, "ä½¿ä½ å’Œå® ç‰©å—åˆ°çš„æ‰€æœ‰ä¼¤å®³é™ä½Ž15%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÉúÃüÖ®»· 
+; æŠ€èƒ½: ç”Ÿå‘½ä¹‹çŽ¯ 
 ; ---------------------------
-SKILL_PASSIVE_WITCH_DOCTOR_CIRCLE_OF_LIFE := New PassiveSkill("ÉúÃüÖ®»·"
+SKILL_PASSIVE_WITCH_DOCTOR_CIRCLE_OF_LIFE := New PassiveSkill("ç”Ÿå‘½ä¹‹çŽ¯"
 	, "images\skills\witch-doctor\passive\traits_witchdoctor_zombiedogspawner_normal.png"
-	, "Ã¿µ±ÔÚ20ÂëÄÚÓÐµÐÈËËÀÍöÊ±£¬¶¼ÓÐ15%µÄ¼¸ÂÊ×Ô¶¯³öÏÖÒ»Ö»½©Ê¬È®¡£\r\n¸ÃÐ§¹ûµÄ·¶Î§»áËæ×ÅÄãµÄ½ð±ÒÊ°È¡·¶Î§¶øÀ©´ó¡£")
+	, "æ¯å½“åœ¨20ç å†…æœ‰æ•Œäººæ­»äº¡æ—¶ï¼Œéƒ½æœ‰15%çš„å‡ çŽ‡è‡ªåŠ¨å‡ºçŽ°ä¸€åªåƒµå°¸çŠ¬ã€‚\r\nè¯¥æ•ˆæžœçš„èŒƒå›´ä¼šéšç€ä½ çš„é‡‘å¸æ‹¾å–èŒƒå›´è€Œæ‰©å¤§ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: Áé»êÐ­µ÷ 
+; æŠ€èƒ½: çµé­‚åè°ƒ 
 ; ---------------------------
-SKILL_PASSIVE_WITCH_DOCTOR_SPIRITUAL_ATTUNEMENT := New PassiveSkill("Áé»êÐ­µ÷"
+SKILL_PASSIVE_WITCH_DOCTOR_SPIRITUAL_ATTUNEMENT := New PassiveSkill("çµé­‚åè°ƒ"
 	, "images\skills\witch-doctor\passive\traits_witchdoctor_spiritualattunement_normal.png"
-	, "·¨Á¦ÖµÉÏÏÞÌá¸ß10%¡£²¢ÓÚÃ¿Ãë»Ö¸´·¨Á¦ÖµÉÏÏÞµÄ2%¡£\r\nÎ×Ò½µÄ¹¥»÷Óë·ÀÓù¼¼ÄÜ¶¼ÐèÒªÏûºÄ·¨Á¦Öµ¡£")
+	, "æ³•åŠ›å€¼ä¸Šé™æé«˜10%ã€‚å¹¶äºŽæ¯ç§’æ¢å¤æ³•åŠ›å€¼ä¸Šé™çš„2%ã€‚\r\nå·«åŒ»çš„æ”»å‡»ä¸Žé˜²å¾¡æŠ€èƒ½éƒ½éœ€è¦æ¶ˆè€—æ³•åŠ›å€¼ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: º§ÈËÊ¢Ñç 
+; æŠ€èƒ½: éª‡äººç››å®´ 
 ; ---------------------------
-SKILL_PASSIVE_WITCH_DOCTOR_GRUESOME_FEAST := New PassiveSkill("º§ÈËÊ¢Ñç"
+SKILL_PASSIVE_WITCH_DOCTOR_GRUESOME_FEAST := New PassiveSkill("éª‡äººç››å®´"
 	, "images\skills\witch-doctor\passive\traits_witchdoctor_bloodrites_normal.png"
-	, "Ã¿µ±Äã±»ÉúÃüÇòÖÎÁÆÊ±£¬Äã¼´¿É»ñµÃ×ÔÉí·¨Á¦ÖµÉÏÏÞµÄ10%£¬ÇÒÖÇÁ¦Ìá¸ß10%£¬³ÖÐø15Ãë¡£ÖÇÁ¦¼Ó³ÉÐ§¹û×î¶à¿Éµþ¼Ó5´Î¡£")
+	, "æ¯å½“ä½ è¢«ç”Ÿå‘½çƒæ²»ç–—æ—¶ï¼Œä½ å³å¯èŽ·å¾—è‡ªèº«æ³•åŠ›å€¼ä¸Šé™çš„10%ï¼Œä¸”æ™ºåŠ›æé«˜10%ï¼ŒæŒç»­15ç§’ã€‚æ™ºåŠ›åŠ æˆæ•ˆæžœæœ€å¤šå¯å åŠ 5æ¬¡ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÏÊÑªÒÇÊ½ 
+; æŠ€èƒ½: é²œè¡€ä»ªå¼ 
 ; ---------------------------
-SKILL_PASSIVE_WITCH_DOCTOR_BLOOD_RITUAL := New PassiveSkill("ÏÊÑªÒÇÊ½"
+SKILL_PASSIVE_WITCH_DOCTOR_BLOOD_RITUAL := New PassiveSkill("é²œè¡€ä»ªå¼"
 	, "images\skills\witch-doctor\passive\traits_witchdoctor_ritualofblood_normal.png"
-	, "Ê¹20%µÄ·¨Á¦ÖµÏûºÄÓÃÉúÃüÖµµÖ³¥¡£´ËÍâ£¬Äã¿ÉÓÚÃ¿Ãë»Ö¸´ÉúÃüÖµÉÏÏÞµÄ1%¡£")
+	, "ä½¿20%çš„æ³•åŠ›å€¼æ¶ˆè€—ç”¨ç”Ÿå‘½å€¼æŠµå¿ã€‚æ­¤å¤–ï¼Œä½ å¯äºŽæ¯ç§’æ¢å¤ç”Ÿå‘½å€¼ä¸Šé™çš„1%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÖÂÃü¶¾Ò© 
+; æŠ€èƒ½: è‡´å‘½æ¯’è¯ 
 ; ---------------------------
-SKILL_PASSIVE_WITCH_DOCTOR_BAD_MEDICINE := New PassiveSkill("ÖÂÃü¶¾Ò©"
+SKILL_PASSIVE_WITCH_DOCTOR_BAD_MEDICINE := New PassiveSkill("è‡´å‘½æ¯’è¯"
 	, "images\skills\witch-doctor\passive\traits_witchdoctor_badmedicine_normal.png"
-	, "µ±Äã¶ÔÒ»ÃûµÐÈËÔì³É¶¾ÐÔÉËº¦Ê±£¬ÆäÔì³ÉµÄÉËº¦»á½µµÍ25%£¬³ÖÐø5Ãë¡£")
+	, "å½“ä½ å¯¹ä¸€åæ•Œäººé€ æˆæ¯’æ€§ä¼¤å®³æ—¶ï¼Œå…¶é€ æˆçš„ä¼¤å®³ä¼šé™ä½Ž25%ï¼ŒæŒç»­5ç§’ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ½©Ê¬Í³Áì 
+; æŠ€èƒ½: åƒµå°¸ç»Ÿé¢† 
 ; ---------------------------
-SKILL_PASSIVE_WITCH_DOCTOR_ZOMBIE_HANDLER := New PassiveSkill("½©Ê¬Í³Áì"
+SKILL_PASSIVE_WITCH_DOCTOR_ZOMBIE_HANDLER := New PassiveSkill("åƒµå°¸ç»Ÿé¢†"
 	, "images\skills\witch-doctor\passive\traits_witchdoctor_zombiemaster_normal.png"
-	, "ÄãµÄ½©Ê¬È®¡¢½©Ê¬¾ÞÊÞÒÔ¼°Äã×ÔÉíµÄÉúÃüÖµÌá¸ß20%¡£\r\n´ËÍâ£¬ÄãÍ¬Ò»Ê±¼äÖ»ÄÜ¶îÍâÕÙ»½1Ö»½©Ê¬È®¡£")
+	, "ä½ çš„åƒµå°¸çŠ¬ã€åƒµå°¸å·¨å…½ä»¥åŠä½ è‡ªèº«çš„ç”Ÿå‘½å€¼æé«˜20%ã€‚\r\næ­¤å¤–ï¼Œä½ åŒä¸€æ—¶é—´åªèƒ½é¢å¤–å¬å”¤1åªåƒµå°¸çŠ¬ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ´©Í¸ÃÔÕÏ 
+; æŠ€èƒ½: ç©¿é€è¿·éšœ 
 ; ---------------------------
-SKILL_PASSIVE_WITCH_DOCTOR_PIERCE_THE_VEIL := New PassiveSkill("´©Í¸ÃÔÕÏ"
+SKILL_PASSIVE_WITCH_DOCTOR_PIERCE_THE_VEIL := New PassiveSkill("ç©¿é€è¿·éšœ"
 	, "images\skills\witch-doctor\passive\traits_demonhunter_cloakofshadows_normal.png"
-	, "Ê¹ÄãÔì³ÉµÄËùÓÐÉËº¦Ìá¸ß20%£¬µ«ÄãµÄ·¨Á¦ÖµÏûºÄÒ²»áÌá¸ß30%¡£")
+	, "ä½¿ä½ é€ æˆçš„æ‰€æœ‰ä¼¤å®³æé«˜20%ï¼Œä½†ä½ çš„æ³•åŠ›å€¼æ¶ˆè€—ä¹Ÿä¼šæé«˜30%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: Áé»êÈÝÆ÷ 
+; æŠ€èƒ½: çµé­‚å®¹å™¨ 
 ; ---------------------------
-SKILL_PASSIVE_WITCH_DOCTOR_SPIRIT_VESSEL := New PassiveSkill("Áé»êÈÝÆ÷"
+SKILL_PASSIVE_WITCH_DOCTOR_SPIRIT_VESSEL := New PassiveSkill("çµé­‚å®¹å™¨"
 	, "images\skills\witch-doctor\passive\traits_witchdoctor_spiritvessel_normal.png"
-	, "µ±ÄãÊÜµ½ÖÂÃüÉËº¦Ê±£¬Äã»á×Ô¶¯½øÈëÁé»ê½çÓò£¬³ÖÐø2Ãë£¬²¢ÄÜ»Ö¸´ÖÁÉúÃüÖµÉÏÏÞµÄ50%¡£\r\n¸ÃÐ§¹ûÃ¿60ÃëÖ»ÄÜÉúÐ§Ò»´Î¡£")
+	, "å½“ä½ å—åˆ°è‡´å‘½ä¼¤å®³æ—¶ï¼Œä½ ä¼šè‡ªåŠ¨è¿›å…¥çµé­‚ç•ŒåŸŸï¼ŒæŒç»­2ç§’ï¼Œå¹¶èƒ½æ¢å¤è‡³ç”Ÿå‘½å€¼ä¸Šé™çš„50%ã€‚\r\nè¯¥æ•ˆæžœæ¯60ç§’åªèƒ½ç”Ÿæ•ˆä¸€æ¬¡ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ¹íÍÞ¸ú°à 
+; æŠ€èƒ½: é¬¼å¨ƒè·Ÿç­ 
 ; ---------------------------
-SKILL_PASSIVE_WITCH_DOCTOR_FETISH_SYCOPHANTS := New PassiveSkill("¹íÍÞ¸ú°à"
+SKILL_PASSIVE_WITCH_DOCTOR_FETISH_SYCOPHANTS := New PassiveSkill("é¬¼å¨ƒè·Ÿç­"
 	, "images\skills\witch-doctor\passive\traits_icon_witchdoctor_sycophant_normal.png"
-	, "Ã¿µ±ÄãÓÃ·¨Êõ»÷ÖÐµÐÈËÊ±£¬ÄãÓÐ×î¶à15%µÄ¼¸ÂÊÕÙ»½³öÒ»¸ö»Ó³ÖØ°Ê×µÄ¹íÍÞ£¬ÓëÄã²¢¼ç×÷Õ½£¬³ÖÐø60Ãë¡£")
+	, "æ¯å½“ä½ ç”¨æ³•æœ¯å‡»ä¸­æ•Œäººæ—¶ï¼Œä½ æœ‰æœ€å¤š15%çš„å‡ çŽ‡å¬å”¤å‡ºä¸€ä¸ªæŒ¥æŒåŒ•é¦–çš„é¬¼å¨ƒï¼Œä¸Žä½ å¹¶è‚©ä½œæˆ˜ï¼ŒæŒç»­60ç§’ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÔªÉñ±¼ÐÐ 
+; æŠ€èƒ½: å…ƒç¥žå¥”è¡Œ 
 ; ---------------------------
-SKILL_PASSIVE_WITCH_DOCTOR_RUSH_OF_ESSENCE := New PassiveSkill("ÔªÉñ±¼ÐÐ"
+SKILL_PASSIVE_WITCH_DOCTOR_RUSH_OF_ESSENCE := New PassiveSkill("å…ƒç¥žå¥”è¡Œ"
 	, "images\skills\witch-doctor\passive\traits_witchdoctor_meditation_normal.png"
-	, "¹í»êÀà·¨Êõ¿ÉÔÚ10ÃëÄÚ·µ»¹100µã·¨Á¦Öµ¡£\r\n¹í»ê·¨Êõ°üÀ¨£ºÊ´»ê¾åÁéÈºÌå»ìÂÒÁé»êÊÕ¸îÁé»êµ¯Ä»Áé»êÐÐ×ß")
+	, "é¬¼é­‚ç±»æ³•æœ¯å¯åœ¨10ç§’å†…è¿”è¿˜100ç‚¹æ³•åŠ›å€¼ã€‚\r\né¬¼é­‚æ³•æœ¯åŒ…æ‹¬ï¼šèš€é­‚æƒ§çµç¾¤ä½“æ··ä¹±çµé­‚æ”¶å‰²çµé­‚å¼¹å¹•çµé­‚è¡Œèµ°")
 ; ---------------------------
-; ¼¼ÄÜ: Áé¾³×·Ñ° 
+; æŠ€èƒ½: çµå¢ƒè¿½å¯» 
 ; ---------------------------
-SKILL_PASSIVE_WITCH_DOCTOR_VISION_QUEST := New PassiveSkill("Áé¾³×·Ñ°"
+SKILL_PASSIVE_WITCH_DOCTOR_VISION_QUEST := New PassiveSkill("çµå¢ƒè¿½å¯»"
 	, "images\skills\witch-doctor\passive\traits_witchdoctor_manaregeneration_normal.png"
-	, "µ±ÄãÊ¹ÓÃÊ¬Öë¡¢ÁÒÑæÕ¨µ¯¡¢ó¸òÜÖ®Òß»ò¾ç¶¾·ÉïÚÔì³ÉÉËº¦Ê±£¬ÄãµÄ·¨Á¦Öµ»Ö¸´ËÙ¶ÈÌá¸ß40%£¬³ÖÐø5Ãë¡£")
+	, "å½“ä½ ä½¿ç”¨å°¸è››ã€çƒˆç„°ç‚¸å¼¹ã€èŸ¾èœä¹‹ç–«æˆ–å‰§æ¯’é£žé•–é€ æˆä¼¤å®³æ—¶ï¼Œä½ çš„æ³•åŠ›å€¼æ¢å¤é€Ÿåº¦æé«˜40%ï¼ŒæŒç»­5ç§’ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ¿ñÈÈÖÒ³Ï 
+; æŠ€èƒ½: ç‹‚çƒ­å¿ è¯š 
 ; ---------------------------
-SKILL_PASSIVE_WITCH_DOCTOR_FIERCE_LOYALTY := New PassiveSkill("¿ñÈÈÖÒ³Ï"
+SKILL_PASSIVE_WITCH_DOCTOR_FIERCE_LOYALTY := New PassiveSkill("ç‹‚çƒ­å¿ è¯š"
 	, "images\skills\witch-doctor\passive\traits_witchdoctor_careofthemaster_normal.png"
-	, "µ±ÄãÕÙ»½ÓÐ½©Ê¬¾ÞÊÞ¡¢½©Ê¬È®¡¢»ò¹íÍÞÊ±£¬ÄãµÄÒÆ¶¯ËÙ¶ÈÌá¸ß15%¡£\r\nµ±½©Ê¬¾ÞÊÞ¡¢½©Ê¬È®»ò¹íÍÞÎ´½øÈëÕ½¶·×´Ì¬Ê±£¬¸Ã¼Ó³ÉÌá¸ßÖÁ30%¡£")
+	, "å½“ä½ å¬å”¤æœ‰åƒµå°¸å·¨å…½ã€åƒµå°¸çŠ¬ã€æˆ–é¬¼å¨ƒæ—¶ï¼Œä½ çš„ç§»åŠ¨é€Ÿåº¦æé«˜15%ã€‚\r\nå½“åƒµå°¸å·¨å…½ã€åƒµå°¸çŠ¬æˆ–é¬¼å¨ƒæœªè¿›å…¥æˆ˜æ–—çŠ¶æ€æ—¶ï¼Œè¯¥åŠ æˆæé«˜è‡³30%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: °þÏ÷ËÀÕß 
+; æŠ€èƒ½: å‰¥å‰Šæ­»è€… 
 ; ---------------------------
-SKILL_PASSIVE_WITCH_DOCTOR_GRAVE_INJUSTICE := New PassiveSkill("°þÏ÷ËÀÕß"
+SKILL_PASSIVE_WITCH_DOCTOR_GRAVE_INJUSTICE := New PassiveSkill("å‰¥å‰Šæ­»è€…"
 	, "images\skills\witch-doctor\passive\traits_witchdoctor_graveinjustice_normal.png"
-	, "Ã¿µ±ÔÚ20ÂëÄÚÓÐµÐÈËËÀÈ¥Ê±£¬¼´¿É»Ö¸´ÄãÉúÃüÖµÉÏÏÞºÍ·¨Á¦ÖµÉÏÏÞµÄ1%£¬ÄãËùÓÐ¼¼ÄÜµÄÀäÈ´Ê±¼äÒ²¿É±»Ëõ¶Ì1Ãë¡£\r\nÓÐÐ©ÎïÆ·¿ÉÌáÉýÄãµÄ½ðÇ®Ê°È¡·¶Î§£¬¸ÃÀàÎïÆ·Ò²ÄÜÌáÉýÕâÒ»Ð§¹ûµÄÓ°Ïì·¶Î§¡£")
+	, "æ¯å½“åœ¨20ç å†…æœ‰æ•Œäººæ­»åŽ»æ—¶ï¼Œå³å¯æ¢å¤ä½ ç”Ÿå‘½å€¼ä¸Šé™å’Œæ³•åŠ›å€¼ä¸Šé™çš„1%ï¼Œä½ æ‰€æœ‰æŠ€èƒ½çš„å†·å´æ—¶é—´ä¹Ÿå¯è¢«ç¼©çŸ­1ç§’ã€‚\r\næœ‰äº›ç‰©å“å¯æå‡ä½ çš„é‡‘é’±æ‹¾å–èŒƒå›´ï¼Œè¯¥ç±»ç‰©å“ä¹Ÿèƒ½æå‡è¿™ä¸€æ•ˆæžœçš„å½±å“èŒƒå›´ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ²¿×åÒÇÊ½ 
+; æŠ€èƒ½: éƒ¨æ—ä»ªå¼ 
 ; ---------------------------
-SKILL_PASSIVE_WITCH_DOCTOR_TRIBAL_RITES := New PassiveSkill("²¿×åÒÇÊ½"
+SKILL_PASSIVE_WITCH_DOCTOR_TRIBAL_RITES := New PassiveSkill("éƒ¨æ—ä»ªå¼"
 	, "images\skills\witch-doctor\passive\traits_witchdoctor_rituals_normal.png"
-	, "Ê¹ÒÔÏÂ¼¼ÄÜµÄÀäÈ´Ê±¼äËõ¶Ì25%£ºÑýÊõ½©Ê¬¾ÞÊÞ¹íÍÞ´ó¾üÕÙ»½½©Ê¬È®Î×¶¾¿ñÎèÈºÌå»ìÂÒ")
+	, "ä½¿ä»¥ä¸‹æŠ€èƒ½çš„å†·å´æ—¶é—´ç¼©çŸ­25%ï¼šå¦–æœ¯åƒµå°¸å·¨å…½é¬¼å¨ƒå¤§å†›å¬å”¤åƒµå°¸çŠ¬å·«æ¯’ç‹‚èˆžç¾¤ä½“æ··ä¹±")
 ; ---------------------------
-; ¼¼ÄÜ: ÆÛÂ÷ÒÇÊ½ 
+; æŠ€èƒ½: æ¬ºçž’ä»ªå¼ 
 ; ---------------------------
-SKILL_PASSIVE_WITCH_DOCTOR_CONFIDENCE_RITUAL := New PassiveSkill("ÆÛÂ÷ÒÇÊ½"
+SKILL_PASSIVE_WITCH_DOCTOR_CONFIDENCE_RITUAL := New PassiveSkill("æ¬ºçž’ä»ªå¼"
 	, "images\skills\witch-doctor\passive\traits_witchdoctor_mindandbody_normal.png"
-	, "¶Ô20ÂëÄÚµÄµÐÈËÔì³É¶îÍâ25%µÄÉËº¦¡£")
+	, "å¯¹20ç å†…çš„æ•Œäººé€ æˆé¢å¤–25%çš„ä¼¤å®³ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ËÀÍöÂûÑÓ 
+; æŠ€èƒ½: æ­»äº¡è”“å»¶ 
 ; ---------------------------
-SKILL_PASSIVE_WITCH_DOCTOR_CREEPING_DEATH := New PassiveSkill("ËÀÍöÂûÑÓ"
+SKILL_PASSIVE_WITCH_DOCTOR_CREEPING_DEATH := New PassiveSkill("æ­»äº¡è”“å»¶"
 	, "images\skills\witch-doctor\passive\traits_witchdoctor_creepingdeath_normal.png"
-	, "ÄãµÄÊ´»ê¡¢ÎÁÒß³æÈºÒÔ¼°Ê³ÈËÓãÔì³ÉµÄÉËº¦¼Ó³ÉÐ§¹û»áÒ»Ö±³ÖÐøÏÂÈ¥¡£")
+	, "ä½ çš„èš€é­‚ã€ç˜Ÿç–«è™«ç¾¤ä»¥åŠé£Ÿäººé±¼é€ æˆçš„ä¼¤å®³åŠ æˆæ•ˆæžœä¼šä¸€ç›´æŒç»­ä¸‹åŽ»ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÕÓÔóµ÷Ð³ 
+; æŠ€èƒ½: æ²¼æ³½è°ƒè° 
 ; ---------------------------
-SKILL_PASSIVE_WITCH_DOCTOR_SWAMPLAND_ATTUNEMENT := New PassiveSkill("ÕÓÔóµ÷Ð³"
+SKILL_PASSIVE_WITCH_DOCTOR_SWAMPLAND_ATTUNEMENT := New PassiveSkill("æ²¼æ³½è°ƒè°"
 	, "images\skills\witch-doctor\passive\traits_witchdoctor_physicalattunement_normal.png"
-	, "ÄãºÍÄãµÄ³èÎï´Ó20ÂëÄÚµÄÃ¿¸öµÐÈËÉíÉÏ»ñµÃ120µãÎïÀí¡¢¶¾ÐÔ¡¢»ðÑæºÍ±ùËª¿¹ÐÔ¡£\r\n¸ÃÐ§¹ûµÄ·¶Î§»áËæ×ÅÄãµÄ½ð±ÒÊ°È¡·¶Î§¶øÀ©´ó¡£")
+	, "ä½ å’Œä½ çš„å® ç‰©ä»Ž20ç å†…çš„æ¯ä¸ªæ•Œäººèº«ä¸ŠèŽ·å¾—120ç‚¹ç‰©ç†ã€æ¯’æ€§ã€ç«ç„°å’Œå†°éœœæŠ—æ€§ã€‚\r\nè¯¥æ•ˆæžœçš„èŒƒå›´ä¼šéšç€ä½ çš„é‡‘å¸æ‹¾å–èŒƒå›´è€Œæ‰©å¤§ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÎçÒ¹Ê¢Ñç 
+; æŠ€èƒ½: åˆå¤œç››å®´ 
 ; ---------------------------
-SKILL_PASSIVE_WITCH_DOCTOR_MIDNIGHT_FEAST := New PassiveSkill("ÎçÒ¹Ê¢Ñç"
+SKILL_PASSIVE_WITCH_DOCTOR_MIDNIGHT_FEAST := New PassiveSkill("åˆå¤œç››å®´"
 	, "images\skills\witch-doctor\passive\traits_witchdoctor_midnightfeast_normal.png"
-	, "ÄãµÄ½©Ê¬È®ºÍ½©Ê¬¾ÞÊÞµÄÉËº¦Ìá¸ß50%¡£\r\n´ËÍâ£¬ÄãÍ¬Ò»Ê±¼äÖ»ÄÜ¶îÍâÕÙ»½1Ö»½©Ê¬È®¡£")
+	, "ä½ çš„åƒµå°¸çŠ¬å’Œåƒµå°¸å·¨å…½çš„ä¼¤å®³æé«˜50%ã€‚\r\næ­¤å¤–ï¼Œä½ åŒä¸€æ—¶é—´åªèƒ½é¢å¤–å¬å”¤1åªåƒµå°¸çŠ¬ã€‚")
 ; ===========================
-; Î×Ò½ End
+; å·«åŒ» End
 ; ===========================
 
 
 
 ; ===========================
-; Ä§·¨Ê¦ Start
+; é­”æ³•å¸ˆ Start
 ; ===========================
 ; ---------------------------
-; ¼¼ÄÜ: °ÂÄÜ¿ÊÇó 
+; æŠ€èƒ½: å¥¥èƒ½æ¸´æ±‚ 
 ; ---------------------------
-SKILL_PASSIVE_WIZARD_POWER_HUNGRY := New PassiveSkill("°ÂÄÜ¿ÊÇó"
+SKILL_PASSIVE_WIZARD_POWER_HUNGRY := New PassiveSkill("å¥¥èƒ½æ¸´æ±‚"
 	, "images\skills\wizard\passive\traits_wizard_energyreserves_normal.png"
-	, "Äã¶Ô30Âë¿ªÍâµÄµÐÈËÔì³ÉµÄÉËº¦¶îÍâÌá¸ß30%¡£")
+	, "ä½ å¯¹30ç å¼€å¤–çš„æ•Œäººé€ æˆçš„ä¼¤å®³é¢å¤–æé«˜30%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ²ÐÓ° 
+; æŠ€èƒ½: æ®‹å½± 
 ; ---------------------------
-SKILL_PASSIVE_WIZARD_BLUR := New PassiveSkill("²ÐÓ°"
+SKILL_PASSIVE_WIZARD_BLUR := New PassiveSkill("æ®‹å½±"
 	, "images\skills\wizard\passive\traits_wizard_blur_normal.png"
-	, "Ê¹ÊÜµ½µÄÉËº¦½µµÍ17%¡£")
+	, "ä½¿å—åˆ°çš„ä¼¤å®³é™ä½Ž17%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: Æô·¢ 
+; æŠ€èƒ½: å¯å‘ 
 ; ---------------------------
-SKILL_PASSIVE_WIZARD_EVOCATION := New PassiveSkill("Æô·¢"
+SKILL_PASSIVE_WIZARD_EVOCATION := New PassiveSkill("å¯å‘"
 	, "images\skills\wizard\passive\traits_wizard_temporalshift_normal.png"
-	, "Ê¹ËùÓÐÀäÈ´Ê±¼äËõ¶Ì20%¡£")
+	, "ä½¿æ‰€æœ‰å†·å´æ—¶é—´ç¼©çŸ­20%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ²£Á§´óÅÚ 
+; æŠ€èƒ½: çŽ»ç’ƒå¤§ç‚® 
 ; ---------------------------
-SKILL_PASSIVE_WIZARD_GLASS_CANNON := New PassiveSkill("²£Á§´óÅÚ"
+SKILL_PASSIVE_WIZARD_GLASS_CANNON := New PassiveSkill("çŽ»ç’ƒå¤§ç‚®"
 	, "images\skills\wizard\passive\traits_wizard_glasscannon_normal.png"
-	, "Ê¹ÄãÔì³ÉµÄËùÓÐÉËº¦Ìá¸ß15%£¬µ«ÄãµÄ»¤¼×ÖµºÍ¿¹ÐÔ½µµÍ10%¡£")
+	, "ä½¿ä½ é€ æˆçš„æ‰€æœ‰ä¼¤å®³æé«˜15%ï¼Œä½†ä½ çš„æŠ¤ç”²å€¼å’ŒæŠ—æ€§é™ä½Ž10%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: Ìì¸³Ææ²Å 
+; æŠ€èƒ½: å¤©èµ‹å¥‡æ‰ 
 ; ---------------------------
-SKILL_PASSIVE_WIZARD_PRODIGY := New PassiveSkill("Ìì¸³Ææ²Å"
+SKILL_PASSIVE_WIZARD_PRODIGY := New PassiveSkill("å¤©èµ‹å¥‡æ‰"
 	, "images\skills\wizard\passive\traits_wizard_knowledgeispower_normal.png"
-	, "µ±ÄãÊ©·ÅÐÞÎª·¨ÊõÔì³ÉÉËº¦Ê±£¬Äã¼´¿É»ñµÃ5µã°ÂÄÜ¡£\r\nÐÞÎª·¨Êõ°üÀ¨£ºÄ§·¨·Éµ¯³å»÷Õð²¨ÓÄ»êÖ®ÈÐµçÐÌ")
+	, "å½“ä½ æ–½æ”¾ä¿®ä¸ºæ³•æœ¯é€ æˆä¼¤å®³æ—¶ï¼Œä½ å³å¯èŽ·å¾—5ç‚¹å¥¥èƒ½ã€‚\r\nä¿®ä¸ºæ³•æœ¯åŒ…æ‹¬ï¼šé­”æ³•é£žå¼¹å†²å‡»éœ‡æ³¢å¹½é­‚ä¹‹åˆƒç”µåˆ‘")
 ; ---------------------------
-; ¼¼ÄÜ: ÐÇ³½Ö®Çû 
+; æŠ€èƒ½: æ˜Ÿè¾°ä¹‹èº¯ 
 ; ---------------------------
-SKILL_PASSIVE_WIZARD_ASTRAL_PRESENCE := New PassiveSkill("ÐÇ³½Ö®Çû"
+SKILL_PASSIVE_WIZARD_ASTRAL_PRESENCE := New PassiveSkill("æ˜Ÿè¾°ä¹‹èº¯"
 	, "images\skills\wizard\passive\traits_wizard_astralpresence_normal.png"
-	, "Ê¹ÄãµÄ°ÂÄÜÉÏÏÞÌá¸ß20µã£¬Ã¿Ãë»Ö¸´¶îÍâ2.5µã°ÂÄÜ¡£")
+	, "ä½¿ä½ çš„å¥¥èƒ½ä¸Šé™æé«˜20ç‚¹ï¼Œæ¯ç§’æ¢å¤é¢å¤–2.5ç‚¹å¥¥èƒ½ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: »ÃÊõÊ¦ 
+; æŠ€èƒ½: å¹»æœ¯å¸ˆ 
 ; ---------------------------
-SKILL_PASSIVE_WIZARD_ILLUSIONIST := New PassiveSkill("»ÃÊõÊ¦"
+SKILL_PASSIVE_WIZARD_ILLUSIONIST := New PassiveSkill("å¹»æœ¯å¸ˆ"
 	, "images\skills\wizard\passive\traits_wizard_telekinesis_normal.png"
-	, "µ±ÄãÔÚ1ÃëÄÚÊÜµ½¸ßÓÚÉúÃüÖµÉÏÏÞ15%µÄÉËº¦Ê±£¬¾µÏñ¡¢Ê±¼äÑÓ»ºÒÔ¼°´«ËÍµÄÀäÈ´Ê±¼ä»á×Ô¶¯ÖØÖÃ¡£\r\nµ±ÄãÊ¹ÓÃ¾µÏñ¡¢Ê±¼äÑÓ»º»ò´«ËÍÊ±£¬ÄãµÄÒÆ¶¯ËÙ¶ÈÌá¸ß30%£¬³ÖÐø3Ãë¡£")
+	, "å½“ä½ åœ¨1ç§’å†…å—åˆ°é«˜äºŽç”Ÿå‘½å€¼ä¸Šé™15%çš„ä¼¤å®³æ—¶ï¼Œé•œåƒã€æ—¶é—´å»¶ç¼“ä»¥åŠä¼ é€çš„å†·å´æ—¶é—´ä¼šè‡ªåŠ¨é‡ç½®ã€‚\r\nå½“ä½ ä½¿ç”¨é•œåƒã€æ—¶é—´å»¶ç¼“æˆ–ä¼ é€æ—¶ï¼Œä½ çš„ç§»åŠ¨é€Ÿåº¦æé«˜30%ï¼ŒæŒç»­3ç§’ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÀäÑª 
+; æŠ€èƒ½: å†·è¡€ 
 ; ---------------------------
-SKILL_PASSIVE_WIZARD_COLD_BLOODED := New PassiveSkill("ÀäÑª"
+SKILL_PASSIVE_WIZARD_COLD_BLOODED := New PassiveSkill("å†·è¡€"
 	, "images\skills\wizard\passive\traits_wizard_blackice_normal.png"
-	, "ÔÚº®Àä»ò±ù¶³³ÖÐøÆÚ¼ä£¬ÏÝÈëº®Àä»ò±»±ù¶³µÄµÐÈËÊÜµ½µÄËùÓÐÉËº¦Ìá¸ß10%¡£")
+	, "åœ¨å¯’å†·æˆ–å†°å†»æŒç»­æœŸé—´ï¼Œé™·å…¥å¯’å†·æˆ–è¢«å†°å†»çš„æ•Œäººå—åˆ°çš„æ‰€æœ‰ä¼¤å®³æé«˜10%ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÉÕ·Ù 
+; æŠ€èƒ½: çƒ§ç„š 
 ; ---------------------------
-SKILL_PASSIVE_WIZARD_CONFLAGRATION := New PassiveSkill("ÉÕ·Ù"
+SKILL_PASSIVE_WIZARD_CONFLAGRATION := New PassiveSkill("çƒ§ç„š"
 	, "images\skills\wizard\passive\traits_wizard_conflagration_normal.png"
-	, "¶ÔµÐÈËÔì³ÉµÄ»ðÑæÉËº¦£¬¿ÉÔÚµÐÈËÉíÉÏ¸½¼ÓÈ¼ÉÕÐ§¹û£¬Ê¹ÆäÊÜµ½±©»÷µÄ¼¸ÂÊÌá¸ß6%£¬³ÖÐø3Ãë¡£")
+	, "å¯¹æ•Œäººé€ æˆçš„ç«ç„°ä¼¤å®³ï¼Œå¯åœ¨æ•Œäººèº«ä¸Šé™„åŠ ç‡ƒçƒ§æ•ˆæžœï¼Œä½¿å…¶å—åˆ°æš´å‡»çš„å‡ çŽ‡æé«˜6%ï¼ŒæŒç»­3ç§’ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: Ì±»¾ 
+; æŠ€èƒ½: ç˜«ç—ª 
 ; ---------------------------
-SKILL_PASSIVE_WIZARD_PARALYSIS := New PassiveSkill("Ì±»¾"
+SKILL_PASSIVE_WIZARD_PARALYSIS := New PassiveSkill("ç˜«ç—ª"
 	, "images\skills\wizard\passive\traits_wizard_paralysis_normal.png"
-	, "ÉÁµç·¨ÊõÓÐ15%µÄ¼¸ÂÊÊ¹ËùÓÐ±»»÷ÖÐµÄÄ¿±ê»èÃÔ1.5Ãë¡£")
+	, "é—ªç”µæ³•æœ¯æœ‰15%çš„å‡ çŽ‡ä½¿æ‰€æœ‰è¢«å‡»ä¸­çš„ç›®æ ‡æ˜è¿·1.5ç§’ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ·¨ÄÜ»¤Ìå 
+; æŠ€èƒ½: æ³•èƒ½æŠ¤ä½“ 
 ; ---------------------------
-SKILL_PASSIVE_WIZARD_GALVANIZING_WARD := New PassiveSkill("·¨ÄÜ»¤Ìå"
+SKILL_PASSIVE_WIZARD_GALVANIZING_WARD := New PassiveSkill("æ³•èƒ½æŠ¤ä½“"
 	, "images\skills\wizard\passive\traits_wizard_expertdefense_normal.png"
-	, "Ö»ÒªÄãÔÚ¹ýÈ¥µÄ5ÃëÄÚÃ»ÓÐÊÜµ½ÉËº¦£¬Äã¼´¿É»ñµÃÒ»µÀ»¤¶Ü£¬ÎüÊÕ½ÓÏÂÀ´ÊÜµ½µÄÏàµ±ÓÚÄãÉúÃüÖµ60%µÄÉËº¦¡£")
+	, "åªè¦ä½ åœ¨è¿‡åŽ»çš„5ç§’å†…æ²¡æœ‰å—åˆ°ä¼¤å®³ï¼Œä½ å³å¯èŽ·å¾—ä¸€é“æŠ¤ç›¾ï¼Œå¸æ”¶æŽ¥ä¸‹æ¥å—åˆ°çš„ç›¸å½“äºŽä½ ç”Ÿå‘½å€¼60%çš„ä¼¤å®³ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: Ê±¹âÓ¿¶¯ 
+; æŠ€èƒ½: æ—¶å…‰æ¶ŒåŠ¨ 
 ; ---------------------------
-SKILL_PASSIVE_WIZARD_TEMPORAL_FLUX := New PassiveSkill("Ê±¹âÓ¿¶¯"
+SKILL_PASSIVE_WIZARD_TEMPORAL_FLUX := New PassiveSkill("æ—¶å…‰æ¶ŒåŠ¨"
 	, "images\skills\wizard\passive\traits_wizard_temporalflux_normal.png"
-	, "ÊÜµ½°ÂÄÜÉËº¦µÄµÐÈË¼õËÙ80%£¬³ÖÐø2Ãë¡£")
+	, "å—åˆ°å¥¥èƒ½ä¼¤å®³çš„æ•Œäººå‡é€Ÿ80%ï¼ŒæŒç»­2ç§’ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ±ËÏûÎÒ³¤ 
+; æŠ€èƒ½: å½¼æ¶ˆæˆ‘é•¿ 
 ; ---------------------------
-SKILL_PASSIVE_WIZARD_DOMINANCE := New PassiveSkill("±ËÏûÎÒ³¤"
+SKILL_PASSIVE_WIZARD_DOMINANCE := New PassiveSkill("å½¼æ¶ˆæˆ‘é•¿"
 	, "images\skills\wizard\passive\traits_wizard_arcaneaegis_normal.png"
-	, "ÏûÃðµÐÈË¿É»ñµÃÒ»µÀ»¤¶Ü£¬ÎüÊÕÏàµ±ÓÚÄãÉúÃüÖµ2%µÄÉËº¦£¬³ÖÐø3Ãë¡£¸ÃÐ§¹û×î¶à¿Éµþ¼Ó10´Î¡£\r\nÖØÖÃ±ËÏûÎÒ³¤µÄ³ÖÐøÊ±¼ä£¬»áÊ¹»¤¶Ü´ïµ½×î´óÐ§¹û£¬Ã¿µþ¼ÓÒ»´Î£¬Ê¹³ÖÐøÊ±¼äÑÓ³¤0.5Ãë¡£")
+	, "æ¶ˆç­æ•Œäººå¯èŽ·å¾—ä¸€é“æŠ¤ç›¾ï¼Œå¸æ”¶ç›¸å½“äºŽä½ ç”Ÿå‘½å€¼2%çš„ä¼¤å®³ï¼ŒæŒç»­3ç§’ã€‚è¯¥æ•ˆæžœæœ€å¤šå¯å åŠ 10æ¬¡ã€‚\r\né‡ç½®å½¼æ¶ˆæˆ‘é•¿çš„æŒç»­æ—¶é—´ï¼Œä¼šä½¿æŠ¤ç›¾è¾¾åˆ°æœ€å¤§æ•ˆæžœï¼Œæ¯å åŠ ä¸€æ¬¡ï¼Œä½¿æŒç»­æ—¶é—´å»¶é•¿0.5ç§’ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: °ÂÄÜ±Å·¢ 
+; æŠ€èƒ½: å¥¥èƒ½è¿¸å‘ 
 ; ---------------------------
-SKILL_PASSIVE_WIZARD_ARCANE_DYNAMO := New PassiveSkill("°ÂÄÜ±Å·¢"
+SKILL_PASSIVE_WIZARD_ARCANE_DYNAMO := New PassiveSkill("å¥¥èƒ½è¿¸å‘"
 	, "images\skills\wizard\passive\traits_wizard_empoweredarmor_normal.png"
-	, "Ã¿µ±ÄãÊ©·ÅÐÞÎª·¨ÊõÊ±£¬Äã¼´¿É»ñµÃ¡°Áé¹âÒ»ÉÁ¡±µÄÐ§¹û¡£µ±ÀÛ»ý5´Î¡°Áé¹âÒ»ÉÁ¡±Ð§¹ûÊ±£¬ÄãµÄÏÂÒ»¸ö·ÇÐÞÎª·¨Êõ¿ÉÔì³É¶îÍâ60%µÄÉËº¦¡£\r\nÐÞÎª·¨Êõ°üÀ¨£ºÄ§·¨·Éµ¯³å»÷Õð²¨ÓÄ»êÖ®ÈÐµçÐÌ")
+	, "æ¯å½“ä½ æ–½æ”¾ä¿®ä¸ºæ³•æœ¯æ—¶ï¼Œä½ å³å¯èŽ·å¾—â€œçµå…‰ä¸€é—ªâ€çš„æ•ˆæžœã€‚å½“ç´¯ç§¯5æ¬¡â€œçµå…‰ä¸€é—ªâ€æ•ˆæžœæ—¶ï¼Œä½ çš„ä¸‹ä¸€ä¸ªéžä¿®ä¸ºæ³•æœ¯å¯é€ æˆé¢å¤–60%çš„ä¼¤å®³ã€‚\r\nä¿®ä¸ºæ³•æœ¯åŒ…æ‹¬ï¼šé­”æ³•é£žå¼¹å†²å‡»éœ‡æ³¢å¹½é­‚ä¹‹åˆƒç”µåˆ‘")
 ; ---------------------------
-; ¼¼ÄÜ: ²»ÎÈÒìÄÜ 
+; æŠ€èƒ½: ä¸ç¨³å¼‚èƒ½ 
 ; ---------------------------
-SKILL_PASSIVE_WIZARD_UNSTABLE_ANOMALY := New PassiveSkill("²»ÎÈÒìÄÜ"
+SKILL_PASSIVE_WIZARD_UNSTABLE_ANOMALY := New PassiveSkill("ä¸ç¨³å¼‚èƒ½"
 	, "images\skills\wizard\passive\traits_wizard_unstableenergy_normal.png"
-	, "µ±ÄãÊÜµ½Ò»´ÎÖÂÃüÉËº¦Ê±£¬Äã½«»ñµÃÒ»¸öÏàµ±ÓÚÉúÃüÖµÉÏÏÞ400%µÄ»¤¶Ü£¬³ÖÐø5Ãë£¬Í¬Ê±ÊÍ·ÅÒ»µÀ³å»÷²¨»÷ÍËµÐÈË²¢Ê¹Æä»èÃÔ3Ãë¡£\r\n¸ÃÐ§¹ûÃ¿60ÃëÖ»ÄÜÉúÐ§Ò»´Î¡£")
+	, "å½“ä½ å—åˆ°ä¸€æ¬¡è‡´å‘½ä¼¤å®³æ—¶ï¼Œä½ å°†èŽ·å¾—ä¸€ä¸ªç›¸å½“äºŽç”Ÿå‘½å€¼ä¸Šé™400%çš„æŠ¤ç›¾ï¼ŒæŒç»­5ç§’ï¼ŒåŒæ—¶é‡Šæ”¾ä¸€é“å†²å‡»æ³¢å‡»é€€æ•Œäººå¹¶ä½¿å…¶æ˜è¿·3ç§’ã€‚\r\nè¯¥æ•ˆæžœæ¯60ç§’åªèƒ½ç”Ÿæ•ˆä¸€æ¬¡ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ¼á¶¨ÒâÖ¾ 
+; æŠ€èƒ½: åšå®šæ„å¿— 
 ; ---------------------------
-SKILL_PASSIVE_WIZARD_UNWAVERING_WILL := New PassiveSkill("¼á¶¨ÒâÖ¾"
+SKILL_PASSIVE_WIZARD_UNWAVERING_WILL := New PassiveSkill("åšå®šæ„å¿—"
 	, "images\skills\wizard\passive\traits_wizard_unwaveringwill_normal.png"
-	, "¾²Ö¹Õ¾Á¢1.5Ãë£¬Ê¹ÏÂÁÐÊôÐÔµÃµ½ÌáÉý£º\r\n»¤¼×Öµ£ºÌá¸ß20%ËùÓÐ¿¹ÐÔ£ºÌá¸ß20%ÉËº¦£ºÌá¸ß10%")
+	, "é™æ­¢ç«™ç«‹1.5ç§’ï¼Œä½¿ä¸‹åˆ—å±žæ€§å¾—åˆ°æå‡ï¼š\r\næŠ¤ç”²å€¼ï¼šæé«˜20%æ‰€æœ‰æŠ—æ€§ï¼šæé«˜20%ä¼¤å®³ï¼šæé«˜10%")
 ; ---------------------------
-; ¼¼ÄÜ: ÎÞÎ·ÎÞ¾å 
+; æŠ€èƒ½: æ— ç•æ— æƒ§ 
 ; ---------------------------
-SKILL_PASSIVE_WIZARD_AUDACITY := New PassiveSkill("ÎÞÎ·ÎÞ¾å"
+SKILL_PASSIVE_WIZARD_AUDACITY := New PassiveSkill("æ— ç•æ— æƒ§"
 	, "images\skills\wizard\passive\traits_wizard_audacity_normal.png"
-	, "¶Ô15ÂëÄÚµÄµÐÈËÔì³É¶îÍâ30%µÄÉËº¦¡£")
+	, "å¯¹15ç å†…çš„æ•Œäººé€ æˆé¢å¤–30%çš„ä¼¤å®³ã€‚")
 ; ---------------------------
-; ¼¼ÄÜ: ÔªËØÒ×ÉË 
+; æŠ€èƒ½: å…ƒç´ æ˜“ä¼¤ 
 ; ---------------------------
-SKILL_PASSIVE_WIZARD_ELEMENTAL_EXPOSURE := New PassiveSkill("ÔªËØÒ×ÉË"
+SKILL_PASSIVE_WIZARD_ELEMENTAL_EXPOSURE := New PassiveSkill("å…ƒç´ æ˜“ä¼¤"
 	, "images\skills\wizard\passive\traits_wizard_elementalexposure_normal.png"
-	, "¶ÔµÐÈËÔì³É°ÂÊõ¡¢±ùËª¡¢»ðÑæ»òÉÁµçÉËº¦Ê±½«»áÊ¹ËûÃÇ´ÓÄãµÄ¹¥»÷ÖÐÊÜµ½µÄÉËº¦Ìá¸ß5%£¬³ÖÐø5Ãë¡£Ã¿ÖÖÀàÐÍÉËº¦¿Éµþ¼ÓÒ»²ãÐ§¹û£¬×î¶à¿Éµþ¼Ó4²ã¡£\r\nÎäÆ÷Ôì³ÉµÄÔªËØÉËº¦½«»áÀÛ¼ÓÖÁÔªËØÒ×ÉËÉÏ¡£")
+	, "å¯¹æ•Œäººé€ æˆå¥¥æœ¯ã€å†°éœœã€ç«ç„°æˆ–é—ªç”µä¼¤å®³æ—¶å°†ä¼šä½¿ä»–ä»¬ä»Žä½ çš„æ”»å‡»ä¸­å—åˆ°çš„ä¼¤å®³æé«˜5%ï¼ŒæŒç»­5ç§’ã€‚æ¯ç§ç±»åž‹ä¼¤å®³å¯å åŠ ä¸€å±‚æ•ˆæžœï¼Œæœ€å¤šå¯å åŠ 4å±‚ã€‚\r\næ­¦å™¨é€ æˆçš„å…ƒç´ ä¼¤å®³å°†ä¼šç´¯åŠ è‡³å…ƒç´ æ˜“ä¼¤ä¸Šã€‚")
 ; ===========================
-; Ä§·¨Ê¦ End
+; é­”æ³•å¸ˆ End
 ; ===========================
 
 
